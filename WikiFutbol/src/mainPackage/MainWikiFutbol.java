@@ -1,9 +1,13 @@
 package mainPackage;
 
+import ventanas.VentanaLogin;
+
 public class MainWikiFutbol {
 
 	public static void main(String[] args) {
-		System.out.println("Que pasa penytaa");
+		VentanaLogin VL = new VentanaLogin();
+		VL.setVisible(true);
+
 	}
 
 }
