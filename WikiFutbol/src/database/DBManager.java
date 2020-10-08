@@ -86,18 +86,26 @@ public class DBManager {
 			stmt = conn.createStatement();
 			String sql = "select admin from usuario where nombre_usuario = '" + nombre_usuario + "'";
 			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+
+			System.out.println(sql);
+
+			System.out.println(rs.getInt("admin"));
 
 			if (rs.getInt("admin") == 1) {
+				rs.close();
+				stmt.close();
+				disconnect();
 				return true;
 			} else if (rs.getInt("admin") == 0) {
+				rs.close();
+				stmt.close();
+				disconnect();
 				return false;
 			}
-			rs.close();
-			stmt.close();
-			disconnect();
 		} catch (Exception e) {
 			// hay k plantearse quitar este "error"
-			throw new DBManagerException("Error esAdmin DBManager, o no es admin", e);
+			// throw new DBManagerException("Error esAdmin DBManager, o no es admin", e);
 		}
 		return false;
 	}
@@ -121,10 +129,10 @@ public class DBManager {
 		} catch (Exception e) {
 			throw new DBManagerException("Error getEquipos DBManager", e);
 		}
-	}
+	}// ???
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-
+		esAdmin("a");
 	}
 }
