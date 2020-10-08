@@ -5,17 +5,26 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import clases.Equipo;
 
 public class DBManager {
 
 	static Connection conn;
 	static Statement stmt = null;
 
+	private static final String CONTROLADOR = "com.mysql.cj.jdbc.Driver";
+	// URL PORK ASI DE LARGO???
+	// SE PODRIA HACER ONLINE???
+	private static final String URL = "jdbc:mysql://localhost:3306/wikifutbolschema?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	private static final String USUARIO = "admin";
+	private static final String CONTRASENA = "1234";
+
 	public static void connect() throws DBManagerException {
 		try {
-			Class.forName("org.sqlite.JDBC");
-			conn = DriverManager.getConnection("jdbc:sqlite:database.db");
-			System.out.println("connect VA");
+			Class.forName(CONTROLADOR);
+			conn = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new DBManagerException("Error conexion DBManager", e);
 		}
@@ -24,23 +33,21 @@ public class DBManager {
 	public static void disconnect() throws DBManagerException {
 		try {
 			conn.close();
-			System.out.println("disconnect VA");
 		} catch (SQLException e) {
 			throw new DBManagerException("Error desconexion DBManager", e);
 		}
 	}
 
-	public static void registrarUsuario(String nombre_usuario, String contrasena) throws DBManagerException {
+	public static void registrarUsuario(String nombre_usuario, String contrasena, String/* ¿es String? */ fechaNac)
+			throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			String sql = "insert into usuario(nombre_usuario, contrasena) values('" + nombre_usuario + "','"
-					+ contrasena + "')";
+			String sql = "insert into usuario(nombre_usuario, contrasena, fechaNac) values('" + nombre_usuario + "','"
+					+ contrasena + "','" + fechaNac + "')";
 			stmt.executeUpdate(sql);
 			stmt.close();
 			disconnect();
-			System.out.println(sql);
-			System.out.println("registrarUsuario VA");
 		} catch (Exception e) {
 			throw new DBManagerException("Error registrarUsuario DBManager", e);
 		}
@@ -57,15 +64,11 @@ public class DBManager {
 
 			String dato = rs.getString("contrasena");
 			if (dato.equals(contrasena)) {
-				System.out.println(sql);
-				System.out.println("login true VA");
 				rs.close();
 				stmt.close();
 				disconnect();
 				return true;
 			} else {
-				System.out.println(sql);
-				System.out.println("login false VA");
 				rs.close();
 				stmt.close();
 				disconnect();
@@ -73,7 +76,7 @@ public class DBManager {
 			}
 		} catch (SQLException e) {
 			throw new DBManagerException("Error registrarUsuario DBManager, o no existe usuario", e);
-			// MUCHO TEXTO, igual hay que quitar la "e" :v
+			// MUCHO TEXTO?, igual hay que quitar la "e" :v
 		}
 	}
 
@@ -85,28 +88,35 @@ public class DBManager {
 			ResultSet rs = stmt.executeQuery(sql);
 
 			if (rs.getInt("admin") == 1) {
-				System.out.println(sql);
-				System.out.println("esAdmin true VA");
-				rs.close();
-				stmt.close();
-				disconnect();
 				return true;
 			} else if (rs.getInt("admin") == 0) {
-				System.out.println(sql);
-				System.out.println("esAdmin false VA");
-				rs.close();
-				stmt.close();
-				disconnect();
 				return false;
 			}
+			rs.close();
+			stmt.close();
+			disconnect();
 		} catch (Exception e) {
-			throw new DBManagerException("Error esAdmin DBManager", e);
+			// hay k plantearse quitar este "error"
+			throw new DBManagerException("Error esAdmin DBManager, o no es admin", e);
 		}
 		return false;
 	}
+	
+	/*
+	public ArrayList<Equipo> getEquipos(String BD) throws SQLException {
+		ArrayList<Equipo> array = new ArrayList<Equipo>();
+		Connection con = initBD(BD);
+		Statement stmt = con.createStatement();
+		ResultSet RS = stmt.executeQuery("SELECT * FROM equipo");
+		while(RS.next()) {
+			Equipo e = new Equipo(RS.getInt(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getInt(5), RS.getString(6), RS.getString(7));
+			array.add(e);
+		}
+		return array;
+	}*/
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		esAdmin("a");
+
 	}
 }
