@@ -136,7 +136,7 @@ public class VentanaLogin extends JFrame {
 
 			}
 		});
-		
+
 		this.addWindowListener(new WindowAdapter() {
 
 			@Override

@@ -18,7 +18,7 @@ import database.DBManagerException;
 public class VentanaRegistro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private final SimpleDateFormat formatter = new SimpleDateFormat("MM-DD-YYYY");
+	private final SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
 	JLabel lblUser, lblPass, lblDate;
 	JButton btnRegistrar;
 	JTextField txtUsuario, txtPassword;
@@ -58,7 +58,7 @@ public class VentanaRegistro extends JFrame {
 		calendar = new JCalendar();
 		calendar.setBounds(300, 130, 200, 100);
 		try {
-			calendar.setSelectableDateRange(formatter.parse("01-01-1900"), new Date());
+			calendar.setSelectableDateRange(formatter.parse("1900-01-01") /* YYYY-MM-dd */, new Date());
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
@@ -76,8 +76,10 @@ public class VentanaRegistro extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("btnRegistrar");
+
 				try {
-					database.DBManager.registrarUsuario(txtUsuario.getText(), txtPassword.getText());
+					database.DBManager.registrarUsuario(txtUsuario.getText(), txtPassword.getText(),
+							formatter.format(calendar.getDate()));
 				} catch (DBManagerException e1) {
 					e1.printStackTrace();
 				}
