@@ -102,18 +102,26 @@ public class DBManager {
 		return false;
 	}
 	
-	/*
-	public ArrayList<Equipo> getEquipos(String BD) throws SQLException {
-		ArrayList<Equipo> array = new ArrayList<Equipo>();
-		Connection con = initBD(BD);
-		Statement stmt = con.createStatement();
-		ResultSet RS = stmt.executeQuery("SELECT * FROM equipo");
-		while(RS.next()) {
-			Equipo e = new Equipo(RS.getInt(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getInt(5), RS.getString(6), RS.getString(7));
-			array.add(e);
+	
+	public ArrayList<Equipo> getEquipos() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			ArrayList<Equipo> array = new ArrayList<Equipo>();
+			ResultSet rs = stmt.executeQuery("select * from equipo");
+			while(rs.next()) {
+				Equipo e = new Equipo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getString(6), rs.getString(7));
+				array.add(e);
+			}
+			rs.close();
+			stmt.close();
+			disconnect();
+			return array;
+		} catch (Exception e) {
+			throw new DBManagerException("Error getEquipos DBManager", e);
 		}
-		return array;
-	}*/
+	}
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
