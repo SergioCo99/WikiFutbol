@@ -13,16 +13,16 @@ import javax.swing.ListSelectionModel;
 import clases.Equipo;
 
 public interface IListaEquipos {
-public static void cargarLista(JList bookPanel, ArrayList<Equipo> a){
-		
+	public static void cargarLista(JList bookPanel, ArrayList<Equipo> a) {
+
 		DefaultListModel<String> modelo = new DefaultListModel<String>();
-		for(Equipo e : a) {
+		for (Equipo e : a) {
 			modelo.addElement(e.getNombre());
 		}
 		bookPanel.setModel(modelo);
 		bookPanel.updateUI();
-		DefaultListCellRenderer renderer =  (DefaultListCellRenderer)bookPanel.getCellRenderer();  
-		renderer.setHorizontalAlignment(JLabel.CENTER);  
+		DefaultListCellRenderer renderer = (DefaultListCellRenderer) bookPanel.getCellRenderer();
+		renderer.setHorizontalAlignment(JLabel.CENTER);
 		bookPanel.setFixedCellHeight(40);
 		bookPanel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		bookPanel.setVisibleRowCount(5);

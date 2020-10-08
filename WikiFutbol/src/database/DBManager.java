@@ -101,17 +101,17 @@ public class DBManager {
 		}
 		return false;
 	}
-	
-	
+
+	// ???
 	public ArrayList<Equipo> getEquipos() throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
 			ArrayList<Equipo> array = new ArrayList<Equipo>();
 			ResultSet rs = stmt.executeQuery("select * from equipo");
-			while(rs.next()) {
-				Equipo e = new Equipo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getInt(5), rs.getString(6), rs.getString(7));
+			while (rs.next()) {
+				Equipo e = new Equipo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7));
 				array.add(e);
 			}
 			rs.close();
