@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/eneko/git/WikiFutbol/WikiFutbol/lib/jcalendar-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.19.jar"/>
+	<classpathentry kind="lib" path="lib/activation.jar"/>
+	<classpathentry kind="lib" path="lib/mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
