@@ -110,6 +110,46 @@ public class DBManager {
 		return false;
 	}
 
+	public static void cambiarAdmin(String nombre_usuario, int admin) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql = "update usuario set admin = '" + admin + "' where nombre_usuario = '" + nombre_usuario + "';";
+			stmt.executeUpdate(sql);
+			stmt.close();
+			disconnect();
+		} catch (Exception e) {
+			throw new DBManagerException("Error cambiarAdmin DBManager", e);
+		}
+	}
+
+	public static void eliminarUsuario(String nombre_usuario) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql = "delete from usuario where nombre_usuario = '" + nombre_usuario + "';";
+			stmt.executeUpdate(sql);
+			System.out.println(sql);
+			stmt.close();
+			disconnect();
+		} catch (Exception e) {
+			throw new DBManagerException("Error eliminarUsuario DBManager", e);
+		}
+	}
+
+	public static void cambiarDatos(String query) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql = "query";
+			stmt.executeUpdate(sql);
+			stmt.close();
+			disconnect();
+		} catch (Exception e) {
+			throw new DBManagerException("Error cambiarDatos DBManager", e);
+		}
+	}
+
 	// ???
 	public ArrayList<Equipo> getEquipos() throws DBManagerException {
 		try {
@@ -133,6 +173,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		esAdmin("a");
+
 	}
 }
