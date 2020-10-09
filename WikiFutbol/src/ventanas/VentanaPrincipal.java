@@ -31,7 +31,9 @@ public class VentanaPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	JMenuBar mb;
 	JMenu menu1;
-	JMenuItem mi1, mi2, mi3;
+	JMenuItem mi11, mi12, mi13, mi14;
+	JMenu menu2;
+	JMenuItem mi21, mi22, mi23;
 	JButton btnAdmin;
 
 	public VentanaPrincipal() {
@@ -44,15 +46,30 @@ public class VentanaPrincipal extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		mb = new JMenuBar();
+
 		menu1 = new JMenu("Menu");
-		mi1 = new JMenuItem("Ajustes");
-		mi2 = new JMenuItem("Cerrar sesion");
-		mi3 = new JMenuItem("Salir y recordar contrasena");
-		menu1.add(mi1);
-		menu1.add(mi2);
-		menu1.add(mi3);
+		mi11 = new JMenuItem("Ajustes");
+		mi12 = new JMenuItem("Cerrar sesion");
+		mi13 = new JMenuItem("Salir y recordar contrasena");
+		mi14 = new JMenuItem("Descargar datos");
+		menu1.add(mi11);
+		menu1.add(mi12);
+		menu1.add(mi13);
+		menu1.add(mi14);
+
+		menu2 = new JMenu("Opciones admin");
+		mi21 = new JMenuItem("Configurar otra cuenta");
+		mi22 = new JMenuItem("Añadir datos o ??? (CambiarDatos)");
+		mi23 = new JMenuItem("Mandar correo/notificacion");
+		menu2.add(mi21);
+		menu2.add(mi22);
+		menu2.add(mi23);
+
 		mb.add(menu1);
+		mb.add(menu2);
 		setJMenuBar(mb);
+
+		menu2.setVisible(false);
 
 		btnAdmin = new JButton();
 		btnAdmin.setText("Aceptar");
@@ -60,13 +77,15 @@ public class VentanaPrincipal extends JFrame {
 
 		if (privilegiosAdmin() == true) {
 			btnAdmin.setVisible(true);
+			menu2.setVisible(true);
 		} else {
 			btnAdmin.setVisible(false);
+			menu2.setVisible(false);
 		}
 
 		add(btnAdmin);
 
-		mi1.addActionListener(new ActionListener() {
+		mi11.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -74,7 +93,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 
-		mi2.addActionListener(new ActionListener() {
+		mi12.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -86,12 +105,40 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 
-		mi3.addActionListener(new ActionListener() {
+		mi13.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("mi3");
 				dispose();
+			}
+		});
+
+		mi14.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("mi14");
+				VentanaDescargar VD = new VentanaDescargar();
+				VD.setVisible(true);
+			}
+		});
+
+		mi21.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaAdmin1 VA1 = new VentanaAdmin1();
+				VA1.setVisible(true);
+			}
+		});
+
+		mi22.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaCambiarDatos VCD = new VentanaCambiarDatos();
+				VCD.setVisible(true);
 			}
 		});
 
@@ -107,6 +154,10 @@ public class VentanaPrincipal extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
+
+		// para entrar siempre modo admin desde esta clase
+		mainPackage.PropertiesMetodos.setProp("a", "a");
+
 		VentanaPrincipal VP = new VentanaPrincipal();
 		VP.setVisible(true);
 	}
