@@ -50,7 +50,6 @@ public class MainWikiFutbol {
 
 		VentanaLogin VL = new VentanaLogin();
 		VL.setVisible(true);
-
 	}
 
 }
