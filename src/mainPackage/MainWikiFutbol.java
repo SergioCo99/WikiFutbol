@@ -1,5 +1,6 @@
 package mainPackage;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -43,26 +44,23 @@ public class MainWikiFutbol {
 		// -> en otra clase
 		// mainPackage.MainWikiFutbol.logger.log([Por ahora Level.INFO],"Message");
 	}
-	
+
 	// por si no existe el fichero
-	public static void crearFicheroAccountProperties() { // gitignore los ficheros cuando le cambiemos el nombre
+	public static void crearFicherosAccountProperties() { // gitignore los ficheros cuando le cambiemos el nombre
 		try {
-		      File myObj = new File("account.properties");
-		      if (myObj.createNewFile()) {
-		        System.out.println("File created: " + myObj.getName());
-		      } else {
-		        System.out.println("File already exists.");
-		      }
-		    } catch (IOException e) {
-		      System.out.println("An error occurred.");
-		      e.printStackTrace();
-		    }	
+			File accountprop = new File("account.properties");
+			accountprop.createNewFile();
+			File jdbcprop = new File("jdbc.properties");
+			jdbcprop.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {
 		crearFicheroLog();
 		crearFicheroLogger();
-		crearFicheroAccountProperties();
+		crearFicherosAccountProperties();
 
 		VentanaLogin VL = new VentanaLogin();
 		VL.setVisible(true);

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesMetodos {
@@ -58,6 +59,20 @@ public class PropertiesMetodos {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	/**
+	 * Properties prop = mainPackage.PropertiesMetodos.loadPropertiesFile(); String
+	 * CONTROLADOR = prop.getProperty("DB.CONTROLADOR"); String URL =
+	 * prop.getProperty("DB.URL"); String USUARIO = prop.getProperty("DB.USUARIO");
+	 * String CONTRASENA = prop.getProperty("DB.CONTRASENA");
+	 */
+	public static Properties loadPropertiesFile() throws Exception {
+		Properties prop = new Properties();
+		InputStream in = new FileInputStream("jdbc.properties");
+		prop.load(in);
+		in.close();
+		return prop;
 	}
 
 }

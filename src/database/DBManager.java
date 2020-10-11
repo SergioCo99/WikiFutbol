@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import clases.Equipo;
 
@@ -14,18 +15,18 @@ public class DBManager {
 	static Connection conn;
 	static Statement stmt = null;
 
-	private static final String CONTROLADOR = "com.mysql.cj.jdbc.Driver";
-	// URL PORK ASI DE LARGO???
-	// SE PODRIA HACER ONLINE???
-	private static final String URL = "jdbc:mysql://localhost:3306/wikifutbolschema?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	private static final String USUARIO = "admin";
-	private static final String CONTRASENA = "1234";
-
 	public static void connect() throws DBManagerException {
 		try {
-			Class.forName(CONTROLADOR);
+
+			Properties prop = mainPackage.PropertiesMetodos.loadPropertiesFile();
+			String CONTROLADOR = prop.getProperty("DB.CONTROLADOR");
+			String URL = prop.getProperty("DB.URL");
+			String USUARIO = prop.getProperty("DB.USUARIO");
+			String CONTRASENA = prop.getProperty("DB.CONTRASENA");
+
+			Class.forName(CONTROLADOR); // esto para que sirve???
 			conn = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (Exception e) {
 			throw new DBManagerException("Error conexion DBManager", e);
 		}
 	}
@@ -48,7 +49,7 @@ public class DBManager {
 			stmt.executeUpdate(sql);
 			stmt.close();
 			disconnect();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new DBManagerException("Error registrarUsuario DBManager", e);
 		}
 	}
@@ -99,7 +100,7 @@ public class DBManager {
 				disconnect();
 				return false;
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// hay k plantearse quitar este "error"
 			// throw new DBManagerException("Error esAdmin DBManager, o no es admin", e);
 		}
@@ -114,7 +115,7 @@ public class DBManager {
 			stmt.executeUpdate(sql);
 			stmt.close();
 			disconnect();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new DBManagerException("Error cambiarAdmin DBManager", e);
 		}
 	}
@@ -127,7 +128,7 @@ public class DBManager {
 			stmt.executeUpdate(sql);
 			stmt.close();
 			disconnect();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new DBManagerException("Error eliminarUsuario DBManager", e);
 		}
 	}
@@ -141,7 +142,7 @@ public class DBManager {
 			stmt.executeUpdate(sql);
 			stmt.close();
 			disconnect();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new DBManagerException("Error cambiarContrasena DBManager", e);
 		}
 	}
@@ -190,6 +191,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		verTablas();
+		connect();
 	}
 }
