@@ -8,6 +8,9 @@ import java.util.Properties;
 
 public class PropertiesMetodos {
 
+	/**
+	 * setProp(String mail, String password)
+	 */
 	public static void setProp(String mail, String password) {
 		File archivo = new File("account.properties");
 		try {
@@ -23,6 +26,9 @@ public class PropertiesMetodos {
 		}
 	}
 
+	/**
+	 * es el correo
+	 */
 	public static String getProp1() {
 		File archivo = new File("account.properties");
 		try {
@@ -37,6 +43,9 @@ public class PropertiesMetodos {
 		}
 	}
 
+	/**
+	 * es la contrasena
+	 */
 	public static String getProp2() {
 		File archivo = new File("account.properties");
 		try {
@@ -50,4 +59,5 @@ public class PropertiesMetodos {
 			return null;
 		}
 	}
+
 }
