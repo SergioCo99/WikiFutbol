@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import database.DBManagerException;
 
@@ -72,7 +73,7 @@ public class VentanaPrincipal extends JFrame {
 		menu2.setVisible(false);
 
 		btnAdmin = new JButton();
-		btnAdmin.setText("Aceptar");
+		btnAdmin.setText("BOTON PARA PRUEBAS");
 		btnAdmin.setBounds(320, 250, 120, 30);
 
 		if (privilegiosAdmin() == true) {
@@ -85,11 +86,45 @@ public class VentanaPrincipal extends JFrame {
 
 		add(btnAdmin);
 
+		btnAdmin.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("btnAdmin");
+			}
+		});
+
 		mi11.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("mi1");
+
+				String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contraseña",
+						"Cambiar contraseña", JOptionPane.WARNING_MESSAGE);
+
+				if (nuevaContrasena != null && !nuevaContrasena.equals("")) {
+					try {
+						database.DBManager.cambiarContrasena(mainPackage.PropertiesMetodos.getProp1(), nuevaContrasena);
+					} catch (DBManagerException e1) {
+						e1.printStackTrace();
+					}
+					JOptionPane.showMessageDialog(null, "Actualizacion exitosa, reiniciando. . .", "Alerta",
+							JOptionPane.INFORMATION_MESSAGE);
+					// ojo esta idea, darle un par d vueltas :v, ¿¿¿meterle JProgressBar???
+					try {
+						// assuming it takes 3 secs to complete the task
+						dispose();
+						Thread.sleep(3000);
+						mainPackage.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
+						mainPackage.MainWikiFutbol.main(null);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					} // fin de la idea
+				} else {
+					JOptionPane.showMessageDialog(null, "Esa contraseña no es valida / operacion cancelada.", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 
