@@ -145,7 +145,7 @@ public class DBManager {
 			throw new DBManagerException("Error cambiarContrasena DBManager", e);
 		}
 	}
-	
+
 	public static ArrayList<String> verTablas() throws DBManagerException {
 		try {
 			connect();
