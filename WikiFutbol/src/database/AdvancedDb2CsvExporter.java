@@ -19,6 +19,7 @@ import java.util.Date;
  * @author Nam Ha Minh (C) Copyright codejava.net
  */
 public class AdvancedDb2CsvExporter {
+
 	private BufferedWriter fileWriter;
 
 	public void export(String table) {
