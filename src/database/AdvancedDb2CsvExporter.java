@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 
 /**
  * An advanced Java program that exports data from any table to CSV file.
@@ -20,16 +21,22 @@ import java.util.Date;
  */
 public class AdvancedDb2CsvExporter {
 
-	private BufferedWriter fileWriter;
+	private static BufferedWriter fileWriter;
 
-	public void export(String table) {
-		String jdbcURL = "jdbc:mysql://localhost:3306/wikifutbolschema?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-		String username = "admin";
-		String password = "1234";
+	public static void export(String table) throws Exception {
+
+		Properties prop = mainPackage.PropertiesMetodos.loadPropertiesFile();
+		String CONTROLADOR = prop.getProperty("DB.CONTROLADOR");
+		String URL = prop.getProperty("DB.URL");
+		String USUARIO = prop.getProperty("DB.USUARIO");
+		String CONTRASENA = prop.getProperty("DB.CONTRASENA");
+
+		Class.forName(CONTROLADOR); // esto para que sirve???
+		Connection connection = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
 
 		String csvFileName = getFileName(table.concat("_Export"));
 
-		try (Connection connection = DriverManager.getConnection(jdbcURL, username, password)) {
+		try {
 			String sql = "SELECT * FROM ".concat(table);
 
 			Statement statement = connection.createStatement();
@@ -44,7 +51,8 @@ public class AdvancedDb2CsvExporter {
 			while (result.next()) {
 				String line = "";
 
-				for (int i = 2; i <= columnCount; i++) {
+				// from first column
+				for (int i = 1; i <= columnCount; i++) {
 					Object valueObject = result.getObject(i);
 					String valueString = "";
 
@@ -79,20 +87,20 @@ public class AdvancedDb2CsvExporter {
 
 	}
 
-	private String getFileName(String baseName) {
+	private static String getFileName(String baseName) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		String dateTimeInfo = dateFormat.format(new Date());
 		return baseName.concat(String.format("_%s.csv", dateTimeInfo));
 	}
 
-	private int writeHeaderLine(ResultSet result) throws SQLException, IOException {
+	private static int writeHeaderLine(ResultSet result) throws SQLException, IOException {
 		// write header line containing column names
 		ResultSetMetaData metaData = result.getMetaData();
 		int numberOfColumns = metaData.getColumnCount();
 		String headerLine = "";
 
-		// exclude the first column which is the ID field
-		for (int i = 2; i <= numberOfColumns; i++) {
+		// from first column
+		for (int i = 1; i <= numberOfColumns; i++) {
 			String columnName = metaData.getColumnName(i);
 			headerLine = headerLine.concat(columnName).concat(",");
 		}
@@ -102,18 +110,12 @@ public class AdvancedDb2CsvExporter {
 		return numberOfColumns;
 	}
 
-	private String escapeDoubleQuotes(String value) {
+	private static String escapeDoubleQuotes(String value) {
 		return value.replaceAll("\"", "\"\"");
 	}
 
-	public static void main(String[] args) {
-		AdvancedDb2CsvExporter exporter = new AdvancedDb2CsvExporter();
-		exporter.export("jugador");
-
-		// ==========
-		// Asi en otra clase:
-		// database.AdvancedDb2CsvExporter exporter2 = new AdvancedDb2CsvExporter();
-		// exporter2.export("jugador");
-		// ==========
+	public static void main(String[] args) throws Exception {
+		// asi en otra clase
+		database.AdvancedDb2CsvExporter.export("jugador");
 	}
 }

@@ -65,8 +65,11 @@ public class VentanaDescargar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("btn");
 
-				database.AdvancedDb2CsvExporter exporter = new AdvancedDb2CsvExporter();
-				exporter.export(b.getSelectedValue().toString());
+				try {
+					AdvancedDb2CsvExporter.export("jugador");
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 
