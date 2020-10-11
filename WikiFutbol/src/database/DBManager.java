@@ -88,10 +88,6 @@ public class DBManager {
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
 
-			System.out.println(sql);
-
-			System.out.println(rs.getInt("admin"));
-
 			if (rs.getInt("admin") == 1) {
 				rs.close();
 				stmt.close();
@@ -129,7 +125,6 @@ public class DBManager {
 			stmt = conn.createStatement();
 			String sql = "delete from usuario where nombre_usuario = '" + nombre_usuario + "';";
 			stmt.executeUpdate(sql);
-			System.out.println(sql);
 			stmt.close();
 			disconnect();
 		} catch (Exception e) {
@@ -137,16 +132,38 @@ public class DBManager {
 		}
 	}
 
-	public static void cambiarDatos(String query) throws DBManagerException {
+	public static void cambiarContrasena(String nombre_usuario, String contrasena) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			String sql = "query";
+			String sql = "update usuario set contrasena = '" + contrasena + "' where nombre_usuario = '"
+					+ nombre_usuario + "';";
 			stmt.executeUpdate(sql);
 			stmt.close();
 			disconnect();
 		} catch (Exception e) {
-			throw new DBManagerException("Error cambiarDatos DBManager", e);
+			throw new DBManagerException("Error cambiarContrasena DBManager", e);
+		}
+	}
+	
+	public static ArrayList<String> verTablas() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql1 = "use wikifutbolschema;";
+			stmt.executeQuery(sql1);
+			String sql2 = "show tables;";
+			ResultSet rs = stmt.executeQuery(sql2);
+
+			ArrayList<String> arr = new ArrayList<String>();
+			while (rs.next()) {
+				int i = 1;
+				arr.add(rs.getString(i));
+				i++;
+			}
+			return arr;
+		} catch (SQLException e) {
+			throw new DBManagerException("Error verTablas DBManager", e);
 		}
 	}
 
@@ -173,6 +190,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-
+		verTablas();
 	}
 }
