@@ -1,11 +1,15 @@
 package ventanas;
 
+import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Collections;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -73,6 +77,7 @@ public class VentanaLogin extends JFrame {
 		add(checkContrasena);
 
 		txtUsuario.addMouseListener(new MouseAdapter() {
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (b1 == false) {
@@ -82,7 +87,27 @@ public class VentanaLogin extends JFrame {
 			}
 		});
 
+		// por comodidad
+		txtUsuario.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, Collections.emptySet());
+		txtUsuario.addKeyListener(new KeyAdapter() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_TAB) {
+					/* PUT YOUR STUFF HERE OR CALL A FUNCTION */
+					if (b2 == false) {
+						txtPassword.setText("");
+						b2 = true;
+					}
+					/* If you want to change the focus to the next component */
+					txtPassword.grabFocus();
+				}
+			}
+		});
+		// =====
+
 		txtPassword.addMouseListener(new MouseAdapter() {
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (b2 == false) {
@@ -91,6 +116,25 @@ public class VentanaLogin extends JFrame {
 				}
 			}
 		});
+
+		// por comodidad
+		txtPassword.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, Collections.emptySet());
+		txtPassword.addKeyListener(new KeyAdapter() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+					/* PUT YOUR STUFF HERE OR CALL A FUNCTION */
+					if (b1 == false) {
+						txtUsuario.setText("");
+						b1 = true;
+					}
+					/* If you want to change the focus to the next component */
+					txtUsuario.grabFocus();
+				}
+			}
+		});
+		// =====
 
 		checkContrasena.addActionListener(new ActionListener() {
 
@@ -123,9 +167,7 @@ public class VentanaLogin extends JFrame {
 				String passw = new String(txtPassword.getPassword());
 				try {
 					if (database.DBManager.login(txtUsuario.getText(), passw) == true) {
-
 						mainPackage.PropertiesMetodos.setProp(txtUsuario.getText(), passw);
-
 						VentanaPrincipal VP = new VentanaPrincipal();
 						VP.setVisible(true);
 						dispose();
