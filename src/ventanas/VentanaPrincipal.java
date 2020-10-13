@@ -32,7 +32,7 @@ public class VentanaPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	JMenuBar menuBar;
 	JMenu menu;
-	JMenuItem miAjustes, miCerrarSesion, miRecordarContrasena, miDescargaDatos;
+	JMenuItem miAjustes, miCerrarSesion, miRecordarContrasena, miDescargaDatos, miEliminarCuenta;
 	JMenu menuAdmin;
 	JMenuItem miConfigurarOtraCuenta, miCambiarDatos, miMandarCorreo;
 	JButton btnAdmin; // habria que darle otro uso, o quitarlo
@@ -53,10 +53,12 @@ public class VentanaPrincipal extends JFrame {
 		miCerrarSesion = new JMenuItem("Cerrar sesion");
 		miRecordarContrasena = new JMenuItem("Salir y recordar contrasena");
 		miDescargaDatos = new JMenuItem("Descargar datos");
+		miEliminarCuenta = new JMenuItem("Eliminar cuenta");
 		menu.add(miAjustes);
 		menu.add(miCerrarSesion);
 		menu.add(miRecordarContrasena);
 		menu.add(miDescargaDatos);
+		menu.add(miEliminarCuenta);
 
 		menuAdmin = new JMenu("Opciones admin");
 		miConfigurarOtraCuenta = new JMenuItem("Configurar otra cuenta");
@@ -151,6 +153,29 @@ public class VentanaPrincipal extends JFrame {
 				VentanaDescargar VD = new VentanaDescargar();
 				VD.setVisible(true);
 			}
+		});
+
+		miEliminarCuenta.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				int result = JOptionPane.showConfirmDialog(null, "Estas segur@? Es irreversible.", "Eliminar cuenta",
+						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+				if (result == JOptionPane.YES_OPTION) {
+					System.out.println("YES");
+					try {
+						database.DBManager.eliminarUsuario(mainPackage.PropertiesMetodos.getProp1());
+					} catch (DBManagerException e) {
+						e.printStackTrace();
+					}
+					dispose();
+				} else if (result == JOptionPane.NO_OPTION) {
+					System.out.println("NO");
+				} else {
+					System.out.println("NONE");
+				}
+			}
+
 		});
 
 		miConfigurarOtraCuenta.addActionListener(new ActionListener() {
