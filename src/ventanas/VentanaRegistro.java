@@ -90,7 +90,7 @@ public class VentanaRegistro extends JFrame {
 				} catch (DBManagerException e1) {
 					e1.printStackTrace();
 				}
-				mainPackage.PropertiesMetodos.setProp(txtCorreo.getText(), txtPassword.getText());
+				utils.PropertiesMetodos.setProp(txtCorreo.getText(), txtPassword.getText());
 
 				dispose();
 				VentanaPrincipal VP = new VentanaPrincipal();

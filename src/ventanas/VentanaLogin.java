@@ -49,12 +49,12 @@ public class VentanaLogin extends JFrame {
 
 		txtCorreo = new JTextField();
 		txtCorreo.setBounds(300, 100, 200, 20);
-		txtCorreo.setText(mainPackage.PropertiesMetodos.getProp1());
+		txtCorreo.setText(utils.PropertiesMetodos.getProp1());
 
 		txtPassword = new JPasswordField();
 		txtPassword.setBounds(300, 140, 200, 20);
 		// txtPassword.setEchoChar('•');
-		txtPassword.setText(mainPackage.PropertiesMetodos.getProp2());
+		txtPassword.setText(utils.PropertiesMetodos.getProp2());
 
 		btnAceptar = new JButton();
 		btnAceptar.setText("Aceptar");
@@ -165,7 +165,7 @@ public class VentanaLogin extends JFrame {
 				String passw = new String(txtPassword.getPassword());
 				try {
 					if (database.DBManager.login(txtCorreo.getText(), passw) == true) {
-						mainPackage.PropertiesMetodos.setProp(txtCorreo.getText(), passw);
+						utils.PropertiesMetodos.setProp(txtCorreo.getText(), passw);
 						VentanaPrincipal VP = new VentanaPrincipal();
 						VP.setVisible(true);
 						dispose();
@@ -181,7 +181,7 @@ public class VentanaLogin extends JFrame {
 
 			@Override
 			public void windowClosing(WindowEvent e) {
-				mainPackage.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
+				utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
 			}
 		});
 

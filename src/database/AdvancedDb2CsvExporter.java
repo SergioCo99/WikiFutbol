@@ -20,7 +20,7 @@ public class AdvancedDb2CsvExporter {
 
 	public static void export(String table) throws Exception {
 
-		Properties prop = mainPackage.PropertiesMetodos.loadPropertiesFile();
+		Properties prop = utils.PropertiesMetodos.loadPropertiesFile();
 		String CONTROLADOR = prop.getProperty("DB.CONTROLADOR");
 		String URL = prop.getProperty("DB.URL");
 		String USUARIO = prop.getProperty("DB.USUARIO");

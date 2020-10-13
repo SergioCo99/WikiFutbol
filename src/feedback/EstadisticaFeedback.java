@@ -6,54 +6,62 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class EstadisticaFeedback {
 
-	private static double ans;
+	static double ans;
 
 	public static double mediaPuntuacion(double a, double b) {
 		if (b == 0) {
 			throw new ArithmeticException("No puedes dividir por cero");
 		}
 		ans = a / b;
-		System.out.println("Media de puntuacion: " + String.format("%.2f", ans) + "/5,00");
+		// System.out.println("Media de puntuacion: " + String.format("%.2f", ans) +
+		// "/5,00");
 		return ans;
 	}
 
-	public static void siNo(double a, double b, double c) {
+	public static ArrayList<Double> siNo(double a, double b, double c) {
 		if (c == 0) {
 			throw new ArithmeticException("No puedes dividir por cero");
 		}
 		double ans1 = a / c;
 		ans1 = ans1 * 100;
-		System.out.println("Si: " + String.format("%.2f", ans1) + " %.");
+		// System.out.println("Si: " + String.format("%.2f", ans1) + " %.");
 
 		double ans2 = b / c;
 		ans2 = ans2 * 100;
-		System.out.println("No: " + String.format("%.2f", ans2) + " %.");
+		// System.out.println("No: " + String.format("%.2f", ans2) + " %.");
+
+		ArrayList<Double> arr = new ArrayList<>();
+		arr.add(0, ans1);
+		arr.add(1, ans2);
+		return arr;
 	}
 
-	public static void Read() throws RWException {
+	public static ArrayList<Double> ReadAndLoad() throws RWException {
 		File f1 = new File("PruebaLog.log"); // Creation of File Descriptor for input file
 		String[] words = null; // Intialize the word Array
+
+		String s;
+		String si = "si"; // Input word to be searched
+		double countSi = 0;
+		String no = "no";
+		double countNo = 0;
+		double mediaSN = 0;
+
+		String uno = "1";
+		String dos = "2";
+		String tres = "3";
+		String cuatro = "4";
+		String cinco = "5";
+		double countNum = 0;
+		double mediaNum = 0; // Intialize the word to zero
 
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f1)));
 			// Creation of File Reader object
-			String s;
-			String si = "si"; // Input word to be searched
-			double countSi = 0;
-			String no = "no";
-			double countNo = 0;
-			double mediaSN = 0;
-
-			String uno = "1";
-			String dos = "2";
-			String tres = "3";
-			String cuatro = "4";
-			String cinco = "5";
-			double countNum = 0;
-			double mediaNum = 0; // Intialize the word to zero
 
 			while ((s = br.readLine()) != null) { // Reading Content from the file
 				words = s.split(" "); // Split the word using space
@@ -93,10 +101,21 @@ public class EstadisticaFeedback {
 		} catch (IOException e) {
 			throw new RWException("Error de input/output", e);
 		}
+
+		// Aqui empieza la segunda parte :)
+		ArrayList<Double> arr = new ArrayList<>();
+
+		for (int i = 0; i < siNo(countSi, countNo, mediaSN).size(); i++) {
+			arr.add(i, siNo(countSi, countNo, mediaSN).get(i));
+		}
+		arr.add(0, mediaPuntuacion(countNum, mediaNum));
+
+		// System.out.println(arr);
+		return arr;
 	}
 
 	public static void main(String[] args) throws RWException {
-		EstadisticaFeedback.Read();
+		EstadisticaFeedback.ReadAndLoad();
 	}
 
 }

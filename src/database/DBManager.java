@@ -17,7 +17,7 @@ public class DBManager {
 
 	public static void connect() throws DBManagerException {
 		try {
-			Properties prop = mainPackage.PropertiesMetodos.loadPropertiesFile();
+			Properties prop = utils.PropertiesMetodos.loadPropertiesFile();
 			String CONTROLADOR = prop.getProperty("DB.CONTROLADOR");
 			String URL = prop.getProperty("DB.URL");
 			String USUARIO = prop.getProperty("DB.USUARIO");
@@ -195,6 +195,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		// connect();
+		connect();
 	}
 }

@@ -11,6 +11,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -166,6 +167,8 @@ public class VentanaFeedback extends JFrame {
 							.println("Puntuacion: " + bgEstrellas.getSelection().getActionCommand() + "\n" + "Si/No: "
 									+ bgRecomendacion.getSelection().getActionCommand());
 					dispose(); // si??? se cierra???
+					JOptionPane.showMessageDialog(null, "Mandado correctamente.", "Dar Feedback",
+							JOptionPane.INFORMATION_MESSAGE);
 				} else if (bgEstrellas.isSelected(null) || bgRecomendacion.isSelected(null)
 						|| texto.getText().equals("") || texto.getText().length() > maxChars) {
 					lblError.setVisible(true);

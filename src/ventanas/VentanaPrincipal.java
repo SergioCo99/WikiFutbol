@@ -11,7 +11,6 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -27,7 +26,6 @@ import javax.swing.border.LineBorder;
 
 import clases.Equipo;
 import database.DBManagerException;
-import database.DBManager;
 import interfaces.IListaEquipos;
 import utils.JLabelGraficoAjustado;
 
@@ -35,7 +33,7 @@ public class VentanaPrincipal extends JFrame {
 
 	public static boolean privilegiosAdmin() {
 		try {
-			if (database.DBManager.esAdmin(mainPackage.PropertiesMetodos.getProp1()) == true) {
+			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {
 				return true;
 			} else {
 				return false;
@@ -52,16 +50,15 @@ public class VentanaPrincipal extends JFrame {
 	JMenuItem miAjustes, miCerrarSesion, miRecordarContrasena, miDescargaDatos, miEliminarCuenta;
 	JMenu menuAdmin;
 	JMenuItem miConfigurarOtraCuenta, miCambiarDatos, miMandarCorreo;
-	JButton btnAdmin; // habria que darle otro uso, o quitarlo
-	
-	
+	JMenu menuOpinion;
+	JMenuItem miFeedback, miEstadisticas;
 
-	//Para el listado de equipos
+	// Para el listado de equipos
 	private IListaEquipos interfazLista;
 	private ArrayList<Equipo> arrayEquipos = new ArrayList<Equipo>();
 	private JList bookPanel = new JList();
-	
-	//Filtrado de equipos
+
+	// Filtrado de equipos
 	private JTextField txtField;
 	private static VentanaPrincipal frame;
 
@@ -72,8 +69,6 @@ public class VentanaPrincipal extends JFrame {
 	private JRadioButton rdbtnEntrenador;
 	private JRadioButton rdbtnNumLigas;
 	private ArrayList<Equipo> arrayResultado = new ArrayList<Equipo>();
-
-
 
 	public VentanaPrincipal() {
 
@@ -106,32 +101,24 @@ public class VentanaPrincipal extends JFrame {
 		menuAdmin.add(miCambiarDatos);
 		menuAdmin.add(miMandarCorreo);
 
+		menuOpinion = new JMenu("Opinion");
+		miFeedback = new JMenuItem("Dar feedback");
+		miEstadisticas = new JMenuItem("Ver estadisticas de feedback");
+		menuOpinion.add(miFeedback);
+		menuOpinion.add(miEstadisticas);
+
 		menuBar.add(menu);
 		menuBar.add(menuAdmin);
+		menuBar.add(menuOpinion);
 		setJMenuBar(menuBar);
 
 		menuAdmin.setVisible(false);
 
-		btnAdmin = new JButton();
-		btnAdmin.setText("BOTON PARA PRUEBAS");
-		btnAdmin.setBounds(320, 250, 120, 30);
-
 		if (privilegiosAdmin() == true) {
-			btnAdmin.setVisible(true);
 			menuAdmin.setVisible(true);
 		} else {
-			btnAdmin.setVisible(false);
 			menuAdmin.setVisible(false);
 		}
-
-		add(btnAdmin);
-
-		btnAdmin.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 
 		miAjustes.addActionListener(new ActionListener() {
 
@@ -142,7 +129,7 @@ public class VentanaPrincipal extends JFrame {
 
 				if (nuevaContrasena != null && !nuevaContrasena.equals("")) {
 					try {
-						database.DBManager.cambiarContrasena(mainPackage.PropertiesMetodos.getProp1(), nuevaContrasena);
+						database.DBManager.cambiarContrasena(utils.PropertiesMetodos.getProp1(), nuevaContrasena);
 					} catch (DBManagerException e1) {
 						e1.printStackTrace();
 					}
@@ -153,7 +140,7 @@ public class VentanaPrincipal extends JFrame {
 						// assuming it takes 3 secs to complete the task
 						dispose();
 						Thread.sleep(3000);
-						mainPackage.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
+						utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
 						mainPackage.MainWikiFutbol.main(null);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -169,7 +156,7 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				mainPackage.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
+				utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
 				dispose();
 				VentanaLogin VL = new VentanaLogin();
 				VL.setVisible(true);
@@ -202,11 +189,11 @@ public class VentanaPrincipal extends JFrame {
 				if (result == JOptionPane.YES_OPTION) {
 					System.out.println("YES");
 					try {
-						database.DBManager.eliminarUsuario(mainPackage.PropertiesMetodos.getProp1());
+						database.DBManager.eliminarUsuario(utils.PropertiesMetodos.getProp1());
 					} catch (DBManagerException e) {
 						e.printStackTrace();
 					}
-					mainPackage.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
+					utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
 					dispose();
 				} else if (result == JOptionPane.NO_OPTION) {
 					System.out.println("NO");
@@ -235,27 +222,46 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 
+		miFeedback.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaFeedback VF = new VentanaFeedback();
+				VF.setVisible(true);
+
+			}
+		});
+
+		miEstadisticas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaEstadisticas VE = new VentanaEstadisticas();
+				VE.setVisible(true);
+
+			}
+		});
+
 		this.addWindowListener(new WindowAdapter() {
 
 			@Override
 			public void windowClosing(WindowEvent e) {
-				mainPackage.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
+				utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
 			}
 		});
-		
-		//Navbar Panel
+
+		// Navbar Panel
 		JPanel navBarPanel = new JPanel();
 		navBarPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		navBarPanel.setBounds(-5, -5, 1203, 70);
-		navBarPanel.setBackground(Color.getHSBColor(1.42f, 0.68f, 0.75f));		
+		navBarPanel.setBackground(Color.getHSBColor(1.42f, 0.68f, 0.75f));
 		add(navBarPanel);
 		navBarPanel.setLayout(null);
-		
+
 		JLabelGraficoAjustado iconoWikiFutbol = new JLabelGraficoAjustado("resources/logo1.png", 60, 50);
 		iconoWikiFutbol.setLocation(10, 13);
 		navBarPanel.add(iconoWikiFutbol);
-		
-		
+
 		JLabel labelWikiFutbol = new JLabel("WIKIFUTBOL");
 		labelWikiFutbol.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
 		labelWikiFutbol.setBounds(80, 20, 205, 29);
@@ -264,126 +270,123 @@ public class VentanaPrincipal extends JFrame {
 		final JLabelGraficoAjustado lupa = new JLabelGraficoAjustado("resources/lupa.png", 20, 20);
 		lupa.setLocation(870, 25);
 		lupa.addMouseListener(new MouseListener() {
-			
+
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
 			}
-			
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
 			}
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 			}
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				equipoBuscado = txtField.getText().toLowerCase();
 				arrayResultado.clear();
-				
-				if(equipoBuscado.isEmpty()) {
-					for(Equipo a : arrayEquipos) {
+
+				if (equipoBuscado.isEmpty()) {
+					for (Equipo a : arrayEquipos) {
 						arrayResultado.add(a);
 					}
 					IListaEquipos.cargarLista(bookPanel, arrayResultado);
-				}else {
-					if(rdbtnNombreEquipo.isSelected()==true) {
-						
+				} else {
+					if (rdbtnNombreEquipo.isSelected() == true) {
+
 						IListaEquipos.cargarLista(bookPanel, arrayResultado);
-					} else if(rdbtnEstadio.isSelected()==true) {
-						
-						
-						IListaEquipos.cargarLista(bookPanel, arrayResultado); 
-					}else if(rdbtnEntrenador.isSelected()==true) {
-						
+					} else if (rdbtnEstadio.isSelected() == true) {
+
 						IListaEquipos.cargarLista(bookPanel, arrayResultado);
-					}else if(rdbtnNumLigas.isSelected()==true) {
-						
+					} else if (rdbtnEntrenador.isSelected() == true) {
+
+						IListaEquipos.cargarLista(bookPanel, arrayResultado);
+					} else if (rdbtnNumLigas.isSelected() == true) {
+
 						IListaEquipos.cargarLista(bookPanel, arrayResultado);
 					}
-					
-					
-					if(arrayResultado.isEmpty()) {
-						JOptionPane.showMessageDialog(frame, "No se han encontrado resultados."); 							
+
+					if (arrayResultado.isEmpty()) {
+						JOptionPane.showMessageDialog(frame, "No se han encontrado resultados.");
 					}
-				}	
+				}
 			}
 		});
-		
+
 		navBarPanel.add(lupa);
-		
+
 		txtField = new JTextField();
 		txtField.setBounds(347, 20, 500, 30);
 		navBarPanel.add(txtField);
 		txtField.setColumns(10);
-		
-		for(Equipo e : arrayEquipos) {
+
+		for (Equipo e : arrayEquipos) {
 			arrayResultado.add(e);
 		}
 		IListaEquipos.cargarLista(bookPanel, arrayResultado);
-		
-		//Scroll para la lista de los equipos
+
+		// Scroll para la lista de los equipos
 		JScrollPane scroll = new JScrollPane(bookPanel);
 		scroll.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		scroll.setBounds(197, 85, 800, 550);
 		add(scroll);
-		
-		//Filtros SIN funcionalidad aun
-		
+
+		// Filtros SIN funcionalidad aun
+
 		JLabel lblFiltro = new JLabel("Busqueda por:");
 		lblFiltro.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblFiltro.setBounds(1015, 81, 169, 24);
 		add(lblFiltro);
-		
+
 		filtro = new ButtonGroup();
-		
+
 		rdbtnNombreEquipo = new JRadioButton("Nombre");
 		rdbtnNombreEquipo.setFont(new Font("Tahoma", Font.BOLD, 13));
 		rdbtnNombreEquipo.setBounds(1045, 117, 109, 23);
 		rdbtnNombreEquipo.setContentAreaFilled(false);
 		rdbtnNombreEquipo.setSelected(true);
 		add(rdbtnNombreEquipo);
-		
+
 		rdbtnEstadio = new JRadioButton("Estadio");
 		rdbtnEstadio.setFont(new Font("Tahoma", Font.BOLD, 13));
 		rdbtnEstadio.setBounds(1045, 141, 109, 23);
 		rdbtnEstadio.setContentAreaFilled(false);
 		add(rdbtnEstadio);
-		
+
 		rdbtnEntrenador = new JRadioButton("Entrenador");
 		rdbtnEntrenador.setFont(new Font("Tahoma", Font.BOLD, 13));
 		rdbtnEntrenador.setBounds(1045, 165, 109, 23);
 		rdbtnEntrenador.setContentAreaFilled(false);
 		add(rdbtnEntrenador);
-		
+
 		rdbtnNumLigas = new JRadioButton("Nº Ligas");
 		rdbtnNumLigas.setFont(new Font("Tahoma", Font.BOLD, 13));
 		rdbtnNumLigas.setBounds(1045, 189, 150, 23);
 		rdbtnNumLigas.setContentAreaFilled(false);
 		add(rdbtnNumLigas);
-		
+
 		filtro.add(rdbtnEntrenador);
 		filtro.add(rdbtnNumLigas);
 		filtro.add(rdbtnEstadio);
 		filtro.add(rdbtnNombreEquipo);
-		
-	
+
 	}
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
 		// para entrar siempre modo admin desde esta clase
-		mainPackage.PropertiesMetodos.setProp("a", "a");
+		utils.PropertiesMetodos.setProp("a", "a");
 
 		VentanaPrincipal VP = new VentanaPrincipal();
 		VP.setVisible(true);
