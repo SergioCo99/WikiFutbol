@@ -13,7 +13,7 @@ import ventanas.VentanaLogin;
 
 public class MainWikiFutbol {
 
-	static PrintStream log;
+	public static PrintStream log;
 
 	public static void crearFicheroLog() { // gitignore los ficheros cuando le cambiemos el nombre
 		try {
@@ -28,7 +28,7 @@ public class MainWikiFutbol {
 		// mainPackage.MainWikiFutbol.log.println("Message");
 	}
 
-	static Logger logger = Logger.getLogger(MainWikiFutbol.class.getName()); // asi??
+	public static Logger logger = Logger.getLogger(MainWikiFutbol.class.getName()); // asi??
 
 	public static void crearFicheroLogger() { // gitignore los ficheros cuando le cambiemos el nombre
 		// FINEST / FINER / FINE / CONFIG / INFO / WARNING / SEVERE
