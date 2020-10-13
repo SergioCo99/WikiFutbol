@@ -28,6 +28,6 @@ public interface IListaEquipos {
 		bookPanel.setVisibleRowCount(5);
 		bookPanel.setFont(new Font("Rockwell", Font.BOLD, 20));
 		bookPanel.setForeground(new Color(0, 0, 0));
-		bookPanel.setBackground(Color.getHSBColor(0.56f, 0.4f, 0.8f));
+		bookPanel.setBackground(Color.getHSBColor(1.42f, 0.68f, 0.75f));
 	}
 }
