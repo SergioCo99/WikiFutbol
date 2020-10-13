@@ -38,13 +38,14 @@ public class DBManager {
 		}
 	}
 
-	public static void registrarUsuario(String nombre_usuario, String contrasena, String/* ¿es String? */ fechaNac)
-			throws DBManagerException {
+	public static void registrarUsuario(String nombre_usuario, String correo_usuario, String contrasena_usuario,
+			String/* ¿es String? */ fechaNac_usuario) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			String sql = "insert into usuario(nombre_usuario, contrasena, fechaNac) values('" + nombre_usuario + "','"
-					+ contrasena + "','" + fechaNac + "')";
+			String sql = "insert into usuario(nombre_usuario, correo_usuario, contrasena_usuario, fechaNac_usuario) values('"
+					+ nombre_usuario + "','" + correo_usuario + "','" + contrasena_usuario + "','" + fechaNac_usuario
+					+ "')";
 			stmt.executeUpdate(sql);
 			stmt.close();
 			disconnect();
@@ -53,17 +54,17 @@ public class DBManager {
 		}
 	}
 
-	public static boolean login(String nombre_usuario, String contrasena) throws DBManagerException {
+	public static boolean login(String correo_usuario, String contrasena_usuario) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			String sql = "select * from usuario where nombre_usuario = '" + nombre_usuario + "' and contrasena = '"
-					+ contrasena + "'";
+			String sql = "select * from usuario where correo_usuario = '" + correo_usuario
+					+ "' and contrasena_usuario = '" + contrasena_usuario + "'";
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
 
-			String dato = rs.getString("contrasena");
-			if (dato.equals(contrasena)) {
+			String dato = rs.getString("contrasena_usuario");
+			if (dato.equals(contrasena_usuario)) {
 				rs.close();
 				stmt.close();
 				disconnect();
@@ -75,25 +76,25 @@ public class DBManager {
 				return false;
 			}
 		} catch (SQLException e) {
-			throw new DBManagerException("Error registrarUsuario DBManager, o no existe usuario", e);
 			// MUCHO TEXTO?, igual hay que quitar la "e" :v
+			throw new DBManagerException("Error login DBManager, o no coincide contraseña", e);
 		}
 	}
 
-	public static boolean esAdmin(String nombre_usuario) throws DBManagerException {
+	public static boolean esAdmin(String correo_usuario) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			String sql = "select admin from usuario where nombre_usuario = '" + nombre_usuario + "'";
+			String sql = "select admin_usuario from usuario where correo_usuario = '" + correo_usuario + "'";
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
 
-			if (rs.getInt("admin") == 1) {
+			if (rs.getInt("admin_usuario") == 1) {
 				rs.close();
 				stmt.close();
 				disconnect();
 				return true;
-			} else if (rs.getInt("admin") == 0) {
+			} else if (rs.getInt("admin_usuario") == 0) {
 				rs.close();
 				stmt.close();
 				disconnect();
@@ -101,16 +102,16 @@ public class DBManager {
 			}
 		} catch (SQLException e) {
 			// hay k plantearse quitar este "error"
-			// throw new DBManagerException("Error esAdmin DBManager, o no es admin", e);
+			throw new DBManagerException("Error esAdmin DBManager, o no es admin", e);
 		}
 		return false;
 	}
 
-	public static void cambiarAdmin(String nombre_usuario, int admin) throws DBManagerException {
+	public static void cambiarAdmin(String correo_usuario, int admin_usuario) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			String sql = "update usuario set admin = '" + admin + "' where nombre_usuario = '" + nombre_usuario + "';";
+			String sql = "update usuario set admin_usuario = '" + admin_usuario + "' where correo_usuario = '" + correo_usuario + "';";
 			stmt.executeUpdate(sql);
 			stmt.close();
 			disconnect();
@@ -119,11 +120,11 @@ public class DBManager {
 		}
 	}
 
-	public static void eliminarUsuario(String nombre_usuario) throws DBManagerException {
+	public static void eliminarUsuario(String correo_usuario) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			String sql = "delete from usuario where nombre_usuario = '" + nombre_usuario + "';";
+			String sql = "delete from usuario where correo_usuario = '" + correo_usuario + "';";
 			stmt.executeUpdate(sql);
 			stmt.close();
 			disconnect();
@@ -132,12 +133,12 @@ public class DBManager {
 		}
 	}
 
-	public static void cambiarContrasena(String nombre_usuario, String contrasena) throws DBManagerException {
+	public static void cambiarContrasena(String correo_usuario, String contrasena_usuario) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			String sql = "update usuario set contrasena = '" + contrasena + "' where nombre_usuario = '"
-					+ nombre_usuario + "';";
+			String sql = "update usuario set contrasena_usuario = '" + contrasena_usuario + "' where correo_usuario = '"
+					+ correo_usuario + "';";
 			stmt.executeUpdate(sql);
 			stmt.close();
 			disconnect();
@@ -193,6 +194,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		verTablas();
+		//connect();
 	}
 }

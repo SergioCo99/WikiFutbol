@@ -23,9 +23,9 @@ import database.DBManagerException;
 public class VentanaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JLabel lblUser, lblPass;
+	JLabel lblCorreo, lblPass;
 	JButton btnAceptar, btnRegistrar;
-	JTextField txtUsuario;
+	JTextField txtCorreo;
 	JPasswordField txtPassword;
 	JCheckBox checkContrasena;
 	boolean bUsuario, bPassword;
@@ -39,17 +39,17 @@ public class VentanaLogin extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		lblUser = new JLabel();
-		lblUser.setText("Introduce el nombre de usuario:");
-		lblUser.setBounds(100, 100, 300, 20);
+		lblCorreo = new JLabel();
+		lblCorreo.setText("Introduce tu correo:");
+		lblCorreo.setBounds(100, 100, 300, 20);
 
 		lblPass = new JLabel();
 		lblPass.setText("Introduce la contraseña:");
 		lblPass.setBounds(100, 140, 300, 20);
 
-		txtUsuario = new JTextField();
-		txtUsuario.setBounds(300, 100, 200, 20);
-		txtUsuario.setText(mainPackage.PropertiesMetodos.getProp1());
+		txtCorreo = new JTextField();
+		txtCorreo.setBounds(300, 100, 200, 20);
+		txtCorreo.setText(mainPackage.PropertiesMetodos.getProp1());
 
 		txtPassword = new JPasswordField();
 		txtPassword.setBounds(300, 140, 200, 20);
@@ -68,28 +68,28 @@ public class VentanaLogin extends JFrame {
 		checkContrasena.setText("Ver contrasena");
 		checkContrasena.setBounds(300, 170, 200, 20);
 
-		add(txtUsuario);
+		add(txtCorreo);
 		add(txtPassword);
-		add(lblUser);
+		add(lblCorreo);
 		add(lblPass);
 		add(btnAceptar);
 		add(btnRegistrar);
 		add(checkContrasena);
 
-		txtUsuario.addMouseListener(new MouseAdapter() {
+		txtCorreo.addMouseListener(new MouseAdapter() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (bUsuario == false) {
-					txtUsuario.setText("");
+					txtCorreo.setText("");
 					bUsuario = true;
 				}
 			}
 		});
 
 		// innecesario, por comodidad
-		txtUsuario.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, Collections.emptySet());
-		txtUsuario.addKeyListener(new KeyAdapter() {
+		txtCorreo.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, Collections.emptySet());
+		txtCorreo.addKeyListener(new KeyAdapter() {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -126,11 +126,11 @@ public class VentanaLogin extends JFrame {
 				if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
 					/* PUT YOUR STUFF HERE OR CALL A FUNCTION */
 					if (bUsuario == false) {
-						txtUsuario.setText("");
+						txtCorreo.setText("");
 						bUsuario = true;
 					}
 					/* If you want to change the focus to the next component */
-					txtUsuario.grabFocus();
+					txtCorreo.grabFocus();
 				}
 			}
 		});
@@ -164,8 +164,8 @@ public class VentanaLogin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String passw = new String(txtPassword.getPassword());
 				try {
-					if (database.DBManager.login(txtUsuario.getText(), passw) == true) {
-						mainPackage.PropertiesMetodos.setProp(txtUsuario.getText(), passw);
+					if (database.DBManager.login(txtCorreo.getText(), passw) == true) {
+						mainPackage.PropertiesMetodos.setProp(txtCorreo.getText(), passw);
 						VentanaPrincipal VP = new VentanaPrincipal();
 						VP.setVisible(true);
 						dispose();

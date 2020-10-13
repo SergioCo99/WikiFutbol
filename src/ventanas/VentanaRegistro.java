@@ -19,9 +19,9 @@ public class VentanaRegistro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private final SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
-	JLabel lblUser, lblPass, lblDate;
+	JLabel lblUser, lblPass, lblDate, lblCorreo;
 	JButton btnRegistrar;
-	JTextField txtUsuario, txtPassword;
+	JTextField txtUsuario, txtPassword, txtCorreo;
 	JCalendar calendar;
 
 	public VentanaRegistro() {
@@ -37,6 +37,10 @@ public class VentanaRegistro extends JFrame {
 		lblUser.setText("Introduce el nombre de usuario:");
 		lblUser.setBounds(100, 50, 300, 20);
 
+		lblCorreo = new JLabel();
+		lblCorreo.setText("Introduce tu correo:");
+		lblCorreo.setBounds(100, 70, 300, 20);
+
 		lblPass = new JLabel();
 		lblPass.setText("Introduce la contraseña:");
 		lblPass.setBounds(100, 90, 300, 20);
@@ -47,6 +51,9 @@ public class VentanaRegistro extends JFrame {
 
 		txtUsuario = new JTextField();
 		txtUsuario.setBounds(300, 50, 200, 20);
+
+		txtCorreo = new JTextField();
+		txtCorreo.setBounds(300, 70, 200, 20);
 
 		txtPassword = new JTextField();
 		txtPassword.setBounds(300, 90, 200, 20);
@@ -65,9 +72,11 @@ public class VentanaRegistro extends JFrame {
 
 		add(txtUsuario);
 		add(txtPassword);
+		add(txtCorreo);
 		add(lblUser);
 		add(lblPass);
 		add(lblDate);
+		add(lblCorreo);
 		add(btnRegistrar);
 		add(calendar);
 
@@ -76,12 +85,12 @@ public class VentanaRegistro extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					database.DBManager.registrarUsuario(txtUsuario.getText(), txtPassword.getText(),
-							formatter.format(calendar.getDate()));
+					database.DBManager.registrarUsuario(txtUsuario.getText(), txtCorreo.getText(),
+							txtPassword.getText(), formatter.format(calendar.getDate()));
 				} catch (DBManagerException e1) {
 					e1.printStackTrace();
 				}
-				mainPackage.PropertiesMetodos.setProp(txtUsuario.getText(), txtPassword.getText());
+				mainPackage.PropertiesMetodos.setProp(txtCorreo.getText(), txtPassword.getText());
 
 				dispose();
 				VentanaPrincipal VP = new VentanaPrincipal();
