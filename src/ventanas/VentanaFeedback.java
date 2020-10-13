@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -17,18 +19,21 @@ import javax.swing.JTextArea;
 public class VentanaFeedback extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JRadioButton estrella1, estrella2, estrella3, estrella4, estrella5;
+	JRadioButton estrella1, estrella2, estrella3, estrella4, estrella5, bSi, bNo;
 	JButton botonSiguiente, botonAtras;
-	ButtonGroup radioButtonsEstrellas;
+	ButtonGroup bgEstrellas, bgRecomendacion;
 	JTextArea texto;
-	JLabel comentario, valoracion, error;
+	JLabel lblComentario, lblValoracion, lblError, lblRecomendacion;
 	JScrollPane scroll;
 	int charCount = 0;
+	int maxChars = 500;
 	JProgressBar progressBar;
 	JLabel lblChars;
 	Thread update;
 
 	public VentanaFeedback() {
+
+		this.setTitle("VentanaFeedback");
 		this.setSize(720, 480);
 		setLayout(null);
 		this.setResizable(false);
@@ -51,12 +56,27 @@ public class VentanaFeedback extends JFrame {
 		estrella5.setActionCommand("5");
 		estrella5.setBounds(570, 50, 90, 50);
 
-		radioButtonsEstrellas = new ButtonGroup();
-		radioButtonsEstrellas.add(estrella1);
-		radioButtonsEstrellas.add(estrella2);
-		radioButtonsEstrellas.add(estrella3);
-		radioButtonsEstrellas.add(estrella4);
-		radioButtonsEstrellas.add(estrella5);
+		bgEstrellas = new ButtonGroup();
+		bgEstrellas.add(estrella1);
+		bgEstrellas.add(estrella2);
+		bgEstrellas.add(estrella3);
+		bgEstrellas.add(estrella4);
+		bgEstrellas.add(estrella5);
+
+		bSi = new JRadioButton("Si");
+		bSi.setActionCommand("si");
+		bSi.setBounds(335, 100, 90, 50);
+		bNo = new JRadioButton("No");
+		bNo.setActionCommand("no");
+		bNo.setBounds(452, 100, 90, 50);
+
+		lblRecomendacion = new JLabel();
+		lblRecomendacion.setText("¿Lo recomendarias?: ");
+		lblRecomendacion.setBounds(175, 100, 200, 50);
+
+		bgRecomendacion = new ButtonGroup();
+		bgRecomendacion.add(bSi);
+		bgRecomendacion.add(bNo);
 
 		botonAtras = new JButton();
 		botonAtras.setText("Atrás");
@@ -66,13 +86,13 @@ public class VentanaFeedback extends JFrame {
 		botonSiguiente.setText("Enviar Opinion");
 		botonSiguiente.setBounds(500, 340, 200, 30);
 
-		valoracion = new JLabel();
-		valoracion.setText("Valoración:");
-		valoracion.setBounds(10, 10, 100, 20);
+		lblValoracion = new JLabel();
+		lblValoracion.setText("Valoración:");
+		lblValoracion.setBounds(10, 10, 100, 20);
 
-		comentario = new JLabel();
-		comentario.setText("Comentario:");
-		comentario.setBounds(10, 130, 100, 20);
+		lblComentario = new JLabel();
+		lblComentario.setText("Comentario:");
+		lblComentario.setBounds(10, 130, 100, 20);
 
 		texto = new JTextArea();
 		texto.setFocusable(true);
@@ -84,58 +104,91 @@ public class VentanaFeedback extends JFrame {
 		scroll.setBounds(10, 150, 690, 150);
 		add(scroll);
 
-		error = new JLabel();
-		error.setText("Falta valoracion o comentario.");
-		error.setForeground(Color.red);
-		error.setVisible(false);
-		error.setBounds(500, 320, 200, 20);
+		lblError = new JLabel();
+		lblError.setText("Falta valoracion o comentario.");
+		lblError.setForeground(Color.red);
+		lblError.setVisible(false);
+		lblError.setBounds(500, 320, 200, 20);
 
 		add(estrella1);
 		add(estrella2);
 		add(estrella3);
 		add(estrella4);
 		add(estrella5);
+		add(bSi);
+		add(bNo);
 		add(botonSiguiente);
 		add(botonAtras);
-		add(comentario);
-		add(valoracion);
+		add(lblComentario);
+		add(lblValoracion);
 		add(scroll);
-		add(error);
+		add(lblError);
+		add(lblRecomendacion);
 
 		progressBar = new JProgressBar();
 		progressBar.setBounds(20, 311, 66, 14);
 		add(progressBar);
-		progressBar.setMaximum(500);
+		progressBar.setMaximum(maxChars);
 		progressBar.setMinimum(0);
-		progressBar.setValue(0);
 
-		lblChars = new JLabel("500 chars");
-		lblChars.setBounds(98, 311, 66, 14);
+		lblChars = new JLabel();
+		lblChars.setBounds(98, 311, 90, 14);
 		add(lblChars);
+
+		update = new Thread() {
+			@Override
+			public void run() {
+				while (texto.isEnabled()) {
+					progressBar.setValue(texto.getText().length());
+					lblChars.setText(texto.getText().length() + "/500 chars");
+					if (texto.getText().length() > maxChars) {
+						lblChars.setForeground(Color.red);
+						progressBar.setForeground(Color.red);
+					} else {
+						lblChars.setForeground(Color.black);
+						progressBar.setForeground(new Color(163, 184, 204));
+					}
+				}
+			}
+		};
+		update.start();
+
 		botonSiguiente.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				if (!radioButtonsEstrellas.isSelected(null) && !texto.getText().equals("")
-						&& texto.getText().length() <= 500) {
-					error.setVisible(false);
-					System.out.println("100% OK" + texto.getText().length()
-							+ radioButtonsEstrellas.getSelection().getActionCommand());
+				lblError.setVisible(false);
+				if (!bgEstrellas.isSelected(null) && !bgRecomendacion.isSelected(null) && !texto.getText().equals("")
+						&& texto.getText().length() <= maxChars) {
+					lblError.setVisible(false);
 					mainPackage.MainWikiFutbol.crearFicheroLog();
-					mainPackage.MainWikiFutbol.log.println(
-							"Puntuacion: " + radioButtonsEstrellas.getSelection().getActionCommand() /* + "\n" */);
-				} else if (radioButtonsEstrellas.isSelected(null) || texto.getText().equals("")) {
-					error.setVisible(true);
+					mainPackage.MainWikiFutbol.log
+							.println("Puntuacion: " + bgEstrellas.getSelection().getActionCommand() + "\n" + "Si/No: "
+									+ bgRecomendacion.getSelection().getActionCommand());
+					dispose(); // si??? se cierra???
+				} else if (bgEstrellas.isSelected(null) || bgRecomendacion.isSelected(null)
+						|| texto.getText().equals("") || texto.getText().length() > maxChars) {
+					lblError.setVisible(true);
 				}
 			}
 		});
 
 		botonAtras.addActionListener(new ActionListener() {
 
+			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				update.stop();
+			}
+		});
+
+		this.addWindowListener(new WindowAdapter() {
+
+			@SuppressWarnings("deprecation")
+			@Override
+			public void windowClosing(WindowEvent e) {
+				update.stop();
 			}
 		});
 
