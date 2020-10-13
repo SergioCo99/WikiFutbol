@@ -26,7 +26,7 @@ public class VentanaRegistro extends JFrame {
 
 	public VentanaRegistro() {
 
-		this.setTitle("Registro");
+		this.setTitle("VentanaRegistro");
 		this.setSize(600, 400);
 		this.setLayout(null);
 		this.setResizable(false);
@@ -75,8 +75,6 @@ public class VentanaRegistro extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("btnRegistrar");
-
 				try {
 					database.DBManager.registrarUsuario(txtUsuario.getText(), txtPassword.getText(),
 							formatter.format(calendar.getDate()));
@@ -88,9 +86,6 @@ public class VentanaRegistro extends JFrame {
 				dispose();
 				VentanaPrincipal VP = new VentanaPrincipal();
 				VP.setVisible(true);
-
-				System.out.println(formatter.format(calendar.getDate())); // informativo
-				System.out.println(calendar.getDate()); // informativo
 			}
 		});
 

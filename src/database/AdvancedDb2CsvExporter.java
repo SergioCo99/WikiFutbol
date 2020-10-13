@@ -14,11 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
-/**
- * An advanced Java program that exports data from any table to CSV file.
- * 
- * @author Nam Ha Minh (C) Copyright codejava.net
- */
 public class AdvancedDb2CsvExporter {
 
 	private static BufferedWriter fileWriter;
@@ -78,10 +73,8 @@ public class AdvancedDb2CsvExporter {
 			fileWriter.close();
 
 		} catch (SQLException e) {
-			System.out.println("Datababse error:");
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("File IO error:");
 			e.printStackTrace();
 		}
 
@@ -114,6 +107,7 @@ public class AdvancedDb2CsvExporter {
 		return value.replaceAll("\"", "\"\"");
 	}
 
+	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws Exception {
 		// asi en otra clase
 		database.AdvancedDb2CsvExporter.export("jugador");

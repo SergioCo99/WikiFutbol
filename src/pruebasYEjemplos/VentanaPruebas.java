@@ -7,6 +7,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+/**
+ * Es una ventana con solo un boton para probar cosas nuevas, no lo incluiremos
+ * en el proyecto
+ */
 public class VentanaPruebas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -42,6 +46,7 @@ public class VentanaPruebas extends JFrame {
 
 	}
 
+	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
 		VentanaPruebas VP = new VentanaPruebas();
 		VP.setVisible(true);

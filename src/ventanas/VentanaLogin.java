@@ -28,11 +28,11 @@ public class VentanaLogin extends JFrame {
 	JTextField txtUsuario;
 	JPasswordField txtPassword;
 	JCheckBox checkContrasena;
-	boolean b1, b2;
+	boolean bUsuario, bPassword;
 
 	public VentanaLogin() {
 
-		this.setTitle("Login");
+		this.setTitle("VentanaLogin");
 		this.setSize(600, 400);
 		this.setLayout(null);
 		this.setResizable(false);
@@ -80,14 +80,14 @@ public class VentanaLogin extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (b1 == false) {
+				if (bUsuario == false) {
 					txtUsuario.setText("");
-					b1 = true;
+					bUsuario = true;
 				}
 			}
 		});
 
-		// por comodidad
+		// innecesario, por comodidad
 		txtUsuario.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, Collections.emptySet());
 		txtUsuario.addKeyListener(new KeyAdapter() {
 
@@ -95,9 +95,9 @@ public class VentanaLogin extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_TAB) {
 					/* PUT YOUR STUFF HERE OR CALL A FUNCTION */
-					if (b2 == false) {
+					if (bPassword == false) {
 						txtPassword.setText("");
-						b2 = true;
+						bPassword = true;
 					}
 					/* If you want to change the focus to the next component */
 					txtPassword.grabFocus();
@@ -110,14 +110,14 @@ public class VentanaLogin extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (b2 == false) {
+				if (bPassword == false) {
 					txtPassword.setText("");
-					b2 = true;
+					bPassword = true;
 				}
 			}
 		});
 
-		// por comodidad
+		// innecesario, por comodidad
 		txtPassword.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, Collections.emptySet());
 		txtPassword.addKeyListener(new KeyAdapter() {
 
@@ -125,9 +125,9 @@ public class VentanaLogin extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
 					/* PUT YOUR STUFF HERE OR CALL A FUNCTION */
-					if (b1 == false) {
+					if (bUsuario == false) {
 						txtUsuario.setText("");
-						b1 = true;
+						bUsuario = true;
 					}
 					/* If you want to change the focus to the next component */
 					txtUsuario.grabFocus();
@@ -152,7 +152,6 @@ public class VentanaLogin extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("btnRegistrar");
 				VentanaRegistro VR = new VentanaRegistro();
 				VR.setVisible(true);
 				dispose();
@@ -163,7 +162,6 @@ public class VentanaLogin extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("btnAceptar");
 				String passw = new String(txtPassword.getPassword());
 				try {
 					if (database.DBManager.login(txtUsuario.getText(), passw) == true) {

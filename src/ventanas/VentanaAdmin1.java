@@ -7,6 +7,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import database.DBManagerException;
@@ -14,10 +15,11 @@ import database.DBManagerException;
 public class VentanaAdmin1 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btn;
-	JTextField txt;
-	JCheckBox cb1, cb2, cb3;
+	JButton btnAceptar;
+	JTextField txtCorreo;
+	JCheckBox cbHacerAdmin, cbQuitarAdmin, cbBorrarCuenta;
 	ButtonGroup bg1;
+	JLabel lblCorreo;
 
 	public VentanaAdmin1() {
 
@@ -29,57 +31,61 @@ public class VentanaAdmin1 extends JFrame {
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
 		bg1 = new ButtonGroup();
-		cb1 = new JCheckBox("Hacer admin");
-		cb1.setBounds(10, 30, 100, 20);
-		cb2 = new JCheckBox("Quitar admin");
-		cb2.setBounds(170, 30, 100, 20);
-		cb3 = new JCheckBox("Borrar cuenta DEFINITIVAMENTE");
-		cb3.setBounds(330, 30, 250, 20);
-		bg1.add(cb1);
-		bg1.add(cb2);
-		bg1.add(cb3);
+		cbHacerAdmin = new JCheckBox("Hacer admin");
+		cbHacerAdmin.setBounds(10, 30, 100, 20);
+		cbQuitarAdmin = new JCheckBox("Quitar admin");
+		cbQuitarAdmin.setBounds(170, 30, 100, 20);
+		cbBorrarCuenta = new JCheckBox("Borrar cuenta DEFINITIVAMENTE");
+		cbBorrarCuenta.setBounds(330, 30, 250, 20);
+		bg1.add(cbHacerAdmin);
+		bg1.add(cbQuitarAdmin);
+		bg1.add(cbBorrarCuenta);
 
-		txt = new JTextField();
-		txt.setBounds(250, 150, 250, 40);
+		txtCorreo = new JTextField();
+		txtCorreo.setBounds(250, 150, 250, 40);
 
-		btn = new JButton();
-		btn.setText("btn");
-		btn.setBounds(240, 250, 120, 30);
+		btnAceptar = new JButton();
+		btnAceptar.setText("Aceptar");
+		btnAceptar.setBounds(240, 250, 120, 30);
 
-		add(txt);
-		add(btn);
-		add(cb1);
-		add(cb2);
-		add(cb3);
+		lblCorreo = new JLabel();
+		lblCorreo.setText("Introduce correo:");
+		lblCorreo.setBounds(100, 150, 250, 40);
 
-		btn.addActionListener(new ActionListener() {
+		add(txtCorreo);
+		add(btnAceptar);
+		add(cbHacerAdmin);
+		add(cbQuitarAdmin);
+		add(cbBorrarCuenta);
+		add(lblCorreo);
+
+		btnAceptar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("btn");
-
-				String usuario = txt.getText();
-
+				String usuario = txtCorreo.getText();
 				if (!usuario.equals("a")) {
 					try {
-						if (cb1.isSelected() == true && cb2.isSelected() == false & cb3.isSelected() == false) {
+						if (cbHacerAdmin.isSelected() == true
+								&& cbQuitarAdmin.isSelected() == false & cbBorrarCuenta.isSelected() == false) {
 							database.DBManager.cambiarAdmin(usuario, 1);
-						} else if (cb1.isSelected() == false && cb2.isSelected() == true & cb3.isSelected() == false) {
+						} else if (cbHacerAdmin.isSelected() == false
+								&& cbQuitarAdmin.isSelected() == true & cbBorrarCuenta.isSelected() == false) {
 							database.DBManager.cambiarAdmin(usuario, 0);
-						} else if (cb1.isSelected() == false && cb2.isSelected() == false & cb3.isSelected() == true) {
+						} else if (cbHacerAdmin.isSelected() == false
+								&& cbQuitarAdmin.isSelected() == false & cbBorrarCuenta.isSelected() == true) {
 							database.DBManager.eliminarUsuario(usuario);
 						}
 					} catch (DBManagerException e1) {
 						e1.printStackTrace();
 					}
-				} else {
-					System.out.println("usuario protegido"); // esto hay k borrarlo
 				}
 			}
 		});
 
 	}
 
+	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
 		VentanaAdmin1 VA1 = new VentanaAdmin1();
 		VA1.setVisible(true);

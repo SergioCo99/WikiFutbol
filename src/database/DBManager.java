@@ -17,7 +17,6 @@ public class DBManager {
 
 	public static void connect() throws DBManagerException {
 		try {
-
 			Properties prop = mainPackage.PropertiesMetodos.loadPropertiesFile();
 			String CONTROLADOR = prop.getProperty("DB.CONTROLADOR");
 			String URL = prop.getProperty("DB.URL");
@@ -162,6 +161,9 @@ public class DBManager {
 				arr.add(rs.getString(i));
 				i++;
 			}
+			rs.close();
+			stmt.close();
+			disconnect();
 			return arr;
 		} catch (SQLException e) {
 			throw new DBManagerException("Error verTablas DBManager", e);
@@ -191,6 +193,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		connect();
+		verTablas();
 	}
 }
