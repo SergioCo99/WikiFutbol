@@ -15,7 +15,7 @@ public class MainWikiFutbol {
 
 	public static PrintStream log;
 
-	public static void crearFicheroLog() { // gitignore los ficheros cuando le cambiemos el nombre
+	public static void crearFicheroLog() {
 		try {
 			log = new PrintStream(new FileOutputStream("PruebaLog.log", true));
 		} catch (FileNotFoundException e) {
@@ -46,7 +46,7 @@ public class MainWikiFutbol {
 	}
 
 	// por si no existe el fichero
-	public static void crearFicherosAccountProperties() { // gitignore los ficheros cuando le cambiemos el nombre
+	public static void crearFicherosAccountProperties() {
 		try {
 			File accountprop = new File("account.properties");
 			accountprop.createNewFile();

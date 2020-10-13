@@ -120,9 +120,11 @@ public class VentanaFeedback extends JFrame {
 				if (!radioButtonsEstrellas.isSelected(null) && !texto.getText().equals("")
 						&& texto.getText().length() <= 500) {
 					error.setVisible(false);
-					System.out.println("100% OK" + texto.getText().length());
-					String s = radioButtonsEstrellas.getSelection().getActionCommand();
-					// mainPackage.MainWikiFutbol.log.print();
+					System.out.println("100% OK" + texto.getText().length()
+							+ radioButtonsEstrellas.getSelection().getActionCommand());
+					mainPackage.MainWikiFutbol.crearFicheroLog();
+					mainPackage.MainWikiFutbol.log.println(
+							"Puntuacion: " + radioButtonsEstrellas.getSelection().getActionCommand() /* + "\n" */);
 				} else if (radioButtonsEstrellas.isSelected(null) || texto.getText().equals("")) {
 					error.setVisible(true);
 				}
