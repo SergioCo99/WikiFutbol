@@ -106,9 +106,11 @@ public class EstadisticaFeedback {
 		ArrayList<Double> arr = new ArrayList<>();
 
 		for (int i = 0; i < siNo(countSi, countNo, mediaSN).size(); i++) {
+			// filas 1 y 2
 			arr.add(i, siNo(countSi, countNo, mediaSN).get(i));
 		}
-		arr.add(0, mediaPuntuacion(countNum, mediaNum));
+		arr.add(0, mediaPuntuacion(countNum, mediaNum)); // fila 0
+		arr.add(3, mediaNum); // fila 3
 
 		// System.out.println(arr);
 		return arr;

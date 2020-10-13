@@ -6,16 +6,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
-import feedback.EstadisticaFeedback;
 import feedback.RWException;
 
 public class VentanaEstadisticas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	JButton btn;
-	JTextField txt;
 	JTable table;
 
 	public VentanaEstadisticas() {
@@ -27,14 +26,10 @@ public class VentanaEstadisticas extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
-		txt = new JTextField();
-		txt.setBounds(300, 50, 200, 20);
-
 		btn = new JButton();
 		btn.setText("btn");
 		btn.setBounds(240, 250, 120, 30);
 
-		add(txt);
 		add(btn);
 
 		// tabla
@@ -45,16 +40,23 @@ public class VentanaEstadisticas extends JFrame {
 			data = new Object[feedback.EstadisticaFeedback.ReadAndLoad().size()][2];
 			for (int i = 0; i < feedback.EstadisticaFeedback.ReadAndLoad().size(); i++) {
 				// primeras 2 filas (0 y 1)
-				if (i <= 1) {
+				if (i == 0) {
+					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i)) + " /5";
+					// fila nº 2
+				} else if (i >= 1 && i <= 2) {
 					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i)) + " %";
-					// fila nº 3 (2)
-				} else if (i == 2) {
-					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i)) + "/5";
+				} else if (i == 3) {
+					// fila nº 3
+					data[i][1] = String.format("%.0f", feedback.EstadisticaFeedback.ReadAndLoad().get(i));
+				} else {
+					// por ahora las demas
+					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i));
 				}
 				// Las filas, a mano (?)
-				data[0][0] = "1/5:";
+				data[0][0] = "Valoracion sobre 5:";
 				data[1][0] = "Recomendarias? Si:";
 				data[2][0] = "Recomendarias? No:";
+				data[3][0] = "Numero de feedbacks:"; // se escribe asi en plural???
 			}
 		} catch (RWException e1) {
 			e1.printStackTrace();
@@ -63,6 +65,10 @@ public class VentanaEstadisticas extends JFrame {
 		table = new JTable(data, columns); // tabla usando las columnas y el data
 		table.setBounds(100, 100, 400, 100);
 		table.setDefaultEditor(Object.class, null);
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+		table.setDefaultRenderer(Object.class, centerRenderer);
+
 		add(table);
 		// hasta aqui tabla
 
@@ -70,11 +76,10 @@ public class VentanaEstadisticas extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					EstadisticaFeedback.ReadAndLoad();
-				} catch (RWException e1) {
-					e1.printStackTrace();
-				}
+				/*
+				 * for (int i = 0; i < data.length; i++) { for (int j = 0; j < columns.length;
+				 * j++) { System.out.println(data[i][j]); } }
+				 */
 			}
 		});
 
