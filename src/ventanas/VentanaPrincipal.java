@@ -168,6 +168,7 @@ public class VentanaPrincipal extends JFrame {
 					} catch (DBManagerException e) {
 						e.printStackTrace();
 					}
+					mainPackage.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
 					dispose();
 				} else if (result == JOptionPane.NO_OPTION) {
 					System.out.println("NO");
