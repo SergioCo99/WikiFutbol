@@ -25,6 +25,8 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import clases.Equipo;
+import clases.Usuario;
+import database.DBManager;
 import database.DBManagerException;
 import interfaces.IListaEquipos;
 import utils.JLabelGraficoAjustado;
@@ -53,10 +55,12 @@ public class VentanaPrincipal extends JFrame {
 	JMenu menuOpinion;
 	JMenuItem miFeedback, miEstadisticas;
 
-	// Para el listado de equipos
+	//Para el listado de equipos
+	private DBManager database1 = new DBManager();
 	private IListaEquipos interfazLista;
 	private ArrayList<Equipo> arrayEquipos = new ArrayList<Equipo>();
 	private JList bookPanel = new JList();
+	private static Usuario usuario;
 
 	// Filtrado de equipos
 	private JTextField txtField;
@@ -70,7 +74,13 @@ public class VentanaPrincipal extends JFrame {
 	private JRadioButton rdbtnNumLigas;
 	private ArrayList<Equipo> arrayResultado = new ArrayList<Equipo>();
 
-	public VentanaPrincipal() {
+	public VentanaPrincipal(Usuario u) throws DBManagerException {
+		arrayEquipos = database1.getEquipos();
+		usuario = u;
+		init();
+	}
+	
+	public void init() {
 
 		this.setTitle("WikiFutbol Principal");
 		this.setSize(1200, 700);
@@ -388,7 +398,7 @@ public class VentanaPrincipal extends JFrame {
 		// para entrar siempre modo admin desde esta clase
 		utils.PropertiesMetodos.setProp("a", "a");
 
-		VentanaPrincipal VP = new VentanaPrincipal();
+		VentanaPrincipal VP = new VentanaPrincipal(usuario);
 		VP.setVisible(true);
 	}
 }

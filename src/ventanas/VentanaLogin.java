@@ -18,11 +18,13 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import clases.Usuario;
 import database.DBManagerException;
 
 public class VentanaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private Usuario usuario;
 	JLabel lblCorreo, lblPass;
 	JButton btnAceptar, btnRegistrar;
 	JTextField txtCorreo;
@@ -166,7 +168,7 @@ public class VentanaLogin extends JFrame {
 				try {
 					if (database.DBManager.login(txtCorreo.getText(), passw) == true) {
 						utils.PropertiesMetodos.setProp(txtCorreo.getText(), passw);
-						VentanaPrincipal VP = new VentanaPrincipal();
+						VentanaPrincipal VP = new VentanaPrincipal(usuario);
 						VP.setVisible(true);
 						dispose();
 					}

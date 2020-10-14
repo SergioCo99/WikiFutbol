@@ -13,11 +13,13 @@ import javax.swing.JTextField;
 
 import com.toedter.calendar.JCalendar;
 
+import clases.Usuario;
 import database.DBManagerException;
 
 public class VentanaRegistro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private Usuario usuario;
 	private final SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
 	JLabel lblUser, lblPass, lblDate, lblCorreo;
 	JButton btnRegistrar;
@@ -93,7 +95,13 @@ public class VentanaRegistro extends JFrame {
 				utils.PropertiesMetodos.setProp(txtCorreo.getText(), txtPassword.getText());
 
 				dispose();
-				VentanaPrincipal VP = new VentanaPrincipal();
+				VentanaPrincipal VP = null;
+				try {
+					VP = new VentanaPrincipal(usuario);
+				} catch (DBManagerException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				VP.setVisible(true);
 			}
 		});
