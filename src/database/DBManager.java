@@ -178,7 +178,7 @@ public class DBManager {
 			connect();
 			stmt = conn.createStatement();
 			ArrayList<Equipo> array = new ArrayList<Equipo>();
-			ResultSet rs = stmt.executeQuery("select * from equipo");
+			ResultSet rs = stmt.executeQuery("select * from club");
 			while (rs.next()) {
 				Equipo e = new Equipo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
 						rs.getString(6), rs.getString(7));
