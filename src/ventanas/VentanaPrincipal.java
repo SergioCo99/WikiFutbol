@@ -55,7 +55,7 @@ public class VentanaPrincipal extends JFrame {
 	JMenu menuOpinion;
 	JMenuItem miFeedback, miEstadisticas;
 
-	//Para el listado de equipos
+	// Para el listado de equipos
 	private DBManager database1 = new DBManager();
 	private IListaEquipos interfazLista;
 	private ArrayList<Equipo> arrayEquipos = new ArrayList<Equipo>();
@@ -79,7 +79,7 @@ public class VentanaPrincipal extends JFrame {
 		usuario = u;
 		init();
 	}
-	
+
 	public void init() {
 
 		this.setTitle("WikiFutbol Principal");
