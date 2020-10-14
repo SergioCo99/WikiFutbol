@@ -2,6 +2,7 @@ package ventanas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Properties;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -10,7 +11,6 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import database.AdvancedDb2CsvExporter;
-import database.DBManagerException;
 
 public class VentanaDescargar extends JFrame {
 
@@ -32,13 +32,18 @@ public class VentanaDescargar extends JFrame {
 		btnDescargar.setText("Descargar");
 		btnDescargar.setBounds(240, 250, 120, 30);
 
-		// create list
+		// create list para usuarios
 		listaTablas = new JList<Object>();
 		listaTablas.setBounds(10, 10, 200, 200);
-		String[] tablasProhibidas = { "usuario" }; // no dejamos descargar estas tablas por seguridad
-		DefaultListModel<Object> listModel = new DefaultListModel<Object>();
 
 		try {
+			Properties prop = utils.PropertiesMetodos.loadPropertiesFile();
+
+			String[] tablasProhibidas = null; // no dejamos descargar estas tablas por seguridad
+			// tablasProhibidas = { "usuario" };
+			tablasProhibidas = prop.getProperty("DB.TABLASEXCLUIDAS").split(",");
+
+			DefaultListModel<Object> listModel = new DefaultListModel<Object>();
 			for (int i = 0; i < database.DBManager.verTablas().size(); i++) {
 				String tabla = database.DBManager.verTablas().get(i);
 				listModel.add(i, tabla);
@@ -51,12 +56,10 @@ public class VentanaDescargar extends JFrame {
 					}
 				}
 			}
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
+			listaTablas.setModel(listModel);
+		} catch (Exception e2) {
+			e2.printStackTrace();
 		}
-
-		listaTablas.setModel(listModel);
-		listaTablas.setBounds(10, 10, 200, 200);
 		// fin de list
 
 		add(btnDescargar);

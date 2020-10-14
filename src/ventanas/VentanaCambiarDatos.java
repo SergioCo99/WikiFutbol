@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
+import database.DBManagerException;
+
 public class VentanaCambiarDatos extends JFrame {
 
 	// ojo que esta ventana no hace nada todavia, habia pensado en meter una JTable
@@ -40,7 +42,16 @@ public class VentanaCambiarDatos extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				try {
+					database.DBManager.cambiarDatos(textArea1.getText());
+				} catch (DBManagerException e1) {
+					// Can not issue empty query.
 
+					// You have an error in your SQL syntax; check the manual that corresponds to
+					// your MySQL server version for the right syntax to use
+
+					// Can not issue SELECT via Update
+				}
 			}
 		});
 

@@ -59,7 +59,7 @@ public class MainWikiFutbol {
 
 	public static void main(String[] args) {
 		crearFicheroLog();
-		crearFicheroLogger();
+		// crearFicheroLogger();
 		crearFicherosAccountProperties();
 
 		VentanaLogin VL = new VentanaLogin();

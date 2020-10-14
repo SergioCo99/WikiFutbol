@@ -172,6 +172,20 @@ public class DBManager {
 		}
 	}
 
+	public static void cambiarDatos(String consulta) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql = consulta;
+			stmt.executeUpdate(sql);
+			System.out.println(sql);
+			stmt.close();
+			disconnect();
+		} catch (SQLException e) {
+			throw new DBManagerException("Error cambiarDatos DBManager", e);
+		}
+	}
+
 	// ???
 	public ArrayList<Equipo> getEquipos() throws DBManagerException {
 		try {
