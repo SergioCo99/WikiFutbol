@@ -313,30 +313,34 @@ public class VentanaPrincipal extends JFrame {
 					}
 					IListaEquipos.cargarLista(bookPanel, arrayResultado);
 				} else {
-					if(rdbtnNombreEquipo.isSelected()==true) {
+					if (rdbtnNombreEquipo.isSelected() == true) {
 						for (int i = 0; i < arrayEquipos.size(); i++) {
 							if (equipoBuscado.toLowerCase().equals(arrayEquipos.get(i).getNombre().toLowerCase())) {
 								arrayResultado.add(arrayEquipos.get(i));
 							}
-						} IListaEquipos.cargarLista(bookPanel, arrayResultado);
+						}
+						IListaEquipos.cargarLista(bookPanel, arrayResultado);
 					} else if (rdbtnEstadio.isSelected() == true) {
 						for (int i = 0; i < arrayEquipos.size(); i++) {
-							if(equipoBuscado.toLowerCase().equals(arrayEquipos.get(i).getEstadio().toLowerCase())) {
+							if (equipoBuscado.toLowerCase().equals(arrayEquipos.get(i).getEstadio().toLowerCase())) {
 								arrayResultado.add(arrayEquipos.get(i));
 							}
-						} IListaEquipos.cargarLista(bookPanel, arrayResultado);
+						}
+						IListaEquipos.cargarLista(bookPanel, arrayResultado);
 					} else if (rdbtnEntrenador.isSelected() == true) {
 						for (int i = 0; i < arrayEquipos.size(); i++) {
-							if(equipoBuscado.toLowerCase().equals(arrayEquipos.get(i).getEntrenador().toLowerCase())) {
+							if (equipoBuscado.toLowerCase().equals(arrayEquipos.get(i).getEntrenador().toLowerCase())) {
 								arrayResultado.add(arrayEquipos.get(i));
 							}
-						} IListaEquipos.cargarLista(bookPanel, arrayResultado);
+						}
+						IListaEquipos.cargarLista(bookPanel, arrayResultado);
 					} else if (rdbtnNumLigas.isSelected() == true) {
 						for (int i = 0; i < arrayEquipos.size(); i++) {
-							if(equipoBuscado.toLowerCase().equals(arrayEquipos.get(i).getPalmares().toLowerCase())) {
+							if (equipoBuscado.toLowerCase().equals(arrayEquipos.get(i).getPalmares().toLowerCase())) {
 								arrayResultado.add(arrayEquipos.get(i));
 							}
-						} IListaEquipos.cargarLista(bookPanel, arrayResultado);
+						}
+						IListaEquipos.cargarLista(bookPanel, arrayResultado);
 					}
 
 					if (arrayResultado.isEmpty()) {
