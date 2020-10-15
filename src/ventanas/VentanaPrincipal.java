@@ -313,18 +313,30 @@ public class VentanaPrincipal extends JFrame {
 					}
 					IListaEquipos.cargarLista(bookPanel, arrayResultado);
 				} else {
-					if (rdbtnNombreEquipo.isSelected() == true) {
-
-						IListaEquipos.cargarLista(bookPanel, arrayResultado);
+					if(rdbtnNombreEquipo.isSelected()==true) {
+						for (int i = 0; i < arrayEquipos.size(); i++) {
+							if (equipoBuscado.toLowerCase().equals(arrayEquipos.get(i).getNombre().toLowerCase())) {
+								arrayResultado.add(arrayEquipos.get(i));
+							}
+						} IListaEquipos.cargarLista(bookPanel, arrayResultado);
 					} else if (rdbtnEstadio.isSelected() == true) {
-
-						IListaEquipos.cargarLista(bookPanel, arrayResultado);
+						for (int i = 0; i < arrayEquipos.size(); i++) {
+							if(equipoBuscado.toLowerCase().equals(arrayEquipos.get(i).getEstadio().toLowerCase())) {
+								arrayResultado.add(arrayEquipos.get(i));
+							}
+						} IListaEquipos.cargarLista(bookPanel, arrayResultado);
 					} else if (rdbtnEntrenador.isSelected() == true) {
-
-						IListaEquipos.cargarLista(bookPanel, arrayResultado);
+						for (int i = 0; i < arrayEquipos.size(); i++) {
+							if(equipoBuscado.toLowerCase().equals(arrayEquipos.get(i).getEntrenador().toLowerCase())) {
+								arrayResultado.add(arrayEquipos.get(i));
+							}
+						} IListaEquipos.cargarLista(bookPanel, arrayResultado);
 					} else if (rdbtnNumLigas.isSelected() == true) {
-
-						IListaEquipos.cargarLista(bookPanel, arrayResultado);
+						for (int i = 0; i < arrayEquipos.size(); i++) {
+							if(equipoBuscado.toLowerCase().equals(arrayEquipos.get(i).getPalmares().toLowerCase())) {
+								arrayResultado.add(arrayEquipos.get(i));
+							}
+						} IListaEquipos.cargarLista(bookPanel, arrayResultado);
 					}
 
 					if (arrayResultado.isEmpty()) {
@@ -352,7 +364,7 @@ public class VentanaPrincipal extends JFrame {
 		scroll.setBounds(197, 85, 800, 550);
 		add(scroll);
 
-		// Filtros SIN funcionalidad aun
+		// Filtros
 
 		JLabel lblFiltro = new JLabel("Busqueda por:");
 		lblFiltro.setFont(new Font("Tahoma", Font.BOLD, 15));
