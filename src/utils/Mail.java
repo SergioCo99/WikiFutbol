@@ -12,7 +12,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class Mail {
-
+	
 	public static void Email(Session session, String toEmail, String subject, String body) {
 		try {
 			MimeMessage msg = new MimeMessage(session);
