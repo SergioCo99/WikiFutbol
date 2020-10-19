@@ -12,7 +12,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class Mail {
-	
+
 	public static void Email(Session session, String toEmail, String subject, String body) {
 		try {
 			MimeMessage msg = new MimeMessage(session);
@@ -39,7 +39,7 @@ public class Mail {
 		}
 	}
 
-	static void SendMail(String toEmail, String asunto, String texto) {
+	public static void SendMail(String toEmail, String asunto, String texto) {
 
 		final String fromEmail = "wikifutbolteam@gmail.com"; // requires valid gmail id
 		final String password = "kflipao99"; // correct password for gmail id

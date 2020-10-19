@@ -172,6 +172,29 @@ public class DBManager {
 		}
 	}
 
+	public static ArrayList<String> todosLosCorreos() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql = "select correo_usuario from usuario";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			ArrayList<String> arr = new ArrayList<String>();
+			while (rs.next()) {
+				int i = 1;
+				arr.add(rs.getString(i));
+				i++;
+			}
+			rs.close();
+			stmt.close();
+			disconnect();
+			return arr;
+		} catch (SQLException e) {
+			throw new DBManagerException("Error correos DBManager", e);
+		}
+	}
+
+	// ???
 	public static void cambiarDatos(String consulta) throws DBManagerException {
 		try {
 			connect();
@@ -184,7 +207,7 @@ public class DBManager {
 		} catch (SQLException e) {
 			throw new DBManagerException("Error cambiarDatos DBManager", e);
 		}
-	}
+	} // ???
 
 	// ???
 	public ArrayList<Equipo> getEquipos() throws DBManagerException {
@@ -209,6 +232,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		connect();
+		todosLosCorreos();
 	}
 }
