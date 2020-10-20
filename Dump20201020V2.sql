@@ -28,7 +28,9 @@ CREATE TABLE `ciudad` (
   `id_ciudad` int NOT NULL AUTO_INCREMENT,
   `nombre_ciudad` varchar(45) DEFAULT NULL,
   `pais_ciudad` int DEFAULT NULL,
-  PRIMARY KEY (`id_ciudad`)
+  PRIMARY KEY (`id_ciudad`),
+  KEY `pais_ciudad` (`pais_ciudad`),
+  CONSTRAINT `ciudad_ibfk_1` FOREIGN KEY (`pais_ciudad`) REFERENCES `pais` (`id_pais`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,13 +53,19 @@ DROP TABLE IF EXISTS `club`;
 CREATE TABLE `club` (
   `id_club` int NOT NULL AUTO_INCREMENT,
   `nombre_club` varchar(45) DEFAULT NULL,
-  `ciudad_club` varchar(45) DEFAULT NULL,
-  `estadio_club` varchar(45) DEFAULT NULL,
-  `anoCreacion_club` int DEFAULT NULL,
-  `palmares_club` varchar(45) DEFAULT NULL,
-  `entrenador_club` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_club`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `ciudad_club` int DEFAULT NULL,
+  `estadio_club` int DEFAULT NULL,
+  `anoCreacion_club` year DEFAULT NULL,
+  `palmares_club` int DEFAULT NULL,
+  `entrenador_club` int DEFAULT NULL,
+  PRIMARY KEY (`id_club`),
+  KEY `ciudad_club` (`ciudad_club`),
+  KEY `estadio_club` (`estadio_club`),
+  KEY `entrenador_club` (`entrenador_club`),
+  CONSTRAINT `club_ibfk_1` FOREIGN KEY (`ciudad_club`) REFERENCES `ciudad` (`id_ciudad`),
+  CONSTRAINT `club_ibfk_2` FOREIGN KEY (`estadio_club`) REFERENCES `estadio` (`id_estadio`),
+  CONSTRAINT `club_ibfk_3` FOREIGN KEY (`entrenador_club`) REFERENCES `entrenador` (`id_entrenador`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +74,6 @@ CREATE TABLE `club` (
 
 LOCK TABLES `club` WRITE;
 /*!40000 ALTER TABLE `club` DISABLE KEYS */;
-INSERT INTO `club` VALUES (1,'Deportivo Alavés','Vitoria','Mendizorroza',1921,'1','Pablo Machín'),(2,'Athletic Club','Bilbao','San Mamés',1898,'2','Gaizka Garitano'),(3,'Atlético de Madrid','Madrid','Wanda Metropolitano',1903,'3','Diego Simeone'),(4,'FC Barcelona','Barcelona','Camp Nou',1899,'4','Ronald Koeman'),(5,'Real Betis','Sevilla','Benito Villamarín',1907,'5','Manuel Pellegrini'),(6,'Cádiz CF','Cádiz','Ramón de Carranza',1910,'6','Álvaro Cervera'),(7,'RC Celta','Vigo','Balaidos',1923,'7','Óscar García'),(8,'SD Eibar','Eibar','Ipurúa',1940,'8','José Luis Mendilibar'),(9,'Elche CF','Elche','Manuel Martínez Valero',1922,'9','José Rojo'),(10,'Getafe CF','Getafe','Coliseum Alfonso Pérez',1983,'10','José Bordalás'),(11,'Granada CF','Granada','Nuevo Los Cármenes',1931,'9','Diego Martinez'),(12,'Huesca FC','Huesca','El Alcoraz',1960,'8','Francisco Rodríguez'),(13,'Levante UD','Valencia','Camilo Cano',1909,'7','Paco López'),(14,'CA Osasuna','Pamplona','El Sadar',1920,'6','Jagoba Arrasate'),(15,'Real Sociedad','San Sebastian','Reale Arena',1909,'5','Imanol Alguacil'),(16,'Real Madrid','Madrid','Santiago Bernabeu',1902,'4','Zinedine Zidane'),(17,'Real Valladolid','Valladolid','José Zorrilla',1928,'3','Sergio González'),(18,'Sevilla FC','Sevilla','Ramón Sánchez-Pizjuán',1890,'2','Julen Lopetegui'),(19,'Valencia CF','Valencia','Estadio de Mestalla',1919,'1','Javi Garcia'),(20,'Villareal CF','Villareal','Estadio de la Cerámica',1923,'1','Unai Emery');
 /*!40000 ALTER TABLE `club` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,11 +88,15 @@ CREATE TABLE `entrenador` (
   `id_entrenador` int NOT NULL AUTO_INCREMENT,
   `nombre_entrenador` varchar(45) DEFAULT NULL,
   `fechaNac_entrenador` date DEFAULT NULL,
-  `club_entrenador` varchar(45) DEFAULT NULL,
-  `ciudad_entrenador` varchar(45) DEFAULT NULL,
+  `club_entrenador` int DEFAULT NULL,
+  `ciudad_entrenador` int DEFAULT NULL,
   `formacion_entrenador` varchar(45) DEFAULT NULL,
   `mentalidad_entrenador` enum('Defensiva','Equilibrada','Atacante') DEFAULT NULL,
-  PRIMARY KEY (`id_entrenador`)
+  PRIMARY KEY (`id_entrenador`),
+  KEY `club_entrenador` (`club_entrenador`),
+  KEY `ciudad_entrenador` (`ciudad_entrenador`),
+  CONSTRAINT `entrenador_ibfk_1` FOREIGN KEY (`club_entrenador`) REFERENCES `club` (`id_club`),
+  CONSTRAINT `entrenador_ibfk_2` FOREIGN KEY (`ciudad_entrenador`) REFERENCES `ciudad` (`id_ciudad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -110,8 +121,10 @@ CREATE TABLE `estadio` (
   `nombre_estadio` varchar(45) DEFAULT NULL,
   `aforo_estadio` int DEFAULT NULL,
   `anoCreacion_estadio` date DEFAULT NULL,
-  `ciudad_estadio` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_estadio`)
+  `ciudad_estadio` int DEFAULT NULL,
+  PRIMARY KEY (`id_estadio`),
+  KEY `ciudad_estadio` (`ciudad_estadio`),
+  CONSTRAINT `estadio_ibfk_1` FOREIGN KEY (`ciudad_estadio`) REFERENCES `ciudad` (`id_ciudad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -161,8 +174,8 @@ CREATE TABLE `jugador` (
   `id_jugador` int NOT NULL AUTO_INCREMENT,
   `nombre_jugador` varchar(45) DEFAULT NULL,
   `fechaNac_jugador` date DEFAULT NULL,
-  `club_jugador` varchar(45) DEFAULT NULL,
-  `ciudad_jugador` varchar(45) DEFAULT NULL,
+  `club_jugador` int DEFAULT NULL,
+  `ciudad_jugador` int DEFAULT NULL,
   `posicion_jugador` enum('Delantero','MeterMas') DEFAULT NULL,
   `dorsal_jugador` int DEFAULT NULL,
   `goles_jugador` int DEFAULT NULL,
@@ -172,8 +185,12 @@ CREATE TABLE `jugador` (
   `valoracion_jugador` int DEFAULT NULL,
   `descripcion_jugador` varchar(45) DEFAULT NULL,
   `voto_jugador` int DEFAULT NULL,
-  PRIMARY KEY (`id_jugador`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id_jugador`),
+  KEY `club_jugador` (`club_jugador`),
+  KEY `ciudad_jugador` (`ciudad_jugador`),
+  CONSTRAINT `jugador_ibfk_1` FOREIGN KEY (`club_jugador`) REFERENCES `club` (`id_club`),
+  CONSTRAINT `jugador_ibfk_2` FOREIGN KEY (`ciudad_jugador`) REFERENCES `ciudad` (`id_ciudad`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,7 +199,6 @@ CREATE TABLE `jugador` (
 
 LOCK TABLES `jugador` WRITE;
 /*!40000 ALTER TABLE `jugador` DISABLE KEYS */;
-INSERT INTO `jugador` VALUES (1,'Messi','1987-06-24','Barsaa','chikilandia','Delantero',10,3,17,15,'Zurdo',99,'e un makina',1);
 /*!40000 ALTER TABLE `jugador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,8 +234,10 @@ DROP TABLE IF EXISTS `teamoftheyear`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `teamoftheyear` (
   `id_TeamOfTheYear` int NOT NULL AUTO_INCREMENT,
-  `jugador_TeamOfTheYear` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_TeamOfTheYear`)
+  `jugador_TeamOfTheYear` int DEFAULT NULL,
+  PRIMARY KEY (`id_TeamOfTheYear`),
+  KEY `jugador_TeamOfTheYear` (`jugador_TeamOfTheYear`),
+  CONSTRAINT `teamoftheyear_ibfk_1` FOREIGN KEY (`jugador_TeamOfTheYear`) REFERENCES `jugador` (`id_jugador`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -247,7 +265,7 @@ CREATE TABLE `usuario` (
   `admin_usuario` int DEFAULT '0',
   `fechaNac_usuario` date DEFAULT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=65656567 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -256,7 +274,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'a','a','a',1,'1999-06-23'),(2,'b','b','b',0,'2002-05-03'),(3,'d','d','d',0,'2002-05-03'),(4,'c','c','c',0,'2002-05-03');
+INSERT INTO `usuario` VALUES (1,'na','a','a',1,'1999-06-23'),(2,'nb','b','b',0,'1999-06-24'),(3,'nd','d','d',0,'1999-06-25'),(4,'nc','c','c',0,'1999-06-26');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,12 +287,22 @@ DROP TABLE IF EXISTS `usuariovotacion`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuariovotacion` (
   `id_usuarioVotacion` int NOT NULL AUTO_INCREMENT,
-  `usuario_usuarioVotacion` varchar(45) DEFAULT NULL,
-  `delanteroVotado_usuarioVotacion` varchar(45) DEFAULT NULL,
-  `medioVotado_usuarioVotacion` varchar(45) DEFAULT NULL,
-  `defensaVotado_usuarioVotacion` varchar(45) DEFAULT NULL,
-  `porteroVotado_usuarioVotacion` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_usuarioVotacion`)
+  `usuario_usuarioVotacion` int DEFAULT NULL,
+  `delanteroVotado_usuarioVotacion` int DEFAULT NULL,
+  `medioVotado_usuarioVotacion` int DEFAULT NULL,
+  `defensaVotado_usuarioVotacion` int DEFAULT NULL,
+  `porteroVotado_usuarioVotacion` int DEFAULT NULL,
+  PRIMARY KEY (`id_usuarioVotacion`),
+  KEY `usuario_usuarioVotacion` (`usuario_usuarioVotacion`),
+  KEY `delanteroVotado_usuarioVotacion` (`delanteroVotado_usuarioVotacion`),
+  KEY `medioVotado_usuarioVotacion` (`medioVotado_usuarioVotacion`),
+  KEY `defensaVotado_usuarioVotacion` (`defensaVotado_usuarioVotacion`),
+  KEY `porteroVotado_usuarioVotacion` (`porteroVotado_usuarioVotacion`),
+  CONSTRAINT `usuariovotacion_ibfk_1` FOREIGN KEY (`usuario_usuarioVotacion`) REFERENCES `usuario` (`id_usuario`),
+  CONSTRAINT `usuariovotacion_ibfk_2` FOREIGN KEY (`delanteroVotado_usuarioVotacion`) REFERENCES `jugador` (`id_jugador`),
+  CONSTRAINT `usuariovotacion_ibfk_3` FOREIGN KEY (`medioVotado_usuarioVotacion`) REFERENCES `jugador` (`id_jugador`),
+  CONSTRAINT `usuariovotacion_ibfk_4` FOREIGN KEY (`defensaVotado_usuarioVotacion`) REFERENCES `jugador` (`id_jugador`),
+  CONSTRAINT `usuariovotacion_ibfk_5` FOREIGN KEY (`porteroVotado_usuarioVotacion`) REFERENCES `jugador` (`id_jugador`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -296,4 +324,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-20 12:51:11
+-- Dump completed on 2020-10-20 14:23:41
