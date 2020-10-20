@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Properties;
 
 import clases.Equipo;
@@ -185,12 +187,33 @@ public class DBManager {
 				arr.add(rs.getString(i));
 				i++;
 			}
+			Collections.sort(arr, new Comparator<String>() {
+				@Override
+				public int compare(String s1, String s2) {
+					return s1.compareToIgnoreCase(s2);
+				}
+			});
 			rs.close();
 			stmt.close();
 			disconnect();
 			return arr;
 		} catch (SQLException e) {
-			throw new DBManagerException("Error correos DBManager", e);
+			throw new DBManagerException("Error todosLosCorreos DBManager", e);
+		}
+	}
+
+	public static void registrarFeedback(/* ¿String correo_usuario? , */ String valoracion_feedback,
+			String recomendacion_feedback, String opinion_feedback) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql = "insert into feedback(valoracion_feedback, recomendacion_feedback, opinion_feedback) values('"
+					+ valoracion_feedback + "','" + recomendacion_feedback + "','" + opinion_feedback + "')";
+			stmt.executeUpdate(sql);
+			stmt.close();
+			disconnect();
+		} catch (SQLException e) {
+			throw new DBManagerException("Error registrarFeedback DBManager", e);
 		}
 	}
 
