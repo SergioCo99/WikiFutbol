@@ -100,6 +100,7 @@ public class VentanaRegistro extends JFrame {
 				if(txtUsuario.getText().equals("")||txtPassword.getText().equals("")|| txtPasswordRep.getText().equals("")|| txtCorreo.getText().equals("")){
 					JOptionPane.showMessageDialog(null, "Rellena todos los campos");
 				} else {
+					if (txtPassword.getText().equals(txtPasswordRep.getText())) {
 					try {
 					database.DBManager.registrarUsuario(txtUsuario.getText(), txtCorreo.getText(),
 							txtPassword.getText(), formatter.format(calendar.getDate()));
@@ -116,8 +117,12 @@ public class VentanaRegistro extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				VP.setVisible(true);} 
-				
+				VP.setVisible(true);
+				} 
+					else {
+						JOptionPane.showMessageDialog(null, "Las contrase\u00f1as no coinciden");
+					}
+			}
 			}
 		});
 
