@@ -231,13 +231,13 @@ public class VentanaPrincipal extends JFrame {
 				VCD.setVisible(true);
 			}
 		});
-		
+
 		miMandarCorreo.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VentanaMandarCorreo VMC = new VentanaMandarCorreo();
-				VMC.setVisible(true);				
+				VMC.setVisible(true);
 			}
 		});
 
