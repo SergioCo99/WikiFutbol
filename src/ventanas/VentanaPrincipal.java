@@ -54,6 +54,8 @@ public class VentanaPrincipal extends JFrame {
 	JMenuItem miConfigurarOtraCuenta, miCambiarDatos, miMandarCorreo;
 	JMenu menuOpinion;
 	JMenuItem miFeedback, miEstadisticas;
+	JMenu menuTeamOfTheYear;
+	JMenuItem miVotar, miVerEquipo;
 
 	// Para el listado de equipos
 	private DBManager database1 = new DBManager();
@@ -117,9 +119,16 @@ public class VentanaPrincipal extends JFrame {
 		menuOpinion.add(miFeedback);
 		menuOpinion.add(miEstadisticas);
 
+		menuTeamOfTheYear = new JMenu("Team Of The Year");
+		miVotar = new JMenuItem("Votar");
+		miVerEquipo = new JMenuItem("Ver equipo");
+		menuTeamOfTheYear.add(miVotar);
+		menuTeamOfTheYear.add(miVerEquipo);
+
 		menuBar.add(menu);
 		menuBar.add(menuAdmin);
 		menuBar.add(menuOpinion);
+		menuBar.add(menuTeamOfTheYear);
 		setJMenuBar(menuBar);
 
 		menuAdmin.setVisible(false);
@@ -258,6 +267,15 @@ public class VentanaPrincipal extends JFrame {
 				VentanaEstadisticas VE = new VentanaEstadisticas();
 				VE.setVisible(true);
 
+			}
+		});
+		
+		miVotar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaVotar VV = new VentanaVotar();
+				VV.setVisible(true);
 			}
 		});
 

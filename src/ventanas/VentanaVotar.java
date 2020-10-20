@@ -9,15 +9,15 @@ import javax.swing.JFrame;
 
 import database.DBManagerException;
 
-public class VentanaPruebas extends JFrame {
+public class VentanaVotar extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	JButton btn;
 	JComboBox<String> jcbDelantero, jcbCentrocampista, jcbDefensa, jcbPortero;
 
-	public VentanaPruebas() {
+	public VentanaVotar() {
 
-		this.setTitle("VentanaMandarCorreo");
+		this.setTitle("VentanaVotar");
 		this.setSize(600, 400);
 		this.setLayout(null);
 		this.setResizable(false);
@@ -92,23 +92,22 @@ public class VentanaPruebas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					
-					int id = database.DBManager.getIdUsuario("a");
-					
+					// id del usuario que vota,lo obtenemos mediante account.properties
+					int id = database.DBManager.getIdUsuario(utils.PropertiesMetodos.getProp1());
+					// id del delantero votado,lo obtenemos mediante su nombre
 					String j1 = jcbDelantero.getSelectedItem().toString();
 					int idj1 = database.DBManager.getIdJugador(j1);
-					
+					// id del centrocampista votado,lo obtenemos mediante su nombre
 					String j2 = jcbCentrocampista.getSelectedItem().toString();
 					int idj2 = database.DBManager.getIdJugador(j2);
-					
+					// id del defensa votado,lo obtenemos mediante su nombre
 					String j3 = jcbDefensa.getSelectedItem().toString();
 					int idj3 = database.DBManager.getIdJugador(j3);
-					
+					// id del portero votado,lo obtenemos mediante su nombre
 					String j4 = jcbPortero.getSelectedItem().toString();
 					int idj4 = database.DBManager.getIdJugador(j4);
-					
+					// metodo para votar
 					database.DBManager.votar(id, idj1, idj2, idj3, idj4);
-					
 				} catch (DBManagerException e1) {
 					e1.printStackTrace();
 				}
@@ -119,7 +118,7 @@ public class VentanaPruebas extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		VentanaPruebas VP = new VentanaPruebas();
-		VP.setVisible(true);
+		VentanaVotar VV = new VentanaVotar();
+		VV.setVisible(true);
 	}
 }
