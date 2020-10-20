@@ -52,7 +52,8 @@ public class VentanaDescargar extends JFrame {
 				for (int i = 0; i < database.DBManager.verTablas().size(); i++) {
 					String tabla = database.DBManager.verTablas().get(i);
 					if (tablasProhibidas[j].equals(tabla)) {
-						listModel.remove(i);
+						// listModel.remove(i);
+						listModel.removeElement(tabla);
 					}
 				}
 			}
