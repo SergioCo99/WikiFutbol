@@ -9,21 +9,23 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import com.toedter.calendar.JCalendar;
 
 import clases.Usuario;
 import database.DBManagerException;
+import pruebasYEjemplos.PruebaVentanaRegistro;
 
 public class VentanaRegistro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private Usuario usuario;
 	private final SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
-	JLabel lblUser, lblPass, lblDate, lblCorreo;
+	JLabel lblUser, lblPass, lblPassRep, lblDate, lblCorreo;
 	JButton btnRegistrar;
-	JTextField txtUsuario, txtPassword, txtCorreo;
+	JTextField txtUsuario, txtPassword, txtPasswordRep, txtCorreo;
 	JCalendar calendar;
 
 	public VentanaRegistro() {
@@ -47,6 +49,9 @@ public class VentanaRegistro extends JFrame {
 		lblPass.setText("Introduce la contraseña:");
 		lblPass.setBounds(100, 90, 300, 20);
 
+		lblPassRep = new JLabel("Repetir contrase\u00F1a:");
+		lblPassRep.setBounds(100, 110, 300, 20);
+		
 		lblDate = new JLabel();
 		lblDate.setText("Introduce tu fecha de nacimiento:");
 		lblDate.setBounds(100, 130, 300, 20);
@@ -59,6 +64,9 @@ public class VentanaRegistro extends JFrame {
 
 		txtPassword = new JTextField();
 		txtPassword.setBounds(300, 90, 200, 20);
+		
+		txtPasswordRep = new JTextField();
+		txtPasswordRep.setBounds(300, 110, 200, 20);
 
 		btnRegistrar = new JButton();
 		btnRegistrar.setText("Registrarse");
@@ -74,9 +82,11 @@ public class VentanaRegistro extends JFrame {
 
 		add(txtUsuario);
 		add(txtPassword);
+		add(txtPasswordRep);
 		add(txtCorreo);
 		add(lblUser);
 		add(lblPass);
+		add(lblPassRep);
 		add(lblDate);
 		add(lblCorreo);
 		add(btnRegistrar);
@@ -84,9 +94,13 @@ public class VentanaRegistro extends JFrame {
 
 		btnRegistrar.addActionListener(new ActionListener() {
 
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
+				if(txtUsuario.getText().equals("")||txtPassword.getText().equals("")|| txtPasswordRep.getText().equals("")|| txtCorreo.getText().equals("")){
+					JOptionPane.showMessageDialog(null, "Rellena todos los campos");
+				} else {
+					try {
 					database.DBManager.registrarUsuario(txtUsuario.getText(), txtCorreo.getText(),
 							txtPassword.getText(), formatter.format(calendar.getDate()));
 				} catch (DBManagerException e1) {
@@ -102,7 +116,8 @@ public class VentanaRegistro extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				VP.setVisible(true);
+				VP.setVisible(true);} 
+				
 			}
 		});
 
@@ -110,7 +125,7 @@ public class VentanaRegistro extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		VentanaRegistro VR = new VentanaRegistro();
+		PruebaVentanaRegistro VR = new PruebaVentanaRegistro();
 		VR.setVisible(true);
 	}
 }
