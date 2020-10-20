@@ -43,11 +43,12 @@ public class VentanaMandarCorreo extends JFrame {
 			String[] array = new String[database.DBManager.todosLosCorreos().size()];
 			for (int i = 0; i < array.length; i++) {
 				array[i] = database.DBManager.todosLosCorreos().get(i);
-				jcb = new JComboBox<String>(array);
 			}
+			jcb = new JComboBox<String>(array);
 		} catch (DBManagerException e1) {
 			e1.printStackTrace();
 		}
+		utils.JComboBoxAutoCompletion.enable(jcb);
 		jcb.setBounds(300, 30, 200, 30);
 
 		todos = new JCheckBox();
@@ -72,7 +73,6 @@ public class VentanaMandarCorreo extends JFrame {
 		texto.setCaretPosition(0);
 		scroll = new JScrollPane(texto);
 		scroll.setBounds(10, 150, 560, 150);
-		add(scroll);
 
 		add(lblDestinagario);
 		add(jcb);
@@ -87,7 +87,7 @@ public class VentanaMandarCorreo extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (todos.isSelected() == true) {
-					jcb.setSelectedItem(null);
+					jcb.setSelectedIndex(0);
 				}
 			}
 		});
