@@ -202,15 +202,24 @@ public class DBManager {
 		}
 	}
 
-	public static void registrarFeedback(/* ¿String correo_usuario? , */ String valoracion_feedback,
+	public static void registrarFeedback(String correo_usuario, String valoracion_feedback,
 			String recomendacion_feedback, String opinion_feedback) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			String sql = "insert into feedback(valoracion_feedback, recomendacion_feedback, opinion_feedback) values('"
-					+ valoracion_feedback + "','" + recomendacion_feedback + "','" + opinion_feedback + "')";
-			stmt.executeUpdate(sql);
+			String sql1 = "select id_usuario from usuario where correo_usuario = '" + correo_usuario + "'";
+			ResultSet rs = stmt.executeQuery(sql1);
+			rs.next();
+
+			String id = rs.getString("id_usuario");
+
+			String sql2 = "insert into feedback(usuario_feedback, valoracion_feedback, recomendacion_feedback, opinion_feedback) values('"
+					+ id + "','" + valoracion_feedback + "','" + recomendacion_feedback + "','" + opinion_feedback
+					+ "')";
+			stmt.executeUpdate(sql2);
+			System.out.println(sql2);
 			stmt.close();
+			rs.close();
 			disconnect();
 		} catch (SQLException e) {
 			throw new DBManagerException("Error registrarFeedback DBManager", e);
@@ -255,6 +264,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		todosLosCorreos();
+		registrarFeedback("a", "5", "si", "opinion");
 	}
 }

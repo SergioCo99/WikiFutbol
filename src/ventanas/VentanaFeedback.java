@@ -103,6 +103,7 @@ public class VentanaFeedback extends JFrame {
 		texto.setWrapStyleWord(true);
 		texto.setMargin(new Insets(10, 10, 10, 10));
 		texto.setCaretPosition(0);
+		texto.setText("");
 		scroll = new JScrollPane(texto);
 		scroll.setBounds(10, 150, 690, 150);
 		add(scroll);
@@ -169,7 +170,8 @@ public class VentanaFeedback extends JFrame {
 							.println("Puntuacion: " + bgEstrellas.getSelection().getActionCommand() + "\n" + "Si/No: "
 									+ bgRecomendacion.getSelection().getActionCommand());
 					try {
-						database.DBManager.registrarFeedback(bgEstrellas.getSelection().getActionCommand(),
+						database.DBManager.registrarFeedback(utils.PropertiesMetodos.getProp1(),
+								bgEstrellas.getSelection().getActionCommand(),
 								bgRecomendacion.getSelection().getActionCommand(), texto.getText());
 					} catch (DBManagerException e1) {
 						e1.printStackTrace();

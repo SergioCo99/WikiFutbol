@@ -51,7 +51,7 @@ public class VentanaRegistro extends JFrame {
 
 		lblPassRep = new JLabel("Repetir contrase\u00F1a:");
 		lblPassRep.setBounds(100, 110, 300, 20);
-		
+
 		lblDate = new JLabel();
 		lblDate.setText("Introduce tu fecha de nacimiento:");
 		lblDate.setBounds(100, 130, 300, 20);
@@ -64,7 +64,7 @@ public class VentanaRegistro extends JFrame {
 
 		txtPassword = new JTextField();
 		txtPassword.setBounds(300, 90, 200, 20);
-		
+
 		txtPasswordRep = new JTextField();
 		txtPasswordRep.setBounds(300, 110, 200, 20);
 
@@ -94,35 +94,33 @@ public class VentanaRegistro extends JFrame {
 
 		btnRegistrar.addActionListener(new ActionListener() {
 
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(txtUsuario.getText().equals("")||txtPassword.getText().equals("")|| txtPasswordRep.getText().equals("")|| txtCorreo.getText().equals("")){
+				if (txtUsuario.getText().equals("") || txtPassword.getText().equals("")
+						|| txtPasswordRep.getText().equals("") || txtCorreo.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Rellena todos los campos");
 				} else {
 					if (txtPassword.getText().equals(txtPasswordRep.getText())) {
-					try {
-					database.DBManager.registrarUsuario(txtUsuario.getText(), txtCorreo.getText(),
-							txtPassword.getText(), formatter.format(calendar.getDate()));
-				} catch (DBManagerException e1) {
-					e1.printStackTrace();
-				}
-				utils.PropertiesMetodos.setProp(txtCorreo.getText(), txtPassword.getText());
+						try {
+							database.DBManager.registrarUsuario(txtUsuario.getText(), txtCorreo.getText(),
+									txtPassword.getText(), formatter.format(calendar.getDate()));
+						} catch (DBManagerException e1) {
+							e1.printStackTrace();
+						}
+						utils.PropertiesMetodos.setProp(txtCorreo.getText(), txtPassword.getText());
 
-				dispose();
-				VentanaPrincipal VP = null;
-				try {
-					VP = new VentanaPrincipal(usuario);
-				} catch (DBManagerException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				VP.setVisible(true);
-				} 
-					else {
+						dispose();
+						VentanaPrincipal VP = null;
+						try {
+							VP = new VentanaPrincipal(usuario);
+						} catch (DBManagerException e1) {
+							e1.printStackTrace();
+						}
+						VP.setVisible(true);
+					} else {
 						JOptionPane.showMessageDialog(null, "Las contrase\u00f1as no coinciden");
 					}
-			}
+				}
 			}
 		});
 
