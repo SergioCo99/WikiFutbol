@@ -183,9 +183,7 @@ public class DBManager {
 
 			ArrayList<String> arr = new ArrayList<String>();
 			while (rs.next()) {
-				int i = 1;
-				arr.add(rs.getString(i));
-				i++;
+				arr.add(rs.getString("correo_usuario"));
 			}
 			Collections.sort(arr, new Comparator<String>() {
 				@Override
@@ -193,6 +191,7 @@ public class DBManager {
 					return s1.compareToIgnoreCase(s2);
 				}
 			});
+			System.out.println(arr);
 			rs.close();
 			stmt.close();
 			disconnect();
@@ -223,6 +222,119 @@ public class DBManager {
 			disconnect();
 		} catch (SQLException e) {
 			throw new DBManagerException("Error registrarFeedback DBManager", e);
+		}
+	}
+
+	public static ArrayList<String> getJugadoresPorPosicion(String posicion_jugador) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql = "select nombre_jugador from jugador where posicion_jugador = '" + posicion_jugador + "';";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			ArrayList<String> arr = new ArrayList<String>();
+			while (rs.next()) {
+				arr.add(rs.getString("nombre_jugador"));
+			}
+			Collections.sort(arr, new Comparator<String>() {
+				@Override
+				public int compare(String s1, String s2) {
+					return s1.compareToIgnoreCase(s2);
+				}
+			});
+			rs.close();
+			stmt.close();
+			disconnect();
+			return arr;
+		} catch (SQLException e) {
+			throw new DBManagerException("Error getJugadoresPorPosicion DBManager", e);
+		}
+	}
+
+	public static Integer getIdUsuario(String correo_usuario) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql1 = "select id_usuario from usuario where correo_usuario = '" + correo_usuario + "'";
+			ResultSet rs = stmt.executeQuery(sql1);
+			rs.next();
+
+			int id = rs.getInt("id_usuario");
+
+			rs.close();
+			stmt.close();
+			disconnect();
+
+			System.out.println("getIdUsuario: " + id);
+			return id;
+		} catch (SQLException e) {
+			throw new DBManagerException("Error getIdUsuario DBManager", e);
+		}
+	}
+
+	public static Integer getIdJugador(String nombre_jugador) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql1 = "select id_jugador from jugador where nombre_jugador = '" + nombre_jugador + "'";
+			ResultSet rs = stmt.executeQuery(sql1);
+			rs.next();
+
+			int id = rs.getInt("id_jugador");
+
+			rs.close();
+			stmt.close();
+			disconnect();
+
+			System.out.println("getIdJugador: " + id);
+
+			return id;
+		} catch (SQLException e) {
+			throw new DBManagerException("Error getIdJugador DBManager", e);
+		}
+	}
+
+	public static void votar(int usuario_usuarioVotacion, int delanteroVotado_usuarioVotacion,
+			int centrocampistaVotado_usuarioVotacion, int defensaVotado_usuarioVotacion,
+			int porteroVotado_usuarioVotacion) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql1 = "select count(usuario_usuarioVotacion) from usuarioVotacion where usuario_usuarioVotacion = '"
+					+ usuario_usuarioVotacion + "';";
+			ResultSet rs = stmt.executeQuery(sql1);
+			System.out.println("VOTAR: " + sql1);
+			rs.next();
+
+			System.out.println("votar COUNT: " + rs.getInt("count(usuario_usuarioVotacion)"));
+
+			if (rs.getInt("count(usuario_usuarioVotacion)") == 0) {
+
+				String sql2 = "insert into usuariovotacion(usuario_usuarioVotacion, delanteroVotado_usuarioVotacion, "
+						+ "centrocampistaVotado_usuarioVotacion, defensaVotado_usuarioVotacion, porteroVotado_usuarioVotacion)"
+						+ " values(" + usuario_usuarioVotacion + "," + delanteroVotado_usuarioVotacion + ","
+						+ centrocampistaVotado_usuarioVotacion + "," + defensaVotado_usuarioVotacion + ","
+						+ porteroVotado_usuarioVotacion + ")";
+
+				System.out.println("VOTAR 0 : " + sql2);
+				stmt.executeUpdate(sql2);
+			} else if (rs.getInt("count(usuario_usuarioVotacion)") != 0) {
+				String sql2 = "update usuariovotacion set delanteroVotado_usuarioVotacion = '"
+						+ delanteroVotado_usuarioVotacion + "', centrocampistaVotado_usuarioVotacion = '"
+						+ centrocampistaVotado_usuarioVotacion + "', defensaVotado_usuarioVotacion = '"
+						+ defensaVotado_usuarioVotacion + "', porteroVotado_usuarioVotacion = '"
+						+ porteroVotado_usuarioVotacion + "' " + "where usuario_usuarioVotacion = '"
+						+ usuario_usuarioVotacion + "'";
+
+				System.out.println("VOTAR 1 : " + sql2);
+				stmt.executeUpdate(sql2);
+			}
+
+			rs.close();
+			stmt.close();
+			disconnect();
+		} catch (SQLException e) {
+			throw new DBManagerException("Error votar DBManager", e);
 		}
 	}
 
@@ -264,6 +376,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		registrarFeedback("a", "5", "si", "opinion");
+		votar(2, 1, 3, 5, 8);
 	}
 }
