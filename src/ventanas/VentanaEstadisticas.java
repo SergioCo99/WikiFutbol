@@ -57,11 +57,10 @@ public class VentanaEstadisticas extends JFrame {
 				data[1][0] = "Recomendarias? Si:";
 				data[2][0] = "Recomendarias? No:";
 				data[3][0] = "Numero de feedbacks:"; // se escribe asi en plural???
-
-				for (int z = 0; z < data.length; z++) {
-					for (int y = 0; y < columns.length; y++) {
-						System.out.println(data[z][y]);
-					}
+			}
+			for (int z = 0; z < data.length; z++) {
+				for (int y = 0; y < columns.length; y++) {
+					System.out.println(data[z][y]);
 				}
 			}
 		} catch (RWException e1) {
