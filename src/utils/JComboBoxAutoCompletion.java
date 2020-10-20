@@ -29,8 +29,8 @@ public class JComboBoxAutoCompletion extends PlainDocument {
 	JComboBox<?> comboBox;
 	ComboBoxModel<?> model;
 	JTextComponent editor;
-// flag to indicate if setSelectedItem has been called
-// subsequent calls to remove/insertString should be ignored
+	// flag to indicate if setSelectedItem has been called
+	// subsequent calls to remove/insertString should be ignored
 	boolean selecting = false;
 	boolean hidePopupOnFocusLoss;
 	boolean hitBackspace = false;
@@ -205,7 +205,7 @@ public class JComboBoxAutoCompletion extends PlainDocument {
 		return null;
 	}
 
-// checks if str1 starts with str2 - ignores case
+	// checks if str1 starts with str2 - ignores case
 	private boolean startsWithIgnoreCase(String str1, String str2) {
 		return str1.toUpperCase().startsWith(str2.toUpperCase());
 	}
