@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Properties;
 
+import com.mysql.cj.protocol.Resultset;
+
 import clases.Equipo;
 
 public class DBManager {
@@ -191,7 +193,6 @@ public class DBManager {
 					return s1.compareToIgnoreCase(s2);
 				}
 			});
-			System.out.println(arr);
 			rs.close();
 			stmt.close();
 			disconnect();
@@ -216,7 +217,6 @@ public class DBManager {
 					+ id + "','" + valoracion_feedback + "','" + recomendacion_feedback + "','" + opinion_feedback
 					+ "')";
 			stmt.executeUpdate(sql2);
-			System.out.println(sql2);
 			stmt.close();
 			rs.close();
 			disconnect();
@@ -264,8 +264,6 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-
-			System.out.println("getIdUsuario: " + id);
 			return id;
 		} catch (SQLException e) {
 			throw new DBManagerException("Error getIdUsuario DBManager", e);
@@ -285,9 +283,6 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-
-			System.out.println("getIdJugador: " + id);
-
 			return id;
 		} catch (SQLException e) {
 			throw new DBManagerException("Error getIdJugador DBManager", e);
@@ -303,10 +298,7 @@ public class DBManager {
 			String sql1 = "select count(usuario_usuarioVotacion) from usuarioVotacion where usuario_usuarioVotacion = '"
 					+ usuario_usuarioVotacion + "';";
 			ResultSet rs = stmt.executeQuery(sql1);
-			System.out.println("VOTAR: " + sql1);
 			rs.next();
-
-			System.out.println("votar COUNT: " + rs.getInt("count(usuario_usuarioVotacion)"));
 
 			if (rs.getInt("count(usuario_usuarioVotacion)") == 0) {
 
@@ -316,7 +308,6 @@ public class DBManager {
 						+ centrocampistaVotado_usuarioVotacion + "," + defensaVotado_usuarioVotacion + ","
 						+ porteroVotado_usuarioVotacion + ")";
 
-				System.out.println("VOTAR 0 : " + sql2);
 				stmt.executeUpdate(sql2);
 			} else if (rs.getInt("count(usuario_usuarioVotacion)") != 0) {
 				String sql2 = "update usuariovotacion set delanteroVotado_usuarioVotacion = '"
@@ -326,7 +317,6 @@ public class DBManager {
 						+ porteroVotado_usuarioVotacion + "' " + "where usuario_usuarioVotacion = '"
 						+ usuario_usuarioVotacion + "'";
 
-				System.out.println("VOTAR 1 : " + sql2);
 				stmt.executeUpdate(sql2);
 			}
 
@@ -337,6 +327,52 @@ public class DBManager {
 			throw new DBManagerException("Error votar DBManager", e);
 		}
 	}
+
+	public static int contarJugadores() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql1 = "select count(id_jugador) from jugador";
+			ResultSet rs = stmt.executeQuery(sql1);
+			rs.next();
+
+			int id = rs.getInt("count(id_jugador)");
+
+			rs.close();
+			stmt.close();
+			disconnect();
+			return id;
+		} catch (SQLException e) {
+			throw new DBManagerException("Error contarJugadores DBManager", e);
+		}
+	}
+
+	public static void contarVotosPorJugador(int i) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql1 = "select count(delanteroVotado_usuarioVotacion) from usuarioVotacion where delanteroVotado_usuarioVotacion = " + i ;
+			ResultSet rs = stmt.executeQuery(sql1);
+			rs.next();
+
+			int id = rs.getInt("count(delanteroVotado_usuarioVotacion)");
+
+			System.out.println(sql1 + " -> " + id);
+
+			rs.close();
+			stmt.close();
+			disconnect();
+		} catch (SQLException e) {
+			throw new DBManagerException("Error contarVotosPorJugador DBManager", e);
+		}
+	}
+	
+	public static void actualizarVotos() throws DBManagerException {
+		
+		for (int i = 0; i < contarJugadores(); i++) {
+			contarVotosPorJugador(i);
+		}
+	}	
 
 	// ???
 	public static void cambiarDatos(String consulta) throws DBManagerException {
@@ -376,6 +412,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		votar(2, 1, 3, 5, 8);
+		actualizarVotos();
 	}
 }

@@ -192,7 +192,7 @@ CREATE TABLE `jugador` (
   KEY `ciudad_jugador` (`ciudad_jugador`),
   CONSTRAINT `jugador_ibfk_1` FOREIGN KEY (`club_jugador`) REFERENCES `club` (`id_club`),
   CONSTRAINT `jugador_ibfk_2` FOREIGN KEY (`ciudad_jugador`) REFERENCES `ciudad` (`id_ciudad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,6 +201,7 @@ CREATE TABLE `jugador` (
 
 LOCK TABLES `jugador` WRITE;
 /*!40000 ALTER TABLE `jugador` DISABLE KEYS */;
+INSERT INTO `jugador` VALUES (1,'Messi','0000-00-00',NULL,NULL,'Delantero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(2,'Cristiano Ronaldo','0000-00-00',NULL,NULL,'Delantero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(3,'Pogba','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(4,'De Bruyne','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(5,'Sergio Ramos','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(6,'Van Dijk','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(7,'Ter Stegen','0000-00-00',NULL,NULL,'Portero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(8,'Oblak','0000-00-00',NULL,NULL,'Portero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `jugador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -305,7 +306,7 @@ CREATE TABLE `usuariovotacion` (
   CONSTRAINT `usuariovotacion_ibfk_3` FOREIGN KEY (`centrocampistaVotado_usuarioVotacion`) REFERENCES `jugador` (`id_jugador`),
   CONSTRAINT `usuariovotacion_ibfk_4` FOREIGN KEY (`defensaVotado_usuarioVotacion`) REFERENCES `jugador` (`id_jugador`),
   CONSTRAINT `usuariovotacion_ibfk_5` FOREIGN KEY (`porteroVotado_usuarioVotacion`) REFERENCES `jugador` (`id_jugador`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -314,6 +315,7 @@ CREATE TABLE `usuariovotacion` (
 
 LOCK TABLES `usuariovotacion` WRITE;
 /*!40000 ALTER TABLE `usuariovotacion` DISABLE KEYS */;
+INSERT INTO `usuariovotacion` VALUES (4,1,2,4,5,7),(5,2,2,4,5,8),(6,4,1,4,5,7),(7,5,1,3,5,8);
 /*!40000 ALTER TABLE `usuariovotacion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -326,4 +328,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-20 16:55:11
+-- Dump completed on 2020-10-20 19:54:32
