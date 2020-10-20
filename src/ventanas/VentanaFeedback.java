@@ -17,6 +17,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import database.DBManagerException;
+
 public class VentanaFeedback extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -166,6 +168,12 @@ public class VentanaFeedback extends JFrame {
 					mainPackage.MainWikiFutbol.log
 							.println("Puntuacion: " + bgEstrellas.getSelection().getActionCommand() + "\n" + "Si/No: "
 									+ bgRecomendacion.getSelection().getActionCommand());
+					try {
+						database.DBManager.registrarFeedback(bgEstrellas.getSelection().getActionCommand(),
+								bgRecomendacion.getSelection().getActionCommand(), texto.getText());
+					} catch (DBManagerException e1) {
+						e1.printStackTrace();
+					}
 					dispose(); // si??? se cierra???
 					JOptionPane.showMessageDialog(null, "Mandado correctamente.", "Dar Feedback",
 							JOptionPane.INFORMATION_MESSAGE);
