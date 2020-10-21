@@ -16,7 +16,6 @@ import com.toedter.calendar.JCalendar;
 
 import clases.Usuario;
 import database.DBManagerException;
-import pruebasYEjemplos.PruebaVentanaRegistro;
 
 public class VentanaRegistro extends JFrame {
 
@@ -128,7 +127,7 @@ public class VentanaRegistro extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		PruebaVentanaRegistro VR = new PruebaVentanaRegistro();
+		VentanaRegistro VR = new VentanaRegistro();
 		VR.setVisible(true);
 	}
 }
