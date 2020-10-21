@@ -108,6 +108,8 @@ public class VentanaVotar extends JFrame {
 					int idj4 = database.DBManager.getIdJugador(j4);
 					// metodo para votar
 					database.DBManager.votar(id, idj1, idj2, idj3, idj4);
+					// actualiza el numero de votos de cada jugador
+					database.DBManager.actualizarVotos();
 				} catch (DBManagerException e1) {
 					e1.printStackTrace();
 				}

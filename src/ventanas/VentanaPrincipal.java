@@ -269,9 +269,9 @@ public class VentanaPrincipal extends JFrame {
 
 			}
 		});
-		
+
 		miVotar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VentanaVotar VV = new VentanaVotar();

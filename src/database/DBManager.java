@@ -10,8 +10,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Properties;
 
-import com.mysql.cj.protocol.Resultset;
-
 import clases.Equipo;
 
 public class DBManager {
@@ -29,6 +27,7 @@ public class DBManager {
 
 			Class.forName(CONTROLADOR); // esto para que sirve???
 			conn = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
+			System.out.println("CONEXION");
 		} catch (Exception e) {
 			throw new DBManagerException("Error conexion DBManager", e);
 		}
@@ -37,6 +36,7 @@ public class DBManager {
 	public static void disconnect() throws DBManagerException {
 		try {
 			conn.close();
+			System.out.println("DESCONEXION");
 		} catch (SQLException e) {
 			throw new DBManagerException("Error desconexion DBManager", e);
 		}
@@ -187,6 +187,8 @@ public class DBManager {
 			while (rs.next()) {
 				arr.add(rs.getString("correo_usuario"));
 			}
+			// tambien se podria ordenar en la consulta sql, usando "order by correo_usuario
+			// desc"
 			Collections.sort(arr, new Comparator<String>() {
 				@Override
 				public int compare(String s1, String s2) {
@@ -251,7 +253,7 @@ public class DBManager {
 		}
 	}
 
-	public static Integer getIdUsuario(String correo_usuario) throws DBManagerException {
+	public static int getIdUsuario(String correo_usuario) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
@@ -328,51 +330,182 @@ public class DBManager {
 		}
 	}
 
+	// CONTAR VOTOS
 	public static int contarJugadores() throws DBManagerException {
 		try {
-			connect();
-			stmt = conn.createStatement();
-			String sql1 = "select count(id_jugador) from jugador";
-			ResultSet rs = stmt.executeQuery(sql1);
+			// connect();
+			// stmt = conn.createStatement();
+			String sql = "select count(id_jugador) from jugador";
+			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
 
 			int id = rs.getInt("count(id_jugador)");
 
 			rs.close();
-			stmt.close();
-			disconnect();
+			// stmt.close();
+			// disconnect();
 			return id;
 		} catch (SQLException e) {
 			throw new DBManagerException("Error contarJugadores DBManager", e);
 		}
 	}
 
-	public static void contarVotosPorJugador(int i) throws DBManagerException {
+	public static int contarVotosPorJugador(int i, String jugadorVotado_usuarioVotacion) throws DBManagerException {
 		try {
-			connect();
-			stmt = conn.createStatement();
-			String sql1 = "select count(delanteroVotado_usuarioVotacion) from usuarioVotacion where delanteroVotado_usuarioVotacion = " + i ;
-			ResultSet rs = stmt.executeQuery(sql1);
+			// connect();
+			// stmt = conn.createStatement();
+			String sql = "select count(" + jugadorVotado_usuarioVotacion + ") from usuarioVotacion where "
+					+ jugadorVotado_usuarioVotacion + " = " + i;
+			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
 
-			int id = rs.getInt("count(delanteroVotado_usuarioVotacion)");
+			int v = rs.getInt("count(" + jugadorVotado_usuarioVotacion + ")");
 
-			System.out.println(sql1 + " -> " + id);
+			System.out.println(sql + " -> " + v);
 
-			rs.close();
-			stmt.close();
-			disconnect();
+			// rs.close();
+			// stmt.close();
+			// disconnect();
+			return v;
 		} catch (SQLException e) {
 			throw new DBManagerException("Error contarVotosPorJugador DBManager", e);
 		}
 	}
-	
+
 	public static void actualizarVotos() throws DBManagerException {
-		
-		for (int i = 0; i < contarJugadores(); i++) {
-			contarVotosPorJugador(i);
+		try {
+			connect();
+			stmt = conn.createStatement();
+
+			// Actualiza los votos de los delanteros
+			for (int i = 1; i < contarJugadores() + 1; i++) {
+				String sql = "update jugador set voto_jugador = '"
+						+ contarVotosPorJugador(i, "delanteroVotado_usuarioVotacion") + "' where id_jugador = '" + i
+						+ "' and posicion_jugador = 'Delantero';";
+				stmt.executeUpdate(sql);
+			}
+
+			// Actualiza los votos de los centrocampistas
+			for (int i = 1; i < contarJugadores() + 1; i++) {
+				String sql = "update jugador set voto_jugador = '"
+						+ contarVotosPorJugador(i, "centrocampistaVotado_usuarioVotacion") + "' where id_jugador = '"
+						+ i + "' and posicion_jugador = 'Centrocampista';";
+				stmt.executeUpdate(sql);
+			}
+
+			// Actualiza los votos de los defensas
+			for (int i = 1; i < contarJugadores() + 1; i++) {
+				String sql = "update jugador set voto_jugador = '"
+						+ contarVotosPorJugador(i, "defensaVotado_usuarioVotacion") + "' where id_jugador = '" + i
+						+ "' and posicion_jugador = 'Defensa';";
+				stmt.executeUpdate(sql);
+			}
+
+			// Actualiza los votos de los porteros
+			for (int i = 1; i < contarJugadores() + 1; i++) {
+				String sql = "update jugador set voto_jugador = '"
+						+ contarVotosPorJugador(i, "PorteroVotado_usuarioVotacion") + "' where id_jugador = '" + i
+						+ "' and posicion_jugador = 'Portero';";
+				stmt.executeUpdate(sql);
+			}
+
+			stmt.close();
+			disconnect();
+		} catch (SQLException e) {
+			throw new DBManagerException("Error actualizarVotos DBManager", e);
 		}
-	}	
+	}
+	// HASTA AQUI CONTAR VOTOS
+
+	// CREAR TEAM OF THE YEAR
+	public static int contarTOFT(int n) throws DBManagerException {
+		try {
+			stmt = conn.createStatement();
+
+			String sql = "select count(id_TeamOfTheYear) from TeamOfTheYear where id_TeamOfTheYear = '" + n + "';";
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			n = rs.getInt("count(id_TeamOfTheYear)");
+			System.out.println(sql + "->" + n);
+			return n;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
+
+	public static int getMasVotados(String posicion, int limit, int i) throws DBManagerException {
+		try {
+			int id = 0;
+
+			String sql1 = "select * from jugador where posicion_jugador = '" + posicion
+					+ "' order by voto_jugador desc, goles_jugador desc limit " + limit;
+			ResultSet rs = stmt.executeQuery(sql1);
+			System.out.println(sql1);
+
+			while (rs.next()) {
+				id = rs.getInt("id_jugador");
+				System.out.println("id del jugador: " + id);
+
+				if (contarTOFT(i) == 0) {
+					String sql2 = "insert into teamoftheyear values(" + i + ", " + id + ")";
+					stmt.executeUpdate(sql2);
+					System.out.println(sql2);
+				} else if (contarTOFT(i) == 1) {
+					String sql2 = "update teamoftheyear set jugador_teamoftheyear = " + id
+							+ " where id_teamoftheyear = " + i + "";
+					stmt.executeUpdate(sql2);
+					System.out.println(sql2);
+				}
+			}
+			System.out.println("return: " + id);
+			System.out.println("==============================================================================");
+			return id;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0; // ??? */
+	}
+
+	public static void getTOFT() throws DBManagerException {
+		ArrayList<String> posicion = new ArrayList<>();
+		posicion.add("Delantero");
+		posicion.add("Centrocampista");
+		posicion.add("Defensa");
+		posicion.add("Portero");
+
+		try {
+			connect();
+			stmt = conn.createStatement();
+
+			getMasVotados("Delantero", 1, 1);
+			getMasVotados("Delantero", 2, 2);
+			getMasVotados("Delantero", 3, 3);
+			getMasVotados("Centrocampista", 1, 4);
+			getMasVotados("Centrocampista", 2, 5);
+			getMasVotados("Centrocampista", 3, 6);
+			getMasVotados("Defensa", 1, 7);
+			getMasVotados("Defensa", 2, 8);
+			getMasVotados("Defensa", 3, 9);
+			getMasVotados("Defensa", 4, 10);
+			getMasVotados("Portero", 1, 11);
+
+			/*
+			 * for (int j = 1; j <= 11; j++) { for (int i = 0; i < posicion.size(); i++) {
+			 * if (i == 0 && 1 <= j && j <= 3) { getMasVotados(posicion.get(i), j, j); }
+			 * else if (i == 1 && 4 <= j && j <= 6) { getMasVotados(posicion.get(i), j, j);
+			 * } else if (i == 2 && 7 <= j && j <= 10) { getMasVotados(posicion.get(i), j,
+			 * j); } else if (i == 3 && 11 == j) { getMasVotados(posicion.get(i), j, j); } }
+			 * }
+			 */
+
+			stmt.close();
+			disconnect();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	// HASTA AQUI CREAR TEAM OF THE YEAR
 
 	// ???
 	public static void cambiarDatos(String consulta) throws DBManagerException {
@@ -412,6 +545,7 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		actualizarVotos();
+		// getMasVotados("Delantero", 1, 1);
+		getTOFT();
 	}
 }
