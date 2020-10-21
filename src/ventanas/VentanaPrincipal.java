@@ -284,6 +284,15 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 
+		miVerEquipo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaTeamOfTheYear VTOFT = new VentanaTeamOfTheYear();
+				VTOFT.setVisible(true);
+			}
+		});
+
 		this.addWindowListener(new WindowAdapter() {
 
 			@Override

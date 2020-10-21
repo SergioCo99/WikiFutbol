@@ -29,7 +29,7 @@ public class DBManager {
 			conn = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
 			System.out.println("CONEXION");
 		} catch (Exception e) {
-			throw new DBManagerException("Error conexion DBManager", e);
+			throw new DBManagerException("Error connect DBManager", e);
 		}
 	}
 
@@ -38,7 +38,7 @@ public class DBManager {
 			conn.close();
 			System.out.println("DESCONEXION");
 		} catch (SQLException e) {
-			throw new DBManagerException("Error desconexion DBManager", e);
+			throw new DBManagerException("Error disconnect DBManager", e);
 		}
 	}
 
@@ -272,7 +272,7 @@ public class DBManager {
 		}
 	}
 
-	public static Integer getIdJugador(String nombre_jugador) throws DBManagerException {
+	public static int getIdJugador(String nombre_jugador) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
@@ -407,18 +407,18 @@ public class DBManager {
 	// HASTA AQUI CONTAR VOTOS
 
 	// CREAR TEAM OF THE YEAR
-	public static int contarTOFT(int n) throws DBManagerException {
+	public static int countTOFT(int n) throws DBManagerException {
 		try {
 			stmt = conn.createStatement();
 			String sql = "select count(id_TeamOfTheYear) from TeamOfTheYear where id_TeamOfTheYear = '" + n + "';";
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
 			n = rs.getInt("count(id_TeamOfTheYear)");
+			rs.close();
 			return n;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DBManagerException("Error contarTOFT DBManager", e);
 		}
-		return n;
 	}
 
 	public static int getMasVotados(String posicion, int limit, int i) throws DBManagerException {
@@ -432,23 +432,24 @@ public class DBManager {
 			while (rs.next()) {
 				id = rs.getInt("id_jugador");
 
-				if (contarTOFT(i) == 0) {
+				if (countTOFT(i) == 0) {
 					String sql2 = "insert into teamoftheyear values(" + i + ", " + id + ")";
 					stmt.executeUpdate(sql2);
-				} else if (contarTOFT(i) == 1) {
+				} else if (countTOFT(i) == 1) {
 					String sql2 = "update teamoftheyear set jugador_teamoftheyear = " + id
 							+ " where id_teamoftheyear = " + i + "";
 					stmt.executeUpdate(sql2);
 				}
 			}
+			rs.close();
 			return id;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DBManagerException("Error getMasVotados DBManager", e);
 		}
-		return 0; // ??? */
 	}
 
-	public static void setTOFT() throws DBManagerException {
+	public static ArrayList<Integer> toft() throws DBManagerException {
+		// por ahora no hace nada, sirve como idea de poner lo de abajo mas elegante
 		ArrayList<String> posicion = new ArrayList<>();
 		posicion.add("Delantero");
 		posicion.add("Centrocampista");
@@ -459,31 +460,45 @@ public class DBManager {
 			connect();
 			stmt = conn.createStatement();
 
-			getMasVotados("Delantero", 1, 1);
-			getMasVotados("Delantero", 2, 2);
-			getMasVotados("Delantero", 3, 3);
-			getMasVotados("Centrocampista", 1, 4);
-			getMasVotados("Centrocampista", 2, 5);
-			getMasVotados("Centrocampista", 3, 6);
-			getMasVotados("Defensa", 1, 7);
-			getMasVotados("Defensa", 2, 8);
-			getMasVotados("Defensa", 3, 9);
-			getMasVotados("Defensa", 4, 10);
-			getMasVotados("Portero", 1, 11);
-
-			/*
-			 * for (int j = 1; j <= 11; j++) { for (int i = 0; i < posicion.size(); i++) {
-			 * if (i == 0 && 1 <= j && j <= 3) { getMasVotados(posicion.get(i), j, j); }
-			 * else if (i == 1 && 4 <= j && j <= 6) { getMasVotados(posicion.get(i), j, j);
-			 * } else if (i == 2 && 7 <= j && j <= 10) { getMasVotados(posicion.get(i), j,
-			 * j); } else if (i == 3 && 11 == j) { getMasVotados(posicion.get(i), j, j); } }
-			 * }
-			 */
+			ArrayList<Integer> arr = new ArrayList<Integer>();
+			arr.add(getMasVotados("Delantero", 1, 1));
+			arr.add(getMasVotados("Delantero", 2, 2));
+			arr.add(getMasVotados("Delantero", 3, 3));
+			arr.add(getMasVotados("Centrocampista", 1, 4));
+			arr.add(getMasVotados("Centrocampista", 2, 5));
+			arr.add(getMasVotados("Centrocampista", 3, 6));
+			arr.add(getMasVotados("Defensa", 1, 7));
+			arr.add(getMasVotados("Defensa", 2, 8));
+			arr.add(getMasVotados("Defensa", 3, 9));
+			arr.add(getMasVotados("Defensa", 4, 10));
+			arr.add(getMasVotados("Portero", 1, 11));
 
 			stmt.close();
 			disconnect();
+			return arr;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DBManagerException("Error setTOFT DBManager", e);
+		}
+	}
+
+	public static ArrayList<String> toftNombres() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql = "select jugador_TeamOfTheYear, nombre_jugador from jugador, teamoftheyear where id_jugador = jugador_TeamOfTheYear order by id_TeamOfTheYear";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			ArrayList<String> arr = new ArrayList<String>();
+			while (rs.next()) {
+				arr.add(rs.getString("nombre_jugador"));
+			}
+
+			rs.close();
+			stmt.close();
+			disconnect();
+			return arr;
+		} catch (SQLException e) {
+			throw new DBManagerException("Error todosLosCorreos DBManager", e);
 		}
 	}
 	// HASTA AQUI CREAR TEAM OF THE YEAR
@@ -526,6 +541,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		setTOFT();
+		toftNombres();
 	}
 }
