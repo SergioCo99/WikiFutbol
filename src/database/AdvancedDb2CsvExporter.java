@@ -26,7 +26,7 @@ public class AdvancedDb2CsvExporter {
 		String USUARIO = prop.getProperty("DB.USUARIO");
 		String CONTRASENA = prop.getProperty("DB.CONTRASENA");
 
-		Class.forName(CONTROLADOR); // esto para que sirve???
+		Class.forName(CONTROLADOR);
 		Connection connection = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
 
 		String csvFileName = getFileName(table.concat("_Export"));

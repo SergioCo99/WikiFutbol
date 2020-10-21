@@ -25,7 +25,7 @@ public class DBManager {
 			String USUARIO = prop.getProperty("DB.USUARIO");
 			String CONTRASENA = prop.getProperty("DB.CONTRASENA");
 
-			Class.forName(CONTROLADOR); // esto para que sirve???
+			Class.forName(CONTROLADOR);
 			conn = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
 			System.out.println("CONEXION");
 		} catch (Exception e) {
@@ -460,6 +460,7 @@ public class DBManager {
 			connect();
 			stmt = conn.createStatement();
 
+			//ademas de meter los datos en el array, ejecuta el metodo getMasVotados()
 			ArrayList<Integer> arr = new ArrayList<Integer>();
 			arr.add(getMasVotados("Delantero", 1, 1));
 			arr.add(getMasVotados("Delantero", 2, 2));
