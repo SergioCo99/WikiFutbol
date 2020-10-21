@@ -232,7 +232,7 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaAdmin1 VA1 = new VentanaAdmin1();
+				VentanaConfigurarOtraCuenta VA1 = new VentanaConfigurarOtraCuenta();
 				VA1.setVisible(true);
 			}
 		});

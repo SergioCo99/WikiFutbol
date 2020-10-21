@@ -26,7 +26,7 @@ public class VentanaCambiarDatos extends JFrame {
 		this.setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		btnAceptar = new JButton();
 		btnAceptar.setText("Aceptar");

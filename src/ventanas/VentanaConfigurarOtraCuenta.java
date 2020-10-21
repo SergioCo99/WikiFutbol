@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 
 import database.DBManagerException;
 
-public class VentanaAdmin1 extends JFrame {
+public class VentanaConfigurarOtraCuenta extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	JButton btnAceptar;
@@ -21,14 +21,14 @@ public class VentanaAdmin1 extends JFrame {
 	ButtonGroup bg1;
 	JLabel lblCorreo;
 
-	public VentanaAdmin1() {
+	public VentanaConfigurarOtraCuenta() {
 
 		this.setTitle("VentanaAdmin1");
 		this.setSize(600, 400);
 		this.setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		bg1 = new ButtonGroup();
 		cbHacerAdmin = new JCheckBox("Hacer admin");
@@ -87,7 +87,7 @@ public class VentanaAdmin1 extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		VentanaAdmin1 VA1 = new VentanaAdmin1();
+		VentanaConfigurarOtraCuenta VA1 = new VentanaConfigurarOtraCuenta();
 		VA1.setVisible(true);
 	}
 }
