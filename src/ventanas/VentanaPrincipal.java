@@ -89,7 +89,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public void init() {
-
+	
 		this.setTitle("WikiFutbol Principal");
 		this.setSize(1200, 700);
 		this.setLayout(null);
@@ -459,11 +459,15 @@ public class VentanaPrincipal extends JFrame {
 		botonVerEquipo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//Mientras, de prueba
-				VentanaEquipo v1 = new VentanaEquipo();
+				VentanaEquipo v1 = null;
+				try {
+					v1 = new VentanaEquipo(null, null);
+				} catch (DBManagerException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				v1.setVisible(true);
 				dispose();
-				
 				
 				
 				

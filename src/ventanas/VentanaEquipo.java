@@ -65,8 +65,10 @@ public class VentanaEquipo extends JFrame {
 	JMenu menuTeamOfTheYear;
 	JMenuItem miVotar, miVerEquipo;
 
-
-	public void VentanaEquipo(Equipo equipo, Usuario u) {
+	public VentanaEquipo(Equipo equipo, Usuario u) throws  DBManagerException {
+		init(equipo, u);
+	}
+	public void init(Equipo equipo, Usuario u) {
 		usuario = u;
 		this.setTitle("WikiFutbol Equipo");
 		this.setSize(1200, 700);
@@ -318,7 +320,8 @@ public class VentanaEquipo extends JFrame {
 		
 		nombreEquipo = equipo.getNombre();
 		
-		JLabel lblEquipo = new JLabel(nombreEquipo);
+		//JLabel lblEquipo = new JLabel(nombreEquipo);
+		JLabel lblEquipo = new JLabel("'NombreEquipo'");
 		lblEquipo.setBounds(80, 20, 300, 29);
 		lblEquipo.setFont(new Font("Tahoma", Font.BOLD, 24));
 		navBarPanel.add(lblEquipo);
@@ -331,15 +334,16 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.setLayout(null);
 		bookPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		bookPanel.setBounds(197, 62, 800, 580);
-		bookPanel.setBackground(Color.getHSBColor(0.56f, 0.4f, 0.8f));
+		bookPanel.setBackground(Color.getHSBColor(1.42f, 0.68f, 0.75f));
 		add(bookPanel);
 		
 		nombreEquipo = equipo.getNombre();
 		
 		//Cabecera
-		final JLabel cabecera = new JLabel("Información sobre " + nombreEquipo + ":");
+		//final JLabel cabecera = new JLabel("Información sobre " + nombreEquipo + ":");
+		final JLabel cabecera = new JLabel("Información sobre 'NombreEquipo':");
 		cabecera.setBounds(200, 11, 500, 50);
-		Font fuente2 = new Font("Book Antiqua", 3, 20);
+		Font fuente2 = new Font("Tahoma", 3, 20);
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));
 		cabecera.setForeground(Color.BLACK);
 		bookPanel.add(cabecera);
@@ -352,7 +356,8 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(label1);
 
 		// ResultadoNombreEquipo
-		final JLabel label11 = new JLabel(nombreEquipo);
+		//final JLabel label11 = new JLabel(nombreEquipo);
+		final JLabel label11 = new JLabel("Nombre Prueba");
 		label11.setBounds(120, 110, 400, 50);
 		label11.setFont(fuente2);
 		label11.setForeground(Color.BLACK);
@@ -366,52 +371,57 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(label2);
 		
 		// ResultadoNombreEquipo
-		String ciudadEquipo = equipo.getCiudad();
+		//String ciudadEquipo = equipo.getCiudad();
+		String ciudadEquipo = "Ciudad Prueba";
 		final JLabel label15 = new JLabel(ciudadEquipo);
-		label15.setBounds(120, 110, 400, 50);
+		label15.setBounds(120, 175, 400, 50);
 		label15.setFont(fuente2);
 		label15.setForeground(Color.BLACK);
 		bookPanel.add(label15);
 		
 		// AnyoCreacion
 		final JLabel label3 = new JLabel("A\u00f1o de creaci\u00f3n: ");
-		label3.setBounds(20, 305, 275, 50);
+		label3.setBounds(20, 240, 275, 50);
 		label3.setFont(fuente2);
 		label3.setForeground(Color.BLACK);
 		bookPanel.add(label3);
 				
 		// ResultadoAnyoCreacion
-		String anyoCreacion = Integer.toString(equipo.getAnyoCreacion());
+		//String anyoCreacion = Integer.toString(equipo.getAnyoCreacion());
+		//final JLabel label33 = new JLabel(anyoCreacion);
+		String anyoCreacion = "2020";
 		final JLabel label33 = new JLabel(anyoCreacion);
-		label33.setBounds(200, 305, 400, 50);
+		label33.setBounds(200, 240, 400, 50);
 		label33.setFont(fuente2);
 		label33.setForeground(Color.BLACK);
 		bookPanel.add(label33);
 		
 		// Palmares
 		final JLabel label4 = new JLabel("Palmares: ");
-		label4.setBounds(20, 370, 275, 50);
+		label4.setBounds(20, 305, 275, 50);
 		label4.setFont(fuente2);
 		label4.setForeground(Color.BLACK);
 		bookPanel.add(label4);
 				
 		// Resultado Palmares
-		String palmares = equipo.getPalmares();
+		//String palmares = equipo.getPalmares();
+		String palmares = "Palmares Prueba";
 		final JLabel label44 = new JLabel(palmares);
-		label44.setBounds(200, 370, 400, 50);
+		label44.setBounds(200, 305, 400, 50);
 		label44.setFont(fuente2);
 		label44.setForeground(Color.BLACK);
 		bookPanel.add(label44);
 		
 		// NombreEntrenador
 		final JLabel labelEntrenador = new JLabel("Entrenador: ");
-		labelEntrenador.setBounds(20, 435, 150, 50);
+		labelEntrenador.setBounds(20, 370, 150, 50);
 		labelEntrenador.setFont(fuente2);
 		labelEntrenador.setForeground(Color.BLACK);
 		bookPanel.add(labelEntrenador);
 		
 		// Resultado Entrenador
-		String entrenador = equipo.getEntrenador();
+		//String entrenador = equipo.getEntrenador();
+		String entrenador = "Entrenador Prueba";
 		final JLabel label45 = new JLabel(entrenador);
 		label45.setBounds(200, 370, 400, 50);
 		label45.setFont(fuente2);
@@ -429,7 +439,7 @@ public class VentanaEquipo extends JFrame {
 		
 		Usuario u = new Usuario();
 		Equipo e = new Equipo(0, "", "", "", 3, "", "");
-		VentanaEquipo v = new VentanaEquipo();
+		VentanaEquipo v = new VentanaEquipo(e, u);
 		v.setVisible(true);
 		
 	
