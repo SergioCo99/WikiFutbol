@@ -2,7 +2,6 @@ package ventanas;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GraphicsConfiguration;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -78,10 +77,10 @@ public class VentanaPrincipal extends JFrame {
 	private JRadioButton rdbtnNumLigas;
 	private ArrayList<Equipo> arrayResultado = new ArrayList<Equipo>();
 
-	//Boton acceder a equipo
+	// Boton acceder a equipo
 	private JLabel verEquipo;
 	private JButton botonVerEquipo;
-	
+
 	public VentanaPrincipal(Usuario u) throws DBManagerException {
 		arrayEquipos = database1.getEquipos();
 		usuario = u;
@@ -89,7 +88,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public void init() {
-	
+
 		this.setTitle("WikiFutbol Principal");
 		this.setSize(1200, 700);
 		this.setLayout(null);
@@ -443,19 +442,19 @@ public class VentanaPrincipal extends JFrame {
 		JLabel verEquipo = new JLabel("Ver equipo:");
 		verEquipo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		verEquipo.setBounds(1015, 400, 180, 30);
-		verEquipo.setForeground(new Color(0,0,0));
+		verEquipo.setForeground(new Color(0, 0, 0));
 		verEquipo.setFocusable(false);
 		add(verEquipo);
-		
+
 		JButton botonVerEquipo = new JButton("Entrar");
 		botonVerEquipo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		botonVerEquipo.setBounds(1005, 440, 170, 30);
 		botonVerEquipo.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		botonVerEquipo.setContentAreaFilled(false);
-		botonVerEquipo.setForeground(new Color(0,0,0));
+		botonVerEquipo.setForeground(new Color(0, 0, 0));
 		botonVerEquipo.setFocusable(false);
 		add(botonVerEquipo);
-		
+
 		botonVerEquipo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -468,17 +467,14 @@ public class VentanaPrincipal extends JFrame {
 				}
 				v1.setVisible(true);
 				dispose();
-				
-				
-				
-				/*try {
-					VentanaEquipo ve = new VentanaEquipo(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
-					ve.setVisible(true);
-					dispose();
-				} catch (Exception e2) {
-					JOptionPane.showMessageDialog(frame, "Seleccione un equipo");
-				}*/
-				
+
+				/*
+				 * try { VentanaEquipo ve = new
+				 * VentanaEquipo(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
+				 * ve.setVisible(true); dispose(); } catch (Exception e2) {
+				 * JOptionPane.showMessageDialog(frame, "Seleccione un equipo"); }
+				 */
+
 			}
 		});
 	}

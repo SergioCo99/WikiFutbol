@@ -333,8 +333,6 @@ public class DBManager {
 	// CONTAR VOTOS
 	public static int contarJugadores() throws DBManagerException {
 		try {
-			// connect();
-			// stmt = conn.createStatement();
 			String sql = "select count(id_jugador) from jugador";
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
@@ -342,8 +340,6 @@ public class DBManager {
 			int id = rs.getInt("count(id_jugador)");
 
 			rs.close();
-			// stmt.close();
-			// disconnect();
 			return id;
 		} catch (SQLException e) {
 			throw new DBManagerException("Error contarJugadores DBManager", e);
@@ -352,8 +348,6 @@ public class DBManager {
 
 	public static int contarVotosPorJugador(int i, String jugadorVotado_usuarioVotacion) throws DBManagerException {
 		try {
-			// connect();
-			// stmt = conn.createStatement();
 			String sql = "select count(" + jugadorVotado_usuarioVotacion + ") from usuarioVotacion where "
 					+ jugadorVotado_usuarioVotacion + " = " + i;
 			ResultSet rs = stmt.executeQuery(sql);
@@ -361,11 +355,6 @@ public class DBManager {
 
 			int v = rs.getInt("count(" + jugadorVotado_usuarioVotacion + ")");
 
-			System.out.println(sql + " -> " + v);
-
-			// rs.close();
-			// stmt.close();
-			// disconnect();
 			return v;
 		} catch (SQLException e) {
 			throw new DBManagerException("Error contarVotosPorJugador DBManager", e);
@@ -421,12 +410,10 @@ public class DBManager {
 	public static int contarTOFT(int n) throws DBManagerException {
 		try {
 			stmt = conn.createStatement();
-
 			String sql = "select count(id_TeamOfTheYear) from TeamOfTheYear where id_TeamOfTheYear = '" + n + "';";
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
 			n = rs.getInt("count(id_TeamOfTheYear)");
-			System.out.println(sql + "->" + n);
 			return n;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -441,25 +428,19 @@ public class DBManager {
 			String sql1 = "select * from jugador where posicion_jugador = '" + posicion
 					+ "' order by voto_jugador desc, goles_jugador desc limit " + limit;
 			ResultSet rs = stmt.executeQuery(sql1);
-			System.out.println(sql1);
 
 			while (rs.next()) {
 				id = rs.getInt("id_jugador");
-				System.out.println("id del jugador: " + id);
 
 				if (contarTOFT(i) == 0) {
 					String sql2 = "insert into teamoftheyear values(" + i + ", " + id + ")";
 					stmt.executeUpdate(sql2);
-					System.out.println(sql2);
 				} else if (contarTOFT(i) == 1) {
 					String sql2 = "update teamoftheyear set jugador_teamoftheyear = " + id
 							+ " where id_teamoftheyear = " + i + "";
 					stmt.executeUpdate(sql2);
-					System.out.println(sql2);
 				}
 			}
-			System.out.println("return: " + id);
-			System.out.println("==============================================================================");
 			return id;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -467,7 +448,7 @@ public class DBManager {
 		return 0; // ??? */
 	}
 
-	public static void getTOFT() throws DBManagerException {
+	public static void setTOFT() throws DBManagerException {
 		ArrayList<String> posicion = new ArrayList<>();
 		posicion.add("Delantero");
 		posicion.add("Centrocampista");
@@ -545,7 +526,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		// getMasVotados("Delantero", 1, 1);
-		getTOFT();
+		setTOFT();
 	}
 }

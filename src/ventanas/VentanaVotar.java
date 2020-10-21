@@ -110,6 +110,8 @@ public class VentanaVotar extends JFrame {
 					database.DBManager.votar(id, idj1, idj2, idj3, idj4);
 					// actualiza el numero de votos de cada jugador
 					database.DBManager.actualizarVotos();
+					// actualiza el teamoftheyear
+					database.DBManager.setTOFT();
 				} catch (DBManagerException e1) {
 					e1.printStackTrace();
 				}
