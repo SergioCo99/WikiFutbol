@@ -288,6 +288,12 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// actualiza el teamoftheyear
+				try {
+					database.DBManager.toft();
+				} catch (DBManagerException e1) {
+					e1.printStackTrace();
+				}
 				VentanaTeamOfTheYear VTOFT = new VentanaTeamOfTheYear();
 				VTOFT.setVisible(true);
 			}
@@ -468,10 +474,13 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				try { VentanaEquipo ve = new VentanaEquipo(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
-				ve.setVisible(true); dispose(); } catch (Exception e2) {
-				JOptionPane.showMessageDialog(frame, "Seleccione un equipo"); }
-				 
+				try {
+					VentanaEquipo ve = new VentanaEquipo(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
+					ve.setVisible(true);
+					dispose();
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(frame, "Seleccione un equipo");
+				}
 
 			}
 		});

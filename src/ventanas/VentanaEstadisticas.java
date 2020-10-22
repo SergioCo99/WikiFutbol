@@ -1,9 +1,5 @@
 package ventanas;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -14,7 +10,6 @@ import feedback.RWException;
 public class VentanaEstadisticas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btn;
 	JTable table;
 
 	public VentanaEstadisticas() {
@@ -25,12 +20,6 @@ public class VentanaEstadisticas extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-		btn = new JButton();
-		btn.setText("btn");
-		btn.setBounds(240, 250, 120, 30);
-
-		add(btn);
 
 		// tabla
 		String[] columns = { "Code", "Info" };
@@ -76,15 +65,6 @@ public class VentanaEstadisticas extends JFrame {
 
 		add(table);
 		// hasta aqui tabla
-
-		btn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// Haremos algo con esto??
-				System.out.println("No hace na, Haremos algo con esto??");
-			}
-		});
 
 	}
 

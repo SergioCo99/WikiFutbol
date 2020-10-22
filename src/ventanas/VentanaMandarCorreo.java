@@ -123,6 +123,9 @@ public class VentanaMandarCorreo extends JFrame {
 							e1.printStackTrace();
 						}
 					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Rellena todo correctamente.", "Mandar correo",
+							JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});

@@ -1,9 +1,5 @@
 package ventanas;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -12,7 +8,6 @@ import database.DBManagerException;
 public class VentanaTeamOfTheYear extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btn;
 	JLabel lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9, lbl10, lbl11;
 
 	public VentanaTeamOfTheYear() {
@@ -23,10 +18,6 @@ public class VentanaTeamOfTheYear extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-		btn = new JButton();
-		btn.setText("btn");
-		btn.setBounds(240, 250, 120, 30);
 
 		String[] array = null;
 
@@ -84,7 +75,6 @@ public class VentanaTeamOfTheYear extends JFrame {
 		lbl11.setText(array[10]);
 		lbl11.setBounds(250, 200, 200, 20);
 
-		add(btn);
 		add(lbl1);
 		add(lbl2);
 		add(lbl3);
@@ -96,14 +86,6 @@ public class VentanaTeamOfTheYear extends JFrame {
 		add(lbl9);
 		add(lbl10);
 		add(lbl11);
-
-		btn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("btn");
-			}
-		});
 
 	}
 

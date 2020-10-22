@@ -40,7 +40,7 @@ public class VentanaDescargar extends JFrame {
 			Properties prop = utils.PropertiesMetodos.loadPropertiesFile();
 
 			String[] tablasProhibidas = null; // no dejamos descargar estas tablas por seguridad
-			// tablasProhibidas = { "usuario" };
+			// tablasProhibidas = { "usuario" }; // se escirben en el jdbc.properties
 			tablasProhibidas = prop.getProperty("DB.TABLASEXCLUIDAS").split(",");
 
 			DefaultListModel<Object> listModel = new DefaultListModel<Object>();

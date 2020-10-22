@@ -12,7 +12,7 @@ import database.DBManagerException;
 public class VentanaVotar extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btn;
+	JButton btnVotar;
 	JComboBox<String> jcbDelantero, jcbCentrocampista, jcbDefensa, jcbPortero;
 
 	public VentanaVotar() {
@@ -77,17 +77,17 @@ public class VentanaVotar extends JFrame {
 		utils.JComboBoxAutoCompletion.enable(jcbPortero);
 		jcbPortero.setBounds(300, 200, 200, 30);
 
-		btn = new JButton();
-		btn.setText("btn");
-		btn.setBounds(240, 325, 120, 30);
+		btnVotar = new JButton();
+		btnVotar.setText("Votar");
+		btnVotar.setBounds(240, 325, 120, 30);
 
 		add(jcbDelantero);
 		add(jcbCentrocampista);
 		add(jcbDefensa);
 		add(jcbPortero);
-		add(btn);
+		add(btnVotar);
 
-		btn.addActionListener(new ActionListener() {
+		btnVotar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -110,8 +110,6 @@ public class VentanaVotar extends JFrame {
 					database.DBManager.votar(id, idj1, idj2, idj3, idj4);
 					// actualiza el numero de votos de cada jugador
 					database.DBManager.actualizarVotos();
-					// actualiza el teamoftheyear
-					database.DBManager.toft();
 				} catch (DBManagerException e1) {
 					e1.printStackTrace();
 				}

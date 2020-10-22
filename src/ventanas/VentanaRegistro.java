@@ -1,5 +1,6 @@
 package ventanas;
 
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -95,30 +96,42 @@ public class VentanaRegistro extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (txtUsuario.getText().equals("") || txtPassword.getText().equals("")
-						|| txtPasswordRep.getText().equals("") || txtCorreo.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Rellena todos los campos");
-				} else {
-					if (txtPassword.getText().equals(txtPasswordRep.getText())) {
-						try {
-							database.DBManager.registrarUsuario(txtUsuario.getText(), txtCorreo.getText(),
-									txtPassword.getText(), formatter.format(calendar.getDate()));
-						} catch (DBManagerException e1) {
-							e1.printStackTrace();
-						}
-						utils.PropertiesMetodos.setProp(txtCorreo.getText(), txtPassword.getText());
-
-						dispose();
-						VentanaPrincipal VP = null;
-						try {
-							VP = new VentanaPrincipal(usuario);
-						} catch (DBManagerException e1) {
-							e1.printStackTrace();
-						}
-						VP.setVisible(true);
+				try {
+					if (txtUsuario.getText().equals("") || txtPassword.getText().equals("")
+							|| txtPasswordRep.getText().equals("") || txtCorreo.getText().equals("")
+							|| txtUsuario.getText().equals(null) || txtPassword.getText().equals(null)
+							|| txtPasswordRep.getText().equals(null) || txtCorreo.getText().equals(null)
+							|| !txtUsuario.getText()
+									.matches("^(?=.{1,45}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$")
+							|| !txtCorreo.getText().matches(
+									"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+							|| database.DBManager.existeCorreo(txtCorreo.getText()) == true) {
+						JOptionPane.showMessageDialog(null, "Rellena todos los campos adecuadamente.");
 					} else {
-						JOptionPane.showMessageDialog(null, "Las contrase\u00f1as no coinciden");
+
+						if (txtPassword.getText().equals(txtPasswordRep.getText())) {
+							try {
+								database.DBManager.registrarUsuario(txtUsuario.getText(), txtCorreo.getText(),
+										txtPassword.getText(), formatter.format(calendar.getDate()));
+							} catch (DBManagerException e1) {
+								e1.printStackTrace();
+							}
+							utils.PropertiesMetodos.setProp(txtCorreo.getText(), txtPassword.getText());
+
+							dispose();
+							VentanaPrincipal VP = null;
+							try {
+								VP = new VentanaPrincipal(usuario);
+							} catch (DBManagerException e1) {
+								e1.printStackTrace();
+							}
+							VP.setVisible(true);
+						} else {
+							JOptionPane.showMessageDialog(null, "Las contrasenas no coinciden");
+						}
 					}
+				} catch (HeadlessException | DBManagerException e1) {
+					e1.printStackTrace();
 				}
 			}
 		});

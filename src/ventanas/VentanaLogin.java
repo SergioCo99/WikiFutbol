@@ -175,6 +175,8 @@ public class VentanaLogin extends JFrame {
 					}
 				} catch (DBManagerException e1) {
 					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos.", "Alert",
+							JOptionPane.WARNING_MESSAGE);
 				}
 
 			}
