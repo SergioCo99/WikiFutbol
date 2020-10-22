@@ -49,6 +49,7 @@ public class VentanaEstadisticas extends JFrame {
 			}
 			for (int z = 0; z < data.length; z++) {
 				for (int y = 0; y < columns.length; y++) {
+					// Imprime las estadisticas en la consola
 					System.out.println(data[z][y]);
 				}
 			}

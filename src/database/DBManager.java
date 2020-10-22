@@ -51,7 +51,6 @@ public class DBManager {
 			rs.next();
 
 			String mail = rs.getString("correo_usuario");
-			System.out.println(mail);
 			if (mail.equals(correo_usuario)) {
 				return true;
 			} else if (!mail.equals(correo_usuario)) {

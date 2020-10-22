@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -211,7 +211,6 @@ public class VentanaPrincipal extends JFrame {
 				int result = JOptionPane.showConfirmDialog(null, "Estas segur@? Es irreversible.", "Eliminar cuenta",
 						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 				if (result == JOptionPane.YES_OPTION) {
-					System.out.println("YES");
 					try {
 						database.DBManager.eliminarUsuario(utils.PropertiesMetodos.getProp1());
 					} catch (DBManagerException e) {
@@ -219,10 +218,6 @@ public class VentanaPrincipal extends JFrame {
 					}
 					utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
 					dispose();
-				} else if (result == JOptionPane.NO_OPTION) {
-					System.out.println("NO");
-				} else {
-					System.out.println("NONE");
 				}
 			}
 
@@ -261,7 +256,6 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaFeedback VF = new VentanaFeedback();
 				VF.setVisible(true);
-
 			}
 		});
 
@@ -271,7 +265,6 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaEstadisticas VE = new VentanaEstadisticas();
 				VE.setVisible(true);
-
 			}
 		});
 
@@ -326,27 +319,7 @@ public class VentanaPrincipal extends JFrame {
 
 		final JLabelGraficoAjustado lupa = new JLabelGraficoAjustado("resources/lupa.png", 20, 20);
 		lupa.setLocation(870, 25);
-		lupa.addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
+		lupa.addMouseListener(new MouseAdapter() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -473,7 +446,6 @@ public class VentanaPrincipal extends JFrame {
 		botonVerEquipo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				try {
 					VentanaEquipo ve = new VentanaEquipo(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
 					ve.setVisible(true);
@@ -481,9 +453,9 @@ public class VentanaPrincipal extends JFrame {
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(frame, "Seleccione un equipo");
 				}
-
 			}
 		});
+
 	}
 
 	// este main es para pruebas, habria que quitarlo
