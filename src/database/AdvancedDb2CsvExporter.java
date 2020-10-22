@@ -51,8 +51,9 @@ public class AdvancedDb2CsvExporter {
 					Object valueObject = result.getObject(i);
 					String valueString = "";
 
-					if (valueObject != null)
+					if (valueObject != null) {
 						valueString = valueObject.toString();
+					}
 
 					if (valueObject instanceof String) {
 						valueString = "\"" + escapeDoubleQuotes(valueString) + "\"";

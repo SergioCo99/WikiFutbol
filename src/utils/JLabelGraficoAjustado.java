@@ -33,7 +33,7 @@ public class JLabelGraficoAjustado extends JLabel {
 	 * Crea un nuevo JLabel grafico.<br>
 	 * Si no existe el fichero de imagen, se crea un rectangulo blanco con borde
 	 * rojo
-	 * 
+	 *
 	 * @param nombreImagenObjeto Nombre fichero donde esta la imagen del objeto.
 	 *                           Puede ser tambien un nombre de recurso desde el
 	 *                           paquete de esta clase.
@@ -49,10 +49,12 @@ public class JLabelGraficoAjustado extends JLabel {
 
 	@Override
 	public void setSize(int anchura, int altura) {
-		if (anchura <= 0 && imagenObjeto != null)
+		if ((anchura <= 0) && (imagenObjeto != null)) {
 			anchura = imagenObjeto.getWidth();
-		if (altura <= 0 && imagenObjeto != null)
+		}
+		if ((altura <= 0) && (imagenObjeto != null)) {
 			altura = imagenObjeto.getHeight();
+		}
 		anchuraObjeto = anchura;
 		alturaObjeto = altura;
 		super.setSize(anchura, altura);
@@ -61,7 +63,7 @@ public class JLabelGraficoAjustado extends JLabel {
 
 	/**
 	 * Cambia la imagen del objeto
-	 * 
+	 *
 	 * @param nomImagenObjeto Nombre fichero donde est� la imagen del objeto.
 	 *                        Puede ser tambi�n un nombre de recurso desde el
 	 *                        paquete de esta clase.
@@ -96,7 +98,7 @@ public class JLabelGraficoAjustado extends JLabel {
 
 	/**
 	 * Devuelve la anchura del rect�ngulo gr�fico del objeto
-	 * 
+	 *
 	 * @return Anchura
 	 */
 	public int getAnchuraObjeto() {
@@ -105,7 +107,7 @@ public class JLabelGraficoAjustado extends JLabel {
 
 	/**
 	 * Devuelve la altura del rect�ngulo gr�fico del objeto
-	 * 
+	 *
 	 * @return Altura
 	 */
 	public int getAlturaObjeto() {
@@ -114,7 +116,7 @@ public class JLabelGraficoAjustado extends JLabel {
 
 	/**
 	 * Devuelve la rotaci�n del objeto
-	 * 
+	 *
 	 * @return Rotaci�n actual del objeto en radianes
 	 */
 	public double getRotacion() {
@@ -123,7 +125,7 @@ public class JLabelGraficoAjustado extends JLabel {
 
 	/**
 	 * Modifica la rotaci�n del objeto
-	 * 
+	 *
 	 * @param rotacion Nueva rotaci�n del objeto (en radianes)
 	 */
 	public void setRotacion(double rotacion) {
@@ -133,7 +135,7 @@ public class JLabelGraficoAjustado extends JLabel {
 
 	/**
 	 * Devuelve la opacidad del objeto
-	 * 
+	 *
 	 * @return Opacidad del objeto (0.0f transparente a 1.0f opaco)
 	 */
 	public float getOpacidad() {
@@ -142,19 +144,20 @@ public class JLabelGraficoAjustado extends JLabel {
 
 	/**
 	 * Modifica la opacidad del objeto
-	 * 
+	 *
 	 * @param opacidad Opacidad del objeto (0.0f transparente a 1.0f opaco)
 	 */
 	public void setOpacidad(float opacidad) {
-		if (opacidad < 0.0f || opacidad > 1.0f)
+		if ((opacidad < 0.0f) || (opacidad > 1.0f)) {
 			return; // No se cambia si el valor es inv�lido
+		}
 		this.opacidad = opacidad;
 		repaint(); // Si no repintamos aqu� Swing no sabe que ha cambiado el dibujo
 	}
 
 	/**
 	 * Actualiza la posici�n del objeto
-	 * 
+	 *
 	 * @param x Coordenada x (doble) - se redondea al p�xel m�s cercano
 	 * @param y Coordenada y (doble) - se redondea al p�xel m�s cercano
 	 */
@@ -208,7 +211,7 @@ public class JLabelGraficoAjustado extends JLabel {
 		} catch (Exception e) {
 		} // Espera 5 segundos
 		for (int rot = 0; rot <= 200; rot++) {
-			label.setRotacion(rot * Math.PI / 100);
+			label.setRotacion((rot * Math.PI) / 100);
 			try {
 				Thread.sleep(20);
 			} catch (Exception e) {

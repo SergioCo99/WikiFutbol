@@ -6,6 +6,11 @@ import database.DBManagerException;
 
 public class VentanaEquipoPrueba extends JFrame {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public VentanaEquipoPrueba() throws DBManagerException {
 		init();
 	}

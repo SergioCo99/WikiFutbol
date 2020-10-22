@@ -390,7 +390,7 @@ public class DBManager {
 			stmt = conn.createStatement();
 
 			// Actualiza los votos de los delanteros
-			for (int i = 1; i < contarJugadores() + 1; i++) {
+			for (int i = 1; i < (contarJugadores() + 1); i++) {
 				String sql = "update jugador set voto_jugador = '"
 						+ contarVotosPorJugador(i, "delanteroVotado_usuarioVotacion") + "' where id_jugador = '" + i
 						+ "' and posicion_jugador = 'Delantero';";
@@ -398,7 +398,7 @@ public class DBManager {
 			}
 
 			// Actualiza los votos de los centrocampistas
-			for (int i = 1; i < contarJugadores() + 1; i++) {
+			for (int i = 1; i < (contarJugadores() + 1); i++) {
 				String sql = "update jugador set voto_jugador = '"
 						+ contarVotosPorJugador(i, "centrocampistaVotado_usuarioVotacion") + "' where id_jugador = '"
 						+ i + "' and posicion_jugador = 'Centrocampista';";
@@ -406,7 +406,7 @@ public class DBManager {
 			}
 
 			// Actualiza los votos de los defensas
-			for (int i = 1; i < contarJugadores() + 1; i++) {
+			for (int i = 1; i < (contarJugadores() + 1); i++) {
 				String sql = "update jugador set voto_jugador = '"
 						+ contarVotosPorJugador(i, "defensaVotado_usuarioVotacion") + "' where id_jugador = '" + i
 						+ "' and posicion_jugador = 'Defensa';";
@@ -414,7 +414,7 @@ public class DBManager {
 			}
 
 			// Actualiza los votos de los porteros
-			for (int i = 1; i < contarJugadores() + 1; i++) {
+			for (int i = 1; i < (contarJugadores() + 1); i++) {
 				String sql = "update jugador set voto_jugador = '"
 						+ contarVotosPorJugador(i, "PorteroVotado_usuarioVotacion") + "' where id_jugador = '" + i
 						+ "' and posicion_jugador = 'Portero';";

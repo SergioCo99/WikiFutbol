@@ -105,7 +105,7 @@ public class VentanaRegistro extends JFrame {
 									.matches("^(?=.{1,45}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$")
 							|| !txtCorreo.getText().matches(
 									"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
-							|| database.DBManager.existeCorreo(txtCorreo.getText()) == true) {
+							|| (database.DBManager.existeCorreo(txtCorreo.getText()) == true)) {
 						JOptionPane.showMessageDialog(null, "Rellena todos los campos adecuadamente.");
 					} else {
 

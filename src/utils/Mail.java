@@ -57,6 +57,7 @@ public class Mail {
 		// create Authenticator object to pass in Session.getInstance argument
 		Authenticator auth = new Authenticator() {
 			// override the getPasswordAuthentication method
+			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(fromEmail, password);
 			}

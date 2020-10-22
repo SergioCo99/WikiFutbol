@@ -75,18 +75,18 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					if (!jcbCorreos.getSelectedItem().toString().equals("a")) { // PARA QUE "a" NO SE PUEDA BORRAR !!!
-						if (cbHacerAdmin.isSelected() == true
-								&& cbQuitarAdmin.isSelected() == false & cbBorrarCuenta.isSelected() == false) {
+						if ((cbHacerAdmin.isSelected() == true)
+								&& ((cbQuitarAdmin.isSelected() == false) & (cbBorrarCuenta.isSelected() == false))) {
 							database.DBManager.cambiarAdmin(jcbCorreos.getSelectedItem().toString(), 1);
 							JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Configurar otra cuenta",
 									JOptionPane.INFORMATION_MESSAGE);
-						} else if (cbHacerAdmin.isSelected() == false
-								&& cbQuitarAdmin.isSelected() == true & cbBorrarCuenta.isSelected() == false) {
+						} else if ((cbHacerAdmin.isSelected() == false)
+								&& ((cbQuitarAdmin.isSelected() == true) & (cbBorrarCuenta.isSelected() == false))) {
 							database.DBManager.cambiarAdmin(jcbCorreos.getSelectedItem().toString(), 0);
 							JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Configurar otra cuenta",
 									JOptionPane.INFORMATION_MESSAGE);
-						} else if (cbHacerAdmin.isSelected() == false
-								&& cbQuitarAdmin.isSelected() == false & cbBorrarCuenta.isSelected() == true) {
+						} else if ((cbHacerAdmin.isSelected() == false)
+								&& ((cbQuitarAdmin.isSelected() == false) & (cbBorrarCuenta.isSelected() == true))) {
 							database.DBManager.eliminarUsuario(jcbCorreos.getSelectedItem().toString());
 							JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Configurar otra cuenta",
 									JOptionPane.INFORMATION_MESSAGE);

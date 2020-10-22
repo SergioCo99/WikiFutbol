@@ -163,7 +163,7 @@ public class VentanaFeedback extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				lblError.setVisible(false);
 				if (!bgEstrellas.isSelected(null) && !bgRecomendacion.isSelected(null) && !texto.getText().equals("")
-						&& texto.getText().length() <= maxChars) {
+						&& (texto.getText().length() <= maxChars)) {
 					lblError.setVisible(false);
 					mainPackage.MainWikiFutbol.crearFicheroLog();
 					mainPackage.MainWikiFutbol.log
@@ -180,7 +180,7 @@ public class VentanaFeedback extends JFrame {
 					JOptionPane.showMessageDialog(null, "Mandado correctamente.", "Dar Feedback",
 							JOptionPane.INFORMATION_MESSAGE);
 				} else if (bgEstrellas.isSelected(null) || bgRecomendacion.isSelected(null)
-						|| texto.getText().equals("") || texto.getText().length() > maxChars) {
+						|| texto.getText().equals("") || (texto.getText().length() > maxChars)) {
 					lblError.setVisible(true);
 				}
 			}

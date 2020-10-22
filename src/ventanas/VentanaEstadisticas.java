@@ -32,7 +32,7 @@ public class VentanaEstadisticas extends JFrame {
 				if (i == 0) {
 					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i)) + " /5";
 					// fila nº 2
-				} else if (i >= 1 && i <= 2) {
+				} else if ((i >= 1) && (i <= 2)) {
 					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i)) + " %";
 				} else if (i == 3) {
 					// fila nº 3

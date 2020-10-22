@@ -151,7 +151,7 @@ public class VentanaPrincipal extends JFrame {
 				String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contraseña",
 						"Cambiar contraseña", JOptionPane.WARNING_MESSAGE);
 
-				if (nuevaContrasena != null && !nuevaContrasena.equals("")) {
+				if ((nuevaContrasena != null) && !nuevaContrasena.equals("")) {
 					try {
 						database.DBManager.cambiarContrasena(utils.PropertiesMetodos.getProp1(), nuevaContrasena);
 					} catch (DBManagerException e1) {
