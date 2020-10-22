@@ -7,7 +7,7 @@ public class TeamOfTheYear_view {
 	public enum Posicion {
 		Delantero, Centrocampista, Defensa, Portero
 	}
-	
+
 	int id_teamoftheyear;
 	int id_jugador;
 	String nombre_jugador;

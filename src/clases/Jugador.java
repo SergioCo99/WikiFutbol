@@ -5,11 +5,11 @@ public class Jugador extends EmpleadoDeClub {
 	public enum PieFav {
 		Diestro, Zurdo, Ambidiestro
 	}
-	
+
 	public enum Posicion {
 		Delantero, Centrocampista, Defensa, Portero
 	}
-	
+
 	Posicion posicion;
 	int dorsal;
 	int goles;

@@ -5,7 +5,7 @@ public class Entrenador extends EmpleadoDeClub {
 	public enum Mentalidad {
 		Defensiva, Equilibrada, Atacante
 	}
-	
+
 	String formacion;
 	Mentalidad mentalidad;
 

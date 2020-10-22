@@ -57,7 +57,7 @@ CREATE TABLE `club` (
   `ciudad_club` int DEFAULT NULL,
   `estadio_club` int DEFAULT NULL,
   `anoCreacion_club` int DEFAULT '0',
-  `palmares_club` int DEFAULT '0',
+  `palmares_club` varchar(45) DEFAULT NULL,
   `entrenador_club` int DEFAULT NULL,
   PRIMARY KEY (`id_club`),
   KEY `ciudad_club` (`ciudad_club`),
@@ -75,7 +75,7 @@ CREATE TABLE `club` (
 
 LOCK TABLES `club` WRITE;
 /*!40000 ALTER TABLE `club` DISABLE KEYS */;
-INSERT INTO `club` VALUES (1,'Athletic Club',1,1,2001,1,1);
+INSERT INTO `club` VALUES (1,'Athletic Club',1,1,2001,'1',1);
 /*!40000 ALTER TABLE `club` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,7 +326,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'na','a','a',1,'1999-06-23'),(2,'nb','b','b',0,'1999-06-24'),(3,'nd','d','d',0,'1999-06-25'),(4,'nc','c','c',0,'1999-06-26'),(5,'Eneko','eneko.perez23@gmail.com','12345',0,'2020-10-01');
+INSERT INTO `usuario` VALUES (1,'na','a','a',1,'1999-06-23'),(2,'nb','b','b',0,'1999-06-24'),(3,'nd','d','d',0,'1999-06-25'),(4,'nc','c','c',0,'1999-06-26'),(5,'Eneko','eneko.perez23@gmail.com','12345',1,'2020-10-01');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,4 +395,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-22 15:26:19
+-- Dump completed on 2020-10-23  0:16:16
