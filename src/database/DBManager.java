@@ -460,7 +460,7 @@ public class DBManager {
 			connect();
 			stmt = conn.createStatement();
 
-			//ademas de meter los datos en el array, ejecuta el metodo getMasVotados()
+			// ademas de meter los datos en el array, ejecuta el metodo getMasVotados()
 			ArrayList<Integer> arr = new ArrayList<Integer>();
 			arr.add(getMasVotados("Delantero", 1, 1));
 			arr.add(getMasVotados("Delantero", 2, 2));
