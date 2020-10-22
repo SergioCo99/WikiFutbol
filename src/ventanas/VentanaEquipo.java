@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import clases.Equipo;
+import clases.Club;
 import clases.Usuario;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
@@ -36,13 +36,13 @@ public class VentanaEquipo extends JFrame {
 	private static Usuario usuario;
 	String nombreEquipo;
 
-	public VentanaEquipo(Equipo equipo, Usuario u) throws DBManagerException {
-		init(equipo, u);
+	public VentanaEquipo(Club club, Usuario u) throws DBManagerException {
+		init(club, u);
 	}
 
-	public void init(Equipo equipo, Usuario u) {
+	public void init(Club club, Usuario u) {
 		usuario = u;
-		nombreEquipo = equipo.getNombre();
+		nombreEquipo = club.getNombre();
 		this.setTitle(nombreEquipo);
 		this.setSize(1200, 700);
 		this.setLayout(null);
@@ -77,7 +77,6 @@ public class VentanaEquipo extends JFrame {
 				try {
 					v1 = new VentanaPrincipal(u);
 				} catch (DBManagerException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				v1.setVisible(true);
@@ -111,7 +110,7 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.setBackground(Color.getHSBColor(1.42f, 0.68f, 0.75f));
 		add(bookPanel);
 
-		nombreEquipo = equipo.getNombre();
+		nombreEquipo = club.getNombre();
 
 		// Cabecera
 		final JLabel cabecera = new JLabel("Información sobre " + nombreEquipo + ":");
@@ -145,7 +144,7 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(label2);
 
 		// ResultadoCiudadEquipo
-		String ciudadEquipo = equipo.getCiudad();
+		String ciudadEquipo = club.getCiudad();
 		// String ciudadEquipo = "Ciudad Prueba";
 		final JLabel label15 = new JLabel(ciudadEquipo);
 		label15.setBounds(120, 175, 400, 50);
@@ -161,7 +160,7 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(label22);
 
 		// ResultadoEstadioEquipo
-		String estadioEquipo = equipo.getEstadio();
+		String estadioEquipo = club.getEstadio();
 		final JLabel label155 = new JLabel(estadioEquipo);
 		label155.setBounds(200, 240, 400, 50);
 		label155.setFont(fuente2);
@@ -176,7 +175,7 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(label3);
 
 		// ResultadoAnyoCreacion
-		String anyoCreacion = Integer.toString(equipo.getAnyoCreacion());
+		String anyoCreacion = Integer.toString(club.getAnyoCreacion());
 		final JLabel label33 = new JLabel(anyoCreacion);
 		// String anyoCreacion = "2020";
 		label33.setBounds(200, 240, 400, 50);
@@ -195,7 +194,7 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(label4);
 
 		// Resultado Palmares
-		String palmares = equipo.getPalmares();
+		String palmares = club.getPalmares();
 		// String palmares = "Palmares Prueba";
 		final JLabel label44 = new JLabel(palmares);
 		label44.setBounds(200, 370, 400, 50);
@@ -211,7 +210,7 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(labelEntrenador);
 
 		// Resultado Entrenador
-		String entrenador = equipo.getEntrenador();
+		String entrenador = club.getEntrenador();
 		// String entrenador = "Entrenador Prueba";
 		final JLabel label45 = new JLabel(entrenador);
 		label45.setBounds(200, 435, 400, 50);
@@ -228,8 +227,8 @@ public class VentanaEquipo extends JFrame {
 	public static void main(String[] args) throws DBManagerException {
 		// para entrar siempre modo admin desde esta clase
 
-		Usuario u = new Usuario();
-		Equipo e = new Equipo(0, "", "", "", 3, "", "");
+		Usuario u = new Usuario(1, "", "", "", 1, "");
+		Club e = new Club(0, "", "", "", 3, "", "");
 		VentanaEquipo v = new VentanaEquipo(e, u);
 		v.setVisible(true);
 

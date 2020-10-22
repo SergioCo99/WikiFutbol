@@ -1,16 +1,16 @@
 package clases;
 
-public class Equipo {
+public class Club {
 
-	private int id;
-	private String nombre;
-	private String ciudad;
-	private String estadio;
-	private int anyoCreacion;
-	private String palmares;
-	private String entrenador;
+	int id;
+	String nombre;
+	String ciudad;
+	String estadio;
+	int anyoCreacion;
+	String palmares;
+	String entrenador;
 
-	public Equipo(int id, String nombre, String ciudad, String estadio, int anyoCreacion, String palmares,
+	public Club(int id, String nombre, String ciudad, String estadio, int anyoCreacion, String palmares,
 			String entrenador) {
 		super();
 		this.id = id;

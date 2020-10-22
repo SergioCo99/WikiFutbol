@@ -2,14 +2,16 @@ package clases;
 
 public class Entrenador extends EmpleadoDeClub {
 
+	public enum Mentalidad {
+		Defensiva, Equilibrada, Atacante
+	}
+	
 	String formacion;
 	Mentalidad mentalidad;
 
-	public Entrenador(int id, String nombre, int anyoNacimiento, int club, int ciudad, String formacion,
+	public Entrenador(int id, String nombre, String fechaNac, int club, int ciudad, String formacion,
 			Mentalidad mentalidad) {
-		super(id, nombre, anyoNacimiento, club, ciudad);
-		// TODO Auto-generated constructor stub
-
+		super(id, nombre, fechaNac, club, ciudad);
 		this.formacion = formacion;
 		this.mentalidad = mentalidad;
 
@@ -34,10 +36,7 @@ public class Entrenador extends EmpleadoDeClub {
 	@Override
 	public String toString() {
 		return "Entrenador [formacion=" + formacion + ", mentalidad=" + mentalidad + ", id=" + id + ", nombre=" + nombre
-				+ ", anyoNacimiento=" + anyoNacimiento + ", club=" + club + ", ciudad=" + ciudad + ", getId()="
-				+ getId() + ", getNombre()=" + getNombre() + ", getAnyoNacimiento()=" + getAnyoNacimiento()
-				+ ", getClub()=" + getClub() + ", getCiudad()=" + getCiudad() + ", toString()=" + super.toString()
-				+ "]";
+				+ ", fechaNac=" + fechaNac + ", club=" + club + ", ciudad=" + ciudad + "]";
 	}
 
 }

@@ -10,13 +10,13 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 
-import clases.Equipo;
+import clases.Club;
 
 public interface IListaEquipos {
-	public static void cargarLista(JList bookPanel, ArrayList<Equipo> a) {
+	public static void cargarLista(JList bookPanel, ArrayList<Club> a) {
 
 		DefaultListModel<String> modelo = new DefaultListModel<String>();
-		for (Equipo e : a) {
+		for (Club e : a) {
 			modelo.addElement(e.getNombre());
 		}
 		bookPanel.setModel(modelo);

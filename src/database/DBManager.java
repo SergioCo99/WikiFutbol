@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Properties;
 
-import clases.Equipo;
+import clases.Club;
 
 public class DBManager {
 
@@ -543,14 +543,14 @@ public class DBManager {
 	} // ???
 
 	// ???
-	public ArrayList<Equipo> getEquipos() throws DBManagerException {
+	public ArrayList<Club> getEquipos() throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			ArrayList<Equipo> array = new ArrayList<Equipo>();
+			ArrayList<Club> array = new ArrayList<Club>();
 			ResultSet rs = stmt.executeQuery("select * from club");
 			while (rs.next()) {
-				Equipo e = new Equipo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
+				Club e = new Club(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
 						rs.getString(6), rs.getString(7));
 				array.add(e);
 			}

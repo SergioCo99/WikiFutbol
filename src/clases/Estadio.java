@@ -2,13 +2,13 @@ package clases;
 
 public class Estadio {
 
-	private int id;
-	private String nombre;
-	private int aforo;
-	private int anyoCreacion;
-	private int ciudad;
+	int id;
+	String nombre;
+	int aforo;
+	int anyoCreacion;
+	String ciudad;
 
-	public Estadio(int id, String nombre, int aforo, int anyoCreacion, int ciudad) {
+	public Estadio(int id, String nombre, int aforo, int anyoCreacion, String ciudad) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -49,11 +49,11 @@ public class Estadio {
 		this.anyoCreacion = anyoCreacion;
 	}
 
-	public int getCiudad() {
+	public String getCiudad() {
 		return ciudad;
 	}
 
-	public void setCiudad(int ciudad) {
+	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
 

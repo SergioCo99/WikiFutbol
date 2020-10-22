@@ -4,15 +4,15 @@ public class EmpleadoDeClub {
 
 	int id;
 	String nombre;
-	int anyoNacimiento;
+	String fechaNac;
 	int club;
 	int ciudad;
 
-	public EmpleadoDeClub(int id, String nombre, int anyoNacimiento, int club, int ciudad) {
+	public EmpleadoDeClub(int id, String nombre, String fechaNac, int club, int ciudad) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.anyoNacimiento = anyoNacimiento;
+		this.fechaNac = fechaNac;
 		this.club = club;
 		this.ciudad = ciudad;
 	}
@@ -33,12 +33,12 @@ public class EmpleadoDeClub {
 		this.nombre = nombre;
 	}
 
-	public int getAnyoNacimiento() {
-		return anyoNacimiento;
+	public String getFechaNac() {
+		return fechaNac;
 	}
 
-	public void setAnyoNacimiento(int anyoNacimiento) {
-		this.anyoNacimiento = anyoNacimiento;
+	public void setFechaNac(String fechaNac) {
+		this.fechaNac = fechaNac;
 	}
 
 	public int getClub() {
@@ -59,8 +59,8 @@ public class EmpleadoDeClub {
 
 	@Override
 	public String toString() {
-		return "EmpleadoDeClub [id=" + id + ", nombre=" + nombre + ", anyoNacimiento=" + anyoNacimiento + ", club="
-				+ club + ", ciudad=" + ciudad + "]";
+		return "EmpleadoDeClub [id=" + id + ", nombre=" + nombre + ", fechaNac=" + fechaNac + ", club=" + club
+				+ ", ciudad=" + ciudad + "]";
 	}
 
 }

@@ -11,7 +11,7 @@ public class EstadioTest {
 
 	@Before
 	public void setUp() {
-		e = new Estadio(1, "San Mamés", 20000, 1900, 1);
+		e = new Estadio(1, "San Mamés", 20000, 1900, "Bilbao");
 	}
 
 	@Test
@@ -40,8 +40,8 @@ public class EstadioTest {
 
 	@Test
 	public void testCiudad() {
-		e.setCiudad(1);
-		assertEquals(1, e.getCiudad());
+		e.setCiudad("Bilbao");
+		assertEquals("Bilbao", e.getCiudad());
 	}
 
 	@Test
@@ -50,11 +50,11 @@ public class EstadioTest {
 		e.setNombre("San Mamés");
 		e.setAforo(20000);
 		e.setAnyoCreacion(1900);
-		e.setCiudad(1);
+		e.setCiudad("Bilbao");
 
 		System.out.println(e.toString());
 
-		assertEquals("Estadio [id=1, nombre=San Mamés, aforo=20000, anyoCreacion=1900, ciudad=1]", e.toString());
+		assertEquals("Estadio [id=1, nombre=San Mamés, aforo=20000, anyoCreacion=1900, ciudad=Bilbao]", e.toString());
 	}
 
 }

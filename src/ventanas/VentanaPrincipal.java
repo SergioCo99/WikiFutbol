@@ -25,7 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-import clases.Equipo;
+import clases.Club;
 import clases.Usuario;
 import database.DBManager;
 import database.DBManagerException;
@@ -61,7 +61,7 @@ public class VentanaPrincipal extends JFrame {
 	// Para el listado de equipos
 	private DBManager database1 = new DBManager();
 	private IListaEquipos interfazLista;
-	private ArrayList<Equipo> arrayEquipos = new ArrayList<Equipo>();
+	private ArrayList<Club> arrayEquipos = new ArrayList<Club>();
 	private JList bookPanel = new JList();
 	private static Usuario usuario;
 
@@ -75,7 +75,7 @@ public class VentanaPrincipal extends JFrame {
 	private JRadioButton rdbtnEstadio;
 	private JRadioButton rdbtnEntrenador;
 	private JRadioButton rdbtnNumLigas;
-	private ArrayList<Equipo> arrayResultado = new ArrayList<Equipo>();
+	private ArrayList<Club> arrayResultado = new ArrayList<Club>();
 
 	// Boton acceder a equipo
 	private JLabel verEquipo;
@@ -328,7 +328,7 @@ public class VentanaPrincipal extends JFrame {
 				arrayResultado.clear();
 
 				if (equipoBuscado.isEmpty()) {
-					for (Equipo a : arrayEquipos) {
+					for (Club a : arrayEquipos) {
 						arrayResultado.add(a);
 					}
 					IListaEquipos.cargarLista(bookPanel, arrayResultado);
@@ -377,7 +377,7 @@ public class VentanaPrincipal extends JFrame {
 		navBarPanel.add(txtField);
 		txtField.setColumns(10);
 
-		for (Equipo e : arrayEquipos) {
+		for (Club e : arrayEquipos) {
 			arrayResultado.add(e);
 		}
 		IListaEquipos.cargarLista(bookPanel, arrayResultado);

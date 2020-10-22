@@ -5,13 +5,13 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-public class EquipoTest {
+public class ClubTest {
 
-	private Equipo a;
+	private Club a;
 
 	@Before
 	public void setUp() {
-		a = new Equipo(1, "Athletic Club", "Bilbao", "San Mamés", 1898, "2 Ligas", "Gaizka Garitano");
+		a = new Club(1, "Athletic Club", "Bilbao", "San Mamés", 1898, "2 Ligas", "Gaizka Garitano");
 	}
 
 	@Test

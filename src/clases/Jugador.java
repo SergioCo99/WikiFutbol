@@ -2,6 +2,14 @@ package clases;
 
 public class Jugador extends EmpleadoDeClub {
 
+	public enum PieFav {
+		Diestro, Zurdo, Ambidiestro
+	}
+	
+	public enum Posicion {
+		Delantero, Centrocampista, Defensa, Portero
+	}
+	
 	Posicion posicion;
 	int dorsal;
 	int goles;
@@ -12,11 +20,9 @@ public class Jugador extends EmpleadoDeClub {
 	String descripcion;
 	int voto;
 
-	public Jugador(int id, String nombre, int anyoNacimiento, int club, int ciudad, Posicion posicion, int dorsal,
+	public Jugador(int id, String nombre, String fechaNac, int club, int ciudad, Posicion posicion, int dorsal,
 			int goles, int altura, int peso, PieFav piefav, int valoracion, String descripcion, int voto) {
-		super(id, nombre, anyoNacimiento, club, ciudad);
-		// TODO Auto-generated constructor stub
-
+		super(id, nombre, fechaNac, club, ciudad);
 		this.posicion = posicion;
 		this.dorsal = dorsal;
 		this.goles = goles;
@@ -104,10 +110,8 @@ public class Jugador extends EmpleadoDeClub {
 	public String toString() {
 		return "Jugador [posicion=" + posicion + ", dorsal=" + dorsal + ", goles=" + goles + ", altura=" + altura
 				+ ", peso=" + peso + ", piefav=" + piefav + ", valoracion=" + valoracion + ", descripcion="
-				+ descripcion + ", voto=" + voto + ", id=" + id + ", nombre=" + nombre + ", anyoNacimiento="
-				+ anyoNacimiento + ", club=" + club + ", ciudad=" + ciudad + ", getId()=" + getId() + ", getNombre()="
-				+ getNombre() + ", getAnyoNacimiento()=" + getAnyoNacimiento() + ", getClub()=" + getClub()
-				+ ", getCiudad()=" + getCiudad() + "]";
+				+ descripcion + ", voto=" + voto + ", id=" + id + ", nombre=" + nombre + ", fechaNac=" + fechaNac
+				+ ", club=" + club + ", ciudad=" + ciudad + "]";
 	}
 
 }
