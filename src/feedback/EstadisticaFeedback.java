@@ -97,7 +97,7 @@ public class EstadisticaFeedback {
 			siNo(countSi, countNo, mediaSN);
 			br.close();
 		} catch (FileNotFoundException e) {
-			throw new RWException("el archivo no fue encontrado", e);
+			throw new RWException("El archivo no fue encontrado", e);
 		} catch (IOException e) {
 			throw new RWException("Error de input/output", e);
 		}

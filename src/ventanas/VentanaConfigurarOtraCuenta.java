@@ -23,7 +23,7 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 
 	public VentanaConfigurarOtraCuenta() {
 
-		this.setTitle("VentanaAdmin1");
+		this.setTitle("VentanaConfigurarOtraCuenta");
 		this.setSize(600, 400);
 		this.setLayout(null);
 		this.setResizable(false);
@@ -87,7 +87,7 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		VentanaConfigurarOtraCuenta VA1 = new VentanaConfigurarOtraCuenta();
-		VA1.setVisible(true);
+		VentanaConfigurarOtraCuenta VCOT = new VentanaConfigurarOtraCuenta();
+		VCOT.setVisible(true);
 	}
 }

@@ -56,7 +56,7 @@ CREATE TABLE `club` (
   `nombre_club` varchar(45) DEFAULT NULL,
   `ciudad_club` int DEFAULT NULL,
   `estadio_club` int DEFAULT NULL,
-  `anoCreacion_club` year DEFAULT '0000',
+  `anoCreacion_club` int DEFAULT '0',
   `palmares_club` int DEFAULT '0',
   `entrenador_club` int DEFAULT NULL,
   PRIMARY KEY (`id_club`),
@@ -123,7 +123,7 @@ CREATE TABLE `estadio` (
   `id_estadio` int NOT NULL AUTO_INCREMENT,
   `nombre_estadio` varchar(45) DEFAULT NULL,
   `aforo_estadio` int DEFAULT '0',
-  `anoCreacion_estadio` year DEFAULT '0000',
+  `anoCreacion_estadio` int DEFAULT '0',
   `ciudad_estadio` int DEFAULT NULL,
   PRIMARY KEY (`id_estadio`),
   KEY `ciudad_estadio` (`ciudad_estadio`),
@@ -395,4 +395,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-22 10:24:01
+-- Dump completed on 2020-10-22 15:26:19

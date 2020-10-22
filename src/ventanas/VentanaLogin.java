@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -174,6 +175,8 @@ public class VentanaLogin extends JFrame {
 					}
 				} catch (DBManagerException e1) {
 					e1.printStackTrace();
+					JOptionPane.showConfirmDialog(null, "Introduce tu nueva contraseña", "Cambiar contraseña",
+							JOptionPane.OK_OPTION);
 				}
 
 			}
