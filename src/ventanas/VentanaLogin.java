@@ -175,8 +175,6 @@ public class VentanaLogin extends JFrame {
 					}
 				} catch (DBManagerException e1) {
 					e1.printStackTrace();
-					JOptionPane.showConfirmDialog(null, "Introduce tu nueva contraseña", "Cambiar contraseña",
-							JOptionPane.OK_OPTION);
 				}
 
 			}
