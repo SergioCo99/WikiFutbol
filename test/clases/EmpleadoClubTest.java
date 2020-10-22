@@ -51,7 +51,7 @@ public class EmpleadoClubTest {
 
 	@Test
 	public void metodoToString() {
-		
+
 		ect.setId(1);
 		ect.setNombre("Koikili");
 		ect.setAnyoNacimiento(1980);
@@ -59,13 +59,7 @@ public class EmpleadoClubTest {
 		ect.setCiudad(1);
 
 		System.out.println(ect.toString());
-<<<<<<< HEAD
+
 		assertEquals("EmpleadoDeClub [id=1, nombre=Koikili, anyoNacimiento=1980, club=1, ciudad=1]", ect.toString());
-=======
-		
-		assertEquals(
-				"EmpleadoDeClub [id=1, nombre=Koikili, anyoNacimiento=1980, club=1, ciudad=1]",
-				ect.toString());
->>>>>>> branch 'master' of https://github.com/SergioCo99/WikiFutbol.git
 	}
 }
