@@ -42,15 +42,7 @@ public class VentanaEquipo extends JFrame {
 	private static Usuario usuario;
 	String nombreEquipo;
 
-	JMenuBar menuBar;
-	JMenu menu;
-	JMenuItem miAjustes, miCerrarSesion, miRecordarContrasena, miDescargaDatos, miEliminarCuenta;
-	JMenu menuAdmin;
-	JMenuItem miConfigurarOtraCuenta, miCambiarDatos, miMandarCorreo;
-	JMenu menuOpinion;
-	JMenuItem miFeedback, miEstadisticas;
-	JMenu menuTeamOfTheYear;
-	JMenuItem miVotar, miVerEquipo;
+	
 
 	public VentanaEquipo(Equipo equipo, Usuario u) throws DBManagerException {
 		init(equipo, u);
@@ -66,202 +58,7 @@ public class VentanaEquipo extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
 
-		// MenuBar
-		menuBar = new JMenuBar();
-
-		menu = new JMenu("Menu");
-		miAjustes = new JMenuItem("Ajustes");
-		miCerrarSesion = new JMenuItem("Cerrar sesion");
-		miRecordarContrasena = new JMenuItem("Salir y recordar contrasena");
-		miDescargaDatos = new JMenuItem("Descargar datos");
-		miEliminarCuenta = new JMenuItem("Eliminar cuenta");
-		menu.add(miAjustes);
-		menu.add(miCerrarSesion);
-		menu.add(miRecordarContrasena);
-		menu.add(miDescargaDatos);
-		menu.add(miEliminarCuenta);
-
-		menuAdmin = new JMenu("Opciones admin");
-		miConfigurarOtraCuenta = new JMenuItem("Configurar otra cuenta");
-		miCambiarDatos = new JMenuItem("Cambiar Datos");
-		miMandarCorreo = new JMenuItem("Mandar correo");
-		menuAdmin.add(miConfigurarOtraCuenta);
-		menuAdmin.add(miCambiarDatos);
-		menuAdmin.add(miMandarCorreo);
-
-		menuOpinion = new JMenu("Opinion");
-		miFeedback = new JMenuItem("Dar feedback");
-		miEstadisticas = new JMenuItem("Ver estadisticas de feedback");
-		menuOpinion.add(miFeedback);
-		menuOpinion.add(miEstadisticas);
-
-		menuTeamOfTheYear = new JMenu("Team Of The Year");
-		miVotar = new JMenuItem("Votar");
-		miVerEquipo = new JMenuItem("Ver equipo");
-		menuTeamOfTheYear.add(miVotar);
-		menuTeamOfTheYear.add(miVerEquipo);
-
-		menuBar.add(menu);
-		menuBar.add(menuAdmin);
-		menuBar.add(menuOpinion);
-		menuBar.add(menuTeamOfTheYear);
-		setJMenuBar(menuBar);
-
-		menuAdmin.setVisible(false);
-
-		if (privilegiosAdmin() == true) {
-			menuAdmin.setVisible(true);
-		} else {
-			menuAdmin.setVisible(false);
-		}
-
-		miAjustes.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contraseña",
-						"Cambiar contraseña", JOptionPane.WARNING_MESSAGE);
-
-				if (nuevaContrasena != null && !nuevaContrasena.equals("")) {
-					try {
-						database.DBManager.cambiarContrasena(utils.PropertiesMetodos.getProp1(), nuevaContrasena);
-					} catch (DBManagerException e1) {
-						e1.printStackTrace();
-					}
-					JOptionPane.showMessageDialog(null, "Actualizacion exitosa, reiniciando. . .", "Alerta",
-							JOptionPane.INFORMATION_MESSAGE);
-// ojo esta idea, darle un par d vueltas :v, ¿¿¿meterle JProgressBar???
-					try {
-						// assuming it takes 3 secs to complete the task
-						dispose();
-						Thread.sleep(3000);
-						utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
-						mainPackage.MainWikiFutbol.main(null);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					} // fin de la idea
-				} else {
-					JOptionPane.showMessageDialog(null, "Esa contraseña no es valida / operacion cancelada.", "Error",
-							JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		});
-
-		miCerrarSesion.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
-				dispose();
-				VentanaLogin VL = new VentanaLogin();
-				VL.setVisible(true);
-			}
-		});
-
-		miRecordarContrasena.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-			}
-		});
-
-		miDescargaDatos.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaDescargar VD = new VentanaDescargar();
-				VD.setVisible(true);
-			}
-		});
-
-		miEliminarCuenta.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				int result = JOptionPane.showConfirmDialog(null, "Estas segur@? Es irreversible.", "Eliminar cuenta",
-						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-				if (result == JOptionPane.YES_OPTION) {
-					System.out.println("YES");
-					try {
-						database.DBManager.eliminarUsuario(utils.PropertiesMetodos.getProp1());
-					} catch (DBManagerException e) {
-						e.printStackTrace();
-					}
-					utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
-					dispose();
-				} else if (result == JOptionPane.NO_OPTION) {
-					System.out.println("NO");
-				} else {
-					System.out.println("NONE");
-				}
-			}
-
-		});
-
-		miConfigurarOtraCuenta.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaConfigurarOtraCuenta VA1 = new VentanaConfigurarOtraCuenta();
-				VA1.setVisible(true);
-			}
-		});
-
-		miCambiarDatos.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaCambiarDatos VCD = new VentanaCambiarDatos();
-				VCD.setVisible(true);
-			}
-		});
-
-		miMandarCorreo.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaMandarCorreo VMC = new VentanaMandarCorreo();
-				VMC.setVisible(true);
-			}
-		});
-
-		miFeedback.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				VentanaFeedback VF = new VentanaFeedback();
-				VF.setVisible(true);
-
-			}
-		});
-
-		miEstadisticas.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				VentanaEstadisticas VE = new VentanaEstadisticas();
-				VE.setVisible(true);
-
-			}
-		});
-
-		miVotar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaVotar VV = new VentanaVotar();
-				VV.setVisible(true);
-			}
-		});
-
-		this.addWindowListener(new WindowAdapter() {
-
-			@Override
-			public void windowClosing(WindowEvent e) {
-				utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
-			}
-		});
+		
 
 		// Navbar Panel
 		JPanel navBarPanel = new JPanel();
@@ -308,8 +105,8 @@ public class VentanaEquipo extends JFrame {
 
 		nombreEquipo = equipo.getNombre();
 
-		// JLabel lblEquipo = new JLabel(nombreEquipo);
-		JLabel lblEquipo = new JLabel("'NombreEquipo'");
+		JLabel lblEquipo = new JLabel(nombreEquipo);
+		//JLabel lblEquipo = new JLabel("'NombreEquipo'");
 		lblEquipo.setBounds(80, 20, 300, 29);
 		lblEquipo.setFont(new Font("Tahoma", Font.BOLD, 24));
 		navBarPanel.add(lblEquipo);
@@ -328,9 +125,8 @@ public class VentanaEquipo extends JFrame {
 		nombreEquipo = equipo.getNombre();
 
 		// Cabecera
-		// final JLabel cabecera = new JLabel("Información sobre " + nombreEquipo +
-		// ":");
-		final JLabel cabecera = new JLabel("Información sobre 'NombreEquipo':");
+		final JLabel cabecera = new JLabel("Información sobre " + nombreEquipo +":");
+		//final JLabel cabecera = new JLabel("Información sobre 'NombreEquipo':");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -345,8 +141,8 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(label1);
 
 		// ResultadoNombreEquipo
-		// final JLabel label11 = new JLabel(nombreEquipo);
-		final JLabel label11 = new JLabel("Nombre Prueba");
+		final JLabel label11 = new JLabel(nombreEquipo);
+		//final JLabel label11 = new JLabel("Nombre Prueba");
 		label11.setBounds(120, 110, 400, 50);
 		label11.setFont(fuente2);
 		label11.setForeground(Color.BLACK);
@@ -360,8 +156,8 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(label2);
 
 		// ResultadoNombreEquipo
-		// String ciudadEquipo = equipo.getCiudad();
-		String ciudadEquipo = "Ciudad Prueba";
+		String ciudadEquipo = equipo.getCiudad();
+		//String ciudadEquipo = "Ciudad Prueba";
 		final JLabel label15 = new JLabel(ciudadEquipo);
 		label15.setBounds(120, 175, 400, 50);
 		label15.setFont(fuente2);
@@ -376,10 +172,9 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(label3);
 
 		// ResultadoAnyoCreacion
-		// String anyoCreacion = Integer.toString(equipo.getAnyoCreacion());
-		// final JLabel label33 = new JLabel(anyoCreacion);
-		String anyoCreacion = "2020";
+		String anyoCreacion = Integer.toString(equipo.getAnyoCreacion());
 		final JLabel label33 = new JLabel(anyoCreacion);
+		//String anyoCreacion = "2020";
 		label33.setBounds(200, 240, 400, 50);
 		label33.setFont(fuente2);
 		label33.setForeground(Color.BLACK);
@@ -393,8 +188,8 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(label4);
 
 		// Resultado Palmares
-		// String palmares = equipo.getPalmares();
-		String palmares = "Palmares Prueba";
+		String palmares = equipo.getPalmares();
+		//String palmares = "Palmares Prueba";
 		final JLabel label44 = new JLabel(palmares);
 		label44.setBounds(200, 305, 400, 50);
 		label44.setFont(fuente2);
@@ -409,8 +204,8 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(labelEntrenador);
 
 		// Resultado Entrenador
-		// String entrenador = equipo.getEntrenador();
-		String entrenador = "Entrenador Prueba";
+		String entrenador = equipo.getEntrenador();
+		//String entrenador = "Entrenador Prueba";
 		final JLabel label45 = new JLabel(entrenador);
 		label45.setBounds(200, 370, 400, 50);
 		label45.setFont(fuente2);

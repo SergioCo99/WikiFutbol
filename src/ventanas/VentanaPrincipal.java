@@ -467,22 +467,11 @@ public class VentanaPrincipal extends JFrame {
 		botonVerEquipo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaEquipo v1 = null;
-				try {
-					v1 = new VentanaEquipo(null, null);
-				} catch (DBManagerException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				v1.setVisible(true);
-				dispose();
 
-				/*
-				 * try { VentanaEquipo ve = new
-				 * VentanaEquipo(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
-				 * ve.setVisible(true); dispose(); } catch (Exception e2) {
-				 * JOptionPane.showMessageDialog(frame, "Seleccione un equipo"); }
-				 */
+				try { VentanaEquipo ve = new VentanaEquipo(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
+				ve.setVisible(true); dispose(); } catch (Exception e2) {
+				JOptionPane.showMessageDialog(frame, "Seleccione un equipo"); }
+				 
 
 			}
 		});
