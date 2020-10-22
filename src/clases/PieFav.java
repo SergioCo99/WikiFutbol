@@ -2,8 +2,6 @@ package clases;
 
 public enum PieFav {
 
-	Diestro,
-	Zurdo,
-	Ambidiestro
-	
+	Diestro, Zurdo, Ambidiestro
+
 }

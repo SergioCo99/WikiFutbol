@@ -1,10 +1,7 @@
 package clases;
 
 public enum Posicion {
-	
-	Delantero,
-	Centrocampista, 
-	Defensa, 
-	Portero
-	
+
+	Delantero, Centrocampista, Defensa, Portero
+
 }

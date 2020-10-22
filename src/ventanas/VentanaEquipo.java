@@ -94,8 +94,6 @@ public class VentanaEquipo extends JFrame {
 		atrasPanel.add(atrasIMG);
 		navBarPanel.add(atrasPanel);
 
-		
-
 		JLabel lblEquipo = new JLabel(nombreEquipo);
 		// JLabel lblEquipo = new JLabel("'NombreEquipo'");
 		lblEquipo.setBounds(80, 20, 300, 29);
@@ -169,8 +167,7 @@ public class VentanaEquipo extends JFrame {
 		label155.setFont(fuente2);
 		label155.setForeground(Color.BLACK);
 		bookPanel.add(label155);
-		
-		
+
 		// AnyoCreacion
 		final JLabel label3 = new JLabel("A\u00f1o de creaci\u00f3n: ");
 		label3.setBounds(20, 305, 275, 50);
@@ -184,7 +181,7 @@ public class VentanaEquipo extends JFrame {
 		// String anyoCreacion = "2020";
 		label33.setBounds(200, 240, 400, 50);
 
-		//String anyoCreacion = "2020";
+		// String anyoCreacion = "2020";
 		label33.setBounds(200, 305, 400, 50);
 		label33.setFont(fuente2);
 		label33.setForeground(Color.BLACK);

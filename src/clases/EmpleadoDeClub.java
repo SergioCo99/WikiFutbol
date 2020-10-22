@@ -1,13 +1,13 @@
 package clases;
 
 public class EmpleadoDeClub {
-	
+
 	int id;
 	String nombre;
 	int anyoNacimiento;
 	int club;
 	int ciudad;
-	
+
 	public EmpleadoDeClub(int id, String nombre, int anyoNacimiento, int club, int ciudad) {
 		super();
 		this.id = id;
@@ -62,7 +62,5 @@ public class EmpleadoDeClub {
 		return "EmpleadoDeClub [id=" + id + ", nombre=" + nombre + ", anyoNacimiento=" + anyoNacimiento + ", club="
 				+ club + ", ciudad=" + ciudad + "]";
 	}
-	
-	
-	
+
 }

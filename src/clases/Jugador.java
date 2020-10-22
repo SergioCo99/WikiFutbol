@@ -1,7 +1,7 @@
 package clases;
 
 public class Jugador extends EmpleadoDeClub {
-	
+
 	Posicion posicion;
 	int dorsal;
 	int goles;
@@ -11,12 +11,12 @@ public class Jugador extends EmpleadoDeClub {
 	int valoracion;
 	String descripcion;
 	int voto;
-	
-	public Jugador(int id, String nombre, int anyoNacimiento, int club, int ciudad, Posicion posicion, int dorsal, int goles, int altura,
-			int peso, PieFav piefav, int valoracion, String descripcion, int voto) {
+
+	public Jugador(int id, String nombre, int anyoNacimiento, int club, int ciudad, Posicion posicion, int dorsal,
+			int goles, int altura, int peso, PieFav piefav, int valoracion, String descripcion, int voto) {
 		super(id, nombre, anyoNacimiento, club, ciudad);
 		// TODO Auto-generated constructor stub
-		
+
 		this.posicion = posicion;
 		this.dorsal = dorsal;
 		this.goles = goles;
@@ -109,6 +109,5 @@ public class Jugador extends EmpleadoDeClub {
 				+ getNombre() + ", getAnyoNacimiento()=" + getAnyoNacimiento() + ", getClub()=" + getClub()
 				+ ", getCiudad()=" + getCiudad() + "]";
 	}
-	
-	
+
 }

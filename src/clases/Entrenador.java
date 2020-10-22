@@ -1,18 +1,18 @@
 package clases;
 
-public class Entrenador extends EmpleadoDeClub{
+public class Entrenador extends EmpleadoDeClub {
 
 	String formacion;
 	Mentalidad mentalidad;
-	
-	public Entrenador(int id, String nombre, int anyoNacimiento, int club, int ciudad,
-			String formacion, Mentalidad mentalidad) {
+
+	public Entrenador(int id, String nombre, int anyoNacimiento, int club, int ciudad, String formacion,
+			Mentalidad mentalidad) {
 		super(id, nombre, anyoNacimiento, club, ciudad);
 		// TODO Auto-generated constructor stub
-		
+
 		this.formacion = formacion;
 		this.mentalidad = mentalidad;
-		
+
 	}
 
 	public String getFormacion() {
@@ -38,7 +38,6 @@ public class Entrenador extends EmpleadoDeClub{
 				+ getId() + ", getNombre()=" + getNombre() + ", getAnyoNacimiento()=" + getAnyoNacimiento()
 				+ ", getClub()=" + getClub() + ", getCiudad()=" + getCiudad() + ", toString()=" + super.toString()
 				+ "]";
-	}	
-	
-	
+	}
+
 }
