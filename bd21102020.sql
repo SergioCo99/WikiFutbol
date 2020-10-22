@@ -205,7 +205,7 @@ CREATE TABLE `jugador` (
 
 LOCK TABLES `jugador` WRITE;
 /*!40000 ALTER TABLE `jugador` DISABLE KEYS */;
-INSERT INTO `jugador` VALUES (1,'Messi','0000-00-00',NULL,NULL,'Delantero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,9),(2,'Cristiano Ronaldo','0000-00-00',NULL,NULL,'Delantero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,8),(3,'Pogba','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,6),(4,'De Bruyne','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,2),(5,'Sergio Ramos','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,2),(6,'Van Dijk','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,3),(7,'Ter Stegen','0000-00-00',NULL,NULL,'Portero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5),(8,'Oblak','0000-00-00',NULL,NULL,'Portero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,6),(9,'Lewandowski','0000-00-00',NULL,NULL,'Delantero',NULL,10,NULL,NULL,NULL,NULL,NULL,5),(10,'Rashford','0000-00-00',NULL,NULL,'Delantero',NULL,15,NULL,NULL,NULL,NULL,NULL,5),(11,'Bruno Fernandes','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,4),(12,'Fred','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,3),(13,'TAA','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,2),(14,'Pique','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5),(15,'Maguire','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,9);
+INSERT INTO `jugador` VALUES (1,'Messi','0000-00-00',NULL,NULL,'Delantero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(2,'Cristiano Ronaldo','0000-00-00',NULL,NULL,'Delantero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(3,'Pogba','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(4,'De Bruyne','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(5,'Sergio Ramos','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(6,'Van Dijk','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(7,'Ter Stegen','0000-00-00',NULL,NULL,'Portero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(8,'Oblak','0000-00-00',NULL,NULL,'Portero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(9,'Lewandowski','0000-00-00',NULL,NULL,'Delantero',NULL,10,NULL,NULL,NULL,NULL,NULL,0),(10,'Rashford','0000-00-00',NULL,NULL,'Delantero',NULL,15,NULL,NULL,NULL,NULL,NULL,0),(11,'Bruno Fernandes','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(12,'Fred','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(13,'TAA','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(14,'Pique','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(15,'Maguire','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1);
 /*!40000 ALTER TABLE `jugador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,6 +234,32 @@ INSERT INTO `pais` VALUES (1,'España');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `student_es_de_prueba_no_lo_usaremos`
+--
+
+DROP TABLE IF EXISTS `student_es_de_prueba_no_lo_usaremos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `student_es_de_prueba_no_lo_usaremos` (
+  `rollno` varchar(15) NOT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `class` varchar(5) DEFAULT NULL,
+  `section` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`rollno`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `student_es_de_prueba_no_lo_usaremos`
+--
+
+LOCK TABLES `student_es_de_prueba_no_lo_usaremos` WRITE;
+/*!40000 ALTER TABLE `student_es_de_prueba_no_lo_usaremos` DISABLE KEYS */;
+INSERT INTO `student_es_de_prueba_no_lo_usaremos` VALUES ('1','a','b','c'),('2','c','d','e'),('3','f','g','h'),('4','i','j','k');
+/*!40000 ALTER TABLE `student_es_de_prueba_no_lo_usaremos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `teamoftheyear`
 --
 
@@ -255,7 +281,7 @@ CREATE TABLE `teamoftheyear` (
 
 LOCK TABLES `teamoftheyear` WRITE;
 /*!40000 ALTER TABLE `teamoftheyear` DISABLE KEYS */;
-INSERT INTO `teamoftheyear` VALUES (1,1),(2,2),(4,3),(10,5),(9,6),(11,8),(3,10),(5,11),(6,12),(8,14),(7,15);
+INSERT INTO `teamoftheyear` VALUES (1,2),(5,3),(6,4),(8,5),(9,6),(11,8),(3,9),(2,10),(4,11),(10,13),(7,15);
 /*!40000 ALTER TABLE `teamoftheyear` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -329,7 +355,7 @@ CREATE TABLE `usuariovotacion` (
   CONSTRAINT `usuariovotacion_ibfk_3` FOREIGN KEY (`centrocampistaVotado_usuarioVotacion`) REFERENCES `jugador` (`id_jugador`) ON DELETE CASCADE,
   CONSTRAINT `usuariovotacion_ibfk_4` FOREIGN KEY (`defensaVotado_usuarioVotacion`) REFERENCES `jugador` (`id_jugador`) ON DELETE CASCADE,
   CONSTRAINT `usuariovotacion_ibfk_5` FOREIGN KEY (`porteroVotado_usuarioVotacion`) REFERENCES `jugador` (`id_jugador`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -338,6 +364,7 @@ CREATE TABLE `usuariovotacion` (
 
 LOCK TABLES `usuariovotacion` WRITE;
 /*!40000 ALTER TABLE `usuariovotacion` DISABLE KEYS */;
+INSERT INTO `usuariovotacion` VALUES (8,1,2,11,15,8);
 /*!40000 ALTER TABLE `usuariovotacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -368,4 +395,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-21 19:31:04
+-- Dump completed on 2020-10-22 10:24:01
