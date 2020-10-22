@@ -181,13 +181,11 @@ public class VentanaEquipo extends JFrame {
 		// ResultadoAnyoCreacion
 		String anyoCreacion = Integer.toString(equipo.getAnyoCreacion());
 		final JLabel label33 = new JLabel(anyoCreacion);
-<<<<<<< HEAD
 		// String anyoCreacion = "2020";
 		label33.setBounds(200, 240, 400, 50);
-=======
+
 		//String anyoCreacion = "2020";
 		label33.setBounds(200, 305, 400, 50);
->>>>>>> branch 'master' of https://github.com/SergioCo99/WikiFutbol.git
 		label33.setFont(fuente2);
 		label33.setForeground(Color.BLACK);
 		bookPanel.add(label33);
@@ -217,10 +215,7 @@ public class VentanaEquipo extends JFrame {
 
 		// Resultado Entrenador
 		String entrenador = equipo.getEntrenador();
-<<<<<<< HEAD
 		// String entrenador = "Entrenador Prueba";
-=======
->>>>>>> branch 'master' of https://github.com/SergioCo99/WikiFutbol.git
 		final JLabel label45 = new JLabel(entrenador);
 		label45.setBounds(200, 435, 400, 50);
 		label45.setFont(fuente2);
