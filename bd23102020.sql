@@ -137,7 +137,7 @@ CREATE TABLE `estadio` (
 
 LOCK TABLES `estadio` WRITE;
 /*!40000 ALTER TABLE `estadio` DISABLE KEYS */;
-INSERT INTO `estadio` VALUES (1,'San Mames',53289,0,1),(2,'Reale Arena',39500,0,1),(3,'Estadio de la Ceramica',23500,0,1),(4,'Estadio Ramon de Carranza',20724,0,1),(5,'Santiago Bernabeu',81044,0,1),(6,'Coliseum Alfonso Perez',17393,0,1),(7,'Estadio Nuevo Los Carmenes',23156,0,1),(8,'Cuidad de Valencia',26354,0,1),(9,'Jose Zorrilla',27846,0,1),(10,'Estadio de Mendizorroza',19840,0,1),(11,'Municipal de Balaidos',31800,0,1),(12,'El Alcoraz',7600,0,1),(13,'Estadio Municipal de Ipurua',8164,0,1),(14,'Mestalla',55000,0,1),(15,'Estadio Martinez Valero',36017,0,1),(16,'Estadio El Sadar',19800,0,1),(17,'Ramon Sanchez Pizjuan',45500,0,1),(18,'Camp Nou',98787,0,1),(19,'Wanda Metropolitano',67942,0,1),(20,'Benito Villamarin',60721,0,1);
+INSERT INTO `estadio` VALUES (1,'San Mames',53289,2013,1),(2,'Reale Arena',39500,1993,2),(3,'Estadio de la Ceramica',23500,1923,3),(4,'Estadio Ramon de Carranza',20724,1955,6),(5,'Santiago Bernabeu',81044,1947,4),(6,'Coliseum Alfonso Perez',17393,1998,5),(7,'Estadio Nuevo Los Carmenes',23156,1995,7),(8,'Cuidad de Valencia',26354,1969,12),(9,'Jose Zorrilla',27846,1982,17),(10,'Estadio de Mendizorroza',19840,1924,16),(11,'Municipal de Balaidos',31800,1928,15),(12,'El Alcoraz',7600,1972,14),(13,'Estadio Municipal de Ipurua',8164,1947,13),(14,'Mestalla',55000,1923,12),(15,'Estadio Martinez Valero',36017,1976,11),(16,'Estadio El Sadar',19800,1967,10),(17,'Ramon Sanchez Pizjuan',45500,1958,8),(18,'Camp Nou',98787,1957,9),(19,'Wanda Metropolitano',67942,2017,4),(20,'Benito Villamarin',60721,1929,8);
 /*!40000 ALTER TABLE `estadio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,4 +396,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-23 13:26:18
+-- Dump completed on 2020-10-23 13:42:00
