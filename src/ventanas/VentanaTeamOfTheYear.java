@@ -2,6 +2,7 @@ package ventanas;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -38,60 +39,82 @@ public class VentanaTeamOfTheYear extends JFrame {
 			e1.printStackTrace();
 		}
 
+		// EI
 		lbl1 = new JLabel();
-		lbl1.setText(array[0]);
+		lbl1.setText(array[0].toUpperCase());
 		lbl1.setForeground(Color.white);
-		lbl1.setBounds(100, 50, 200, 20);
+		lbl1.setBounds(50, 200, 200, 20);
+		lbl1.setFont(new Font("Arial", Font.PLAIN, 20));
 
+		// DC
 		lbl2 = new JLabel();
-		lbl2.setText(array[1]);
+		lbl2.setText(array[1].toUpperCase());
 		lbl2.setForeground(Color.white);
-		lbl2.setBounds(250, 50, 200, 20);
+		lbl2.setBounds(175, 160, 200, 20);
+		lbl2.setFont(new Font("Arial", Font.PLAIN, 20));
 
+		// ED
 		lbl3 = new JLabel();
-		lbl3.setText(array[2]);
+		lbl3.setText(array[2].toUpperCase());
 		lbl3.setForeground(Color.white);
-		lbl3.setBounds(400, 50, 200, 20);
+		lbl3.setBounds(300, 200, 200, 20);
+		lbl3.setFont(new Font("Arial", Font.PLAIN, 20));
 
+		// MI
 		lbl4 = new JLabel();
-		lbl4.setText(array[3]);
+		lbl4.setText(array[3].toUpperCase());
 		lbl4.setForeground(Color.white);
-		lbl4.setBounds(100, 100, 200, 20);
+		lbl4.setBounds(50, 400, 200, 20);
+		lbl4.setFont(new Font("Arial", Font.PLAIN, 20));
 
+		// MC
 		lbl5 = new JLabel();
-		lbl5.setText(array[4]);
+		lbl5.setText(array[4].toUpperCase());
 		lbl5.setForeground(Color.white);
-		lbl5.setBounds(250, 100, 200, 20);
+		lbl5.setBounds(175, 280, 200, 20);
+		lbl5.setFont(new Font("Arial", Font.PLAIN, 20));
 
+		// MD
 		lbl6 = new JLabel();
-		lbl6.setText(array[5]);
+		lbl6.setText(array[5].toUpperCase());
 		lbl6.setForeground(Color.white);
-		lbl6.setBounds(400, 100, 200, 20);
+		lbl6.setBounds(300, 400, 200, 20);
+		lbl6.setFont(new Font("Arial", Font.PLAIN, 20));
 
+		// LI
 		lbl7 = new JLabel();
-		lbl7.setText(array[6]);
+		lbl7.setText(array[6].toUpperCase());
 		lbl7.setForeground(Color.white);
-		lbl7.setBounds(50, 150, 200, 20);
+		lbl7.setBounds(50, 500, 200, 20);
+		lbl7.setFont(new Font("Arial", Font.PLAIN, 20));
 
+		// CT I
 		lbl8 = new JLabel();
-		lbl8.setText(array[7]);
+		lbl8.setText(array[7].toUpperCase());
 		lbl8.setForeground(Color.white);
-		lbl8.setBounds(175, 150, 200, 20);
+		lbl8.setBounds(75, 550, 200, 20);
+		lbl8.setFont(new Font("Arial", Font.PLAIN, 20));
 
+		// CT D
 		lbl9 = new JLabel();
-		lbl9.setText(array[8]);
+		lbl9.setText(array[8].toUpperCase());
 		lbl9.setForeground(Color.white);
-		lbl9.setBounds(300, 150, 200, 20);
+		lbl9.setBounds(275, 550, 200, 20);
+		lbl9.setFont(new Font("Arial", Font.PLAIN, 20));
 
+		// LD
 		lbl10 = new JLabel();
-		lbl10.setText(array[9]);
+		lbl10.setText(array[9].toUpperCase());
 		lbl10.setForeground(Color.white);
-		lbl10.setBounds(425, 150, 200, 20);
+		lbl10.setBounds(300, 500, 200, 20);
+		lbl10.setFont(new Font("Arial", Font.PLAIN, 20));
 
+		// P
 		lbl11 = new JLabel();
-		lbl11.setText(array[10]);
+		lbl11.setText(array[10].toUpperCase());
 		lbl11.setForeground(Color.white);
-		lbl11.setBounds(225, 680, 200, 20);
+		lbl11.setBounds(175, 640, 200, 20);
+		lbl11.setFont(new Font("Arial", Font.PLAIN, 20));
 
 		add(lbl1);
 		add(lbl2);
