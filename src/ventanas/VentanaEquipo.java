@@ -39,7 +39,6 @@ public class VentanaEquipo extends JFrame {
 	String nombreEquipo;
 	static Component frame;
 
-
 	public VentanaEquipo(Club club, Usuario u) throws DBManagerException {
 		init(club, u);
 	}
@@ -214,17 +213,17 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(labelEntrenador);
 
 		// Resultado Entrenador
-		
+
 		String nombreEntrenador = club.getEntrenador();
 		final JButton botonEntrenador = new JButton(nombreEntrenador);
 		botonEntrenador.setBounds(200, 435, 300, 50);
 		botonEntrenador.setFont(fuente2);
 		botonEntrenador.setForeground(Color.BLACK);
 		botonEntrenador.setContentAreaFilled(false);
-		//botonPabellon.setBorder(new LineBorder(new Color (0,0,0),3));
+		// botonPabellon.setBorder(new LineBorder(new Color (0,0,0),3));
 		botonEntrenador.setFocusable(true);
 		bookPanel.add(botonEntrenador);
-				
+
 		botonEntrenador.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -232,13 +231,14 @@ public class VentanaEquipo extends JFrame {
 					System.out.println(nombreEntrenador);
 					VentanaEntrenador ve = new VentanaEntrenador(nombreEntrenador, club, u);
 					ve.setVisible(true);
-					dispose();	
-				 }catch (Exception e2) {
-						JOptionPane.showMessageDialog(frame, "Este entrenador no existe");
-				 }
-						
-			}});
-	
+					dispose();
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(frame, "Este entrenador no existe");
+				}
+
+			}
+		});
+
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
 		bookPanel.add(fotoEquipo);

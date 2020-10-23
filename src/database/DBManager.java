@@ -541,21 +541,6 @@ public class DBManager {
 	}
 	// HASTA AQUI CREAR TEAM OF THE YEAR
 
-	// ???
-	public static void cambiarDatos(String consulta) throws DBManagerException {
-		try {
-			connect();
-			stmt = conn.createStatement();
-			String sql = consulta;
-			stmt.executeUpdate(sql);
-			System.out.println(sql);
-			stmt.close();
-			disconnect();
-		} catch (SQLException e) {
-			throw new DBManagerException("Error cambiarDatos DBManager", e);
-		}
-	} // ???
-
 	// getClasesBasicas
 	public static ArrayList<Ciudad> getCiudades() throws DBManagerException {
 		try {
@@ -599,7 +584,8 @@ public class DBManager {
 			throw new DBManagerException("Error getClubes DBManager", e);
 		}
 	}
-//Métodos entrenador
+
+	// Métodos entrenador
 	public static ArrayList<Entrenador> getEntrenadores() throws DBManagerException {
 		try {
 			connect();
@@ -621,25 +607,23 @@ public class DBManager {
 			throw new DBManagerException("Error getEntrenadores DBManager", e);
 		}
 	}
-	
-	//Metodo que se usa en VentanaEntrenador. Parece que aun no funciona
+
+	// Metodo que se usa en VentanaEntrenador. Parece que aun no funciona
 	public static String nombreEntrenador(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
 			String nombre = "";
-			String query = "SELECT nombre FROM entrenador WHERE nombre = '" + Entrenador + "'";
+			String query = "SELECT nombre_entrenador FROM entrenador WHERE nombre = '" + Entrenador + "'";
 			ResultSet RS = stmt.executeQuery(query);
 			while (RS.next()) {
-				nombre = RS.getString("nombre");
+				nombre = RS.getString("nombre_entrenador");
 			}
-	        return nombre;
+			return nombre;
 		} catch (Exception e) {
-			throw new DBManagerException("Error getEntrenadores DBManager", e);
+			throw new DBManagerException("Error nombreEntrenador DBManager", e);
 		}
-		
-	
-    }
+	}
 
 	public static ArrayList<Estadio> getEstadios() throws DBManagerException {
 		try {
@@ -821,6 +805,21 @@ public class DBManager {
 		}
 	}
 	// HASTA AQUI getClasesBasicas
+
+	// ???
+	public static void cambiarDatos(String consulta) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql = consulta;
+			stmt.executeUpdate(sql);
+			System.out.println(sql);
+			stmt.close();
+			disconnect();
+		} catch (SQLException e) {
+			throw new DBManagerException("Error cambiarDatos DBManager", e);
+		}
+	} // ???
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {

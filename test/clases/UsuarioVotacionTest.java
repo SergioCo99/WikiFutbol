@@ -1,6 +1,6 @@
 package clases;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ public class UsuarioVotacionTest {
 	public void setUp() {
 		uv = new UsuarioVotacion(1, "a", "d", "c", "d", "p");
 	}
-	
+
 	@Test
 	public void testUsuario() {
 		uv.setUsuario("a");

@@ -5,19 +5,15 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import clases.Club;
 import clases.Usuario;
-import clases.Entrenador;
 import database.DBManager;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
@@ -25,6 +21,7 @@ import utils.JLabelGraficoAjustado;
 public class VentanaEntrenador extends JFrame {
 	private Usuario usuario;
 	static VentanaEquipo frame;
+
 	public static boolean privilegiosAdmin() {
 		try {
 			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {
@@ -37,9 +34,7 @@ public class VentanaEntrenador extends JFrame {
 		}
 		return false;
 	}
-	
 
-	
 	public VentanaEntrenador(String entrenador, Club club, Usuario u) throws DBManagerException {
 		usuario = u;
 		String nombreEntrenador = null;
@@ -57,7 +52,6 @@ public class VentanaEntrenador extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
 
-		
 		// Navbar Panel
 		JPanel navBarPanel = new JPanel();
 		navBarPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
@@ -76,7 +70,7 @@ public class VentanaEntrenador extends JFrame {
 		btnAtras.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		navBarPanel.add(btnAtras);
 		btnAtras.setFocusable(false);
-		
+
 		btnAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -116,7 +110,6 @@ public class VentanaEntrenador extends JFrame {
 		bookPanel.setBounds(197, 62, 800, 580);
 		bookPanel.setBackground(Color.getHSBColor(1.42f, 0.68f, 0.75f));
 		add(bookPanel);
-		
 
 		// Cabecera
 		final JLabel cabecera = new JLabel("Información sobre " + nombreEntrenador + ":");
@@ -211,18 +204,17 @@ public class VentanaEntrenador extends JFrame {
 		bookPanel.add(labelMentalidad);
 
 		// ResultadoMentalidad
-		
+
 		String mentalidad = "Prueba mentalidad";
 		final JLabel label442 = new JLabel(formacion);
 		label442.setBounds(200, 435, 400, 50);
 		label442.setFont(fuente2);
 		label442.setForeground(Color.BLACK);
 		bookPanel.add(label442);
-	
+
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
 		bookPanel.add(fotoEquipo);
 	}
-	
-	
+
 }
