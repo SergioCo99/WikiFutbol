@@ -608,7 +608,7 @@ public class DBManager {
 		}
 	}
 
-	// Metodo que se usa en VentanaEntrenador. Parece que aun no funciona
+	// Metodos que se usa en VentanaEntrenador
 	public static String nombreEntrenador(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -625,6 +625,86 @@ public class DBManager {
 		}
 	}
 
+	public static String fechaNacimiento(String Entrenador, String BD) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String fechaNacimiento = "";
+			String query = "SELECT fechaNac_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			ResultSet RS = stmt.executeQuery(query);
+			while (RS.next()) {
+				fechaNacimiento = RS.getString("fechaNac_entrenador");
+			}
+			return fechaNacimiento;
+		} catch (Exception e) {
+			throw new DBManagerException("Error fechaNacimiento DBManager", e);
+		}
+	}
+	
+	public static String clubEntrenador(String Entrenador, String BD) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String clubEntrenador = "";
+			String query = "SELECT club_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			ResultSet RS = stmt.executeQuery(query);
+			while (RS.next()) {
+				clubEntrenador = RS.getString("club_entrenador");
+			}
+			return clubEntrenador;
+		} catch (Exception e) {
+			throw new DBManagerException("Error clubEntrenador DBManager", e);
+		}
+	}
+	
+	public static String ciudadEntrenador(String Entrenador, String BD) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String ciudadEntrenador = "";
+			String query = "SELECT ciudad_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			ResultSet RS = stmt.executeQuery(query);
+			while (RS.next()) {
+				ciudadEntrenador = RS.getString("ciudad_entrenador");
+			}
+			return ciudadEntrenador;
+		} catch (Exception e) {
+			throw new DBManagerException("Error ciudadEntrenador DBManager", e);
+		}
+	}
+	
+	public static String formacionEntrenador(String Entrenador, String BD) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String formacionEntrenador = "";
+			String query = "SELECT formacion_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			ResultSet RS = stmt.executeQuery(query);
+			while (RS.next()) {
+				formacionEntrenador = RS.getString("formacion_entrenador");
+			}
+			return formacionEntrenador;
+		} catch (Exception e) {
+			throw new DBManagerException("Error formacionEntrenador DBManager", e);
+		}
+	}
+	
+	public static String mentalidadEntrenador(String Entrenador, String BD) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String mentalidadEntrenador = "";
+			String query = "SELECT mentalidad_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			ResultSet RS = stmt.executeQuery(query);
+			while (RS.next()) {
+				mentalidadEntrenador = RS.getString("mentalidad_entrenador");
+			}
+			return mentalidadEntrenador;
+		} catch (Exception e) {
+			throw new DBManagerException("Error mentalidadEntrenador DBManager", e);
+		}
+	}
+	
 	public static ArrayList<Estadio> getEstadios() throws DBManagerException {
 		try {
 			connect();

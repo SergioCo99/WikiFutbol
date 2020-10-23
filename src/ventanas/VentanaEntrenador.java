@@ -74,9 +74,9 @@ public class VentanaEntrenador extends JFrame {
 		btnAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal v1 = null;
+				VentanaEquipo v1 = null;
 				try {
-					v1 = new VentanaPrincipal(u);
+					v1 = new VentanaEquipo(club, u);
 				} catch (DBManagerException e1) {
 					e1.printStackTrace();
 				}
@@ -95,7 +95,6 @@ public class VentanaEntrenador extends JFrame {
 		navBarPanel.add(atrasPanel);
 
 		JLabel lblEntrenador = new JLabel(nombreEntrenador);
-		// JLabel lblEquipo = new JLabel("'NombreEquipo'");
 		lblEntrenador.setBounds(80, 20, 300, 29);
 		lblEntrenador.setFont(new Font("Tahoma", Font.BOLD, 24));
 		navBarPanel.add(lblEntrenador);
@@ -113,7 +112,6 @@ public class VentanaEntrenador extends JFrame {
 
 		// Cabecera
 		final JLabel cabecera = new JLabel("Información sobre " + nombreEntrenador + ":");
-		// final JLabel cabecera = new JLabel("Información sobre 'NombreEntrenador':");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -129,7 +127,6 @@ public class VentanaEntrenador extends JFrame {
 
 		// ResultadoNombreEntrenador
 		final JLabel label11 = new JLabel(nombreEntrenador);
-		// final JLabel label11 = new JLabel("Nombre Prueba");
 		label11.setBounds(120, 110, 400, 50);
 		label11.setFont(fuente2);
 		label11.setForeground(Color.BLACK);
@@ -143,8 +140,14 @@ public class VentanaEntrenador extends JFrame {
 		bookPanel.add(label2);
 
 		// ResultadofechaNac
-		String ciudadEquipo = "01/01/1999";
-		final JLabel label15 = new JLabel(ciudadEquipo);
+		String fechaNacimiento = null;
+		try {
+			fechaNacimiento = DBManager.fechaNacimiento(entrenador, "wikifutbolschema");
+		} catch (DBManagerException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		final JLabel label15 = new JLabel(fechaNacimiento);
 		label15.setBounds(230, 175, 400, 50);
 		label15.setFont(fuente2);
 		label15.setForeground(Color.BLACK);
@@ -157,9 +160,15 @@ public class VentanaEntrenador extends JFrame {
 		label22.setForeground(Color.BLACK);
 		bookPanel.add(label22);
 
-		// ResultadoClub
-		String estadioEquipo = "Club prueba";
-		final JLabel label155 = new JLabel(estadioEquipo);
+		// ResultadoClub   ESTE NO SE VE EL NUMERO NO EL NOMBRE DEL EQUIPO
+		String clubEntrenador = null;
+		try {
+			clubEntrenador = DBManager.clubEntrenador(entrenador, "wikifutbolschema");
+		} catch (DBManagerException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		final JLabel label155 = new JLabel(clubEntrenador);
 		label155.setBounds(200, 240, 400, 50);
 		label155.setFont(fuente2);
 		label155.setForeground(Color.BLACK);
@@ -173,8 +182,14 @@ public class VentanaEntrenador extends JFrame {
 		bookPanel.add(label3);
 
 		// ResultadoCiudad
-		String ciudad = "Bilbao";
-		final JLabel label33 = new JLabel(ciudad);
+		String ciudadEntrenador = null;
+		try {
+			ciudadEntrenador = DBManager.ciudadEntrenador(entrenador, "wikifutbolschema");
+		} catch (DBManagerException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		final JLabel label33 = new JLabel(ciudadEntrenador);
 		label33.setBounds(200, 240, 400, 50);
 		label33.setBounds(200, 305, 400, 50);
 		label33.setFont(fuente2);
@@ -189,8 +204,14 @@ public class VentanaEntrenador extends JFrame {
 		bookPanel.add(label4);
 
 		// Resultado Formacion
-		String formacion = "Formacion Prueba";
-		final JLabel label44 = new JLabel(formacion);
+		String formacionEntrenador = null;
+		try {
+			formacionEntrenador = DBManager.formacionEntrenador(entrenador, "wikifutbolschema");
+		} catch (DBManagerException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		final JLabel label44 = new JLabel(formacionEntrenador);
 		label44.setBounds(200, 370, 400, 50);
 		label44.setFont(fuente2);
 		label44.setForeground(Color.BLACK);
@@ -204,9 +225,14 @@ public class VentanaEntrenador extends JFrame {
 		bookPanel.add(labelMentalidad);
 
 		// ResultadoMentalidad
-
-		String mentalidad = "Prueba mentalidad";
-		final JLabel label442 = new JLabel(formacion);
+		String mentalidadEntrenador = null;
+		try {
+			mentalidadEntrenador = DBManager.mentalidadEntrenador(entrenador, "wikifutbolschema");
+		} catch (DBManagerException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		final JLabel label442 = new JLabel(mentalidadEntrenador);
 		label442.setBounds(200, 435, 400, 50);
 		label442.setFont(fuente2);
 		label442.setForeground(Color.BLACK);
