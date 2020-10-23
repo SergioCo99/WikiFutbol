@@ -24,6 +24,8 @@ import clases.Jugador.Posicion;
 import clases.Pais;
 import clases.TeamOfTheYear;
 import clases.TeamOfTheYear_view;
+import clases.Usuario;
+import clases.UsuarioVotacion;
 
 public class DBManager {
 
@@ -556,9 +558,7 @@ public class DBManager {
 	} // ???
 
 	// getClasesBasicas
-
-	// HASTA AQUI getClasesBasicas
-	public static ArrayList<Ciudad> getCiudad() throws DBManagerException {
+	public static ArrayList<Ciudad> getCiudades() throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
@@ -572,13 +572,14 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
+			System.out.println(array);
 			return array;
 		} catch (Exception e) {
-			throw new DBManagerException("Error getCiudad DBManager", e);
+			throw new DBManagerException("Error getCiudades DBManager", e);
 		}
 	}
 
-	public static ArrayList<Club> getEquipos() throws DBManagerException {
+	public static ArrayList<Club> getClubes() throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
@@ -593,13 +594,14 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
+			System.out.println(array);
 			return array;
 		} catch (Exception e) {
-			throw new DBManagerException("Error getEquipos DBManager", e);
+			throw new DBManagerException("Error getClubes DBManager", e);
 		}
 	}
 
-	public static ArrayList<Entrenador> getEntrenador() throws DBManagerException {
+	public static ArrayList<Entrenador> getEntrenadores() throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
@@ -614,13 +616,14 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
+			System.out.println(array);
 			return array;
 		} catch (Exception e) {
-			throw new DBManagerException("Error getEntrenador DBManager", e);
+			throw new DBManagerException("Error getEntrenadores DBManager", e);
 		}
 	}
 
-	public static ArrayList<Estadio> getEstadio() throws DBManagerException {
+	public static ArrayList<Estadio> getEstadios() throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
@@ -635,13 +638,14 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
+			System.out.println(array);
 			return array;
 		} catch (Exception e) {
-			throw new DBManagerException("Error getEstadio DBManager", e);
+			throw new DBManagerException("Error getEstadios DBManager", e);
 		}
 	}
 
-	public static ArrayList<Feedback> getFeedback() throws DBManagerException {
+	public static ArrayList<Feedback> getFeedbacks() throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
@@ -659,11 +663,11 @@ public class DBManager {
 			System.out.println(array);
 			return array;
 		} catch (Exception e) {
-			throw new DBManagerException("Error getFeedback DBManager", e);
+			throw new DBManagerException("Error getFeedbacks DBManager", e);
 		}
 	}
 
-	public static ArrayList<Jugador> getJugador() throws DBManagerException {
+	public static ArrayList<Jugador> getJugadores() throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
@@ -680,13 +684,14 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
+			System.out.println(array);
 			return array;
 		} catch (Exception e) {
-			throw new DBManagerException("Error getJugador DBManager", e);
+			throw new DBManagerException("Error getJugadores DBManager", e);
 		}
 	}
 
-	public static ArrayList<Pais> getPais() throws DBManagerException {
+	public static ArrayList<Pais> getPaises() throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
@@ -699,9 +704,10 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
+			System.out.println(array);
 			return array;
 		} catch (Exception e) {
-			throw new DBManagerException("Error getPais DBManager", e);
+			throw new DBManagerException("Error getPaises DBManager", e);
 		}
 	}
 
@@ -711,15 +717,16 @@ public class DBManager {
 			connect();
 			stmt = conn.createStatement();
 			ArrayList<TeamOfTheYear_view> array = new ArrayList<TeamOfTheYear_view>();
-			ResultSet rs = stmt.executeQuery(
-					"select * from teamoftheyear_view");
+			ResultSet rs = stmt.executeQuery("select * from teamoftheyear_view");
 			while (rs.next()) {
-				TeamOfTheYear_view toft_v = new TeamOfTheYear_view(rs.getInt(1), rs.getInt(2), rs.getString(3), TeamOfTheYear_view.Posicion.valueOf(rs.getString(4)), rs.getInt(5), rs.getInt(6));
+				TeamOfTheYear_view toft_v = new TeamOfTheYear_view(rs.getInt(1), rs.getInt(2), rs.getString(3),
+						TeamOfTheYear_view.Posicion.valueOf(rs.getString(4)), rs.getInt(5), rs.getInt(6));
 				array.add(toft_v);
 			}
 			rs.close();
 			stmt.close();
 			disconnect();
+			System.out.println(array);
 			return array;
 		} catch (Exception e) {
 			throw new DBManagerException("Error getTeamOfTheYear_view DBManager", e);
@@ -732,64 +739,77 @@ public class DBManager {
 			stmt = conn.createStatement();
 			ArrayList<TeamOfTheYear> array = new ArrayList<TeamOfTheYear>();
 			ResultSet rs = stmt.executeQuery(
-					"select id_ciudad, nombre_ciudad, nombre_pais from ciudad, pais where pais_ciudad = id_pais");
+					"select id_TeamOfTheYear, nombre_jugador from teamoftheyear, jugador where jugador_TeamOfTheYear = id_jugador");
 			while (rs.next()) {
-				TeamOfTheYear toft = new TeamOfTheYear(rs.getInt(1), rs.getString(2), rs.getString(3));
+				TeamOfTheYear toft = new TeamOfTheYear(rs.getInt(1), rs.getString(2));
 				array.add(toft);
 			}
 			rs.close();
 			stmt.close();
 			disconnect();
+			System.out.println(array);
 			return array;
 		} catch (Exception e) {
-			throw new DBManagerException("Error getCiudad DBManager", e);
+			throw new DBManagerException("Error getTeamOfTheYear DBManager", e);
 		}
 	}
 
-	public static ArrayList<Ciudad> getCiudad() throws DBManagerException {
+	public static ArrayList<Usuario> getUsuarios() throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			ArrayList<Ciudad> array = new ArrayList<Ciudad>();
+			ArrayList<Usuario> array = new ArrayList<Usuario>();
 			ResultSet rs = stmt.executeQuery(
-					"select id_ciudad, nombre_ciudad, nombre_pais from ciudad, pais where pais_ciudad = id_pais");
+					"select id_usuario, nombre_usuario, correo_usuario, contrasena_usuario, admin_usuario, fechaNac_usuario from usuario;");
 			while (rs.next()) {
-				Ciudad ciudad = new Ciudad(rs.getInt(1), rs.getString(2), rs.getString(3));
-				array.add(ciudad);
+				Usuario usuario = new Usuario(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getString(6));
+				array.add(usuario);
 			}
 			rs.close();
 			stmt.close();
 			disconnect();
+			System.out.println(array);
 			return array;
 		} catch (Exception e) {
-			throw new DBManagerException("Error getCiudad DBManager", e);
+			throw new DBManagerException("Error getUsuarios DBManager", e);
 		}
 	}
 
-	public static ArrayList<Ciudad> getCiudad() throws DBManagerException {
+	public static ArrayList<UsuarioVotacion> getUsuarioVotaciones() throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			ArrayList<Ciudad> array = new ArrayList<Ciudad>();
+			ArrayList<UsuarioVotacion> array = new ArrayList<UsuarioVotacion>();
 			ResultSet rs = stmt.executeQuery(
-					"select id_ciudad, nombre_ciudad, nombre_pais from ciudad, pais where pais_ciudad = id_pais");
+					"");
 			while (rs.next()) {
-				Ciudad ciudad = new Ciudad(rs.getInt(1), rs.getString(2), rs.getString(3));
-				array.add(ciudad);
+				UsuarioVotacion usuariovotacion = new UsuarioVotacion(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+				array.add(usuariovotacion);
 			}
 			rs.close();
 			stmt.close();
 			disconnect();
+			System.out.println(array);
 			return array;
 		} catch (Exception e) {
-			throw new DBManagerException("Error getCiudad DBManager", e);
+			throw new DBManagerException("Error getUsuarioVotaciones DBManager", e);
 		}
 	}
+	// HASTA AQUI getClasesBasicas
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		getFeedback(); // HAY QUE PROBARLO !!!
-		getJugador();
+		getCiudades();
+		getClubes();
+		getEntrenadores();
+		getEstadios();
+		getFeedbacks(); // HAY QUE PROBARLO !!!
+		getJugadores();
+		getPaises();
 		getTeamOfTheYear_view();
+		getTeamOfTheYear();
+		getUsuarios();
+		getUsuarioVotaciones();
 	}
 }

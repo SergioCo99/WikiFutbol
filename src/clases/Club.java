@@ -80,7 +80,7 @@ public class Club {
 
 	@Override
 	public String toString() {
-		return "Equipo [id=" + id + ", nombre=" + nombre + ", ciudad=" + ciudad + ", estadio=" + estadio
+		return "Club [id=" + id + ", nombre=" + nombre + ", ciudad=" + ciudad + ", estadio=" + estadio
 				+ ", anyoCreacion=" + anyoCreacion + ", palmares=" + palmares + ", entrenador=" + entrenador + "]";
 	}
 
