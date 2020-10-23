@@ -20,7 +20,7 @@ public class Jugador extends EmpleadoDeClub {
 	String descripcion;
 	int voto;
 
-	public Jugador(int id, String nombre, String fechaNac, int club, int ciudad, Posicion posicion, int dorsal,
+	public Jugador(int id, String nombre, String fechaNac, String club, String ciudad, Posicion posicion, int dorsal,
 			int goles, int altura, int peso, PieFav piefav, int valoracion, String descripcion, int voto) {
 		super(id, nombre, fechaNac, club, ciudad);
 		this.posicion = posicion;
@@ -108,10 +108,10 @@ public class Jugador extends EmpleadoDeClub {
 
 	@Override
 	public String toString() {
-		return "Jugador [posicion=" + posicion + ", dorsal=" + dorsal + ", goles=" + goles + ", altura=" + altura
+		return "Jugador [id=" + id + ", nombre=" + nombre + ", fechaNac=" + fechaNac + ", club=" + club + ", ciudad="
+				+ ciudad + ", posicion=" + posicion + ", dorsal=" + dorsal + ", goles=" + goles + ", altura=" + altura
 				+ ", peso=" + peso + ", piefav=" + piefav + ", valoracion=" + valoracion + ", descripcion="
-				+ descripcion + ", voto=" + voto + ", id=" + id + ", nombre=" + nombre + ", fechaNac=" + fechaNac
-				+ ", club=" + club + ", ciudad=" + ciudad + "]";
+				+ descripcion + ", voto=" + voto + "]";
 	}
 
 }

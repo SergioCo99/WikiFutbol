@@ -5,10 +5,10 @@ public class EmpleadoDeClub {
 	int id;
 	String nombre;
 	String fechaNac;
-	int club;
-	int ciudad;
+	String club;
+	String ciudad;
 
-	public EmpleadoDeClub(int id, String nombre, String fechaNac, int club, int ciudad) {
+	public EmpleadoDeClub(int id, String nombre, String fechaNac, String club, String ciudad) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -41,19 +41,19 @@ public class EmpleadoDeClub {
 		this.fechaNac = fechaNac;
 	}
 
-	public int getClub() {
+	public String getClub() {
 		return club;
 	}
 
-	public void setClub(int club) {
+	public void setClub(String club) {
 		this.club = club;
 	}
 
-	public int getCiudad() {
+	public String getCiudad() {
 		return ciudad;
 	}
 
-	public void setCiudad(int ciudad) {
+	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
 

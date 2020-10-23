@@ -21,7 +21,7 @@ public class Feedback {
 	}
 
 	int id;
-	String usuario;
+	String usuario; // en realidad es el correo, que es unico e identificara mejor al usuario
 	Valoracion valoracion;
 	Recomendacion recomendacion;
 	String opinion;

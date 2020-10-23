@@ -10,7 +10,15 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Properties;
 
+import clases.Ciudad;
 import clases.Club;
+import clases.Entrenador;
+import clases.Entrenador.Mentalidad;
+import clases.Estadio;
+import clases.Feedback;
+import clases.Feedback.Recomendacion;
+import clases.Feedback.Valoracion;
+import clases.Jugador;
 
 public class DBManager {
 
@@ -542,17 +550,40 @@ public class DBManager {
 		}
 	} // ???
 
-	// ???
-	public ArrayList<Club> getEquipos() throws DBManagerException {
+	// getClasesBasicas
+
+	// HASTA AQUI getClasesBasicas
+	public static ArrayList<Ciudad> getCiudad() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			ArrayList<Ciudad> array = new ArrayList<Ciudad>();
+			ResultSet rs = stmt.executeQuery(
+					"select id_ciudad, nombre_ciudad, nombre_pais from ciudad, pais where pais_ciudad = id_pais");
+			while (rs.next()) {
+				Ciudad ciudad = new Ciudad(rs.getInt(1), rs.getString(2), rs.getString(3));
+				array.add(ciudad);
+			}
+			rs.close();
+			stmt.close();
+			disconnect();
+			return array;
+		} catch (Exception e) {
+			throw new DBManagerException("Error getCiudad DBManager", e);
+		}
+	}
+
+	public static ArrayList<Club> getEquipos() throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
 			ArrayList<Club> array = new ArrayList<Club>();
-			ResultSet rs = stmt.executeQuery("select * from club");
+			ResultSet rs = stmt.executeQuery(
+					"select id_club, nombre_club, nombre_ciudad, nombre_estadio, anoCreacion_club, palmares_club, nombre_entrenador from club, ciudad, estadio, entrenador where ciudad_club = id_ciudad and estadio_club = id_estadio and entrenador_club = id_entrenador ");
 			while (rs.next()) {
-				Club e = new Club(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
+				Club club = new Club(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
 						rs.getString(6), rs.getString(7));
-				array.add(e);
+				array.add(club);
 			}
 			rs.close();
 			stmt.close();
@@ -561,10 +592,134 @@ public class DBManager {
 		} catch (Exception e) {
 			throw new DBManagerException("Error getEquipos DBManager", e);
 		}
-	}// ???
+	}
+
+	public static ArrayList<Entrenador> getEntrenador() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			ArrayList<Entrenador> array = new ArrayList<Entrenador>();
+			ResultSet rs = stmt.executeQuery(
+					"select id_entrenador, nombre_entrenador, fechaNac_entrenador, nombre_club, nombre_ciudad, formacion_entrenador, mentalidad_entrenador from entrenador, club, ciudad where club_entrenador = id_club and ciudad_entrenador = id_ciudad");
+			while (rs.next()) {
+				Entrenador entrenador = new Entrenador(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), Mentalidad.valueOf(rs.getString(7)));
+				array.add(entrenador);
+			}
+			rs.close();
+			stmt.close();
+			disconnect();
+			return array;
+		} catch (Exception e) {
+			throw new DBManagerException("Error getEntrenador DBManager", e);
+		}
+	}
+
+	public static ArrayList<Estadio> getEstadio() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			ArrayList<Estadio> array = new ArrayList<Estadio>();
+			ResultSet rs = stmt.executeQuery(
+					"select id_estadio, nombre_estadio, aforo_estadio, anoCreacion_estadio, nombre_ciudad from estadio, ciudad where ciudad_estadio = id_ciudad");
+			while (rs.next()) {
+				Estadio estadio = new Estadio(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
+						rs.getString(5));
+				array.add(estadio);
+			}
+			rs.close();
+			stmt.close();
+			disconnect();
+			return array;
+		} catch (Exception e) {
+			throw new DBManagerException("Error getEstadio DBManager", e);
+		}
+	}
+
+	public static ArrayList<Feedback> getFeedback() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			ArrayList<Feedback> array = new ArrayList<Feedback>();
+			ResultSet rs = stmt.executeQuery(
+					"sselect id_feedback, correo_usuario, valoracion_feedback, recomendacion_feedback, opinion_feedback from feedback, usuario where usuario_feedback = id_usuario");
+			while (rs.next()) {
+				Feedback feedback = new Feedback(rs.getInt(1), rs.getString(2), Valoracion.valueOf(rs.getString(3)),
+						Recomendacion.valueOf(rs.getString(4)), rs.getString(5));
+				array.add(feedback);
+			}
+			rs.close();
+			stmt.close();
+			disconnect();
+			System.out.println(array);
+			return array;
+		} catch (Exception e) {
+			throw new DBManagerException("Error getFeedback DBManager", e);
+		}
+	}
+
+	public static ArrayList<Jugador> getJugador() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			ArrayList<Jugador> array = new ArrayList<Jugador>();
+			ResultSet rs = stmt.executeQuery(
+					"select id_jugador, nombre_jugador, fechaNac_jugador, nombre_club, nombre_ciudad, posicion_jugador, dorsal_jugador, goles_jugador, altura_jugador, peso_jugador, pieFav_jugador, valoracion_jugador, descripcion_jugador, voto_jugador from jugador, club, ciudad where club_jugador = id_club and ciudad_jugador = id_ciudad");
+			while (rs.next()) {
+				Jugador jugador = new Ciudad(rs.getInt(1), rs.getString(2), rs.getString(3));
+				array.add(jugador);
+			}
+			rs.close();
+			stmt.close();
+			disconnect();
+			return array;
+		} catch (Exception e) {
+			throw new DBManagerException("Error getCiudad DBManager", e);
+		}
+	}
+
+	public static ArrayList<Ciudad> getCiudad() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			ArrayList<Ciudad> array = new ArrayList<Ciudad>();
+			ResultSet rs = stmt.executeQuery(
+					"select id_ciudad, nombre_ciudad, nombre_pais from ciudad, pais where pais_ciudad = id_pais");
+			while (rs.next()) {
+				Ciudad ciudad = new Ciudad(rs.getInt(1), rs.getString(2), rs.getString(3));
+				array.add(ciudad);
+			}
+			rs.close();
+			stmt.close();
+			disconnect();
+			return array;
+		} catch (Exception e) {
+			throw new DBManagerException("Error getCiudad DBManager", e);
+		}
+	}
+
+	public static ArrayList<Ciudad> getCiudad() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			ArrayList<Ciudad> array = new ArrayList<Ciudad>();
+			ResultSet rs = stmt.executeQuery(
+					"select id_ciudad, nombre_ciudad, nombre_pais from ciudad, pais where pais_ciudad = id_pais");
+			while (rs.next()) {
+				Ciudad ciudad = new Ciudad(rs.getInt(1), rs.getString(2), rs.getString(3));
+				array.add(ciudad);
+			}
+			rs.close();
+			stmt.close();
+			disconnect();
+			return array;
+		} catch (Exception e) {
+			throw new DBManagerException("Error getCiudad DBManager", e);
+		}
+	}
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		existeCorreo("a");
+		getFeedback(); //HAY QUE PROBARLO !!!
 	}
 }

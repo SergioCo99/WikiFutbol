@@ -9,12 +9,11 @@ public class Entrenador extends EmpleadoDeClub {
 	String formacion;
 	Mentalidad mentalidad;
 
-	public Entrenador(int id, String nombre, String fechaNac, int club, int ciudad, String formacion,
+	public Entrenador(int id, String nombre, String fechaNac, String club, String ciudad, String formacion,
 			Mentalidad mentalidad) {
 		super(id, nombre, fechaNac, club, ciudad);
 		this.formacion = formacion;
 		this.mentalidad = mentalidad;
-
 	}
 
 	public String getFormacion() {
@@ -35,8 +34,8 @@ public class Entrenador extends EmpleadoDeClub {
 
 	@Override
 	public String toString() {
-		return "Entrenador [formacion=" + formacion + ", mentalidad=" + mentalidad + ", id=" + id + ", nombre=" + nombre
-				+ ", fechaNac=" + fechaNac + ", club=" + club + ", ciudad=" + ciudad + "]";
+		return "Entrenador [id=" + id + ", nombre=" + nombre + ", fechaNac=" + fechaNac + ", club=" + club + ", ciudad="
+				+ ciudad + ", formacion=" + formacion + ", mentalidad=" + mentalidad + "]";
 	}
 
 }
