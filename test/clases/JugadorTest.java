@@ -1,6 +1,6 @@
 package clases;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,12 +11,13 @@ import clases.Jugador.Posicion;
 public class JugadorTest {
 
 	private Jugador j;
-	
+
 	@Before
 	public void setUp() {
-		j = new Jugador(1, "Koikili", "1980", "Athletic Club", "Bilbao", Posicion.Centrocampista, 14, 5, 180, 78, PieFav.Ambidiestro, 1, "Buen jugador", 1);
+		j = new Jugador(1, "Koikili", "1980", "Athletic Club", "Bilbao", Posicion.Centrocampista, 14, 5, 180, 78,
+				PieFav.Ambidiestro, 1, "Buen jugador", 1);
 	}
-	
+
 	@Test
 	public void testId() {
 		j.setId(1);
@@ -50,69 +51,70 @@ public class JugadorTest {
 		j.setCiudad("Bilbao");
 		assertEquals("Bilbao", j.getCiudad());
 	}
-	
+
 	@Test
 	public void testPosicion() {
 
 		j.setPosicion(Posicion.Centrocampista);
 		assertEquals(Posicion.Centrocampista, j.getPosicion());
 	}
-	
+
 	@Test
 	public void testDorsal() {
 
 		j.setDorsal(14);
 		assertEquals(14, j.getDorsal());
 	}
-	
+
 	@Test
 	public void testGoles() {
 
 		j.setGoles(5);
 		assertEquals(5, j.getGoles());
 	}
-	
+
 	@Test
 	public void testAltura() {
 
 		j.setAltura(180);
 		assertEquals(180, j.getAltura());
 	}
-	
+
 	@Test
 	public void testPeso() {
 
 		j.setPeso(78);
 		assertEquals(78, j.getPeso());
 	}
-	
+
 	@Test
 	public void testPieFav() {
 
 		j.setPiefav(PieFav.Ambidiestro);
 		assertEquals(PieFav.Ambidiestro, j.getPiefav());
 	}
+
 	@Test
 	public void testValoracion() {
 
 		j.setValoracion(1);
 		assertEquals(1, j.getValoracion());
 	}
-	
+
 	@Test
 	public void testDescripcion() {
 
 		j.setDescripcion("Buen jugador");
 		assertEquals("Buen jugador", j.getDescripcion());
 	}
-	
+
 	@Test
 	public void testVoto() {
 
 		j.setVoto(1);
 		assertEquals(1, j.getVoto());
 	}
-	
+
 	@Test
 	public void metodoToString() {
 
@@ -135,7 +137,6 @@ public class JugadorTest {
 
 		assertEquals("Jugador [id=1, nombre=Gaizka Garitano, fechaNac=1980, club=Athletic Club, ciudad=Bilbao, "
 				+ "posicion=Centrocampista, dorsal=14, goles=5, altura=180, peso=78, piefav=Ambidiestro, valoracion=1, "
-				+ "descripcion=Buen jugador, voto=1]",
-				j.toString());
+				+ "descripcion=Buen jugador, voto=1]", j.toString());
 	}
 }

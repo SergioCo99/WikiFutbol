@@ -17,7 +17,6 @@ import clases.Entrenador.Mentalidad;
 import clases.Estadio;
 import clases.Feedback;
 import clases.Feedback.Recomendacion;
-import clases.Feedback.Valoracion;
 import clases.Jugador;
 import clases.Jugador.PieFav;
 import clases.Jugador.Posicion;
@@ -653,8 +652,9 @@ public class DBManager {
 			ResultSet rs = stmt.executeQuery(
 					"select id_feedback, correo_usuario, valoracion_feedback, recomendacion_feedback, opinion_feedback from feedback, usuario where usuario_feedback = id_usuario");
 			while (rs.next()) {
-				Feedback feedback = new Feedback(rs.getInt(1), rs.getString(2), Valoracion.valueOf(rs.getString(3)),
-						Recomendacion.valueOf(rs.getString(4)), rs.getString(5));
+				Feedback feedback = new Feedback(rs.getInt(1), rs.getString(2),
+						/* Valoracion.valueOf(rs.getString(3)) */ rs.getInt(3), Recomendacion.valueOf(rs.getString(4)),
+						rs.getString(5));
 				array.add(feedback);
 			}
 			rs.close();
@@ -739,7 +739,7 @@ public class DBManager {
 			stmt = conn.createStatement();
 			ArrayList<TeamOfTheYear> array = new ArrayList<TeamOfTheYear>();
 			ResultSet rs = stmt.executeQuery(
-					"select id_TeamOfTheYear, nombre_jugador from teamoftheyear, jugador where jugador_TeamOfTheYear = id_jugador");
+					"select id_TeamOfTheYear, nombre_jugador from teamoftheyear, jugador where jugador_TeamOfTheYear = id_jugador order by id_TeamOfTheYear asc");
 			while (rs.next()) {
 				TeamOfTheYear toft = new TeamOfTheYear(rs.getInt(1), rs.getString(2));
 				array.add(toft);
@@ -781,10 +781,15 @@ public class DBManager {
 			connect();
 			stmt = conn.createStatement();
 			ArrayList<UsuarioVotacion> array = new ArrayList<UsuarioVotacion>();
-			ResultSet rs = stmt.executeQuery(
-					"");
+			ResultSet rs = stmt.executeQuery("select id_usuarioVotacion, correo_usuario, "
+					+ "(select nombre_jugador from jugador where delanteroVotado_usuarioVotacion = id_jugador),"
+					+ "(select nombre_jugador from jugador where centrocampistaVotado_usuarioVotacion = id_jugador),"
+					+ "(select nombre_jugador from jugador where defensaVotado_usuarioVotacion = id_jugador),"
+					+ "(select nombre_jugador from jugador where porteroVotado_usuarioVotacion = id_jugador)"
+					+ "from usuariovotacion, usuario where usuario_usuarioVotacion = id_usuario");
 			while (rs.next()) {
-				UsuarioVotacion usuariovotacion = new UsuarioVotacion(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+				UsuarioVotacion usuariovotacion = new UsuarioVotacion(rs.getInt(1), rs.getString(2), rs.getString(3),
+						rs.getString(4), rs.getString(5), rs.getString(6));
 				array.add(usuariovotacion);
 			}
 			rs.close();
@@ -800,16 +805,13 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		getCiudades();
-		getClubes();
-		getEntrenadores();
-		getEstadios();
+		/*
+		 * getCiudades(); getClubes(); getEntrenadores(); getEstadios();
+		 */
 		getFeedbacks(); // HAY QUE PROBARLO !!!
-		getJugadores();
-		getPaises();
-		getTeamOfTheYear_view();
-		getTeamOfTheYear();
-		getUsuarios();
-		getUsuarioVotaciones();
+		/*
+		 * getJugadores(); getPaises(); getTeamOfTheYear_view(); getTeamOfTheYear();
+		 * getUsuarios(); getUsuarioVotaciones();
+		 */
 	}
 }

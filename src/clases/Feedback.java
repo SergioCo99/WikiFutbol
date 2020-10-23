@@ -21,12 +21,14 @@ public class Feedback {
 	}
 
 	int id;
-	String usuario; // en realidad es el correo, que es unico e identificara mejor al usuario
-	Valoracion valoracion;
+	String usuario;
+	// en realidad es el correo, que es unico e identificara mejor al usuario
+	/* Valoracion */ int valoracion;
 	Recomendacion recomendacion;
 	String opinion;
 
-	public Feedback(int id, String usuario, Valoracion valoracion, Recomendacion recomendacion, String opinion) {
+	public Feedback(int id, String usuario, /* Valoracion */ int valoracion, Recomendacion recomendacion,
+			String opinion) {
 		super();
 		this.id = id;
 		this.usuario = usuario;
@@ -51,11 +53,11 @@ public class Feedback {
 		this.usuario = usuario;
 	}
 
-	public Valoracion getValoracion() {
+	public /* Valoracion */ int getValoracion() {
 		return valoracion;
 	}
 
-	public void setValoracion(Valoracion valoracion) {
+	public void setValoracion(/* Valoracion */int valoracion) {
 		this.valoracion = valoracion;
 	}
 

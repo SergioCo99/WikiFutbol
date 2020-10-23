@@ -13,7 +13,8 @@ public class EntrenadorTest {
 
 	@Before
 	public void setUp() {
-		e = new Entrenador(1, "Gaizka Garitano", "1970", "Athletic Club", "Bilbao", "Escuela Albacete", Mentalidad.Defensiva);
+		e = new Entrenador(1, "Gaizka Garitano", "1970", "Athletic Club", "Bilbao", "Escuela Albacete",
+				Mentalidad.Defensiva);
 	}
 
 	@Test
@@ -77,9 +78,7 @@ public class EntrenadorTest {
 
 		System.out.println(e.toString());
 
-		assertEquals(
-				"Entrenador [id=1, nombre=Gaizka Garitano, fechaNac=1980, club=Athletic Club, ciudad=Bilbao,"
-				+ " formacion=Escuela Albacete, mentalidad=Defensiva]",
-				e.toString());
+		assertEquals("Entrenador [id=1, nombre=Gaizka Garitano, fechaNac=1980, club=Athletic Club, ciudad=Bilbao,"
+				+ " formacion=Escuela Albacete, mentalidad=Defensiva]", e.toString());
 	}
 }

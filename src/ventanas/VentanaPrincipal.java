@@ -82,7 +82,7 @@ public class VentanaPrincipal extends JFrame {
 	private JButton botonVerEquipo;
 
 	public VentanaPrincipal(Usuario u) throws DBManagerException {
-		//arrayEquipos = database1.getEquipos();
+		// arrayEquipos = database1.getEquipos();
 		arrayEquipos = database1.getClubes();
 		usuario = u;
 		init();

@@ -59,6 +59,7 @@ public class EmpleadoClubTest {
 
 		System.out.println(ect.toString());
 
-		assertEquals("EmpleadoDeClub [id=1, nombre=Koikili, fechaNac=1980, club=Athletic Club, ciudad=Bilbao]", ect.toString());
+		assertEquals("EmpleadoDeClub [id=1, nombre=Koikili, fechaNac=1980, club=Athletic Club, ciudad=Bilbao]",
+				ect.toString());
 	}
 }
