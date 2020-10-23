@@ -10,6 +10,7 @@ import clases.Entrenador.Mentalidad;
 public class DBManagerTest {
 
 	//Métodos Entrenador
+	
 	Entrenador e = new Entrenador(1, "Gaizka Garitano", "2000-10-10", "Athletic Club", "Bilbao", "Escuela Albacete",
 			Mentalidad.Defensiva);
 	@Test
