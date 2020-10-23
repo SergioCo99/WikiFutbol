@@ -635,7 +635,7 @@ public class DBManager {
 			}
 	        return nombre;
 		} catch (Exception e) {
-			throw new DBManagerException("Error getEntrenadores DBManager", e);
+			throw new DBManagerException("Error nombreEntrenador DBManager", e);
 		}
 		
 	
