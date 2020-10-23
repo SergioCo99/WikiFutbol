@@ -640,7 +640,7 @@ public class DBManager {
 			throw new DBManagerException("Error fechaNacimiento DBManager", e);
 		}
 	}
-	
+
 	public static String clubEntrenador(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -656,7 +656,7 @@ public class DBManager {
 			throw new DBManagerException("Error clubEntrenador DBManager", e);
 		}
 	}
-	
+
 	public static String ciudadEntrenador(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -672,7 +672,7 @@ public class DBManager {
 			throw new DBManagerException("Error ciudadEntrenador DBManager", e);
 		}
 	}
-	
+
 	public static String formacionEntrenador(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -688,13 +688,14 @@ public class DBManager {
 			throw new DBManagerException("Error formacionEntrenador DBManager", e);
 		}
 	}
-	
+
 	public static String mentalidadEntrenador(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
 			String mentalidadEntrenador = "";
-			String query = "SELECT mentalidad_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			String query = "SELECT mentalidad_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador
+					+ "'";
 			ResultSet RS = stmt.executeQuery(query);
 			while (RS.next()) {
 				mentalidadEntrenador = RS.getString("mentalidad_entrenador");
@@ -704,7 +705,7 @@ public class DBManager {
 			throw new DBManagerException("Error mentalidadEntrenador DBManager", e);
 		}
 	}
-	
+
 	public static ArrayList<Estadio> getEstadios() throws DBManagerException {
 		try {
 			connect();

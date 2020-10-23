@@ -160,7 +160,7 @@ public class VentanaEntrenador extends JFrame {
 		label22.setForeground(Color.BLACK);
 		bookPanel.add(label22);
 
-		// ResultadoClub   ESTE NO SE VE EL NUMERO NO EL NOMBRE DEL EQUIPO
+		// ResultadoClub ESTE NO SE VE EL NUMERO NO EL NOMBRE DEL EQUIPO
 		String clubEntrenador = null;
 		try {
 			clubEntrenador = DBManager.clubEntrenador(entrenador, "wikifutbolschema");
