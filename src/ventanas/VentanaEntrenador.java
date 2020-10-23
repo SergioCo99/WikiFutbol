@@ -1,26 +1,30 @@
 package ventanas;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import clases.Club;
 import clases.Usuario;
+import clases.Entrenador;
+import database.DBManager;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
-public class VentanaEquipo extends JFrame {
-
+public class VentanaEntrenador extends JFrame {
+	private Usuario usuario;
+	static VentanaEquipo frame;
 	public static boolean privilegiosAdmin() {
 		try {
 			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {
@@ -33,21 +37,19 @@ public class VentanaEquipo extends JFrame {
 		}
 		return false;
 	}
+	
 
-	private static final long serialVersionUID = 1L;
-	private static Usuario usuario;
-	String nombreEquipo;
-	static Component frame;
-
-
-	public VentanaEquipo(Club club, Usuario u) throws DBManagerException {
-		init(club, u);
-	}
-
-	public void init(Club club, Usuario u) {
+	
+	public VentanaEntrenador(String entrenador, Club club, Usuario u) throws DBManagerException {
 		usuario = u;
-		nombreEquipo = club.getNombre();
-		this.setTitle(nombreEquipo);
+		String nombreEntrenador = null;
+		try {
+			nombreEntrenador = DBManager.nombreEntrenador(entrenador, "wikifutbolschema");
+		} catch (DBManagerException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		this.setTitle(nombreEntrenador);
 		this.setSize(1200, 700);
 		this.setLayout(null);
 		this.setResizable(false);
@@ -55,6 +57,7 @@ public class VentanaEquipo extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
 
+		
 		// Navbar Panel
 		JPanel navBarPanel = new JPanel();
 		navBarPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
@@ -73,7 +76,7 @@ public class VentanaEquipo extends JFrame {
 		btnAtras.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		navBarPanel.add(btnAtras);
 		btnAtras.setFocusable(false);
-
+		
 		btnAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -97,11 +100,11 @@ public class VentanaEquipo extends JFrame {
 		atrasPanel.add(atrasIMG);
 		navBarPanel.add(atrasPanel);
 
-		JLabel lblEquipo = new JLabel(nombreEquipo);
+		JLabel lblEntrenador = new JLabel(nombreEntrenador);
 		// JLabel lblEquipo = new JLabel("'NombreEquipo'");
-		lblEquipo.setBounds(80, 20, 300, 29);
-		lblEquipo.setFont(new Font("Tahoma", Font.BOLD, 24));
-		navBarPanel.add(lblEquipo);
+		lblEntrenador.setBounds(80, 20, 300, 29);
+		lblEntrenador.setFont(new Font("Tahoma", Font.BOLD, 24));
+		navBarPanel.add(lblEntrenador);
 
 		JLabelGraficoAjustado iconoWikiFutbol = new JLabelGraficoAjustado("resources/logo1.png", 60, 50);
 		iconoWikiFutbol.setLocation(10, 13);
@@ -113,145 +116,113 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.setBounds(197, 62, 800, 580);
 		bookPanel.setBackground(Color.getHSBColor(1.42f, 0.68f, 0.75f));
 		add(bookPanel);
-
-		nombreEquipo = club.getNombre();
+		
 
 		// Cabecera
-		final JLabel cabecera = new JLabel("Información sobre " + nombreEquipo + ":");
-		// final JLabel cabecera = new JLabel("Información sobre 'NombreEquipo':");
+		final JLabel cabecera = new JLabel("Información sobre " + nombreEntrenador + ":");
+		// final JLabel cabecera = new JLabel("Información sobre 'NombreEntrenador':");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));
 		cabecera.setForeground(Color.BLACK);
 		bookPanel.add(cabecera);
 
-		// NombreEquipo
-		final JLabel label1 = new JLabel("Equipo: ");
+		// NombreEntrenador
+		final JLabel label1 = new JLabel("Nombre: ");
 		label1.setBounds(20, 110, 150, 50);
 		label1.setFont(fuente2);
 		label1.setForeground(Color.BLACK);
 		bookPanel.add(label1);
 
-		// ResultadoNombreEquipo
-		final JLabel label11 = new JLabel(nombreEquipo);
+		// ResultadoNombreEntrenador
+		final JLabel label11 = new JLabel(nombreEntrenador);
 		// final JLabel label11 = new JLabel("Nombre Prueba");
 		label11.setBounds(120, 110, 400, 50);
 		label11.setFont(fuente2);
 		label11.setForeground(Color.BLACK);
 		bookPanel.add(label11);
 
-		// CiudadEquipo
-		final JLabel label2 = new JLabel("Ciudad: ");
-		label2.setBounds(20, 175, 150, 50);
+		// fechaNac
+		final JLabel label2 = new JLabel("Fecha Nacimiento: ");
+		label2.setBounds(20, 175, 300, 50);
 		label2.setFont(fuente2);
 		label2.setForeground(Color.BLACK);
 		bookPanel.add(label2);
 
-		// ResultadoCiudadEquipo
-		String ciudadEquipo = club.getCiudad();
-		// String ciudadEquipo = "Ciudad Prueba";
+		// ResultadofechaNac
+		String ciudadEquipo = "01/01/1999";
 		final JLabel label15 = new JLabel(ciudadEquipo);
-		label15.setBounds(120, 175, 400, 50);
+		label15.setBounds(230, 175, 400, 50);
 		label15.setFont(fuente2);
 		label15.setForeground(Color.BLACK);
 		bookPanel.add(label15);
 
-		// EstadioEquipo
-		final JLabel label22 = new JLabel("Estadio: ");
+		// Club
+		final JLabel label22 = new JLabel("Club: ");
 		label22.setBounds(20, 240, 150, 50);
 		label22.setFont(fuente2);
 		label22.setForeground(Color.BLACK);
 		bookPanel.add(label22);
 
-		// ResultadoEstadioEquipo
-		String estadioEquipo = club.getEstadio();
+		// ResultadoClub
+		String estadioEquipo = "Club prueba";
 		final JLabel label155 = new JLabel(estadioEquipo);
 		label155.setBounds(200, 240, 400, 50);
 		label155.setFont(fuente2);
 		label155.setForeground(Color.BLACK);
 		bookPanel.add(label155);
 
-		// AnyoCreacion
-		final JLabel label3 = new JLabel("A\u00f1o de creaci\u00f3n: ");
+		// Ciudad
+		final JLabel label3 = new JLabel("Ciudad: ");
 		label3.setBounds(20, 305, 275, 50);
 		label3.setFont(fuente2);
 		label3.setForeground(Color.BLACK);
 		bookPanel.add(label3);
 
-		// ResultadoAnyoCreacion
-		String anyoCreacion = Integer.toString(club.getAnyoCreacion());
-		final JLabel label33 = new JLabel(anyoCreacion);
-		// String anyoCreacion = "2020";
+		// ResultadoCiudad
+		String ciudad = "Bilbao";
+		final JLabel label33 = new JLabel(ciudad);
 		label33.setBounds(200, 240, 400, 50);
-
-		// String anyoCreacion = "2020";
 		label33.setBounds(200, 305, 400, 50);
 		label33.setFont(fuente2);
 		label33.setForeground(Color.BLACK);
 		bookPanel.add(label33);
 
-		// Palmares
-		final JLabel label4 = new JLabel("Palmares: ");
+		// Formacion
+		final JLabel label4 = new JLabel("Formacion: ");
 		label4.setBounds(20, 370, 275, 50);
 		label4.setFont(fuente2);
 		label4.setForeground(Color.BLACK);
 		bookPanel.add(label4);
 
-		// Resultado Palmares
-		String palmares = club.getPalmares();
-		// String palmares = "Palmares Prueba";
-		final JLabel label44 = new JLabel(palmares);
+		// Resultado Formacion
+		String formacion = "Formacion Prueba";
+		final JLabel label44 = new JLabel(formacion);
 		label44.setBounds(200, 370, 400, 50);
 		label44.setFont(fuente2);
 		label44.setForeground(Color.BLACK);
 		bookPanel.add(label44);
 
-		// NombreEntrenador
-		final JLabel labelEntrenador = new JLabel("Entrenador: ");
-		labelEntrenador.setBounds(20, 435, 150, 50);
-		labelEntrenador.setFont(fuente2);
-		labelEntrenador.setForeground(Color.BLACK);
-		bookPanel.add(labelEntrenador);
+		// Mentalidad
+		final JLabel labelMentalidad = new JLabel("Mentalidad: ");
+		labelMentalidad.setBounds(20, 435, 150, 50);
+		labelMentalidad.setFont(fuente2);
+		labelMentalidad.setForeground(Color.BLACK);
+		bookPanel.add(labelMentalidad);
 
-		// Resultado Entrenador
+		// ResultadoMentalidad
 		
-		String nombreEntrenador = club.getEntrenador();
-		final JButton botonEntrenador = new JButton(nombreEntrenador);
-		botonEntrenador.setBounds(200, 435, 300, 50);
-		botonEntrenador.setFont(fuente2);
-		botonEntrenador.setForeground(Color.BLACK);
-		botonEntrenador.setContentAreaFilled(false);
-		//botonPabellon.setBorder(new LineBorder(new Color (0,0,0),3));
-		botonEntrenador.setFocusable(true);
-		bookPanel.add(botonEntrenador);
-				
-		botonEntrenador.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					System.out.println(nombreEntrenador);
-					VentanaEntrenador ve = new VentanaEntrenador(nombreEntrenador, club, u);
-					ve.setVisible(true);
-					dispose();	
-				 }catch (Exception e2) {
-						JOptionPane.showMessageDialog(frame, "Este entrenador no existe");
-				 }
-						
-			}});
+		String mentalidad = "Prueba mentalidad";
+		final JLabel label442 = new JLabel(formacion);
+		label442.setBounds(200, 435, 400, 50);
+		label442.setFont(fuente2);
+		label442.setForeground(Color.BLACK);
+		bookPanel.add(label442);
 	
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
 		bookPanel.add(fotoEquipo);
 	}
-
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) throws DBManagerException {
-		// para entrar siempre modo admin desde esta clase
-
-		Usuario u = new Usuario(1, "", "", "", 1, "");
-		Club e = new Club(0, "", "", "", 3, "", "");
-		VentanaEquipo v = new VentanaEquipo(e, u);
-		v.setVisible(true);
-
-	}
+	
+	
 }

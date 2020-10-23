@@ -599,7 +599,7 @@ public class DBManager {
 			throw new DBManagerException("Error getClubes DBManager", e);
 		}
 	}
-
+//Métodos entrenador
 	public static ArrayList<Entrenador> getEntrenadores() throws DBManagerException {
 		try {
 			connect();
@@ -621,6 +621,25 @@ public class DBManager {
 			throw new DBManagerException("Error getEntrenadores DBManager", e);
 		}
 	}
+	
+	//Metodo que se usa en VentanaEntrenador. Parece que aun no funciona
+	public static String nombreEntrenador(String Entrenador, String BD) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String nombre = "";
+			String query = "SELECT nombre FROM entrenador WHERE nombre = '" + Entrenador + "'";
+			ResultSet RS = stmt.executeQuery(query);
+			while (RS.next()) {
+				nombre = RS.getString("nombre");
+			}
+	        return nombre;
+		} catch (Exception e) {
+			throw new DBManagerException("Error getEntrenadores DBManager", e);
+		}
+		
+	
+    }
 
 	public static ArrayList<Estadio> getEstadios() throws DBManagerException {
 		try {
