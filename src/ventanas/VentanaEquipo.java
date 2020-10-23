@@ -163,12 +163,33 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(label22);
 
 		// ResultadoEstadioEquipo
+		
+		
+		
 		String estadioEquipo = club.getEstadio();
-		final JLabel label155 = new JLabel(estadioEquipo);
-		label155.setBounds(200, 240, 400, 50);
-		label155.setFont(fuente2);
-		label155.setForeground(Color.BLACK);
-		bookPanel.add(label155);
+		final JButton botonEquipo = new JButton(estadioEquipo);
+		botonEquipo.setBounds(200, 240, 400, 50);
+		botonEquipo.setFont(fuente2);
+		botonEquipo.setForeground(Color.BLACK);
+		botonEquipo.setContentAreaFilled(false);
+		// botonPabellon.setBorder(new LineBorder(new Color (0,0,0),3));
+		botonEquipo.setFocusable(true);
+		bookPanel.add(botonEquipo);
+
+		botonEquipo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					System.out.println(estadioEquipo);
+					VentanaEstadio ve = new VentanaEstadio(estadioEquipo, club, u);
+					ve.setVisible(true);
+					dispose();
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(frame, "Este estadio no existe");
+				}
+
+			}
+		});
 
 		// AnyoCreacion
 		final JLabel label3 = new JLabel("A\u00f1o de creaci\u00f3n: ");

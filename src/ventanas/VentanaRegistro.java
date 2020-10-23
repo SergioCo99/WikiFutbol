@@ -1,6 +1,7 @@
 package ventanas;
 
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -36,6 +37,8 @@ public class VentanaRegistro extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
+
 
 		lblUser = new JLabel();
 		lblUser.setText("Introduce el nombre de usuario:");

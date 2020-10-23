@@ -1,5 +1,6 @@
 package ventanas;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Properties;
@@ -27,6 +28,8 @@ public class VentanaDescargar extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
+
 
 		btnDescargar = new JButton();
 		btnDescargar.setText("Descargar");

@@ -730,6 +730,71 @@ public class DBManager {
 		}
 	}
 
+	//Métodos para VentanaEstadio
+	public static String nombreEstadio(String Estadio, String BD) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String nombre = "";
+			String query = "SELECT nombre_estadio FROM estadio WHERE nombre_estadio = '" + Estadio + "'";
+			ResultSet RS = stmt.executeQuery(query);
+			while (RS.next()) {
+				nombre = RS.getString("nombre_estadio");
+			}
+			return nombre;
+		} catch (Exception e) {
+			throw new DBManagerException("Error nombreEntrenador DBManager", e);
+		}
+	}
+	
+	public static int aforoEstadio(String Estadio, String BD) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			int aforo = 0;
+			String query = "SELECT aforo_estadio FROM estadio WHERE nombre_estadio = '" + Estadio + "'";
+			ResultSet RS = stmt.executeQuery(query);
+			while (RS.next()) {
+				aforo = RS.getInt("aforo_estadio");
+			}
+			return aforo;
+		} catch (Exception e) {
+			throw new DBManagerException("Error aforoEstadio DBManager", e);
+		}
+	}
+	
+	
+	public static int anyoEstadio(String Estadio, String BD) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			int anyo = 0;
+			String query = "SELECT anoCreacion_estadio FROM estadio WHERE nombre_estadio = '" + Estadio + "'";
+			ResultSet RS = stmt.executeQuery(query);
+			while (RS.next()) {
+				anyo = RS.getInt("anoCreacion_estadio");
+			}
+			return anyo;
+		} catch (Exception e) {
+			throw new DBManagerException("Error anyoEstadio DBManager", e);
+		}
+	}
+	
+	public static String ciudadEstadio(String Estadio, String BD) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String ciudadEstadio = "";
+			String query = "select nombre_ciudad from ciudad, estadio where id_ciudad = ciudad_estadio and nombre_estadio = '"+ Estadio +"'";
+			ResultSet RS = stmt.executeQuery(query);
+			while (RS.next()) {
+				ciudadEstadio = RS.getString("nombre_ciudad");
+			}
+			return ciudadEstadio;
+		} catch (Exception e) {
+			throw new DBManagerException("Error ciudadEstadio DBManager", e);
+		}
+	}
 	public static ArrayList<Feedback> getFeedbacks() throws DBManagerException {
 		try {
 			connect();

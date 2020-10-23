@@ -2,6 +2,7 @@ package ventanas;
 
 import java.awt.Color;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -42,6 +43,8 @@ public class VentanaFeedback extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
+
 
 		estrella1 = new JRadioButton("1*");
 		estrella1.setActionCommand("1");

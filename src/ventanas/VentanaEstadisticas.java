@@ -1,5 +1,7 @@
 package ventanas;
 
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -20,6 +22,8 @@ public class VentanaEstadisticas extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
+
 
 		// tabla
 		String[] columns = { "Code", "Info" };

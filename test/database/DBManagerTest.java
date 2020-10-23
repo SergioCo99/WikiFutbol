@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import clases.Entrenador;
+import clases.Estadio;
 import clases.Entrenador.Mentalidad;
 
 public class DBManagerTest {
@@ -45,4 +46,5 @@ public class DBManagerTest {
 	}
 
 	// Fin Métodos Entrenador
+
 }
