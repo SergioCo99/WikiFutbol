@@ -108,7 +108,7 @@ CREATE TABLE `entrenador` (
 
 LOCK TABLES `entrenador` WRITE;
 /*!40000 ALTER TABLE `entrenador` DISABLE KEYS */;
-INSERT INTO `entrenador` VALUES (1,'Gaizka Garitano','2000-10-10',1,1,'4-3-3','Defensiva'),(2,'Imanol Alguacil','2000-10-10',1,1,'4-3-3','Atacante'),(3,'Unai Emery','2000-10-10',1,1,'4-3-3','Equilibrada'),(4,'Zinedine Zidane','2000-10-10',1,1,'4-3-3','Equilibrada'),(5,'Jose Bordalas','2000-10-10',1,1,'4-3-3','Equilibrada'),(6,'Alvaro Cervera','2000-10-10',1,1,'4-3-3','Equilibrada'),(7,'Diego Martinez','2000-10-10',1,1,'4-3-3','Equilibrada'),(8,'Manuel Pellegrini','2000-10-10',1,1,'4-3-3','Equilibrada'),(9,'Diego Simeone','2000-10-10',1,1,'4-3-3','Equilibrada'),(10,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(11,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(12,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(13,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(14,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(15,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(16,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(17,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(18,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(19,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(20,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada');
+INSERT INTO `entrenador` VALUES (1,'Gaizka Garitano','2000-10-10',1,1,'4-3-3','Defensiva'),(2,'Imanol Alguacil','2000-10-10',1,1,'4-3-3','Atacante'),(3,'Unai Emery','2000-10-10',1,1,'4-3-3','Equilibrada'),(4,'Zinedine Zidane','2000-10-10',1,1,'4-3-3','Equilibrada'),(5,'Jose Bordalas','2000-10-10',1,1,'4-3-3','Equilibrada'),(6,'Alvaro Cervera','2000-10-10',1,1,'4-3-3','Equilibrada'),(7,'Diego Martinez','2000-10-10',1,1,'4-3-3','Equilibrada'),(8,'Manuel Pellegrini','2000-10-10',1,1,'4-3-3','Equilibrada'),(9,'Diego Simeone','2000-10-10',1,1,'4-3-3','Equilibrada'),(10,'Ronald Koeman','2000-10-10',1,1,'4-3-3','Equilibrada'),(11,'Julen Lopetegui','2000-10-10',1,1,'4-3-3','Equilibrada'),(12,'Jagoba Arrasate','2000-10-10',1,1,'4-3-3','Equilibrada'),(13,'Jorge Almiron','2000-10-10',1,1,'4-3-3','Equilibrada'),(14,'Javi Gracia','2000-10-10',1,1,'4-3-3','Equilibrada'),(15,'Jose Luis Mendilibar','2000-10-10',1,1,'4-3-3','Equilibrada'),(16,'Michel','2000-10-10',1,1,'4-3-3','Equilibrada'),(17,'Oscar Garcia','2000-10-10',1,1,'4-3-3','Equilibrada'),(18,'Pablo Machin','2000-10-10',1,1,'4-3-3','Equilibrada'),(19,'Sergio','2000-10-10',1,1,'4-3-3','Equilibrada'),(20,'Paco Lopez','2000-10-10',1,1,'4-3-3','Equilibrada');
 /*!40000 ALTER TABLE `entrenador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +128,7 @@ CREATE TABLE `estadio` (
   PRIMARY KEY (`id_estadio`),
   KEY `ciudad_estadio` (`ciudad_estadio`),
   CONSTRAINT `estadio_ibfk_1` FOREIGN KEY (`ciudad_estadio`) REFERENCES `ciudad` (`id_ciudad`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +137,7 @@ CREATE TABLE `estadio` (
 
 LOCK TABLES `estadio` WRITE;
 /*!40000 ALTER TABLE `estadio` DISABLE KEYS */;
-INSERT INTO `estadio` VALUES (1,'San Mames',5,2000,1),(2,'Reale jaja',1,2019,2);
+INSERT INTO `estadio` VALUES (1,'San Mames',53289,0,1),(2,'Reale Arena',39500,0,1),(3,'Estadio de la Ceramica',23500,0,1),(4,'Estadio Ramon de Carranza',20724,0,1),(5,'Santiago Bernabeu',81044,0,1),(6,'Coliseum Alfonso Perez',17393,0,1),(7,'Estadio Nuevo Los Carmenes',23156,0,1),(8,'Cuidad de Valencia',26354,0,1),(9,'Jose Zorrilla',27846,0,1),(10,'Estadio de Mendizorroza',19840,0,1),(11,'Municipal de Balaidos',31800,0,1),(12,'El Alcoraz',7600,0,1),(13,'Estadio Municipal de Ipurua',8164,0,1),(14,'Mestalla',55000,0,1),(15,'Estadio Martinez Valero',36017,0,1),(16,'Estadio El Sadar',19800,0,1),(17,'Ramon Sanchez Pizjuan',45500,0,1),(18,'Camp Nou',98787,0,1),(19,'Wanda Metropolitano',67942,0,1),(20,'Benito Villamarin',60721,0,1);
 /*!40000 ALTER TABLE `estadio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,4 +396,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-23 13:08:15
+-- Dump completed on 2020-10-23 13:26:18
