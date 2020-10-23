@@ -31,7 +31,7 @@ CREATE TABLE `ciudad` (
   PRIMARY KEY (`id_ciudad`),
   KEY `pais_ciudad` (`pais_ciudad`),
   CONSTRAINT `ciudad_ibfk_1` FOREIGN KEY (`pais_ciudad`) REFERENCES `pais` (`id_pais`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `ciudad` (
 
 LOCK TABLES `ciudad` WRITE;
 /*!40000 ALTER TABLE `ciudad` DISABLE KEYS */;
-INSERT INTO `ciudad` VALUES (1,'Bilbao',1);
+INSERT INTO `ciudad` VALUES (1,'Bilbao',1),(2,'San Sebastian',1),(3,'Villarreal',1),(4,'Madrid',1),(5,'Getafe',1),(6,'Cadiz',1),(7,'Granada',1),(8,'Sevilla',1),(9,'Barcelona',1),(10,'Pamplona',1),(11,'Elche',1),(12,'Valencia',1),(13,'Eibar',1),(14,'Huesca',1),(15,'Vigo',1),(16,'Vitoria-Gasteiz',1),(17,'Valladolid',1);
 /*!40000 ALTER TABLE `ciudad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +66,7 @@ CREATE TABLE `club` (
   CONSTRAINT `club_ibfk_1` FOREIGN KEY (`ciudad_club`) REFERENCES `ciudad` (`id_ciudad`) ON DELETE CASCADE,
   CONSTRAINT `club_ibfk_2` FOREIGN KEY (`estadio_club`) REFERENCES `estadio` (`id_estadio`) ON DELETE CASCADE,
   CONSTRAINT `club_ibfk_3` FOREIGN KEY (`entrenador_club`) REFERENCES `entrenador` (`id_entrenador`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,7 @@ CREATE TABLE `club` (
 
 LOCK TABLES `club` WRITE;
 /*!40000 ALTER TABLE `club` DISABLE KEYS */;
-INSERT INTO `club` VALUES (1,'Athletic Club',1,1,2001,'1',1);
+INSERT INTO `club` VALUES (1,'Athletic Club',1,1,2001,'1',1),(2,'Real Sociedad',2,2,1999,'0',2),(3,NULL,NULL,1,0,NULL,NULL),(4,NULL,NULL,1,0,NULL,NULL);
 /*!40000 ALTER TABLE `club` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -99,7 +99,7 @@ CREATE TABLE `entrenador` (
   KEY `ciudad_entrenador` (`ciudad_entrenador`),
   CONSTRAINT `entrenador_ibfk_1` FOREIGN KEY (`club_entrenador`) REFERENCES `club` (`id_club`) ON DELETE CASCADE,
   CONSTRAINT `entrenador_ibfk_2` FOREIGN KEY (`ciudad_entrenador`) REFERENCES `ciudad` (`id_ciudad`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,7 +108,7 @@ CREATE TABLE `entrenador` (
 
 LOCK TABLES `entrenador` WRITE;
 /*!40000 ALTER TABLE `entrenador` DISABLE KEYS */;
-INSERT INTO `entrenador` VALUES (1,'Gaizka Garitano','2000-10-10',1,1,'Mucha','Defensiva');
+INSERT INTO `entrenador` VALUES (1,'Gaizka Garitano','2000-10-10',1,1,'4-3-3','Defensiva'),(2,'Imanol Alguacil','2000-10-10',1,1,'4-3-3','Atacante'),(3,'Unai Emery','2000-10-10',1,1,'4-3-3','Equilibrada'),(4,'Zinedine Zidane','2000-10-10',1,1,'4-3-3','Equilibrada'),(5,'Jose Bordalas','2000-10-10',1,1,'4-3-3','Equilibrada'),(6,'Alvaro Cervera','2000-10-10',1,1,'4-3-3','Equilibrada'),(7,'Diego Martinez','2000-10-10',1,1,'4-3-3','Equilibrada'),(8,'Manuel Pellegrini','2000-10-10',1,1,'4-3-3','Equilibrada'),(9,'Diego Simeone','2000-10-10',1,1,'4-3-3','Equilibrada'),(10,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(11,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(12,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(13,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(14,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(15,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(16,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(17,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(18,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(19,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada'),(20,NULL,'2000-10-10',1,1,'4-3-3','Equilibrada');
 /*!40000 ALTER TABLE `entrenador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +128,7 @@ CREATE TABLE `estadio` (
   PRIMARY KEY (`id_estadio`),
   KEY `ciudad_estadio` (`ciudad_estadio`),
   CONSTRAINT `estadio_ibfk_1` FOREIGN KEY (`ciudad_estadio`) REFERENCES `ciudad` (`id_ciudad`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +137,7 @@ CREATE TABLE `estadio` (
 
 LOCK TABLES `estadio` WRITE;
 /*!40000 ALTER TABLE `estadio` DISABLE KEYS */;
-INSERT INTO `estadio` VALUES (1,'San Mames',5,2000,1);
+INSERT INTO `estadio` VALUES (1,'San Mames',5,2000,1),(2,'Reale jaja',1,2019,2);
 /*!40000 ALTER TABLE `estadio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,6 +166,7 @@ CREATE TABLE `feedback` (
 
 LOCK TABLES `feedback` WRITE;
 /*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
+INSERT INTO `feedback` VALUES (1,5,'5','si','buena');
 /*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,4 +396,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-23  0:16:16
+-- Dump completed on 2020-10-23 13:08:15
