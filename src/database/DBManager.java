@@ -614,7 +614,7 @@ public class DBManager {
 			connect();
 			stmt = conn.createStatement();
 			String nombre = "";
-			String query = "SELECT nombre_entrenador FROM entrenador WHERE nombre = '" + Entrenador + "'";
+			String query = "SELECT nombre_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
 			ResultSet RS = stmt.executeQuery(query);
 			while (RS.next()) {
 				nombre = RS.getString("nombre_entrenador");
