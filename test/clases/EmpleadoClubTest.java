@@ -11,7 +11,7 @@ public class EmpleadoClubTest {
 
 	@Before
 	public void setUp() {
-		ect = new EmpleadoDeClub(1, "Koikili", "1980", 1, 1);
+		ect = new EmpleadoDeClub(1, "Koikili", "1980", "Athletic Club", "Bilbao");
 	}
 
 	@Test
@@ -38,15 +38,14 @@ public class EmpleadoClubTest {
 	@Test
 	public void testClub() {
 
-		ect.setClub(1);
-		assertEquals(1, ect.getClub());
+		ect.setClub("Athletic Club");
+		assertEquals("Athletic Club", ect.getClub());
 	}
 
 	@Test
 	public void testCiudad() {
-
-		ect.setCiudad(1);
-		assertEquals(1, ect.getCiudad());
+		ect.setCiudad("Bilbao");
+		assertEquals("Bilbao", ect.getCiudad());
 	}
 
 	@Test
@@ -55,11 +54,11 @@ public class EmpleadoClubTest {
 		ect.setId(1);
 		ect.setNombre("Koikili");
 		ect.setFechaNac("1980");
-		ect.setClub(1);
-		ect.setCiudad(1);
+		ect.setClub("Athletic Club");
+		ect.setCiudad("Bilbao");
 
 		System.out.println(ect.toString());
 
-		assertEquals("EmpleadoDeClub [id=1, nombre=Koikili, fechaNac=1980, club=1, ciudad=1]", ect.toString());
+		assertEquals("EmpleadoDeClub [id=1, nombre=Koikili, fechaNac=1980, club=Athletic Club, ciudad=Bilbao]", ect.toString());
 	}
 }
