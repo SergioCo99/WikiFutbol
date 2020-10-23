@@ -19,6 +19,11 @@ import clases.Feedback;
 import clases.Feedback.Recomendacion;
 import clases.Feedback.Valoracion;
 import clases.Jugador;
+import clases.Jugador.PieFav;
+import clases.Jugador.Posicion;
+import clases.Pais;
+import clases.TeamOfTheYear;
+import clases.TeamOfTheYear_view;
 
 public class DBManager {
 
@@ -642,7 +647,7 @@ public class DBManager {
 			stmt = conn.createStatement();
 			ArrayList<Feedback> array = new ArrayList<Feedback>();
 			ResultSet rs = stmt.executeQuery(
-					"sselect id_feedback, correo_usuario, valoracion_feedback, recomendacion_feedback, opinion_feedback from feedback, usuario where usuario_feedback = id_usuario");
+					"select id_feedback, correo_usuario, valoracion_feedback, recomendacion_feedback, opinion_feedback from feedback, usuario where usuario_feedback = id_usuario");
 			while (rs.next()) {
 				Feedback feedback = new Feedback(rs.getInt(1), rs.getString(2), Valoracion.valueOf(rs.getString(3)),
 						Recomendacion.valueOf(rs.getString(4)), rs.getString(5));
@@ -666,8 +671,71 @@ public class DBManager {
 			ResultSet rs = stmt.executeQuery(
 					"select id_jugador, nombre_jugador, fechaNac_jugador, nombre_club, nombre_ciudad, posicion_jugador, dorsal_jugador, goles_jugador, altura_jugador, peso_jugador, pieFav_jugador, valoracion_jugador, descripcion_jugador, voto_jugador from jugador, club, ciudad where club_jugador = id_club and ciudad_jugador = id_ciudad");
 			while (rs.next()) {
-				Jugador jugador = new Ciudad(rs.getInt(1), rs.getString(2), rs.getString(3));
+				Jugador jugador = new Jugador(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), Posicion.valueOf(rs.getString(6)), rs.getInt(7), rs.getInt(8), rs.getInt(9),
+						rs.getInt(10), PieFav.valueOf(rs.getString(11)), rs.getInt(12), rs.getString(13),
+						rs.getInt(14));
 				array.add(jugador);
+			}
+			rs.close();
+			stmt.close();
+			disconnect();
+			return array;
+		} catch (Exception e) {
+			throw new DBManagerException("Error getJugador DBManager", e);
+		}
+	}
+
+	public static ArrayList<Pais> getPais() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			ArrayList<Pais> array = new ArrayList<Pais>();
+			ResultSet rs = stmt.executeQuery("select id_pais, nombre_pais from pais");
+			while (rs.next()) {
+				Pais pais = new Pais(rs.getInt(1), rs.getString(2));
+				array.add(pais);
+			}
+			rs.close();
+			stmt.close();
+			disconnect();
+			return array;
+		} catch (Exception e) {
+			throw new DBManagerException("Error getPais DBManager", e);
+		}
+	}
+
+	// es util ???
+	public static ArrayList<TeamOfTheYear_view> getTeamOfTheYear_view() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			ArrayList<TeamOfTheYear_view> array = new ArrayList<TeamOfTheYear_view>();
+			ResultSet rs = stmt.executeQuery(
+					"select * from teamoftheyear_view");
+			while (rs.next()) {
+				TeamOfTheYear_view toft_v = new TeamOfTheYear_view(rs.getInt(1), rs.getInt(2), rs.getString(3), TeamOfTheYear_view.Posicion.valueOf(rs.getString(4)), rs.getInt(5), rs.getInt(6));
+				array.add(toft_v);
+			}
+			rs.close();
+			stmt.close();
+			disconnect();
+			return array;
+		} catch (Exception e) {
+			throw new DBManagerException("Error getTeamOfTheYear_view DBManager", e);
+		}
+	}
+
+	public static ArrayList<TeamOfTheYear> getTeamOfTheYear() throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			ArrayList<TeamOfTheYear> array = new ArrayList<TeamOfTheYear>();
+			ResultSet rs = stmt.executeQuery(
+					"select id_ciudad, nombre_ciudad, nombre_pais from ciudad, pais where pais_ciudad = id_pais");
+			while (rs.next()) {
+				TeamOfTheYear toft = new TeamOfTheYear(rs.getInt(1), rs.getString(2), rs.getString(3));
+				array.add(toft);
 			}
 			rs.close();
 			stmt.close();
@@ -720,6 +788,8 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		getFeedback(); //HAY QUE PROBARLO !!!
+		getFeedback(); // HAY QUE PROBARLO !!!
+		getJugador();
+		getTeamOfTheYear_view();
 	}
 }

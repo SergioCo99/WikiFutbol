@@ -15,13 +15,13 @@ public class TeamOfTheYear_view {
 	int voto_jugador;
 	int goles_jugador;
 
-	public TeamOfTheYear_view(int id_teamoftheyear, int id_jugador, String nombre_jugador, Posicion posicion_jugador,
+	public TeamOfTheYear_view(int id_teamoftheyear, int id_jugador, String nombre_jugador, Posicion posicion,
 			int voto_jugador, int goles_jugador) {
 		super();
 		this.id_teamoftheyear = id_teamoftheyear;
 		this.id_jugador = id_jugador;
 		this.nombre_jugador = nombre_jugador;
-		this.posicion_jugador = posicion_jugador;
+		this.posicion_jugador = posicion;
 		this.voto_jugador = voto_jugador;
 		this.goles_jugador = goles_jugador;
 

@@ -16,7 +16,7 @@ public class Jugador extends EmpleadoDeClub {
 	int altura;
 	int peso;
 	PieFav piefav;
-	int valoracion;
+	int valoracion; // es distinta valoracion a la de Feedback, NO es enum
 	String descripcion;
 	int voto;
 
