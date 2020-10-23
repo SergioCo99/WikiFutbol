@@ -7,7 +7,7 @@ public class Usuario {
 	String contrasena;
 	String correo;
 	int admin;
-	String fechaNac;
+	String fechaNac; /* YYYY-MM-dd , por ejemplo "1990-06-25" */
 
 	public Usuario(int id, String nombre, String contrasena, String correo, int admin, String fechaNac) {
 		super();

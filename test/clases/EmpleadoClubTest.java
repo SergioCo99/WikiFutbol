@@ -11,7 +11,7 @@ public class EmpleadoClubTest {
 
 	@Before
 	public void setUp() {
-		ect = new EmpleadoDeClub(1, "Koikili", "1980", "Athletic Club", "Bilbao");
+		ect = new EmpleadoDeClub(1, "Koikili", "1990-06-25", "Athletic Club", "Bilbao");
 	}
 
 	@Test
@@ -31,8 +31,8 @@ public class EmpleadoClubTest {
 	@Test
 	public void testAnyoNacimiento() {
 
-		ect.setFechaNac("1980");
-		assertEquals("1980", ect.getFechaNac());
+		ect.setFechaNac("1990-06-25");
+		assertEquals("1990-06-25", ect.getFechaNac());
 	}
 
 	@Test
@@ -53,13 +53,13 @@ public class EmpleadoClubTest {
 
 		ect.setId(1);
 		ect.setNombre("Koikili");
-		ect.setFechaNac("1980");
+		ect.setFechaNac("1990-06-25");
 		ect.setClub("Athletic Club");
 		ect.setCiudad("Bilbao");
 
 		System.out.println(ect.toString());
 
-		assertEquals("EmpleadoDeClub [id=1, nombre=Koikili, fechaNac=1980, club=Athletic Club, ciudad=Bilbao]",
+		assertEquals("EmpleadoDeClub [id=1, nombre=Koikili, fechaNac=1990-06-25, club=Athletic Club, ciudad=Bilbao]",
 				ect.toString());
 	}
 }

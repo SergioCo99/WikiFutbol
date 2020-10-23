@@ -4,7 +4,7 @@ public class EmpleadoDeClub {
 
 	int id;
 	String nombre;
-	String fechaNac;
+	String fechaNac; /* YYYY-MM-dd , por ejemplo "1990-06-25" */
 	String club;
 	String ciudad;
 

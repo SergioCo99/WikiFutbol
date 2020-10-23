@@ -11,7 +11,7 @@ public class UsuarioTest {
 
 	@Before
 	public void setUp() {
-		u = new Usuario(1, "a", "a", "a@a.com", 1, "1999/01/01");
+		u = new Usuario(1, "a", "a", "a@a.com", 1, "1990-06-25");
 	}
 
 	@Test
@@ -47,8 +47,8 @@ public class UsuarioTest {
 
 	@Test
 	public void testFechaNac() {
-		u.setFechaNac("1999/01/01");
-		assertEquals("1999/01/01", u.getFechaNac());
+		u.setFechaNac("1990-06-25");
+		assertEquals("1990-06-25", u.getFechaNac());
 	}
 
 	public void metodoToString() {
@@ -58,11 +58,11 @@ public class UsuarioTest {
 		u.setContrasena("a");
 		u.setCorreo("a@a.com");
 		u.setAdmin(1);
-		u.setFechaNac("1999/01/01");
+		u.setFechaNac("1990-06-25");
 
 		System.out.println(u.toString());
 
-		assertEquals("Usuario [id=1, nombre=a, contrasena=a, correo=a@a.com, admin=1, fechaNac=1999/01/01]",
+		assertEquals("Usuario [id=1, nombre=a, contrasena=a, correo=a@a.com, admin=1, fechaNac=1990-06-25]",
 				u.toString());
 	}
 }

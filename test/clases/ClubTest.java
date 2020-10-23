@@ -68,7 +68,7 @@ public class ClubTest {
 
 		System.out.println(a.toString());
 		assertEquals(
-				"Equipo [id=1, nombre=Athletic Club, ciudad=Bilbao, estadio=San Mamés, anyoCreacion=1898, palmares=2 Ligas, entrenador=Gaizka Garitano]",
+				"Club [id=1, nombre=Athletic Club, ciudad=Bilbao, estadio=San Mamés, anyoCreacion=1898, palmares=2 Ligas, entrenador=Gaizka Garitano]",
 				a.toString());
 	}
 
