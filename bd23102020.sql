@@ -108,7 +108,7 @@ CREATE TABLE `entrenador` (
 
 LOCK TABLES `entrenador` WRITE;
 /*!40000 ALTER TABLE `entrenador` DISABLE KEYS */;
-INSERT INTO `entrenador` VALUES (1,'Gaizka Garitano','2000-10-10',1,1,'4-3-3','Equilibrada'),(2,'Imanol Alguacil','2000-10-10',1,1,'4-3-3','Equilibrada'),(3,'Unai Emery','2000-10-10',1,1,'4-3-3','Equilibrada'),(4,'Zinedine Zidane','2000-10-10',1,1,'4-3-3','Equilibrada'),(5,'Jose Bordalas','2000-10-10',1,1,'4-3-3','Equilibrada'),(6,'Alvaro Cervera','2000-10-10',1,1,'4-3-3','Equilibrada'),(7,'Diego Martinez','2000-10-10',1,1,'4-3-3','Equilibrada'),(8,'Manuel Pellegrini','2000-10-10',1,1,'4-3-3','Equilibrada'),(9,'Diego Simeone','2000-10-10',1,1,'4-3-3','Equilibrada'),(10,'Ronald Koeman','2000-10-10',1,1,'4-3-3','Equilibrada'),(11,'Julen Lopetegui','2000-10-10',1,1,'4-3-3','Equilibrada'),(12,'Jagoba Arrasate','2000-10-10',1,1,'4-3-3','Equilibrada'),(13,'Jorge Almiron','2000-10-10',1,1,'4-3-3','Equilibrada'),(14,'Javi Gracia','2000-10-10',1,1,'4-3-3','Equilibrada'),(15,'Jose Luis Mendilibar','2000-10-10',1,1,'4-3-3','Equilibrada'),(16,'Michel','2000-10-10',1,1,'4-3-3','Equilibrada'),(17,'Oscar Garcia','2000-10-10',1,1,'4-3-3','Equilibrada'),(18,'Pablo Machin','2000-10-10',1,1,'4-3-3','Equilibrada'),(19,'Sergio','2000-10-10',1,1,'4-3-3','Equilibrada'),(20,'Paco Lopez','2000-10-10',1,1,'4-3-3','Equilibrada');
+INSERT INTO `entrenador` VALUES (1,'Gaizka Garitano','1975-07-09',1,1,'4-3-3','Equilibrada'),(2,'Imanol Alguacil','1971-07-04',2,1,'4-3-3','Equilibrada'),(3,'Unai Emery','1971-11-03',3,1,'4-3-3','Equilibrada'),(4,'Zinedine Zidane','1972-06-23',4,1,'4-3-3','Equilibrada'),(5,'Jose Bordalas','1964-03-05',7,1,'4-3-3','Equilibrada'),(6,'Alvaro Cervera','1965-09-20',8,1,'4-3-3','Equilibrada'),(7,'Diego Martinez','1980-12-16',9,1,'4-3-3','Equilibrada'),(8,'Manuel Pellegrini','1953-09-16',10,1,'4-3-3','Equilibrada'),(9,'Diego Simeone','1970-04-28',11,1,'4-3-3','Equilibrada'),(10,'Ronald Koeman','1963-03-21',12,1,'4-3-3','Equilibrada'),(11,'Julen Lopetegui','1966-09-28',13,1,'4-3-3','Equilibrada'),(12,'Jagoba Arrasate','1978-04-22',20,1,'4-3-3','Equilibrada'),(13,'Jorge Almiron','1971-06-19',6,1,'4-3-3','Equilibrada'),(14,'Javi Gracia','1970-05-01',19,1,'4-3-3','Equilibrada'),(15,'Jose Luis Mendilibar','1961-03-14',18,1,'4-3-3','Equilibrada'),(16,'Michel','1975-10-30',5,1,'4-3-3','Equilibrada'),(17,'Oscar Garcia','1973-04-26',14,1,'4-3-3','Equilibrada'),(18,'Pablo Machin','1975-04-07',15,1,'4-3-3','Equilibrada'),(19,'Sergio','1976-11-10',17,1,'4-3-3','Equilibrada'),(20,'Paco Lopez','1967-09-19',16,1,'4-3-3','Equilibrada');
 /*!40000 ALTER TABLE `entrenador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,4 +396,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-23 14:25:29
+-- Dump completed on 2020-10-23 14:43:18
