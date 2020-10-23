@@ -263,6 +263,31 @@ public class VentanaEquipo extends JFrame {
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
 		bookPanel.add(fotoEquipo);
+		
+		final JButton btnPlantilla = new JButton("Ver Plantilla");
+		btnPlantilla.setBounds(330, 515, 150, 50);
+		btnPlantilla.setForeground(Color.WHITE);
+		btnPlantilla.setFont(new Font("Rockwell", Font.BOLD, 14));
+		btnPlantilla.setFocusPainted(false);
+		btnPlantilla.setOpaque(false);
+		btnPlantilla.setContentAreaFilled(false);
+		btnPlantilla.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
+		bookPanel.add(btnPlantilla);
+		btnPlantilla.setFocusable(false);
+
+		btnPlantilla.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaJugadores v1 = null;
+				try {
+					v1 = new VentanaJugadores(u);
+				} catch (DBManagerException e1) {
+					e1.printStackTrace();
+				}
+				v1.setVisible(true);
+				dispose();
+			}
+		});
 	}
 
 	// este main es para pruebas, habria que quitarlo
