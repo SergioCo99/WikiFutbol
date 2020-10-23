@@ -31,7 +31,7 @@ CREATE TABLE `ciudad` (
   PRIMARY KEY (`id_ciudad`),
   KEY `pais_ciudad` (`pais_ciudad`),
   CONSTRAINT `ciudad_ibfk_1` FOREIGN KEY (`pais_ciudad`) REFERENCES `pais` (`id_pais`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `ciudad` (
 
 LOCK TABLES `ciudad` WRITE;
 /*!40000 ALTER TABLE `ciudad` DISABLE KEYS */;
-INSERT INTO `ciudad` VALUES (1,'Bilbao',1),(2,'San Sebastian',1),(3,'Villarreal',1),(4,'Madrid',1),(5,'Getafe',1),(6,'Cadiz',1),(7,'Granada',1),(8,'Sevilla',1),(9,'Barcelona',1),(10,'Pamplona',1),(11,'Elche',1),(12,'Valencia',1),(13,'Eibar',1),(14,'Huesca',1),(15,'Vigo',1),(16,'Vitoria-Gasteiz',1),(17,'Valladolid',1);
+INSERT INTO `ciudad` VALUES (1,'Bilbao',1),(2,'San Sebastian',1),(3,'Villarreal',1),(4,'Madrid',1),(5,'Getafe',1),(6,'Cadiz',1),(7,'Granada',1),(8,'Sevilla',1),(9,'Barcelona',1),(10,'Pamplona',1),(11,'Elche',1),(12,'Valencia',1),(13,'Eibar',1),(14,'Huesca',1),(15,'Vigo',1),(16,'Vitoria-Gasteiz',1),(17,'Valladolid',1),(18,'Orio',1),(19,'Hondarribia',1),(20,'La Castellane',2),(21,'Alicante',1),(22,'Malabo',3),(23,'Santiago',4),(24,'Buenos Aires',5),(25,'Zaandam',6),(26,'Asteasu',1),(27,'Silla',1),(28,'Hospitalet de Llobregat',1),(29,'Soria',1),(30,'Sabadell',1),(31,'Berriatua',1),(32,'San Miguel',5),(33,'Zaldibar',1);
 /*!40000 ALTER TABLE `ciudad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `entrenador` (
 
 LOCK TABLES `entrenador` WRITE;
 /*!40000 ALTER TABLE `entrenador` DISABLE KEYS */;
-INSERT INTO `entrenador` VALUES (1,'Gaizka Garitano','1975-07-09',1,1,'4-3-3','Equilibrada'),(2,'Imanol Alguacil','1971-07-04',2,1,'4-3-3','Equilibrada'),(3,'Unai Emery','1971-11-03',3,1,'4-3-3','Equilibrada'),(4,'Zinedine Zidane','1972-06-23',4,1,'4-3-3','Equilibrada'),(5,'Jose Bordalas','1964-03-05',7,1,'4-3-3','Equilibrada'),(6,'Alvaro Cervera','1965-09-20',8,1,'4-3-3','Equilibrada'),(7,'Diego Martinez','1980-12-16',9,1,'4-3-3','Equilibrada'),(8,'Manuel Pellegrini','1953-09-16',10,1,'4-3-3','Equilibrada'),(9,'Diego Simeone','1970-04-28',11,1,'4-3-3','Equilibrada'),(10,'Ronald Koeman','1963-03-21',12,1,'4-3-3','Equilibrada'),(11,'Julen Lopetegui','1966-09-28',13,1,'4-3-3','Equilibrada'),(12,'Jagoba Arrasate','1978-04-22',20,1,'4-3-3','Equilibrada'),(13,'Jorge Almiron','1971-06-19',6,1,'4-3-3','Equilibrada'),(14,'Javi Gracia','1970-05-01',19,1,'4-3-3','Equilibrada'),(15,'Jose Luis Mendilibar','1961-03-14',18,1,'4-3-3','Equilibrada'),(16,'Michel','1975-10-30',5,1,'4-3-3','Equilibrada'),(17,'Oscar Garcia','1973-04-26',14,1,'4-3-3','Equilibrada'),(18,'Pablo Machin','1975-04-07',15,1,'4-3-3','Equilibrada'),(19,'Sergio','1976-11-10',17,1,'4-3-3','Equilibrada'),(20,'Paco Lopez','1967-09-19',16,1,'4-3-3','Equilibrada');
+INSERT INTO `entrenador` VALUES (1,'Gaizka Garitano','1975-07-09',1,1,'4-3-3','Equilibrada'),(2,'Imanol Alguacil','1971-07-04',2,18,'4-3-3','Equilibrada'),(3,'Unai Emery','1971-11-03',3,19,'4-3-3','Equilibrada'),(4,'Zinedine Zidane','1972-06-23',4,20,'4-3-3','Equilibrada'),(5,'Jose Bordalas','1964-03-05',7,21,'4-3-3','Equilibrada'),(6,'Alvaro Cervera','1965-09-20',8,22,'4-3-3','Equilibrada'),(7,'Diego Martinez','1980-12-16',9,15,'4-3-3','Equilibrada'),(8,'Manuel Pellegrini','1953-09-16',10,23,'4-3-3','Equilibrada'),(9,'Diego Simeone','1970-04-28',11,24,'4-3-3','Equilibrada'),(10,'Ronald Koeman','1963-03-21',12,25,'4-3-3','Equilibrada'),(11,'Julen Lopetegui','1966-09-28',13,26,'4-3-3','Equilibrada'),(12,'Jagoba Arrasate','1978-04-22',20,31,'4-3-3','Equilibrada'),(13,'Jorge Almiron','1971-06-19',6,32,'4-3-3','Equilibrada'),(14,'Javi Gracia','1970-05-01',19,10,'4-3-3','Equilibrada'),(15,'Jose Luis Mendilibar','1961-03-14',18,33,'4-3-3','Equilibrada'),(16,'Michel','1975-10-30',5,4,'4-3-3','Equilibrada'),(17,'Oscar Garcia','1973-04-26',14,30,'4-3-3','Equilibrada'),(18,'Pablo Machin','1975-04-07',15,29,'4-3-3','Equilibrada'),(19,'Sergio','1976-11-10',17,28,'4-3-3','Equilibrada'),(20,'Paco Lopez','1967-09-19',16,27,'4-3-3','Equilibrada');
 /*!40000 ALTER TABLE `entrenador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +197,7 @@ CREATE TABLE `jugador` (
   KEY `ciudad_jugador` (`ciudad_jugador`),
   CONSTRAINT `jugador_ibfk_1` FOREIGN KEY (`club_jugador`) REFERENCES `club` (`id_club`) ON DELETE CASCADE,
   CONSTRAINT `jugador_ibfk_2` FOREIGN KEY (`ciudad_jugador`) REFERENCES `ciudad` (`id_ciudad`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,7 +206,7 @@ CREATE TABLE `jugador` (
 
 LOCK TABLES `jugador` WRITE;
 /*!40000 ALTER TABLE `jugador` DISABLE KEYS */;
-INSERT INTO `jugador` VALUES (1,'Messi','0000-00-00',NULL,NULL,'Delantero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(2,'Cristiano Ronaldo','0000-00-00',NULL,NULL,'Delantero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(3,'Pogba','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(4,'De Bruyne','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(5,'Sergio Ramos','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(6,'Van Dijk','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(7,'Ter Stegen','0000-00-00',NULL,NULL,'Portero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(8,'Oblak','0000-00-00',NULL,NULL,'Portero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(9,'Lewandowski','0000-00-00',NULL,NULL,'Delantero',NULL,10,NULL,NULL,NULL,NULL,NULL,0),(10,'Rashford','0000-00-00',NULL,NULL,'Delantero',NULL,15,NULL,NULL,NULL,NULL,NULL,0),(11,'Bruno Fernandes','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(12,'Fred','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(13,'TAA','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(14,'Pique','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(15,'Maguire','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1);
+INSERT INTO `jugador` VALUES (16,'Alex Berenguer','0000-00-00',NULL,NULL,'Delantero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(17,'Kenan Kodro','0000-00-00',NULL,NULL,'Delantero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(18,'Asier Villalibre','0000-00-00',NULL,NULL,'Delantero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(19,'Iñaki Williams','0000-00-00',NULL,NULL,'Delantero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(20,'Raul Garcia','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(21,'Iker Muniain','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(22,'Unai Lopez','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(23,'Dani Garcia','0000-00-00',NULL,NULL,'Centrocampista',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(24,'Iñigo Martinez','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(25,'Yuri Berchiche','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(26,'Unai Nuñez','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(27,'Yeray Alvarez','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(28,'Ander Capa','0000-00-00',NULL,NULL,'Defensa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(29,'Unai Simon','0000-00-00',NULL,NULL,'Portero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(30,'Iago Herrerin','0000-00-00',NULL,NULL,'Portero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `jugador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,7 +221,7 @@ CREATE TABLE `pais` (
   `id_pais` int NOT NULL AUTO_INCREMENT,
   `nombre_pais` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_pais`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -230,7 +230,7 @@ CREATE TABLE `pais` (
 
 LOCK TABLES `pais` WRITE;
 /*!40000 ALTER TABLE `pais` DISABLE KEYS */;
-INSERT INTO `pais` VALUES (1,'España');
+INSERT INTO `pais` VALUES (1,'España'),(2,'Francia'),(3,'Guinea Ecuatorial'),(4,'Chile'),(5,'Argentina'),(6,'Paises Bajos');
 /*!40000 ALTER TABLE `pais` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,7 +282,6 @@ CREATE TABLE `teamoftheyear` (
 
 LOCK TABLES `teamoftheyear` WRITE;
 /*!40000 ALTER TABLE `teamoftheyear` DISABLE KEYS */;
-INSERT INTO `teamoftheyear` VALUES (1,2),(5,3),(6,4),(8,5),(9,6),(11,8),(3,9),(2,10),(4,11),(10,13),(7,15);
 /*!40000 ALTER TABLE `teamoftheyear` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -365,7 +364,6 @@ CREATE TABLE `usuariovotacion` (
 
 LOCK TABLES `usuariovotacion` WRITE;
 /*!40000 ALTER TABLE `usuariovotacion` DISABLE KEYS */;
-INSERT INTO `usuariovotacion` VALUES (8,1,2,11,15,8);
 /*!40000 ALTER TABLE `usuariovotacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,4 +394,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-23 14:43:18
+-- Dump completed on 2020-10-23 15:07:15
