@@ -133,9 +133,9 @@ public class JugadorTest {
 
 		System.out.println(j.toString());
 
-		assertEquals(
-				"Jugador [posicion=Centrocampista, dorsal=14, goles=5, altura=180, peso=78, piefav=Ambidiestro, "
-				+ "valoracion=1, descripcion=Buen jugador, voto=1, id=1, nombre=Gaizka Garitano, fechaNac=1980, club=Athletic Club, ciudad=Bilbao]",
+		assertEquals("Jugador [id=1, nombre=Gaizka Garitano, fechaNac=1980, club=Athletic Club, ciudad=Bilbao, "
+				+ "posicion=Centrocampista, dorsal=14, goles=5, altura=180, peso=78, piefav=Ambidiestro, valoracion=1, "
+				+ "descripcion=Buen jugador, voto=1]",
 				j.toString());
 	}
 }

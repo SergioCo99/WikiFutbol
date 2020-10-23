@@ -78,7 +78,8 @@ public class EntrenadorTest {
 		System.out.println(e.toString());
 
 		assertEquals(
-				"Entrenador [formacion=Escuela Albacete, mentalidad=Defensiva, id=1, nombre=Gaizka Garitano, fechaNac=1980, club=Athletic Club, ciudad=Bilbao]",
+				"Entrenador [id=1, nombre=Gaizka Garitano, fechaNac=1980, club=Athletic Club, ciudad=Bilbao,"
+				+ " formacion=Escuela Albacete, mentalidad=Defensiva]",
 				e.toString());
 	}
 }
