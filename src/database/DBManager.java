@@ -646,10 +646,11 @@ public class DBManager {
 			connect();
 			stmt = conn.createStatement();
 			String clubEntrenador = "";
-			String query = "SELECT club_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			//String query = "SELECT club_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			String query = "select nombre_club from club, entrenador where entrenador_club = id_entrenador and nombre_entrenador = '"+Entrenador+"'";
 			ResultSet RS = stmt.executeQuery(query);
 			while (RS.next()) {
-				clubEntrenador = RS.getString("club_entrenador");
+				clubEntrenador = RS.getString("nombre_club");
 			}
 			return clubEntrenador;
 		} catch (Exception e) {
@@ -662,10 +663,11 @@ public class DBManager {
 			connect();
 			stmt = conn.createStatement();
 			String ciudadEntrenador = "";
-			String query = "SELECT ciudad_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			//String query = "SELECT ciudad_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			String query = "select nombre_ciudad from ciudad, entrenador where id_ciudad = ciudad_entrenador and nombre_entrenador = '"+Entrenador+"'";
 			ResultSet RS = stmt.executeQuery(query);
 			while (RS.next()) {
-				ciudadEntrenador = RS.getString("ciudad_entrenador");
+				ciudadEntrenador = RS.getString("nombre_ciudad");
 			}
 			return ciudadEntrenador;
 		} catch (Exception e) {
