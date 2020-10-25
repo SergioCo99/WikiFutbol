@@ -21,6 +21,8 @@ import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
 public class VentanaEntrenador extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 	private Usuario usuario;
 	static VentanaEquipo frame;
 
@@ -243,7 +245,7 @@ public class VentanaEntrenador extends JFrame {
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
 		bookPanel.add(fotoEquipo);
-		
+
 		this.addWindowListener(new WindowAdapter() {
 
 			@Override

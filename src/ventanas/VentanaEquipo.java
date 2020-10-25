@@ -288,7 +288,7 @@ public class VentanaEquipo extends JFrame {
 				dispose();
 			}
 		});
-		
+
 		this.addWindowListener(new WindowAdapter() {
 
 			@Override
@@ -297,8 +297,6 @@ public class VentanaEquipo extends JFrame {
 			}
 		});
 	}
-	
-	
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {

@@ -162,16 +162,9 @@ public class VentanaPrincipal extends JFrame {
 					}
 					JOptionPane.showMessageDialog(null, "Actualizacion exitosa, reiniciando. . .", "Alerta",
 							JOptionPane.INFORMATION_MESSAGE);
-// ojo esta idea, darle un par d vueltas :v, ¿¿¿meterle JProgressBar???
-					try {
-						// assuming it takes 3 secs to complete the task
-						dispose();
-						Thread.sleep(3000);
-						utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
-						mainPackage.MainWikiFutbol.main(null);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					} // fin de la idea
+					// reinicio
+					utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
+					mainPackage.MainWikiFutbol.main(null);
 				} else {
 					JOptionPane.showMessageDialog(null, "Esa contraseña no es valida / operacion cancelada.", "Error",
 							JOptionPane.ERROR_MESSAGE);

@@ -248,7 +248,7 @@ public class VentanaJugadores extends JFrame {
 				// Aún sin funcionalidad
 			}
 		});
-		
+
 		this.addWindowListener(new WindowAdapter() {
 
 			@Override
