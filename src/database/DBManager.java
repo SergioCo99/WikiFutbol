@@ -957,27 +957,96 @@ public class DBManager {
 	}
 	// HASTA AQUI getClasesBasicas
 
-	// ???
-	public static void cambiarDatos(String consulta) throws DBManagerException {
+	//CAMBIAR DATOS
+	public static ArrayList<String> verColumnas(String tabla) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			String sql = consulta;
-			stmt.executeUpdate(sql);
-			System.out.println(sql);
+			String sql1 = "select column_name from INFORMATION_SCHEMA.columns where table_name = '" + tabla
+					+ "' order by ordinal_position";
+			ResultSet rs = stmt.executeQuery(sql1);
+
+			ArrayList<String> arr = new ArrayList<String>();
+			while (rs.next()) {
+				arr.add(rs.getString("column_name"));
+			}
+			return arr;
+		} catch (SQLException e) {
+			throw new DBManagerException("Error verColumnas DBManager", e);
+		}
+	}
+
+	public static Object[][] data(String tabla) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+
+			// sacar datos
+			String sql1 = "select * from " + tabla + ";";
+			ResultSet rs1 = stmt.executeQuery(sql1);
+
+			// numero de columnas
+			int ncolumns = verColumnas(tabla).size();
+
+			// numero de filas
+			String sql2 = "select count(*) from " + tabla + ";";
+			ResultSet rs2 = stmt.executeQuery(sql2);
+			rs2.next();
+			int nrows = rs2.getInt("count(*)");
+
+			// meter datos en array 2D
+			ArrayList<String> as = new ArrayList<String>();
+			while (rs1.next()) {
+				for (int i = 1; i <= ncolumns; i++) {
+					as.add(rs1.getObject(i).toString());
+				}
+			}
+
+			int z = 0;
+			String[][] ss = new String[nrows][ncolumns];
+			for (int j = 0; j < nrows; j++) {
+				for (int i = 0; i < ncolumns; i++) {
+					// System.out.println("fila: " + j + ", columna: " + i + " -> " + as.get(z));
+					ss[j][i] = as.get(z).toString();
+					z++;
+				}
+			}
+
+			rs1.close();
+			rs2.close();
 			stmt.close();
 			disconnect();
+			return ss;
 		} catch (SQLException e) {
-			throw new DBManagerException("Error cambiarDatos DBManager", e);
+			throw new DBManagerException("Error data DBManager", e);
 		}
-	} // ???
+	}
+	
+	// ???
+		public static void cambiarDatos(String consulta) throws DBManagerException {
+			try {
+				connect();
+				stmt = conn.createStatement();
+				String sql = consulta;
+				stmt.executeUpdate(sql);
+				System.out.println(sql);
+				stmt.close();
+				disconnect();
+			} catch (SQLException e) {
+				throw new DBManagerException("Error cambiarDatos DBManager", e);
+			}
+		} // ???
+	//HASTA AQUI CAMBIAR DATOS
+	
+	
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
+		data("pais");		
 		/*
 		 * getCiudades(); getClubes(); getEntrenadores(); getEstadios();
 		 */
-		getFeedbacks(); // HAY QUE PROBARLO !!!
+		//getFeedbacks(); // HAY QUE PROBARLO !!!
 		/*
 		 * getJugadores(); getPaises(); getTeamOfTheYear_view(); getTeamOfTheYear();
 		 * getUsuarios(); getUsuarioVotaciones();

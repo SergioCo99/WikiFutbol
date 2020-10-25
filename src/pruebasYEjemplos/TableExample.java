@@ -17,20 +17,21 @@ public class TableExample {
 
 		JFrame f = new JFrame("Table Example");
 
-		Object data[][] = { { "101", "Amit", "670000" }, { "102", "Jai", "780000" }, { "101", "Sachin", "700000" } };
-		
+		Object data[][] = null;
+
 		Object[] objects = null;
-		
+
+		// tabla
 		String s = "ciudad";
 		try {
-			for (int i = 1; i < database.db.verColumnas(s).size()+1; i++) {
-				 objects = database.db.verColumnas(s).toArray(); 
+			for (int i = 1; i < database.db.verColumnas(s).size() + 1; i++) {
+				objects = database.DBManager.verColumnas(s).toArray();
 			}
+			data = database.DBManager.data(s);
 		} catch (DBManagerException e1) {
 			e1.printStackTrace();
 		}
 
-		
 		final JTable jt = new JTable(data, objects);
 
 		jt.setCellSelectionEnabled(true);

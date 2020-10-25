@@ -93,10 +93,6 @@ public class db {
 			while (rs.next()) {
 				arr.add(rs.getString("column_name"));
 			}
-			// rs.close();
-			// stmt.close();
-			// disconnect();
-			System.out.println(arr);
 			return arr;
 		} catch (SQLException e) {
 			throw new DBManagerException("Error verColumnas DBManager", e);
@@ -104,54 +100,43 @@ public class db {
 	}
 
 	public static Object[][] data(String tabla) throws DBManagerException {
-		// Object oo[][] = null;
-		ArrayList<String> as = new ArrayList<String>();
-
 		try {
 			connect();
 			stmt = conn.createStatement();
 
 			// sacar datos
 			String sql1 = "select * from " + tabla + ";";
-			System.out.println(sql1);
 			ResultSet rs1 = stmt.executeQuery(sql1);
 
 			// numero de columnas
 			int ncolumns = verColumnas(tabla).size();
-			System.out.println("ncolumns: " + ncolumns);
 
 			// numero de filas
 			String sql2 = "select count(*) from " + tabla + ";";
-			System.out.println(sql2);
 			ResultSet rs2 = stmt.executeQuery(sql2);
 			rs2.next();
 			int nrows = rs2.getInt("count(*)");
-			System.out.println("nrows: " + nrows);
 
 			// meter datos en array 2D
+			ArrayList<String> as = new ArrayList<String>();
 			while (rs1.next()) {
 				for (int i = 1; i <= ncolumns; i++) {
 					as.add(rs1.getObject(i).toString());
 				}
 			}
-			System.out.println(as);
 
 			int z = 0;
-			String[][] ss = null;
+			String[][] ss = new String[nrows][ncolumns];
 			for (int j = 0; j < nrows; j++) {
 				for (int i = 0; i < ncolumns; i++) {
-					System.out.println("fila: " + j + ", columna: " + i + " -> " + as.get(z));
-					// arraylist to 2d
+					// System.out.println("fila: " + j + ", columna: " + i + " -> " + as.get(z));
 					ss[j][i] = as.get(z).toString();
-					//
 					z++;
-					
 				}
 			}
 
-			System.out.println(as.get(1));
-
-			// rs1.close();
+			rs1.close();
+			rs2.close();
 			stmt.close();
 			disconnect();
 			return ss;
