@@ -16,15 +16,20 @@ import database.DBManagerException;
 
 public class VentanaCambiarDatos extends JFrame {
 
+	Object data[][] = null;
+	Object[] objects = null;
+
 	// ojo que esta ventana no hace nada todavia, habia pensado en meter una JTable
 	// o usar el textArea como si fuese una consola para que los admins lo usaran
 	// para hacer cosnultas SQL a la BD
 
 	private static final long serialVersionUID = 1L;
-	JButton btnAceptar, buscarTabla;
+	JButton btnActualizar, buscarTabla;
 	JTextArea textArea1;
 
 	JComboBox<String> jcbTablas;
+
+	JTable jt;
 
 	public VentanaCambiarDatos() {
 
@@ -36,9 +41,9 @@ public class VentanaCambiarDatos extends JFrame {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
-		btnAceptar = new JButton();
-		btnAceptar.setText("Aceptar");
-		btnAceptar.setBounds(240, 300, 120, 30);
+		btnActualizar = new JButton();
+		btnActualizar.setText("Actualizar");
+		btnActualizar.setBounds(240, 300, 120, 30);
 
 		buscarTabla = new JButton();
 		buscarTabla.setText("Buscar tabla");
@@ -60,12 +65,12 @@ public class VentanaCambiarDatos extends JFrame {
 		jcbTablas.setBounds(400, 300, 150, 30);
 		jcbTablas.setSelectedIndex(0);
 
-		add(btnAceptar);
+		add(btnActualizar);
 		add(buscarTabla);
 		add(textArea1);
 		add(jcbTablas);
 
-		btnAceptar.addActionListener(new ActionListener() {
+		btnActualizar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -83,10 +88,8 @@ public class VentanaCambiarDatos extends JFrame {
 		});
 
 		// tabla
-		Object data[][] = null;
-		Object[] objects = null;
 
-		String tabla = jcbTablas.getSelectedItem().toString();
+		String tabla = jcbTablas.getSelectedItem().toString(); // !!!
 		try {
 			for (int i = 1; i < database.DBManager.verColumnas(tabla).size() + 1; i++) {
 				objects = database.DBManager.verColumnas(tabla).toArray();
@@ -96,7 +99,25 @@ public class VentanaCambiarDatos extends JFrame {
 			e1.printStackTrace();
 		}
 
-		final JTable jt = new JTable(data, objects);
+		btnActualizar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				String tabla = jcbTablas.getSelectedItem().toString(); // !!!
+				try {
+					for (int i = 1; i < database.DBManager.verColumnas(tabla).size() + 1; i++) {
+						objects = database.DBManager.verColumnas(tabla).toArray();
+					}
+					data = database.DBManager.data(tabla);
+				} catch (DBManagerException e1) {
+					e1.printStackTrace();
+				}
+				jt.repaint(); // TODO
+			}
+		});
+
+		jt = new JTable(data, objects);
 
 		jt.setCellSelectionEnabled(true);
 		ListSelectionModel select = jt.getSelectionModel();
