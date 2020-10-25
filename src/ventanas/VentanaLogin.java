@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 
 import clases.Usuario;
 import database.DBManagerException;
+import utils.JLabelGraficoAjustado;
 
 public class VentanaLogin extends JFrame {
 
@@ -33,6 +34,7 @@ public class VentanaLogin extends JFrame {
 	JPasswordField txtPassword;
 	JCheckBox checkContrasena;
 	boolean bUsuario, bPassword;
+	JLabelGraficoAjustado campo;
 
 	public VentanaLogin() {
 
@@ -42,23 +44,22 @@ public class VentanaLogin extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
-
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
 		lblCorreo = new JLabel();
 		lblCorreo.setText("Introduce tu correo:");
-		lblCorreo.setBounds(100, 100, 300, 20);
+		lblCorreo.setBounds(25, 100, 300, 20);
 
 		lblPass = new JLabel();
 		lblPass.setText("Introduce la contraseña:");
-		lblPass.setBounds(100, 140, 300, 20);
+		lblPass.setBounds(25, 140, 300, 20);
 
 		txtCorreo = new JTextField();
-		txtCorreo.setBounds(300, 100, 200, 20);
+		txtCorreo.setBounds(175, 100, 200, 20);
 		txtCorreo.setText(utils.PropertiesMetodos.getProp1());
 
 		txtPassword = new JPasswordField();
-		txtPassword.setBounds(300, 140, 200, 20);
+		txtPassword.setBounds(175, 140, 200, 20);
 		// txtPassword.setEchoChar('•');
 		txtPassword.setText(utils.PropertiesMetodos.getProp2());
 
@@ -72,7 +73,7 @@ public class VentanaLogin extends JFrame {
 
 		checkContrasena = new JCheckBox();
 		checkContrasena.setText("Ver contrasena");
-		checkContrasena.setBounds(300, 170, 200, 20);
+		checkContrasena.setBounds(175, 170, 130, 20);
 
 		add(txtCorreo);
 		add(txtPassword);
@@ -81,6 +82,11 @@ public class VentanaLogin extends JFrame {
 		add(btnAceptar);
 		add(btnRegistrar);
 		add(checkContrasena);
+
+		// logo
+		campo = new JLabelGraficoAjustado("resources/wf.png", 231, 140);
+		campo.setLocation(350, 75);
+		add(campo);
 
 		txtCorreo.addMouseListener(new MouseAdapter() {
 

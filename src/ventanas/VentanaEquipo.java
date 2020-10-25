@@ -52,7 +52,7 @@ public class VentanaEquipo extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
 		// Navbar Panel
 		JPanel navBarPanel = new JPanel();
@@ -163,9 +163,7 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(label22);
 
 		// ResultadoEstadioEquipo
-		
-		
-		
+
 		String estadioEquipo = club.getEstadio();
 		final JButton botonEquipo = new JButton(estadioEquipo);
 		botonEquipo.setBounds(200, 240, 400, 50);
@@ -263,7 +261,7 @@ public class VentanaEquipo extends JFrame {
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
 		bookPanel.add(fotoEquipo);
-		
+
 		final JButton btnPlantilla = new JButton("Ver Plantilla");
 		btnPlantilla.setBounds(330, 515, 150, 50);
 		btnPlantilla.setForeground(Color.WHITE);

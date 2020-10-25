@@ -31,8 +31,7 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
-
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
 		bg1 = new ButtonGroup();
 		cbHacerAdmin = new JCheckBox("Hacer admin");

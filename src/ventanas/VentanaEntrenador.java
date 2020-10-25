@@ -50,7 +50,7 @@ public class VentanaEntrenador extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
 		// Navbar Panel
 		JPanel navBarPanel = new JPanel();

@@ -646,8 +646,10 @@ public class DBManager {
 			connect();
 			stmt = conn.createStatement();
 			String clubEntrenador = "";
-			//String query = "SELECT club_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
-			String query = "select nombre_club from club, entrenador where entrenador_club = id_entrenador and nombre_entrenador = '"+Entrenador+"'";
+			// String query = "SELECT club_entrenador FROM entrenador WHERE
+			// nombre_entrenador = '" + Entrenador + "'";
+			String query = "select nombre_club from club, entrenador where entrenador_club = id_entrenador and nombre_entrenador = '"
+					+ Entrenador + "'";
 			ResultSet RS = stmt.executeQuery(query);
 			while (RS.next()) {
 				clubEntrenador = RS.getString("nombre_club");
@@ -663,8 +665,10 @@ public class DBManager {
 			connect();
 			stmt = conn.createStatement();
 			String ciudadEntrenador = "";
-			//String query = "SELECT ciudad_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
-			String query = "select nombre_ciudad from ciudad, entrenador where id_ciudad = ciudad_entrenador and nombre_entrenador = '"+Entrenador+"'";
+			// String query = "SELECT ciudad_entrenador FROM entrenador WHERE
+			// nombre_entrenador = '" + Entrenador + "'";
+			String query = "select nombre_ciudad from ciudad, entrenador where id_ciudad = ciudad_entrenador and nombre_entrenador = '"
+					+ Entrenador + "'";
 			ResultSet RS = stmt.executeQuery(query);
 			while (RS.next()) {
 				ciudadEntrenador = RS.getString("nombre_ciudad");
@@ -730,7 +734,7 @@ public class DBManager {
 		}
 	}
 
-	//Métodos para VentanaEstadio
+	// Métodos para VentanaEstadio
 	public static String nombreEstadio(String Estadio, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -746,7 +750,7 @@ public class DBManager {
 			throw new DBManagerException("Error nombreEntrenador DBManager", e);
 		}
 	}
-	
+
 	public static int aforoEstadio(String Estadio, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -762,8 +766,7 @@ public class DBManager {
 			throw new DBManagerException("Error aforoEstadio DBManager", e);
 		}
 	}
-	
-	
+
 	public static int anyoEstadio(String Estadio, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -779,13 +782,14 @@ public class DBManager {
 			throw new DBManagerException("Error anyoEstadio DBManager", e);
 		}
 	}
-	
+
 	public static String ciudadEstadio(String Estadio, String BD) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
 			String ciudadEstadio = "";
-			String query = "select nombre_ciudad from ciudad, estadio where id_ciudad = ciudad_estadio and nombre_estadio = '"+ Estadio +"'";
+			String query = "select nombre_ciudad from ciudad, estadio where id_ciudad = ciudad_estadio and nombre_estadio = '"
+					+ Estadio + "'";
 			ResultSet RS = stmt.executeQuery(query);
 			while (RS.next()) {
 				ciudadEstadio = RS.getString("nombre_ciudad");
@@ -795,6 +799,7 @@ public class DBManager {
 			throw new DBManagerException("Error ciudadEstadio DBManager", e);
 		}
 	}
+
 	public static ArrayList<Feedback> getFeedbacks() throws DBManagerException {
 		try {
 			connect();

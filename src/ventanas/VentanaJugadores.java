@@ -7,8 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
@@ -16,9 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -26,7 +21,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-import clases.Club;
 import clases.Jugador;
 import clases.Usuario;
 import database.DBManager;
@@ -73,7 +67,6 @@ public class VentanaJugadores extends JFrame {
 	private JLabel verEquipo;
 	private JButton botonVerEquipo;
 
-	
 	public VentanaJugadores(Usuario u) throws DBManagerException {
 		// arrayEquipos = database1.getEquipos();
 		arrayJugadores = database2.getJugadores();
@@ -82,17 +75,14 @@ public class VentanaJugadores extends JFrame {
 	}
 
 	public void init() {
-		
+
 		this.setTitle("Plantilla del 'Nombre Equipo'");
 		this.setSize(1200, 700);
 		this.setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
-
-
-	
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
 		// Navbar Panel
 		JPanel navBarPanel = new JPanel();
@@ -173,7 +163,7 @@ public class VentanaJugadores extends JFrame {
 		btnAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//Sin funcionalidad aún
+				// Sin funcionalidad aún
 			}
 		});
 
@@ -185,7 +175,7 @@ public class VentanaJugadores extends JFrame {
 		final JLabel atrasIMG = new JLabel();
 		atrasPanel.add(atrasIMG);
 		navBarPanel.add(atrasPanel);
-		
+
 		txtField = new JTextField();
 		txtField.setBounds(480, 20, 500, 30);
 		navBarPanel.add(txtField);
@@ -211,7 +201,7 @@ public class VentanaJugadores extends JFrame {
 
 		filtro = new ButtonGroup();
 
-		rdbtnNombreJugador= new JRadioButton("Nombre");
+		rdbtnNombreJugador = new JRadioButton("Nombre");
 		rdbtnNombreJugador.setFont(new Font("Tahoma", Font.BOLD, 13));
 		rdbtnNombreJugador.setBounds(1045, 117, 109, 23);
 		rdbtnNombreJugador.setContentAreaFilled(false);
@@ -229,7 +219,6 @@ public class VentanaJugadores extends JFrame {
 		rdbtnPosicionJugador.setBounds(1045, 165, 109, 23);
 		rdbtnPosicionJugador.setContentAreaFilled(false);
 		add(rdbtnPosicionJugador);
-
 
 		filtro.add(rdbtnNombreJugador);
 		filtro.add(rdbtnDorsalJugador);

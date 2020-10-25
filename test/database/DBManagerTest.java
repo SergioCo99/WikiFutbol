@@ -5,8 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import clases.Entrenador;
-import clases.Estadio;
 import clases.Entrenador.Mentalidad;
+import clases.Estadio;
 
 public class DBManagerTest {
 
@@ -46,30 +46,30 @@ public class DBManagerTest {
 	}
 
 	// Fin Métodos Entrenador
-	
+
 	// Métodos Estadio
 
 	Estadio es = new Estadio(1, "San Mames", 53289, 2013, "Bilbao");
-	 
+
 	@Test
 	public void nombreEstadio() throws DBManagerException {
 		assertEquals(es.getNombre(), DBManager.nombreEstadio("San Mames", "wikifutbolschema"));
 	}
-	
+
 	@Test
 	public void aforoEstadio() throws DBManagerException {
 		assertEquals(es.getAforo(), DBManager.aforoEstadio("San Mames", "wikifutbolschema"));
 	}
-	
+
 	@Test
 	public void anyoEstadio() throws DBManagerException {
 		assertEquals(es.getAnyoCreacion(), DBManager.anyoEstadio("San Mames", "wikifutbolschema"));
 	}
-	
+
 	@Test
 	public void ciudadEstadio() throws DBManagerException {
 		assertEquals(es.getCiudad(), DBManager.ciudadEstadio("San Mames", "wikifutbolschema"));
 	}
-	
-	//Fin Métodos Estadio
+
+	// Fin Métodos Estadio
 }

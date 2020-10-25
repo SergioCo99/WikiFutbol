@@ -13,14 +13,13 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import clases.Club;
-import clases.Estadio;
 import clases.Usuario;
 import database.DBManager;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
 public class VentanaEstadio extends JFrame {
-	
+
 	private Usuario usuario;
 	static VentanaEquipo frame;
 
@@ -36,7 +35,7 @@ public class VentanaEstadio extends JFrame {
 		}
 		return false;
 	}
-	
+
 	public VentanaEstadio(String estadio, Club club, Usuario u) throws DBManagerException {
 		usuario = u;
 		String nombreEstadio = null;
@@ -52,7 +51,7 @@ public class VentanaEstadio extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/logo1.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
 		// Navbar Panel
 		JPanel navBarPanel = new JPanel();
@@ -119,7 +118,7 @@ public class VentanaEstadio extends JFrame {
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));
 		cabecera.setForeground(Color.BLACK);
 		bookPanel.add(cabecera);
-		
+
 		// NombreEstadio
 		final JLabel label1 = new JLabel("Nombre: ");
 		label1.setBounds(20, 110, 150, 50);
@@ -175,7 +174,7 @@ public class VentanaEstadio extends JFrame {
 		label155.setFont(fuente2);
 		label155.setForeground(Color.BLACK);
 		bookPanel.add(label155);
-		
+
 		// Ciudad
 		final JLabel labelCiudad = new JLabel("Ciudad: ");
 		labelCiudad.setBounds(20, 305, 280, 50);
@@ -196,7 +195,6 @@ public class VentanaEstadio extends JFrame {
 		label14.setFont(fuente2);
 		label14.setForeground(Color.BLACK);
 		bookPanel.add(label14);
-
 
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
