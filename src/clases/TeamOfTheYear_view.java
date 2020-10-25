@@ -1,6 +1,5 @@
 package clases;
 
-//no se si deberiamos hacerlo o es tonteria, pero:
 // es una clase basica de una VIEW, NO DE UNA TABLA!!! SOLO SE VE, NO SE ACTUALIZA!!! SOLO GETTERS!!!
 public class TeamOfTheYear_view {
 
