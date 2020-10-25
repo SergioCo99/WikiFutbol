@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
@@ -29,7 +30,7 @@ public class AdvancedDb2CsvExporter {
 		Class.forName(CONTROLADOR);
 		Connection connection = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
 
-		String csvFileName = getFileName(table.concat("_Export"));
+		String csvFileName = getFileName(table.concat("_ExportFromDataBase"));
 
 		try {
 			String sql = "SELECT * FROM ".concat(table);
@@ -106,6 +107,47 @@ public class AdvancedDb2CsvExporter {
 
 	private static String escapeDoubleQuotes(String value) {
 		return value.replaceAll("\"", "\"\"");
+	}
+
+	public static void classesExport(String table) throws DBManagerException {
+		String csvFileName = getFileName(table.concat("_ExportFromClasses"));
+		ArrayList<?> arr = null;
+
+		if (table.equals("ciudad")) {
+			arr = database.DBManager.getCiudades();
+		} else if (table.equals("club")) {
+			arr = database.DBManager.getClubes();
+		} else if (table.equals("entrenador")) {
+			arr = database.DBManager.getEntrenadores();
+		} else if (table.equals("estadio")) {
+			arr = database.DBManager.getEstadios();
+		} else if (table.equals("feedback")) {
+			arr = database.DBManager.getFeedbacks();
+		} else if (table.equals("jugador")) {
+			arr = database.DBManager.getJugadores();
+		} else if (table.equals("pais")) {
+			arr = database.DBManager.getPaises();
+		} else if (table.equals("teamoftheyear")) {
+			arr = database.DBManager.getTeamOfTheYear();
+		} else if (table.equals("teamoftheyear_view")) {
+			arr = database.DBManager.getTeamOfTheYear_view();
+		} else if (table.equals("usuario")) {
+			arr = database.DBManager.getUsuarios();
+		} else if (table.equals("usuariovotacion")) {
+			arr = database.DBManager.getUsuarioVotaciones();
+		}
+
+		try {
+			String home = System.getProperty("user.home");
+			BufferedWriter writer;
+			writer = new BufferedWriter(new FileWriter(home + "/Downloads/" + csvFileName));
+			for (Object str : arr) {
+				writer.write(str + System.lineSeparator());
+			}
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// este main es para pruebas, habria que quitarlo

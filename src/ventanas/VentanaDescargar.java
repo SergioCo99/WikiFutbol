@@ -5,8 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Properties;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -22,6 +24,9 @@ public class VentanaDescargar extends JFrame {
 	JList<Object> listaTablas;
 	DefaultListModel<?> listModel;
 	JComboBox<String> tablas;
+
+	JCheckBox cbBaseDeDatos, cbClases;
+	ButtonGroup bg1;
 
 	public VentanaDescargar() {
 
@@ -86,13 +91,28 @@ public class VentanaDescargar extends JFrame {
 		add(btnDescargar);
 		add(listaTablas);
 
+		//
+		bg1 = new ButtonGroup();
+		cbBaseDeDatos = new JCheckBox("bd");
+		cbBaseDeDatos.setBounds(250, 200, 50, 20);
+		cbClases = new JCheckBox("c");
+		cbClases.setBounds(350, 200, 50, 20);
+		bg1.add(cbBaseDeDatos);
+		bg1.add(cbClases);
+		add(cbBaseDeDatos);
+		add(cbClases);
+
 		btnDescargar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (listaTablas.isSelectionEmpty() == false) {
+				if (listaTablas.isSelectionEmpty() == false && bg1.getSelection() != null) {
 					try {
-						AdvancedDb2CsvExporter.export(listaTablas.getSelectedValue().toString());
+						if (cbBaseDeDatos.isSelected()) {
+							AdvancedDb2CsvExporter.export(listaTablas.getSelectedValue().toString());
+						} else if (cbClases.isSelected()) {
+							AdvancedDb2CsvExporter.classesExport(listaTablas.getSelectedValue().toString());
+						}
 						JOptionPane.showMessageDialog(null, "Se ha descargado correctamente.");
 					} catch (Exception e1) {
 						e1.printStackTrace();
