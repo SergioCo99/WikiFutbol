@@ -25,7 +25,7 @@ public class VentanaEstadisticas extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
 		// tabla
-		String[] columns = { "Code", "Info" };
+		String[] columns = { "Code", "Info" }; // ?????
 
 		Object[][] data = null;
 		try {

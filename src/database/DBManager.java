@@ -200,9 +200,7 @@ public class DBManager {
 
 			ArrayList<String> arr = new ArrayList<String>();
 			while (rs.next()) {
-				int i = 1;
-				arr.add(rs.getString(i));
-				i++;
+				arr.add(rs.getString("Tables_in_wikifutbolschema"));
 			}
 			rs.close();
 			stmt.close();

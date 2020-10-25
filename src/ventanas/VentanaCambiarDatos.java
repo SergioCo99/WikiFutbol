@@ -21,7 +21,7 @@ public class VentanaCambiarDatos extends JFrame {
 	JButton btnAceptar;
 	JTextArea textArea1;
 
-	JComboBox<String> statement, column;
+	JComboBox<String> tablas;
 
 	public VentanaCambiarDatos() {
 
@@ -40,21 +40,21 @@ public class VentanaCambiarDatos extends JFrame {
 		textArea1 = new JTextArea();
 		textArea1.setBounds(10, 175, 560, 100);
 
-		statement = new JComboBox<>();
-		statement.setBounds(10, 10, 120, 30);
-		statement.addItem("SELECT");
-		statement.addItem("INSERT INTO");
-		statement.addItem("UPDATE");
-		statement.addItem("DELETE");
-
-		column = new JComboBox<>();
-		column.setBounds(140, 10, 120, 30);
-		column.addItem("*");
+		try {
+			String[] array = new String[database.DBManager.verTablas().size()];
+			for (int i = 0; i < array.length; i++) {
+				array[i] = database.DBManager.verTablas().get(i);
+			}
+			tablas = new JComboBox<String>(array);
+		} catch (DBManagerException e1) {
+			e1.printStackTrace();
+		}
+		utils.JComboBoxAutoCompletion.enable(tablas);
+		tablas.setBounds(400, 300, 150, 30);
 
 		add(btnAceptar);
 		add(textArea1);
-		add(statement);
-		add(column);
+		add(tablas);
 
 		btnAceptar.addActionListener(new ActionListener() {
 

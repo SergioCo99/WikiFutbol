@@ -7,11 +7,13 @@ import java.util.Properties;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import database.AdvancedDb2CsvExporter;
+import database.DBManagerException;
 
 public class VentanaDescargar extends JFrame {
 
@@ -19,6 +21,7 @@ public class VentanaDescargar extends JFrame {
 	JButton btnDescargar;
 	JList<Object> listaTablas;
 	DefaultListModel<?> listModel;
+	JComboBox<String> tablas;
 
 	public VentanaDescargar() {
 
@@ -64,6 +67,21 @@ public class VentanaDescargar extends JFrame {
 			e2.printStackTrace();
 		}
 		// fin de list
+
+		// otra opcion SIN HABER EXCLUIDO LAS TABLAS
+		try {
+			String[] array = new String[database.DBManager.verTablas().size()];
+			for (int i = 0; i < array.length; i++) {
+				array[i] = database.DBManager.verTablas().get(i);
+			}
+			tablas = new JComboBox<String>(array);
+		} catch (DBManagerException e1) {
+			e1.printStackTrace();
+		}
+		utils.JComboBoxAutoCompletion.enable(tablas);
+		tablas.setBounds(300, 50, 200, 30);
+		add(tablas);
+		// otra opcion SIN HABER EXCLUIDO LAS TABLAS
 
 		add(btnDescargar);
 		add(listaTablas);
