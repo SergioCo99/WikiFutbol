@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
@@ -244,6 +246,14 @@ public class VentanaJugadores extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Aún sin funcionalidad
+			}
+		});
+		
+		this.addWindowListener(new WindowAdapter() {
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+				utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
 			}
 		});
 
