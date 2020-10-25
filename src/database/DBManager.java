@@ -957,7 +957,7 @@ public class DBManager {
 	}
 	// HASTA AQUI getClasesBasicas
 
-	//CAMBIAR DATOS
+	// CAMBIAR DATOS
 	public static ArrayList<String> verColumnas(String tabla) throws DBManagerException {
 		try {
 			connect();
@@ -1021,32 +1021,30 @@ public class DBManager {
 			throw new DBManagerException("Error data DBManager", e);
 		}
 	}
-	
+
 	// ???
-		public static void cambiarDatos(String consulta) throws DBManagerException {
-			try {
-				connect();
-				stmt = conn.createStatement();
-				String sql = consulta;
-				stmt.executeUpdate(sql);
-				System.out.println(sql);
-				stmt.close();
-				disconnect();
-			} catch (SQLException e) {
-				throw new DBManagerException("Error cambiarDatos DBManager", e);
-			}
-		} // ???
-	//HASTA AQUI CAMBIAR DATOS
-	
-	
+	public static void cambiarDatos(String consulta) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql = consulta;
+			stmt.executeUpdate(sql);
+			System.out.println(sql);
+			stmt.close();
+			disconnect();
+		} catch (SQLException e) {
+			throw new DBManagerException("Error cambiarDatos DBManager", e);
+		}
+	} // ???
+		// HASTA AQUI CAMBIAR DATOS
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		data("pais");		
+		data("pais");
 		/*
 		 * getCiudades(); getClubes(); getEntrenadores(); getEstadios();
 		 */
-		//getFeedbacks(); // HAY QUE PROBARLO !!!
+		// getFeedbacks(); // HAY QUE PROBARLO !!!
 		/*
 		 * getJugadores(); getPaises(); getTeamOfTheYear_view(); getTeamOfTheYear();
 		 * getUsuarios(); getUsuarioVotaciones();

@@ -7,7 +7,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
 
 import database.DBManagerException;
 
@@ -18,10 +21,10 @@ public class VentanaCambiarDatos extends JFrame {
 	// para hacer cosnultas SQL a la BD
 
 	private static final long serialVersionUID = 1L;
-	JButton btnAceptar;
+	JButton btnAceptar, buscarTabla;
 	JTextArea textArea1;
 
-	JComboBox<String> tablas;
+	JComboBox<String> jcbTablas;
 
 	public VentanaCambiarDatos() {
 
@@ -37,6 +40,10 @@ public class VentanaCambiarDatos extends JFrame {
 		btnAceptar.setText("Aceptar");
 		btnAceptar.setBounds(240, 300, 120, 30);
 
+		buscarTabla = new JButton();
+		buscarTabla.setText("Buscar tabla");
+		buscarTabla.setBounds(10, 300, 120, 30);
+
 		textArea1 = new JTextArea();
 		textArea1.setBounds(10, 175, 560, 100);
 
@@ -45,16 +52,18 @@ public class VentanaCambiarDatos extends JFrame {
 			for (int i = 0; i < array.length; i++) {
 				array[i] = database.DBManager.verTablas().get(i);
 			}
-			tablas = new JComboBox<String>(array);
+			jcbTablas = new JComboBox<String>(array);
 		} catch (DBManagerException e1) {
 			e1.printStackTrace();
 		}
-		utils.JComboBoxAutoCompletion.enable(tablas);
-		tablas.setBounds(400, 300, 150, 30);
+		utils.JComboBoxAutoCompletion.enable(jcbTablas);
+		jcbTablas.setBounds(400, 300, 150, 30);
+		jcbTablas.setSelectedIndex(0);
 
 		add(btnAceptar);
+		add(buscarTabla);
 		add(textArea1);
-		add(tablas);
+		add(jcbTablas);
 
 		btnAceptar.addActionListener(new ActionListener() {
 
@@ -72,6 +81,30 @@ public class VentanaCambiarDatos extends JFrame {
 				}
 			}
 		});
+
+		// tabla
+		Object data[][] = null;
+		Object[] objects = null;
+
+		String tabla = jcbTablas.getSelectedItem().toString();
+		try {
+			for (int i = 1; i < database.DBManager.verColumnas(tabla).size() + 1; i++) {
+				objects = database.DBManager.verColumnas(tabla).toArray();
+			}
+			data = database.DBManager.data(tabla);
+		} catch (DBManagerException e1) {
+			e1.printStackTrace();
+		}
+
+		final JTable jt = new JTable(data, objects);
+
+		jt.setCellSelectionEnabled(true);
+		ListSelectionModel select = jt.getSelectionModel();
+		select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		JScrollPane sp = new JScrollPane(jt);
+		sp.setBounds(10, 10, 560, 150);
+		add(sp);
 
 	}
 
