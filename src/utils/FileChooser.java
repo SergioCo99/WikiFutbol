@@ -26,6 +26,12 @@ public class FileChooser {
 			JOptionPane.showMessageDialog(chooser, "Archivo seleccionado: " + chooser.getSelectedFile().getName());
 
 		}
+		
 		return path;
 	}
+	
+	// este main es para pruebas, habria que quitarlo
+		public static void main(String[] args) {
+			Choose();
+		}
 }
