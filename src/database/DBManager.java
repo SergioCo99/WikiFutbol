@@ -1019,7 +1019,7 @@ public class DBManager {
 
 			for (int i = 0; i < nrows; i++) {
 				for (int j = 0; j < ncolumns; j++) {
-					System.out.println(ss[i][j]);
+					// System.out.println(ss[i][j]);
 				}
 			}
 			return ss;
@@ -1035,7 +1035,7 @@ public class DBManager {
 			stmt = conn.createStatement();
 			String sql = consulta;
 			stmt.executeUpdate(sql);
-			System.out.println(sql);
+			System.out.println("database.DBManager.cambiarDatos: " + sql);
 			stmt.close();
 			disconnect();
 		} catch (SQLException e) {
@@ -1061,13 +1061,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		/*
-		 * getCiudades(); getClubes(); getEntrenadores(); getEstadios();
-		 */
-		// getFeedbacks(); // HAY QUE PROBARLO !!!
-		/*
-		 * getJugadores(); getPaises(); getTeamOfTheYear_view(); getTeamOfTheYear();
-		 * getUsuarios(); getUsuarioVotaciones();
-		 */
+		
 	}
 }

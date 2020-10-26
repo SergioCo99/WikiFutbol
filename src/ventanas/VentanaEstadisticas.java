@@ -3,6 +3,7 @@ package ventanas;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -13,6 +14,7 @@ public class VentanaEstadisticas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	JTable table;
+	JScrollPane sp;
 
 	public VentanaEstadisticas() {
 
@@ -60,14 +62,25 @@ public class VentanaEstadisticas extends JFrame {
 			e1.printStackTrace();
 		}
 
-		table = new JTable(data, columns); // tabla usando las columnas y el data
-		table.setBounds(100, 100, 400, 100);
-		table.setDefaultEditor(Object.class, null);
+		table = new JTable(data, columns) { // tabla usando las columnas y la data
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				// all cells false
+				return false;
+			}
+		}; 
+
+		table.setCellSelectionEnabled(true);
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 		table.setDefaultRenderer(Object.class, centerRenderer);
 
-		add(table);
+		sp = new JScrollPane(table);
+		sp.setBounds(100, 100, 400, 100);
+		getContentPane().add(sp);
 		// hasta aqui tabla
 
 	}
