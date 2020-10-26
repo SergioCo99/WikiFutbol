@@ -2,7 +2,6 @@ package utils;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class FileChooser {
 	public static String Choose() {
@@ -26,12 +25,15 @@ public class FileChooser {
 			JOptionPane.showMessageDialog(chooser, "Archivo seleccionado: " + chooser.getSelectedFile().getName());
 
 		}
-		
+
+		String s = path.substring(path.lastIndexOf("."), path.length());
+		System.out.println("Tipo de archivo: " + s);
+
 		return path;
 	}
-	
+
 	// este main es para pruebas, habria que quitarlo
-		public static void main(String[] args) {
-			Choose();
-		}
+	public static void main(String[] args) {
+		Choose();
+	}
 }

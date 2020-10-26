@@ -1,6 +1,9 @@
-package utils;
+package pruebasYEjemplos;
 
 import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -19,7 +22,17 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class M2 {
-	
+
+	private static String nombreArchivoAdjunto(String baseName) {
+		String s = baseName.substring(baseName.lastIndexOf("."), baseName.length());
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HH-mm");
+		String dateTimeInfo = dateFormat.format(new Date());
+
+		String baseName2 = baseName + dateTimeInfo + s;
+
+		return baseName2;
+	}
+
 	public static void m2(String dest, String asunto, String texto) {
 		// Recipient's email ID needs to be mentioned.
 		String to = "eneko.perez@opendeusto.es";
@@ -38,13 +51,13 @@ public class M2 {
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.host", host);
 		props.put("mail.smtp.port", "587");
-		
+
 		props.put("mail.smtp.ssl.trust", "smtp.gmail.com"); // linea misteriosa de StackOverflow
 
 		// Get the Session object.
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(/*username*/from, password);
+				return new PasswordAuthentication(/* username */from, password);
 			}
 		});
 
@@ -78,7 +91,12 @@ public class M2 {
 			String filename = utils.FileChooser.Choose();
 			DataSource source = new FileDataSource(filename);
 			messageBodyPart.setDataHandler(new DataHandler(source));
-			messageBodyPart.setFileName(filename);
+
+			String s = filename.substring(filename.lastIndexOf("."), filename.length());
+			DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HH-mm");
+			String dateTimeInfo = dateFormat.format(new Date());
+
+			messageBodyPart.setFileName(/* nombreArchivoAdjunto( */"WikiFutbol" + dateTimeInfo + s/* ) */);
 			multipart.addBodyPart(messageBodyPart);
 
 			// Send the complete message parts
@@ -93,9 +111,9 @@ public class M2 {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	// este main es para pruebas, habria que quitarlo
-		public static void main(String[] args) {
-			m2("eneko.perez@opendeusto.es", "Asunto? m2.java", "Texto?  m2.java");
-		}
+	public static void main(String[] args) {
+		m2("eneko.perez@opendeusto.es", "Asunto? m2.java", "Texto?  m2.java");
+	}
 }
