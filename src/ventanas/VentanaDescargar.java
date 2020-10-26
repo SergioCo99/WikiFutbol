@@ -11,12 +11,12 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import database.AdvancedDb2CsvExporter;
-import database.DBManagerException;
 
 public class VentanaDescargar extends JFrame {
 
@@ -30,12 +30,15 @@ public class VentanaDescargar extends JFrame {
 	ButtonGroup bg1;
 
 	JScrollPane scroll;
+	
+	JLabel lblOpciones, lblPathDescarga;
+	private JButton choosePath;
 
 	public VentanaDescargar() {
 
 		this.setTitle("VentanaDescargar");
 		this.setSize(600, 400);
-		this.setLayout(null);
+		getContentPane().setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -44,6 +47,22 @@ public class VentanaDescargar extends JFrame {
 		btnDescargar = new JButton();
 		btnDescargar.setText("Descargar");
 		btnDescargar.setBounds(240, 250, 120, 30);
+		
+		lblOpciones = new JLabel();
+		lblOpciones.setText("Opcion para descargar: ");
+		lblOpciones.setBounds(250, 10, 200, 20);
+		
+		lblPathDescarga = new JLabel();
+		lblPathDescarga.setText("Donde descargarlo: ");
+		lblPathDescarga.setBounds(250, 150, 200, 20);
+
+		bg1 = new ButtonGroup();
+		cbBaseDeDatos = new JCheckBox("Base de Datos (con claves externas).");
+		cbBaseDeDatos.setBounds(260, 40, 250, 20);
+		cbClases = new JCheckBox("Clases (mas legible).");
+		cbClases.setBounds(260, 70, 250, 20);
+		bg1.add(cbBaseDeDatos);
+		bg1.add(cbClases);
 
 		// create list para usuarios
 		listaTablas = new JList<Object>();
@@ -77,34 +96,17 @@ public class VentanaDescargar extends JFrame {
 		}
 		// fin de list
 
-		// otra opcion SIN HABER EXCLUIDO LAS TABLAS
-		try {
-			String[] array = new String[database.DBManager.verTablas().size()];
-			for (int i = 0; i < array.length; i++) {
-				array[i] = database.DBManager.verTablas().get(i);
-			}
-			tablas = new JComboBox<String>(array);
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
-		}
-		utils.JComboBoxAutoCompletion.enable(tablas);
-		tablas.setBounds(300, 50, 200, 30);
-		add(tablas);
-		// otra opcion SIN HABER EXCLUIDO LAS TABLAS
-
-		add(btnDescargar);
-		add(scroll);
-
-		//
-		bg1 = new ButtonGroup();
-		cbBaseDeDatos = new JCheckBox("bd");
-		cbBaseDeDatos.setBounds(250, 200, 50, 20);
-		cbClases = new JCheckBox("c");
-		cbClases.setBounds(350, 200, 50, 20);
-		bg1.add(cbBaseDeDatos);
-		bg1.add(cbClases);
-		add(cbBaseDeDatos);
-		add(cbClases);
+		getContentPane().add(btnDescargar);
+		getContentPane().add(lblOpciones);
+		getContentPane().add(lblPathDescarga);
+		getContentPane().add(scroll);
+		getContentPane().add(cbBaseDeDatos);
+		getContentPane().add(cbClases);
+		
+		choosePath = new JButton();
+		choosePath.setText("choosePath");
+		choosePath.setBounds(260, 180, 120, 30);
+		getContentPane().add(choosePath);
 
 		btnDescargar.addActionListener(new ActionListener() {
 
@@ -128,6 +130,15 @@ public class VentanaDescargar extends JFrame {
 			}
 		});
 
+		choosePath.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				utils.FileChooser.Choose();
+				
+			}
+		});
+		
 	}
 
 	// este main es para pruebas, habria que quitarlo
