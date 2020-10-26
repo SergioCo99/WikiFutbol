@@ -108,7 +108,6 @@ public class VentanaFeedback extends JFrame {
 		texto.setText("");
 		scroll = new JScrollPane(texto);
 		scroll.setBounds(10, 150, 690, 150);
-		add(scroll);
 
 		lblError = new JLabel();
 		lblError.setText("Falta valoracion o comentario.");

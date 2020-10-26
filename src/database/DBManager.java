@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Properties;
@@ -162,9 +161,7 @@ public class DBManager {
 			throw new DBManagerException("Error cambiarAdmin DBManager", e);
 		}
 	}
-	
-	
-	
+
 	public static void eliminarUsuario(String correo_usuario) throws DBManagerException {
 		try {
 			connect();
@@ -1019,12 +1016,12 @@ public class DBManager {
 			rs2.close();
 			stmt.close();
 			disconnect();
-			
+
 			for (int i = 0; i < nrows; i++) {
 				for (int j = 0; j < ncolumns; j++) {
 					System.out.println(ss[i][j]);
 				}
-			}			
+			}
 			return ss;
 		} catch (SQLException e) {
 			throw new DBManagerException("Error data DBManager", e);

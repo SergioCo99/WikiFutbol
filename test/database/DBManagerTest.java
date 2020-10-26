@@ -10,10 +10,9 @@ import clases.Estadio;
 import clases.Usuario;
 
 public class DBManagerTest {
-	//private DBManager db = new DBManager();
+	// private DBManager db = new DBManager();
 	private Usuario u = new Usuario(0, null, null, null, 0, null);
-	
-	
+
 	@Test
 	public void registrarUsuario() throws DBManagerException {
 		DBManager.eliminarUsuario("a");
@@ -21,7 +20,7 @@ public class DBManagerTest {
 		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
 		assertEquals(true, DBManager.existeCorreo("a"));
 	}
-	
+
 	// Métodos Entrenador
 
 	Entrenador e = new Entrenador(1, "Gaizka Garitano", "1975-07-09", "Athletic Club", "Bilbao", "4-3-3",

@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 import database.AdvancedDb2CsvExporter;
 import database.DBManagerException;
@@ -22,11 +23,13 @@ public class VentanaDescargar extends JFrame {
 	private static final long serialVersionUID = 1L;
 	JButton btnDescargar;
 	JList<Object> listaTablas;
-	DefaultListModel<?> listModel;
+	DefaultListModel<Object> listModel;
 	JComboBox<String> tablas;
 
 	JCheckBox cbBaseDeDatos, cbClases;
 	ButtonGroup bg1;
+
+	JScrollPane scroll;
 
 	public VentanaDescargar() {
 
@@ -44,7 +47,8 @@ public class VentanaDescargar extends JFrame {
 
 		// create list para usuarios
 		listaTablas = new JList<Object>();
-		listaTablas.setBounds(10, 10, 200, 200);
+		scroll = new JScrollPane(listaTablas);
+		scroll.setBounds(10, 10, 200, 200);
 
 		try {
 			Properties prop = utils.PropertiesMetodos.loadPropertiesFile();
@@ -53,7 +57,7 @@ public class VentanaDescargar extends JFrame {
 			// tablasProhibidas = { "usuario" }; // se escirben en el jdbc.properties
 			tablasProhibidas = prop.getProperty("DB.TABLASEXCLUIDAS").split(",");
 
-			DefaultListModel<Object> listModel = new DefaultListModel<Object>();
+			listModel = new DefaultListModel<Object>();
 			for (int i = 0; i < database.DBManager.verTablas().size(); i++) {
 				String tabla = database.DBManager.verTablas().get(i);
 				listModel.add(i, tabla);
@@ -89,7 +93,7 @@ public class VentanaDescargar extends JFrame {
 		// otra opcion SIN HABER EXCLUIDO LAS TABLAS
 
 		add(btnDescargar);
-		add(listaTablas);
+		add(scroll);
 
 		//
 		bg1 = new ButtonGroup();

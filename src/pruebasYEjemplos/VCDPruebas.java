@@ -1,4 +1,4 @@
-package ventanas;
+package pruebasYEjemplos;
 
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 import database.DBManagerException;
 
-public class VentanaCambiarDatos extends JFrame {
+public class VCDPruebas extends JFrame {
 
 	// ojo que esta ventana no hace nada todavia, habia pensado en meter una JTable
 	// o usar el textArea como si fuese una consola para que los admins lo usaran
@@ -32,7 +32,7 @@ public class VentanaCambiarDatos extends JFrame {
 	Object[] objects = null;
 	JScrollPane sp;
 
-	public VentanaCambiarDatos() {
+	public VCDPruebas() {
 
 		this.setTitle("VentanaCambiarDatos");
 		this.setSize(600, 400);
@@ -131,7 +131,7 @@ public class VentanaCambiarDatos extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		VentanaCambiarDatos VCD = new VentanaCambiarDatos();
+		VCDPruebas VCD = new VCDPruebas();
 		VCD.setVisible(true);
 	}
 }
