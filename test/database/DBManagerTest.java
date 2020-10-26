@@ -19,7 +19,7 @@ public class DBManagerTest {
 		DBManager.eliminarUsuario("a");
 		u = new Usuario(1, "na", "a", "a", 1, "1999-06-23");
 		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
-		assertEquals(true, DBManager.comprobarUsuario("a"));
+		assertEquals(true, DBManager.existeCorreo("a"));
 	}
 	
 	// Métodos Entrenador
