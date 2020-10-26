@@ -110,7 +110,7 @@ public class VentanaDescargar extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (listaTablas.isSelectionEmpty() == false && bg1.getSelection() != null) {
+				if ((listaTablas.isSelectionEmpty() == false) && (bg1.getSelection() != null)) {
 					try {
 						if (cbBaseDeDatos.isSelected()) {
 							AdvancedDb2CsvExporter.export(listaTablas.getSelectedValue().toString());

@@ -92,7 +92,7 @@ public class VCDPruebas extends JFrame {
 
 		String tabla = jcbTablas.getSelectedItem().toString(); // !!!
 		try {
-			for (int i = 1; i < database.DBManager.verColumnas(tabla).size() + 1; i++) {
+			for (int i = 1; i < (database.DBManager.verColumnas(tabla).size() + 1); i++) {
 				objects = database.DBManager.verColumnas(tabla).toArray();
 			}
 			data = database.DBManager.data(tabla);
@@ -116,7 +116,7 @@ public class VCDPruebas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String tabla = jcbTablas.getSelectedItem().toString(); // !!!
 				try {
-					for (int i = 1; i < database.DBManager.verColumnas(tabla).size() + 1; i++) {
+					for (int i = 1; i < (database.DBManager.verColumnas(tabla).size() + 1); i++) {
 						objects = database.DBManager.verColumnas(tabla).toArray();
 					}
 					data = database.DBManager.data(tabla);

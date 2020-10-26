@@ -47,6 +47,10 @@ public class JTableDinamica {
 
 	public class TestPane extends JPanel {
 
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
 		private JTable table;
 		private DefaultTableModel model;
 		private JSpinner fldRows;

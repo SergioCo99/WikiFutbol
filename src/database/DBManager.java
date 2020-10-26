@@ -1042,11 +1042,25 @@ public class DBManager {
 			throw new DBManagerException("Error cambiarDatos DBManager", e);
 		}
 	} // ???
-		// HASTA AQUI CAMBIAR DATOS
+
+	public static void CambiarDatosDesdeJTable(String tabla, String columna, Object valor, int id)
+			throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql = "update " + tabla + " set " + columna + "='" + valor + "' where id_" + tabla + " = " + id;
+			stmt.executeUpdate(sql);
+			System.out.println(sql);
+			stmt.close();
+			disconnect();
+		} catch (SQLException e) {
+			throw new DBManagerException("Error CambiarDatosDesdeJTable DBManager", e);
+		}
+	}
+	// HASTA AQUI CAMBIAR DATOS
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		data("pais");
 		/*
 		 * getCiudades(); getClubes(); getEntrenadores(); getEstadios();
 		 */
