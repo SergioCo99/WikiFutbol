@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class EstadisticaFeedback {
 
@@ -97,8 +98,10 @@ public class EstadisticaFeedback {
 			siNo(countSi, countNo, mediaSN);
 			br.close();
 		} catch (FileNotFoundException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			throw new RWException("El archivo no fue encontrado", e);
 		} catch (IOException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			throw new RWException("Error de input/output", e);
 		}
 

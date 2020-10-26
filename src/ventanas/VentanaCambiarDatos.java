@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -71,8 +72,9 @@ public class VentanaCambiarDatos extends JFrame {
 				array[i] = database.DBManager.verTablas().get(i);
 			}
 			jcbTablas = new JComboBox<String>(array);
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		utils.JComboBoxAutoCompletion.enable(jcbTablas);
 		jcbTablas.setBounds(10, 300, 120, 30); // jcbTablas.setBounds(400, 300, 150, 30);
@@ -92,8 +94,9 @@ public class VentanaCambiarDatos extends JFrame {
 				objects = database.DBManager.verColumnas(tabla).toArray();
 			}
 			data = database.DBManager.data(tabla);
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 
 		jt = new JTable(data, objects) {
@@ -127,6 +130,7 @@ public class VentanaCambiarDatos extends JFrame {
 					}
 					data = database.DBManager.data(tabla);
 				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
 				jt.setModel(new DefaultTableModel(data, objects));
@@ -149,6 +153,7 @@ public class VentanaCambiarDatos extends JFrame {
 					int id = Integer.parseInt((String) jt.getValueAt(jt.getSelectedRow(), 0));
 					database.DBManager.CambiarDatosDesdeJTable(tabla, columna, valor, id);
 				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					// Can not issue empty query.
 
 					// You have an error in your SQL syntax; check the manual that corresponds to

@@ -1,6 +1,7 @@
 package ventanas;
 
 import java.awt.Toolkit;
+import java.util.logging.Level;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -58,8 +59,9 @@ public class VentanaEstadisticas extends JFrame {
 					System.out.println(data[z][y]);
 				}
 			}
-		} catch (RWException e1) {
-			e1.printStackTrace();
+		} catch (RWException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 
 		table = new JTable(data, columns) { // tabla usando las columnas y la data

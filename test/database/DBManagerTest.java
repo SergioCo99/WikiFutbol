@@ -127,8 +127,8 @@ public class DBManagerTest {
 	 * ); equipos.
 	 * add("id=20, nombre=Osasuna, ciudad=Pamplona, estadio=Estadio El Sadar, anyoCreacion=1920, palmares=0, entrenador=Jagoba Arrasate"
 	 * );
-	 * 
-	 * 
+	 *
+	 *
 	 * assertEquals(equipos, DBManager.getClubes()); }
 	 */
 }

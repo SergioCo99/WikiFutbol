@@ -3,6 +3,7 @@ package ventanas;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -58,8 +59,9 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 				array[i] = database.DBManager.todosLosCorreos().get(i);
 			}
 			jcbCorreos = new JComboBox<String>(array);
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		utils.JComboBoxAutoCompletion.enable(jcbCorreos);
 		jcbCorreos.setBounds(250, 150, 250, 40);
@@ -95,6 +97,7 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 						}
 					}
 				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
 			}

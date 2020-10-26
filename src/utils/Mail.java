@@ -2,6 +2,7 @@ package utils;
 
 import java.util.Date;
 import java.util.Properties;
+import java.util.logging.Level;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -35,6 +36,7 @@ public class Mail {
 
 			System.out.println("Correo enviado correctamente!!");
 		} catch (Exception e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 	}

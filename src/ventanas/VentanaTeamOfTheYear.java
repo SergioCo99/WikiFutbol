@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.util.logging.Level;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,9 +37,9 @@ public class VentanaTeamOfTheYear extends JFrame {
 			for (int i = 0; i < array.length; i++) {
 				array[i] = database.DBManager.toftNombres().get(i);
 			}
-
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 
 		// EI

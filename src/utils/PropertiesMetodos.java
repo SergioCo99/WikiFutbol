@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.logging.Level;
 
 public class PropertiesMetodos {
 
@@ -23,6 +24,7 @@ public class PropertiesMetodos {
 			propConfig.store(fos, "program Settings");
 			fos.close();
 		} catch (IOException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 	}
@@ -39,6 +41,7 @@ public class PropertiesMetodos {
 			String nombre = propConfig.getProperty("correo");
 			return nombre;
 		} catch (IOException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 			return null;
 		}
@@ -56,6 +59,7 @@ public class PropertiesMetodos {
 			String contr = propConfig.getProperty("contrasena");
 			return contr;
 		} catch (IOException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 			return null;
 		}

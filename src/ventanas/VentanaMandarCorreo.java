@@ -4,6 +4,7 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -47,8 +48,9 @@ public class VentanaMandarCorreo extends JFrame {
 				array[i] = database.DBManager.todosLosCorreos().get(i);
 			}
 			jcb = new JComboBox<String>(array);
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		utils.JComboBoxAutoCompletion.enable(jcb);
 		jcb.setBounds(300, 30, 200, 30);
@@ -122,6 +124,7 @@ public class VentanaMandarCorreo extends JFrame {
 										texto.getText());
 							}
 						} catch (DBManagerException e1) {
+							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 							e1.printStackTrace();
 						}
 					}

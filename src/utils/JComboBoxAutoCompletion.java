@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.logging.Level;
 
 import javax.swing.ComboBoxEditor;
 import javax.swing.ComboBoxModel;
@@ -187,6 +188,7 @@ public class JComboBoxAutoCompletion extends PlainDocument {
 			super.remove(0, getLength());
 			super.insertString(0, text, null);
 		} catch (BadLocationException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			throw new RuntimeException(e.toString());
 		}
 	}

@@ -13,11 +13,11 @@ import ventanas.VentanaLogin;
 
 public class MainWikiFutbol {
 
-	public static PrintStream log;
+	public static PrintStream logFeedback;
 
 	public static void crearFicheroLog() {
 		try {
-			log = new PrintStream(new FileOutputStream("PruebaLog.log", true));
+			logFeedback = new PrintStream(new FileOutputStream("FeedbackLog.log", true));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -28,21 +28,27 @@ public class MainWikiFutbol {
 		// mainPackage.MainWikiFutbol.log.println("Message");
 	}
 
-	public static Logger logger = Logger.getLogger(MainWikiFutbol.class.getName()); // asi??
+	public static Logger loggerBD = Logger.getLogger(MainWikiFutbol.class.getName()); // asi??
+	public static Logger loggerGeneral = Logger.getLogger(MainWikiFutbol.class.getName()); // asi??
 
 	public static void crearFicheroLogger() { // gitignore los ficheros cuando le cambiemos el nombre
 		// FINEST / FINER / FINE / CONFIG / INFO / WARNING / SEVERE
-		logger.setLevel(Level.ALL);
+		loggerBD.setLevel(Level.ALL);
+		loggerGeneral.setLevel(Level.ALL);
 		try {
-			logger.addHandler(new FileHandler("BDLogger.log", true));
+			loggerBD.addHandler(new FileHandler("BDLogger.log", true));
+			loggerGeneral.addHandler(new FileHandler("GeneralLogger.log", true));
 		} catch (SecurityException | IOException e) {
 			e.printStackTrace();
 		}
 		// ->en esta misma clase
-		// logger.log(Level.X, " Message ");
+		// loggerBD.log(Level.X, " Message ");
+		// loggerGeneral.log(Level.X, " Message ");
 
 		// -> en otra clase
-		// mainPackage.MainWikiFutbol.logger.log([Por ahora Level.INFO],"Message");
+		// mainPackage.MainWikiFutbol.loggerBD.log([Por ahora Level.INFO],"Message");
+		// mainPackage.MainWikiFutbol.loggerGeneral.log([Por ahora
+		// Level.INFO],"Message");
 	}
 
 	// por si no existe el fichero

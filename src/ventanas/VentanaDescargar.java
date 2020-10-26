@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Properties;
+import java.util.logging.Level;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
@@ -86,8 +87,9 @@ public class VentanaDescargar extends JFrame {
 				}
 			}
 			listaTablas.setModel(listModel);
-		} catch (Exception e2) {
-			e2.printStackTrace();
+		} catch (Exception e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		// fin de list
 
@@ -111,6 +113,7 @@ public class VentanaDescargar extends JFrame {
 						}
 						JOptionPane.showMessageDialog(null, "Se ha descargado correctamente.");
 					} catch (Exception e1) {
+						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 						e1.printStackTrace();
 					}
 				} else {
