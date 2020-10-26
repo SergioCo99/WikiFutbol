@@ -77,7 +77,7 @@ public class VentanaJugadores extends JFrame {
 	}
 
 	public void init() {
-
+		
 		this.setTitle("Plantilla del 'Nombre Equipo'");
 		this.setSize(1200, 700);
 		this.setLayout(null);
@@ -245,7 +245,13 @@ public class VentanaJugadores extends JFrame {
 		botonVerJugador.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Aún sin funcionalidad
+				try {
+					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
+					ve.setVisible(true);
+					dispose();
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(frame, "Seleccione un jugador");
+				}
 			}
 		});
 
