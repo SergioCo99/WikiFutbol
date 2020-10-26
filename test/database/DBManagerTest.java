@@ -7,9 +7,21 @@ import org.junit.Test;
 import clases.Entrenador;
 import clases.Entrenador.Mentalidad;
 import clases.Estadio;
+import clases.Usuario;
 
 public class DBManagerTest {
-
+	//private DBManager db = new DBManager();
+	private Usuario u = new Usuario(0, null, null, null, 0, null);
+	
+	
+	@Test
+	public void registrarUsuario() throws DBManagerException {
+		DBManager.eliminarUsuario("a");
+		u = new Usuario(1, "na", "a", "a", 1, "1999-06-23");
+		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
+		assertEquals(true, DBManager.comprobarUsuario("a"));
+	}
+	
 	// Métodos Entrenador
 
 	Entrenador e = new Entrenador(1, "Gaizka Garitano", "1975-07-09", "Athletic Club", "Bilbao", "4-3-3",

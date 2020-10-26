@@ -162,7 +162,39 @@ public class DBManager {
 			throw new DBManagerException("Error cambiarAdmin DBManager", e);
 		}
 	}
-
+	
+	
+	/**
+	 * El método sirve para verificar si el usuario existe o no existe
+	 * 
+	 * @param usuario: Es el nombre del usuario
+	 * @return devuelve un resultado booleando (0/1) que nos dice si el usuario ya existe o no
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
+	public static boolean comprobarUsuario(String correo_usuario) throws DBManagerException {
+		
+		try {
+			connect();
+			stmt = conn.createStatement();
+			boolean respuesta = false;
+			String query = "SELECT COUNT(*) AS total FROM usuario where correo_usuario = '" + correo_usuario +"'";
+			ResultSet RS = stmt.executeQuery(query);
+			while (RS.next()) {
+				if( RS.getInt("total") > 0 ) {
+					respuesta = true;//El usuario existe
+				} else {
+					respuesta = false; //El usuario no existe
+				}
+			}
+			return respuesta;
+		} catch (SQLException e) {
+			throw new DBManagerException("Error comprobarUsuario DBManager", e);
+		}
+	}
+		
+		
+		
+	
 	public static void eliminarUsuario(String correo_usuario) throws DBManagerException {
 		try {
 			connect();
