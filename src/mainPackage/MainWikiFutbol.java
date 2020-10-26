@@ -34,7 +34,7 @@ public class MainWikiFutbol {
 		// FINEST / FINER / FINE / CONFIG / INFO / WARNING / SEVERE
 		logger.setLevel(Level.ALL);
 		try {
-			logger.addHandler(new FileHandler("PruebaLogger.log", true));
+			logger.addHandler(new FileHandler("BDLogger.log", true));
 		} catch (SecurityException | IOException e) {
 			e.printStackTrace();
 		}

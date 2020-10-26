@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Properties;
+import java.util.logging.Level;
 
 import clases.Ciudad;
 import clases.Club;
@@ -43,6 +44,7 @@ public class DBManager {
 			conn = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
 			System.out.println("CONEXION");
 		} catch (Exception e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error connect DBManager", e);
 		}
 	}
@@ -52,6 +54,7 @@ public class DBManager {
 			conn.close();
 			System.out.println("DESCONEXION");
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error disconnect DBManager", e);
 		}
 	}
@@ -75,6 +78,7 @@ public class DBManager {
 			disconnect();
 			return false;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error existeCorreo DBManager", e);
 		}
 	}
@@ -91,6 +95,7 @@ public class DBManager {
 			stmt.close();
 			disconnect();
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error registrarUsuario DBManager", e);
 		}
 	}
@@ -117,7 +122,9 @@ public class DBManager {
 				return false;
 			}
 		} catch (SQLException e) {
-			// MUCHO TEXTO?, igual hay que quitar la "e" :v
+			mainPackage.MainWikiFutbol.logger.log(Level.INFO, e.toString());
+			// MUCHO TEXTO?, igual hay que quitar la "e" :v (ABAJO, en el throw new
+			// DBManagerException)
 			throw new DBManagerException("Error login DBManager, o no coincide contraseña", e);
 		}
 	}
@@ -142,7 +149,9 @@ public class DBManager {
 				return false;
 			}
 		} catch (SQLException e) {
-			// hay k plantearse quitar este "error"
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
+			// hay k plantearse quitar este "error" (ABAJO, en el throw new
+			// DBManagerException)
 			throw new DBManagerException("Error esAdmin DBManager, o no es admin", e);
 		}
 		return false;
@@ -158,6 +167,7 @@ public class DBManager {
 			stmt.close();
 			disconnect();
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error cambiarAdmin DBManager", e);
 		}
 	}
@@ -171,6 +181,7 @@ public class DBManager {
 			stmt.close();
 			disconnect();
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error eliminarUsuario DBManager", e);
 		}
 	}
@@ -185,6 +196,7 @@ public class DBManager {
 			stmt.close();
 			disconnect();
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error cambiarContrasena DBManager", e);
 		}
 	}
@@ -207,6 +219,7 @@ public class DBManager {
 			disconnect();
 			return arr;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error verTablas DBManager", e);
 		}
 	}
@@ -235,6 +248,7 @@ public class DBManager {
 			disconnect();
 			return arr;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error todosLosCorreos DBManager", e);
 		}
 	}
@@ -258,6 +272,7 @@ public class DBManager {
 			rs.close();
 			disconnect();
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error registrarFeedback DBManager", e);
 		}
 	}
@@ -284,6 +299,7 @@ public class DBManager {
 			disconnect();
 			return arr;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getJugadoresPorPosicion DBManager", e);
 		}
 	}
@@ -303,6 +319,7 @@ public class DBManager {
 			disconnect();
 			return id;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getIdUsuario DBManager", e);
 		}
 	}
@@ -322,6 +339,7 @@ public class DBManager {
 			disconnect();
 			return id;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getIdJugador DBManager", e);
 		}
 	}
@@ -361,6 +379,7 @@ public class DBManager {
 			stmt.close();
 			disconnect();
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error votar DBManager", e);
 		}
 	}
@@ -377,6 +396,7 @@ public class DBManager {
 			rs.close();
 			return id;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error contarJugadores DBManager", e);
 		}
 	}
@@ -392,6 +412,7 @@ public class DBManager {
 
 			return v;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error contarVotosPorJugador DBManager", e);
 		}
 	}
@@ -436,6 +457,7 @@ public class DBManager {
 			stmt.close();
 			disconnect();
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error actualizarVotos DBManager", e);
 		}
 	}
@@ -452,6 +474,7 @@ public class DBManager {
 			rs.close();
 			return n;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error contarTOFT DBManager", e);
 		}
 	}
@@ -479,6 +502,7 @@ public class DBManager {
 			rs.close();
 			return id;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getMasVotados DBManager", e);
 		}
 	}
@@ -513,6 +537,7 @@ public class DBManager {
 			disconnect();
 			return arr;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error setTOFT DBManager", e);
 		}
 	}
@@ -534,6 +559,7 @@ public class DBManager {
 			disconnect();
 			return arr;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error todosLosCorreos DBManager", e);
 		}
 	}
@@ -554,9 +580,9 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-			System.out.println(array);
 			return array;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getCiudades DBManager", e);
 		}
 	}
@@ -576,9 +602,9 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-			System.out.println(array);
 			return array;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getClubes DBManager", e);
 		}
 	}
@@ -599,9 +625,9 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-			System.out.println(array);
 			return array;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getEntrenadores DBManager", e);
 		}
 	}
@@ -618,7 +644,8 @@ public class DBManager {
 				nombre = RS.getString("nombre_entrenador");
 			}
 			return nombre;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error nombreEntrenador DBManager", e);
 		}
 	}
@@ -634,7 +661,8 @@ public class DBManager {
 				fechaNacimiento = RS.getString("fechaNac_entrenador");
 			}
 			return fechaNacimiento;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error fechaNacimiento DBManager", e);
 		}
 	}
@@ -653,7 +681,8 @@ public class DBManager {
 				clubEntrenador = RS.getString("nombre_club");
 			}
 			return clubEntrenador;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error clubEntrenador DBManager", e);
 		}
 	}
@@ -672,7 +701,8 @@ public class DBManager {
 				ciudadEntrenador = RS.getString("nombre_ciudad");
 			}
 			return ciudadEntrenador;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error ciudadEntrenador DBManager", e);
 		}
 	}
@@ -688,7 +718,8 @@ public class DBManager {
 				formacionEntrenador = RS.getString("formacion_entrenador");
 			}
 			return formacionEntrenador;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error formacionEntrenador DBManager", e);
 		}
 	}
@@ -705,7 +736,8 @@ public class DBManager {
 				mentalidadEntrenador = RS.getString("mentalidad_entrenador");
 			}
 			return mentalidadEntrenador;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error mentalidadEntrenador DBManager", e);
 		}
 	}
@@ -725,9 +757,9 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-			System.out.println(array);
 			return array;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getEstadios DBManager", e);
 		}
 	}
@@ -744,7 +776,8 @@ public class DBManager {
 				nombre = RS.getString("nombre_estadio");
 			}
 			return nombre;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error nombreEntrenador DBManager", e);
 		}
 	}
@@ -760,7 +793,8 @@ public class DBManager {
 				aforo = RS.getInt("aforo_estadio");
 			}
 			return aforo;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error aforoEstadio DBManager", e);
 		}
 	}
@@ -776,7 +810,8 @@ public class DBManager {
 				anyo = RS.getInt("anoCreacion_estadio");
 			}
 			return anyo;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error anyoEstadio DBManager", e);
 		}
 	}
@@ -793,7 +828,8 @@ public class DBManager {
 				ciudadEstadio = RS.getString("nombre_ciudad");
 			}
 			return ciudadEstadio;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error ciudadEstadio DBManager", e);
 		}
 	}
@@ -814,9 +850,9 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-			System.out.println(array);
 			return array;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getFeedbacks DBManager", e);
 		}
 	}
@@ -838,9 +874,9 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-			System.out.println(array);
 			return array;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getJugadores DBManager", e);
 		}
 	}
@@ -858,14 +894,13 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-			System.out.println(array);
 			return array;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getPaises DBManager", e);
 		}
 	}
 
-	// es util ???
 	public static ArrayList<TeamOfTheYear_view> getTeamOfTheYear_view() throws DBManagerException {
 		try {
 			connect();
@@ -880,9 +915,9 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-			System.out.println(array);
 			return array;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getTeamOfTheYear_view DBManager", e);
 		}
 	}
@@ -901,9 +936,9 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-			System.out.println(array);
 			return array;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getTeamOfTheYear DBManager", e);
 		}
 	}
@@ -923,9 +958,9 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-			System.out.println(array);
 			return array;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getUsuarios DBManager", e);
 		}
 	}
@@ -949,9 +984,9 @@ public class DBManager {
 			rs.close();
 			stmt.close();
 			disconnect();
-			System.out.println(array);
 			return array;
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getUsuarioVotaciones DBManager", e);
 		}
 	}
@@ -972,6 +1007,7 @@ public class DBManager {
 			}
 			return arr;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error verColumnas DBManager", e);
 		}
 	}
@@ -1024,6 +1060,7 @@ public class DBManager {
 			}
 			return ss;
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error data DBManager", e);
 		}
 	}
@@ -1039,6 +1076,7 @@ public class DBManager {
 			stmt.close();
 			disconnect();
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error cambiarDatos DBManager", e);
 		}
 	} // ???
@@ -1054,6 +1092,7 @@ public class DBManager {
 			stmt.close();
 			disconnect();
 		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.logger.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error CambiarDatosDesdeJTable DBManager", e);
 		}
 	}
@@ -1061,6 +1100,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		
+
 	}
 }

@@ -77,7 +77,7 @@ public class VentanaJugadores extends JFrame {
 	}
 
 	public void init() {
-		
+
 		this.setTitle("Plantilla del 'Nombre Equipo'");
 		this.setSize(1200, 700);
 		this.setLayout(null);

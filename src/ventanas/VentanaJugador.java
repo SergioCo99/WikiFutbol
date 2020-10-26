@@ -12,21 +12,16 @@ import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import clases.Club;
 import clases.Jugador;
-import clases.Jugador.PieFav;
-import clases.Jugador.Posicion;
 import clases.Usuario;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
 public class VentanaJugador extends JFrame {
-
-	
 
 	public static boolean privilegiosAdmin() {
 		try {
@@ -119,9 +114,6 @@ public class VentanaJugador extends JFrame {
 		bookPanel.setBackground(Color.getHSBColor(1.42f, 0.68f, 0.75f));
 		add(bookPanel);
 
-		
-
-
 		// Cabecera
 		final JLabel cabecera = new JLabel("Información sobre " + nombreJugador + ":");
 		// final JLabel cabecera = new JLabel("Información sobre 'NombreEquipo':");
@@ -167,7 +159,7 @@ public class VentanaJugador extends JFrame {
 		label22.setFont(fuente2);
 		label22.setForeground(Color.BLACK);
 		bookPanel.add(label22);
-		
+
 		// Resultado Club
 		String equipo = jugador.getClub();
 		final JLabel label223 = new JLabel(equipo);
@@ -175,14 +167,14 @@ public class VentanaJugador extends JFrame {
 		label223.setFont(fuente2);
 		label223.setForeground(Color.BLACK);
 		bookPanel.add(label223);
-		
+
 		// Ciudad
 		final JLabel label3 = new JLabel("Ciudad: ");
 		label3.setBounds(20, 305, 150, 50);
 		label3.setFont(fuente2);
 		label3.setForeground(Color.BLACK);
 		bookPanel.add(label3);
-		
+
 		// Resultado Ciudad
 		String ciudad = jugador.getCiudad();
 		final JLabel label33 = new JLabel(ciudad);
@@ -190,29 +182,29 @@ public class VentanaJugador extends JFrame {
 		label33.setFont(fuente2);
 		label33.setForeground(Color.BLACK);
 		bookPanel.add(label33);
-				
+
 		// Posicion
 		final JLabel label4 = new JLabel("Posicion: ");
 		label4.setBounds(20, 370, 150, 50);
 		label4.setFont(fuente2);
 		label4.setForeground(Color.BLACK);
 		bookPanel.add(label4);
-		
+
 		// Resultado Posicion
-		//String a = jugador.getPosicion();
+		// String a = jugador.getPosicion();
 		final JLabel label44 = new JLabel("Prueba");
 		label44.setBounds(127, 370, 400, 50);
 		label44.setFont(fuente2);
 		label44.setForeground(Color.BLACK);
 		bookPanel.add(label44);
-		
+
 		// Dorsal
 		final JLabel label5 = new JLabel("Dorsal: ");
 		label5.setBounds(20, 435, 150, 50);
 		label5.setFont(fuente2);
 		label5.setForeground(Color.BLACK);
 		bookPanel.add(label5);
-		
+
 		// Resultado Dorsal
 		String dorsal = Integer.toString(jugador.getDorsal());
 		final JLabel label55 = new JLabel(dorsal);
@@ -220,14 +212,14 @@ public class VentanaJugador extends JFrame {
 		label55.setFont(fuente2);
 		label55.setForeground(Color.BLACK);
 		bookPanel.add(label55);
-				
+
 		// Goles
 		final JLabel label6 = new JLabel("Goles: ");
 		label6.setBounds(20, 500, 150, 50);
 		label6.setFont(fuente2);
 		label6.setForeground(Color.BLACK);
 		bookPanel.add(label6);
-		
+
 		// Resultado Goles
 		String goles = Integer.toString(jugador.getGoles());
 		final JLabel label66 = new JLabel(goles);
@@ -235,14 +227,14 @@ public class VentanaJugador extends JFrame {
 		label66.setFont(fuente2);
 		label66.setForeground(Color.BLACK);
 		bookPanel.add(label66);
-		
+
 		// Altura
 		final JLabel label7 = new JLabel("Altura: ");
 		label7.setBounds(400, 240, 150, 50);
 		label7.setFont(fuente2);
 		label7.setForeground(Color.BLACK);
 		bookPanel.add(label7);
-		
+
 		// Resultado Altura
 		String altura = Integer.toString(jugador.getAltura());
 		final JLabel label77 = new JLabel(altura);
@@ -250,14 +242,14 @@ public class VentanaJugador extends JFrame {
 		label77.setFont(fuente2);
 		label77.setForeground(Color.BLACK);
 		bookPanel.add(label77);
-				
+
 		// Peso
 		final JLabel label8 = new JLabel("Peso: ");
 		label8.setBounds(400, 305, 150, 50);
 		label8.setFont(fuente2);
 		label8.setForeground(Color.BLACK);
 		bookPanel.add(label8);
-		
+
 		// Resultado Peso
 		String peso = Integer.toString(jugador.getPeso());
 		final JLabel label88 = new JLabel(peso);
@@ -265,27 +257,25 @@ public class VentanaJugador extends JFrame {
 		label88.setFont(fuente2);
 		label88.setForeground(Color.BLACK);
 		bookPanel.add(label88);
-				
+
 		// Pie Fav
 		final JLabel label9 = new JLabel("Pie Fav: ");
 		label9.setBounds(400, 370, 150, 50);
 		label9.setFont(fuente2);
 		label9.setForeground(Color.BLACK);
 		bookPanel.add(label9);
-		
+
 		// Resultado Pie Fav
-		//PieFav piefav1 = jugador.getPiefav();
+		// PieFav piefav1 = jugador.getPiefav();
 		final JLabel label17 = new JLabel("Prueba");
 		label17.setBounds(500, 370, 400, 50);
 		label17.setFont(fuente2);
 		label17.setForeground(Color.BLACK);
 		bookPanel.add(label17);
-		
+
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
 		bookPanel.add(fotoEquipo);
-
-		
 
 		this.addWindowListener(new WindowAdapter() {
 

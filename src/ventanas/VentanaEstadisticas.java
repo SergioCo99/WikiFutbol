@@ -71,7 +71,7 @@ public class VentanaEstadisticas extends JFrame {
 				// all cells false
 				return false;
 			}
-		}; 
+		};
 
 		table.setCellSelectionEnabled(true);
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
