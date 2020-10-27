@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,10 +22,6 @@ import database.DBManagerException;
 
 public class VentanaCambiarDatos extends JFrame {
 
-	// ojo que esta ventana no hace nada todavia, habia pensado en meter una JTable
-	// o usar el textArea como si fuese una consola para que los admins lo usaran
-	// para hacer cosnultas SQL a la BD
-
 	private static final long serialVersionUID = 1L;
 	JButton btnCambiarDato, buscarTabla;
 	JTextArea textArea1;
@@ -36,7 +34,7 @@ public class VentanaCambiarDatos extends JFrame {
 	Object[] objects = null;
 	JScrollPane sp;
 
-	JLabel info;
+	JLabel lblInfo, lblValor;
 
 	public VentanaCambiarDatos() {
 
@@ -57,11 +55,16 @@ public class VentanaCambiarDatos extends JFrame {
 		buscarTabla.setBounds(240, 300, 120, 30);
 
 		textArea1 = new JTextArea();
-		textArea1.setBounds(10, 190, 560, 100);
+		textArea1.setBounds(10, 210, 560, 80);
 
-		info = new JLabel();
-		info.setText("Selecciona la celda que quieres cambiar, introduce su nuevo valor aqui y clicka Cambiar Datos:");
-		info.setBounds(10, 165, 560, 30);
+		lblValor = new JLabel();
+		lblValor.setText("Valor: ");
+		lblValor.setBounds(10, 155, 560, 30);
+
+		lblInfo = new JLabel();
+		lblInfo.setText("Selecciona la celda que quieres cambiar, introduce su nuevo valor aqui y clicka "
+				+ btnCambiarDato.getText() + ": ");
+		lblInfo.setBounds(10, 185, 560, 30);
 
 		try {
 			String[] array = new String[database.DBManager.verTablas().size()];
@@ -69,8 +72,9 @@ public class VentanaCambiarDatos extends JFrame {
 				array[i] = database.DBManager.verTablas().get(i);
 			}
 			jcbTablas = new JComboBox<String>(array);
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		utils.JComboBoxAutoCompletion.enable(jcbTablas);
 		jcbTablas.setBounds(10, 300, 120, 30); // jcbTablas.setBounds(400, 300, 150, 30);
@@ -78,7 +82,8 @@ public class VentanaCambiarDatos extends JFrame {
 
 		getContentPane().add(btnCambiarDato);
 		getContentPane().add(buscarTabla);
-		getContentPane().add(info);
+		getContentPane().add(lblInfo);
+		getContentPane().add(lblValor);
 		getContentPane().add(textArea1);
 		getContentPane().add(jcbTablas);
 
@@ -89,8 +94,9 @@ public class VentanaCambiarDatos extends JFrame {
 				objects = database.DBManager.verColumnas(tabla).toArray();
 			}
 			data = database.DBManager.data(tabla);
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 
 		jt = new JTable(data, objects) {
@@ -124,23 +130,10 @@ public class VentanaCambiarDatos extends JFrame {
 					}
 					data = database.DBManager.data(tabla);
 				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
 				jt.setModel(new DefaultTableModel(data, objects));
-			}
-		});
-
-		jt.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (e.getClickCount() >= 2) { // Doble click
-					int fila = jt.rowAtPoint(e.getPoint());
-					int columna = jt.columnAtPoint(e.getPoint());
-					if ((columna >= 0) && (columna < 7)) {
-						Object o = jt.getValueAt(fila, columna).toString();
-						JOptionPane.showMessageDialog(null, o);
-					}
-				}
 			}
 		});
 
@@ -160,12 +153,38 @@ public class VentanaCambiarDatos extends JFrame {
 					int id = Integer.parseInt((String) jt.getValueAt(jt.getSelectedRow(), 0));
 					database.DBManager.CambiarDatosDesdeJTable(tabla, columna, valor, id);
 				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					// Can not issue empty query.
 
 					// You have an error in your SQL syntax; check the manual that corresponds to
 					// your MySQL server version for the right syntax to use
 
 					// Can not issue SELECT via Update
+					JOptionPane.showMessageDialog(null, "No se acepta el valor introducido.", "Alert",
+							JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
+
+		jt.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() >= 2) { // Doble click
+					int fila = jt.rowAtPoint(e.getPoint());
+					int columna = jt.columnAtPoint(e.getPoint());
+					Object o = jt.getValueAt(fila, columna).toString();
+					JOptionPane.showMessageDialog(null, o);
+				}
+			}
+		});
+
+		jt.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				int fila = jt.rowAtPoint(e.getPoint());
+				int columna = jt.columnAtPoint(e.getPoint());
+				if (jt.getValueAt(fila, columna).toString().isEmpty() == false) {
+					lblValor.setText("Valor: " + jt.getModel().getValueAt(fila, columna));
 				}
 			}
 		});

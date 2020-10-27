@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Properties;
+import java.util.logging.Level;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
@@ -30,9 +31,8 @@ public class VentanaDescargar extends JFrame {
 	ButtonGroup bg1;
 
 	JScrollPane scroll;
-	
+
 	JLabel lblOpciones, lblPathDescarga;
-	private JButton choosePath;
 
 	public VentanaDescargar() {
 
@@ -47,14 +47,10 @@ public class VentanaDescargar extends JFrame {
 		btnDescargar = new JButton();
 		btnDescargar.setText("Descargar");
 		btnDescargar.setBounds(240, 250, 120, 30);
-		
+
 		lblOpciones = new JLabel();
 		lblOpciones.setText("Opcion para descargar: ");
 		lblOpciones.setBounds(250, 10, 200, 20);
-		
-		lblPathDescarga = new JLabel();
-		lblPathDescarga.setText("Donde descargarlo: ");
-		lblPathDescarga.setBounds(250, 150, 200, 20);
 
 		bg1 = new ButtonGroup();
 		cbBaseDeDatos = new JCheckBox("Base de Datos (con claves externas).");
@@ -91,8 +87,9 @@ public class VentanaDescargar extends JFrame {
 				}
 			}
 			listaTablas.setModel(listModel);
-		} catch (Exception e2) {
-			e2.printStackTrace();
+		} catch (Exception e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		// fin de list
 
@@ -102,11 +99,6 @@ public class VentanaDescargar extends JFrame {
 		getContentPane().add(scroll);
 		getContentPane().add(cbBaseDeDatos);
 		getContentPane().add(cbClases);
-		
-		choosePath = new JButton();
-		choosePath.setText("choosePath");
-		choosePath.setBounds(260, 180, 120, 30);
-		getContentPane().add(choosePath);
 
 		btnDescargar.addActionListener(new ActionListener() {
 
@@ -121,6 +113,7 @@ public class VentanaDescargar extends JFrame {
 						}
 						JOptionPane.showMessageDialog(null, "Se ha descargado correctamente.");
 					} catch (Exception e1) {
+						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 						e1.printStackTrace();
 					}
 				} else {
@@ -130,15 +123,6 @@ public class VentanaDescargar extends JFrame {
 			}
 		});
 
-		choosePath.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				utils.FileChooser.Choose();
-				
-			}
-		});
-		
 	}
 
 	// este main es para pruebas, habria que quitarlo

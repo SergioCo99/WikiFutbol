@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
+import java.util.logging.Level;
 
 public class AdvancedDb2CsvExporter {
 
@@ -76,8 +77,10 @@ public class AdvancedDb2CsvExporter {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 		}
 
 	}
@@ -146,6 +149,7 @@ public class AdvancedDb2CsvExporter {
 			}
 			writer.close();
 		} catch (IOException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			e.printStackTrace();
 		}
 	}
@@ -153,6 +157,6 @@ public class AdvancedDb2CsvExporter {
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws Exception {
 		// asi en otra clase
-		database.AdvancedDb2CsvExporter.export("jugador");
+		database.AdvancedDb2CsvExporter.export("pais");
 	}
 }

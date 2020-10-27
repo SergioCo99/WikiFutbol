@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -167,7 +168,7 @@ public class VentanaFeedback extends JFrame {
 						&& (texto.getText().length() <= maxChars)) {
 					lblError.setVisible(false);
 					mainPackage.MainWikiFutbol.crearFicheroLog();
-					mainPackage.MainWikiFutbol.log
+					mainPackage.MainWikiFutbol.logFeedback
 							.println("Puntuacion: " + bgEstrellas.getSelection().getActionCommand() + "\n" + "Si/No: "
 									+ bgRecomendacion.getSelection().getActionCommand());
 					try {
@@ -175,6 +176,7 @@ public class VentanaFeedback extends JFrame {
 								bgEstrellas.getSelection().getActionCommand(),
 								bgRecomendacion.getSelection().getActionCommand(), texto.getText());
 					} catch (DBManagerException e1) {
+						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 						e1.printStackTrace();
 					}
 					dispose(); // si??? se cierra???

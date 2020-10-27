@@ -3,6 +3,7 @@ package ventanas;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -33,8 +34,9 @@ public class VentanaVotar extends JFrame {
 				arrayDelantero[i] = database.DBManager.getJugadoresPorPosicion("Delantero").get(i);
 			}
 			jcbDelantero = new JComboBox<String>(arrayDelantero);
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		utils.JComboBoxAutoCompletion.enable(jcbDelantero);
 		jcbDelantero.setBounds(300, 50, 200, 30);
@@ -47,8 +49,9 @@ public class VentanaVotar extends JFrame {
 				arrayCentrocampista[i] = database.DBManager.getJugadoresPorPosicion("Centrocampista").get(i);
 			}
 			jcbCentrocampista = new JComboBox<String>(arrayCentrocampista);
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		utils.JComboBoxAutoCompletion.enable(jcbCentrocampista);
 		jcbCentrocampista.setBounds(300, 100, 200, 30);
@@ -60,8 +63,9 @@ public class VentanaVotar extends JFrame {
 				arrayDefensa[i] = database.DBManager.getJugadoresPorPosicion("Defensa").get(i);
 			}
 			jcbDefensa = new JComboBox<String>(arrayDefensa);
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		utils.JComboBoxAutoCompletion.enable(jcbDefensa);
 		jcbDefensa.setBounds(300, 150, 200, 30);
@@ -73,8 +77,9 @@ public class VentanaVotar extends JFrame {
 				arrayPortero[i] = database.DBManager.getJugadoresPorPosicion("Portero").get(i);
 			}
 			jcbPortero = new JComboBox<String>(arrayPortero);
-		} catch (DBManagerException e1) {
-			e1.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		utils.JComboBoxAutoCompletion.enable(jcbPortero);
 		jcbPortero.setBounds(300, 200, 200, 30);
@@ -117,6 +122,7 @@ public class VentanaVotar extends JFrame {
 
 					dispose();
 				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
 			}

@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -77,6 +78,7 @@ public class JLabelGraficoAjustado extends JLabel {
 				imgURL = JLabelGraficoAjustado.class.getResource(nomImagenObjeto).toURI().toURL();
 			}
 		} catch (Exception e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 		} // Cualquier error de carga, la imagen se queda nula
 		if (imgURL == null) {
 			imagenObjeto = null;
@@ -84,6 +86,7 @@ public class JLabelGraficoAjustado extends JLabel {
 			try { // guarda la imagen para dibujarla de forma escalada despu�s
 				imagenObjeto = ImageIO.read(imgURL);
 			} catch (IOException e) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			} // Error al leer la imagen
 		}
 		if (imagenObjeto == null) {
@@ -209,12 +212,14 @@ public class JLabelGraficoAjustado extends JLabel {
 		try {
 			Thread.sleep(5000);
 		} catch (Exception e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 		} // Espera 5 segundos
 		for (int rot = 0; rot <= 200; rot++) {
 			label.setRotacion((rot * Math.PI) / 100);
 			try {
 				Thread.sleep(20);
 			} catch (Exception e) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			} // Espera dos d�cimas entre rotaci�n y rotaci�n
 		}
 		for (int op = -100; op <= 100; op++) {
@@ -222,6 +227,7 @@ public class JLabelGraficoAjustado extends JLabel {
 			try {
 				Thread.sleep(20);
 			} catch (Exception e) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			} // Espera dos d�cimas entre rotaci�n y rotaci�n
 		}
 	}

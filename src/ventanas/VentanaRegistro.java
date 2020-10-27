@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -78,8 +79,9 @@ public class VentanaRegistro extends JFrame {
 		calendar.setBounds(300, 130, 200, 100);
 		try {
 			calendar.setSelectableDateRange(formatter.parse("1900-01-01") /* YYYY-MM-dd */, new Date());
-		} catch (ParseException e2) {
-			e2.printStackTrace();
+		} catch (ParseException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 
 		add(txtUsuario);
@@ -116,6 +118,7 @@ public class VentanaRegistro extends JFrame {
 								database.DBManager.registrarUsuario(txtUsuario.getText(), txtCorreo.getText(),
 										txtPassword.getText(), formatter.format(calendar.getDate()));
 							} catch (DBManagerException e1) {
+								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 								e1.printStackTrace();
 							}
 							utils.PropertiesMetodos.setProp(txtCorreo.getText(), txtPassword.getText());
@@ -125,6 +128,7 @@ public class VentanaRegistro extends JFrame {
 							try {
 								VP = new VentanaPrincipal(usuario);
 							} catch (DBManagerException e1) {
+								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 								e1.printStackTrace();
 							}
 							VP.setVisible(true);
@@ -133,6 +137,7 @@ public class VentanaRegistro extends JFrame {
 						}
 					}
 				} catch (HeadlessException | DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
 			}

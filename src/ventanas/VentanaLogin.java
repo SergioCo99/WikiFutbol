@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Collections;
+import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -183,6 +184,7 @@ public class VentanaLogin extends JFrame {
 						dispose();
 					}
 				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos.", "Alert",
 							JOptionPane.WARNING_MESSAGE);

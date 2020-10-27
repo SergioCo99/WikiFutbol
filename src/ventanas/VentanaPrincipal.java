@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -43,6 +44,7 @@ public class VentanaPrincipal extends JFrame {
 				return false;
 			}
 		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 		return false;
@@ -157,8 +159,9 @@ public class VentanaPrincipal extends JFrame {
 				if ((nuevaContrasena != null) && !nuevaContrasena.equals("")) {
 					try {
 						database.DBManager.cambiarContrasena(utils.PropertiesMetodos.getProp1(), nuevaContrasena);
-					} catch (DBManagerException e1) {
-						e1.printStackTrace();
+					} catch (DBManagerException e) {
+						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+						e.printStackTrace();
 					}
 					JOptionPane.showMessageDialog(null, "Actualizacion exitosa, reiniciando. . .", "Alerta",
 							JOptionPane.INFORMATION_MESSAGE);
@@ -210,6 +213,7 @@ public class VentanaPrincipal extends JFrame {
 					try {
 						database.DBManager.eliminarUsuario(utils.PropertiesMetodos.getProp1());
 					} catch (DBManagerException e) {
+						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 						e.printStackTrace();
 					}
 					utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
@@ -440,7 +444,8 @@ public class VentanaPrincipal extends JFrame {
 					VentanaEquipo ve = new VentanaEquipo(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
 					ve.setVisible(true);
 					dispose();
-				} catch (Exception e2) {
+				} catch (Exception e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					JOptionPane.showMessageDialog(frame, "Seleccione un equipo");
 				}
 			}
