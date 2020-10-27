@@ -18,17 +18,18 @@ import database.DBManagerException;
 public class VentanaConfigurarOtraCuenta extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btnAceptar;
+	JButton btnEjecutar;
 	JCheckBox cbHacerAdmin, cbQuitarAdmin, cbBorrarCuenta;
 	ButtonGroup bg1;
 	JLabel lblCorreo;
 	JComboBox<String> jcbCorreos;
+	JLabel lblOpciones;
 
 	public VentanaConfigurarOtraCuenta() {
 
 		this.setTitle("VentanaConfigurarOtraCuenta");
 		this.setSize(600, 400);
-		this.setLayout(null);
+		getContentPane().setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -36,22 +37,22 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 
 		bg1 = new ButtonGroup();
 		cbHacerAdmin = new JCheckBox("Hacer admin");
-		cbHacerAdmin.setBounds(10, 30, 100, 20);
+		cbHacerAdmin.setBounds(136, 60, 100, 20);
 		cbQuitarAdmin = new JCheckBox("Quitar admin");
-		cbQuitarAdmin.setBounds(170, 30, 100, 20);
+		cbQuitarAdmin.setBounds(240, 60, 100, 20);
 		cbBorrarCuenta = new JCheckBox("Borrar cuenta DEFINITIVAMENTE");
-		cbBorrarCuenta.setBounds(330, 30, 250, 20);
+		cbBorrarCuenta.setBounds(342, 60, 250, 20);
 		bg1.add(cbHacerAdmin);
 		bg1.add(cbQuitarAdmin);
 		bg1.add(cbBorrarCuenta);
 
-		btnAceptar = new JButton();
-		btnAceptar.setText("Aceptar");
-		btnAceptar.setBounds(240, 250, 120, 30);
+		btnEjecutar = new JButton();
+		btnEjecutar.setText("Ejecutar");
+		btnEjecutar.setBounds(240, 250, 120, 30);
 
 		lblCorreo = new JLabel();
 		lblCorreo.setText("Introduce correo:");
-		lblCorreo.setBounds(100, 150, 250, 40);
+		lblCorreo.setBounds(10, 150, 250, 40);
 
 		try {
 			String[] array = new String[database.DBManager.todosLosCorreos().size()];
@@ -64,16 +65,20 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 			e.printStackTrace();
 		}
 		utils.JComboBoxAutoCompletion.enable(jcbCorreos);
-		jcbCorreos.setBounds(250, 150, 250, 40);
+		jcbCorreos.setBounds(201, 150, 250, 40);
 
-		add(btnAceptar);
-		add(cbHacerAdmin);
-		add(cbQuitarAdmin);
-		add(cbBorrarCuenta);
-		add(lblCorreo);
-		add(jcbCorreos);
+		getContentPane().add(btnEjecutar);
+		getContentPane().add(cbHacerAdmin);
+		getContentPane().add(cbQuitarAdmin);
+		getContentPane().add(cbBorrarCuenta);
+		getContentPane().add(lblCorreo);
+		getContentPane().add(jcbCorreos);
 
-		btnAceptar.addActionListener(new ActionListener() {
+		lblOpciones = new JLabel("Opciones: ");
+		lblOpciones.setBounds(10, 64, 120, 13);
+		getContentPane().add(lblOpciones);
+
+		btnEjecutar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -94,11 +99,16 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 							database.DBManager.eliminarUsuario(jcbCorreos.getSelectedItem().toString());
 							JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Configurar otra cuenta",
 									JOptionPane.INFORMATION_MESSAGE);
+						} else {
+							JOptionPane.showMessageDialog(null, "Selecciona una opcion.", "Configurar otra cuenta",
+									JOptionPane.ERROR_MESSAGE);
 						}
 					}
 				} catch (DBManagerException e1) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Error inesperado.", "Configurar otra cuenta",
+							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

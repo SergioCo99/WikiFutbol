@@ -29,8 +29,8 @@ import clases.UsuarioVotacion;
 
 public class DBManager {
 
-	static Connection conn;
-	static Statement stmt = null;
+	private static Connection conn;
+	private static Statement stmt = null;
 
 	public static void connect() throws DBManagerException {
 		try {

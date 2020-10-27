@@ -33,7 +33,8 @@ public class VentanaMandarCorreo extends JFrame {
 	JTextArea texto;
 	JScrollPane scroll;
 
-	String file = "";
+	String path = "", nombreDeArchivo = "";
+
 	JLabelGraficoAjustado adjuntar;
 
 	public VentanaMandarCorreo() {
@@ -111,13 +112,14 @@ public class VentanaMandarCorreo extends JFrame {
 		adjuntar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				file = utils.FileChooser.Choose();
-				if (file.equals("")) {
-					System.out.println("no hay file" + file);
+				path = utils.FileChooser.Choose();
+
+				if (path.equals("")) {
 					lblArchivo.setText("Archivo: Ninguno.");
-				} else if (!file.equals("")) {
-					System.out.println("No esta vacio " + file);
-					lblArchivo.setText("Archivo: " + file);
+				} else if (!path.equals("")) {
+					nombreDeArchivo = path.substring(path.lastIndexOf("\\"), path.length());
+					lblArchivo.setText("Archivo: " + nombreDeArchivo);
+
 				}
 			}
 		});
@@ -127,7 +129,7 @@ public class VentanaMandarCorreo extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				lblArchivo.setText("Archivo: Ninguno.");
-				file = "";
+				path = "";
 			}
 		});
 
@@ -148,7 +150,7 @@ public class VentanaMandarCorreo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String destinatario = null;
 
-				if (file.equals("")) {
+				if (path.equals("")) {
 					if (todos.isSelected() == true) {
 						destinatario = "Todos";
 					} else if (todos.isSelected() == false) {
@@ -190,7 +192,7 @@ public class VentanaMandarCorreo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String destinatario = null;
 
-				if (!file.equals("")) {
+				if (!path.equals("")) {
 					if (todos.isSelected() == true) {
 						destinatario = "Todos";
 					} else if (todos.isSelected() == false) {
@@ -206,11 +208,11 @@ public class VentanaMandarCorreo extends JFrame {
 								if (todos.isSelected() == true) {
 									for (int i = 0; i < database.DBManager.todosLosCorreos().size(); i++) {
 										utils.MailConFichero.m2(database.DBManager.todosLosCorreos().get(i),
-												txtAsunto.getText(), texto.getText(), file);
+												txtAsunto.getText(), texto.getText(), path);
 									}
 								} else if (todos.isSelected() == false) {
 									utils.MailConFichero.m2(jcb.getSelectedItem().toString(), txtAsunto.getText(),
-											texto.getText(), file);
+											texto.getText(), path);
 								}
 							} catch (DBManagerException e1) {
 								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());

@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import database.DBManagerException;
 
@@ -16,6 +17,7 @@ public class VentanaVotar extends JFrame {
 	private static final long serialVersionUID = 1L;
 	JButton btnVotar;
 	JComboBox<String> jcbDelantero, jcbCentrocampista, jcbDefensa, jcbPortero;
+	JLabel lblDelantero, lblCentrocampista, lblDefensa, lblPortero;
 
 	public VentanaVotar() {
 
@@ -26,6 +28,22 @@ public class VentanaVotar extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
+		
+		lblDelantero = new JLabel();
+		lblDelantero.setText("Mejor delantero: ");
+		lblDelantero.setBounds(10, 50, 200, 30);
+		
+		lblCentrocampista = new JLabel();
+		lblCentrocampista.setText("Mejor centrocampista: ");
+		lblCentrocampista.setBounds(10, 100, 200, 30);
+		
+		lblDefensa = new JLabel();
+		lblDefensa.setText("Mejor defensa: ");
+		lblDefensa.setBounds(10, 150, 200, 30);
+		
+		lblPortero = new JLabel();
+		lblPortero.setText("Mejor portero: ");
+		lblPortero.setBounds(10, 200, 200, 30);
 
 		// Delanteros
 		try {
@@ -88,11 +106,16 @@ public class VentanaVotar extends JFrame {
 		btnVotar.setText("Votar");
 		btnVotar.setBounds(240, 325, 120, 30);
 
+		add(lblDelantero);
+		add(lblCentrocampista);
+		add(lblDefensa);
+		add(lblPortero);
 		add(jcbDelantero);
 		add(jcbCentrocampista);
 		add(jcbDefensa);
 		add(jcbPortero);
 		add(btnVotar);
+		
 
 		btnVotar.addActionListener(new ActionListener() {
 

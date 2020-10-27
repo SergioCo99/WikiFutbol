@@ -24,8 +24,9 @@ public class FileChooser {
 			System.out.println("Path: " + path);
 			JOptionPane.showMessageDialog(chooser, "Archivo seleccionado: " + chooser.getSelectedFile().getName());
 
-			String s = path.substring(path.lastIndexOf("."), path.length());
-			System.out.println("Tipo de archivo: " + s);
+			String tipoDeArchivo = path.substring(path.lastIndexOf("."), path.length());
+			String NombreDeArchivo = path.substring(path.lastIndexOf("\\"), path.length());
+			System.out.println("Tipo de archivo: " + tipoDeArchivo + ", nombre: " + NombreDeArchivo);
 		} else {
 			System.out.println("nada seleccionado");
 			path = "";

@@ -24,24 +24,14 @@ import javax.mail.internet.MimeMultipart;
 
 public class MailConFichero {
 
-	private static String nombreArchivoAdjunto(String baseName) {
-		String s = baseName.substring(baseName.lastIndexOf("."), baseName.length());
-		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HH-mm");
-		String dateTimeInfo = dateFormat.format(new Date());
-
-		String baseName2 = baseName + dateTimeInfo + s;
-
-		return baseName2;
-	}
-
 	public static void m2(String dest, String asunto, String texto, String filename) {
 		// Recipient's email ID needs to be mentioned.
-		String to = "eneko.perez@opendeusto.es";
+		// dest = "eneko.perez@opendeusto.es";
 
 		// Sender's email ID needs to be mentioned
 		String from = "wikifutbolteam@gmail.com";
 
-		final String username = "WikiFutbol Alert2";// change accordingly
+		final String username = "WikiFutbol Alert";// change accordingly
 		final String password = "kflipao99";// change accordingly
 
 		// Assuming you are sending email through relay.jangosmtp.net
@@ -117,6 +107,6 @@ public class MailConFichero {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		m2("eneko.perez@opendeusto.es", "Asunto? m2.java", "Texto?  m2.java", utils.FileChooser.Choose());
+		m2("eneko.perez23@gmail.com", "Asunto? m2.java", "Texto?  m2.java", utils.FileChooser.Choose());
 	}
 }
