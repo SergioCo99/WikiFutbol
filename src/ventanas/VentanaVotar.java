@@ -28,19 +28,19 @@ public class VentanaVotar extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
-		
+
 		lblDelantero = new JLabel();
 		lblDelantero.setText("Mejor delantero: ");
 		lblDelantero.setBounds(10, 50, 200, 30);
-		
+
 		lblCentrocampista = new JLabel();
 		lblCentrocampista.setText("Mejor centrocampista: ");
 		lblCentrocampista.setBounds(10, 100, 200, 30);
-		
+
 		lblDefensa = new JLabel();
 		lblDefensa.setText("Mejor defensa: ");
 		lblDefensa.setBounds(10, 150, 200, 30);
-		
+
 		lblPortero = new JLabel();
 		lblPortero.setText("Mejor portero: ");
 		lblPortero.setBounds(10, 200, 200, 30);
@@ -115,7 +115,6 @@ public class VentanaVotar extends JFrame {
 		add(jcbDefensa);
 		add(jcbPortero);
 		add(btnVotar);
-		
 
 		btnVotar.addActionListener(new ActionListener() {
 
