@@ -15,7 +15,7 @@ public class FileChooser {
 		 */
 		// chooser.setFileFilter(filter);
 		int returnVal = chooser.showOpenDialog(null);
-		String path = null;
+		String path = "";
 
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
@@ -24,10 +24,12 @@ public class FileChooser {
 			System.out.println("Path: " + path);
 			JOptionPane.showMessageDialog(chooser, "Archivo seleccionado: " + chooser.getSelectedFile().getName());
 
+			String s = path.substring(path.lastIndexOf("."), path.length());
+			System.out.println("Tipo de archivo: " + s);
+		} else {
+			System.out.println("nada seleccionado");
+			path = "";
 		}
-
-		String s = path.substring(path.lastIndexOf("."), path.length());
-		System.out.println("Tipo de archivo: " + s);
 
 		return path;
 	}

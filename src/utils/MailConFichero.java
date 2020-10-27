@@ -1,4 +1,4 @@
-package pruebasYEjemplos;
+package utils;
 
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
@@ -21,7 +21,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-public class M2 {
+public class MailConFichero {
 
 	private static String nombreArchivoAdjunto(String baseName) {
 		String s = baseName.substring(baseName.lastIndexOf("."), baseName.length());
@@ -33,14 +33,14 @@ public class M2 {
 		return baseName2;
 	}
 
-	public static void m2(String dest, String asunto, String texto) {
+	public static void m2(String dest, String asunto, String texto, String filename) {
 		// Recipient's email ID needs to be mentioned.
 		String to = "eneko.perez@opendeusto.es";
 
 		// Sender's email ID needs to be mentioned
 		String from = "wikifutbolteam@gmail.com";
 
-		final String username = "WikiFutbol Alert";// change accordingly
+		final String username = "WikiFutbol Alert2";// change accordingly
 		final String password = "kflipao99";// change accordingly
 
 		// Assuming you are sending email through relay.jangosmtp.net
@@ -89,7 +89,7 @@ public class M2 {
 
 			// Part two is attachment
 			messageBodyPart = new MimeBodyPart();
-			String filename = utils.FileChooser.Choose();
+			// String filename = utils.FileChooser.Choose(); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			DataSource source = new FileDataSource(filename);
 			messageBodyPart.setDataHandler(new DataHandler(source));
 
@@ -115,6 +115,6 @@ public class M2 {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		m2("eneko.perez@opendeusto.es", "Asunto? m2.java", "Texto?  m2.java");
+		m2("eneko.perez@opendeusto.es", "Asunto? m2.java", "Texto?  m2.java", utils.FileChooser.Choose());
 	}
 }
