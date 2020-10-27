@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,6 +35,7 @@ public class VentanaEntrenador extends JFrame {
 				return false;
 			}
 		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 		return false;
@@ -44,9 +46,9 @@ public class VentanaEntrenador extends JFrame {
 		String nombreEntrenador = null;
 		try {
 			nombreEntrenador = DBManager.nombreEntrenador(entrenador, "wikifutbolschema");
-		} catch (DBManagerException e3) {
-			// TODO Auto-generated catch block
-			e3.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		this.setTitle(nombreEntrenador);
 		this.setSize(1200, 700);
@@ -82,6 +84,7 @@ public class VentanaEntrenador extends JFrame {
 				try {
 					v1 = new VentanaEquipo(club, u);
 				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
 				v1.setVisible(true);
@@ -147,9 +150,9 @@ public class VentanaEntrenador extends JFrame {
 		String fechaNacimiento = null;
 		try {
 			fechaNacimiento = DBManager.fechaNacimiento(entrenador, "wikifutbolschema");
-		} catch (DBManagerException e3) {
-			// TODO Auto-generated catch block
-			e3.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		final JLabel label15 = new JLabel(fechaNacimiento);
 		label15.setBounds(230, 175, 400, 50);
@@ -168,9 +171,9 @@ public class VentanaEntrenador extends JFrame {
 		String clubEntrenador = null;
 		try {
 			clubEntrenador = DBManager.clubEntrenador(entrenador, "wikifutbolschema");
-		} catch (DBManagerException e3) {
-			// TODO Auto-generated catch block
-			e3.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		final JLabel label155 = new JLabel(clubEntrenador);
 		label155.setBounds(200, 240, 400, 50);
@@ -189,9 +192,9 @@ public class VentanaEntrenador extends JFrame {
 		String ciudadEntrenador = null;
 		try {
 			ciudadEntrenador = DBManager.ciudadEntrenador(entrenador, "wikifutbolschema");
-		} catch (DBManagerException e3) {
-			// TODO Auto-generated catch block
-			e3.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		final JLabel label33 = new JLabel(ciudadEntrenador);
 		label33.setBounds(200, 240, 400, 50);
@@ -211,9 +214,9 @@ public class VentanaEntrenador extends JFrame {
 		String formacionEntrenador = null;
 		try {
 			formacionEntrenador = DBManager.formacionEntrenador(entrenador, "wikifutbolschema");
-		} catch (DBManagerException e3) {
-			// TODO Auto-generated catch block
-			e3.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		final JLabel label44 = new JLabel(formacionEntrenador);
 		label44.setBounds(200, 370, 400, 50);
@@ -232,9 +235,9 @@ public class VentanaEntrenador extends JFrame {
 		String mentalidadEntrenador = null;
 		try {
 			mentalidadEntrenador = DBManager.mentalidadEntrenador(entrenador, "wikifutbolschema");
-		} catch (DBManagerException e3) {
-			// TODO Auto-generated catch block
-			e3.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		final JLabel label442 = new JLabel(mentalidadEntrenador);
 		label442.setBounds(200, 435, 400, 50);

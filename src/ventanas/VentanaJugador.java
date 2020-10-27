@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,6 +32,7 @@ public class VentanaJugador extends JFrame {
 				return false;
 			}
 		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 		return false;
@@ -82,6 +84,7 @@ public class VentanaJugador extends JFrame {
 				try {
 					v1 = new VentanaJugadores(u);
 				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
 				v1.setVisible(true);

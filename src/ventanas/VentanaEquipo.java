@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,6 +32,7 @@ public class VentanaEquipo extends JFrame {
 				return false;
 			}
 		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 		return false;
@@ -82,6 +84,7 @@ public class VentanaEquipo extends JFrame {
 				try {
 					v1 = new VentanaPrincipal(u);
 				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
 				v1.setVisible(true);
@@ -184,7 +187,8 @@ public class VentanaEquipo extends JFrame {
 					VentanaEstadio ve = new VentanaEstadio(estadioEquipo, club, u);
 					ve.setVisible(true);
 					dispose();
-				} catch (Exception e2) {
+				} catch (Exception e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					JOptionPane.showMessageDialog(frame, "Este estadio no existe");
 				}
 
@@ -253,7 +257,8 @@ public class VentanaEquipo extends JFrame {
 					VentanaEntrenador ve = new VentanaEntrenador(nombreEntrenador, club, u);
 					ve.setVisible(true);
 					dispose();
-				} catch (Exception e2) {
+				} catch (Exception e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					JOptionPane.showMessageDialog(frame, "Este entrenador no existe");
 				}
 
@@ -282,6 +287,7 @@ public class VentanaEquipo extends JFrame {
 				try {
 					v1 = new VentanaJugadores(u);
 				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
 				v1.setVisible(true);

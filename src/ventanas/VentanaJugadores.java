@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -40,6 +41,7 @@ public class VentanaJugadores extends JFrame {
 				return false;
 			}
 		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 		return false;
@@ -249,7 +251,8 @@ public class VentanaJugadores extends JFrame {
 					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
 					ve.setVisible(true);
 					dispose();
-				} catch (Exception e2) {
+				} catch (Exception e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					JOptionPane.showMessageDialog(frame, "Seleccione un jugador");
 				}
 			}

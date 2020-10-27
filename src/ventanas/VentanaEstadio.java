@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,6 +35,7 @@ public class VentanaEstadio extends JFrame {
 				return false;
 			}
 		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 		return false;
@@ -44,9 +46,9 @@ public class VentanaEstadio extends JFrame {
 		String nombreEstadio = null;
 		try {
 			nombreEstadio = DBManager.nombreEstadio(estadio, "wikifutbolschema");
-		} catch (DBManagerException e3) {
-			// TODO Auto-generated catch block
-			e3.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		this.setTitle(nombreEstadio);
 		this.setSize(1200, 700);
@@ -82,6 +84,7 @@ public class VentanaEstadio extends JFrame {
 				try {
 					v1 = new VentanaEquipo(club, u);
 				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
 				v1.setVisible(true);
@@ -147,9 +150,9 @@ public class VentanaEstadio extends JFrame {
 		String aforo = null;
 		try {
 			aforo = Integer.toString(DBManager.aforoEstadio(estadio, "wikifutbolschema"));
-		} catch (DBManagerException e3) {
-			// TODO Auto-generated catch block
-			e3.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		final JLabel label15 = new JLabel(aforo);
 		label15.setBounds(230, 175, 400, 50);
@@ -168,9 +171,9 @@ public class VentanaEstadio extends JFrame {
 		String anyoDeEstadio = null;
 		try {
 			anyoDeEstadio = Integer.toString(DBManager.anyoEstadio(estadio, "wikifutbolschema"));
-		} catch (DBManagerException e3) {
-			// TODO Auto-generated catch block
-			e3.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		final JLabel label155 = new JLabel(anyoDeEstadio);
 		label155.setBounds(200, 240, 400, 50);
@@ -189,9 +192,9 @@ public class VentanaEstadio extends JFrame {
 		String ciudadEstadio = null;
 		try {
 			ciudadEstadio = DBManager.ciudadEstadio(estadio, "wikifutbolschema");
-		} catch (DBManagerException e3) {
-			// TODO Auto-generated catch block
-			e3.printStackTrace();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
 		}
 		final JLabel label14 = new JLabel(ciudadEstadio);
 		label14.setBounds(200, 305, 400, 50);
