@@ -32,7 +32,7 @@ public class VentanaDescargar extends JFrame {
 
 	JScrollPane scroll;
 
-	JLabel lblOpciones, lblPathDescarga;
+	JLabel lblOpciones;
 
 	public VentanaDescargar() {
 
@@ -95,7 +95,6 @@ public class VentanaDescargar extends JFrame {
 
 		getContentPane().add(btnDescargar);
 		getContentPane().add(lblOpciones);
-		getContentPane().add(lblPathDescarga);
 		getContentPane().add(scroll);
 		getContentPane().add(cbBaseDeDatos);
 		getContentPane().add(cbClases);

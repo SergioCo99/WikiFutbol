@@ -12,7 +12,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class Mail {
+public class MailSinFichero {
 
 	public static void Email(Session session, String toEmail, String subject, String body) {
 		try {
@@ -75,6 +75,6 @@ public class Mail {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		Mail.SendMail("eneko.perez@opendeusto.es", "Asunto? Mail.java", "Texto?  Mail.java");
+		MailSinFichero.SendMail("eneko.perez@opendeusto.es", "Asunto? Mail.java", "Texto?  Mail.java");
 	}
 }

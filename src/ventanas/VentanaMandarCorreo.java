@@ -1,9 +1,12 @@
 package ventanas;
 
+import java.awt.Color;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -17,23 +20,27 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import database.DBManagerException;
+import utils.JLabelGraficoAjustado;
 
 public class VentanaMandarCorreo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btn;
+	JButton btnEnviar, btnBorrarArchivo;
 	JComboBox<String> jcb;
 	JCheckBox todos;
-	JLabel lblDestinagario, lblAsunto;
+	JLabel lblDestinagario, lblAsunto, lblArchivo;
 	JTextField txtAsunto;
 	JTextArea texto;
 	JScrollPane scroll;
+
+	String file = "";
+	JLabelGraficoAjustado adjuntar;
 
 	public VentanaMandarCorreo() {
 
 		this.setTitle("VentanaMandarCorreo");
 		this.setSize(600, 400);
-		this.setLayout(null);
+		getContentPane().setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -59,15 +66,27 @@ public class VentanaMandarCorreo extends JFrame {
 		todos.setText("Todos");
 		todos.setBounds(150, 30, 120, 30);
 
-		btn = new JButton();
-		btn.setText("btn");
-		btn.setBounds(240, 325, 120, 30);
+		btnEnviar = new JButton();
+		btnEnviar.setText("Enviar");
+		btnEnviar.setBounds(450, 325, 120, 30);
+
+		adjuntar = new JLabelGraficoAjustado("resources/clip.png", 30, 30);
+		adjuntar.setLocation(60, 325);
+
+		btnBorrarArchivo = new JButton();
+		btnBorrarArchivo.setText("X");
+		btnBorrarArchivo.setForeground(Color.red);
+		btnBorrarArchivo.setBackground(Color.white);
+		btnBorrarArchivo.setBounds(10, 325, 45, 30);
 
 		txtAsunto = new JTextField();
 		txtAsunto.setBounds(10, 100, 560, 30);
 
 		lblAsunto = new JLabel("Asunto:");
 		lblAsunto.setBounds(10, 75, 100, 30);
+
+		lblArchivo = new JLabel("Archivo: Ninguno.");
+		lblArchivo.setBounds(100, 325, 340, 30);
 
 		texto = new JTextArea();
 		texto.setFocusable(true);
@@ -78,13 +97,39 @@ public class VentanaMandarCorreo extends JFrame {
 		scroll = new JScrollPane(texto);
 		scroll.setBounds(10, 150, 560, 150);
 
-		add(lblDestinagario);
-		add(jcb);
-		add(btn);
-		add(txtAsunto);
-		add(lblAsunto);
-		add(todos);
-		add(scroll);
+		getContentPane().add(lblDestinagario);
+		getContentPane().add(jcb);
+		getContentPane().add(btnEnviar);
+		getContentPane().add(txtAsunto);
+		getContentPane().add(lblAsunto);
+		getContentPane().add(lblArchivo);
+		getContentPane().add(todos);
+		getContentPane().add(scroll);
+		getContentPane().add(adjuntar);
+		getContentPane().add(btnBorrarArchivo);
+
+		adjuntar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				file = utils.FileChooser.Choose();
+				if (file.equals("")) {
+					System.out.println("no hay file" + file);
+					lblArchivo.setText("Archivo: Ninguno.");
+				} else if (!file.equals("")) {
+					System.out.println("No esta vacio " + file);
+					lblArchivo.setText("Archivo: " + file);
+				}
+			}
+		});
+
+		btnBorrarArchivo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				lblArchivo.setText("Archivo: Ninguno.");
+				file = "";
+			}
+		});
 
 		todos.addActionListener(new ActionListener() {
 
@@ -96,41 +141,86 @@ public class VentanaMandarCorreo extends JFrame {
 			}
 		});
 
-		btn.addActionListener(new ActionListener() {
+		// action listener para mandar correo SIN archivo
+		btnEnviar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String destinatario = null;
 
-				if (todos.isSelected() == true) {
-					destinatario = "Todos";
-				} else if (todos.isSelected() == false) {
-					destinatario = jcb.getSelectedItem().toString();
-				}
-
-				if (!txtAsunto.getText().equals("") && !texto.getText().equals("")) {
-					int result = JOptionPane.showConfirmDialog(null,
-							"Quieres mandar este correo a: " + destinatario + " ?", "Confirmar envio",
-							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-					if (result == JOptionPane.YES_OPTION) {
-						try {
-							if (todos.isSelected() == true) {
-								for (int i = 0; i < database.DBManager.todosLosCorreos().size(); i++) {
-									utils.Mail.SendMail(database.DBManager.todosLosCorreos().get(i),
-											txtAsunto.getText(), texto.getText());
-								}
-							} else if (todos.isSelected() == false) {
-								utils.Mail.SendMail(jcb.getSelectedItem().toString(), txtAsunto.getText(),
-										texto.getText());
-							}
-						} catch (DBManagerException e1) {
-							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-							e1.printStackTrace();
-						}
+				if (file.equals("")) {
+					if (todos.isSelected() == true) {
+						destinatario = "Todos";
+					} else if (todos.isSelected() == false) {
+						destinatario = jcb.getSelectedItem().toString();
 					}
-				} else {
-					JOptionPane.showMessageDialog(null, "Rellena todo correctamente.", "Mandar correo",
-							JOptionPane.WARNING_MESSAGE);
+
+					if (!txtAsunto.getText().equals("") && !texto.getText().equals("")) {
+						int result = JOptionPane.showConfirmDialog(null,
+								"Quieres mandar este correo a: " + destinatario + " ?", "Confirmar envio",
+								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+						if (result == JOptionPane.YES_OPTION) {
+							try {
+								if (todos.isSelected() == true) {
+									for (int i = 0; i < database.DBManager.todosLosCorreos().size(); i++) {
+										utils.MailSinFichero.SendMail(database.DBManager.todosLosCorreos().get(i),
+												txtAsunto.getText(), texto.getText());
+									}
+								} else if (todos.isSelected() == false) {
+									utils.MailSinFichero.SendMail(jcb.getSelectedItem().toString(), txtAsunto.getText(),
+											texto.getText());
+								}
+							} catch (DBManagerException e1) {
+								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+								e1.printStackTrace();
+							}
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Rellena todo correctamente.", "Mandar correo",
+								JOptionPane.WARNING_MESSAGE);
+					}
+				}
+			}
+		});
+
+		// action listener para mandar correo CON archivo
+		btnEnviar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String destinatario = null;
+
+				if (!file.equals("")) {
+					if (todos.isSelected() == true) {
+						destinatario = "Todos";
+					} else if (todos.isSelected() == false) {
+						destinatario = jcb.getSelectedItem().toString();
+					}
+
+					if (!txtAsunto.getText().equals("") && !texto.getText().equals("")) {
+						int result = JOptionPane.showConfirmDialog(null,
+								"Quieres mandar este correo a: " + destinatario + " ?", "Confirmar envio",
+								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+						if (result == JOptionPane.YES_OPTION) {
+							try {
+								if (todos.isSelected() == true) {
+									for (int i = 0; i < database.DBManager.todosLosCorreos().size(); i++) {
+										utils.MailConFichero.m2(database.DBManager.todosLosCorreos().get(i),
+												txtAsunto.getText(), texto.getText(), file);
+									}
+								} else if (todos.isSelected() == false) {
+									utils.MailConFichero.m2(jcb.getSelectedItem().toString(), txtAsunto.getText(),
+											texto.getText(), file);
+								}
+							} catch (DBManagerException e1) {
+								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+								e1.printStackTrace();
+							}
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Rellena todo correctamente.", "Mandar correo",
+								JOptionPane.WARNING_MESSAGE);
+					}
 				}
 			}
 		});
