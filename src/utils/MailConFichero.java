@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import java.util.logging.Level;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -109,6 +110,7 @@ public class MailConFichero {
 			System.out.println("Sent message successfully....");
 
 		} catch (MessagingException | UnsupportedEncodingException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			throw new RuntimeException(e);
 		}
 	}
