@@ -73,7 +73,7 @@ CREATE TABLE `club` (
 
 LOCK TABLES `club` WRITE;
 /*!40000 ALTER TABLE `club` DISABLE KEYS */;
-INSERT INTO `club` VALUES (1,'Athletic Club',1,1,1898,'0',1),(2,'Real Sociedad',2,2,1908,'0',2),(3,'Villarreal',3,3,1923,'0',3),(4,'Real Madrid',4,5,1902,'0',4),(5,'Huesca',14,12,1960,'0',16),(6,'Elche',11,15,1922,'0',13),(7,'Getafe',5,6,1983,'0',5),(8,'Cadiz',6,4,1909,'0',6),(9,'Granada',7,7,1931,'0',7),(10,'Betis',8,20,1907,'0',8),(11,'Atl. Madrid',4,19,1903,'0',9),(12,'Barcelona',9,18,1899,'0',10),(13,'Sevilla',8,17,1890,'0',11),(14,'Celta',15,11,1927,'0',17),(15,'Alaves',16,10,1921,'0',18),(16,'Levante',12,8,1908,'0',20),(17,'Valladolid',17,9,1928,'0',19),(18,'Eibar',13,13,1940,'0',15),(19,'Valencia',12,14,1919,'0',14),(20,'Osasuna',10,16,1920,'0',12);
+INSERT INTO `club` VALUES (1,'Athletic Club',1,1,1898,'25',1),(2,'Real Sociedad',2,2,1908,'5',2),(3,'Villarreal',3,3,1923,'2',3),(4,'Real Madrid',4,5,1902,'34',4),(5,'Huesca',14,12,1960,'1',16),(6,'Elche',11,15,1922,'2',13),(7,'Getafe',5,6,1983,'4',5),(8,'Cadiz',6,4,1909,'6',6),(9,'Granada',7,7,1931,'5',7),(10,'Betis',8,20,1907,'1',8),(11,'Atl. Madrid',4,19,1903,'24',9),(12,'Barcelona',9,18,1899,'31',10),(13,'Sevilla',8,17,1890,'19',11),(14,'Celta',15,11,1927,'5',17),(15,'Alaves',16,10,1921,'1',18),(16,'Levante',12,8,1908,'5',20),(17,'Valladolid',17,9,1928,'2',19),(18,'Eibar',13,13,1940,'3',15),(19,'Valencia',12,14,1919,'15',14),(20,'Osasuna',10,16,1920,'0',12);
 /*!40000 ALTER TABLE `club` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,7 +299,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'na','a','a',1,'1999-06-23'),(2,'nb','b','b',0,'1999-06-24'),(4,'nc','c','c',0,'1999-06-26'),(5,'Eneko','eneko.perez23@gmail.com','12345',1,'2020-10-01');
+INSERT INTO `usuario` VALUES (1,'sergio','sergio@gmail.com','a',1,'1999-06-23'),(2,'lopez','lopez@gmail.com','b',0,'1999-06-24'),(4,'cogollos','cogollos@gmail.com','c',0,'1999-06-26'),(5,'Eneko','eneko.perez23@gmail.com','12345',1,'2020-10-01');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -368,4 +368,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-28 13:03:51
+-- Dump completed on 2020-10-28 13:09:31
