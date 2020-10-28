@@ -151,7 +151,7 @@ public class VentanaCambiarDatos extends JFrame {
 					// jt.getSelectedColumn()).toString();
 					Object valor = textArea1.getText();
 					int id = Integer.parseInt((String) jt.getValueAt(jt.getSelectedRow(), 0));
-					database.DBManager.CambiarDatosDesdeJTable(tabla, columna, valor, id);
+					database.DBManager.cambiarDatosDesdeJTable(tabla, columna, valor, id);
 				} catch (DBManagerException e1) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					// Can not issue empty query.

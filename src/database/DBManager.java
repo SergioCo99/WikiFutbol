@@ -1081,7 +1081,7 @@ public class DBManager {
 		}
 	} // ???
 
-	public static void CambiarDatosDesdeJTable(String tabla, String columna, Object valor, int id)
+	public static void cambiarDatosDesdeJTable(String tabla, String columna, Object valor, int id)
 			throws DBManagerException {
 		try {
 			connect();

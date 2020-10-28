@@ -183,9 +183,88 @@ public class DBManagerTest {
 
 	@Test
 	public void testIdJugador() throws DBManagerException {
-		String correo_usuario = u.getCorreo();
+		// String nombre_jugador = j.
 
 		// assertEquals(DBManager.getIdUsuario(correo_usuario), u.getId());
+
+		// fail();
+	}
+
+	@Test
+	public void testVotar() throws DBManagerException {
+		/*
+		 * int usuario_usuarioVotacion = int delanteroVotado_usuarioVotacion = int
+		 * centrocampistaVotado_usuarioVotacion = int defensaVotado_usuarioVotacion =
+		 * int porteroVotado_usuarioVotacion =
+		 */
+
+		// fail();
+	}
+
+	@Test
+	public void testContarJugadores() throws DBManagerException {
+		// Contar todos los jugadores es ilogico, ademas si hay nuevos jugadores cambia
+		// el numero. Lo dejo en *fail* para acordarnos de preguntarle que hacer
+
+		// fail();
+	}
+
+	@Test
+	public void testContarVotosPorJugador() throws DBManagerException {
+		// necesitamos jugadores
+
+		// fail();
+	}
+
+	@Test
+	public void testActualizarVotos() throws DBManagerException {
+		// necesitamos jugadores
+
+		// fail();
+	}
+
+	@Test
+	public void testCountToft() throws DBManagerException {
+		// necesitamos jugadores
+
+		// fail();
+	}
+
+	@Test
+	public void testGetMasVotados() throws DBManagerException {
+		// necesitamos jugadores
+
+		// fail();
+	}
+
+	@Test
+	public void testToft() throws DBManagerException {
+		// necesitamos jugadores
+
+		// fail();
+	}
+
+	@Test
+	public void testToftNombres() throws DBManagerException {
+		// necesitamos jugadores
+
+		// fail();
+	}
+
+	@Test
+	public void testGetCiudades() throws DBManagerException {
+
+		// fail();
+	}
+
+	@Test
+	public void testGetClubes() throws DBManagerException {
+
+		// fail();
+	}
+
+	@Test
+	public void testGetEntrenadores() throws DBManagerException {
 
 		// fail();
 	}
@@ -220,8 +299,13 @@ public class DBManagerTest {
 	public void mentalidadEntrenador() throws DBManagerException {
 		assertEquals("Equilibrada", DBManager.mentalidadEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
-
 	// Fin Métodos Entrenador
+
+	@Test
+	public void testGetEstadios() throws DBManagerException {
+
+		// fail();
+	}
 
 	// Métodos Estadio
 	@Test
@@ -243,8 +327,73 @@ public class DBManagerTest {
 	public void ciudadEstadio() throws DBManagerException {
 		assertEquals(es.getCiudad(), DBManager.ciudadEstadio("San Mames", "wikifutbolschema"));
 	}
-
 	// Fin Métodos Estadio
+
+	@Test
+	public void testGetFeedbacks() throws DBManagerException {
+
+		// fail();
+	}
+
+	@Test
+	public void testGetJugadores() throws DBManagerException {
+
+		// fail();
+	}
+
+	@Test
+	public void testGetPaises() throws DBManagerException {
+
+		// fail();
+	}
+
+	@Test
+	public void testGetTeamOfTheYear_view() throws DBManagerException {
+
+		// fail();
+	}
+
+	@Test
+	public void testGetTeamOfTheYear() throws DBManagerException {
+
+		// fail();
+	}
+
+	@Test
+	public void testGetUsuarios() throws DBManagerException {
+
+		// fail();
+	}
+
+	@Test
+	public void testGetUsuarioVotaciones() throws DBManagerException {
+
+		// fail();
+	}
+
+	@Test
+	public void testVerColumnas() throws DBManagerException {
+
+		// fail();
+	}
+
+	@Test
+	public void testData() throws DBManagerException {
+
+		// fail();
+	}
+
+	@Test
+	public void testCambiarDatos() throws DBManagerException {
+
+		// fail();
+	}
+
+	@Test
+	public void testCambiarDatosDesdeJTable() throws DBManagerException {
+
+		// fail();
+	}
 
 	/*
 	 * @Test public void getClubes() throws DBManagerException { ArrayList<String>
