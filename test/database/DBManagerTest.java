@@ -16,11 +16,17 @@ public class DBManagerTest {
 
 	static DBManager db = new DBManager();
 	static Usuario u = new Usuario(1, "Nombre Test", "test", "test@gmail.com", 0, "1970-01-01");
+	static Entrenador e = new Entrenador(1, "Gaizka Garitano", "1975-07-09", "Athletic Club", "Bilbao", "4-3-3",
+			Mentalidad.Equilibrada);
+	static Estadio es = new Estadio(1, "San Mames", 53289, 2013, "Bilbao");
 
 	@BeforeClass
 	public static void setUp() throws Exception {
 		db = new DBManager();
 		u = new Usuario(u.getId(), u.getNombre(), u.getContrasena(), u.getCorreo(), u.getAdmin(), u.getFechaNac());
+		e = new Entrenador(e.getId(), e.getNombre(), e.getFechaNac(), e.getClub(), e.getCiudad(), e.getFormacion(),
+				e.getMentalidad());
+		es = new Estadio(es.getId(), es.getNombre(), es.getAforo(), es.getAnyoCreacion(), es.getCiudad());
 	}
 
 	@BeforeClass
@@ -63,12 +69,10 @@ public class DBManagerTest {
 
 		DBManager.eliminarUsuario(correo_usuario);
 	}
+	
+	
 
 	// Métodos Entrenador
-
-	Entrenador e = new Entrenador(1, "Gaizka Garitano", "1975-07-09", "Athletic Club", "Bilbao", "4-3-3",
-			Mentalidad.Equilibrada);
-
 	@Test
 	public void nombreEntrenador() throws DBManagerException {
 		assertEquals(e.getNombre(), DBManager.nombreEntrenador("Gaizka Garitano", "wikifutbolschema"));
@@ -102,9 +106,6 @@ public class DBManagerTest {
 	// Fin Métodos Entrenador
 
 	// Métodos Estadio
-
-	Estadio es = new Estadio(1, "San Mames", 53289, 2013, "Bilbao");
-
 	@Test
 	public void nombreEstadio() throws DBManagerException {
 		assertEquals(es.getNombre(), DBManager.nombreEstadio("San Mames", "wikifutbolschema"));
