@@ -36,26 +36,51 @@ public class EstadisticaFeedbackTest {
 		double a = 6;
 		double b = 4;
 		double c = 10;
-		
+
 		if (c == 0) {
 			fail("No puedes dividir por cero");
 		} else if (a + b != c) {
 			fail("Deberia que dar la suma");
 		}
-		
-		double ans1 = (a / c) *100;
-		double ans2 = (b / c) *100;
-		
+
+		double ans1 = (a / c) * 100;
+		double ans2 = (b / c) * 100;
+
 		ArrayList<Double> arr = new ArrayList<>();
 		arr.add(0, ans1);
 		arr.add(1, ans2);
-		
-		assertEquals(arr, EstadisticaFeedback.siNo(a, b, c));	
+
+		assertEquals(arr, EstadisticaFeedback.siNo(a, b, c));
 	}
 
 	@Test
 	public void TestReadAndLoad() {
+		double countSi = 3;
+		double countNo = 1;
+		double countSN = countSi + countNo;
+		
+		double countNum = 16;
+		double mediaNum = 4;
+		
+		if (countSN != mediaNum) {
+			fail("Tienen que ser lo mismo");
+		}
 
+		// Segunda parte
+		ArrayList<Double> arrActual = new ArrayList<>();
+		arrActual.add(0, countNum/mediaNum);
+		arrActual.add(1, (countSi/countSN)*100);
+		arrActual.add(2, (countNo/countSN)*100);
+		arrActual.add(3, mediaNum);
+		
+		testSiNO();
+		
+				
+		try {
+			assertEquals(EstadisticaFeedback.ReadAndLoad(), arrActual);
+		} catch (RWException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

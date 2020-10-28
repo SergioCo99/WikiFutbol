@@ -106,7 +106,7 @@ public class VentanaCambiarDatos extends JFrame {
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				// all cells false
-				return false; // TODO
+				return false;
 			}
 		};
 
