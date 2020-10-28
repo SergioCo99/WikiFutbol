@@ -2,6 +2,9 @@ package database;
 
 import static org.junit.Assert.assertEquals;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+
 import org.junit.Test;
 
 import clases.Entrenador;
@@ -20,7 +23,31 @@ public class DBManagerTest {
 		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
 		assertEquals(true, DBManager.existeCorreo("a"));
 	}
-
+	
+	
+	public void cambiarAdmin() throws DBManagerException {
+		DBManager.eliminarUsuario("a");
+		u = new Usuario(1, "na", "a", "a", 0, "1999-06-23");
+		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
+		DBManager.cambiarAdmin("a", 1);
+		assertEquals(true, DBManager.esAdmin("a"));
+	}
+	
+	public void eliminarUsuario() throws DBManagerException {
+		u = new Usuario(1, "na", "a", "a", 1, "1999-06-23");
+		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
+		DBManager.eliminarUsuario("a");
+		assertEquals(false, DBManager.existeCorreo("a"));
+	}
+	
+	public void cambiarContraseña() throws DBManagerException {
+		u = new Usuario(1, "na", "a", "a", 1, "1999-06-23");
+		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
+		DBManager.cambiarContrasena("a", "b");
+		assertEquals("b", u.getContrasena());
+	}
+	
+	
 	// Métodos Entrenador
 
 	Entrenador e = new Entrenador(1, "Gaizka Garitano", "1975-07-09", "Athletic Club", "Bilbao", "4-3-3",
