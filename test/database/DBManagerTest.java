@@ -1,6 +1,11 @@
 package database;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,15 +15,23 @@ import org.junit.Test;
 import clases.Entrenador;
 import clases.Entrenador.Mentalidad;
 import clases.Estadio;
+import clases.Feedback;
+import clases.Feedback.Recomendacion;
+import clases.Jugador;
 import clases.Usuario;
 
 public class DBManagerTest {
 
 	static DBManager db = new DBManager();
-	static Usuario u = new Usuario(1, "Nombre Test", "test", "test@gmail.com", 0, "1970-01-01");
+	static Usuario u = new Usuario(1, "nombre usuario", "contrasena", "correo", 0, "1970-01-01");
 	static Entrenador e = new Entrenador(1, "Gaizka Garitano", "1975-07-09", "Athletic Club", "Bilbao", "4-3-3",
 			Mentalidad.Equilibrada);
 	static Estadio es = new Estadio(1, "San Mames", 53289, 2013, "Bilbao");
+	static Feedback f = new Feedback(1, u.getCorreo(), 5, Recomendacion.si, "opinion");
+	/*
+	 * static Jugador j = new Jugador(id, nombre, fechaNac, club, ciudad, posicion,
+	 * dorsal, goles, altura, peso, piefav, valoracion, descripcion, voto);
+	 */ // Todavia no tenemos jugadores
 
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -27,6 +40,13 @@ public class DBManagerTest {
 		e = new Entrenador(e.getId(), e.getNombre(), e.getFechaNac(), e.getClub(), e.getCiudad(), e.getFormacion(),
 				e.getMentalidad());
 		es = new Estadio(es.getId(), es.getNombre(), es.getAforo(), es.getAnyoCreacion(), es.getCiudad());
+		f = new Feedback(f.getId(), f.getUsuario(), f.getValoracion(), f.getRecomendacion(), f.getOpinion());
+		/*
+		 * j = new Jugador(j.getId(), j.getNombre(), j.getFechaNac(), j.getClub(),
+		 * j.getCiudad(), j.getPosicion(), j.getDorsal(), j.getGoles(), j.getAltura(),
+		 * j.getPeso(), j.getPiefav(), j.getValoracion(), j.getDescripcion(),
+		 * j.getVoto());
+		 */ // Todavia no tenemos jugadores
 	}
 
 	@BeforeClass
@@ -42,7 +62,7 @@ public class DBManagerTest {
 	@Test
 	public void testExisteCorreo() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
-		assertEquals(true, DBManager.existeCorreo(correo_usuario));
+		assertTrue(DBManager.existeCorreo(correo_usuario));
 	}
 
 	@Before
@@ -63,14 +83,112 @@ public class DBManagerTest {
 		DBManager.login(correo_usuario, contrasena_usuario);
 	}
 
+	@Test
+	public void testEsAdmin() throws DBManagerException {
+		String correo_usuario = u.getCorreo();
+
+		assertFalse(DBManager.esAdmin(correo_usuario));
+	}
+
+	@Test
+	public void testCambiarAdmin() throws DBManagerException {
+		String correo_usuario = u.getCorreo();
+		int nuevoValor_admin_usuario = 1;
+
+		DBManager.cambiarAdmin(correo_usuario, nuevoValor_admin_usuario);
+	}
+
 	@After
 	public void testEliminarUsuario() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
 
 		DBManager.eliminarUsuario(correo_usuario);
 	}
-	
-	
+
+	@Test
+	public void testCambiarContrasena() throws DBManagerException {
+		String correo_usuario = u.getCorreo();
+		String nuevoValor_contrasena_usuario = "contrasena2";
+
+		DBManager.cambiarContrasena(correo_usuario, nuevoValor_contrasena_usuario);
+	}
+
+	@Test
+	public void testVerTablas() throws DBManagerException {
+		ArrayList<String> actualArr = DBManager.verTablas();
+		ArrayList<String> expectedArr = new ArrayList<String>();
+
+		expectedArr.add("ciudad");
+		expectedArr.add("club");
+		expectedArr.add("entrenador");
+		expectedArr.add("estadio");
+		expectedArr.add("feedback");
+		expectedArr.add("jugador");
+		expectedArr.add("pais");
+		expectedArr.add("teamoftheyear");
+		expectedArr.add("teamoftheyear_view");
+		expectedArr.add("usuario");
+		expectedArr.add("usuariovotacion");
+
+		assertEquals(expectedArr, actualArr);
+	}
+
+	@Test
+	public void testTodosLosCorreos() throws DBManagerException {
+		ArrayList<String> actualArr = DBManager.todosLosCorreos();
+		// ArrayList<String> expectedArr = new ArrayList<String>();
+		// assertEquals(expectedArr, actualArr);
+
+		// Poner todos los correos es ilogico, ademas si hay nuevos usuarios cambia el
+		// orden y la cantidad. Lo dejo en *fail* para acordarnos de preguntarle que
+		// hacer
+
+		// fail();
+	}
+
+	@Test
+	public void testRegistrarFeedback() throws DBManagerException {
+		String correo_usuario = f.getUsuario();
+		int valoracion_feedback = f.getValoracion();
+		String valoracion_feedback2 = Integer.toString(valoracion_feedback);
+		String recomendacion_feedback = f.getRecomendacion().toString();
+		String opinion_feedback = f.getOpinion();
+
+		DBManager.registrarFeedback(correo_usuario, valoracion_feedback2, recomendacion_feedback, opinion_feedback);
+	}
+
+	@Test
+	public void testGetJugadoresPorPosicion() throws DBManagerException {
+		String posicion_jugador = "Delantero"; // Por ejemplo
+		ArrayList<String> actualArr = DBManager.getJugadoresPorPosicion(posicion_jugador);
+		// ArrayList<String> expectedArr = new ArrayList<String>();
+		// assertEquals(expectedArr, actualArr);
+
+		// Poner todos los jugadores es ilogico, ademas si hay nuevos jugadores cambia
+		// el
+		// orden y la cantidad. Lo dejo en *fail* para acordarnos de preguntarle que
+		// hacer
+
+		// fail();
+	}
+
+	@Test
+	public void testIdUsuario() throws DBManagerException {
+		String correo_usuario = u.getCorreo();
+
+		// assertEquals(DBManager.getIdUsuario(correo_usuario), u.getId());
+
+		// fail();
+	}
+
+	@Test
+	public void testIdJugador() throws DBManagerException {
+		String correo_usuario = u.getCorreo();
+
+		// assertEquals(DBManager.getIdUsuario(correo_usuario), u.getId());
+
+		// fail();
+	}
 
 	// Métodos Entrenador
 	@Test
