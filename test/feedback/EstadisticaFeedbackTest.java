@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class FeedbackTest {
+public class EstadisticaFeedbackTest {
 
 	@Test
 	public void MediaPuntuacion() {
