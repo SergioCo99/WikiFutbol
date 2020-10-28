@@ -94,9 +94,9 @@ public class DBManagerTest {
 	@Test
 	public void testCambiarAdmin() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
-		int nuevoValor_admin_usuario = 4;
-		
-		if (nuevoValor_admin_usuario != 1 || nuevoValor_admin_usuario != 0) {
+		int nuevoValor_admin_usuario = 1;
+
+		if (nuevoValor_admin_usuario != 1 && nuevoValor_admin_usuario != 0) {
 			fail("Tiene que ser 0 o 1");
 		}
 
@@ -179,31 +179,34 @@ public class DBManagerTest {
 
 	@Test
 	public void testIdUsuario() throws DBManagerException {
-		String correo_usuario = u.getCorreo();
-
+		// String correo_usuario = u.getCorreo();
 		// assertEquals(DBManager.getIdUsuario(correo_usuario), u.getId());
 
-		// fail();
+		String correo_usuario = "eneko.perez23@gmail.com";
+
+		// u.setid(5);
+		assertEquals(5, DBManager.getIdUsuario(correo_usuario));
 	}
 
 	@Test
 	public void testIdJugador() throws DBManagerException {
-		// String nombre_jugador = j.
+		String nombre_jugador = j.getNombre();
 
-		// assertEquals(DBManager.getIdUsuario(correo_usuario), u.getId());
-
-		// fail();
+		assertEquals(u.getId(), DBManager.getIdJugador(nombre_jugador));
 	}
 
 	@Test
 	public void testVotar() throws DBManagerException {
+		// no se hacerlo, por lo menos por ahora
 		/*
-		 * int usuario_usuarioVotacion = int delanteroVotado_usuarioVotacion = int
-		 * centrocampistaVotado_usuarioVotacion = int defensaVotado_usuarioVotacion =
-		 * int porteroVotado_usuarioVotacion =
+		 * int usuario_usuarioVotacion = u.getId(); int delanteroVotado_usuarioVotacion
+		 * = j.getId(); int centrocampistaVotado_usuarioVotacion = 6; int
+		 * defensaVotado_usuarioVotacion = 9; int porteroVotado_usuarioVotacion = 14;
+		 * 
+		 * DBManager.votar(usuario_usuarioVotacion, delanteroVotado_usuarioVotacion,
+		 * centrocampistaVotado_usuarioVotacion, defensaVotado_usuarioVotacion,
+		 * porteroVotado_usuarioVotacion);
 		 */
-
-		// fail();
 	}
 
 	@Test
@@ -398,6 +401,17 @@ public class DBManagerTest {
 	public void testCambiarDatosDesdeJTable() throws DBManagerException {
 
 		// fail();
+	}
+
+	@Test
+	public void testGetJugadoresPorEquipo() throws DBManagerException {
+		// no se si hacerlo asi (?)
+		ArrayList<String> arr = DBManager.getJugadoresPorEquipo("Athletic Club");
+
+		System.out.println(DBManager.getJugadoresPorEquipo("Athletic Club"));
+		assertEquals(15, arr.size()); // tamaño
+		assertEquals("Alex Berenguer", arr.get(0)); // primero, ojo al orden que es abc
+		assertEquals("Yuri Berchiche", arr.get(14)); // ultimo, ojo al orden que es abc
 	}
 
 	/*
