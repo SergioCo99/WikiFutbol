@@ -2,6 +2,9 @@ package database;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import clases.Entrenador;
@@ -10,15 +13,55 @@ import clases.Estadio;
 import clases.Usuario;
 
 public class DBManagerTest {
-	// private DBManager db = new DBManager();
-	private Usuario u = new Usuario(0, null, null, null, 0, null);
+
+	static DBManager db = new DBManager();
+	static Usuario u = new Usuario(1, "Nombre Test", "test", "test@gmail.com", 0, "1970-01-01");
+
+	@BeforeClass
+	public static void setUp() throws Exception {
+		db = new DBManager();
+		u = new Usuario(u.getId(), u.getNombre(), u.getContrasena(), u.getCorreo(), u.getAdmin(), u.getFechaNac());
+	}
+
+	@BeforeClass
+	public static void testConnect() throws DBManagerException {
+		DBManager.connect();
+	}
+
+	@BeforeClass
+	public static void testDisconnect() throws DBManagerException {
+		DBManager.disconnect();
+	}
 
 	@Test
-	public void registrarUsuario() throws DBManagerException {
-		DBManager.eliminarUsuario("a");
-		u = new Usuario(1, "na", "a", "a", 1, "1999-06-23");
-		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
-		assertEquals(true, DBManager.existeCorreo("a"));
+	public void testExisteCorreo() throws DBManagerException {
+		String correo_usuario = u.getCorreo();
+		assertEquals(true, DBManager.existeCorreo(correo_usuario));
+	}
+
+	@Before
+	public void testRegistrarUsuario() throws DBManagerException {
+		String nombre_usuario = u.getNombre();
+		String correo_usuario = u.getCorreo();
+		String contrasena_usuario = u.getContrasena();
+		String fechaNac_usuario = u.getFechaNac();
+
+		DBManager.registrarUsuario(nombre_usuario, correo_usuario, contrasena_usuario, fechaNac_usuario);
+	}
+
+	@Test
+	public void testLogin() throws DBManagerException {
+		String correo_usuario = u.getCorreo();
+		String contrasena_usuario = u.getContrasena();
+
+		DBManager.login(correo_usuario, contrasena_usuario);
+	}
+
+	@After
+	public void testEliminarUsuario() throws DBManagerException {
+		String correo_usuario = u.getCorreo();
+
+		DBManager.eliminarUsuario(correo_usuario);
 	}
 
 	// Métodos Entrenador
