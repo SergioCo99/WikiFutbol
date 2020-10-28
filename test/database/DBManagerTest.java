@@ -1,8 +1,11 @@
 package database;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Connection;
 import java.util.logging.Level;
 
 import org.junit.Test;
@@ -12,40 +15,73 @@ import clases.Entrenador.Mentalidad;
 import clases.Estadio;
 import clases.Usuario;
 
+import database.DBManager;
+
 public class DBManagerTest {
 	// private DBManager db = new DBManager();
+	
 	private Usuario u = new Usuario(0, null, null, null, 0, null);
+
+	
+	@Test
+	public void login() throws DBManagerException {
+		u = new Usuario(1, "na", "a", "a", 1, "1999-06-23");
+		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
+		assertEquals(true, DBManager.login("a", "a"));
+
+	}
+	
+	@Test
+	public void esAdmin() throws DBManagerException {
+		u = new Usuario(1, "na", "a", "a", 1, "1999-06-23");
+		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
+		assertEquals(true, DBManager.esAdmin("a"));
+
+		/*try {
+			assertTrue(DBManager.esAdmin("a"));
+		} catch (DBManagerException e) {
+			e.printStackTrace();
+		}*/
+	}
 
 	@Test
 	public void registrarUsuario() throws DBManagerException {
 		DBManager.eliminarUsuario("a");
-		u = new Usuario(1, "na", "a", "a", 1, "1999-06-23");
-		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
-		assertEquals(true, DBManager.existeCorreo("a"));
+		u = new Usuario(1, "na", "aasdfasdfadsfadsfa", "a", 1, "1999-06-23");
+		DBManager.registrarUsuario("na", "aasdfasdfadsfadsfa", "a", "1999-06-23");
+		assertEquals(true, DBManager.existeCorreo("aasdfasdfadsfadsfa"));
 	}
 	
 	
+	@Test
 	public void cambiarAdmin() throws DBManagerException {
-		DBManager.eliminarUsuario("a");
-		u = new Usuario(1, "na", "a", "a", 0, "1999-06-23");
-		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
-		DBManager.cambiarAdmin("a", 1);
-		assertEquals(true, DBManager.esAdmin("a"));
-	}
-	
-	public void eliminarUsuario() throws DBManagerException {
 		u = new Usuario(1, "na", "a", "a", 1, "1999-06-23");
 		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
-		DBManager.eliminarUsuario("a");
-		assertEquals(false, DBManager.existeCorreo("a"));
+		try {
+			DBManager.cambiarAdmin("a", 0);
+		} catch (DBManagerException e) {
+			e.printStackTrace();
+		}
 	}
 	
+	@Test
+	public void eliminarUsuario()throws DBManagerException {
+		u = new Usuario(1, "na", "a", "a", 1, "1999-06-23");
+		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
+		try {
+			DBManager.eliminarUsuario("a");
+		} catch (DBManagerException e) {
+			e.printStackTrace();
+		}
+	}
+	
+/*@Test
 	public void cambiarContraseña() throws DBManagerException {
 		u = new Usuario(1, "na", "a", "a", 1, "1999-06-23");
 		DBManager.registrarUsuario("na", "a", "a", "1999-06-23");
 		DBManager.cambiarContrasena("a", "b");
-		assertEquals("b", u.getContrasena());
-	}
+		assertEquals("b", DManager);
+	}*/
 	
 	
 	// Métodos Entrenador
