@@ -54,30 +54,37 @@ public class EstadisticaFeedbackTest {
 	}
 
 	@Test
-	public void TestReadAndLoad() {
-		double countSi = 3;
-		double countNo = 1;
-		double countSN = countSi + countNo;
-		
-		double countNum = 16;
-		double mediaNum = 4;
-		
-		if (countSN != mediaNum) {
-			fail("Tienen que ser lo mismo");
-		}
+	public void testReadAndLoad() {
+		/*
+		 * LO DEJO POR SI ACASO
+		 * 
+		 * double countSi = 3; double countNo = 1; double countSN = countSi + countNo;
+		 * 
+		 * double countNum = 16; double mediaNum = 4;
+		 * 
+		 * if (countSN != mediaNum) { fail("Tienen que ser lo mismo"); }
+		 * 
+		 * ArrayList<Double> arr1 = new ArrayList<>(); arr1.add(0, countNum / mediaNum);
+		 * arr1.add(1, (countSi / countSN) * 100); arr1.add(2, (countNo / countSN) *
+		 * 100); arr1.add(3, mediaNum);
+		 * 
+		 * ArrayList<Double> arr2 = new ArrayList<>(); arr2.add(0, countNum / mediaNum);
+		 * arr2.add(1, (countSi / countSN) * 100); arr2.add(2, (countNo / countSN) *
+		 * 100); arr2.add(3, mediaNum);
+		 */
 
-		// Segunda parte
-		ArrayList<Double> arrActual = new ArrayList<>();
-		arrActual.add(0, countNum/mediaNum);
-		arrActual.add(1, (countSi/countSN)*100);
-		arrActual.add(2, (countNo/countSN)*100);
-		arrActual.add(3, mediaNum);
-		
-		testSiNO();
-		
-				
 		try {
-			assertEquals(EstadisticaFeedback.ReadAndLoad(), arrActual);
+			if (EstadisticaFeedback.ReadAndLoad().get(0) < 0 || EstadisticaFeedback.ReadAndLoad().get(0) > 5) {
+				fail("Tiene que ser una puntuacion entre 0 y 5");
+			}
+
+			double porcentajeSi = EstadisticaFeedback.ReadAndLoad().get(1);
+			double porcentajeNo = EstadisticaFeedback.ReadAndLoad().get(2);
+			assertEquals(porcentajeSi + porcentajeNo, 100, 0);
+
+			if (EstadisticaFeedback.ReadAndLoad().get(3) < 0 || EstadisticaFeedback.ReadAndLoad().get(3) % 1 != 0) {
+				fail("No puede ser menor que 0, y tiene que ser un numero entero");
+			}
 		} catch (RWException e) {
 			e.printStackTrace();
 		}
