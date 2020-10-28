@@ -271,32 +271,32 @@ public class DBManagerTest {
 
 	// Métodos Entrenador
 	@Test
-	public void nombreEntrenador() throws DBManagerException {
+	public void testNombreEntrenador() throws DBManagerException {
 		assertEquals(e.getNombre(), DBManager.nombreEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 
 	@Test
-	public void fechaNacimiento() throws DBManagerException {
+	public void testFechaNacimiento() throws DBManagerException {
 		assertEquals(e.getFechaNac(), DBManager.fechaNacimiento("Gaizka Garitano", "wikifutbolschema"));
 	}
 
 	@Test
-	public void clubEntrenador() throws DBManagerException {
+	public void testClubEntrenador() throws DBManagerException {
 		assertEquals(e.getClub(), DBManager.clubEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 
 	@Test
-	public void ciudadEntrenador() throws DBManagerException {
+	public void testCiudadEntrenador() throws DBManagerException {
 		assertEquals(e.getCiudad(), DBManager.ciudadEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 
 	@Test
-	public void formacionEntrenador() throws DBManagerException {
+	public void testFormacionEntrenador() throws DBManagerException {
 		assertEquals(e.getFormacion(), DBManager.formacionEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 
 	@Test
-	public void mentalidadEntrenador() throws DBManagerException {
+	public void testMentalidadEntrenador() throws DBManagerException {
 		assertEquals("Equilibrada", DBManager.mentalidadEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 	// Fin Métodos Entrenador
@@ -309,22 +309,22 @@ public class DBManagerTest {
 
 	// Métodos Estadio
 	@Test
-	public void nombreEstadio() throws DBManagerException {
+	public void testNombreEstadio() throws DBManagerException {
 		assertEquals(es.getNombre(), DBManager.nombreEstadio("San Mames", "wikifutbolschema"));
 	}
 
 	@Test
-	public void aforoEstadio() throws DBManagerException {
+	public void testAforoEstadio() throws DBManagerException {
 		assertEquals(es.getAforo(), DBManager.aforoEstadio("San Mames", "wikifutbolschema"));
 	}
 
 	@Test
-	public void anyoEstadio() throws DBManagerException {
+	public void testAnyoEstadio() throws DBManagerException {
 		assertEquals(es.getAnyoCreacion(), DBManager.anyoEstadio("San Mames", "wikifutbolschema"));
 	}
 
 	@Test
-	public void ciudadEstadio() throws DBManagerException {
+	public void testCiudadEstadio() throws DBManagerException {
 		assertEquals(es.getCiudad(), DBManager.ciudadEstadio("San Mames", "wikifutbolschema"));
 	}
 	// Fin Métodos Estadio
