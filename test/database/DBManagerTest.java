@@ -18,6 +18,8 @@ import clases.Estadio;
 import clases.Feedback;
 import clases.Feedback.Recomendacion;
 import clases.Jugador;
+import clases.Jugador.PieFav;
+import clases.Jugador.Posicion;
 import clases.Usuario;
 
 public class DBManagerTest {
@@ -28,10 +30,8 @@ public class DBManagerTest {
 			Mentalidad.Equilibrada);
 	static Estadio es = new Estadio(1, "San Mames", 53289, 2013, "Bilbao");
 	static Feedback f = new Feedback(1, u.getCorreo(), 5, Recomendacion.si, "opinion");
-	/*
-	 * static Jugador j = new Jugador(id, nombre, fechaNac, club, ciudad, posicion,
-	 * dorsal, goles, altura, peso, piefav, valoracion, descripcion, voto);
-	 */ // Todavia no tenemos jugadores
+	static Jugador j = new Jugador(1, "Alex Berenguer", "1993-10-01", "Athletic", "Bilbao", Posicion.Delantero, 8, 0,
+			182, 81, PieFav.Diestro, 84, "Jugador con desvorde.", 0);
 
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -41,12 +41,10 @@ public class DBManagerTest {
 				e.getMentalidad());
 		es = new Estadio(es.getId(), es.getNombre(), es.getAforo(), es.getAnyoCreacion(), es.getCiudad());
 		f = new Feedback(f.getId(), f.getUsuario(), f.getValoracion(), f.getRecomendacion(), f.getOpinion());
-		/*
-		 * j = new Jugador(j.getId(), j.getNombre(), j.getFechaNac(), j.getClub(),
-		 * j.getCiudad(), j.getPosicion(), j.getDorsal(), j.getGoles(), j.getAltura(),
-		 * j.getPeso(), j.getPiefav(), j.getValoracion(), j.getDescripcion(),
-		 * j.getVoto());
-		 */ // Todavia no tenemos jugadores
+		j = new Jugador(j.getId(), j.getNombre(), j.getFechaNac(), j.getClub(), j.getCiudad(), j.getPosicion(),
+				j.getDorsal(), j.getGoles(), j.getAltura(), j.getPeso(), j.getPiefav(), j.getValoracion(),
+				j.getDescripcion(), j.getVoto());
+
 	}
 
 	@BeforeClass
@@ -62,6 +60,7 @@ public class DBManagerTest {
 	@Test
 	public void testExisteCorreo() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
+
 		assertTrue(DBManager.existeCorreo(correo_usuario));
 	}
 
@@ -80,20 +79,26 @@ public class DBManagerTest {
 		String correo_usuario = u.getCorreo();
 		String contrasena_usuario = u.getContrasena();
 
-		DBManager.login(correo_usuario, contrasena_usuario);
+		assertTrue(DBManager.login(correo_usuario, contrasena_usuario));
 	}
 
 	@Test
 	public void testEsAdmin() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
-
 		assertFalse(DBManager.esAdmin(correo_usuario));
+
+		String correoDeUnAdmin = "eneko.perez23@gmail.com";
+		assertTrue(DBManager.esAdmin(correoDeUnAdmin));
 	}
 
 	@Test
 	public void testCambiarAdmin() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
-		int nuevoValor_admin_usuario = 1;
+		int nuevoValor_admin_usuario = 4;
+		
+		if (nuevoValor_admin_usuario != 1 || nuevoValor_admin_usuario != 0) {
+			fail("Tiene que ser 0 o 1");
+		}
 
 		DBManager.cambiarAdmin(correo_usuario, nuevoValor_admin_usuario);
 	}
@@ -297,7 +302,7 @@ public class DBManagerTest {
 
 	@Test
 	public void testMentalidadEntrenador() throws DBManagerException {
-		assertEquals("Equilibrada", DBManager.mentalidadEntrenador("Gaizka Garitano", "wikifutbolschema"));
+		assertEquals("Defensiva", DBManager.mentalidadEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 	// Fin Métodos Entrenador
 
