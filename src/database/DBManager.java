@@ -1098,6 +1098,34 @@ public class DBManager {
 	}
 	// HASTA AQUI CAMBIAR DATOS
 
+	public static ArrayList<String> getJugadoresPorEquipo(String nombre_club) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			String sql = "select nombre_jugador from jugador, club where club_jugador = id_club and nombre_club ='"
+					+ nombre_club + "'";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			ArrayList<String> arr = new ArrayList<String>();
+			while (rs.next()) {
+				arr.add(rs.getString("nombre_jugador"));
+			}
+			Collections.sort(arr, new Comparator<String>() {
+				@Override
+				public int compare(String s1, String s2) {
+					return s1.compareToIgnoreCase(s2);
+				}
+			});
+			rs.close();
+			stmt.close();
+			disconnect();
+			return arr;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error getJugadoresPorPosicion DBManager", e);
+		}
+	}
+
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
 
