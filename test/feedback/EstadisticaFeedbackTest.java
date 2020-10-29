@@ -18,7 +18,7 @@ public class EstadisticaFeedbackTest {
 
 	@Test
 	public void testMediaPuntuacion() {
-		double a = 4;
+		double a = 4 ;
 		double b = 2;
 
 		if (b == 0) {
