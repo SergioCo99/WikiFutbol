@@ -85,13 +85,13 @@ public class AdvancedDb2CsvExporter {
 
 	}
 
-	private static String getFileName(String baseName) {
+	public static String getFileName(String baseName) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		String dateTimeInfo = dateFormat.format(new Date());
 		return baseName.concat(String.format("_%s.csv", dateTimeInfo));
 	}
 
-	private static int writeHeaderLine(ResultSet result) throws SQLException, IOException {
+	public static int writeHeaderLine(ResultSet result) throws SQLException, IOException {
 		// write header line containing column names
 		ResultSetMetaData metaData = result.getMetaData();
 		int numberOfColumns = metaData.getColumnCount();

@@ -138,16 +138,14 @@ public class DBManager {
 			rs.next();
 
 			if (rs.getInt("admin_usuario") == 1) {
-				rs.close();
-				stmt.close();
-				disconnect();
 				return true;
 			} else if (rs.getInt("admin_usuario") == 0) {
-				rs.close();
-				stmt.close();
-				disconnect();
 				return false;
 			}
+
+			rs.close();
+			stmt.close();
+			disconnect();
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			// hay k plantearse quitar este "error" (ABAJO, en el throw new
@@ -158,17 +156,19 @@ public class DBManager {
 	}
 
 	public static void cambiarAdmin(String correo_usuario, int admin_usuario) throws DBManagerException {
-		try {
-			connect();
-			stmt = conn.createStatement();
-			String sql = "update usuario set admin_usuario = '" + admin_usuario + "' where correo_usuario = '"
-					+ correo_usuario + "';";
-			stmt.executeUpdate(sql);
-			stmt.close();
-			disconnect();
-		} catch (SQLException e) {
-			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
-			throw new DBManagerException("Error cambiarAdmin DBManager", e);
+		if (admin_usuario == 1 || admin_usuario == 0) {
+			try {
+				connect();
+				stmt = conn.createStatement();
+				String sql = "update usuario set admin_usuario = '" + admin_usuario + "' where correo_usuario = '"
+						+ correo_usuario + "';";
+				stmt.executeUpdate(sql);
+				stmt.close();
+				disconnect();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+				throw new DBManagerException("Error cambiarAdmin DBManager", e);
+			}
 		}
 	}
 
@@ -1103,7 +1103,7 @@ public class DBManager {
 			connect();
 			stmt = conn.createStatement();
 			String sql = "select nombre_jugador from jugador, club where club_jugador = id_club and nombre_club ='"
-					+ nombre_club + "'";
+					+ nombre_club + "' order by id_jugador";
 			ResultSet rs = stmt.executeQuery(sql);
 
 			ArrayList<String> arr = new ArrayList<String>();
@@ -1128,6 +1128,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-
+		DBManager.getJugadoresPorEquipo("Athletic Club");
 	}
 }

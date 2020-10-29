@@ -50,7 +50,7 @@ public class EstadisticaFeedback {
 		double countSi = 0;
 		String no = "no";
 		double countNo = 0;
-		double mediaSN = 0;
+		double countSN = 0;
 
 		String uno = "1";
 		String dos = "2";
@@ -85,7 +85,7 @@ public class EstadisticaFeedback {
 					}
 					// si o no
 					if (word.equals(si) || word.equals(no)) {
-						mediaSN++;
+						countSN++;
 					}
 					if (word.equals(si)) {
 						countSi++;
@@ -95,7 +95,7 @@ public class EstadisticaFeedback {
 				}
 			}
 			mediaPuntuacion(countNum, mediaNum);
-			siNo(countSi, countNo, mediaSN);
+			siNo(countSi, countNo, countSN);
 			br.close();
 		} catch (FileNotFoundException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
@@ -108,9 +108,9 @@ public class EstadisticaFeedback {
 		// Aqui empieza la segunda parte :)
 		ArrayList<Double> arr = new ArrayList<>();
 
-		for (int i = 0; i < siNo(countSi, countNo, mediaSN).size(); i++) {
+		for (int i = 0; i < siNo(countSi, countNo, countSN).size(); i++) {
 			// filas 1 y 2
-			arr.add(i, siNo(countSi, countNo, mediaSN).get(i));
+			arr.add(i, siNo(countSi, countNo, countSN).get(i));
 		}
 		arr.add(0, mediaPuntuacion(countNum, mediaNum)); // fila 0
 		arr.add(3, mediaNum); // fila 3
