@@ -42,7 +42,7 @@ public class EstadisticaFeedback {
 	}
 
 	public static ArrayList<Double> ReadAndLoad() throws RWException {
-		File f1 = new File("PruebaLog.log"); // Creation of File Descriptor for input file
+		File f1 = new File("FeedBackLog.log"); // Creation of File Descriptor for input file
 		String[] words = null; // Intialize the word Array
 
 		String s;
