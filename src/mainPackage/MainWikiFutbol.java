@@ -46,9 +46,8 @@ public class MainWikiFutbol {
 		// loggerGeneral.log(Level.X, " Message ");
 
 		// -> en otra clase
-		// mainPackage.MainWikiFutbol.loggerBD.log([Por ahora Level.INFO],"Message");
-		// mainPackage.MainWikiFutbol.loggerGeneral.log([Por ahora
-		// Level.INFO],"Message");
+		// mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+		// mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 	}
 
 	// por si no existe el fichero
@@ -65,7 +64,7 @@ public class MainWikiFutbol {
 
 	public static void main(String[] args) {
 		crearFicheroLog();
-		// crearFicheroLogger();
+		crearFicheroLogger();
 		crearFicherosAccountProperties();
 
 		VentanaLogin VL = new VentanaLogin();
