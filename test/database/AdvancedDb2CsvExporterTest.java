@@ -28,27 +28,25 @@ public class AdvancedDb2CsvExporterTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void testGetFileName() {
 		String table = "ciudad";
-		
+
 		String newFileName = AdvancedDb2CsvExporter.getFileName(table);
-		
+
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		String dateTimeInfo = dateFormat.format(new Date());
-		
-		String expected = table+"_"+dateTimeInfo+".csv";
-		
+
+		String expected = table + "_" + dateTimeInfo + ".csv";
+
 		assertEquals(expected, newFileName);
 	}
 
 	@Test
 	public void testWriteHeaderLine() {
 		ResultSet resultset;
-		
+
 	}
-	
-	
-	
+
 }
