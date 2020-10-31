@@ -23,7 +23,7 @@ import database.DBManagerException;
 public class VentanaCambiarDatos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btnCambiarDato, buscarTabla;
+	JButton btnCambiarDato, buscarTabla, btnQuery;
 	JTextArea textArea1;
 
 	JComboBox<String> jcbTablas;
@@ -54,6 +54,10 @@ public class VentanaCambiarDatos extends JFrame {
 		buscarTabla.setText("Buscar tabla");
 		buscarTabla.setBounds(240, 300, 120, 30);
 
+		btnQuery = new JButton();
+		btnQuery.setText("Q");
+		btnQuery.setBounds(370, 300, 70, 30);
+
 		textArea1 = new JTextArea();
 		textArea1.setBounds(10, 210, 560, 80);
 
@@ -82,6 +86,7 @@ public class VentanaCambiarDatos extends JFrame {
 
 		getContentPane().add(btnCambiarDato);
 		getContentPane().add(buscarTabla);
+		getContentPane().add(btnQuery);
 		getContentPane().add(lblInfo);
 		getContentPane().add(lblValor);
 		getContentPane().add(textArea1);
@@ -152,6 +157,33 @@ public class VentanaCambiarDatos extends JFrame {
 					Object valor = textArea1.getText();
 					int id = Integer.parseInt((String) jt.getValueAt(jt.getSelectedRow(), 0));
 					database.DBManager.cambiarDatosDesdeJTable(tabla, columna, valor, id);
+					
+					JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Informacion",
+							JOptionPane.INFORMATION_MESSAGE);
+				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+					// Can not issue empty query.
+
+					// You have an error in your SQL syntax; check the manual that corresponds to
+					// your MySQL server version for the right syntax to use
+
+					// Can not issue SELECT via Update
+					JOptionPane.showMessageDialog(null, "No se acepta el valor introducido.", "Alert",
+							JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
+
+		btnQuery.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					// meter un query y tal cual y que se ejecute
+					database.DBManager.cambiarDatos(textArea1.getText());
+					
+					JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Informacion",
+							JOptionPane.INFORMATION_MESSAGE);
 				} catch (DBManagerException e1) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					// Can not issue empty query.
