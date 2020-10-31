@@ -1,5 +1,6 @@
 package ventanas;
 
+import java.awt.Cursor;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -120,6 +121,7 @@ public class VentanaVotar extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				setCursor(new Cursor(Cursor.WAIT_CURSOR));
 				try {
 					// id del usuario que vota,lo obtenemos mediante account.properties
 					int id = database.DBManager.getIdUsuario(utils.PropertiesMetodos.getProp1());
@@ -147,6 +149,7 @@ public class VentanaVotar extends JFrame {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
+				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 		});
 

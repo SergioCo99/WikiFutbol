@@ -1,6 +1,7 @@
 package ventanas;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -167,7 +168,9 @@ public class VentanaPrincipal extends JFrame {
 							JOptionPane.INFORMATION_MESSAGE);
 					// reinicio
 					utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
-					mainPackage.MainWikiFutbol.main(null);
+					dispose();
+					VentanaLogin VL = new VentanaLogin();
+					VL.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, "Esa contraseña no es valida / operacion cancelada.", "Error",
 							JOptionPane.ERROR_MESSAGE);
@@ -281,8 +284,18 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				setCursor(new Cursor(Cursor.WAIT_CURSOR));
+				try {
+					// actualiza el numero de votos de cada jugador
+					database.DBManager.actualizarVotos();
+					// actualiza el teamoftheyear
+					database.DBManager.toft();
+				} catch (DBManagerException e1) {
+					e1.printStackTrace();
+				}
 				VentanaTeamOfTheYear VTOFT = new VentanaTeamOfTheYear();
 				VTOFT.setVisible(true);
+				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 		});
 

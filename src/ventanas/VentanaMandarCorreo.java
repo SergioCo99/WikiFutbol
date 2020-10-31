@@ -1,6 +1,7 @@
 package ventanas;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -165,6 +166,7 @@ public class VentanaMandarCorreo extends JFrame {
 							try {
 								if (todos.isSelected() == true) {
 									for (int i = 0; i < database.DBManager.todosLosCorreos().size(); i++) {
+										setCursor(new Cursor(Cursor.WAIT_CURSOR)); // * !!!!!
 										utils.MailSinFichero.SendMail(database.DBManager.todosLosCorreos().get(i),
 												txtAsunto.getText(), texto.getText());
 									}
@@ -182,6 +184,7 @@ public class VentanaMandarCorreo extends JFrame {
 								JOptionPane.WARNING_MESSAGE);
 					}
 				}
+				setCursor(new Cursor(Cursor.DEFAULT_CURSOR)); // * !!!!!
 			}
 		});
 

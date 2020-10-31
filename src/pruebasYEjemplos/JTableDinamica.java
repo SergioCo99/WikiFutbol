@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class JTableDinamica {
 
+	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
 		new JTableDinamica();
 	}

@@ -146,28 +146,34 @@ public class VentanaCambiarDatos extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					// meter un query y tal cual y que se ejecute
-					// database.DBManager.cambiarDatos(textArea1.getText());
+				if (!textArea1.getText().equals(null) && !textArea1.getText().equals("")
+						&& jt.getSelectionModel().isSelectionEmpty() == false) {
+					try {
+						// meter un query y tal cual y que se ejecute
+						// database.DBManager.cambiarDatos(textArea1.getText());
 
-					String tabla = jcbTablas.getSelectedItem().toString();
-					String columna = jt.getColumnName(jt.getSelectedColumn());
-					// Object valor = jt.getValueAt(jt.getSelectedRow(),
-					// jt.getSelectedColumn()).toString();
-					Object valor = textArea1.getText();
-					int id = Integer.parseInt((String) jt.getValueAt(jt.getSelectedRow(), 0));
-					database.DBManager.cambiarDatosDesdeJTable(tabla, columna, valor, id);
-					
-					JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Informacion",
-							JOptionPane.INFORMATION_MESSAGE);
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					// Can not issue empty query.
+						String tabla = jcbTablas.getSelectedItem().toString();
+						String columna = jt.getColumnName(jt.getSelectedColumn());
+						// Object valor = jt.getValueAt(jt.getSelectedRow(),
+						// jt.getSelectedColumn()).toString();
+						Object valor = textArea1.getText();
+						int id = Integer.parseInt((String) jt.getValueAt(jt.getSelectedRow(), 0));
+						database.DBManager.cambiarDatosDesdeJTable(tabla, columna, valor, id);
 
-					// You have an error in your SQL syntax; check the manual that corresponds to
-					// your MySQL server version for the right syntax to use
+						JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Informacion",
+								JOptionPane.INFORMATION_MESSAGE);
+					} catch (DBManagerException e1) {
+						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+						// Can not issue empty query.
 
-					// Can not issue SELECT via Update
+						// You have an error in your SQL syntax; check the manual that corresponds to
+						// your MySQL server version for the right syntax to use
+
+						// Can not issue SELECT via Update
+						JOptionPane.showMessageDialog(null, "No se acepta el valor introducido.", "Alert",
+								JOptionPane.WARNING_MESSAGE);
+					}
+				} else {
 					JOptionPane.showMessageDialog(null, "No se acepta el valor introducido.", "Alert",
 							JOptionPane.WARNING_MESSAGE);
 				}
@@ -181,7 +187,7 @@ public class VentanaCambiarDatos extends JFrame {
 				try {
 					// meter un query y tal cual y que se ejecute
 					database.DBManager.cambiarDatos(textArea1.getText());
-					
+
 					JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Informacion",
 							JOptionPane.INFORMATION_MESSAGE);
 				} catch (DBManagerException e1) {

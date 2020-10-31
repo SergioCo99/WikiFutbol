@@ -63,15 +63,18 @@ public class DBManager {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			String sql = "select correo_usuario from usuario where correo_usuario = '" + correo_usuario + "';";
-			ResultSet rs = stmt.executeQuery(sql);
-			rs.next();
+			// String sql = "select correo_usuario from usuario where correo_usuario = '" +
+			// correo_usuario + "';";
+			String sql2 = "select correo_usuario from usuario";
+			ResultSet rs = stmt.executeQuery(sql2);
 
-			String mail = rs.getString("correo_usuario");
-			if (mail.equals(correo_usuario)) {
-				return true;
-			} else if (!mail.equals(correo_usuario)) {
-				return false;
+			while (rs.next()) {
+				String mail = rs.getString("correo_usuario");
+				if (mail.equals(correo_usuario)) {
+					return true;
+				} else if (!mail.equals(correo_usuario)) {
+					return false;
+				}
 			}
 			rs.close();
 			stmt.close();
@@ -1128,6 +1131,7 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		DBManager.getJugadoresPorEquipo("Athletic Club");
+		System.out.println(esAdmin("a@gmail.com"));
+		System.out.println(esAdmin("b@gmail.com"));
 	}
 }

@@ -200,6 +200,7 @@ public class JLabelGraficoAjustado extends JLabel {
 		}
 	}
 
+	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
 		JFrame f = new JFrame("Prueba JLabelGraficoAjustado");
 		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
