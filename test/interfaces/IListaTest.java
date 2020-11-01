@@ -10,20 +10,34 @@ import org.junit.Before;
 import org.junit.Test;
 
 import clases.Club;
+import clases.Jugador;
 import database.DBManager;
 import database.DBManagerException;
 
 public class IListaTest {
 
-	private IListaEquipos interfaz;
+	private IListaEquipos interfazEquipos;
+	private IListaJugadores interfazJugadores;
 	private DBManager database = new DBManager();
-	private ArrayList<Club> array = new ArrayList<Club>();
-	private JList lista = new JList<String>();
+	private ArrayList<Club> arrayClub = new ArrayList<Club>();
+	private ArrayList<Jugador> arrayJugador = new ArrayList<Jugador>();
+	private JList listaClub = new JList<String>();
+	private JList listaJugador = new JList<String>();
 
 	@Before
 	public void setUp() {
 		try {
-			array = database.getClubes();
+			arrayClub = database.getClubes();
+			System.out.println("BD cargada");
+		} catch (DBManagerException e) {
+			System.out.println("BD no cargada");
+		}
+	}
+	
+	@Before
+	public void setUp1() {
+		try {
+			arrayJugador = database.getJugadores();
 			System.out.println("BD cargada");
 		} catch (DBManagerException e) {
 			System.out.println("BD no cargada");
@@ -32,9 +46,11 @@ public class IListaTest {
 
 	@Test
 	public void actualizarLista() {
-		IListaEquipos.cargarLista(lista, array);
-
-		assertEquals(array.size(), lista.getModel().getSize());
+		IListaEquipos.cargarLista(listaClub, arrayClub);
+		IListaJugadores.cargarLista(listaJugador, arrayJugador);
+		
+		assertEquals(arrayClub.size(), listaClub.getModel().getSize());
+		assertEquals(arrayJugador.size(), listaJugador.getModel().getSize());
 
 	}
 
