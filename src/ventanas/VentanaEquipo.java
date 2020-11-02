@@ -39,7 +39,6 @@ public class VentanaEquipo extends JFrame {
 	}
 
 	private static final long serialVersionUID = 1L;
-	private static Usuario usuario;
 	String nombreEquipo;
 	static Component frame;
 
@@ -48,7 +47,6 @@ public class VentanaEquipo extends JFrame {
 	}
 
 	public void init(Club club, Usuario u) {
-		usuario = u;
 		nombreEquipo = club.getNombre();
 		this.setTitle(nombreEquipo);
 		this.setSize(1200, 700);
@@ -121,7 +119,7 @@ public class VentanaEquipo extends JFrame {
 		nombreEquipo = club.getNombre();
 
 		// Cabecera
-		final JLabel cabecera = new JLabel("Información sobre " + nombreEquipo + ":");
+		final JLabel cabecera = new JLabel("Informaci\u00f3n sobre " + nombreEquipo + ":");
 		// final JLabel cabecera = new JLabel("Información sobre 'NombreEquipo':");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);

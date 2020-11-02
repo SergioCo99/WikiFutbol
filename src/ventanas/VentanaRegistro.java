@@ -53,10 +53,10 @@ public class VentanaRegistro extends JFrame {
 		lblCorreo.setBounds(100, 70, 300, 20);
 
 		lblPass = new JLabel();
-		lblPass.setText("Introduce la contrase�a:");
+		lblPass.setText("Introduce la contrase\u00f1a:");
 		lblPass.setBounds(100, 90, 300, 20);
 
-		lblPassRep = new JLabel("Repetir contrase\u00F1a:");
+		lblPassRep = new JLabel("Repetir contrase\u00f1a:");
 		lblPassRep.setBounds(100, 110, 300, 20);
 
 		lblDate = new JLabel();

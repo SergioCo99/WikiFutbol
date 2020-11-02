@@ -43,7 +43,6 @@ public class VentanaJugador extends JFrame {
 	}
 
 	private static final long serialVersionUID = 1L;
-	private static Usuario usuario;
 	String nombreJugador;
 	static Component frame;
 
@@ -52,7 +51,6 @@ public class VentanaJugador extends JFrame {
 	}
 
 	public void init(Jugador jugador, Usuario u) {
-		usuario = u;
 		nombreJugador = jugador.getNombre();
 		this.setTitle(nombreJugador);
 		this.setSize(1200, 700);
@@ -122,7 +120,7 @@ public class VentanaJugador extends JFrame {
 		add(bookPanel);
 
 		// Cabecera
-		final JLabel cabecera = new JLabel("Informaci�n sobre " + nombreJugador + ":");
+		final JLabel cabecera = new JLabel("Informaci\u00f3n sobre " + nombreJugador + ":");
 		// final JLabel cabecera = new JLabel("Informaci�n sobre 'NombreEquipo':");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);

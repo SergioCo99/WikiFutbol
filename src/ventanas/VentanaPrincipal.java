@@ -158,7 +158,7 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contrase�a",
+				String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contrase\u00f1a",
 						"Cambiar contrase�a", JOptionPane.WARNING_MESSAGE);
 
 				if ((nuevaContrasena != null) && !nuevaContrasena.equals("")) {
@@ -176,7 +176,7 @@ public class VentanaPrincipal extends JFrame {
 					VentanaLogin VL = new VentanaLogin();
 					VL.setVisible(true);
 				} else {
-					JOptionPane.showMessageDialog(null, "Esa contrase�a no es valida / operacion cancelada.", "Error",
+					JOptionPane.showMessageDialog(null, "Esa contrase\u00f1a no es valida / operacion cancelada.", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
@@ -427,7 +427,7 @@ public class VentanaPrincipal extends JFrame {
 		rdbtnEntrenador.setContentAreaFilled(false);
 		add(rdbtnEntrenador);
 
-		rdbtnNumLigas = new JRadioButton("N� Ligas");
+		rdbtnNumLigas = new JRadioButton("Num Ligas");
 		rdbtnNumLigas.setFont(new Font("Tahoma", Font.BOLD, 13));
 		rdbtnNumLigas.setBounds(1045, 189, 150, 23);
 		rdbtnNumLigas.setContentAreaFilled(false);

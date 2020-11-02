@@ -28,7 +28,6 @@ import utils.JLabelGraficoAjustado;
 public class VentanaEntrenador extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private Usuario usuario;
 	static VentanaEquipo frame;
 
 	public static boolean privilegiosAdmin() {
@@ -46,7 +45,6 @@ public class VentanaEntrenador extends JFrame {
 	}
 
 	public VentanaEntrenador(String entrenador, Club club, Usuario u) throws DBManagerException {
-		usuario = u;
 		String nombreEntrenador = null;
 		try {
 			nombreEntrenador = DBManager.nombreEntrenador(entrenador, "wikifutbolschema");
@@ -122,7 +120,7 @@ public class VentanaEntrenador extends JFrame {
 		add(bookPanel);
 
 		// Cabecera
-		final JLabel cabecera = new JLabel("Informaci�n sobre " + nombreEntrenador + ":");
+		final JLabel cabecera = new JLabel("Informaci\u00f3n sobre " + nombreEntrenador + ":");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));
