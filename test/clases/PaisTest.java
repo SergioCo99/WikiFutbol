@@ -27,6 +27,7 @@ public class PaisTest {
 		assertEquals("España", p.getNombre());
 	}
 
+	
 	public void metodoToString() {
 
 		p.setId(1);

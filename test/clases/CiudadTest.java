@@ -34,6 +34,7 @@ public class CiudadTest {
 		assertEquals("España", c.getPais());
 	}
 
+	
 	public void metodoToString() {
 
 		c.setId(1);

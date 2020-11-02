@@ -56,7 +56,7 @@ public class ClubTest {
 		assertEquals("Gaizka Garitano", a.getEntrenador());
 	}
 
-	@Test
+	
 	public void metodoToString() {
 		a.setId(1);
 		a.setNombre("Athletic Club");
