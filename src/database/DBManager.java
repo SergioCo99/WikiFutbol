@@ -926,8 +926,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Este m�todo sirve para saber el nombre de la ciudad en la que se encuentra un
-	 * estadio
+	 * Este m�todo sirve para saber el nombre de la ciudad en la que se encuentra
+	 * un estadio
 	 * 
 	 * @param Estadio Nombre del estadio del que queremos saber la ciudad
 	 * @param BD      Nombre de la BD a utilizar

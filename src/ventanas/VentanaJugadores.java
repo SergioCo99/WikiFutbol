@@ -33,6 +33,7 @@ import utils.JLabelGraficoAjustado;
 
 public class VentanaJugadores extends JFrame {
 
+	// se usa en esta clase??? si no hay que borrarlo
 	public static boolean privilegiosAdmin() {
 		try {
 			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {

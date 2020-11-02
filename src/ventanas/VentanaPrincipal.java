@@ -37,9 +37,9 @@ import utils.JLabelGraficoAjustado;
 
 public class VentanaPrincipal extends JFrame {
 
-	public static boolean privilegiosAdmin() {
+	public static boolean privilegiosAdmin(String correo) {
 		try {
-			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {
+			if (database.DBManager.esAdmin(correo) == true) {
 				return true;
 			} else {
 				return false;
@@ -144,7 +144,7 @@ public class VentanaPrincipal extends JFrame {
 
 		menuAdmin.setVisible(false);
 
-		if (privilegiosAdmin() == true) {
+		if (privilegiosAdmin(utils.PropertiesMetodos.getProp1()) == true) {
 			menuAdmin.setVisible(true);
 		} else {
 			menuAdmin.setVisible(false);
