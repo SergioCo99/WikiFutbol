@@ -34,7 +34,7 @@ public class CiudadTest {
 		assertEquals("España", c.getPais());
 	}
 
-	
+	@Test
 	public void metodoToString() {
 
 		c.setId(1);
@@ -43,6 +43,6 @@ public class CiudadTest {
 
 		System.out.println(c.toString());
 
-		assertEquals("Ciudad [id=1, ciudad=Bilbao, pais=España]", c.toString());
+		assertEquals("Ciudad [id=1, nombre=Bilbao, pais=España]", c.toString());
 	}
 }

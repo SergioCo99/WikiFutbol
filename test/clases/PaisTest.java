@@ -27,7 +27,7 @@ public class PaisTest {
 		assertEquals("España", p.getNombre());
 	}
 
-	
+	@Test
 	public void metodoToString() {
 
 		p.setId(1);
@@ -35,6 +35,6 @@ public class PaisTest {
 
 		System.out.println(p.toString());
 
-		assertEquals("Pais [id=1, pais=España]", p.toString());
+		assertEquals("Pais [id=1, nombre=España]", p.toString());
 	}
 }
