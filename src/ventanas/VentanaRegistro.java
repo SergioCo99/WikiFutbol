@@ -20,6 +20,10 @@ import com.toedter.calendar.JCalendar;
 import clases.Usuario;
 import database.DBManagerException;
 
+/**Ventana que da la posibilidad de registro
+ * @author sergiolopez
+ *
+ */
 public class VentanaRegistro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -49,7 +53,7 @@ public class VentanaRegistro extends JFrame {
 		lblCorreo.setBounds(100, 70, 300, 20);
 
 		lblPass = new JLabel();
-		lblPass.setText("Introduce la contraseña:");
+		lblPass.setText("Introduce la contraseï¿½a:");
 		lblPass.setBounds(100, 90, 300, 20);
 
 		lblPassRep = new JLabel("Repetir contrase\u00F1a:");

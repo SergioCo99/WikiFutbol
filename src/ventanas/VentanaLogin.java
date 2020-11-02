@@ -25,6 +25,10 @@ import clases.Usuario;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
+/**Venta para el inicio de sesion 
+ * @author sergiolopez
+ *
+ */
 public class VentanaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -52,7 +56,7 @@ public class VentanaLogin extends JFrame {
 		lblCorreo.setBounds(25, 100, 300, 20);
 
 		lblPass = new JLabel();
-		lblPass.setText("Introduce la contraseña:");
+		lblPass.setText("Introduce la contraseï¿½a:");
 		lblPass.setBounds(25, 140, 300, 20);
 
 		txtCorreo = new JTextField();
@@ -61,7 +65,7 @@ public class VentanaLogin extends JFrame {
 
 		txtPassword = new JPasswordField();
 		txtPassword.setBounds(175, 140, 200, 20);
-		// txtPassword.setEchoChar('•');
+		// txtPassword.setEchoChar('ï¿½');
 		txtPassword.setText(utils.PropertiesMetodos.getProp2());
 
 		btnAceptar = new JButton();
@@ -156,7 +160,7 @@ public class VentanaLogin extends JFrame {
 				if (checkContrasena.isSelected() == true) {
 					txtPassword.setEchoChar((char) 0);
 				} else {
-					txtPassword.setEchoChar('•');
+					txtPassword.setEchoChar('ï¿½');
 				}
 			}
 		});
@@ -186,7 +190,7 @@ public class VentanaLogin extends JFrame {
 				} catch (DBManagerException e1) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos.", "Alert",
+					JOptionPane.showMessageDialog(null, "Correo o contraseï¿½a incorrectos.", "Alert",
 							JOptionPane.WARNING_MESSAGE);
 				}
 

@@ -31,6 +31,10 @@ import database.DBManagerException;
 import interfaces.IListaJugadores;
 import utils.JLabelGraficoAjustado;
 
+/**Ventana en la cual se visualiza los jugadores 
+ * @author sergiolopez
+ *
+ */
 public class VentanaJugadores extends JFrame {
 
 	// se usa en esta clase??? si no hay que borrarlo
@@ -168,7 +172,7 @@ public class VentanaJugadores extends JFrame {
 		btnAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Sin funcionalidad aún
+				// Sin funcionalidad aï¿½n
 			}
 		});
 

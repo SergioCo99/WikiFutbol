@@ -21,6 +21,10 @@ import database.DBManager;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
+/**Ventana para la visualizacion de los datos de cada entrenador 
+ * @author sergiolopez
+ *
+ */
 public class VentanaEntrenador extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -118,7 +122,7 @@ public class VentanaEntrenador extends JFrame {
 		add(bookPanel);
 
 		// Cabecera
-		final JLabel cabecera = new JLabel("Información sobre " + nombreEntrenador + ":");
+		final JLabel cabecera = new JLabel("Informaciï¿½n sobre " + nombreEntrenador + ":");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));

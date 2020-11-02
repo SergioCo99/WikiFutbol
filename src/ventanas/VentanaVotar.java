@@ -13,6 +13,10 @@ import javax.swing.JLabel;
 
 import database.DBManagerException;
 
+/**Ventana que da la posibilidad de votar a los usuarios de sus jugadores favoritos para cada posicion
+ * @author sergiolopez
+ *
+ */
 public class VentanaVotar extends JFrame {
 
 	private static final long serialVersionUID = 1L;

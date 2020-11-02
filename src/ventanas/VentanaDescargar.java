@@ -19,6 +19,10 @@ import javax.swing.JScrollPane;
 
 import database.AdvancedDb2CsvExporter;
 
+/**Ventana lo cual permite descargar los datos deseados 
+ * @author sergiolopez
+ *
+ */
 public class VentanaDescargar extends JFrame {
 
 	private static final long serialVersionUID = 1L;

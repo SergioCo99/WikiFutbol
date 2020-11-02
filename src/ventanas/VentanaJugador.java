@@ -22,6 +22,10 @@ import clases.Usuario;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
+/**Ventana para la visualizacion de la informacion de cada jugador
+ * @author sergiolopez
+ *
+ */
 public class VentanaJugador extends JFrame {
 
 	public static boolean privilegiosAdmin() {
@@ -118,8 +122,8 @@ public class VentanaJugador extends JFrame {
 		add(bookPanel);
 
 		// Cabecera
-		final JLabel cabecera = new JLabel("Información sobre " + nombreJugador + ":");
-		// final JLabel cabecera = new JLabel("Información sobre 'NombreEquipo':");
+		final JLabel cabecera = new JLabel("Informaciï¿½n sobre " + nombreJugador + ":");
+		// final JLabel cabecera = new JLabel("Informaciï¿½n sobre 'NombreEquipo':");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));

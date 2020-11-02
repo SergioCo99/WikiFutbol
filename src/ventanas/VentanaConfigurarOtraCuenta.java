@@ -15,6 +15,10 @@ import javax.swing.JOptionPane;
 
 import database.DBManagerException;
 
+/**Ventana que permite al administrador modificar los datos de los usuarios asi como como borrarlos.
+ * @author sergiolopez
+ *
+ */
 public class VentanaConfigurarOtraCuenta extends JFrame {
 
 	private static final long serialVersionUID = 1L;

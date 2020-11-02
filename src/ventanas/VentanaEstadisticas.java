@@ -11,6 +11,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import feedback.RWException;
 
+/**Ventana para la visualizacion de las estadisticas de la aplicaion
+ * @author sergiolopez
+ *
+ */
 public class VentanaEstadisticas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -37,11 +41,11 @@ public class VentanaEstadisticas extends JFrame {
 				// primeras 2 filas (0 y 1)
 				if (i == 0) {
 					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i)) + " /5";
-					// fila nº 2
+					// fila nï¿½ 2
 				} else if ((i >= 1) && (i <= 2)) {
 					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i)) + " %";
 				} else if (i == 3) {
-					// fila nº 3
+					// fila nï¿½ 3
 					data[i][1] = String.format("%.0f", feedback.EstadisticaFeedback.ReadAndLoad().get(i));
 				} else {
 					// por ahora las demas

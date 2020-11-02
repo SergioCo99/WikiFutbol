@@ -21,6 +21,10 @@ import database.DBManager;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
+/**Ventana para la visualizacion de las caracteristicas de cada estadio
+ * @author sergiolopez
+ *
+ */
 public class VentanaEstadio extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -118,7 +122,7 @@ public class VentanaEstadio extends JFrame {
 		add(bookPanel);
 
 		// Cabecera
-		final JLabel cabecera = new JLabel("Información sobre " + nombreEstadio + ":");
+		final JLabel cabecera = new JLabel("Informaciï¿½n sobre " + nombreEstadio + ":");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));

@@ -35,6 +35,10 @@ import database.DBManagerException;
 import interfaces.IListaEquipos;
 import utils.JLabelGraficoAjustado;
 
+/**Ventana principal para la visualizacion de todos los equipos disponibles
+ * @author sergiolopez
+ *
+ */
 public class VentanaPrincipal extends JFrame {
 
 	public static boolean privilegiosAdmin(String correo) {
@@ -154,8 +158,8 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contraseña",
-						"Cambiar contraseña", JOptionPane.WARNING_MESSAGE);
+				String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contraseï¿½a",
+						"Cambiar contraseï¿½a", JOptionPane.WARNING_MESSAGE);
 
 				if ((nuevaContrasena != null) && !nuevaContrasena.equals("")) {
 					try {
@@ -172,7 +176,7 @@ public class VentanaPrincipal extends JFrame {
 					VentanaLogin VL = new VentanaLogin();
 					VL.setVisible(true);
 				} else {
-					JOptionPane.showMessageDialog(null, "Esa contraseña no es valida / operacion cancelada.", "Error",
+					JOptionPane.showMessageDialog(null, "Esa contraseï¿½a no es valida / operacion cancelada.", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
@@ -423,7 +427,7 @@ public class VentanaPrincipal extends JFrame {
 		rdbtnEntrenador.setContentAreaFilled(false);
 		add(rdbtnEntrenador);
 
-		rdbtnNumLigas = new JRadioButton("Nº Ligas");
+		rdbtnNumLigas = new JRadioButton("Nï¿½ Ligas");
 		rdbtnNumLigas.setFont(new Font("Tahoma", Font.BOLD, 13));
 		rdbtnNumLigas.setBounds(1045, 189, 150, 23);
 		rdbtnNumLigas.setContentAreaFilled(false);

@@ -12,6 +12,10 @@ import javax.swing.JLabel;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
+/**Ventana para la visualiozacion del equipo del año
+ * @author sergiolopez
+ *
+ */
 public class VentanaTeamOfTheYear extends JFrame {
 
 	private static final long serialVersionUID = 1L;

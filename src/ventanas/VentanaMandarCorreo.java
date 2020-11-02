@@ -23,6 +23,10 @@ import javax.swing.JTextField;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
+/**Ventana para mandar correos al usuario deseado 
+ * @author sergiolopez
+ *
+ */
 public class VentanaMandarCorreo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
