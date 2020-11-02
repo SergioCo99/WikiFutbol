@@ -27,7 +27,6 @@ public class VentanaEstadio extends JFrame {
 	private Usuario usuario;
 	static VentanaEquipo frame;
 
-	// se usa en esta clase??? si no hay que borrarlo
 	public static boolean privilegiosAdmin() {
 		try {
 			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {
@@ -127,25 +126,25 @@ public class VentanaEstadio extends JFrame {
 		bookPanel.add(cabecera);
 
 		// NombreEstadio
-		final JLabel label1 = new JLabel("Nombre: ");
-		label1.setBounds(20, 110, 150, 50);
-		label1.setFont(fuente2);
-		label1.setForeground(Color.BLACK);
-		bookPanel.add(label1);
+		final JLabel labelNombre = new JLabel("Nombre: ");
+		labelNombre.setBounds(20, 110, 150, 50);
+		labelNombre.setFont(fuente2);
+		labelNombre.setForeground(Color.BLACK);
+		bookPanel.add(labelNombre);
 
 		// ResultadoNombreEstadio
-		final JLabel label11 = new JLabel(nombreEstadio);
-		label11.setBounds(120, 110, 400, 50);
-		label11.setFont(fuente2);
-		label11.setForeground(Color.BLACK);
-		bookPanel.add(label11);
+		final JLabel resultadoNombre = new JLabel(nombreEstadio);
+		resultadoNombre.setBounds(120, 110, 400, 50);
+		resultadoNombre.setFont(fuente2);
+		resultadoNombre.setForeground(Color.BLACK);
+		bookPanel.add(resultadoNombre);
 
 		// Aforo
-		final JLabel label2 = new JLabel("Aforo: ");
-		label2.setBounds(20, 175, 300, 50);
-		label2.setFont(fuente2);
-		label2.setForeground(Color.BLACK);
-		bookPanel.add(label2);
+		final JLabel labelAforo = new JLabel("Aforo: ");
+		labelAforo.setBounds(20, 175, 300, 50);
+		labelAforo.setFont(fuente2);
+		labelAforo.setForeground(Color.BLACK);
+		bookPanel.add(labelAforo);
 
 		// ResultadoAforo
 		String aforo = null;
@@ -155,18 +154,18 @@ public class VentanaEstadio extends JFrame {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-		final JLabel label15 = new JLabel(aforo);
-		label15.setBounds(230, 175, 400, 50);
-		label15.setFont(fuente2);
-		label15.setForeground(Color.BLACK);
-		bookPanel.add(label15);
+		final JLabel resultadoAforo = new JLabel(aforo);
+		resultadoAforo.setBounds(230, 175, 400, 50);
+		resultadoAforo.setFont(fuente2);
+		resultadoAforo.setForeground(Color.BLACK);
+		bookPanel.add(resultadoAforo);
 
 		// AnyoCreacion
-		final JLabel label22 = new JLabel("A\u00f1o de creaci\u00f3n: ");
-		label22.setBounds(20, 240, 280, 50);
-		label22.setFont(fuente2);
-		label22.setForeground(Color.BLACK);
-		bookPanel.add(label22);
+		final JLabel labelAnyo = new JLabel("A\u00f1o de creaci\u00f3n: ");
+		labelAnyo.setBounds(20, 240, 280, 50);
+		labelAnyo.setFont(fuente2);
+		labelAnyo.setForeground(Color.BLACK);
+		bookPanel.add(labelAnyo);
 
 		// ResultadoAnyoClub
 		String anyoDeEstadio = null;
@@ -176,11 +175,11 @@ public class VentanaEstadio extends JFrame {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-		final JLabel label155 = new JLabel(anyoDeEstadio);
-		label155.setBounds(200, 240, 400, 50);
-		label155.setFont(fuente2);
-		label155.setForeground(Color.BLACK);
-		bookPanel.add(label155);
+		final JLabel resultadoAnyo = new JLabel(anyoDeEstadio);
+		resultadoAnyo.setBounds(200, 240, 400, 50);
+		resultadoAnyo.setFont(fuente2);
+		resultadoAnyo.setForeground(Color.BLACK);
+		bookPanel.add(resultadoAnyo);
 
 		// Ciudad
 		final JLabel labelCiudad = new JLabel("Ciudad: ");
@@ -197,11 +196,11 @@ public class VentanaEstadio extends JFrame {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-		final JLabel label14 = new JLabel(ciudadEstadio);
-		label14.setBounds(200, 305, 400, 50);
-		label14.setFont(fuente2);
-		label14.setForeground(Color.BLACK);
-		bookPanel.add(label14);
+		final JLabel resultadoCiudad = new JLabel(ciudadEstadio);
+		resultadoCiudad.setBounds(200, 305, 400, 50);
+		resultadoCiudad.setFont(fuente2);
+		resultadoCiudad.setForeground(Color.BLACK);
+		bookPanel.add(resultadoCiudad);
 
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
