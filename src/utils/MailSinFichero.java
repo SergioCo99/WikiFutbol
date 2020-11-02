@@ -14,7 +14,7 @@ import javax.mail.internet.MimeMessage;
 
 public class MailSinFichero {
 
-	public static void Email(Session session, String toEmail, String subject, String body) {
+	private static void Email(Session session, String toEmail, String subject, String body) {
 		try {
 			MimeMessage msg = new MimeMessage(session);
 			// set message headers

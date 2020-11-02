@@ -154,7 +154,7 @@ public class VentanaEntrenador extends JFrame {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-		final JLabel resultadoFechaNac= new JLabel(fechaNacimiento);
+		final JLabel resultadoFechaNac = new JLabel(fechaNacimiento);
 		resultadoFechaNac.setBounds(230, 175, 400, 50);
 		resultadoFechaNac.setFont(fuente2);
 		resultadoFechaNac.setForeground(Color.BLACK);

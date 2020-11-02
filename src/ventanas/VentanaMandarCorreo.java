@@ -210,12 +210,13 @@ public class VentanaMandarCorreo extends JFrame {
 							try {
 								if (todos.isSelected() == true) {
 									for (int i = 0; i < database.DBManager.todosLosCorreos().size(); i++) {
-										utils.MailConFichero.m2(database.DBManager.todosLosCorreos().get(i),
-												txtAsunto.getText(), texto.getText(), path);
+										utils.MailConFichero.SendMailConFichero(
+												database.DBManager.todosLosCorreos().get(i), txtAsunto.getText(),
+												texto.getText(), path);
 									}
 								} else if (todos.isSelected() == false) {
-									utils.MailConFichero.m2(jcb.getSelectedItem().toString(), txtAsunto.getText(),
-											texto.getText(), path);
+									utils.MailConFichero.SendMailConFichero(jcb.getSelectedItem().toString(),
+											txtAsunto.getText(), texto.getText(), path);
 								}
 							} catch (DBManagerException e1) {
 								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());

@@ -24,7 +24,7 @@ import javax.mail.internet.MimeMultipart;
 
 public class MailConFichero {
 
-	public static void m2(String dest, String asunto, String texto, String filename) {
+	public static void SendMailConFichero(String dest, String asunto, String texto, String filename) {
 		// Recipient's email ID needs to be mentioned.
 		// dest = "eneko.perez@opendeusto.es";
 
@@ -107,6 +107,6 @@ public class MailConFichero {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		m2("eneko.perez23@gmail.com", "Asunto? m2.java", "Texto?  m2.java", utils.FileChooser.Choose());
+		SendMailConFichero("eneko.perez23@gmail.com", "Asunto? m2.java", "Texto?  m2.java", utils.FileChooser.Choose());
 	}
 }
