@@ -27,7 +27,6 @@ public class VentanaEntrenador extends JFrame {
 	private Usuario usuario;
 	static VentanaEquipo frame;
 
-	// se usa en esta clase??? si no hay que borrarlo
 	public static boolean privilegiosAdmin() {
 		try {
 			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {
@@ -127,25 +126,25 @@ public class VentanaEntrenador extends JFrame {
 		bookPanel.add(cabecera);
 
 		// NombreEntrenador
-		final JLabel label1 = new JLabel("Nombre: ");
-		label1.setBounds(20, 110, 150, 50);
-		label1.setFont(fuente2);
-		label1.setForeground(Color.BLACK);
-		bookPanel.add(label1);
+		final JLabel labelNombre = new JLabel("Nombre: ");
+		labelNombre.setBounds(20, 110, 150, 50);
+		labelNombre.setFont(fuente2);
+		labelNombre.setForeground(Color.BLACK);
+		bookPanel.add(labelNombre);
 
 		// ResultadoNombreEntrenador
-		final JLabel label11 = new JLabel(nombreEntrenador);
-		label11.setBounds(120, 110, 400, 50);
-		label11.setFont(fuente2);
-		label11.setForeground(Color.BLACK);
-		bookPanel.add(label11);
+		final JLabel resultadoNombre = new JLabel(nombreEntrenador);
+		resultadoNombre.setBounds(120, 110, 400, 50);
+		resultadoNombre.setFont(fuente2);
+		resultadoNombre.setForeground(Color.BLACK);
+		bookPanel.add(resultadoNombre);
 
 		// fechaNac
-		final JLabel label2 = new JLabel("Fecha Nacimiento: ");
-		label2.setBounds(20, 175, 300, 50);
-		label2.setFont(fuente2);
-		label2.setForeground(Color.BLACK);
-		bookPanel.add(label2);
+		final JLabel labelFechaNac = new JLabel("Fecha Nacimiento: ");
+		labelFechaNac.setBounds(20, 175, 300, 50);
+		labelFechaNac.setFont(fuente2);
+		labelFechaNac.setForeground(Color.BLACK);
+		bookPanel.add(labelFechaNac);
 
 		// ResultadofechaNac
 		String fechaNacimiento = null;
@@ -155,20 +154,20 @@ public class VentanaEntrenador extends JFrame {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-		final JLabel label15 = new JLabel(fechaNacimiento);
-		label15.setBounds(230, 175, 400, 50);
-		label15.setFont(fuente2);
-		label15.setForeground(Color.BLACK);
-		bookPanel.add(label15);
+		final JLabel resultadoFechaNac= new JLabel(fechaNacimiento);
+		resultadoFechaNac.setBounds(230, 175, 400, 50);
+		resultadoFechaNac.setFont(fuente2);
+		resultadoFechaNac.setForeground(Color.BLACK);
+		bookPanel.add(resultadoFechaNac);
 
 		// Club
-		final JLabel label22 = new JLabel("Club: ");
-		label22.setBounds(20, 240, 150, 50);
-		label22.setFont(fuente2);
-		label22.setForeground(Color.BLACK);
-		bookPanel.add(label22);
+		final JLabel labelClub = new JLabel("Club: ");
+		labelClub.setBounds(20, 240, 150, 50);
+		labelClub.setFont(fuente2);
+		labelClub.setForeground(Color.BLACK);
+		bookPanel.add(labelClub);
 
-		// ResultadoClub ESTE NO SE VE EL NUMERO NO EL NOMBRE DEL EQUIPO
+		// ResultadoClub
 		String clubEntrenador = null;
 		try {
 			clubEntrenador = DBManager.clubEntrenador(entrenador, "wikifutbolschema");
@@ -176,18 +175,18 @@ public class VentanaEntrenador extends JFrame {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-		final JLabel label155 = new JLabel(clubEntrenador);
-		label155.setBounds(200, 240, 400, 50);
-		label155.setFont(fuente2);
-		label155.setForeground(Color.BLACK);
-		bookPanel.add(label155);
+		final JLabel resultadoClub = new JLabel(clubEntrenador);
+		resultadoClub.setBounds(200, 240, 400, 50);
+		resultadoClub.setFont(fuente2);
+		resultadoClub.setForeground(Color.BLACK);
+		bookPanel.add(resultadoClub);
 
 		// Ciudad
-		final JLabel label3 = new JLabel("Ciudad: ");
-		label3.setBounds(20, 305, 275, 50);
-		label3.setFont(fuente2);
-		label3.setForeground(Color.BLACK);
-		bookPanel.add(label3);
+		final JLabel labelCiudad = new JLabel("Ciudad: ");
+		labelCiudad.setBounds(20, 305, 275, 50);
+		labelCiudad.setFont(fuente2);
+		labelCiudad.setForeground(Color.BLACK);
+		bookPanel.add(labelCiudad);
 
 		// ResultadoCiudad
 		String ciudadEntrenador = null;
@@ -197,19 +196,19 @@ public class VentanaEntrenador extends JFrame {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-		final JLabel label33 = new JLabel(ciudadEntrenador);
-		label33.setBounds(200, 240, 400, 50);
-		label33.setBounds(200, 305, 400, 50);
-		label33.setFont(fuente2);
-		label33.setForeground(Color.BLACK);
-		bookPanel.add(label33);
+		final JLabel resultadoCiudad = new JLabel(ciudadEntrenador);
+		resultadoCiudad.setBounds(200, 240, 400, 50);
+		resultadoCiudad.setBounds(200, 305, 400, 50);
+		resultadoCiudad.setFont(fuente2);
+		resultadoCiudad.setForeground(Color.BLACK);
+		bookPanel.add(resultadoCiudad);
 
 		// Formacion
-		final JLabel label4 = new JLabel("Formacion: ");
-		label4.setBounds(20, 370, 275, 50);
-		label4.setFont(fuente2);
-		label4.setForeground(Color.BLACK);
-		bookPanel.add(label4);
+		final JLabel labelFormacion = new JLabel("Formacion: ");
+		labelFormacion.setBounds(20, 370, 275, 50);
+		labelFormacion.setFont(fuente2);
+		labelFormacion.setForeground(Color.BLACK);
+		bookPanel.add(labelFormacion);
 
 		// Resultado Formacion
 		String formacionEntrenador = null;
@@ -219,11 +218,11 @@ public class VentanaEntrenador extends JFrame {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-		final JLabel label44 = new JLabel(formacionEntrenador);
-		label44.setBounds(200, 370, 400, 50);
-		label44.setFont(fuente2);
-		label44.setForeground(Color.BLACK);
-		bookPanel.add(label44);
+		final JLabel resultadoFormacion = new JLabel(formacionEntrenador);
+		resultadoFormacion.setBounds(200, 370, 400, 50);
+		resultadoFormacion.setFont(fuente2);
+		resultadoFormacion.setForeground(Color.BLACK);
+		bookPanel.add(resultadoFormacion);
 
 		// Mentalidad
 		final JLabel labelMentalidad = new JLabel("Mentalidad: ");
@@ -240,11 +239,11 @@ public class VentanaEntrenador extends JFrame {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-		final JLabel label442 = new JLabel(mentalidadEntrenador);
-		label442.setBounds(200, 435, 400, 50);
-		label442.setFont(fuente2);
-		label442.setForeground(Color.BLACK);
-		bookPanel.add(label442);
+		final JLabel resultadoMentalidad = new JLabel(mentalidadEntrenador);
+		resultadoMentalidad.setBounds(200, 435, 400, 50);
+		resultadoMentalidad.setFont(fuente2);
+		resultadoMentalidad.setForeground(Color.BLACK);
+		bookPanel.add(resultadoMentalidad);
 
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);

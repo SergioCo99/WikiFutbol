@@ -24,7 +24,6 @@ import utils.JLabelGraficoAjustado;
 
 public class VentanaJugador extends JFrame {
 
-	// se usa en esta clase??? si no hay que borrarlo
 	public static boolean privilegiosAdmin() {
 		try {
 			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {
@@ -128,154 +127,151 @@ public class VentanaJugador extends JFrame {
 		bookPanel.add(cabecera);
 
 		// NombreEquipo
-		final JLabel label1 = new JLabel("Nombre: ");
-		label1.setBounds(20, 110, 150, 50);
-		label1.setFont(fuente2);
-		label1.setForeground(Color.BLACK);
-		bookPanel.add(label1);
+		final JLabel labelNombre = new JLabel("Nombre: ");
+		labelNombre.setBounds(20, 110, 150, 50);
+		labelNombre.setFont(fuente2);
+		labelNombre.setForeground(Color.BLACK);
+		bookPanel.add(labelNombre);
 
 		// ResultadoNombreEquipo
-		final JLabel label11 = new JLabel(nombreJugador);
-		// final JLabel label11 = new JLabel("Nombre Prueba");
-		label11.setBounds(120, 110, 400, 50);
-		label11.setFont(fuente2);
-		label11.setForeground(Color.BLACK);
-		bookPanel.add(label11);
+		final JLabel resultadoNombre = new JLabel(nombreJugador);
+		resultadoNombre.setBounds(120, 110, 400, 50);
+		resultadoNombre.setFont(fuente2);
+		resultadoNombre.setForeground(Color.BLACK);
+		bookPanel.add(resultadoNombre);
 
 		// Fecha Nacimiento
-		final JLabel label2 = new JLabel("Fecha de nacimiento: ");
-		label2.setBounds(20, 175, 290, 50);
-		label2.setFont(fuente2);
-		label2.setForeground(Color.BLACK);
-		bookPanel.add(label2);
+		final JLabel labelFechaNac = new JLabel("Fecha de nacimiento: ");
+		labelFechaNac.setBounds(20, 175, 290, 50);
+		labelFechaNac.setFont(fuente2);
+		labelFechaNac.setForeground(Color.BLACK);
+		bookPanel.add(labelFechaNac);
 
 		// Resultado Fecha Nacimiento
 		String fnacimi = jugador.getFechaNac();
-		final JLabel label15 = new JLabel(fnacimi);
-		label15.setBounds(260, 175, 400, 50);
-		label15.setFont(fuente2);
-		label15.setForeground(Color.BLACK);
-		bookPanel.add(label15);
+		final JLabel resultadoFechaNac = new JLabel(fnacimi);
+		resultadoFechaNac.setBounds(260, 175, 400, 50);
+		resultadoFechaNac.setFont(fuente2);
+		resultadoFechaNac.setForeground(Color.BLACK);
+		bookPanel.add(resultadoFechaNac);
 
 		// Club
-		final JLabel label22 = new JLabel("Club: ");
-		label22.setBounds(20, 240, 150, 50);
-		label22.setFont(fuente2);
-		label22.setForeground(Color.BLACK);
-		bookPanel.add(label22);
+		final JLabel labelClub = new JLabel("Club: ");
+		labelClub.setBounds(20, 240, 150, 50);
+		labelClub.setFont(fuente2);
+		labelClub.setForeground(Color.BLACK);
+		bookPanel.add(labelClub);
 
 		// Resultado Club
 		String equipo = jugador.getClub();
-		final JLabel label223 = new JLabel(equipo);
-		label223.setBounds(100, 240, 400, 50);
-		label223.setFont(fuente2);
-		label223.setForeground(Color.BLACK);
-		bookPanel.add(label223);
+		final JLabel resultadoClub = new JLabel(equipo);
+		resultadoClub.setBounds(100, 240, 400, 50);
+		resultadoClub.setFont(fuente2);
+		resultadoClub.setForeground(Color.BLACK);
+		bookPanel.add(resultadoClub);
 
 		// Ciudad
-		final JLabel label3 = new JLabel("Ciudad: ");
-		label3.setBounds(20, 305, 150, 50);
-		label3.setFont(fuente2);
-		label3.setForeground(Color.BLACK);
-		bookPanel.add(label3);
+		final JLabel labelCiudad = new JLabel("Ciudad: ");
+		labelCiudad.setBounds(20, 305, 150, 50);
+		labelCiudad.setFont(fuente2);
+		labelCiudad.setForeground(Color.BLACK);
+		bookPanel.add(labelCiudad);
 
 		// Resultado Ciudad
 		String ciudad = jugador.getCiudad();
-		final JLabel label33 = new JLabel(ciudad);
-		label33.setBounds(115, 305, 400, 50);
-		label33.setFont(fuente2);
-		label33.setForeground(Color.BLACK);
-		bookPanel.add(label33);
+		final JLabel resultadoCiudad = new JLabel(ciudad);
+		resultadoCiudad.setBounds(115, 305, 400, 50);
+		resultadoCiudad.setFont(fuente2);
+		resultadoCiudad.setForeground(Color.BLACK);
+		bookPanel.add(resultadoCiudad);
 
 		// Posicion
-		final JLabel label4 = new JLabel("Posicion: ");
-		label4.setBounds(20, 370, 150, 50);
-		label4.setFont(fuente2);
-		label4.setForeground(Color.BLACK);
-		bookPanel.add(label4);
+		final JLabel labelPosicion = new JLabel("Posicion: ");
+		labelPosicion.setBounds(20, 370, 150, 50);
+		labelPosicion.setFont(fuente2);
+		labelPosicion.setForeground(Color.BLACK);
+		bookPanel.add(labelPosicion);
 
 		// Resultado Posicion
-		// String a = jugador.getPosicion();
-		final JLabel label44 = new JLabel("Prueba");
-		label44.setBounds(127, 370, 400, 50);
-		label44.setFont(fuente2);
-		label44.setForeground(Color.BLACK);
-		bookPanel.add(label44);
+		final JLabel resultadoPosicion = new JLabel("Prueba");
+		resultadoPosicion.setBounds(127, 370, 400, 50);
+		resultadoPosicion.setFont(fuente2);
+		resultadoPosicion.setForeground(Color.BLACK);
+		bookPanel.add(resultadoPosicion);
 
 		// Dorsal
-		final JLabel label5 = new JLabel("Dorsal: ");
-		label5.setBounds(20, 435, 150, 50);
-		label5.setFont(fuente2);
-		label5.setForeground(Color.BLACK);
-		bookPanel.add(label5);
+		final JLabel labelDorsal = new JLabel("Dorsal: ");
+		labelDorsal.setBounds(20, 435, 150, 50);
+		labelDorsal.setFont(fuente2);
+		labelDorsal.setForeground(Color.BLACK);
+		bookPanel.add(labelDorsal);
 
 		// Resultado Dorsal
 		String dorsal = Integer.toString(jugador.getDorsal());
-		final JLabel label55 = new JLabel(dorsal);
-		label55.setBounds(120, 435, 400, 50);
-		label55.setFont(fuente2);
-		label55.setForeground(Color.BLACK);
-		bookPanel.add(label55);
+		final JLabel resultadoDorsal = new JLabel(dorsal);
+		resultadoDorsal.setBounds(120, 435, 400, 50);
+		resultadoDorsal.setFont(fuente2);
+		resultadoDorsal.setForeground(Color.BLACK);
+		bookPanel.add(resultadoDorsal);
 
 		// Goles
-		final JLabel label6 = new JLabel("Goles: ");
-		label6.setBounds(20, 500, 150, 50);
-		label6.setFont(fuente2);
-		label6.setForeground(Color.BLACK);
-		bookPanel.add(label6);
+		final JLabel labelGoles = new JLabel("Goles: ");
+		labelGoles.setBounds(20, 500, 150, 50);
+		labelGoles.setFont(fuente2);
+		labelGoles.setForeground(Color.BLACK);
+		bookPanel.add(labelGoles);
 
 		// Resultado Goles
 		String goles = Integer.toString(jugador.getGoles());
-		final JLabel label66 = new JLabel(goles);
-		label66.setBounds(120, 500, 400, 50);
-		label66.setFont(fuente2);
-		label66.setForeground(Color.BLACK);
-		bookPanel.add(label66);
+		final JLabel resultadoGoles = new JLabel(goles);
+		resultadoGoles.setBounds(120, 500, 400, 50);
+		resultadoGoles.setFont(fuente2);
+		resultadoGoles.setForeground(Color.BLACK);
+		bookPanel.add(resultadoGoles);
 
 		// Altura
-		final JLabel label7 = new JLabel("Altura: ");
-		label7.setBounds(400, 240, 150, 50);
-		label7.setFont(fuente2);
-		label7.setForeground(Color.BLACK);
-		bookPanel.add(label7);
+		final JLabel labelAltura = new JLabel("Altura: ");
+		labelAltura.setBounds(400, 240, 150, 50);
+		labelAltura.setFont(fuente2);
+		labelAltura.setForeground(Color.BLACK);
+		bookPanel.add(labelAltura);
 
 		// Resultado Altura
 		String altura = Integer.toString(jugador.getAltura());
-		final JLabel label77 = new JLabel(altura);
-		label77.setBounds(500, 240, 400, 50);
-		label77.setFont(fuente2);
-		label77.setForeground(Color.BLACK);
-		bookPanel.add(label77);
+		final JLabel resultadoAltura = new JLabel(altura);
+		resultadoAltura.setBounds(500, 240, 400, 50);
+		resultadoAltura.setFont(fuente2);
+		resultadoAltura.setForeground(Color.BLACK);
+		bookPanel.add(resultadoAltura);
 
 		// Peso
-		final JLabel label8 = new JLabel("Peso: ");
-		label8.setBounds(400, 305, 150, 50);
-		label8.setFont(fuente2);
-		label8.setForeground(Color.BLACK);
-		bookPanel.add(label8);
+		final JLabel labelPeso = new JLabel("Peso: ");
+		labelPeso.setBounds(400, 305, 150, 50);
+		labelPeso.setFont(fuente2);
+		labelPeso.setForeground(Color.BLACK);
+		bookPanel.add(labelPeso);
 
 		// Resultado Peso
 		String peso = Integer.toString(jugador.getPeso());
-		final JLabel label88 = new JLabel(peso);
-		label88.setBounds(500, 305, 400, 50);
-		label88.setFont(fuente2);
-		label88.setForeground(Color.BLACK);
-		bookPanel.add(label88);
+		final JLabel resultadoPeso = new JLabel(peso);
+		resultadoPeso.setBounds(500, 305, 400, 50);
+		resultadoPeso.setFont(fuente2);
+		resultadoPeso.setForeground(Color.BLACK);
+		bookPanel.add(resultadoPeso);
 
 		// Pie Fav
-		final JLabel label9 = new JLabel("Pie Fav: ");
-		label9.setBounds(400, 370, 150, 50);
-		label9.setFont(fuente2);
-		label9.setForeground(Color.BLACK);
-		bookPanel.add(label9);
+		final JLabel labelPieFav = new JLabel("Pie Fav: ");
+		labelPieFav.setBounds(400, 370, 150, 50);
+		labelPieFav.setFont(fuente2);
+		labelPieFav.setForeground(Color.BLACK);
+		bookPanel.add(labelPieFav);
 
 		// Resultado Pie Fav
-		// PieFav piefav1 = jugador.getPiefav();
-		final JLabel label17 = new JLabel("Prueba");
-		label17.setBounds(500, 370, 400, 50);
-		label17.setFont(fuente2);
-		label17.setForeground(Color.BLACK);
-		bookPanel.add(label17);
+		final JLabel resultadoPieFav = new JLabel("Prueba");
+		resultadoPieFav.setBounds(500, 370, 400, 50);
+		resultadoPieFav.setFont(fuente2);
+		resultadoPieFav.setForeground(Color.BLACK);
+		bookPanel.add(resultadoPieFav);
 
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);

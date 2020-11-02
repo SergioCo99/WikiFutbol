@@ -24,7 +24,6 @@ import utils.JLabelGraficoAjustado;
 
 public class VentanaEquipo extends JFrame {
 
-	// se usa en esta clase??? si no hay que borrarlo
 	public static boolean privilegiosAdmin() {
 		try {
 			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {
@@ -131,42 +130,42 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(cabecera);
 
 		// NombreEquipo
-		final JLabel label1 = new JLabel("Equipo: ");
-		label1.setBounds(20, 110, 150, 50);
-		label1.setFont(fuente2);
-		label1.setForeground(Color.BLACK);
-		bookPanel.add(label1);
+		final JLabel labelNombre = new JLabel("Equipo: ");
+		labelNombre.setBounds(20, 110, 150, 50);
+		labelNombre.setFont(fuente2);
+		labelNombre.setForeground(Color.BLACK);
+		bookPanel.add(labelNombre);
 
 		// ResultadoNombreEquipo
-		final JLabel label11 = new JLabel(nombreEquipo);
+		final JLabel resultadoNombre = new JLabel(nombreEquipo);
 		// final JLabel label11 = new JLabel("Nombre Prueba");
-		label11.setBounds(120, 110, 400, 50);
-		label11.setFont(fuente2);
-		label11.setForeground(Color.BLACK);
-		bookPanel.add(label11);
+		resultadoNombre.setBounds(120, 110, 400, 50);
+		resultadoNombre.setFont(fuente2);
+		resultadoNombre.setForeground(Color.BLACK);
+		bookPanel.add(resultadoNombre);
 
 		// CiudadEquipo
-		final JLabel label2 = new JLabel("Ciudad: ");
-		label2.setBounds(20, 175, 150, 50);
-		label2.setFont(fuente2);
-		label2.setForeground(Color.BLACK);
-		bookPanel.add(label2);
+		final JLabel labelCiudad = new JLabel("Ciudad: ");
+		labelCiudad.setBounds(20, 175, 150, 50);
+		labelCiudad.setFont(fuente2);
+		labelCiudad.setForeground(Color.BLACK);
+		bookPanel.add(labelCiudad);
 
 		// ResultadoCiudadEquipo
 		String ciudadEquipo = club.getCiudad();
 		// String ciudadEquipo = "Ciudad Prueba";
-		final JLabel label15 = new JLabel(ciudadEquipo);
-		label15.setBounds(120, 175, 400, 50);
-		label15.setFont(fuente2);
-		label15.setForeground(Color.BLACK);
-		bookPanel.add(label15);
+		final JLabel resultadoCiudad = new JLabel(ciudadEquipo);
+		resultadoCiudad.setBounds(120, 175, 400, 50);
+		resultadoCiudad.setFont(fuente2);
+		resultadoCiudad.setForeground(Color.BLACK);
+		bookPanel.add(resultadoCiudad);
 
 		// EstadioEquipo
-		final JLabel label22 = new JLabel("Estadio: ");
-		label22.setBounds(20, 240, 150, 50);
-		label22.setFont(fuente2);
-		label22.setForeground(Color.BLACK);
-		bookPanel.add(label22);
+		final JLabel labelEstadio = new JLabel("Estadio: ");
+		labelEstadio.setBounds(20, 240, 150, 50);
+		labelEstadio.setFont(fuente2);
+		labelEstadio.setForeground(Color.BLACK);
+		bookPanel.add(labelEstadio);
 
 		// ResultadoEstadioEquipo
 
@@ -197,39 +196,36 @@ public class VentanaEquipo extends JFrame {
 		});
 
 		// AnyoCreacion
-		final JLabel label3 = new JLabel("A\u00f1o de creaci\u00f3n: ");
-		label3.setBounds(20, 305, 275, 50);
-		label3.setFont(fuente2);
-		label3.setForeground(Color.BLACK);
-		bookPanel.add(label3);
+		final JLabel labelAnyo = new JLabel("A\u00f1o de creaci\u00f3n: ");
+		labelAnyo.setBounds(20, 305, 275, 50);
+		labelAnyo.setFont(fuente2);
+		labelAnyo.setForeground(Color.BLACK);
+		bookPanel.add(labelAnyo);
 
 		// ResultadoAnyoCreacion
 		String anyoCreacion = Integer.toString(club.getAnyoCreacion());
-		final JLabel label33 = new JLabel(anyoCreacion);
-		// String anyoCreacion = "2020";
-		label33.setBounds(200, 240, 400, 50);
-
-		// String anyoCreacion = "2020";
-		label33.setBounds(200, 305, 400, 50);
-		label33.setFont(fuente2);
-		label33.setForeground(Color.BLACK);
-		bookPanel.add(label33);
+		final JLabel resultadoAnyo = new JLabel(anyoCreacion);
+		resultadoAnyo.setBounds(200, 240, 400, 50);
+		resultadoAnyo.setBounds(200, 305, 400, 50);
+		resultadoAnyo.setFont(fuente2);
+		resultadoAnyo.setForeground(Color.BLACK);
+		bookPanel.add(resultadoAnyo);
 
 		// Palmares
-		final JLabel label4 = new JLabel("Palmares: ");
-		label4.setBounds(20, 370, 275, 50);
-		label4.setFont(fuente2);
-		label4.setForeground(Color.BLACK);
-		bookPanel.add(label4);
+		final JLabel labelPalmares = new JLabel("Palmares: ");
+		labelPalmares.setBounds(20, 370, 275, 50);
+		labelPalmares.setFont(fuente2);
+		labelPalmares.setForeground(Color.BLACK);
+		bookPanel.add(labelPalmares);
 
 		// Resultado Palmares
 		String palmares = club.getPalmares();
 		// String palmares = "Palmares Prueba";
-		final JLabel label44 = new JLabel(palmares);
-		label44.setBounds(200, 370, 400, 50);
-		label44.setFont(fuente2);
-		label44.setForeground(Color.BLACK);
-		bookPanel.add(label44);
+		final JLabel resultadoPalmares = new JLabel(palmares);
+		resultadoPalmares.setBounds(200, 370, 400, 50);
+		resultadoPalmares.setFont(fuente2);
+		resultadoPalmares.setForeground(Color.BLACK);
+		bookPanel.add(resultadoPalmares);
 
 		// NombreEntrenador
 		final JLabel labelEntrenador = new JLabel("Entrenador: ");
