@@ -1,5 +1,9 @@
 package clases;
 
+/**Clase para la creación de estadios 
+ * @author sergiolopez
+ *
+ */
 public class Estadio {
 
 	int id;
@@ -8,6 +12,13 @@ public class Estadio {
 	int anyoCreacion;
 	String ciudad;
 
+	/**Crea un estadio con sus respectivos atributos
+	 * @param id del estadio
+	 * @param nombre del estadio
+	 * @param aforo del estadio
+	 * @param anyoCreacion del estadio
+	 * @param ciudad del estadio
+	 */
 	public Estadio(int id, String nombre, int aforo, int anyoCreacion, String ciudad) {
 		super();
 		this.id = id;

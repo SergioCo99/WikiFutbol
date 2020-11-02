@@ -1,5 +1,9 @@
 package clases;
 
+/** Clase para la creacion de empleados del club
+ * @author sergiolopez
+ *
+ */
 public class EmpleadoDeClub {
 
 	int id;
@@ -8,6 +12,13 @@ public class EmpleadoDeClub {
 	String club;
 	String ciudad;
 
+	/** Crea un empleado del club con sus respectivos atributos 
+	 * @param id del empleado del club
+	 * @param nombre id del empleado del club
+	 * @param fechaNac id del empleado del club
+	 * @param club id del empleado del club
+	 * @param ciudad id del empleado del club
+	 */
 	public EmpleadoDeClub(int id, String nombre, String fechaNac, String club, String ciudad) {
 		super();
 		this.id = id;
