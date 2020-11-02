@@ -14,7 +14,7 @@ public class MailSinFicheroTest {
 
 	@Test
 	public void test() {
-		String toEmail = "wikifutbol@gmail.com"; // tiene que ser una direccion de correo
+		String toEmail = "wikifutbol@gmail.com";
 		String asunto = "asunto -test-";
 		String texto = "texto -test-";
 

@@ -17,7 +17,7 @@ public class MailConFicheroTest {
 		String dest = "wikifutbol@gmail.com"; // tiene que ser una direccion de correo
 		String asunto = "asunto -test-";
 		String texto = "texto -test-";
-		String filename = utils.FileChooser.Choose();
+		String filename = utils.FileChooser.Choose(); // tiene que tener un archivo SI O SI
 
 		utils.MailConFichero.SendMailConFichero(dest, asunto, texto, filename);
 	}
