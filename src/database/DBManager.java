@@ -590,6 +590,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este metodo recopila todos los Clubes guardados en la base de datos
+	 * 
+	 * @return Devuelve el conjunto de libros en la BD en formato ArrayList
+	 * @throws DBManagerException En caso de existir algún problema de acceso a la BD
+	 */
 	public static ArrayList<Club> getClubes() throws DBManagerException {
 		try {
 			connect();
@@ -613,6 +619,11 @@ public class DBManager {
 	}
 
 	// Métodos entrenador
+	/**
+	 * Este metodo recopila todos los entrenadores guardados en la base de datos
+	 * @return Devuelve el conjunto de Entrenadores en la BD en formato arrayList
+	 * @throws DBManagerException En caso de existir algún problema de acceso a la BD
+	 */
 	public static ArrayList<Entrenador> getEntrenadores() throws DBManagerException {
 		try {
 			connect();
@@ -653,6 +664,14 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este metodo recopila la fecha de nacimiento del entrenador
+	 * 
+	 * @param Entrenador Nombre del entrenador del que se desa el anyo de nacimiento
+	 * @param BD Nombre de la base de datos a utilizar
+	 * @return Devuelve la fecha de nacimiento del entrenador
+	 * @throws DBManagerException
+	 */
 	public static String fechaNacimiento(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
