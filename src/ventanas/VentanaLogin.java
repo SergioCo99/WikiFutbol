@@ -160,7 +160,7 @@ public class VentanaLogin extends JFrame {
 				if (checkContrasena.isSelected() == true) {
 					txtPassword.setEchoChar((char) 0);
 				} else {
-					txtPassword.setEchoChar('ï¿½');
+					txtPassword.setEchoChar('•');
 				}
 			}
 		});
