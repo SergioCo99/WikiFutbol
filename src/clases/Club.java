@@ -1,5 +1,9 @@
 package clases;
 
+/** Clase para la creacion de clubes
+ * @author sergiolopez
+ *
+ */
 public class Club {
 
 	int id;
@@ -10,6 +14,15 @@ public class Club {
 	String palmares;
 	String entrenador;
 
+	/** Crea un club con sus diferentes paramentros
+	 * @param id del club
+	 * @param nombre del club
+	 * @param ciudad del club
+	 * @param estadio del club
+	 * @param anyoCreacion del club
+	 * @param palmares del club
+	 * @param entrenador del club
+	 */
 	public Club(int id, String nombre, String ciudad, String estadio, int anyoCreacion, String palmares,
 			String entrenador) {
 		super();

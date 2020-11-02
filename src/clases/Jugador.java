@@ -1,7 +1,12 @@
 package clases;
 
+/**Clase para la creación de Jugadores
+ * @author sergiolopez
+ *
+ */
 public class Jugador extends EmpleadoDeClub {
 
+	
 	public enum PieFav {
 		Diestro, Zurdo, Ambidiestro
 	}
@@ -10,6 +15,7 @@ public class Jugador extends EmpleadoDeClub {
 		Delantero, Centrocampista, Defensa, Portero
 	}
 
+	
 	Posicion posicion;
 	int dorsal;
 	int goles;
@@ -20,6 +26,22 @@ public class Jugador extends EmpleadoDeClub {
 	String descripcion;
 	int voto;
 
+	/** Crea un jugador con sus respectivos atributos
+	 * @param id del jugador
+	 * @param nombre del jugador
+	 * @param fechaNac del jugador
+	 * @param club del jugador
+	 * @param ciudad del jugador
+	 * @param posicion del jugador
+	 * @param dorsal del jugador
+	 * @param goles del jugador
+	 * @param altura del jugador
+	 * @param peso del jugador
+	 * @param piefav del jugador
+	 * @param valoracion del jugador
+	 * @param descripcion del jugador
+	 * @param voto del jugador
+	 */
 	public Jugador(int id, String nombre, String fechaNac, String club, String ciudad, Posicion posicion, int dorsal,
 			int goles, int altura, int peso, PieFav piefav, int valoracion, String descripcion, int voto) {
 		super(id, nombre, fechaNac, club, ciudad);

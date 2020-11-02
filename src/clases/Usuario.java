@@ -1,5 +1,9 @@
 package clases;
 
+/**Clase que hace referencia a los usuarios
+ * @author sergiolopez
+ *
+ */
 public class Usuario {
 
 	int id;
@@ -9,6 +13,14 @@ public class Usuario {
 	int admin;
 	String fechaNac; /* YYYY-MM-dd , por ejemplo "1990-06-25" */
 
+	/** Crea un usuario con sus respectivos atributos
+	 * @param id - Id del usuario
+	 * @param nombre - Nombre  del usuario
+	 * @param contrasena - Contraseña  del usuario
+	 * @param correo - Correo  del usuario
+	 * @param admin - Dice si el usuario es admin o no 
+	 * @param fechaNac - Fecha de nacimiento  del usuario
+	 */
 	public Usuario(int id, String nombre, String contrasena, String correo, int admin, String fechaNac) {
 		super();
 		this.id = id;
