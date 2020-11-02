@@ -21,215 +21,242 @@ import javax.swing.JLabel;
 /**
  * Clase mejorada de JLabel para gestionar imagenes ajustadas al JLabel
  */
+
 public class JLabelGraficoAjustado extends JLabel {
-	// la posiciï¿½n X,Y se hereda de JLabel
-	protected int anchuraObjeto; // Anchura definida del objeto en pixels
-	protected int alturaObjeto; // Altura definida del objeto en pixels
-	protected double radsRotacion; // Rotaciï¿½n del objeto en radianes
-	protected float opacidad; // Opacidad del objeto (0.0f a 0.1f)
-	protected BufferedImage imagenObjeto; // imagen para el escalado
-	private static final long serialVersionUID = 1L; // para serializar
+	
+	private static final long serialVersionUID = 1L;
+
+	protected int anchuraLogo; 
+	protected int alturaLogo;
+	protected double radsRotacionLogo;
+	protected float opacidadLogo; 
+	protected BufferedImage imagenLogoWiki;
 
 	/**
 	 * Crea un nuevo JLabel grafico.<br>
 	 * Si no existe el fichero de imagen, se crea un rectangulo blanco con borde
 	 * rojo
 	 *
-	 * @param nombreImagenObjeto Nombre fichero donde esta la imagen del objeto.
+	 * @param nombreimagenLogoWiki Nombre fichero donde esta la imagen del objeto.
 	 *                           Puede ser tambien un nombre de recurso desde el
 	 *                           paquete de esta clase.
 	 * @param anchura            Anchura del grafico en pixels
 	 * @param altura             Altura del grafico en pixels
 	 */
-	public JLabelGraficoAjustado(String nombreImagenObjeto, int anchura, int altura) {
-		setName(nombreImagenObjeto);
-		opacidad = 1.0f;
-		setImagen(nombreImagenObjeto); // Cargamos el icono
+	
+	public JLabelGraficoAjustado(String nombreImagenLogoWiki, int anchura, int altura) {
+		
+		setName(nombreImagenLogoWiki);
+		opacidadLogo = 1.0f;
+		setImagen(nombreImagenLogoWiki); // Carga del Logo
 		setSize(anchura, altura);
+		
 	}
 
 	@Override
 	public void setSize(int anchura, int altura) {
-		if ((anchura <= 0) && (imagenObjeto != null)) {
-			anchura = imagenObjeto.getWidth();
+		
+		if ((anchura <= 0) && (imagenLogoWiki != null)) {
+			anchura = imagenLogoWiki.getWidth();
 		}
-		if ((altura <= 0) && (imagenObjeto != null)) {
-			altura = imagenObjeto.getHeight();
+		if ((altura <= 0) && (imagenLogoWiki != null)) {
+			altura = imagenLogoWiki.getHeight();
 		}
-		anchuraObjeto = anchura;
-		alturaObjeto = altura;
+		
+		anchuraLogo = anchura;
+		alturaLogo = altura;
+		
 		super.setSize(anchura, altura);
 		setPreferredSize(new Dimension(anchura, altura));
 	}
 
 	/**
-	 * Cambia la imagen del objeto
+	 * Este método cambia la imagen del objeto
 	 *
+<<<<<<< HEAD
 	 * @param nomImagenObjeto Nombre fichero donde estï¿½ la imagen del objeto.
 	 *                        Puede ser tambiï¿½n un nombre de recurso desde el
 	 *                        paquete de esta clase.
+=======
+	 * @param nomImagenLogo Nombre fichero donde estï¿½ la imagen del objeto. Puede
+	 *                        ser tambiï¿½n un nombre de recurso desde el paquete de
+	 *                        esta clase.
+>>>>>>> branch 'master' of https://github.com/SergioCo99/WikiFutbol.git
 	 */
-	public void setImagen(String nomImagenObjeto) {
-		File f = new File(nomImagenObjeto);
+	public void setImagen(String nomImagenLogo) {
+		File futbolFile = new File(nomImagenLogo);
 		URL imgURL = null;
+		
 		try {
-			imgURL = f.toURI().toURL();
-			if (!f.exists()) {
-				imgURL = JLabelGraficoAjustado.class.getResource(nomImagenObjeto).toURI().toURL();
+			imgURL = futbolFile.toURI().toURL();
+			if (!futbolFile.exists()) {
+				imgURL = JLabelGraficoAjustado.class.getResource(nomImagenLogo).toURI().toURL();
 			}
 		} catch (Exception e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-		} // Cualquier error de carga, la imagen se queda nula
+		}
+	
 		if (imgURL == null) {
-			imagenObjeto = null;
+			imagenLogoWiki = null;
 		} else {
-			try { // guarda la imagen para dibujarla de forma escalada despuï¿½s
-				imagenObjeto = ImageIO.read(imgURL);
+			try { 
+				// Guarda el logo para posteriormente dibujarlo de manera escalada
+				imagenLogoWiki = ImageIO.read(imgURL);
 			} catch (IOException e) {
 				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			} // Error al leer la imagen
+			} 
 		}
-		if (imagenObjeto == null) {
+		if (imagenLogoWiki == null) {
+			
 			setOpaque(true);
-			setBackground(Color.red);
-			setForeground(Color.blue);
-			setBorder(BorderFactory.createLineBorder(Color.blue));
-			setText(nomImagenObjeto);
+			setBackground(Color.BLACK);
+			setForeground(Color.BLACK);
+			setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			setText(nomImagenLogo);
+			
 		}
 		repaint();
 	}
 
 	/**
-	 * Devuelve la anchura del rectï¿½ngulo grï¿½fico del objeto
+	 * Devuelve la anchura del rectangulo grafico del logo
 	 *
-	 * @return Anchura
+	 * @return AnchuraLogo La anchura que tiene el logo
 	 */
-	public int getAnchuraObjeto() {
-		return anchuraObjeto;
+	public int getAnchuraLogo() {
+		return anchuraLogo;
 	}
 
 	/**
-	 * Devuelve la altura del rectï¿½ngulo grï¿½fico del objeto
+	 * Devuelve la altura del rectangulo grafico del logo
 	 *
-	 * @return Altura
+	 * @return AlturaLogo La altura que tiene el logo
 	 */
-	public int getAlturaObjeto() {
-		return alturaObjeto;
+	public int getAlturaLogo() {
+		return alturaLogo;
 	}
 
 	/**
-	 * Devuelve la rotaciï¿½n del objeto
+	 * Devuelve la rotacion del logo
 	 *
-	 * @return Rotaciï¿½n actual del objeto en radianes
+	 * @return RotacionLogo Rotacion actual del logo en radianes
 	 */
-	public double getRotacion() {
-		return radsRotacion;
+	public double getRotacionLogo() {
+		return radsRotacionLogo;
 	}
 
 	/**
-	 * Modifica la rotaciï¿½n del objeto
+	 * Modifica la rotacion del logo
 	 *
-	 * @param rotacion Nueva rotaciï¿½n del objeto (en radianes)
+	 * @param rotacionLogo Nueva rotacion del logo (en radianes)
 	 */
-	public void setRotacion(double rotacion) {
-		radsRotacion = rotacion;
-		repaint(); // Si no repintamos aquï¿½ Swing no sabe que ha cambiado el dibujo
+	public void setRotacionLogo(double rotacionLogo) {
+		radsRotacionLogo = rotacionLogo;
+		repaint(); // Necesitamos el Repaint, sino, Swing no sabe que ha cambiado el dibujo
 	}
 
 	/**
-	 * Devuelve la opacidad del objeto
+	 * Devuelve la opacidad del logo
 	 *
-	 * @return Opacidad del objeto (0.0f transparente a 1.0f opaco)
+	 * @return OpacidadLogo Opacidad del logo (0.0f transparente a 1.0f opaco)
 	 */
-	public float getOpacidad() {
-		return opacidad;
+	public float getOpacidadLogo() {
+		return opacidadLogo;
 	}
 
 	/**
-	 * Modifica la opacidad del objeto
+	 * Modifica la opacidad del logo
 	 *
-	 * @param opacidad Opacidad del objeto (0.0f transparente a 1.0f opaco)
+	 * @param opacidad Opacidad del logo (0.0f transparente a 1.0f opaco)
 	 */
-	public void setOpacidad(float opacidad) {
+	public void setOpacidadLogo(float opacidad) {
 		if ((opacidad < 0.0f) || (opacidad > 1.0f)) {
-			return; // No se cambia si el valor es invï¿½lido
+			return; 
 		}
-		this.opacidad = opacidad;
-		repaint(); // Si no repintamos aquï¿½ Swing no sabe que ha cambiado el dibujo
+		this.opacidadLogo = opacidad;
+		repaint(); // Necesitamos el Repaint, sino, Swing no sabe que ha cambiado el dibujo
 	}
 
 	/**
-	 * Actualiza la posiciï¿½n del objeto
+	 * Actualiza la posicion del objeto
 	 *
-	 * @param x Coordenada x (doble) - se redondea al pï¿½xel mï¿½s cercano
-	 * @param y Coordenada y (doble) - se redondea al pï¿½xel mï¿½s cercano
+	 * @param x Coordenada x (doble) - se redondea al pixel mas cercano
+	 * @param y Coordenada y (doble) - se redondea al pixel mas cercano
 	 */
 	public void setLocation(double x, double y) {
 		setLocation((int) Math.round(x), (int) Math.round(y));
 	}
 
-	// Dibuja este componente de una forma no habitual
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if (imagenObjeto != null) {
-			Graphics2D g2 = (Graphics2D) g; // El Graphics realmente es Graphics2D
+		
+		if (imagenLogoWiki != null) {
+			Graphics2D g2 = (Graphics2D) g;
 			g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 			g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-			int anc = anchuraObjeto;
-			int alt = alturaObjeto;
+			
+			int ancho = anchuraLogo;
+			int alto = alturaLogo;
 			int iniX = 0;
 			int iniY = 0;
-			if (anc <= 0) {
-				anc = getWidth();
+			
+			if (ancho <= 0) {
+				ancho = getWidth();
 			} else {
-				iniX = (getWidth() - anc) / 2;
+				iniX = (getWidth() - ancho) / 2;
 			}
-			if (alt <= 0) {
-				alt = getHeight();
+			if (alto <= 0) {
+				alto = getHeight();
 			} else {
-				iniY = (getHeight() - alt) / 2;
+				iniY = (getHeight() - alto) / 2;
 			}
-			// Rotaciï¿½n
-			g2.rotate(radsRotacion, getWidth() / 2, getHeight() / 2); // Incorporar al grï¿½fico la rotaciï¿½n definida
+			// Rotacion
+			g2.rotate(radsRotacionLogo, getWidth() / 2, getHeight() / 2); 
+			
 			// Transparencia
-			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacidad)); // Incorporar la
-																							// transparencia definida
-			g2.drawImage(imagenObjeto, iniX, iniY, anc, alt, null);
+			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacidadLogo)); 
+																							
+			g2.drawImage(imagenLogoWiki, iniX, iniY, ancho, alto, null);
 		}
 	}
 
-	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		JFrame f = new JFrame("Prueba JLabelGraficoAjustado");
-		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		JLabelGraficoAjustado label = new JLabelGraficoAjustado("coche.png", 100, 100);
-		// TODO probar este 300, 300 con diferentes tamaï¿½os. Si x<=0 ajusta el ancho y
-		// si es y<=0 ajusta el alto
-		f.setSize(600, 400);
-		f.add(label, BorderLayout.CENTER);
-		f.setVisible(true);
+		JFrame wikiFutbol = new JFrame("WikiLogo en JLabelGraficoAjustado");
+		wikiFutbol.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		JLabelGraficoAjustado label = new JLabelGraficoAjustado("resources/logo1.png", 100, 100);
+		// En caso de: x<=0. Ajusta el ancho del logo.
+		// En caso de: y<=0. Ajusta el alto del logo.
+		wikiFutbol.setSize(1200, 700);
+		//wikiFutbol.setLayout(null);
+		wikiFutbol.setResizable(false);
+		wikiFutbol.setLocationRelativeTo(null);
+		wikiFutbol.add(label, BorderLayout.CENTER);
+		wikiFutbol.setVisible(true);
+		
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 		} catch (Exception e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-		} // Espera 5 segundos
-		for (int rot = 0; rot <= 200; rot++) {
-			label.setRotacion((rot * Math.PI) / 100);
+		} 
+		
+		for (int rotacion = 0; rotacion <= 250; rotacion++) {
+			label.setRotacionLogo((rotacion * Math.PI) / 100);
 			try {
-				Thread.sleep(20);
+				Thread.sleep(10); // Espera entre rotacion y rotacion
 			} catch (Exception e) {
 				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			} // Espera dos dï¿½cimas entre rotaciï¿½n y rotaciï¿½n
+			} 
 		}
-		for (int op = -100; op <= 100; op++) {
-			label.setOpacidad(Math.abs(op * 0.01f));
+		
+		for (int opacidad = -100; opacidad <= 100; opacidad++) {
+			label.setOpacidadLogo(Math.abs(opacidad * 0.01f));
 			try {
-				Thread.sleep(20);
+				Thread.sleep(10); // Espera entre rotacion y rotacion
 			} catch (Exception e) {
 				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			} // Espera dos dï¿½cimas entre rotaciï¿½n y rotaciï¿½n
+			} 
 		}
 	}
 
