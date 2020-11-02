@@ -25,13 +25,13 @@ import clases.Usuario;
 public class DBManagerTest {
 
 	static DBManager db = new DBManager();
-	static Usuario u = new Usuario(1, "nombre usuario", "contrasena", "correo", 0, "1970-01-01");
+	static Usuario u = new Usuario(0, "nombre usuario", "contrasena", "correo", 0, "1970-01-01");
 	static Entrenador e = new Entrenador(1, "Gaizka Garitano", "1975-07-09", "Athletic Club", "Bilbao", "4-3-3",
 			Mentalidad.Equilibrada);
 	static Estadio es = new Estadio(1, "San Mames", 53289, 2013, "Bilbao");
 	static Feedback f = new Feedback(1, u.getCorreo(), 5, Recomendacion.si, "opinion");
 	static Jugador j = new Jugador(1, "Alex Berenguer", "1993-10-01", "Athletic", "Bilbao", Posicion.Delantero, 8, 0,
-			182, 81, PieFav.Diestro, 84, "Jugador con desvorde.", 0);
+			182, 81, PieFav.Diestro, 84, "Jugador con desborde", 0);
 
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -140,15 +140,13 @@ public class DBManagerTest {
 
 	@Test
 	public void testTodosLosCorreos() throws DBManagerException {
-		ArrayList<String> actualArr = DBManager.todosLosCorreos();
-		// ArrayList<String> expectedArr = new ArrayList<String>();
-		// assertEquals(expectedArr, actualArr);
+		/*
+		 * Poner todos los correos es ilogico, ademas si hay nuevos usuarios cambia el
+		 * orden y la cantidad. Lo dejo en *fail* para acordarnos de preguntarle que
+		 * hacer
+		 */
 
-		// Poner todos los correos es ilogico, ademas si hay nuevos usuarios cambia el
-		// orden y la cantidad. Lo dejo en *fail* para acordarnos de preguntarle que
-		// hacer
-
-		// fail();
+		fail();
 	}
 
 	@Test
@@ -164,21 +162,22 @@ public class DBManagerTest {
 
 	@Test
 	public void testGetJugadoresPorPosicion() throws DBManagerException {
-		String posicion_jugador = "Delantero"; // Por ejemplo
-		ArrayList<String> actualArr = DBManager.getJugadoresPorPosicion(posicion_jugador);
-		// ArrayList<String> expectedArr = new ArrayList<String>();
-		// assertEquals(expectedArr, actualArr);
+		/*
+		 * Poner todos los jugadores es ilogico, ademas si hay nuevos jugadores cambia
+		 * el orden y la cantidad. Lo dejo en *fail* para acordarnos de preguntarle que
+		 * hacer
+		 */
 
-		// Poner todos los jugadores es ilogico, ademas si hay nuevos jugadores cambia
-		// el
-		// orden y la cantidad. Lo dejo en *fail* para acordarnos de preguntarle que
-		// hacer
-
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testIdUsuario() throws DBManagerException {
+		/*
+		 * id del usuario de prueba cambia, preguntarle si usar el de prueba o uno ya
+		 * existente. Lo dejo en *fail* para acordarnos de preguntarle que hacer
+		 */
+
 		// String correo_usuario = u.getCorreo();
 		// assertEquals(DBManager.getIdUsuario(correo_usuario), u.getId());
 
@@ -186,27 +185,35 @@ public class DBManagerTest {
 
 		// u.setid(5);
 		assertEquals(5, DBManager.getIdUsuario(correo_usuario));
+
+		fail();
 	}
 
 	@Test
 	public void testIdJugador() throws DBManagerException {
+		/*
+		 * no convence del todo, Lo dejo en *fail* para acordarnos de preguntarle que
+		 * hacer
+		 */
+
 		String nombre_jugador = j.getNombre();
 
-		assertEquals(u.getId(), DBManager.getIdJugador(nombre_jugador));
+		assertEquals(j.getId(), DBManager.getIdJugador(nombre_jugador));
+
+		// String nombre_jugador = "Alex Berenguer";
+		// assertEquals(1, DBManager.getIdJugador(nombre_jugador));
+
+		fail();
 	}
 
 	@Test
 	public void testVotar() throws DBManagerException {
-		// no se hacerlo, por lo menos por ahora
 		/*
-		 * int usuario_usuarioVotacion = u.getId(); int delanteroVotado_usuarioVotacion
-		 * = j.getId(); int centrocampistaVotado_usuarioVotacion = 6; int
-		 * defensaVotado_usuarioVotacion = 9; int porteroVotado_usuarioVotacion = 14;
-		 * 
-		 * DBManager.votar(usuario_usuarioVotacion, delanteroVotado_usuarioVotacion,
-		 * centrocampistaVotado_usuarioVotacion, defensaVotado_usuarioVotacion,
-		 * porteroVotado_usuarioVotacion);
+		 * preguntarle como comprobar (test) que en una tabla han cambiado valores sin
+		 * tener que hacer metodos nuevos de BD
 		 */
+
+		fail();
 	}
 
 	@Test
@@ -214,67 +221,75 @@ public class DBManagerTest {
 		// Contar todos los jugadores es ilogico, ademas si hay nuevos jugadores cambia
 		// el numero. Lo dejo en *fail* para acordarnos de preguntarle que hacer
 
-		// fail();
+		// no tiene/necesita connect()
+
+		fail();
 	}
 
 	@Test
 	public void testContarVotosPorJugador() throws DBManagerException {
-		// necesitamos jugadores
+		// no tiene/necesita connect()
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testActualizarVotos() throws DBManagerException {
-		// necesitamos jugadores
+		/*
+		 * preguntarle como comprobar (test) que en una tabla han cambiado valores sin
+		 * tener que hacer metodos nuevos de BD
+		 */
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testCountToft() throws DBManagerException {
-		// necesitamos jugadores
+		// no tiene/necesita connect()
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testGetMasVotados() throws DBManagerException {
-		// necesitamos jugadores
+		// no tiene/necesita connect()
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testToft() throws DBManagerException {
-		// necesitamos jugadores
+		/*
+		 * es un array de SIEMPRE 11 valores [0 - 10] pero que puede cambiar el valor
+		 * interno. Preguntar.
+		 */
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testToftNombres() throws DBManagerException {
-		// necesitamos jugadores
+		/* depende del anterior, y por lo tanto mismo problema */
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testGetCiudades() throws DBManagerException {
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testGetClubes() throws DBManagerException {
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testGetEntrenadores() throws DBManagerException {
 
-		// fail();
+		fail();
 	}
 
 	// Métodos Entrenador
@@ -312,7 +327,7 @@ public class DBManagerTest {
 	@Test
 	public void testGetEstadios() throws DBManagerException {
 
-		// fail();
+		fail();
 	}
 
 	// Métodos Estadio
@@ -340,67 +355,98 @@ public class DBManagerTest {
 	@Test
 	public void testGetFeedbacks() throws DBManagerException {
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testGetJugadores() throws DBManagerException {
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testGetPaises() throws DBManagerException {
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testGetTeamOfTheYear_view() throws DBManagerException {
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testGetTeamOfTheYear() throws DBManagerException {
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testGetUsuarios() throws DBManagerException {
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testGetUsuarioVotaciones() throws DBManagerException {
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testVerColumnas() throws DBManagerException {
+		ArrayList<String> actualPais = new ArrayList<String>();
+		actualPais.add(0, "id_pais");
+		actualPais.add(1, "nombre_pais");
 
-		// fail();
+		String tabla = "pais";
+		assertEquals(DBManager.verColumnas(tabla), actualPais);
+
+		ArrayList<String> actualEstadio = new ArrayList<String>();
+		actualEstadio.add(0, "id_estadio");
+		actualEstadio.add(1, "nombre_estadio");
+		actualEstadio.add(2, "aforo_estadio");
+		actualEstadio.add(3, "anoCreacion_estadio");
+		actualEstadio.add(4, "ciudad_estadio");
+
+		String tabla2 = "estadio";
+		assertEquals(DBManager.verColumnas(tabla2), actualEstadio);
+
+		// hacer de todas las tablas?? o con dos de prueba ya valdria?
+		fail();
 	}
 
 	@Test
 	public void testData() throws DBManagerException {
+		/*
+		 * es un metodo que devuelve en un array 2D de object todos los datos de una
+		 * tabla. Preguntarle ¿como hacer un test de eso si los datos de la tabla puede
+		 * que sean modificados (incluso insertando valores nuevos o siendo borrados
+		 * otros)?
+		 */
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testCambiarDatos() throws DBManagerException {
+		/*
+		 * preguntarle como comprobar (test) que en una tabla han cambiado valores sin
+		 * tener que hacer metodos nuevos de BD
+		 */
 
-		// fail();
+		fail();
 	}
 
 	@Test
 	public void testCambiarDatosDesdeJTable() throws DBManagerException {
+		/*
+		 * preguntarle como comprobar (test) que en una tabla han cambiado valores sin
+		 * tener que hacer metodos nuevos de BD
+		 */
 
-		// fail();
+		fail();
 	}
 
 	@Test
@@ -412,6 +458,8 @@ public class DBManagerTest {
 		assertEquals(15, arr.size()); // tamaño
 		assertEquals("Alex Berenguer", arr.get(0)); // primero, ojo al orden que es abc
 		assertEquals("Yuri Berchiche", arr.get(14)); // ultimo, ojo al orden que es abc
+
+		fail();
 	}
 
 	/*

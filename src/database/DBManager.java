@@ -63,10 +63,8 @@ public class DBManager {
 		try {
 			connect();
 			stmt = conn.createStatement();
-			// String sql = "select correo_usuario from usuario where correo_usuario = '" +
-			// correo_usuario + "';";
-			String sql2 = "select correo_usuario from usuario";
-			ResultSet rs = stmt.executeQuery(sql2);
+			String sql = "select correo_usuario from usuario where correo_usuario='" + correo_usuario + "'";
+			ResultSet rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {
 				String mail = rs.getString("correo_usuario");
@@ -1131,7 +1129,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		System.out.println(esAdmin("a@gmail.com"));
-		System.out.println(esAdmin("b@gmail.com"));
+
 	}
 }

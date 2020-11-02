@@ -13,7 +13,7 @@ public class EstadisticaFeedback {
 
 	static double ans;
 
-	public static double mediaPuntuacion(double a, double b) {
+	private static double mediaPuntuacion(double a, double b) {
 		if (b == 0) {
 			throw new ArithmeticException("No puedes dividir por cero");
 		}
@@ -23,7 +23,7 @@ public class EstadisticaFeedback {
 		return ans;
 	}
 
-	public static ArrayList<Double> siNo(double a, double b, double c) {
+	private static ArrayList<Double> siNo(double a, double b, double c) {
 		if (c == 0) {
 			throw new ArithmeticException("No puedes dividir por cero");
 		}
