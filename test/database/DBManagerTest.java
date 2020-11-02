@@ -494,6 +494,19 @@ public class DBManagerTest {
 		fail();
 	}
 
+	@Test
+	public void testNumeroDeFilasEnUnaTabla() throws DBManagerException {
+		for (String table : database.DBManager.verTablas()) {
+			DBManager.numeroDeFilasEnUnaTabla(table);
+
+			if (table.equals("pais")) {
+				assertEquals(6 /* contandolo a dedo en la BD */, DBManager.numeroDeFilasEnUnaTabla(table));
+			} // CON TODOS? Y SI SE AÑADEN FILAS???
+		}
+
+		// fail();
+	}
+
 	/*
 	 * @Test public void getClubes() throws DBManagerException { ArrayList<String>
 	 * equipos = new ArrayList<>(); equipos.

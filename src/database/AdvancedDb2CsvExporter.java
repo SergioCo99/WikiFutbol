@@ -86,7 +86,7 @@ public class AdvancedDb2CsvExporter {
 	}
 
 	private static String getFileName(String baseName) {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
 		String dateTimeInfo = dateFormat.format(new Date());
 		return baseName.concat(String.format("_%s.csv", dateTimeInfo));
 	}

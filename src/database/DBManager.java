@@ -1297,8 +1297,38 @@ public class DBManager {
 		}
 	}
 
+	public static int numeroDeFilasEnUnaTabla(String tabla) throws DBManagerException {
+		try {
+			connect();
+			stmt = conn.createStatement();
+			ResultSet rs;
+
+			int id = 0;
+
+			if (tabla.equals("teamoftheyear_view")) {
+				String sql = "select count(id_teamoftheyear) from " + tabla;
+				rs = stmt.executeQuery(sql);
+				rs.next();
+				id = rs.getInt("count(id_teamoftheyear)");
+			} else {
+				String sql = "select count(id_" + tabla + ") from " + tabla;
+				rs = stmt.executeQuery(sql);
+				rs.next();
+				id = rs.getInt("count(id_" + tabla + ")");
+			}
+
+			rs.close();
+			stmt.close();
+			disconnect();
+			return id;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error numeroDeFilasEnUnaTabla DBManager", e);
+		}
+	}
+
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-
+		numeroDeFilasEnUnaTabla("pais");
 	}
 }
