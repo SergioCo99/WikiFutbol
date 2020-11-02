@@ -21,7 +21,9 @@ import database.DBManager;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
-/**Ventana para la visualizacion de los datos de cada entrenador 
+/**
+ * Ventana para la visualizacion de los datos de cada entrenador
+ * 
  * @author sergiolopez
  *
  */

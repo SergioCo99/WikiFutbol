@@ -23,7 +23,9 @@ import javax.swing.JTextField;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
-/**Ventana para mandar correos al usuario deseado 
+/**
+ * Ventana para mandar correos al usuario deseado
+ * 
  * @author sergiolopez
  *
  */

@@ -25,7 +25,9 @@ import clases.Usuario;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
-/**Venta para el inicio de sesion 
+/**
+ * Venta para el inicio de sesion
+ * 
  * @author sergiolopez
  *
  */

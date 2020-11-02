@@ -22,7 +22,9 @@ import clases.Usuario;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
-/**Ventana para la visualizacion de la informacion de cada jugador
+/**
+ * Ventana para la visualizacion de la informacion de cada jugador
+ * 
  * @author sergiolopez
  *
  */

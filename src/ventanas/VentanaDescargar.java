@@ -19,7 +19,9 @@ import javax.swing.JScrollPane;
 
 import database.AdvancedDb2CsvExporter;
 
-/**Ventana lo cual permite descargar los datos deseados 
+/**
+ * Ventana lo cual permite descargar los datos deseados
+ * 
  * @author sergiolopez
  *
  */

@@ -31,7 +31,9 @@ import database.DBManagerException;
 import interfaces.IListaJugadores;
 import utils.JLabelGraficoAjustado;
 
-/**Ventana en la cual se visualiza los jugadores 
+/**
+ * Ventana en la cual se visualiza los jugadores
+ * 
  * @author sergiolopez
  *
  */

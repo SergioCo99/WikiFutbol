@@ -35,7 +35,9 @@ import database.DBManagerException;
 import interfaces.IListaEquipos;
 import utils.JLabelGraficoAjustado;
 
-/**Ventana principal para la visualizacion de todos los equipos disponibles
+/**
+ * Ventana principal para la visualizacion de todos los equipos disponibles
+ * 
  * @author sergiolopez
  *
  */
@@ -176,8 +178,8 @@ public class VentanaPrincipal extends JFrame {
 					VentanaLogin VL = new VentanaLogin();
 					VL.setVisible(true);
 				} else {
-					JOptionPane.showMessageDialog(null, "Esa contrase\u00f1a no es valida / operacion cancelada.", "Error",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Esa contrase\u00f1a no es valida / operacion cancelada.",
+							"Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

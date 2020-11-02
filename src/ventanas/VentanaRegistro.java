@@ -20,7 +20,9 @@ import com.toedter.calendar.JCalendar;
 import clases.Usuario;
 import database.DBManagerException;
 
-/**Ventana que da la posibilidad de registro
+/**
+ * Ventana que da la posibilidad de registro
+ * 
  * @author sergiolopez
  *
  */

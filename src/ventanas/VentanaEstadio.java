@@ -21,7 +21,9 @@ import database.DBManager;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
-/**Ventana para la visualizacion de las caracteristicas de cada estadio
+/**
+ * Ventana para la visualizacion de las caracteristicas de cada estadio
+ * 
  * @author sergiolopez
  *
  */

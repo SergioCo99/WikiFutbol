@@ -1,9 +1,14 @@
 package pruebasYEjemplos;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.plaf.basic.*;
+import java.awt.BorderLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import javax.swing.ComboBoxEditor;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.plaf.basic.BasicComboBoxEditor;
 
 public class AutoCompleteComboBoxTest extends JFrame {
 	private JComboBox comboBox;

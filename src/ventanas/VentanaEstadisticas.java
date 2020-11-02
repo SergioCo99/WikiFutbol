@@ -11,7 +11,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import feedback.RWException;
 
-/**Ventana para la visualizacion de las estadisticas de la aplicaion
+/**
+ * Ventana para la visualizacion de las estadisticas de la aplicaion
+ * 
  * @author sergiolopez
  *
  */

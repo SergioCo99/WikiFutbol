@@ -20,7 +20,9 @@ import javax.swing.table.DefaultTableModel;
 
 import database.DBManagerException;
 
-/**Ventana la cual permite al administrador cambiar datos de las tablas
+/**
+ * Ventana la cual permite al administrador cambiar datos de las tablas
+ * 
  * @author sergiolopez
  *
  */
