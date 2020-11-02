@@ -100,6 +100,7 @@ public class VentanaRegistro extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				try {
 					if (txtUsuario.getText().equals("") || txtPassword.getText().equals("")
 							|| txtPasswordRep.getText().equals("") || txtCorreo.getText().equals("")
@@ -140,6 +141,7 @@ public class VentanaRegistro extends JFrame {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
+
 			}
 		});
 

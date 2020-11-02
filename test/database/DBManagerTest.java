@@ -25,7 +25,7 @@ import clases.Usuario;
 public class DBManagerTest {
 
 	static DBManager db = new DBManager();
-	static Usuario u = new Usuario(0, "nombre usuario", "contrasena", "correo", 0, "1970-01-01");
+	static Usuario u = new Usuario(1, "nombre usuario", "contrasena", "correo", 0, "1970-01-01");
 	static Entrenador e = new Entrenador(1, "Gaizka Garitano", "1975-07-09", "Athletic Club", "Bilbao", "4-3-3",
 			Mentalidad.Equilibrada);
 	static Estadio es = new Estadio(1, "San Mames", 53289, 2013, "Bilbao");

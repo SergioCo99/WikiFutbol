@@ -33,7 +33,7 @@ public class IListaTest {
 			System.out.println("BD no cargada");
 		}
 	}
-	
+
 	@Before
 	public void setUp1() {
 		try {
@@ -48,7 +48,7 @@ public class IListaTest {
 	public void actualizarLista() {
 		IListaEquipos.cargarLista(listaClub, arrayClub);
 		IListaJugadores.cargarLista(listaJugador, arrayJugador);
-		
+
 		assertEquals(arrayClub.size(), listaClub.getModel().getSize());
 		assertEquals(arrayJugador.size(), listaJugador.getModel().getSize());
 

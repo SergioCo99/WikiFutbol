@@ -6,29 +6,14 @@ public class Feedback {
 		si, no
 	}
 
-	public enum Valoracion {
-		UNO(1), DOS(2), TRES(3), CUATRO(4), CINCO(5);
-
-		private int numVal;
-
-		Valoracion(int numVal) {
-			this.numVal = numVal;
-		}
-
-		public int getNumVal() {
-			return numVal;
-		}
-	}
-
 	int id;
 	String usuario;
 	// en realidad es el correo, que es unico e identificara mejor al usuario
-	/* Valoracion */ int valoracion;
+	int valoracion;
 	Recomendacion recomendacion;
 	String opinion;
 
-	public Feedback(int id, String usuario, /* Valoracion */ int valoracion, Recomendacion recomendacion,
-			String opinion) {
+	public Feedback(int id, String usuario, int valoracion, Recomendacion recomendacion, String opinion) {
 		super();
 		this.id = id;
 		this.usuario = usuario;
@@ -53,11 +38,11 @@ public class Feedback {
 		this.usuario = usuario;
 	}
 
-	public /* Valoracion */ int getValoracion() {
+	public int getValoracion() {
 		return valoracion;
 	}
 
-	public void setValoracion(/* Valoracion */int valoracion) {
+	public void setValoracion(int valoracion) {
 		this.valoracion = valoracion;
 	}
 

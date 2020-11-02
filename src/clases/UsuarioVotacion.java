@@ -3,7 +3,7 @@ package clases;
 public class UsuarioVotacion {
 
 	int id;
-	String usuario; // en realidad es el correo, que es unico e identificara mejor al usuario
+	String usuario; // Nos referimos al correo, que es unico e identificara mejor al usuario
 	String delantero;
 	String centrocampista;
 	String defensa;
