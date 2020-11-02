@@ -85,7 +85,7 @@ public class DBManager {
 	}
 
 	public static void registrarUsuario(String nombre_usuario, String correo_usuario, String contrasena_usuario,
-			String/* ¿es String? */ fechaNac_usuario) throws DBManagerException {
+			String/* ï¿½es String? */ fechaNac_usuario) throws DBManagerException {
 		try {
 			connect();
 			stmt = conn.createStatement();
@@ -126,7 +126,7 @@ public class DBManager {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			// MUCHO TEXTO?, igual hay que quitar la "e" :v (ABAJO, en el throw new
 			// DBManagerException)
-			throw new DBManagerException("Error login DBManager, o no coincide contraseña", e);
+			throw new DBManagerException("Error login DBManager, o no coincide contraseï¿½a", e);
 		}
 	}
 
@@ -543,6 +543,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo nos da el nombre de los jugadores TOFT
+	 * 
+	 * @return Nos devuelve el nombre del jugador
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static ArrayList<String> toftNombres() throws DBManagerException {
 		try {
 			connect();
@@ -567,6 +573,12 @@ public class DBManager {
 	// HASTA AQUI CREAR TEAM OF THE YEAR
 
 	// getClasesBasicas
+	/**
+	 * Este mï¿½todo recopila todas las Ciudades guardadas
+	 * 
+	 * @return Nos devulve las ciudades existentes en la base de datos
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static ArrayList<Ciudad> getCiudades() throws DBManagerException {
 		try {
 			connect();
@@ -588,6 +600,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este metodo recopila todos los Clubes guardados en la base de datos
+	 * 
+	 * @return Devuelve el conjunto de libros en la BD en formato ArrayList
+	 * @throws DBManagerException En caso de existir algï¿½n problema de acceso a la
+	 *                            BD
+	 */
 	public static ArrayList<Club> getClubes() throws DBManagerException {
 		try {
 			connect();
@@ -610,7 +629,14 @@ public class DBManager {
 		}
 	}
 
-	// Métodos entrenador
+	// Mï¿½todos entrenador
+	/**
+	 * Este metodo recopila todos los entrenadores guardados en la base de datos
+	 * 
+	 * @return Devuelve el conjunto de Entrenadores en la BD en formato arrayList
+	 * @throws DBManagerException En caso de existir algï¿½n problema de acceso a la
+	 *                            BD
+	 */
 	public static ArrayList<Entrenador> getEntrenadores() throws DBManagerException {
 		try {
 			connect();
@@ -634,6 +660,14 @@ public class DBManager {
 	}
 
 	// Metodos que se usa en VentanaEntrenador
+	/**
+	 * Este mï¿½todo nos ofrece el nombre de un entrenador
+	 * 
+	 * @param Entrenador El entrenador del que queremos saber el nombre
+	 * @param BD         La BD a utilizar
+	 * @return Nos devuelve el nombre del entrenador
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static String nombreEntrenador(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -651,6 +685,15 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este metodo recopila la fecha de nacimiento del entrenador
+	 * 
+	 * @param Entrenador Nombre del entrenador del que se desa el anyo de nacimiento
+	 * @param BD         Nombre de la base de datos a utilizar
+	 * @return Devuelve la fecha de nacimiento del entrenador
+	 * @throws DBManagerException En caso de existir algï¿½n problema de acceso a la
+	 *                            BD
+	 */
 	public static String fechaNacimiento(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -668,6 +711,15 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo nos ofrece el club el cual pertenece un entrenador
+	 * 
+	 * @param Entrenador Nombre del entrenador del que queremos saber el club
+	 * @param BD         Nombre de la BD a usar
+	 * @return Devuelve el nombre del equipo del entrenador
+	 * @throws DBManagerException En caso de existir algï¿½n problema de acceso a la
+	 *                            BD
+	 */
 	public static String clubEntrenador(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -688,6 +740,15 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo nos da la ciudad del Entrenador
+	 * 
+	 * @param Entrenador Nombre del entrenador del que queremos saber la ciudad
+	 * @param BD         Nombre de la BD a usar
+	 * @return Devuelve el nombre de la ciudad del entrenador
+	 * @throws DBManagerException En caso de existir algï¿½n problema de acceso a la
+	 *                            BD
+	 */
 	public static String ciudadEntrenador(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -708,6 +769,14 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo nos da la formaciï¿½n mï¿½s frecuente que usa el entrenador
+	 * 
+	 * @param Entrenador El entrenador del que queremos saber la formaciï¿½n
+	 * @param BD         El nombre de la BD a usar
+	 * @return Devuelve la formacion
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static String formacionEntrenador(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -725,6 +794,15 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo nos ofrece la mentalidad con la que juega el entrenador, pueden
+	 * ser de distintos tipos.
+	 * 
+	 * @param Entrenador El entrenador del que queremos saber la mentalidad
+	 * @param BD         Nombre de la BD
+	 * @return Devuelve la mentalidad del entrenador
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static String mentalidadEntrenador(String Entrenador, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -743,6 +821,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo recopila todos los estadios existentes
+	 * 
+	 * @return Devuelve el conjunto de estadios que tenemos en la BD
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static ArrayList<Estadio> getEstadios() throws DBManagerException {
 		try {
 			connect();
@@ -765,7 +849,15 @@ public class DBManager {
 		}
 	}
 
-	// Métodos para VentanaEstadio
+	// Mï¿½todos para VentanaEstadio
+	/**
+	 * Este mï¿½todo nos devuelve el nombre de un estadio en concreto
+	 * 
+	 * @param Estadio El estadio del que queremos saber el nombre
+	 * @param BD      El nombre de la BD a utilizar
+	 * @return Devuelve el nombre del estadio
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static String nombreEstadio(String Estadio, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -783,6 +875,14 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo sirve para recibir el aforo que tiene un estadio en concreto
+	 * 
+	 * @param Estadio El estadio del que queremos saber su aforo
+	 * @param BD      Nombre de la BD a usar
+	 * @return Nos devuelve el aforo del estadio
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static int aforoEstadio(String Estadio, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -800,6 +900,14 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo sirve para recibir el anyo de construccion de un estadio
+	 * 
+	 * @param Estadio El estadio del que queremos saber el anyo de construccion
+	 * @param BD      La BD a usar
+	 * @return Nos devuelve el aforo del estadio
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static int anyoEstadio(String Estadio, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -817,6 +925,15 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo sirve para saber el nombre de la ciudad en la que se encuentra un
+	 * estadio
+	 * 
+	 * @param Estadio Nombre del estadio del que queremos saber la ciudad
+	 * @param BD      Nombre de la BD a utilizar
+	 * @return Devuelve el nombre de la ciudad en la que se encuentra el estadio
+	 * @throws DBManagerException
+	 */
 	public static String ciudadEstadio(String Estadio, String BD) throws DBManagerException {
 		try {
 			connect();
@@ -835,6 +952,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo recopila todos los "Feedbacks" existentes
+	 * 
+	 * @return Devuelve el conjunto de "Feedbacks" de nuestra base de datos
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static ArrayList<Feedback> getFeedbacks() throws DBManagerException {
 		try {
 			connect();
@@ -858,6 +981,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo recopila todos los jugadores guardados
+	 * 
+	 * @return Devuelve el conjunto de jugadores existentes en nuestra base de datos
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static ArrayList<Jugador> getJugadores() throws DBManagerException {
 		try {
 			connect();
@@ -882,6 +1011,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo recopila todos los paises existentes
+	 * 
+	 * @return Devuelve el conjunto de paises que se encuentran en la base de datos
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static ArrayList<Pais> getPaises() throws DBManagerException {
 		try {
 			connect();
@@ -923,6 +1058,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo nos da los jugadores que pertenecen al Team Of The Year
+	 * 
+	 * @return Nos devuelve los jugadores pertenecientes al Team Of The Year
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static ArrayList<TeamOfTheYear> getTeamOfTheYear() throws DBManagerException {
 		try {
 			connect();
@@ -944,6 +1085,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este mï¿½todo recopila los usuarios existentes
+	 * 
+	 * @return Devuelve el conjunto de usuarios de la base de datos
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static ArrayList<Usuario> getUsuarios() throws DBManagerException {
 		try {
 			connect();
@@ -994,6 +1141,7 @@ public class DBManager {
 	// HASTA AQUI getClasesBasicas
 
 	// CAMBIAR DATOS
+
 	public static ArrayList<String> verColumnas(String tabla) throws DBManagerException {
 		try {
 			connect();
@@ -1067,6 +1215,12 @@ public class DBManager {
 	}
 
 	// ???
+	/**
+	 * Este mï¿½todo nos permite cambiar los datos de la BD
+	 * 
+	 * @param consulta La consulta SQL con la que modificaremos la BD
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static void cambiarDatos(String consulta) throws DBManagerException {
 		try {
 			connect();
@@ -1082,6 +1236,15 @@ public class DBManager {
 		}
 	} // ???
 
+	/**
+	 * Este mï¿½todo nos permite cambiar los datos de la BD
+	 * 
+	 * @param tabla   La tabla de la BD en la que queremos realizar la modificacion
+	 * @param columna La columna de la tabla anteriormente definida
+	 * @param valor   El nuevo valor que queremos que obtenga ese campo en concreto
+	 * @param id
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static void cambiarDatosDesdeJTable(String tabla, String columna, Object valor, int id)
 			throws DBManagerException {
 		try {
@@ -1099,6 +1262,13 @@ public class DBManager {
 	}
 	// HASTA AQUI CAMBIAR DATOS
 
+	/**
+	 * Este mï¿½todo nos ofrece los jugadores que estan en un equipo en concreto
+	 * 
+	 * @param nombre_club Nombre del equipo del que queremos saber los jugadores
+	 * @return Nos devuelve los jugadores que estan en ese equipo
+	 * @throws DBManagerException
+	 */
 	public static ArrayList<String> getJugadoresPorEquipo(String nombre_club) throws DBManagerException {
 		try {
 			connect();

@@ -1,5 +1,11 @@
 package clases;
 
+/**
+ * Clase para la creación de feedback
+ * 
+ * @author sergiolopez
+ *
+ */
 public class Feedback {
 
 	public enum Recomendacion {
@@ -7,12 +13,20 @@ public class Feedback {
 	}
 
 	int id;
-	String usuario;
-	// en realidad es el correo, que es unico e identificara mejor al usuario
+	String usuario; // Nos referimos al correo, que es unico e identificara mejor al usuario
 	int valoracion;
 	Recomendacion recomendacion;
 	String opinion;
 
+	/**
+	 * Crea un feedback con su respectivos atributos
+	 * 
+	 * @param id            del feedback
+	 * @param usuario       del feedback
+	 * @param valoracion    del feedback
+	 * @param recomendacion del feedback
+	 * @param opinion       del feedback
+	 */
 	public Feedback(int id, String usuario, int valoracion, Recomendacion recomendacion, String opinion) {
 		super();
 		this.id = id;

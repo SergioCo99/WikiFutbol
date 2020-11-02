@@ -2,6 +2,7 @@ package database;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -12,6 +13,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import clases.Club;
 import clases.Entrenador;
 import clases.Entrenador.Mentalidad;
 import clases.Estadio;
@@ -278,12 +280,21 @@ public class DBManagerTest {
 	public void testGetCiudades() throws DBManagerException {
 
 		fail();
+
+		assertEquals("", DBManager.getCiudades());
+		// fail();
 	}
 
 	@Test
 	public void testGetClubes() throws DBManagerException {
 
 		fail();
+
+		assertEquals(
+				"Club [id=1, nombre=Athletic Club, ciudad=Bilbao, estadio=San Mames, anyoCreacion=1898, palmares=25, entrenador=Sergio Co], Club [id=2, nombre=Real Sociedad, ciudad=San Sebastian, estadio=Reale Arena, anyoCreacion=1908, palmares=5, entrenador=Imanol Alguacil], Club [id=3, nombre=Villarreal, ciudad=Villarreal, estadio=Estadio de la Ceramica, anyoCreacion=1923, palmares=2, entrenador=Unai Emery], Club [id=4, nombre=Real Madrid, ciudad=Madrid, estadio=Santiago Bernabeu, anyoCreacion=1902, palmares=34, entrenador=Zinedine Zidane], Club [id=5, nombre=Huesca, ciudad=Huesca, estadio=El Alcoraz, anyoCreacion=1960, palmares=1, entrenador=Michel], Club [id=6, nombre=Elche, ciudad=Elche, estadio=Estadio Martinez Valero, anyoCreacion=1922, palmares=2, entrenador=Jorge Almiron], Club [id=7, nombre=Getafe, ciudad=Getafe, estadio=Coliseum Alfonso Perez, anyoCreacion=1983, palmares=4, entrenador=Jose Bordalas], Club [id=8, nombre=Cadiz, ciudad=Cadiz, estadio=Estadio Ramon de Carranza, anyoCreacion=1909, palmares=6, entrenador=Alvaro Cervera], Club [id=9, nombre=Granada, ciudad=Granada, estadio=Estadio Nuevo Los Carmenes, anyoCreacion=1931, palmares=5, entrenador=Diego Martinez], Club [id=10, nombre=Betis, ciudad=Sevilla, estadio=Benito Villamarin, anyoCreacion=1907, palmares=1, entrenador=Manuel Pellegrini], Club [id=11, nombre=Atl. Madrid, ciudad=Madrid, estadio=Wanda Metropolitano, anyoCreacion=1903, palmares=24, entrenador=Diego Simeone], Club [id=12, nombre=Barcelona, ciudad=Barcelona, estadio=Camp Nou, anyoCreacion=1899, palmares=31, entrenador=Ronald Koeman], Club [id=13, nombre=Sevilla, ciudad=Sevilla, estadio=Ramon Sanchez Pizjuan, anyoCreacion=1890, palmares=19, entrenador=Julen Lopetegui], Club [id=14, nombre=Celta, ciudad=Vigo, estadio=Municipal de Balaidos, anyoCreacion=1927, palmares=5, entrenador=Oscar Garcia], Club [id=15, nombre=Alaves, ciudad=Vitoria-Gasteiz, estadio=Estadio de Mendizorroza, anyoCreacion=1921, palmares=1, entrenador=Pablo Machin], Club [id=16, nombre=Levante, ciudad=Valencia, estadio=Cuidad de Valencia, anyoCreacion=1908, palmares=5, entrenador=Paco Lopez], Club [id=17, nombre=Valladolid, ciudad=Valladolid, estadio=Jose Zorrilla, anyoCreacion=1928, palmares=2, entrenador=Sergio], Club [id=18, nombre=Eibar, ciudad=Eibar, estadio=Estadio Municipal de Ipurua, anyoCreacion=1940, palmares=3, entrenador=Jose Luis Mendilibar], Club [id=19, nombre=Valencia, ciudad=Valencia, estadio=Mestalla, anyoCreacion=1919, palmares=15, entrenador=Javi Gracia], Club [id=20, nombre=Osasuna, ciudad=Pamplona, estadio=Estadio El Sadar, anyoCreacion=1920, palmares=0, entrenador=Jagoba Arrasate]",
+				DBManager.getClubes());
+		// fail();
+
 	}
 
 	@Test
@@ -292,7 +303,7 @@ public class DBManagerTest {
 		fail();
 	}
 
-	// Métodos Entrenador
+	// Mï¿½todos Entrenador
 	@Test
 	public void testNombreEntrenador() throws DBManagerException {
 		assertEquals(e.getNombre(), DBManager.nombreEntrenador("Gaizka Garitano", "wikifutbolschema"));
@@ -322,7 +333,7 @@ public class DBManagerTest {
 	public void testMentalidadEntrenador() throws DBManagerException {
 		assertEquals("Defensiva", DBManager.mentalidadEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
-	// Fin Métodos Entrenador
+	// Fin Mï¿½todos Entrenador
 
 	@Test
 	public void testGetEstadios() throws DBManagerException {
@@ -330,7 +341,7 @@ public class DBManagerTest {
 		fail();
 	}
 
-	// Métodos Estadio
+	// Mï¿½todos Estadio
 	@Test
 	public void testNombreEstadio() throws DBManagerException {
 		assertEquals(es.getNombre(), DBManager.nombreEstadio("San Mames", "wikifutbolschema"));
@@ -350,7 +361,7 @@ public class DBManagerTest {
 	public void testCiudadEstadio() throws DBManagerException {
 		assertEquals(es.getCiudad(), DBManager.ciudadEstadio("San Mames", "wikifutbolschema"));
 	}
-	// Fin Métodos Estadio
+	// Fin Mï¿½todos Estadio
 
 	@Test
 	public void testGetFeedbacks() throws DBManagerException {
@@ -366,8 +377,14 @@ public class DBManagerTest {
 
 	@Test
 	public void testGetPaises() throws DBManagerException {
+		// DA LO MISMO PERO DA ERROR
 
 		fail();
+
+		assertEquals(
+				"[Pais [id=1, nombre=Espaï¿½a], Pais [id=2, nombre=Francia], Pais [id=3, nombre=Guinea Ecuatorial], Pais [id=4, nombre=Chile], Pais [id=5, nombre=Argentina], Pais [id=6, nombre=Paises Bajos]]",
+				DBManager.getPaises());
+		// fail();
 	}
 
 	@Test
@@ -386,6 +403,12 @@ public class DBManagerTest {
 	public void testGetUsuarios() throws DBManagerException {
 
 		fail();
+
+		assertEquals(
+				"[Usuario [id=1, nombre=sergio, contrasena=sergio@gmail.com, correo=a, admin=1, fechaNac=1999-06-23], Usuario [id=2, nombre=lopez, contrasena=lopez@gmail.com, correo=b, admin=0, fechaNac=1999-06-24], Usuario [id=4, nombre=cogollos, contrasena=cogollos@gmail.com, correo=c, admin=0, fechaNac=1999-06-26], Usuario [id=5, nombre=Eneko, contrasena=eneko.perez23@gmail.com, correo=12345, admin=1, fechaNac=2020-10-01], Usuario [id=231, nombre=hola, contrasena=hola@gmail.com, correo=hola, admin=0, fechaNac=2020-11-01]",
+				DBManager.getUsuarios());
+		// fail();
+
 	}
 
 	@Test
@@ -421,7 +444,7 @@ public class DBManagerTest {
 	public void testData() throws DBManagerException {
 		/*
 		 * es un metodo que devuelve en un array 2D de object todos los datos de una
-		 * tabla. Preguntarle ¿como hacer un test de eso si los datos de la tabla puede
+		 * tabla. Preguntarle ï¿½como hacer un test de eso si los datos de la tabla puede
 		 * que sean modificados (incluso insertando valores nuevos o siendo borrados
 		 * otros)?
 		 */
@@ -431,20 +454,33 @@ public class DBManagerTest {
 
 	@Test
 	public void testCambiarDatos() throws DBManagerException {
+
 		/*
 		 * preguntarle como comprobar (test) que en una tabla han cambiado valores sin
 		 * tener que hacer metodos nuevos de BD
 		 */
 
 		fail();
+
+		Club e1 = new Club(1, "Athletic Club", "Bilbao", "San Mames", 1898, "25", "Gaizka Garitano");
+		DBManager.cambiarDatos(
+				"UPDATE `wikifutbolschema`.`pruebaclub` SET `nombre_club` = 'Athletic Clu' WHERE (`id_club` = '1');");
+		assertNotEquals(e1.getNombre(), "Athletic Clu");
+		// fail();
 	}
 
 	@Test
 	public void testCambiarDatosDesdeJTable() throws DBManagerException {
+
 		/*
 		 * preguntarle como comprobar (test) que en una tabla han cambiado valores sin
 		 * tener que hacer metodos nuevos de BD
 		 */
+
+		Club e1 = new Club(1, "Athletic Club", "Bilbao", "San Mames", 1898, "25", "Gaizka Garitano");
+
+		DBManager.cambiarDatosDesdeJTable("pruebaclub", "anoCreacion_club", 2000, 1);
+		assertEquals(2000, e1.getAnyoCreacion());
 
 		fail();
 	}
@@ -455,7 +491,7 @@ public class DBManagerTest {
 		ArrayList<String> arr = DBManager.getJugadoresPorEquipo("Athletic Club");
 
 		System.out.println(DBManager.getJugadoresPorEquipo("Athletic Club"));
-		assertEquals(15, arr.size()); // tamaño
+		assertEquals(15, arr.size()); // tamaï¿½o
 		assertEquals("Alex Berenguer", arr.get(0)); // primero, ojo al orden que es abc
 		assertEquals("Yuri Berchiche", arr.get(14)); // ultimo, ojo al orden que es abc
 
@@ -465,48 +501,48 @@ public class DBManagerTest {
 	/*
 	 * @Test public void getClubes() throws DBManagerException { ArrayList<String>
 	 * equipos = new ArrayList<>(); equipos.
-	 * add("id=1, nombre=Athletic Club, ciudad=Bilbao, estadio=San Mames, anyoCreacion=1898, palmares=0, entrenador=Gaizka Garitano"
-	 * ); equipos.
-	 * add("id=2, nombre=Real Sociedad, ciudad=San Sebastian, estadio=Reale Arena, anyoCreacion=1908, palmares=0, entrenador=Imanol Alguacil"
-	 * ); equipos.
-	 * add("id=3, nombre=Villarreal, ciudad=Villarreal, estadio=Estadio de la Ceramica, anyoCreacion=1923, palmares=0, entrenador=Unai Emery"
-	 * ); equipos.
-	 * add("id=4, nombre=Real Madrid, ciudad=Madrid, estadio=Santiago Bernabeu, anyoCreacion=1902, palmares=0, entrenador=Zinedine Zidane"
-	 * ); equipos.
-	 * add("id=5, nombre=Huesca, ciudad=Huesca, estadio=El Alcoraz, anyoCreacion=1960, palmares=0, entrenador=Michel"
-	 * ); equipos.
-	 * add("id=6, nombre=Elche, ciudad=Elche, estadio=Estadio Martinez Valero, anyoCreacion=1922, palmares=0, entrenador=Jorge Almiron"
-	 * ); equipos.
-	 * add("id=7, nombre=Getafe, ciudad=Getafe, estadio=Coliseum Alfonso Perez, anyoCreacion=1983, palmares=0, entrenador=Jose Bordalas"
-	 * ); equipos.
-	 * add("id=8, nombre=Cadiz, ciudad=Cadiz, estadio=Estadio Ramon de Carranza, anyoCreacion=1909, palmares=0, entrenador=Alvaro Cervera"
-	 * ); equipos.
-	 * add("id=9, nombre=Granada, ciudad=Granada, estadio=Estadio Nuevo Los Carmenes, anyoCreacion=1931, palmares=0, entrenador=Diego Martinez"
-	 * ); equipos.
-	 * add("id=10, nombre=Betis, ciudad=Sevilla, estadio=Benito Villamarin, anyoCreacion=1907, palmares=0, entrenador=Manuel Pellegrini"
-	 * ); equipos.
-	 * add("id=11, nombre=Atl. Madrid, ciudad=Madrid, estadio=Wanda Metropolitano, anyoCreacion=1903, palmares=0, entrenador=Diego Simeone"
-	 * ); equipos.
-	 * add("id=12, nombre=Barcelona, ciudad=Barcelona, estadio=Camp Nou, anyoCreacion=1899, palmares=0, entrenador=Ronald Koeman"
-	 * ); equipos.
-	 * add("id=13, nombre=Sevilla, ciudad=Sevilla, estadio=Ramon Sanchez Pizjuan, anyoCreacion=1890, palmares=0, entrenador=Julen Lopetegui"
-	 * ); equipos.
-	 * add("id=14, nombre=Celta, ciudad=Vigo, estadio=Municipal de Balaidos, anyoCreacion=1927, palmares=0, entrenador=Oscar Garcia"
-	 * ); equipos.
-	 * add("id=15, nombre=Alaves, ciudad=Vitoria-Gasteiz, estadio=Estadio de Mendizorroza, anyoCreacion=1921, palmares=0, entrenador=Pablo Machin"
-	 * ); equipos.
-	 * add("id=16, nombre=Levante, ciudad=Valencia, estadio=Cuidad de Valencia, anyoCreacion=1908, palmares=0, entrenador=Paco Lopez"
-	 * ); equipos.
-	 * add("id=17, nombre=Valladolid, ciudad=Valladolid, estadio=Jose Zorrilla, anyoCreacion=1928, palmares=0, entrenador=Sergio"
-	 * ); equipos.
-	 * add("id=18, nombre=Eibar, ciudad=Eibar, estadio=Estadio Municipal de Ipurua, anyoCreacion=1940, palmares=0, entrenador=Jose Luis Mendilibar"
-	 * ); equipos.
-	 * add("id=19, nombre=Valencia, ciudad=Valencia, estadio=Mestalla, anyoCreacion=1919, palmares=0, entrenador=Javi Gracia"
-	 * ); equipos.
-	 * add("id=20, nombre=Osasuna, ciudad=Pamplona, estadio=Estadio El Sadar, anyoCreacion=1920, palmares=0, entrenador=Jagoba Arrasate"
+	 * add("id=1, nombre=Athletic Club, ciudad=Bilbao, estadio=San Mames, anyoCreacion=1898, palmares=0, entrenador=Gaizka Garitano, id=2, nombre=Real Sociedad, ciudad=San Sebastian, estadio=Reale Arena, anyoCreacion=1908, palmares=0, entrenador=Imanol Alguacil, "
+	 * +
+	 * "id=3, nombre=Villarreal, ciudad=Villarreal, estadio=Estadio de la Ceramica, anyoCreacion=1923, palmares=0, entrenador=Unai Emery, "
+	 * +
+	 * "id=4, nombre=Real Madrid, ciudad=Madrid, estadio=Santiago Bernabeu, anyoCreacion=1902, palmares=0, entrenador=Zinedine Zidane, "
+	 * +
+	 * "id=5, nombre=Huesca, ciudad=Huesca, estadio=El Alcoraz, anyoCreacion=1960, palmares=0, entrenador=Michel,"
+	 * +
+	 * "id=6, nombre=Elche, ciudad=Elche, estadio=Estadio Martinez Valero, anyoCreacion=1922, palmares=0, entrenador=Jorge Almiron, "
+	 * +
+	 * "id=7, nombre=Getafe, ciudad=Getafe, estadio=Coliseum Alfonso Perez, anyoCreacion=1983, palmares=0, entrenador=Jose Bordalas, "
+	 * +
+	 * "id=8, nombre=Cadiz, ciudad=Cadiz, estadio=Estadio Ramon de Carranza, anyoCreacion=1909, palmares=0, entrenador=Alvaro Cervera, "
+	 * +
+	 * "id=9, nombre=Granada, ciudad=Granada, estadio=Estadio Nuevo Los Carmenes, anyoCreacion=1931, palmares=0, entrenador=Diego Martinez, "
+	 * +
+	 * "id=10, nombre=Betis, ciudad=Sevilla, estadio=Benito Villamarin, anyoCreacion=1907, palmares=0, entrenador=Manuel Pellegrini, "
+	 * +
+	 * "id=11, nombre=Atl. Madrid, ciudad=Madrid, estadio=Wanda Metropolitano, anyoCreacion=1903, palmares=0, entrenador=Diego Simeone, "
+	 * +
+	 * "id=12, nombre=Barcelona, ciudad=Barcelona, estadio=Camp Nou, anyoCreacion=1899, palmares=0, entrenador=Ronald Koeman, "
+	 * +
+	 * "id=13, nombre=Sevilla, ciudad=Sevilla, estadio=Ramon Sanchez Pizjuan, anyoCreacion=1890, palmares=0, entrenador=Julen Lopetegui, "
+	 * +
+	 * "id=14, nombre=Celta, ciudad=Vigo, estadio=Municipal de Balaidos, anyoCreacion=1927, palmares=0, entrenador=Oscar Garcia, "
+	 * +
+	 * "id=15, nombre=Alaves, ciudad=Vitoria-Gasteiz, estadio=Estadio de Mendizorroza, anyoCreacion=1921, palmares=0, entrenador=Pablo Machin,"
+	 * +
+	 * "id=16, nombre=Levante, ciudad=Valencia, estadio=Cuidad de Valencia, anyoCreacion=1908, palmares=0, entrenador=Paco Lopez, "
+	 * +
+	 * "id=17, nombre=Valladolid, ciudad=Valladolid, estadio=Jose Zorrilla, anyoCreacion=1928, palmares=0, entrenador=Sergio, "
+	 * +
+	 * "id=18, nombre=Eibar, ciudad=Eibar, estadio=Estadio Municipal de Ipurua, anyoCreacion=1940, palmares=0, entrenador=Jose Luis Mendilibar, "
+	 * +
+	 * "id=19, nombre=Valencia, ciudad=Valencia, estadio=Mestalla, anyoCreacion=1919, palmares=0, entrenador=Javi Gracia, "
+	 * +
+	 * "id=20, nombre=Osasuna, ciudad=Pamplona, estadio=Estadio El Sadar, anyoCreacion=1920, palmares=0, entrenador=Jagoba Arrasate"
 	 * );
-	 *
-	 *
-	 * assertEquals(equipos, DBManager.getClubes()); }
+	 * 
+	 * assertEquals("id=1, nombre=Athletic Club, ciudad=Bilbao, estadio=San Mames, anyoCreacion=1898, palmares=0, entrenador=Gaizka Garitano, id=2, nombre=Real Sociedad, ciudad=San Sebastian, estadio=Reale Arena, anyoCreacion=1908, palmares=0, entrenador=Imanol Alguacil, id=3, nombre=Villarreal, ciudad=Villarreal, estadio=Estadio de la Ceramica, anyoCreacion=1923, palmares=0, entrenador=Unai Emery, id=4, nombre=Real Madrid, ciudad=Madrid, estadio=Santiago Bernabeu, anyoCreacion=1902, palmares=0, entrenador=Zinedine Zidane, id=5, nombre=Huesca, ciudad=Huesca, estadio=El Alcoraz, anyoCreacion=1960, palmares=0, entrenador=Michel,id=6, nombre=Elche, ciudad=Elche, estadio=Estadio Martinez Valero, anyoCreacion=1922, palmares=0, entrenador=Jorge Almiron, id=7, nombre=Getafe, ciudad=Getafe, estadio=Coliseum Alfonso Perez, anyoCreacion=1983, palmares=0, entrenador=Jose Bordalas, id=8, nombre=Cadiz, ciudad=Cadiz, estadio=Estadio Ramon de Carranza, anyoCreacion=1909, palmares=0, entrenador=Alvaro Cervera, id=9, nombre=Granada, ciudad=Granada, estadio=Estadio Nuevo Los Carmenes, anyoCreacion=1931, palmares=0, entrenador=Diego Martinez, id=10, nombre=Betis, ciudad=Sevilla, estadio=Benito Villamarin, anyoCreacion=1907, palmares=0, entrenador=Manuel Pellegrini, id=11, nombre=Atl. Madrid, ciudad=Madrid, estadio=Wanda Metropolitano, anyoCreacion=1903, palmares=0, entrenador=Diego Simeone, id=12, nombre=Barcelona, ciudad=Barcelona, estadio=Camp Nou, anyoCreacion=1899, palmares=0, entrenador=Ronald Koeman, id=13, nombre=Sevilla, ciudad=Sevilla, estadio=Ramon Sanchez Pizjuan, anyoCreacion=1890, palmares=0, entrenador=Julen Lopetegui, id=14, nombre=Celta, ciudad=Vigo, estadio=Municipal de Balaidos, anyoCreacion=1927, palmares=0, entrenador=Oscar Garcia, id=15, nombre=Alaves, ciudad=Vitoria-Gasteiz, estadio=Estadio de Mendizorroza, anyoCreacion=1921, palmares=0, entrenador=Pablo Machin,id=16, nombre=Levante, ciudad=Valencia, estadio=Cuidad de Valencia, anyoCreacion=1908, palmares=0, entrenador=Paco Lopez, id=17, nombre=Valladolid, ciudad=Valladolid, estadio=Jose Zorrilla, anyoCreacion=1928, palmares=0, entrenador=Sergio, id=18, nombre=Eibar, ciudad=Eibar, estadio=Estadio Municipal de Ipurua, anyoCreacion=1940, palmares=0, entrenador=Jose Luis Mendilibar, id=19, nombre=Valencia, ciudad=Valencia, estadio=Mestalla, anyoCreacion=1919, palmares=0, entrenador=Javi Gracia, id=20, nombre=Osasuna, ciudad=Pamplona, estadio=Estadio El Sadar, anyoCreacion=1920, palmares=0, entrenador=Jagoba Arrasate"
+	 * , DBManager.getClubes());
+	 * 
+	 * }
 	 */
 }

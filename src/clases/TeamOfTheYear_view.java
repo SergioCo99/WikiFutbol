@@ -1,6 +1,12 @@
 package clases;
 
 // es una clase basica de una VIEW, NO DE UNA TABLA!!! SOLO SE VE, NO SE ACTUALIZA!!! SOLO GETTERS!!!
+/**
+ * Esta clase hace referencia al equipo del año
+ * 
+ * @author sergiolopez
+ *
+ */
 public class TeamOfTheYear_view {
 
 	public enum Posicion {
@@ -14,6 +20,21 @@ public class TeamOfTheYear_view {
 	int voto_jugador;
 	int goles_jugador;
 
+	/**
+	 * Crea un equipo del año con los distintos atributos que lo forman
+	 * 
+	 * @param id_teamoftheyear - id del equipo del año
+	 * @param id_jugador       - id de uno de los jugadores que forma el equipo del
+	 *                         año
+	 * @param nombre_jugador   - nombre de uno de los jugadores que forma el equipo
+	 *                         del año
+	 * @param posicion         - posición de uno de los jugadores que forma el
+	 *                         equipo del año
+	 * @param voto_jugador     - votos que ha recivido uno de los jugadores que
+	 *                         forma el equipo del año
+	 * @param goles_jugador    - goles que ha marcado uno de los jugadores que forma
+	 *                         el equipo del año
+	 */
 	public TeamOfTheYear_view(int id_teamoftheyear, int id_jugador, String nombre_jugador, Posicion posicion,
 			int voto_jugador, int goles_jugador) {
 		super();

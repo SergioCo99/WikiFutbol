@@ -1,5 +1,11 @@
 package clases;
 
+/**
+ * Clase para la creacion de entrenadores
+ * 
+ * @author sergiolopez
+ *
+ */
 public class Entrenador extends EmpleadoDeClub {
 
 	public enum Mentalidad {
@@ -9,6 +15,17 @@ public class Entrenador extends EmpleadoDeClub {
 	String formacion;
 	Mentalidad mentalidad;
 
+	/**
+	 * Crea un entrenador con sus respectivos atributos
+	 * 
+	 * @param id         del entrenador
+	 * @param nombre     del entrenador
+	 * @param fechaNac   del entrenador
+	 * @param club       del entrenador
+	 * @param ciudad     del entrenador
+	 * @param formacion  del entrenador
+	 * @param mentalidad del entrenador
+	 */
 	public Entrenador(int id, String nombre, String fechaNac, String club, String ciudad, String formacion,
 			Mentalidad mentalidad) {
 		super(id, nombre, fechaNac, club, ciudad);

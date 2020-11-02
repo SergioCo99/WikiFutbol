@@ -1,5 +1,11 @@
 package clases;
 
+/**
+ * Clase que hace referencia a la votación dle los usuarios
+ * 
+ * @author sergiolopez
+ *
+ */
 public class UsuarioVotacion {
 
 	int id;
@@ -9,6 +15,16 @@ public class UsuarioVotacion {
 	String defensa;
 	String portero;
 
+	/**
+	 * Constructor para la votación de los usuarios
+	 * 
+	 * @param id             - Id de la votación
+	 * @param usuario        - Usurio que esta votando
+	 * @param delantero      - Delantero elegido
+	 * @param centrocampista - Centrocampista elegido
+	 * @param defensa        - Defensa elegido
+	 * @param portero        - Portero elegido
+	 */
 	public UsuarioVotacion(int id, String usuario, String delantero, String centrocampista, String defensa,
 			String portero) {
 		super();
