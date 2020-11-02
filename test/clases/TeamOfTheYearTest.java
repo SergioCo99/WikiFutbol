@@ -27,6 +27,7 @@ public class TeamOfTheYearTest {
 		assertEquals("Koikili", t.getJugador());
 	}
 
+	@Test
 	public void metodoToString() {
 
 		t.setId(1);
@@ -34,6 +35,6 @@ public class TeamOfTheYearTest {
 
 		System.out.println(t.toString());
 
-		assertEquals("TeamOfTheYear [id=1, jugdor=Koikili]", t.toString());
+		assertEquals("TeamOfTheYear [id=1, jugador=Koikili]", t.toString());
 	}
 }

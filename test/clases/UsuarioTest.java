@@ -51,6 +51,7 @@ public class UsuarioTest {
 		assertEquals("1990-06-25", u.getFechaNac());
 	}
 
+	@Test
 	public void metodoToString() {
 
 		u.setId(1);
