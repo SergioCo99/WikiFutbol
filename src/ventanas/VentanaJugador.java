@@ -197,7 +197,8 @@ public class VentanaJugador extends JFrame {
 		bookPanel.add(labelPosicion);
 
 		// Resultado Posicion
-		final JLabel resultadoPosicion = new JLabel("Prueba");
+		String posicion = jugador.getPosicion().toString();
+		final JLabel resultadoPosicion = new JLabel(posicion);
 		resultadoPosicion.setBounds(127, 370, 400, 50);
 		resultadoPosicion.setFont(fuente2);
 		resultadoPosicion.setForeground(Color.BLACK);
@@ -271,7 +272,8 @@ public class VentanaJugador extends JFrame {
 		bookPanel.add(labelPieFav);
 
 		// Resultado Pie Fav
-		final JLabel resultadoPieFav = new JLabel("Prueba");
+		String piefav = jugador.getPiefav().toString();
+		final JLabel resultadoPieFav = new JLabel(piefav);
 		resultadoPieFav.setBounds(500, 370, 400, 50);
 		resultadoPieFav.setFont(fuente2);
 		resultadoPieFav.setForeground(Color.BLACK);
