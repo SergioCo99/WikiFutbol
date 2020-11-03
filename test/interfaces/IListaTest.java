@@ -32,12 +32,11 @@ public class IListaTest {
 
 	@Before
 	public void setUp1() {
-		/*try {
-			arrayJugador = DBManager.getJugadores();
-			System.out.println("BD cargada");
-		} catch (DBManagerException e) {
-			System.out.println("BD no cargada");
-		}*/
+		/*
+		 * try { arrayJugador = DBManager.getJugadores();
+		 * System.out.println("BD cargada"); } catch (DBManagerException e) {
+		 * System.out.println("BD no cargada"); }
+		 */
 	}
 
 	@Test

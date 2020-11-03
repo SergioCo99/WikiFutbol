@@ -2,7 +2,7 @@ package clases;
 
 /**
  * Clase que hace referencia al equipo del año
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -13,7 +13,7 @@ public class TeamOfTheYear {
 
 	/**
 	 * Constructor del equipo del año
-	 * 
+	 *
 	 * @param id      - id del equipo del año
 	 * @param jugador - jugador que entra en el equipo del año
 	 */

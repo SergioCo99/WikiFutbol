@@ -2,7 +2,7 @@ package clases;
 
 /**
  * Clase que hace referencia a los usuarios
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -17,7 +17,7 @@ public class Usuario {
 
 	/**
 	 * Crea un usuario con sus respectivos atributos
-	 * 
+	 *
 	 * @param id         - Id del usuario
 	 * @param nombre     - Nombre del usuario
 	 * @param contrasena - Contraseña del usuario

@@ -2,7 +2,7 @@ package clases;
 
 /**
  * Clase para la creacion de entrenadores
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -17,7 +17,7 @@ public class Entrenador extends EmpleadoDeClub {
 
 	/**
 	 * Crea un entrenador con sus respectivos atributos
-	 * 
+	 *
 	 * @param id         del entrenador
 	 * @param nombre     del entrenador
 	 * @param fechaNac   del entrenador

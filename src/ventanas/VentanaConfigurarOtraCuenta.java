@@ -18,7 +18,7 @@ import database.DBManagerException;
 /**
  * Ventana que permite al administrador modificar los datos de los usuarios asi
  * como como borrarlos.
- * 
+ *
  * @author sergiolopez
  *
  */

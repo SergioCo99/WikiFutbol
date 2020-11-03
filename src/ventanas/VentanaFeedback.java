@@ -24,7 +24,7 @@ import database.DBManagerException;
 /**
  * Ventana que permite al usuario tanto valorar la aplicacion como comentar
  * sobre ella
- * 
+ *
  * @author sergiolopez
  *
  */

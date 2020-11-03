@@ -40,7 +40,7 @@ public class EstadisticaFeedbackTest {
 
 		if (c == 0) {
 			fail("No puedes dividir por cero");
-		} else if (a + b != c) {
+		} else if ((a + b) != c) {
 			fail("Deberia que dar la suma");
 		}
 
@@ -59,7 +59,7 @@ public class EstadisticaFeedbackTest {
 		try {
 			assertEquals(EstadisticaFeedback.ReadAndLoad().size(), 4);
 
-			if (EstadisticaFeedback.ReadAndLoad().get(0) < 0 || EstadisticaFeedback.ReadAndLoad().get(0) > 5) {
+			if ((EstadisticaFeedback.ReadAndLoad().get(0) < 0) || (EstadisticaFeedback.ReadAndLoad().get(0) > 5)) {
 				fail("Tiene que ser una puntuacion entre 0 y 5");
 			}
 
@@ -67,7 +67,8 @@ public class EstadisticaFeedbackTest {
 			double porcentajeNo = EstadisticaFeedback.ReadAndLoad().get(2);
 			assertEquals(porcentajeSi + porcentajeNo, 100, 0);
 
-			if (EstadisticaFeedback.ReadAndLoad().get(3) < 0 || EstadisticaFeedback.ReadAndLoad().get(3) % 1 != 0) {
+			if ((EstadisticaFeedback.ReadAndLoad().get(3) < 0)
+					|| ((EstadisticaFeedback.ReadAndLoad().get(3) % 1) != 0)) {
 				fail("No puede ser menor que 0, y tiene que ser un numero entero");
 			}
 		} catch (RWException e) {

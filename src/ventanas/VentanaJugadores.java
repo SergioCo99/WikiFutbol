@@ -31,7 +31,7 @@ import utils.JLabelGraficoAjustado;
 
 /**
  * Ventana en la cual se visualiza los jugadores
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -83,49 +83,34 @@ public class VentanaJugadores extends JFrame {
 
 		final JLabelGraficoAjustado lupa = new JLabelGraficoAjustado("resources/lupa.png", 20, 20);
 		lupa.setLocation(1005, 25);
-		/*lupa.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				jugadorBuscado = txtField.getText().toLowerCase();
-				arrayResultado.clear();
-
-				if (jugadorBuscado.isEmpty()) {
-					for (Jugador a : arrayJugadores) {
-						arrayResultado.add(a);
-					}
-					IListaJugadores.cargarLista(bookPanel, arrayResultado);
-				} else {
-					if (rdbtnNombreJugador.isSelected() == true) {
-						for (int i = 0; i < arrayJugadores.size(); i++) {
-							if (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getNombre().toLowerCase())) {
-								arrayResultado.add(arrayJugadores.get(i));
-							}
-						}
-						IListaJugadores.cargarLista(bookPanel, arrayResultado);
-					} else if (rdbtnDorsalJugador.isSelected() == true) {
-						for (int i = 0; i < arrayJugadores.size(); i++) {
-							if (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getDorsal())) {
-								arrayResultado.add(arrayJugadores.get(i));
-							}
-						}
-						IListaJugadores.cargarLista(bookPanel, arrayResultado);
-					} else if (rdbtnPosicionJugador.isSelected() == true) {
-						for (int i = 0; i < arrayJugadores.size(); i++) {
-							if (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getPosicion())) {
-								arrayResultado.add(arrayJugadores.get(i));
-							}
-						}
-						IListaJugadores.cargarLista(bookPanel, arrayResultado);
-					}
-
-					if (arrayResultado.isEmpty()) {
-						JOptionPane.showMessageDialog(frame, "No se han encontrado jugadores.");
-					}
-				}
-			}
-		});*/
+		/*
+		 * lupa.addMouseListener(new MouseAdapter() {
+		 *
+		 * @Override public void mouseClicked(MouseEvent e) {
+		 *
+		 * jugadorBuscado = txtField.getText().toLowerCase(); arrayResultado.clear();
+		 *
+		 * if (jugadorBuscado.isEmpty()) { for (Jugador a : arrayJugadores) {
+		 * arrayResultado.add(a); } IListaJugadores.cargarLista(bookPanel,
+		 * arrayResultado); } else { if (rdbtnNombreJugador.isSelected() == true) { for
+		 * (int i = 0; i < arrayJugadores.size(); i++) { if
+		 * (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getNombre().
+		 * toLowerCase())) { arrayResultado.add(arrayJugadores.get(i)); } }
+		 * IListaJugadores.cargarLista(bookPanel, arrayResultado); } else if
+		 * (rdbtnDorsalJugador.isSelected() == true) { for (int i = 0; i <
+		 * arrayJugadores.size(); i++) { if
+		 * (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getDorsal())) {
+		 * arrayResultado.add(arrayJugadores.get(i)); } }
+		 * IListaJugadores.cargarLista(bookPanel, arrayResultado); } else if
+		 * (rdbtnPosicionJugador.isSelected() == true) { for (int i = 0; i <
+		 * arrayJugadores.size(); i++) { if
+		 * (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getPosicion())) {
+		 * arrayResultado.add(arrayJugadores.get(i)); } }
+		 * IListaJugadores.cargarLista(bookPanel, arrayResultado); }
+		 *
+		 * if (arrayResultado.isEmpty()) { JOptionPane.showMessageDialog(frame,
+		 * "No se han encontrado jugadores."); } } } });
+		 */
 
 		navBarPanel.add(lupa);
 
@@ -169,14 +154,13 @@ public class VentanaJugadores extends JFrame {
 		navBarPanel.add(txtField);
 		txtField.setColumns(10);
 
-		
 		System.out.println("Pru" + arrayJugadores2);
 		for (String e : arrayJugadores2) {
 			arrayResultado.add(e);
 		}
-		
+
 		IListaJugadores.cargarLista(bookPanel, arrayResultado);
-		
+
 		// Scroll para la lista de los jugadores
 		JScrollPane scroll = new JScrollPane(bookPanel);
 		scroll.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
@@ -234,9 +218,10 @@ public class VentanaJugadores extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					//VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
-					//ve.setVisible(true);
-					//dispose();
+					// VentanaJugador ve = new
+					// VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
+					// ve.setVisible(true);
+					// dispose();
 				} catch (Exception e1) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					JOptionPane.showMessageDialog(frame, "Seleccione un jugador");
@@ -259,7 +244,7 @@ public class VentanaJugadores extends JFrame {
 		// para entrar siempre modo admin desde esta clase
 		utils.PropertiesMetodos.setProp("a", "a");
 
-		//VentanaJugadores VP = new VentanaJugadores(usuario);
-		//VP.setVisible(true);
+		// VentanaJugadores VP = new VentanaJugadores(usuario);
+		// VP.setVisible(true);
 	}
 }

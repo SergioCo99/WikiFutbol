@@ -3,7 +3,7 @@ package clases;
 // es una clase basica de una VIEW, NO DE UNA TABLA!!! SOLO SE VE, NO SE ACTUALIZA!!! SOLO GETTERS!!!
 /**
  * Esta clase hace referencia al equipo del año
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -22,7 +22,7 @@ public class TeamOfTheYear_view {
 
 	/**
 	 * Crea un equipo del año con los distintos atributos que lo forman
-	 * 
+	 *
 	 * @param id_teamoftheyear - id del equipo del año
 	 * @param id_jugador       - id de uno de los jugadores que forma el equipo del
 	 *                         año

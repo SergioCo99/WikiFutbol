@@ -15,7 +15,7 @@ import feedback.RWException;
 
 /**
  * Ventana para la visualizacion de las estadisticas de la aplicaion
- * 
+ *
  * @author sergiolopez
  *
  */

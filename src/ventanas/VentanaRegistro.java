@@ -22,7 +22,7 @@ import database.DBManagerException;
 
 /**
  * Ventana que da la posibilidad de registro
- * 
+ *
  * @author sergiolopez
  *
  */

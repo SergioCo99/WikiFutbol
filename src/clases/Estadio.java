@@ -2,7 +2,7 @@ package clases;
 
 /**
  * Clase para la creación de estadios
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -16,7 +16,7 @@ public class Estadio {
 
 	/**
 	 * Crea un estadio con sus respectivos atributos
-	 * 
+	 *
 	 * @param id           del estadio
 	 * @param nombre       del estadio
 	 * @param aforo        del estadio

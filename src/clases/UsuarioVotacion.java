@@ -2,7 +2,7 @@ package clases;
 
 /**
  * Clase que hace referencia a la votación dle los usuarios
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -17,7 +17,7 @@ public class UsuarioVotacion {
 
 	/**
 	 * Constructor para la votación de los usuarios
-	 * 
+	 *
 	 * @param id             - Id de la votación
 	 * @param usuario        - Usurio que esta votando
 	 * @param delantero      - Delantero elegido

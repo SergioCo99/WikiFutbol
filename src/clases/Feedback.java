@@ -2,7 +2,7 @@ package clases;
 
 /**
  * Clase para la creación de feedback
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -20,7 +20,7 @@ public class Feedback {
 
 	/**
 	 * Crea un feedback con su respectivos atributos
-	 * 
+	 *
 	 * @param id            del feedback
 	 * @param usuario       del feedback
 	 * @param valoracion    del feedback

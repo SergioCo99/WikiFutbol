@@ -22,7 +22,7 @@ import database.DBManagerException;
 
 /**
  * Ventana la cual permite al administrador cambiar datos de las tablas
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -150,7 +150,7 @@ public class VentanaCambiarDatos extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!textArea1.getText().equals(null) && !textArea1.getText().equals("")
-						&& jt.getSelectionModel().isSelectionEmpty() == false) {
+						&& (jt.getSelectionModel().isSelectionEmpty() == false)) {
 					try {
 						String tabla = jcbTablas.getSelectedItem().toString();
 						String columna = jt.getColumnName(jt.getSelectedColumn());

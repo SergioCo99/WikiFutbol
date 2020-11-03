@@ -2,7 +2,7 @@ package clases;
 
 /**
  * Clase para la creacion de empleados del club
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -16,7 +16,7 @@ public class EmpleadoDeClub {
 
 	/**
 	 * Crea un empleado del club con sus respectivos atributos
-	 * 
+	 *
 	 * @param id       del empleado del club
 	 * @param nombre   del empleado del club
 	 * @param fechaNac del empleado del club

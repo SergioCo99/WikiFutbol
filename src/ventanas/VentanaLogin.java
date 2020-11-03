@@ -27,7 +27,7 @@ import utils.JLabelGraficoAjustado;
 
 /**
  * Venta para el inicio de sesion
- * 
+ *
  * @author sergiolopez
  *
  */

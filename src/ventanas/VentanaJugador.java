@@ -23,7 +23,7 @@ import utils.JLabelGraficoAjustado;
 
 /**
  * Ventana para la visualizacion de la informacion de cada jugador
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -69,15 +69,12 @@ public class VentanaJugador extends JFrame {
 		btnAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				/*VentanaJugadores v1 = null;
-				try {
-					v1 = new VentanaJugadores(u);
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-				}
-				v1.setVisible(true);
-				dispose();*/
+				/*
+				 * VentanaJugadores v1 = null; try { v1 = new VentanaJugadores(u); } catch
+				 * (DBManagerException e1) {
+				 * mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				 * e1.printStackTrace(); } v1.setVisible(true); dispose();
+				 */
 			}
 		});
 

@@ -3,7 +3,6 @@ package database;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -33,7 +32,6 @@ import clases.UsuarioVotacion;
 
 public class DBManagerTest {
 
-	
 	static DBManager db = new DBManager();
 	static Usuario u = new Usuario(1, "nombre usuario", "contrasena", "correo", 0, "1970-01-01");
 	static Entrenador e = new Entrenador(1, "Gaizka Garitano", "1975-07-09", "Athletic Club", "Bilbao", "4-3-3",
@@ -106,7 +104,7 @@ public class DBManagerTest {
 		String correo_usuario = u.getCorreo();
 		int nuevoValor_admin_usuario = 1;
 
-		if (nuevoValor_admin_usuario != 1 && nuevoValor_admin_usuario != 0) {
+		if ((nuevoValor_admin_usuario != 1) && (nuevoValor_admin_usuario != 0)) {
 			fail("Tiene que ser 0 o 1");
 		}
 
@@ -177,17 +175,15 @@ public class DBManagerTest {
 		 * el orden y la cantidad. Lo dejo en *fail* para acordarnos de preguntarle que
 		 * hacer
 		 */
-		
-		//No se si está bien
+
+		// No se si está bien
 		String nombre_posicion = "Delantero";
 		ArrayList<String> jugadoresPorPosicion = new ArrayList<String>();
 		jugadoresPorPosicion = DBManager.getJugadoresPorEquipo(nombre_posicion);
-	       for (String jugadorPorPosicion: jugadoresPorPosicion) {
-	            Assert.assertNotNull(jugadorPorPosicion);
-	       }
-		
-		
-		
+		for (String jugadorPorPosicion : jugadoresPorPosicion) {
+			Assert.assertNotNull(jugadorPorPosicion);
+		}
+
 	}
 
 	@Test
@@ -295,12 +291,12 @@ public class DBManagerTest {
 
 	@Test
 	public void testGetCiudades() throws DBManagerException {
-		
+
 		ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
 		ciudades = DBManager.getCiudades();
-	       for (Ciudad ciudad: ciudades) {
-	            Assert.assertNotNull(ciudad);
-	       }
+		for (Ciudad ciudad : ciudades) {
+			Assert.assertNotNull(ciudad);
+		}
 	}
 
 	@Test
@@ -308,27 +304,27 @@ public class DBManagerTest {
 
 		ArrayList<Club> clubes = new ArrayList<Club>();
 		clubes = DBManager.getClubes();
-	       for (Club club: clubes) {
-	            Assert.assertNotNull(club);
-	       }
+		for (Club club : clubes) {
+			Assert.assertNotNull(club);
+		}
 		/*
-		fail();
-
-		assertEquals(
-				"Club [id=1, nombre=Athletic Club, ciudad=Bilbao, estadio=San Mames, anyoCreacion=1898, palmares=25, entrenador=Sergio Co], Club [id=2, nombre=Real Sociedad, ciudad=San Sebastian, estadio=Reale Arena, anyoCreacion=1908, palmares=5, entrenador=Imanol Alguacil], Club [id=3, nombre=Villarreal, ciudad=Villarreal, estadio=Estadio de la Ceramica, anyoCreacion=1923, palmares=2, entrenador=Unai Emery], Club [id=4, nombre=Real Madrid, ciudad=Madrid, estadio=Santiago Bernabeu, anyoCreacion=1902, palmares=34, entrenador=Zinedine Zidane], Club [id=5, nombre=Huesca, ciudad=Huesca, estadio=El Alcoraz, anyoCreacion=1960, palmares=1, entrenador=Michel], Club [id=6, nombre=Elche, ciudad=Elche, estadio=Estadio Martinez Valero, anyoCreacion=1922, palmares=2, entrenador=Jorge Almiron], Club [id=7, nombre=Getafe, ciudad=Getafe, estadio=Coliseum Alfonso Perez, anyoCreacion=1983, palmares=4, entrenador=Jose Bordalas], Club [id=8, nombre=Cadiz, ciudad=Cadiz, estadio=Estadio Ramon de Carranza, anyoCreacion=1909, palmares=6, entrenador=Alvaro Cervera], Club [id=9, nombre=Granada, ciudad=Granada, estadio=Estadio Nuevo Los Carmenes, anyoCreacion=1931, palmares=5, entrenador=Diego Martinez], Club [id=10, nombre=Betis, ciudad=Sevilla, estadio=Benito Villamarin, anyoCreacion=1907, palmares=1, entrenador=Manuel Pellegrini], Club [id=11, nombre=Atl. Madrid, ciudad=Madrid, estadio=Wanda Metropolitano, anyoCreacion=1903, palmares=24, entrenador=Diego Simeone], Club [id=12, nombre=Barcelona, ciudad=Barcelona, estadio=Camp Nou, anyoCreacion=1899, palmares=31, entrenador=Ronald Koeman], Club [id=13, nombre=Sevilla, ciudad=Sevilla, estadio=Ramon Sanchez Pizjuan, anyoCreacion=1890, palmares=19, entrenador=Julen Lopetegui], Club [id=14, nombre=Celta, ciudad=Vigo, estadio=Municipal de Balaidos, anyoCreacion=1927, palmares=5, entrenador=Oscar Garcia], Club [id=15, nombre=Alaves, ciudad=Vitoria-Gasteiz, estadio=Estadio de Mendizorroza, anyoCreacion=1921, palmares=1, entrenador=Pablo Machin], Club [id=16, nombre=Levante, ciudad=Valencia, estadio=Cuidad de Valencia, anyoCreacion=1908, palmares=5, entrenador=Paco Lopez], Club [id=17, nombre=Valladolid, ciudad=Valladolid, estadio=Jose Zorrilla, anyoCreacion=1928, palmares=2, entrenador=Sergio], Club [id=18, nombre=Eibar, ciudad=Eibar, estadio=Estadio Municipal de Ipurua, anyoCreacion=1940, palmares=3, entrenador=Jose Luis Mendilibar], Club [id=19, nombre=Valencia, ciudad=Valencia, estadio=Mestalla, anyoCreacion=1919, palmares=15, entrenador=Javi Gracia], Club [id=20, nombre=Osasuna, ciudad=Pamplona, estadio=Estadio El Sadar, anyoCreacion=1920, palmares=0, entrenador=Jagoba Arrasate]",
-				DBManager.getClubes());
-		// fail();*/
+		 * fail();
+		 *
+		 * assertEquals(
+		 * "Club [id=1, nombre=Athletic Club, ciudad=Bilbao, estadio=San Mames, anyoCreacion=1898, palmares=25, entrenador=Sergio Co], Club [id=2, nombre=Real Sociedad, ciudad=San Sebastian, estadio=Reale Arena, anyoCreacion=1908, palmares=5, entrenador=Imanol Alguacil], Club [id=3, nombre=Villarreal, ciudad=Villarreal, estadio=Estadio de la Ceramica, anyoCreacion=1923, palmares=2, entrenador=Unai Emery], Club [id=4, nombre=Real Madrid, ciudad=Madrid, estadio=Santiago Bernabeu, anyoCreacion=1902, palmares=34, entrenador=Zinedine Zidane], Club [id=5, nombre=Huesca, ciudad=Huesca, estadio=El Alcoraz, anyoCreacion=1960, palmares=1, entrenador=Michel], Club [id=6, nombre=Elche, ciudad=Elche, estadio=Estadio Martinez Valero, anyoCreacion=1922, palmares=2, entrenador=Jorge Almiron], Club [id=7, nombre=Getafe, ciudad=Getafe, estadio=Coliseum Alfonso Perez, anyoCreacion=1983, palmares=4, entrenador=Jose Bordalas], Club [id=8, nombre=Cadiz, ciudad=Cadiz, estadio=Estadio Ramon de Carranza, anyoCreacion=1909, palmares=6, entrenador=Alvaro Cervera], Club [id=9, nombre=Granada, ciudad=Granada, estadio=Estadio Nuevo Los Carmenes, anyoCreacion=1931, palmares=5, entrenador=Diego Martinez], Club [id=10, nombre=Betis, ciudad=Sevilla, estadio=Benito Villamarin, anyoCreacion=1907, palmares=1, entrenador=Manuel Pellegrini], Club [id=11, nombre=Atl. Madrid, ciudad=Madrid, estadio=Wanda Metropolitano, anyoCreacion=1903, palmares=24, entrenador=Diego Simeone], Club [id=12, nombre=Barcelona, ciudad=Barcelona, estadio=Camp Nou, anyoCreacion=1899, palmares=31, entrenador=Ronald Koeman], Club [id=13, nombre=Sevilla, ciudad=Sevilla, estadio=Ramon Sanchez Pizjuan, anyoCreacion=1890, palmares=19, entrenador=Julen Lopetegui], Club [id=14, nombre=Celta, ciudad=Vigo, estadio=Municipal de Balaidos, anyoCreacion=1927, palmares=5, entrenador=Oscar Garcia], Club [id=15, nombre=Alaves, ciudad=Vitoria-Gasteiz, estadio=Estadio de Mendizorroza, anyoCreacion=1921, palmares=1, entrenador=Pablo Machin], Club [id=16, nombre=Levante, ciudad=Valencia, estadio=Cuidad de Valencia, anyoCreacion=1908, palmares=5, entrenador=Paco Lopez], Club [id=17, nombre=Valladolid, ciudad=Valladolid, estadio=Jose Zorrilla, anyoCreacion=1928, palmares=2, entrenador=Sergio], Club [id=18, nombre=Eibar, ciudad=Eibar, estadio=Estadio Municipal de Ipurua, anyoCreacion=1940, palmares=3, entrenador=Jose Luis Mendilibar], Club [id=19, nombre=Valencia, ciudad=Valencia, estadio=Mestalla, anyoCreacion=1919, palmares=15, entrenador=Javi Gracia], Club [id=20, nombre=Osasuna, ciudad=Pamplona, estadio=Estadio El Sadar, anyoCreacion=1920, palmares=0, entrenador=Jagoba Arrasate]"
+		 * , DBManager.getClubes()); // fail();
+		 */
 
 	}
 
 	@Test
 	public void testGetEntrenadores() throws DBManagerException {
-		
+
 		ArrayList<Entrenador> entrenadores = new ArrayList<Entrenador>();
 		entrenadores = DBManager.getEntrenadores();
-	       for (Entrenador entrenador: entrenadores) {
-	            Assert.assertNotNull(entrenador);
-	       }
+		for (Entrenador entrenador : entrenadores) {
+			Assert.assertNotNull(entrenador);
+		}
 	}
 
 	// M�todos Entrenador
@@ -368,9 +364,9 @@ public class DBManagerTest {
 
 		ArrayList<Estadio> estadios = new ArrayList<Estadio>();
 		estadios = DBManager.getEstadios();
-	       for (Estadio estadio: estadios) {
-	            Assert.assertNotNull(estadio);
-	       }
+		for (Estadio estadio : estadios) {
+			Assert.assertNotNull(estadio);
+		}
 	}
 
 	// M�todos Estadio
@@ -400,40 +396,38 @@ public class DBManagerTest {
 
 		ArrayList<Feedback> feedbacks = new ArrayList<Feedback>();
 		feedbacks = DBManager.getFeedbacks();
-	       for (Feedback feedback: feedbacks) {
-	            Assert.assertNotNull(feedback);
-	       } 
+		for (Feedback feedback : feedbacks) {
+			Assert.assertNotNull(feedback);
+		}
 	}
 
 	@Test
 	public void testGetJugadores() throws DBManagerException {
-		
+
 		ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
 		jugadores = DBManager.getJugadores();
-	       for (Jugador jugador: jugadores) {
-	            Assert.assertNotNull(jugador);
-	       } 
-		
-		
+		for (Jugador jugador : jugadores) {
+			Assert.assertNotNull(jugador);
+		}
+
 	}
 
 	@Test
 	public void testGetPaises() throws DBManagerException {
 		// DA LO MISMO PERO DA ERROR
-		
+
 		ArrayList<Pais> paises = new ArrayList<Pais>();
 		paises = DBManager.getPaises();
-	       for (Pais pais: paises) {
-	            Assert.assertNotNull(pais);
-	       }
+		for (Pais pais : paises) {
+			Assert.assertNotNull(pais);
+		}
 
 		/*
-		fail();
-
-		assertEquals(
-				"[Pais [id=1, nombre=Espa�a], Pais [id=2, nombre=Francia], Pais [id=3, nombre=Guinea Ecuatorial], Pais [id=4, nombre=Chile], Pais [id=5, nombre=Argentina], Pais [id=6, nombre=Paises Bajos]]",
-				DBManager.getPaises());
-		// fail();
+		 * fail();
+		 *
+		 * assertEquals(
+		 * "[Pais [id=1, nombre=Espa�a], Pais [id=2, nombre=Francia], Pais [id=3, nombre=Guinea Ecuatorial], Pais [id=4, nombre=Chile], Pais [id=5, nombre=Argentina], Pais [id=6, nombre=Paises Bajos]]"
+		 * , DBManager.getPaises()); // fail();
 		 */
 	}
 
@@ -442,9 +436,9 @@ public class DBManagerTest {
 
 		ArrayList<TeamOfTheYear_view> totyv = new ArrayList<TeamOfTheYear_view>();
 		totyv = DBManager.getTeamOfTheYear_view();
-	       for (TeamOfTheYear_view teamOfTheYear_view: totyv) {
-	            Assert.assertNotNull(teamOfTheYear_view);
-	       }
+		for (TeamOfTheYear_view teamOfTheYear_view : totyv) {
+			Assert.assertNotNull(teamOfTheYear_view);
+		}
 	}
 
 	@Test
@@ -452,9 +446,9 @@ public class DBManagerTest {
 
 		ArrayList<TeamOfTheYear> toty = new ArrayList<TeamOfTheYear>();
 		toty = DBManager.getTeamOfTheYear();
-	       for (TeamOfTheYear teamOfTheYear: toty) {
-	            Assert.assertNotNull(teamOfTheYear);
-	       }
+		for (TeamOfTheYear teamOfTheYear : toty) {
+			Assert.assertNotNull(teamOfTheYear);
+		}
 	}
 
 	@Test
@@ -462,18 +456,17 @@ public class DBManagerTest {
 
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 		usuarios = DBManager.getUsuarios();
-	       for (Usuario usuario: usuarios) {
-	            Assert.assertNotNull(usuario);
-	       }
-		
-		/*
-		fail();
+		for (Usuario usuario : usuarios) {
+			Assert.assertNotNull(usuario);
+		}
 
-		assertEquals(
-				"[Usuario [id=1, nombre=sergio, contrasena=sergio@gmail.com, correo=a, admin=1, fechaNac=1999-06-23], Usuario [id=2, nombre=lopez, contrasena=lopez@gmail.com, correo=b, admin=0, fechaNac=1999-06-24], Usuario [id=4, nombre=cogollos, contrasena=cogollos@gmail.com, correo=c, admin=0, fechaNac=1999-06-26], Usuario [id=5, nombre=Eneko, contrasena=eneko.perez23@gmail.com, correo=12345, admin=1, fechaNac=2020-10-01], Usuario [id=231, nombre=hola, contrasena=hola@gmail.com, correo=hola, admin=0, fechaNac=2020-11-01]",
-				DBManager.getUsuarios());
-		// fail();
-		 * 
+		/*
+		 * fail();
+		 *
+		 * assertEquals(
+		 * "[Usuario [id=1, nombre=sergio, contrasena=sergio@gmail.com, correo=a, admin=1, fechaNac=1999-06-23], Usuario [id=2, nombre=lopez, contrasena=lopez@gmail.com, correo=b, admin=0, fechaNac=1999-06-24], Usuario [id=4, nombre=cogollos, contrasena=cogollos@gmail.com, correo=c, admin=0, fechaNac=1999-06-26], Usuario [id=5, nombre=Eneko, contrasena=eneko.perez23@gmail.com, correo=12345, admin=1, fechaNac=2020-10-01], Usuario [id=231, nombre=hola, contrasena=hola@gmail.com, correo=hola, admin=0, fechaNac=2020-11-01]"
+		 * , DBManager.getUsuarios()); // fail();
+		 *
 		 */
 
 	}
@@ -483,9 +476,9 @@ public class DBManagerTest {
 
 		ArrayList<UsuarioVotacion> usuarioVotaciones = new ArrayList<UsuarioVotacion>();
 		usuarioVotaciones = DBManager.getUsuarioVotaciones();
-	       for (UsuarioVotacion usuarioVotacion: usuarioVotaciones) {
-	            Assert.assertNotNull(usuarioVotacion);
-	       }
+		for (UsuarioVotacion usuarioVotacion : usuarioVotaciones) {
+			Assert.assertNotNull(usuarioVotacion);
+		}
 	}
 
 	@Test
@@ -515,9 +508,9 @@ public class DBManagerTest {
 	public void testData() throws DBManagerException {
 		/*
 		 * es un metodo que devuelve en un array 2D de object todos los datos de una
-		 * tabla. Preguntarle �como hacer un test de eso si los datos de la tabla
-		 * puede que sean modificados (incluso insertando valores nuevos o siendo
-		 * borrados otros)?
+		 * tabla. Preguntarle �como hacer un test de eso si los datos de la tabla puede
+		 * que sean modificados (incluso insertando valores nuevos o siendo borrados
+		 * otros)?
 		 */
 
 		fail();
@@ -558,24 +551,26 @@ public class DBManagerTest {
 
 	@Test
 	public void testGetJugadoresPorEquipo() throws DBManagerException {
-		
+
 		String nombre_club = "Athletic Club";
 		ArrayList<String> jugadoresPorEquipo = new ArrayList<String>();
 		jugadoresPorEquipo = DBManager.getJugadoresPorEquipo(nombre_club);
-	       for (String jugadorPorEquipo: jugadoresPorEquipo) {
-	            Assert.assertNotNull(jugadorPorEquipo);
-	       }
-	       
-		/*// no se si hacerlo asi (?)
-		ArrayList<String> arr = DBManager.getJugadoresPorEquipo("Athletic Club");
+		for (String jugadorPorEquipo : jugadoresPorEquipo) {
+			Assert.assertNotNull(jugadorPorEquipo);
+		}
 
-		System.out.println(DBManager.getJugadoresPorEquipo("Athletic Club"));
-		assertEquals(15, arr.size()); // tama�o
-		assertEquals("Alex Berenguer", arr.get(0)); // primero, ojo al orden que es abc
-		assertEquals("Yuri Berchiche", arr.get(14)); // ultimo, ojo al orden que es abc
-
-		fail();
-		*/
+		/*
+		 * // no se si hacerlo asi (?) ArrayList<String> arr =
+		 * DBManager.getJugadoresPorEquipo("Athletic Club");
+		 *
+		 * System.out.println(DBManager.getJugadoresPorEquipo("Athletic Club"));
+		 * assertEquals(15, arr.size()); // tama�o assertEquals("Alex Berenguer",
+		 * arr.get(0)); // primero, ojo al orden que es abc
+		 * assertEquals("Yuri Berchiche", arr.get(14)); // ultimo, ojo al orden que es
+		 * abc
+		 *
+		 * fail();
+		 */
 	}
 
 	@Test
@@ -632,10 +627,10 @@ public class DBManagerTest {
 	 * +
 	 * "id=20, nombre=Osasuna, ciudad=Pamplona, estadio=Estadio El Sadar, anyoCreacion=1920, palmares=0, entrenador=Jagoba Arrasate"
 	 * );
-	 * 
+	 *
 	 * assertEquals("id=1, nombre=Athletic Club, ciudad=Bilbao, estadio=San Mames, anyoCreacion=1898, palmares=0, entrenador=Gaizka Garitano, id=2, nombre=Real Sociedad, ciudad=San Sebastian, estadio=Reale Arena, anyoCreacion=1908, palmares=0, entrenador=Imanol Alguacil, id=3, nombre=Villarreal, ciudad=Villarreal, estadio=Estadio de la Ceramica, anyoCreacion=1923, palmares=0, entrenador=Unai Emery, id=4, nombre=Real Madrid, ciudad=Madrid, estadio=Santiago Bernabeu, anyoCreacion=1902, palmares=0, entrenador=Zinedine Zidane, id=5, nombre=Huesca, ciudad=Huesca, estadio=El Alcoraz, anyoCreacion=1960, palmares=0, entrenador=Michel,id=6, nombre=Elche, ciudad=Elche, estadio=Estadio Martinez Valero, anyoCreacion=1922, palmares=0, entrenador=Jorge Almiron, id=7, nombre=Getafe, ciudad=Getafe, estadio=Coliseum Alfonso Perez, anyoCreacion=1983, palmares=0, entrenador=Jose Bordalas, id=8, nombre=Cadiz, ciudad=Cadiz, estadio=Estadio Ramon de Carranza, anyoCreacion=1909, palmares=0, entrenador=Alvaro Cervera, id=9, nombre=Granada, ciudad=Granada, estadio=Estadio Nuevo Los Carmenes, anyoCreacion=1931, palmares=0, entrenador=Diego Martinez, id=10, nombre=Betis, ciudad=Sevilla, estadio=Benito Villamarin, anyoCreacion=1907, palmares=0, entrenador=Manuel Pellegrini, id=11, nombre=Atl. Madrid, ciudad=Madrid, estadio=Wanda Metropolitano, anyoCreacion=1903, palmares=0, entrenador=Diego Simeone, id=12, nombre=Barcelona, ciudad=Barcelona, estadio=Camp Nou, anyoCreacion=1899, palmares=0, entrenador=Ronald Koeman, id=13, nombre=Sevilla, ciudad=Sevilla, estadio=Ramon Sanchez Pizjuan, anyoCreacion=1890, palmares=0, entrenador=Julen Lopetegui, id=14, nombre=Celta, ciudad=Vigo, estadio=Municipal de Balaidos, anyoCreacion=1927, palmares=0, entrenador=Oscar Garcia, id=15, nombre=Alaves, ciudad=Vitoria-Gasteiz, estadio=Estadio de Mendizorroza, anyoCreacion=1921, palmares=0, entrenador=Pablo Machin,id=16, nombre=Levante, ciudad=Valencia, estadio=Cuidad de Valencia, anyoCreacion=1908, palmares=0, entrenador=Paco Lopez, id=17, nombre=Valladolid, ciudad=Valladolid, estadio=Jose Zorrilla, anyoCreacion=1928, palmares=0, entrenador=Sergio, id=18, nombre=Eibar, ciudad=Eibar, estadio=Estadio Municipal de Ipurua, anyoCreacion=1940, palmares=0, entrenador=Jose Luis Mendilibar, id=19, nombre=Valencia, ciudad=Valencia, estadio=Mestalla, anyoCreacion=1919, palmares=0, entrenador=Javi Gracia, id=20, nombre=Osasuna, ciudad=Pamplona, estadio=Estadio El Sadar, anyoCreacion=1920, palmares=0, entrenador=Jagoba Arrasate"
 	 * , DBManager.getClubes());
-	 * 
+	 *
 	 * }
 	 */
 }

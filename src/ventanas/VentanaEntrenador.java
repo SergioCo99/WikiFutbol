@@ -23,7 +23,7 @@ import utils.JLabelGraficoAjustado;
 
 /**
  * Ventana para la visualizacion de los datos de cada entrenador
- * 
+ *
  * @author sergiolopez
  *
  */

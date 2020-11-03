@@ -2,7 +2,7 @@ package clases;
 
 /**
  * Clase para la creación de Jugadores
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -28,7 +28,7 @@ public class Jugador extends EmpleadoDeClub {
 
 	/**
 	 * Crea un jugador con sus respectivos atributos
-	 * 
+	 *
 	 * @param id          del jugador
 	 * @param nombre      del jugador
 	 * @param fechaNac    del jugador

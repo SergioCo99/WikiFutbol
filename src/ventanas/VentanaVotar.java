@@ -16,7 +16,7 @@ import database.DBManagerException;
 /**
  * Ventana que da la posibilidad de votar a los usuarios de sus jugadores
  * favoritos para cada posicion
- * 
+ *
  * @author sergiolopez
  *
  */

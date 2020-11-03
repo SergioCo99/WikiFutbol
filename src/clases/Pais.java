@@ -2,7 +2,7 @@ package clases;
 
 /**
  * Clase para la creación de paises
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -13,7 +13,7 @@ public class Pais {
 
 	/**
 	 * Crea paises con sus respectivos atributos
-	 * 
+	 *
 	 * @param id     del pais
 	 * @param nombre del pais
 	 */

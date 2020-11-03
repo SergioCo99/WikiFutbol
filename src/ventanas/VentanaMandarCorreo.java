@@ -25,7 +25,7 @@ import utils.JLabelGraficoAjustado;
 
 /**
  * Ventana para mandar correos al usuario deseado
- * 
+ *
  * @author sergiolopez
  *
  */

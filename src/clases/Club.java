@@ -2,7 +2,7 @@ package clases;
 
 /**
  * Clase para la creacion de clubes
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -18,7 +18,7 @@ public class Club {
 
 	/**
 	 * Crea un club con sus diferentes paramentros
-	 * 
+	 *
 	 * @param id           del club
 	 * @param nombre       del club
 	 * @param ciudad       del club

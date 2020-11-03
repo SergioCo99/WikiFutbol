@@ -37,7 +37,7 @@ import utils.JLabelGraficoAjustado;
 
 /**
  * Ventana principal para la visualizacion de todos los equipos disponibles
- * 
+ *
  * @author sergiolopez
  *
  */

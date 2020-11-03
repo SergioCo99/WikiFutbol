@@ -11,6 +11,10 @@ import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicComboBoxEditor;
 
 public class AutoCompleteComboBoxTest extends JFrame {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private JComboBox comboBox;
 
 	public AutoCompleteComboBoxTest() {
@@ -32,6 +36,10 @@ public class AutoCompleteComboBoxTest extends JFrame {
 
 // Implementtion of AutoCompleteComboBox
 class AutoCompleteComboBox extends JComboBox {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	public int caretPos = 0;
 	public JTextField tfield = null;
 
@@ -41,6 +49,7 @@ class AutoCompleteComboBox extends JComboBox {
 		setEditable(true);
 	}
 
+	@Override
 	public void setSelectedIndex(int index) {
 		super.setSelectedIndex(index);
 		tfield.setText(getItemAt(index).toString());
@@ -48,15 +57,18 @@ class AutoCompleteComboBox extends JComboBox {
 		tfield.moveCaretPosition(caretPos);
 	}
 
+	@Override
 	public void setEditor(ComboBoxEditor editor) {
 		super.setEditor(editor);
 		if (editor.getEditorComponent() instanceof JTextField) {
 			tfield = (JTextField) editor.getEditorComponent();
 			tfield.addKeyListener(new KeyAdapter() {
+				@Override
 				public void keyReleased(KeyEvent ke) {
 					char key = ke.getKeyChar();
-					if (!(Character.isLetterOrDigit(key) || Character.isSpaceChar(key)))
+					if (!(Character.isLetterOrDigit(key) || Character.isSpaceChar(key))) {
 						return;
+					}
 					caretPos = tfield.getCaretPosition();
 					String text = "";
 					try {

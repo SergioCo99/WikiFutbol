@@ -20,7 +20,7 @@ public class ProgressBarWithTime extends JFrame {
 		try {
 			while (i <= 100) {
 				// set text accoring to the level to which the bar is filled
-				if (i > 30 && i < 70) {
+				if ((i > 30) && (i < 70)) {
 					progress.setString("wait for sometime");
 				} else if (i > 70) {
 					progress.setString("almost finished loading");

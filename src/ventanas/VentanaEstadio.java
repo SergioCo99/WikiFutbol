@@ -23,7 +23,7 @@ import utils.JLabelGraficoAjustado;
 
 /**
  * Ventana para la visualizacion de las caracteristicas de cada estadio
- * 
+ *
  * @author sergiolopez
  *
  */

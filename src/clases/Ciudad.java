@@ -2,7 +2,7 @@ package clases;
 
 /**
  * Clase para la creacion de ciudades
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -14,7 +14,7 @@ public class Ciudad {
 
 	/**
 	 * Crea una ciudad con sus diferentes parametros
-	 * 
+	 *
 	 * @param id     de la ciudad
 	 * @param nombre de la ciudad
 	 * @param pais   de la ciudad

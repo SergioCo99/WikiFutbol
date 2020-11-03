@@ -10,8 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 
-import clases.Jugador;
-
 public interface IListaJugadores {
 	public static void cargarLista(JList<String> bookPanel, ArrayList<String> a) {
 

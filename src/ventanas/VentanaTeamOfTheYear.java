@@ -14,7 +14,7 @@ import utils.JLabelGraficoAjustado;
 
 /**
  * Ventana para la visualiozacion del equipo del año
- * 
+ *
  * @author sergiolopez
  *
  */
