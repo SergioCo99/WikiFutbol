@@ -84,7 +84,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -109,7 +109,7 @@ public class DBManager {
 			try {
 				preparedstmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -132,14 +132,14 @@ public class DBManager {
 				return false;
 			}
 		} catch (SQLException e) {
-			mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			throw new DBManagerException("Error login DBManager, o no coincide contrasena", e);
 		} finally {
 			try {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -169,7 +169,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -191,7 +191,7 @@ public class DBManager {
 				try {
 					preparedstmt.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 				}
 				disconnect();
 			}
@@ -212,7 +212,7 @@ public class DBManager {
 			try {
 				preparedstmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -233,7 +233,7 @@ public class DBManager {
 			try {
 				preparedstmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -261,7 +261,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -295,7 +295,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -327,7 +327,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -337,8 +337,9 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			String sql = "select nombre_jugador from jugador where posicion_jugador = '" + posicion_jugador + "';";
+			String sql = "select nombre_jugador from jugador where posicion_jugador = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, posicion_jugador);
 			rs = preparedstmt.executeQuery();
 			ArrayList<String> arr = new ArrayList<String>();
 			while (rs.next()) {
@@ -359,7 +360,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -369,8 +370,9 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			String sql = "select id_usuario from usuario where correo_usuario = '" + correo_usuario + "'";
+			String sql = "select id_usuario from usuario where correo_usuario = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, correo_usuario);
 			rs = preparedstmt.executeQuery();
 			rs.next();
 			int id = rs.getInt("id_usuario");
@@ -383,7 +385,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -407,7 +409,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -450,7 +452,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -474,7 +476,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -499,7 +501,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -547,7 +549,7 @@ public class DBManager {
 			try {
 				preparedstmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -573,7 +575,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -611,7 +613,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -649,7 +651,7 @@ public class DBManager {
 			try {
 				stmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -681,7 +683,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -716,7 +718,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -751,7 +753,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -787,7 +789,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -822,7 +824,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -857,7 +859,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -893,7 +895,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -929,7 +931,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -963,7 +965,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -998,7 +1000,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1033,7 +1035,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1068,7 +1070,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1102,7 +1104,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1136,7 +1138,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1172,7 +1174,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1206,7 +1208,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1242,7 +1244,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1274,7 +1276,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1301,7 +1303,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1334,7 +1336,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1368,7 +1370,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1400,7 +1402,7 @@ public class DBManager {
 				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1412,7 +1414,7 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			String sql = "select column_name from INFORMATION_SCHEMA.columns where table_name = '" + tabla
+			String sql = "select column_name from FINERMATION_SCHEMA.columns where table_name = '" + tabla
 					+ "' order by ordinal_position";
 			preparedstmt = conn.prepareStatement(sql);
 			rs = preparedstmt.executeQuery();
@@ -1430,7 +1432,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1484,7 +1486,7 @@ public class DBManager {
 				rs1.close();
 				rs2.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1511,7 +1513,7 @@ public class DBManager {
 			try {
 				preparedstmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1541,7 +1543,7 @@ public class DBManager {
 			try {
 				preparedstmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1582,7 +1584,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1615,7 +1617,7 @@ public class DBManager {
 				preparedstmt.close();
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
 			disconnect();
 		}
@@ -1635,11 +1637,12 @@ public class DBManager {
 			String dato = rs.getString("contrasena_usuario");
 			System.out.println(dato);
 		} catch (SQLException e) {
-			mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			throw new DBManagerException("Error basicPS", e);
 		} /*
 			 * finally { try { preparedstmt.close(); rs.close(); } catch (SQLException e) {
-			 * e.printStackTrace(); } disconnect(); }
+			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString()); }
+			 * disconnect(); }
 			 */
 	}
 

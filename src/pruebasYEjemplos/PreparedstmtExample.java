@@ -9,7 +9,7 @@ public class PreparedstmtExample {
 		DBManager.registrarFeedback("a@gmail.com", "4", "si", "op");
 
 		System.out.println(
-				DBManager.todosLosCorreos()
+				DBManager.getIdUsuario("eneko.perez23@gmail.com")
 		);
 	}
 
