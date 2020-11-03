@@ -68,10 +68,8 @@ public class VentanaPrincipal extends JFrame {
 	JMenu menuTeamOfTheYear;
 	JMenuItem miVotar, miVerEquipo;
 
-	// Para el listado de equipos
-	private DBManager database1 = new DBManager();
-	private IListaEquipos interfazLista;
 	private ArrayList<Club> arrayEquipos = new ArrayList<Club>();
+	@SuppressWarnings("rawtypes")
 	private JList bookPanel = new JList();
 	private static Usuario usuario;
 
@@ -87,13 +85,9 @@ public class VentanaPrincipal extends JFrame {
 	private JRadioButton rdbtnNumLigas;
 	private ArrayList<Club> arrayResultado = new ArrayList<Club>();
 
-	// Boton acceder a equipo
-	private JLabel verEquipo;
-	private JButton botonVerEquipo;
-
 	public VentanaPrincipal(Usuario u) throws DBManagerException {
 		// arrayEquipos = database1.getEquipos();
-		arrayEquipos = database1.getClubes();
+		arrayEquipos = DBManager.getClubes();
 		usuario = u;
 		init();
 	}
