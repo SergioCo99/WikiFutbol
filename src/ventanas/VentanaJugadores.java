@@ -5,8 +5,6 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -25,7 +23,6 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import clases.Club;
-import clases.Jugador;
 import clases.Usuario;
 import database.DBManager;
 import database.DBManagerException;
@@ -45,38 +42,20 @@ public class VentanaJugadores extends JFrame {
 	// Para el listado de equipos
 	String nombreEquipo;
 
-	private DBManager database2 = new DBManager();
-	private IListaJugadores interfazLista;
-	private ArrayList<Jugador> arrayJugadores = new ArrayList<Jugador>();
-	private ArrayList<String> arrayJugadores2 = new ArrayList<String>();
-
-	private JList bookPanel = new JList();
-	private static Usuario usuario;
-
+	private JList<String> bookPanel = new JList<String>();
 	// Filtrado de equipos
 	private JTextField txtField;
 	private static VentanaJugadores frame;
 
-	private String jugadorBuscado;
 	private ButtonGroup filtro;
 	private JRadioButton rdbtnNombreJugador;
 	private JRadioButton rdbtnDorsalJugador;
 	private JRadioButton rdbtnPosicionJugador;
 	private ArrayList<String> arrayResultado = new ArrayList<String>();
 
-	// Boton acceder a equipo
-	private JLabel verEquipo;
-	private JButton botonVerEquipo;
-
-
 	public VentanaJugadores(ArrayList<String> arrayJugadores2, Club club, Usuario u) throws DBManagerException {
 		nombreEquipo = club.getNombre();
 		arrayJugadores2 = DBManager.getJugadoresPorEquipo(nombreEquipo);
-		//Syso de prueba. Verifica que funciona
-		System.out.println(arrayJugadores2);
-		usuario = u;
-		
-
 		this.setTitle("Plantilla del " + nombreEquipo);
 		this.setSize(1200, 700);
 		this.setLayout(null);
@@ -164,7 +143,15 @@ public class VentanaJugadores extends JFrame {
 		btnAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Sin funcionalidad a�n
+				VentanaEquipo v1 = null;
+				try {
+					v1 = new VentanaEquipo(club, u);
+				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+					e1.printStackTrace();
+				}
+				v1.setVisible(true);
+				dispose();
 			}
 		});
 
@@ -187,8 +174,7 @@ public class VentanaJugadores extends JFrame {
 		for (String e : arrayJugadores2) {
 			arrayResultado.add(e);
 		}
-		//Aqui muestra bien el resultado
-		System.out.println("Pru Resul" + arrayResultado);
+		
 		IListaJugadores.cargarLista(bookPanel, arrayResultado);
 		
 		// Scroll para la lista de los jugadores
@@ -250,7 +236,7 @@ public class VentanaJugadores extends JFrame {
 				try {
 					//VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
 					//ve.setVisible(true);
-					dispose();
+					//dispose();
 				} catch (Exception e1) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					JOptionPane.showMessageDialog(frame, "Seleccione un jugador");

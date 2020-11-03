@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import clases.Club;
-import clases.Jugador;
 import clases.Usuario;
 import database.DBManager;
 import database.DBManagerException;
@@ -262,9 +261,6 @@ public class VentanaEquipo extends JFrame {
 				try {
 					ArrayList<String> arrayJugadores = new ArrayList<String>();
 					arrayJugadores = DBManager.getJugadoresPorEquipo(nombreEquipo);
-					//Muestra por consola que solo se ven los jugadores de ese club
-					//Queda ponerlo correctamente en VentanaJugadores
-					System.out.println(arrayJugadores);
 					VentanaJugadores ve = new VentanaJugadores(arrayJugadores, club, u);
 					ve.setVisible(true);
 					dispose();
