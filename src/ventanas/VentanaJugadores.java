@@ -48,6 +48,8 @@ public class VentanaJugadores extends JFrame {
 	private DBManager database2 = new DBManager();
 	private IListaJugadores interfazLista;
 	private ArrayList<Jugador> arrayJugadores = new ArrayList<Jugador>();
+	private ArrayList<String> arrayJugadores2 = new ArrayList<String>();
+
 	private JList bookPanel = new JList();
 	private static Usuario usuario;
 
@@ -60,17 +62,12 @@ public class VentanaJugadores extends JFrame {
 	private JRadioButton rdbtnNombreJugador;
 	private JRadioButton rdbtnDorsalJugador;
 	private JRadioButton rdbtnPosicionJugador;
-	private ArrayList<Jugador> arrayResultado = new ArrayList<Jugador>();
+	private ArrayList<String> arrayResultado = new ArrayList<String>();
 
 	// Boton acceder a equipo
 	private JLabel verEquipo;
 	private JButton botonVerEquipo;
 
-	public VentanaJugadores(Usuario u) throws DBManagerException {
-		arrayJugadores = database2.getJugadores();
-		usuario = u;
-		init();
-	}
 
 	public VentanaJugadores(ArrayList<String> arrayJugadores2, Club club, Usuario u) throws DBManagerException {
 		nombreEquipo = club.getNombre();
@@ -78,10 +75,7 @@ public class VentanaJugadores extends JFrame {
 		//Syso de prueba. Verifica que funciona
 		System.out.println(arrayJugadores2);
 		usuario = u;
-		init();
-	}
-
-	public void init() {
+		
 
 		this.setTitle("Plantilla del " + nombreEquipo);
 		this.setSize(1200, 700);
@@ -188,11 +182,15 @@ public class VentanaJugadores extends JFrame {
 		navBarPanel.add(txtField);
 		txtField.setColumns(10);
 
-		for (Jugador e : arrayJugadores) {
+		
+		System.out.println("Pru" + arrayJugadores2);
+		for (String e : arrayJugadores2) {
 			arrayResultado.add(e);
 		}
+		//Aqui muestra bien el resultado
+		System.out.println("Pru Resul" + arrayResultado);
 		IListaJugadores.cargarLista(bookPanel, arrayResultado);
-
+		
 		// Scroll para la lista de los jugadores
 		JScrollPane scroll = new JScrollPane(bookPanel);
 		scroll.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
@@ -250,8 +248,8 @@ public class VentanaJugadores extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
-					ve.setVisible(true);
+					//VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
+					//ve.setVisible(true);
 					dispose();
 				} catch (Exception e1) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
@@ -275,7 +273,7 @@ public class VentanaJugadores extends JFrame {
 		// para entrar siempre modo admin desde esta clase
 		utils.PropertiesMetodos.setProp("a", "a");
 
-		VentanaJugadores VP = new VentanaJugadores(usuario);
-		VP.setVisible(true);
+		//VentanaJugadores VP = new VentanaJugadores(usuario);
+		//VP.setVisible(true);
 	}
 }
