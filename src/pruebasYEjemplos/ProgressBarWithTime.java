@@ -1,4 +1,4 @@
-package utils;
+package pruebasYEjemplos;
 
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
@@ -66,6 +66,6 @@ public class ProgressBarWithTime extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		utils.ProgressBarWithTime.ProgressBarWithTimeCall(10);
+		pruebasYEjemplos.ProgressBarWithTime.ProgressBarWithTimeCall(10);
 	}
 }

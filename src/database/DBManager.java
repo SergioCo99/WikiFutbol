@@ -149,12 +149,12 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			String sql = "select admin_usuario from usuario where correo_usuario = '" + correo_usuario + "'";
+			String sql = "select admin_usuario from usuario where correo_usuario = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, correo_usuario);
 			rs = preparedstmt.executeQuery();
 			rs.next();
 			if (rs.getInt("admin_usuario") == 1) {
-				System.out.println("a");
 				return true;
 			} else if (rs.getInt("admin_usuario") == 0) {
 				return false;
@@ -179,9 +179,10 @@ public class DBManager {
 		if ((admin_usuario == 1) || (admin_usuario == 0)) {
 			connect();
 			try {
-				String sql = "update usuario set admin_usuario = '" + admin_usuario + "' where correo_usuario = '"
-						+ correo_usuario + "';";
+				String sql = "update usuario set admin_usuario = ? where correo_usuario = ?";
 				preparedstmt = conn.prepareStatement(sql);
+				preparedstmt.setInt(1, admin_usuario);
+				preparedstmt.setString(2, correo_usuario);
 				preparedstmt.executeUpdate();
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -200,8 +201,9 @@ public class DBManager {
 	public static void eliminarUsuario(String correo_usuario) throws DBManagerException {
 		connect();
 		try {
-			String sql = "delete from usuario where correo_usuario = '" + correo_usuario + "';";
+			String sql = "delete from usuario where correo_usuario = ?;";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, correo_usuario);
 			preparedstmt.executeUpdate();
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -219,9 +221,10 @@ public class DBManager {
 	public static void cambiarContrasena(String correo_usuario, String contrasena_usuario) throws DBManagerException {
 		connect();
 		try {
-			String sql = "update usuario set contrasena_usuario = '" + contrasena_usuario + "' where correo_usuario = '"
-					+ correo_usuario + "';";
+			String sql = "update usuario set contrasena_usuario = ? where correo_usuario = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, contrasena_usuario);
+			preparedstmt.setString(2, correo_usuario);
 			preparedstmt.executeUpdate();
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -303,16 +306,18 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			String sql1 = "select id_usuario from usuario where correo_usuario = '" + correo_usuario + "'";
+			String sql1 = "select id_usuario from usuario where correo_usuario = ?";
 			preparedstmt = conn.prepareStatement(sql1);
+			preparedstmt.setString(1, correo_usuario);
 			rs = preparedstmt.executeQuery();
 			rs.next();
-			String id = rs.getString("id_usuario");
-
-			String sql2 = "insert into feedback(usuario_feedback, valoracion_feedback, recomendacion_feedback, opinion_feedback) values('"
-					+ id + "','" + valoracion_feedback + "','" + recomendacion_feedback + "','" + opinion_feedback
-					+ "')";
+			int id = rs.getInt("id_usuario");
+			String sql2 = "insert into feedback(usuario_feedback, valoracion_feedback, recomendacion_feedback, opinion_feedback) values(?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql2);
+			preparedstmt.setInt(1, id);
+			preparedstmt.setString(2, valoracion_feedback);
+			preparedstmt.setString(3, recomendacion_feedback);
+			preparedstmt.setString(4, opinion_feedback);
 			preparedstmt.executeUpdate();
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -1627,7 +1632,7 @@ public class DBManager {
 			rs = preparedstmt.executeQuery();
 			rs.next();
 
-			String dato = rs.getString("correo_usuario");
+			String dato = rs.getString("contrasena_usuario");
 			System.out.println(dato);
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
@@ -1640,8 +1645,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		System.out.println(existeCorreo("a@gmail.com"));
-		System.out.println(existeCorreo("xxx@gmail.com"));
-		registrarUsuario("nom", "corr", "passw", "1970-01-01");
+		basicPS("a@gmail.com");
 	}
 }

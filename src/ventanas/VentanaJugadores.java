@@ -23,7 +23,6 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import clases.Club;
-import clases.Jugador;
 import clases.Usuario;
 import database.DBManager;
 import database.DBManagerException;
@@ -43,7 +42,7 @@ public class VentanaJugadores extends JFrame {
 	// Para el listado de equipos
 	String nombreEquipo;
 	private JList<String> bookPanel = new JList<String>();
-	
+
 	// Filtrado de equipos
 	private JTextField txtField;
 	private static VentanaJugadores frame;
@@ -85,49 +84,34 @@ public class VentanaJugadores extends JFrame {
 
 		final JLabelGraficoAjustado lupa = new JLabelGraficoAjustado("resources/lupa.png", 20, 20);
 		lupa.setLocation(1005, 25);
-		/*lupa.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				jugadorBuscado = txtField.getText().toLowerCase();
-				arrayResultado.clear();
-
-				if (jugadorBuscado.isEmpty()) {
-					for (Jugador a : arrayJugadores) {
-						arrayResultado.add(a);
-					}
-					IListaJugadores.cargarLista(bookPanel, arrayResultado);
-				} else {
-					if (rdbtnNombreJugador.isSelected() == true) {
-						for (int i = 0; i < arrayJugadores.size(); i++) {
-							if (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getNombre().toLowerCase())) {
-								arrayResultado.add(arrayJugadores.get(i));
-							}
-						}
-						IListaJugadores.cargarLista(bookPanel, arrayResultado);
-					} else if (rdbtnDorsalJugador.isSelected() == true) {
-						for (int i = 0; i < arrayJugadores.size(); i++) {
-							if (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getDorsal())) {
-								arrayResultado.add(arrayJugadores.get(i));
-							}
-						}
-						IListaJugadores.cargarLista(bookPanel, arrayResultado);
-					} else if (rdbtnPosicionJugador.isSelected() == true) {
-						for (int i = 0; i < arrayJugadores.size(); i++) {
-							if (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getPosicion())) {
-								arrayResultado.add(arrayJugadores.get(i));
-							}
-						}
-						IListaJugadores.cargarLista(bookPanel, arrayResultado);
-					}
-
-					if (arrayResultado.isEmpty()) {
-						JOptionPane.showMessageDialog(frame, "No se han encontrado jugadores.");
-					}
-				}
-			}
-		});*/
+		/*
+		 * lupa.addMouseListener(new MouseAdapter() {
+		 * 
+		 * @Override public void mouseClicked(MouseEvent e) {
+		 * 
+		 * jugadorBuscado = txtField.getText().toLowerCase(); arrayResultado.clear();
+		 * 
+		 * if (jugadorBuscado.isEmpty()) { for (Jugador a : arrayJugadores) {
+		 * arrayResultado.add(a); } IListaJugadores.cargarLista(bookPanel,
+		 * arrayResultado); } else { if (rdbtnNombreJugador.isSelected() == true) { for
+		 * (int i = 0; i < arrayJugadores.size(); i++) { if
+		 * (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getNombre().
+		 * toLowerCase())) { arrayResultado.add(arrayJugadores.get(i)); } }
+		 * IListaJugadores.cargarLista(bookPanel, arrayResultado); } else if
+		 * (rdbtnDorsalJugador.isSelected() == true) { for (int i = 0; i <
+		 * arrayJugadores.size(); i++) { if
+		 * (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getDorsal())) {
+		 * arrayResultado.add(arrayJugadores.get(i)); } }
+		 * IListaJugadores.cargarLista(bookPanel, arrayResultado); } else if
+		 * (rdbtnPosicionJugador.isSelected() == true) { for (int i = 0; i <
+		 * arrayJugadores.size(); i++) { if
+		 * (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getPosicion())) {
+		 * arrayResultado.add(arrayJugadores.get(i)); } }
+		 * IListaJugadores.cargarLista(bookPanel, arrayResultado); }
+		 * 
+		 * if (arrayResultado.isEmpty()) { JOptionPane.showMessageDialog(frame,
+		 * "No se han encontrado jugadores."); } } } });
+		 */
 
 		navBarPanel.add(lupa);
 
@@ -171,14 +155,13 @@ public class VentanaJugadores extends JFrame {
 		navBarPanel.add(txtField);
 		txtField.setColumns(10);
 
-		
 		System.out.println("Pru" + arrayJugadores2);
 		for (String e : arrayJugadores2) {
 			arrayResultado.add(e);
 		}
-		
+
 		IListaJugadores.cargarLista(bookPanel, arrayResultado);
-		
+
 		// Scroll para la lista de los jugadores
 		JScrollPane scroll = new JScrollPane(bookPanel);
 		scroll.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
@@ -238,7 +221,8 @@ public class VentanaJugadores extends JFrame {
 				try {
 					ArrayList<String> jugador;
 					jugador = arrayResultado;
-					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), jugador, club, usuario);
+					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), jugador,
+							club, usuario);
 					System.out.println("Juga" + arrayResultado);
 					ve.setVisible(true);
 					dispose();
@@ -264,7 +248,7 @@ public class VentanaJugadores extends JFrame {
 		// para entrar siempre modo admin desde esta clase
 		utils.PropertiesMetodos.setProp("a", "a");
 
-		//VentanaJugadores VP = new VentanaJugadores(usuario);
-		//VP.setVisible(true);
+		// VentanaJugadores VP = new VentanaJugadores(usuario);
+		// VP.setVisible(true);
 	}
 }

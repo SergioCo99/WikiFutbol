@@ -32,14 +32,15 @@ public class IListaTest {
 
 	@Before
 	public void setUp1() {
-		
-		 try { 
-			 String nombreEquipo = "Athletic Club";
-			 arrayJugador = DBManager.getJugadoresPorEquipo(nombreEquipo);
-			 System.out.println("BD cargada");
-		 } catch (DBManagerException e) {
-			 System.out.println("BD no cargada"); }
-		 
+
+		try {
+			String nombreEquipo = "Athletic Club";
+			arrayJugador = DBManager.getJugadoresPorEquipo(nombreEquipo);
+			System.out.println("BD cargada");
+		} catch (DBManagerException e) {
+			System.out.println("BD no cargada");
+		}
+
 	}
 
 	@Test

@@ -65,7 +65,7 @@ public class EstadisticaFeedbackTest {
 
 			double porcentajeSi = EstadisticaFeedback.ReadAndLoad().get(1);
 			double porcentajeNo = EstadisticaFeedback.ReadAndLoad().get(2);
-			assertEquals(porcentajeSi + porcentajeNo, 100, 0);
+			assertEquals(porcentajeSi + porcentajeNo, 100, 0.01);
 
 			if ((EstadisticaFeedback.ReadAndLoad().get(3) < 0)
 					|| ((EstadisticaFeedback.ReadAndLoad().get(3) % 1) != 0)) {
