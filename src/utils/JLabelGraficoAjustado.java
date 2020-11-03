@@ -72,16 +72,13 @@ public class JLabelGraficoAjustado extends JLabel {
 
 	/**
 	 * Este método cambia la imagen del objeto
-	 *
-	 * <<<<<<< HEAD
 	 * 
 	 * @param nomImagenObjeto Nombre fichero donde estï¿½ la imagen del objeto.
 	 *                        Puede ser tambiï¿½n un nombre de recurso desde el
 	 *                        paquete de esta clase. =======
 	 * @param nomImagenLogo   Nombre fichero donde estï¿½ la imagen del objeto.
 	 *                        Puede ser tambiï¿½n un nombre de recurso desde el
-	 *                        paquete de esta clase. >>>>>>> branch 'master' of
-	 *                        https://github.com/SergioCo99/WikiFutbol.git
+	 *                        paquete de esta clase.
 	 */
 	public void setImagen(String nomImagenLogo) {
 		File futbolFile = new File(nomImagenLogo);
@@ -222,6 +219,7 @@ public class JLabelGraficoAjustado extends JLabel {
 		}
 	}
 
+	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
 		JFrame wikiFutbol = new JFrame("WikiLogo en JLabelGraficoAjustado");
 		wikiFutbol.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
