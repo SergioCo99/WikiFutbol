@@ -33,7 +33,7 @@ public class VentanaEstadisticas extends JFrame {
 
 		this.setTitle("VentanaEstadisticas");
 		this.setSize(600, 400);
-		this.setLayout(null);
+		getContentPane().setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -94,15 +94,17 @@ public class VentanaEstadisticas extends JFrame {
 		getContentPane().add(sp);
 		// hasta aqui tabla
 
+		//es un poco feo 
 		try {
 			int nuevaValoracion = (int) Math.round(feedback.EstadisticaFeedback.ReadAndLoad().get(0) * 10);
 			valoracion = new JProgressBar(0, 50);
+			valoracion.setToolTipText("");
+			valoracion.setStringPainted(true);
 			valoracion.setBounds(100, 250, 400, 50);
 			valoracion.setValue(nuevaValoracion);
-			System.out.println(valoracion.getValue());
-
 			valoracion.setForeground(Color.yellow);
-			add(valoracion);
+			valoracion.setString(Integer.toString(nuevaValoracion));
+			getContentPane().add(valoracion);
 		} catch (RWException e) {
 			e.printStackTrace();
 		}
