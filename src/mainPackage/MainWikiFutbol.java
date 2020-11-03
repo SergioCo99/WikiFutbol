@@ -51,7 +51,7 @@ public class MainWikiFutbol {
 	}
 
 	// por si no existe el fichero
-	public static void crearFicherosAccountProperties() {
+	public static void crearFicherosProperties() {
 		try {
 			File accountprop = new File("account.properties");
 			accountprop.createNewFile();
@@ -65,7 +65,7 @@ public class MainWikiFutbol {
 	public static void main(String[] args) {
 		crearFicheroLog();
 		crearFicheroLogger();
-		crearFicherosAccountProperties();
+		crearFicherosProperties();
 
 		VentanaLogin VL = new VentanaLogin();
 		VL.setVisible(true);

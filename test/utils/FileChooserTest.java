@@ -16,7 +16,7 @@ public class FileChooserTest {
 
 	@Test
 	public void test() {
-		// Hay que seleccionar el archivo del String actual en concreto
+		// Hay que seleccionar el archivo del "String actual" en concreto
 		String finalPath = utils.FileChooser.Choose();
 		String actual = System.getProperty("user.home") + "\\git\\WikiFutbol\\resources\\wf.png";
 
