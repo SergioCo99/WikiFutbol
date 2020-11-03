@@ -94,7 +94,7 @@ public class VentanaEstadisticas extends JFrame {
 		getContentPane().add(sp);
 		// hasta aqui tabla
 
-		//es un poco feo 
+		// es un poco feo
 		try {
 			int nuevaValoracion = (int) Math.round(feedback.EstadisticaFeedback.ReadAndLoad().get(0) * 10);
 			valoracion = new JProgressBar(0, 50);
