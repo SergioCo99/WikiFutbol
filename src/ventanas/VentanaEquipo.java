@@ -24,7 +24,6 @@ import utils.JLabelGraficoAjustado;
 
 public class VentanaEquipo extends JFrame {
 
-	// se usa en esta clase??? si no hay que borrarlo
 	public static boolean privilegiosAdmin() {
 		try {
 			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {
@@ -101,7 +100,6 @@ public class VentanaEquipo extends JFrame {
 		navBarPanel.add(atrasPanel);
 
 		JLabel lblEquipo = new JLabel(nombreEquipo);
-		// JLabel lblEquipo = new JLabel("'NombreEquipo'");
 		lblEquipo.setBounds(80, 20, 300, 29);
 		lblEquipo.setFont(new Font("Tahoma", Font.BOLD, 24));
 		navBarPanel.add(lblEquipo);
@@ -121,7 +119,6 @@ public class VentanaEquipo extends JFrame {
 
 		// Cabecera
 		final JLabel cabecera = new JLabel("Informaci\u00f3n sobre " + nombreEquipo + ":");
-		// final JLabel cabecera = new JLabel("Informaci�n sobre 'NombreEquipo':");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -137,7 +134,6 @@ public class VentanaEquipo extends JFrame {
 
 		// ResultadoNombreEquipo
 		final JLabel resultadoNombre = new JLabel(nombreEquipo);
-		// final JLabel label11 = new JLabel("Nombre Prueba");
 		resultadoNombre.setBounds(120, 110, 400, 50);
 		resultadoNombre.setFont(fuente2);
 		resultadoNombre.setForeground(Color.BLACK);
@@ -152,7 +148,6 @@ public class VentanaEquipo extends JFrame {
 
 		// ResultadoCiudadEquipo
 		String ciudadEquipo = club.getCiudad();
-		// String ciudadEquipo = "Ciudad Prueba";
 		final JLabel resultadoCiudad = new JLabel(ciudadEquipo);
 		resultadoCiudad.setBounds(120, 175, 400, 50);
 		resultadoCiudad.setFont(fuente2);
@@ -167,14 +162,12 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(labelEstadio);
 
 		// ResultadoEstadioEquipo
-
 		String estadioEquipo = club.getEstadio();
 		final JButton botonEquipo = new JButton(estadioEquipo);
 		botonEquipo.setBounds(200, 240, 400, 50);
 		botonEquipo.setFont(fuente2);
 		botonEquipo.setForeground(Color.BLACK);
 		botonEquipo.setContentAreaFilled(false);
-		// botonPabellon.setBorder(new LineBorder(new Color (0,0,0),3));
 		botonEquipo.setFocusable(true);
 		bookPanel.add(botonEquipo);
 
@@ -219,7 +212,6 @@ public class VentanaEquipo extends JFrame {
 
 		// Resultado Palmares
 		String palmares = club.getPalmares();
-		// String palmares = "Palmares Prueba";
 		final JLabel resultadoPalmares = new JLabel(palmares);
 		resultadoPalmares.setBounds(200, 370, 400, 50);
 		resultadoPalmares.setFont(fuente2);
@@ -241,7 +233,6 @@ public class VentanaEquipo extends JFrame {
 		botonEntrenador.setFont(fuente2);
 		botonEntrenador.setForeground(Color.BLACK);
 		botonEntrenador.setContentAreaFilled(false);
-		// botonPabellon.setBorder(new LineBorder(new Color (0,0,0),3));
 		botonEntrenador.setFocusable(true);
 		bookPanel.add(botonEntrenador);
 

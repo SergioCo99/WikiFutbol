@@ -124,7 +124,6 @@ public class VentanaJugador extends JFrame {
 
 		// Cabecera
 		final JLabel cabecera = new JLabel("Informaci\u00f3n sobre " + nombreJugador + ":");
-		// final JLabel cabecera = new JLabel("Informaci�n sobre 'NombreEquipo':");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -273,7 +272,6 @@ public class VentanaJugador extends JFrame {
 		bookPanel.add(labelPieFav);
 
 		// Resultado Pie Fav
-		
 		String piefav = jugador.getPiefav().toString();
 		final JLabel resultadoPieFav = new JLabel(piefav);
 		resultadoPieFav.setBounds(500, 370, 400, 50);

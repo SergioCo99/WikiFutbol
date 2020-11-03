@@ -79,7 +79,6 @@ public class VentanaJugadores extends JFrame {
 	private JButton botonVerEquipo;
 
 	public VentanaJugadores(Usuario u) throws DBManagerException {
-		// arrayEquipos = database1.getEquipos();
 		arrayJugadores = database2.getJugadores();
 		usuario = u;
 		init();
@@ -204,7 +203,6 @@ public class VentanaJugadores extends JFrame {
 		add(scroll);
 
 		// Filtros
-
 		JLabel lblFiltro = new JLabel("Busqueda por:");
 		lblFiltro.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblFiltro.setBounds(1015, 81, 169, 24);
