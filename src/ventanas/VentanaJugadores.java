@@ -24,6 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import clases.Club;
 import clases.Jugador;
 import clases.Usuario;
 import database.DBManager;
@@ -42,6 +43,8 @@ public class VentanaJugadores extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	// Para el listado de equipos
+	String nombreEquipo;
+
 	private DBManager database2 = new DBManager();
 	private IListaJugadores interfazLista;
 	private ArrayList<Jugador> arrayJugadores = new ArrayList<Jugador>();
@@ -69,9 +72,18 @@ public class VentanaJugadores extends JFrame {
 		init();
 	}
 
+	public VentanaJugadores(ArrayList<String> arrayJugadores2, Club club, Usuario u) throws DBManagerException {
+		nombreEquipo = club.getNombre();
+		arrayJugadores2 = DBManager.getJugadoresPorEquipo(nombreEquipo);
+		//Syso de prueba. Verifica que funciona
+		System.out.println(arrayJugadores2);
+		usuario = u;
+		init();
+	}
+
 	public void init() {
 
-		this.setTitle("Plantilla del 'Nombre Equipo'");
+		this.setTitle("Plantilla del " + nombreEquipo);
 		this.setSize(1200, 700);
 		this.setLayout(null);
 		this.setResizable(false);
@@ -91,14 +103,14 @@ public class VentanaJugadores extends JFrame {
 		iconoWikiFutbol.setLocation(10, 13);
 		navBarPanel.add(iconoWikiFutbol);
 
-		JLabel labelWikiFutbol = new JLabel("Plantilla del 'Nombre Equipo'");
+		JLabel labelWikiFutbol = new JLabel("Plantilla del " + nombreEquipo);
 		labelWikiFutbol.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
 		labelWikiFutbol.setBounds(80, 20, 385, 29);
 		navBarPanel.add(labelWikiFutbol);
 
 		final JLabelGraficoAjustado lupa = new JLabelGraficoAjustado("resources/lupa.png", 20, 20);
 		lupa.setLocation(1005, 25);
-		lupa.addMouseListener(new MouseAdapter() {
+		/*lupa.addMouseListener(new MouseAdapter() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -140,7 +152,7 @@ public class VentanaJugadores extends JFrame {
 					}
 				}
 			}
-		});
+		});*/
 
 		navBarPanel.add(lupa);
 

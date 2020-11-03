@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -18,7 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import clases.Club;
+import clases.Jugador;
 import clases.Usuario;
+import database.DBManager;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
@@ -256,15 +259,19 @@ public class VentanaEquipo extends JFrame {
 		btnPlantilla.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaJugadores v1 = null;
 				try {
-					v1 = new VentanaJugadores(u);
-				} catch (DBManagerException e1) {
+					ArrayList<String> arrayJugadores = new ArrayList<String>();
+					arrayJugadores = DBManager.getJugadoresPorEquipo(nombreEquipo);
+					//Muestra por consola que solo se ven los jugadores de ese club
+					//Queda ponerlo correctamente en VentanaJugadores
+					System.out.println(arrayJugadores);
+					VentanaJugadores ve = new VentanaJugadores(arrayJugadores, club, u);
+					ve.setVisible(true);
+					dispose();
+				} catch (Exception e1) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(frame, "Este entrenador no existe");
 				}
-				v1.setVisible(true);
-				dispose();
 			}
 		});
 
