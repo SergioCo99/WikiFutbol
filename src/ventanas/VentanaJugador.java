@@ -273,7 +273,7 @@ public class VentanaJugador extends JFrame {
 		bookPanel.add(labelPieFav);
 
 		// Resultado Pie Fav
-		
+
 		String piefav = jugador.getPiefav().toString();
 		final JLabel resultadoPieFav = new JLabel(piefav);
 		resultadoPieFav.setBounds(500, 370, 400, 50);

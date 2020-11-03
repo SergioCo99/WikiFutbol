@@ -129,7 +129,8 @@ public class DBManager {
 	}
 
 	public static boolean esAdmin(String correo_usuario) throws DBManagerException {
-		try {connect();
+		try {
+			connect();
 			stmt = conn.createStatement();
 			String sql = "select admin_usuario from usuario where correo_usuario = '" + correo_usuario + "'";
 			ResultSet rs = stmt.executeQuery(sql);
@@ -149,7 +150,7 @@ public class DBManager {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error esAdmin DBManager, o no es admin", e);
 		} finally {
-			//stmt.close();
+			// stmt.close();
 			System.out.println("b");
 			disconnect();
 		}

@@ -84,7 +84,7 @@ public class VentanaFeedback extends JFrame {
 		bNo.setBounds(452, 100, 90, 50);
 
 		lblRecomendacion = new JLabel();
-		lblRecomendacion.setText("�Lo recomendarias?: ");
+		lblRecomendacion.setText("¿Lo recomendarias?: ");
 		lblRecomendacion.setBounds(175, 100, 200, 50);
 
 		bgRecomendacion = new ButtonGroup();
@@ -92,7 +92,7 @@ public class VentanaFeedback extends JFrame {
 		bgRecomendacion.add(bNo);
 
 		botonAtras = new JButton();
-		botonAtras.setText("Atr�s");
+		botonAtras.setText("Atras");
 		botonAtras.setBounds(10, 340, 200, 30);
 
 		botonSiguiente = new JButton();
@@ -100,7 +100,7 @@ public class VentanaFeedback extends JFrame {
 		botonSiguiente.setBounds(500, 340, 200, 30);
 
 		lblValoracion = new JLabel();
-		lblValoracion.setText("Valoraci�n:");
+		lblValoracion.setText("Valoracion:");
 		lblValoracion.setBounds(10, 10, 100, 20);
 
 		lblComentario = new JLabel();

@@ -440,9 +440,9 @@ public class DBManagerTest {
 	public void testData() throws DBManagerException {
 		/*
 		 * es un metodo que devuelve en un array 2D de object todos los datos de una
-		 * tabla. Preguntarle ï¿½como hacer un test de eso si los datos de la tabla
-		 * puede que sean modificados (incluso insertando valores nuevos o siendo
-		 * borrados otros)?
+		 * tabla. Preguntarle ï¿½como hacer un test de eso si los datos de la tabla puede
+		 * que sean modificados (incluso insertando valores nuevos o siendo borrados
+		 * otros)?
 		 */
 
 		fail();
@@ -501,7 +501,7 @@ public class DBManagerTest {
 
 			if (table.equals("pais")) {
 				assertEquals(6 /* contandolo a dedo en la BD */, DBManager.numeroDeFilasEnUnaTabla(table));
-			} // CON TODOS? Y SI SE AÑADEN FILAS???
+			} // CON TODOS? Y SI SE Aï¿½ADEN FILAS???
 		}
 
 		// fail();

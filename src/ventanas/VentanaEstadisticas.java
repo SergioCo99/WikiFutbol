@@ -1,9 +1,11 @@
 package ventanas;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 
 import javax.swing.JFrame;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -22,6 +24,10 @@ public class VentanaEstadisticas extends JFrame {
 	private static final long serialVersionUID = 1L;
 	JTable table;
 	JScrollPane sp;
+	JProgressBar valoracion;
+
+	String[] columns = { "Code", "Info" }; // ?????
+	Object[][] data = null;
 
 	public VentanaEstadisticas() {
 
@@ -34,9 +40,6 @@ public class VentanaEstadisticas extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
 		// tabla
-		String[] columns = { "Code", "Info" }; // ?????
-
-		Object[][] data = null;
 		try {
 			data = new Object[feedback.EstadisticaFeedback.ReadAndLoad().size()][2];
 			for (int i = 0; i < feedback.EstadisticaFeedback.ReadAndLoad().size(); i++) {
@@ -90,6 +93,19 @@ public class VentanaEstadisticas extends JFrame {
 		sp.setBounds(100, 100, 400, 100);
 		getContentPane().add(sp);
 		// hasta aqui tabla
+
+		try {
+			int nuevaValoracion = (int) Math.round(feedback.EstadisticaFeedback.ReadAndLoad().get(0) * 10);
+			valoracion = new JProgressBar(0, 50);
+			valoracion.setBounds(100, 250, 400, 50);
+			valoracion.setValue(nuevaValoracion);
+			System.out.println(valoracion.getValue());
+
+			valoracion.setForeground(Color.yellow);
+			add(valoracion);
+		} catch (RWException e) {
+			e.printStackTrace();
+		}
 
 	}
 

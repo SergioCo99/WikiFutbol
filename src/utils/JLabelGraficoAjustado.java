@@ -71,14 +71,14 @@ public class JLabelGraficoAjustado extends JLabel {
 	}
 
 	/**
-	 * Este método cambia la imagen del objeto
+	 * Este mï¿½todo cambia la imagen del objeto
 	 * 
-	 * @param nomImagenObjeto Nombre fichero donde estï¿½ la imagen del objeto.
-	 *                        Puede ser tambiï¿½n un nombre de recurso desde el
-	 *                        paquete de esta clase. =======
-	 * @param nomImagenLogo   Nombre fichero donde estï¿½ la imagen del objeto.
-	 *                        Puede ser tambiï¿½n un nombre de recurso desde el
-	 *                        paquete de esta clase.
+	 * @param nomImagenObjeto Nombre fichero donde estï¿½ la imagen del objeto. Puede
+	 *                        ser tambiï¿½n un nombre de recurso desde el paquete de
+	 *                        esta clase. =======
+	 * @param nomImagenLogo   Nombre fichero donde estï¿½ la imagen del objeto. Puede
+	 *                        ser tambiï¿½n un nombre de recurso desde el paquete de
+	 *                        esta clase.
 	 */
 	public void setImagen(String nomImagenLogo) {
 		File futbolFile = new File(nomImagenLogo);

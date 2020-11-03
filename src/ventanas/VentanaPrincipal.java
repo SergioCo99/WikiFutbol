@@ -160,8 +160,8 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contrase\u00f1a",
-						"Cambiar contrase�a", JOptionPane.WARNING_MESSAGE);
+				String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contraseña",
+						"Cambiar contraseña", JOptionPane.WARNING_MESSAGE);
 
 				if ((nuevaContrasena != null) && !nuevaContrasena.equals("")) {
 					try {
