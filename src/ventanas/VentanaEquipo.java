@@ -24,6 +24,7 @@ import utils.JLabelGraficoAjustado;
 
 public class VentanaEquipo extends JFrame {
 
+	// se usa en esta clase??? si no hay que borrarlo
 	public static boolean privilegiosAdmin() {
 		try {
 			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {
@@ -120,7 +121,7 @@ public class VentanaEquipo extends JFrame {
 
 		// Cabecera
 		final JLabel cabecera = new JLabel("Informaci\u00f3n sobre " + nombreEquipo + ":");
-		// final JLabel cabecera = new JLabel("Información sobre 'NombreEquipo':");
+		// final JLabel cabecera = new JLabel("Informaciï¿½n sobre 'NombreEquipo':");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));

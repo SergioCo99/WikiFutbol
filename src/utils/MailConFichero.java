@@ -80,15 +80,15 @@ public class MailConFichero {
 
 			// Part two is attachment
 			messageBodyPart = new MimeBodyPart();
-			// String filename = utils.FileChooser.Choose(); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			// String filename = utils.FileChooser.Choose();
 			DataSource source = new FileDataSource(filename);
 			messageBodyPart.setDataHandler(new DataHandler(source));
 
-			String s = filename.substring(filename.lastIndexOf("."), filename.length());
+			String finalFilename = filename.substring(filename.lastIndexOf("."), filename.length());
 			DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HH-mm");
 			String dateTimeInfo = dateFormat.format(new Date());
 
-			messageBodyPart.setFileName(/* nombreArchivoAdjunto( */"WikiFutbol" + dateTimeInfo + s/* ) */);
+			messageBodyPart.setFileName(/* nombreArchivoAdjunto( */"WikiFutbol" + dateTimeInfo + finalFilename);
 			multipart.addBodyPart(messageBodyPart);
 
 			// Send the complete message parts

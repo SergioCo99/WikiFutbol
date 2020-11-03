@@ -18,10 +18,10 @@ public class EmpleadoDeClub {
 	 * Crea un empleado del club con sus respectivos atributos
 	 * 
 	 * @param id       del empleado del club
-	 * @param nombre   id del empleado del club
-	 * @param fechaNac id del empleado del club
-	 * @param club     id del empleado del club
-	 * @param ciudad   id del empleado del club
+	 * @param nombre   del empleado del club
+	 * @param fechaNac del empleado del club
+	 * @param club     del empleado del club
+	 * @param ciudad   del empleado del club
 	 */
 	public EmpleadoDeClub(int id, String nombre, String fechaNac, String club, String ciudad) {
 		super();

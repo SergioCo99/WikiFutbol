@@ -87,7 +87,7 @@ public class VentanaCambiarDatos extends JFrame {
 			e.printStackTrace();
 		}
 		utils.JComboBoxAutoCompletion.enable(jcbTablas);
-		jcbTablas.setBounds(10, 300, 120, 30); // jcbTablas.setBounds(400, 300, 150, 30);
+		jcbTablas.setBounds(10, 300, 120, 30);
 		jcbTablas.setSelectedIndex(0);
 
 		getContentPane().add(btnCambiarDato);
@@ -123,9 +123,6 @@ public class VentanaCambiarDatos extends JFrame {
 
 		jt.setCellSelectionEnabled(true);
 
-		// ListSelectionModel select = jt.getSelectionModel(); // Que hace???
-		// select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // Que hace???
-
 		sp = new JScrollPane(jt);
 		sp.setBounds(10, 10, 560, 150);
 		getContentPane().add(sp);
@@ -155,13 +152,12 @@ public class VentanaCambiarDatos extends JFrame {
 				if (!textArea1.getText().equals(null) && !textArea1.getText().equals("")
 						&& jt.getSelectionModel().isSelectionEmpty() == false) {
 					try {
-						// meter un query y tal cual y que se ejecute
-						// database.DBManager.cambiarDatos(textArea1.getText());
-
 						String tabla = jcbTablas.getSelectedItem().toString();
 						String columna = jt.getColumnName(jt.getSelectedColumn());
-						// Object valor = jt.getValueAt(jt.getSelectedRow(),
-						// jt.getSelectedColumn()).toString();
+						/*
+						 * Object valor = jt.getValueAt(jt.getSelectedRow(),
+						 * jt.getSelectedColumn()).toString();
+						 */
 						Object valor = textArea1.getText();
 						int id = Integer.parseInt((String) jt.getValueAt(jt.getSelectedRow(), 0));
 						database.DBManager.cambiarDatosDesdeJTable(tabla, columna, valor, id);

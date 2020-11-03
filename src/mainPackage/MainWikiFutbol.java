@@ -28,10 +28,10 @@ public class MainWikiFutbol {
 		// mainPackage.MainWikiFutbol.log.println("Message");
 	}
 
-	public static Logger loggerBD = Logger.getLogger(MainWikiFutbol.class.getName()); // asi??
-	public static Logger loggerGeneral = Logger.getLogger(MainWikiFutbol.class.getName()); // asi??
+	public static Logger loggerBD = Logger.getLogger(MainWikiFutbol.class.getName());
+	public static Logger loggerGeneral = Logger.getLogger(MainWikiFutbol.class.getName());
 
-	public static void crearFicheroLogger() { // gitignore los ficheros cuando le cambiemos el nombre
+	public static void crearFicheroLogger() {
 		// FINEST / FINER / FINE / CONFIG / INFO / WARNING / SEVERE
 		loggerBD.setLevel(Level.ALL);
 		loggerGeneral.setLevel(Level.ALL);
