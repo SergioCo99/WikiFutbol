@@ -35,12 +35,14 @@ public class VentanaJugador extends JFrame {
 	String nombreJugador;
 	static Component frame;
 
-	public VentanaJugador(String string, Club club, Usuario u) throws DBManagerException {
-		init(string, club, u);
+	public VentanaJugador(String string, ArrayList<String> jugador1, Club club, Usuario u) throws DBManagerException {
+		init(string, jugador1, club, u);
 	}
 
-	public void init(String string, Club club, Usuario u) {
+	public void init(String string, ArrayList<String> jugador1, Club club, Usuario u) {
 		//nombreJugador = jugador.getNombre();
+		nombreJugador = jugador1.toString();
+		System.out.println("Que" + nombreJugador);
 		this.setTitle(nombreJugador);
 		this.setSize(1200, 700);
 		this.setLayout(null);

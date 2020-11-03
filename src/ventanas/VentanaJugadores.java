@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import clases.Club;
+import clases.Jugador;
 import clases.Usuario;
 import database.DBManager;
 import database.DBManagerException;
@@ -235,7 +236,10 @@ public class VentanaJugadores extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), club, usuario);
+					ArrayList<String> jugador;
+					jugador = arrayResultado;
+					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), jugador, club, usuario);
+					System.out.println("Juga" + arrayResultado);
 					ve.setVisible(true);
 					dispose();
 				} catch (Exception e1) {
