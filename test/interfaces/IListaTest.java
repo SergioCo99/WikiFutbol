@@ -16,18 +16,15 @@ import database.DBManagerException;
 
 public class IListaTest {
 
-	private IListaEquipos interfazEquipos;
-	private IListaJugadores interfazJugadores;
-	private DBManager database = new DBManager();
 	private ArrayList<Club> arrayClub = new ArrayList<Club>();
 	private ArrayList<Jugador> arrayJugador = new ArrayList<Jugador>();
-	private JList listaClub = new JList<String>();
-	private JList listaJugador = new JList<String>();
+	private JList<String> listaClub = new JList<String>();
+	private JList<String> listaJugador = new JList<String>();
 
 	@Before
 	public void setUp() {
 		try {
-			arrayClub = database.getClubes();
+			arrayClub = DBManager.getClubes();
 			System.out.println("BD cargada");
 		} catch (DBManagerException e) {
 			System.out.println("BD no cargada");
@@ -37,7 +34,7 @@ public class IListaTest {
 	@Before
 	public void setUp1() {
 		try {
-			arrayJugador = database.getJugadores();
+			arrayJugador = DBManager.getJugadores();
 			System.out.println("BD cargada");
 		} catch (DBManagerException e) {
 			System.out.println("BD no cargada");
