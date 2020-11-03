@@ -10,14 +10,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import clases.Club;
-import clases.Jugador;
 import database.DBManager;
 import database.DBManagerException;
 
 public class IListaTest {
 
 	private ArrayList<Club> arrayClub = new ArrayList<Club>();
-	private ArrayList<Jugador> arrayJugador = new ArrayList<Jugador>();
+	private ArrayList<String> arrayJugador = new ArrayList<String>();
 	private JList<String> listaClub = new JList<String>();
 	private JList<String> listaJugador = new JList<String>();
 
@@ -33,12 +32,12 @@ public class IListaTest {
 
 	@Before
 	public void setUp1() {
-		try {
+		/*try {
 			arrayJugador = DBManager.getJugadores();
 			System.out.println("BD cargada");
 		} catch (DBManagerException e) {
 			System.out.println("BD no cargada");
-		}
+		}*/
 	}
 
 	@Test

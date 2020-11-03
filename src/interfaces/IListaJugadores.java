@@ -13,11 +13,11 @@ import javax.swing.ListSelectionModel;
 import clases.Jugador;
 
 public interface IListaJugadores {
-	public static void cargarLista(JList<String> bookPanel, ArrayList<Jugador> a) {
+	public static void cargarLista(JList<String> bookPanel, ArrayList<String> a) {
 
 		DefaultListModel<String> modelo = new DefaultListModel<String>();
-		for (Jugador j : a) {
-			modelo.addElement(j.getNombre());
+		for (String j : a) {
+			modelo.addElement(j);
 		}
 		bookPanel.setModel(modelo);
 		bookPanel.updateUI();

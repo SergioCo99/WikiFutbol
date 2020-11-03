@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -70,7 +69,7 @@ public class VentanaJugador extends JFrame {
 		btnAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaJugadores v1 = null;
+				/*VentanaJugadores v1 = null;
 				try {
 					v1 = new VentanaJugadores(u);
 				} catch (DBManagerException e1) {
@@ -78,7 +77,7 @@ public class VentanaJugador extends JFrame {
 					e1.printStackTrace();
 				}
 				v1.setVisible(true);
-				dispose();
+				dispose();*/
 			}
 		});
 
