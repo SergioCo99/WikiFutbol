@@ -6,11 +6,21 @@ import database.DBManagerException;
 public class PreparedstmtExample {
 
 	public static void main(String[] args) throws DBManagerException {
-		DBManager.registrarFeedback("a@gmail.com", "4", "si", "op");
-
-		System.out.println(
-				DBManager.getIdUsuario("eneko.perez23@gmail.com")
-		);
+		System.out.println(DBManager.numeroDeFilasEnUnaTabla("ciudad"));
 	}
 
 }
+// NO VAN: (recordar revisar ".close()")
+
+// actualizarVotos, igual contarVotosPorJugador y contarJugadores
+
+// getMasVotados puede que no vaya, depende indirectamente de actualizarVotos
+// toft igual no va, depende de getMasVotados, que depende indirectamente de actualizarVotos
+
+// data
+
+// cambiarDatos
+
+// cambiarDatosDesdeJTable
+
+// numeroDeFilasEnUnaTabla

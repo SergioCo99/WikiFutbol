@@ -27,6 +27,7 @@ import clases.TeamOfTheYear;
 import clases.TeamOfTheYear_view;
 import clases.Usuario;
 import clases.UsuarioVotacion;
+import pruebasYEjemplos.PreparedstmtExample;
 
 public class DBManager {
 
@@ -395,8 +396,9 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			String sql = "select id_jugador from jugador where nombre_jugador = '" + nombre_jugador + "'";
+			String sql = "select id_jugador from jugador where nombre_jugador = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, nombre_jugador);
 			rs = preparedstmt.executeQuery();
 			rs.next();
 			int id = rs.getInt("id_jugador");
@@ -421,28 +423,33 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			String sql1 = "select count(usuario_usuarioVotacion) from usuarioVotacion where usuario_usuarioVotacion = '"
-					+ usuario_usuarioVotacion + "';";
+			String sql1 = "select count(usuario_usuarioVotacion) from usuarioVotacion where usuario_usuarioVotacion = ?";
 			preparedstmt = conn.prepareStatement(sql1);
+			preparedstmt.setInt(1, usuario_usuarioVotacion);
 			rs = preparedstmt.executeQuery();
 			rs.next();
 			if (rs.getInt("count(usuario_usuarioVotacion)") == 0) {
 				String sql2 = "insert into usuariovotacion(usuario_usuarioVotacion, delanteroVotado_usuarioVotacion, "
 						+ "centrocampistaVotado_usuarioVotacion, defensaVotado_usuarioVotacion, porteroVotado_usuarioVotacion)"
-						+ " values(" + usuario_usuarioVotacion + "," + delanteroVotado_usuarioVotacion + ","
-						+ centrocampistaVotado_usuarioVotacion + "," + defensaVotado_usuarioVotacion + ","
-						+ porteroVotado_usuarioVotacion + ")";
+						+ " values(?,?,?,?,?)";
 				preparedstmt = conn.prepareStatement(sql2);
-				preparedstmt.executeUpdate(sql2);
+				preparedstmt.setInt(1, usuario_usuarioVotacion);
+				preparedstmt.setInt(2, delanteroVotado_usuarioVotacion);
+				preparedstmt.setInt(3, centrocampistaVotado_usuarioVotacion);
+				preparedstmt.setInt(4, defensaVotado_usuarioVotacion);
+				preparedstmt.setInt(5, porteroVotado_usuarioVotacion);
+				preparedstmt.executeUpdate();
 			} else if (rs.getInt("count(usuario_usuarioVotacion)") != 0) {
-				String sql2 = "update usuariovotacion set delanteroVotado_usuarioVotacion = '"
-						+ delanteroVotado_usuarioVotacion + "', centrocampistaVotado_usuarioVotacion = '"
-						+ centrocampistaVotado_usuarioVotacion + "', defensaVotado_usuarioVotacion = '"
-						+ defensaVotado_usuarioVotacion + "', porteroVotado_usuarioVotacion = '"
-						+ porteroVotado_usuarioVotacion + "' " + "where usuario_usuarioVotacion = '"
-						+ usuario_usuarioVotacion + "'";
+				String sql2 = "update usuariovotacion set delanteroVotado_usuarioVotacion = ?, "
+						+ "centrocampistaVotado_usuarioVotacion = ?, " + "defensaVotado_usuarioVotacion = ?, "
+						+ "porteroVotado_usuarioVotacion = ? " + "where usuario_usuarioVotacion = ?";
 				preparedstmt = conn.prepareStatement(sql2);
-				preparedstmt.executeUpdate(sql2);
+				preparedstmt.setInt(1, delanteroVotado_usuarioVotacion);
+				preparedstmt.setInt(2, centrocampistaVotado_usuarioVotacion);
+				preparedstmt.setInt(3, defensaVotado_usuarioVotacion);
+				preparedstmt.setInt(4, porteroVotado_usuarioVotacion);
+				preparedstmt.setInt(5, usuario_usuarioVotacion);
+				preparedstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -463,6 +470,7 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
+			stmt = conn.createStatement();
 			String sql = "select count(id_jugador) from jugador";
 			rs = stmt.executeQuery(sql);
 			rs.next();
@@ -471,14 +479,6 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error contarJugadores DBManager", e);
-		} finally {
-			try {
-				stmt.close();
-				rs.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
-			}
-			disconnect();
 		}
 	}
 
@@ -486,9 +486,10 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			String sql = "select count(" + jugadorVotado_usuarioVotacion + ") from usuarioVotacion where "
-					+ jugadorVotado_usuarioVotacion + " = " + i;
+			String sql = "select count(" + jugadorVotado_usuarioVotacion + ") from usuarioVotacion where ? = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, jugadorVotado_usuarioVotacion);
+			preparedstmt.setInt(2, i);
 			rs = preparedstmt.executeQuery();
 			rs.next();
 			int v = rs.getInt("count(" + jugadorVotado_usuarioVotacion + ")");
@@ -496,14 +497,6 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error contarVotosPorJugador DBManager", e);
-		} finally {
-			try {
-				preparedstmt.close();
-				rs.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
-			}
-			disconnect();
 		}
 	}
 
@@ -561,8 +554,9 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			String sql = "select count(id_TeamOfTheYear) from TeamOfTheYear where id_TeamOfTheYear = '" + n + "';";
+			String sql = "select count(id_TeamOfTheYear) from TeamOfTheYear where id_TeamOfTheYear = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setInt(1, n);
 			rs = preparedstmt.executeQuery();
 			rs.next();
 			n = rs.getInt("count(id_TeamOfTheYear)");
@@ -570,14 +564,6 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error contarTOFT DBManager", e);
-		} finally {
-			try {
-				preparedstmt.close();
-				rs.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
-			}
-			disconnect();
 		}
 	}
 
@@ -587,20 +573,24 @@ public class DBManager {
 		try {
 
 			int id = 0;
-			String sql1 = "select * from jugador where posicion_jugador = '" + posicion
-					+ "' order by voto_jugador desc, goles_jugador desc limit " + limit;
+			String sql1 = "select * from jugador where posicion_jugador = ? order by voto_jugador desc, goles_jugador desc limit ?";
 			preparedstmt = conn.prepareStatement(sql1);
+			preparedstmt.setString(1, posicion);
+			preparedstmt.setInt(2, limit);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
 				id = rs.getInt("id_jugador");
 				if (countTOFT(i) == 0) {
-					String sql2 = "insert into teamoftheyear values(" + i + ", " + id + ")";
+					String sql2 = "insert into teamoftheyear values(?,?)";
 					preparedstmt = conn.prepareStatement(sql2);
+					preparedstmt.setInt(1, i);
+					preparedstmt.setInt(2, id);
 					preparedstmt.executeUpdate();
 				} else if (countTOFT(i) == 1) {
-					String sql2 = "update teamoftheyear set jugador_teamoftheyear = " + id
-							+ " where id_teamoftheyear = " + i + "";
+					String sql2 = "update teamoftheyear set jugador_teamoftheyear = ? where id_teamoftheyear = ?";
 					preparedstmt = conn.prepareStatement(sql2);
+					preparedstmt.setInt(1, id);
+					preparedstmt.setInt(2, i);
 					preparedstmt.executeUpdate();
 				}
 			}
@@ -608,14 +598,6 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getMasVotados DBManager", e);
-		} finally {
-			try {
-				preparedstmt.close();
-				rs.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
-			}
-			disconnect();
 		}
 	}
 
@@ -667,9 +649,9 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
+			stmt = conn.createStatement();
 			String sql = "select jugador_TeamOfTheYear, nombre_jugador from jugador, teamoftheyear where id_jugador = jugador_TeamOfTheYear order by id_TeamOfTheYear";
-			preparedstmt = conn.prepareStatement(sql);
-			rs = preparedstmt.executeQuery();
+			rs = stmt.executeQuery(sql);
 			ArrayList<String> arr = new ArrayList<String>();
 			while (rs.next()) {
 				arr.add(rs.getString("nombre_jugador"));
@@ -680,7 +662,7 @@ public class DBManager {
 			throw new DBManagerException("Error todosLosCorreos DBManager", e);
 		} finally {
 			try {
-				preparedstmt.close();
+				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
@@ -809,8 +791,9 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String nombre = "";
-			String sql = "SELECT nombre_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			String sql = "SELECT nombre_entrenador FROM entrenador WHERE nombre_entrenador = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Entrenador);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
 				nombre = rs.getString("nombre_entrenador");
@@ -844,8 +827,9 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String fechaNacimiento = "";
-			String sql = "SELECT fechaNac_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			String sql = "SELECT fechaNac_entrenador FROM entrenador WHERE nombre_entrenador = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Entrenador);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
 				fechaNacimiento = rs.getString("fechaNac_entrenador");
@@ -879,9 +863,9 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String clubEntrenador = "";
-			String sql = "select nombre_club from club, entrenador where entrenador_club = id_entrenador and nombre_entrenador = '"
-					+ Entrenador + "'";
+			String sql = "select nombre_club from club, entrenador where entrenador_club = id_entrenador and nombre_entrenador = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Entrenador);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
 				clubEntrenador = rs.getString("nombre_club");
@@ -915,9 +899,9 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String ciudadEntrenador = "";
-			String sql = "select nombre_ciudad from ciudad, entrenador where id_ciudad = ciudad_entrenador and nombre_entrenador = '"
-					+ Entrenador + "'";
+			String sql = "select nombre_ciudad from ciudad, entrenador where id_ciudad = ciudad_entrenador and nombre_entrenador = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Entrenador);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
 				ciudadEntrenador = rs.getString("nombre_ciudad");
@@ -950,8 +934,9 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String formacionEntrenador = "";
-			String sql = "SELECT formacion_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			String sql = "SELECT formacion_entrenador FROM entrenador WHERE nombre_entrenador = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Entrenador);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
 				formacionEntrenador = rs.getString("formacion_entrenador");
@@ -985,8 +970,9 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String mentalidadEntrenador = "";
-			String sql = "SELECT mentalidad_entrenador FROM entrenador WHERE nombre_entrenador = '" + Entrenador + "'";
+			String sql = "SELECT mentalidad_entrenador FROM entrenador WHERE nombre_entrenador = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Entrenador);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
 				mentalidadEntrenador = rs.getString("mentalidad_entrenador");
@@ -1055,8 +1041,9 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String nombre = "";
-			String sql = "SELECT nombre_estadio FROM estadio WHERE nombre_estadio = '" + Estadio + "'";
+			String sql = "SELECT nombre_estadio FROM estadio WHERE nombre_estadio = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Estadio);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
 				nombre = rs.getString("nombre_estadio");
@@ -1089,8 +1076,9 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			int aforo = 0;
-			String sql = "SELECT aforo_estadio FROM estadio WHERE nombre_estadio = '" + Estadio + "'";
+			String sql = "SELECT aforo_estadio FROM estadio WHERE nombre_estadio = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Estadio);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
 				aforo = rs.getInt("aforo_estadio");
@@ -1123,8 +1111,9 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			int anyo = 0;
-			String sql = "SELECT anoCreacion_estadio FROM estadio WHERE nombre_estadio = '" + Estadio + "'";
+			String sql = "SELECT anoCreacion_estadio FROM estadio WHERE nombre_estadio = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Estadio);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
 				anyo = rs.getInt("anoCreacion_estadio");
@@ -1158,9 +1147,9 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String ciudadEstadio = "";
-			String sql = "select nombre_ciudad from ciudad, estadio where id_ciudad = ciudad_estadio and nombre_estadio = '"
-					+ Estadio + "'";
+			String sql = "select nombre_ciudad from ciudad, estadio where id_ciudad = ciudad_estadio and nombre_estadio = ?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Estadio);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
 				ciudadEstadio = rs.getString("nombre_ciudad");
@@ -1414,11 +1403,10 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			String sql = "select column_name from FINERMATION_SCHEMA.columns where table_name = '" + tabla
-					+ "' order by ordinal_position";
+			String sql = "select column_name from INFORMATION_SCHEMA.columns where table_name = ? order by ordinal_position";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, tabla);
 			rs = preparedstmt.executeQuery();
-
 			ArrayList<String> arr = new ArrayList<String>();
 			while (rs.next()) {
 				arr.add(rs.getString("column_name"));
@@ -1427,14 +1415,6 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error verColumnas DBManager", e);
-		} finally {
-			try {
-				preparedstmt.close();
-				rs.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
-			}
-			disconnect();
 		}
 	}
 
@@ -1444,14 +1424,16 @@ public class DBManager {
 		ResultSet rs2 = null;
 		try {
 			// sacar datos
-			String sql1 = "select * from " + tabla + ";";
+			String sql1 = "select * from ?;";
 			preparedstmt = conn.prepareStatement(sql1);
+			preparedstmt.setString(1, tabla);
 			rs1 = preparedstmt.executeQuery();
 			// numero de columnas
 			int ncolumns = verColumnas(tabla).size();
 			// numero de filas
-			String sql2 = "select count(*) from " + tabla + ";";
+			String sql2 = "select count(*) from ?;";
 			preparedstmt = conn.prepareStatement(sql2);
+			preparedstmt.setString(1, tabla);
 			rs2 = preparedstmt.executeQuery();
 			rs2.next();
 			int nrows = rs2.getInt("count(*)");
@@ -1480,15 +1462,6 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error data DBManager", e);
-		} finally {
-			try {
-				preparedstmt.close();
-				rs1.close();
-				rs2.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
-			}
-			disconnect();
 		}
 	}
 
@@ -1502,8 +1475,9 @@ public class DBManager {
 	public static void cambiarDatos(String consulta) throws DBManagerException {
 		connect();
 		try {
-			String sql = consulta;
+			String sql = "?";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, consulta);
 			preparedstmt.executeUpdate();
 			System.out.println("database.DBManager.cambiarDatos: " + sql);
 		} catch (SQLException e) {
@@ -1561,9 +1535,9 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			String sql = "select nombre_jugador from jugador, club where club_jugador = id_club and nombre_club ='"
-					+ nombre_club + "' order by id_jugador";
+			String sql = "select nombre_jugador from jugador, club where club_jugador = id_club and nombre_club = ? order by id_jugador";
 			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, nombre_club);
 			rs = preparedstmt.executeQuery();
 			ArrayList<String> arr = new ArrayList<String>();
 			while (rs.next()) {
@@ -1596,14 +1570,16 @@ public class DBManager {
 		try {
 			int id = 0;
 			if (tabla.equals("teamoftheyear_view")) {
-				String sql = "select count(id_teamoftheyear) from " + tabla;
+				String sql = "select count(id_teamoftheyear) from ?";
 				preparedstmt = conn.prepareStatement(sql);
+				preparedstmt.setString(1, tabla);
 				rs = preparedstmt.executeQuery();
 				rs.next();
 				id = rs.getInt("count(id_teamoftheyear)");
 			} else {
-				String sql = "select count(id_" + tabla + ") from " + tabla;
+				String sql = "select count(id_" + tabla + ") from ?";
 				preparedstmt = conn.prepareStatement(sql);
+				preparedstmt.setString(1, tabla);
 				rs = preparedstmt.executeQuery();
 				rs.next();
 				id = rs.getInt("count(id_" + tabla + ")");
@@ -1615,7 +1591,7 @@ public class DBManager {
 		} finally {
 			try {
 				preparedstmt.close();
-				rs.close();
+				// rs.close();
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
 			}
@@ -1623,31 +1599,8 @@ public class DBManager {
 		}
 	}
 
-	// solo es un ejemplo! NO borrar, pero NO usar!
-	public static void basicPS(String correo_usuario) throws DBManagerException {
-		connect();
-		ResultSet rs = null;
-		try {
-			String sql = "select * from usuario where correo_usuario = ?";
-			preparedstmt = conn.prepareStatement(sql);
-			preparedstmt.setString(1, correo_usuario);
-			rs = preparedstmt.executeQuery();
-			rs.next();
-
-			String dato = rs.getString("contrasena_usuario");
-			System.out.println(dato);
-		} catch (SQLException e) {
-			mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString());
-			throw new DBManagerException("Error basicPS", e);
-		} /*
-			 * finally { try { preparedstmt.close(); rs.close(); } catch (SQLException e) {
-			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.FINE, e.toString()); }
-			 * disconnect(); }
-			 */
-	}
-
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		basicPS("a@gmail.com");
+		PreparedstmtExample.main(args);
 	}
 }
