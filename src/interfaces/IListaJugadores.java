@@ -13,7 +13,7 @@ import javax.swing.ListSelectionModel;
 import clases.Jugador;
 
 public interface IListaJugadores {
-	public static void cargarLista(JList bookPanel, ArrayList<Jugador> a) {
+	public static void cargarLista(JList<String> bookPanel, ArrayList<Jugador> a) {
 
 		DefaultListModel<String> modelo = new DefaultListModel<String>();
 		for (Jugador j : a) {

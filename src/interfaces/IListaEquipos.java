@@ -13,7 +13,7 @@ import javax.swing.ListSelectionModel;
 import clases.Club;
 
 public interface IListaEquipos {
-	public static void cargarLista(JList bookPanel, ArrayList<Club> a) {
+	public static void cargarLista(JList<String> bookPanel, ArrayList<Club> a) {
 
 		DefaultListModel<String> modelo = new DefaultListModel<String>();
 		for (Club e : a) {
