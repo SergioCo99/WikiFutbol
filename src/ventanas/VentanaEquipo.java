@@ -24,20 +24,6 @@ import utils.JLabelGraficoAjustado;
 
 public class VentanaEquipo extends JFrame {
 
-	public static boolean privilegiosAdmin() {
-		try {
-			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {
-				return true;
-			} else {
-				return false;
-			}
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
-		return false;
-	}
-
 	private static final long serialVersionUID = 1L;
 	String nombreEquipo;
 	static Component frame;

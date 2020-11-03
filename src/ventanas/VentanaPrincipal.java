@@ -86,7 +86,6 @@ public class VentanaPrincipal extends JFrame {
 	private ArrayList<Club> arrayResultado = new ArrayList<Club>();
 
 	public VentanaPrincipal(Usuario u) throws DBManagerException {
-		// arrayEquipos = database1.getEquipos();
 		arrayEquipos = DBManager.getClubes();
 		usuario = u;
 		init();

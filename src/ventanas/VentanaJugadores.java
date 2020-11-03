@@ -39,21 +39,6 @@ import utils.JLabelGraficoAjustado;
  */
 public class VentanaJugadores extends JFrame {
 
-	// se usa en esta clase??? si no hay que borrarlo
-	public static boolean privilegiosAdmin() {
-		try {
-			if (database.DBManager.esAdmin(utils.PropertiesMetodos.getProp1()) == true) {
-				return true;
-			} else {
-				return false;
-			}
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
-		return false;
-	}
-
 	private static final long serialVersionUID = 1L;
 
 	// Para el listado de equipos
