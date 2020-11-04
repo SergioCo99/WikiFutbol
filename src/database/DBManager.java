@@ -510,7 +510,6 @@ public class DBManager {
 		connect();
 		try {
 			stmt = conn.createStatement();
-
 			// Actualiza los votos de los delanteros
 			for (int i = 1; i < (contarJugadores() + 1); i++) {
 				String sql = "update jugador set voto_jugador = '"
@@ -518,7 +517,6 @@ public class DBManager {
 						+ "' and posicion_jugador = 'Delantero';";
 				stmt.executeUpdate(sql);
 			}
-
 			// Actualiza los votos de los centrocampistas
 			for (int i = 1; i < (contarJugadores() + 1); i++) {
 				String sql = "update jugador set voto_jugador = '"
@@ -526,7 +524,6 @@ public class DBManager {
 						+ i + "' and posicion_jugador = 'Centrocampista';";
 				stmt.executeUpdate(sql);
 			}
-
 			// Actualiza los votos de los defensas
 			for (int i = 1; i < (contarJugadores() + 1); i++) {
 				String sql = "update jugador set voto_jugador = '"
@@ -534,7 +531,6 @@ public class DBManager {
 						+ "' and posicion_jugador = 'Defensa';";
 				stmt.executeUpdate(sql);
 			}
-
 			// Actualiza los votos de los porteros
 			for (int i = 1; i < (contarJugadores() + 1); i++) {
 				String sql = "update jugador set voto_jugador = '"
@@ -542,7 +538,6 @@ public class DBManager {
 						+ "' and posicion_jugador = 'Portero';";
 				stmt.executeUpdate(sql);
 			}
-
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error actualizarVotos DBManager", e);
@@ -612,17 +607,9 @@ public class DBManager {
 	}
 
 	public static ArrayList<Integer> toft() throws DBManagerException {
-		// por ahora no hace nada, sirve como idea de poner lo de abajo mas elegante
-		ArrayList<String> posicion = new ArrayList<>();
-		posicion.add("Delantero");
-		posicion.add("Centrocampista");
-		posicion.add("Defensa");
-		posicion.add("Portero");
-
 		connect();
 		try {
 			stmt = conn.createStatement();
-
 			// ademas de meter los datos en el array, ejecuta el metodo getMasVotados()
 			ArrayList<Integer> arr = new ArrayList<Integer>();
 			arr.add(getMasVotados("Delantero", 1, 1));
@@ -636,7 +623,6 @@ public class DBManager {
 			arr.add(getMasVotados("Defensa", 3, 9));
 			arr.add(getMasVotados("Defensa", 4, 10));
 			arr.add(getMasVotados("Portero", 1, 11));
-
 			return arr;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -1446,20 +1432,16 @@ public class DBManager {
 		ResultSet rs2 = null;
 		try {
 			stmt = conn.createStatement();
-
 			// sacar datos
 			String sql1 = "select * from " + tabla + ";";
 			rs1 = stmt.executeQuery(sql1);
-
 			// numero de columnas
 			int ncolumns = verColumnas(tabla).size();
-
 			// numero de filas
 			String sql2 = "select count(*) from " + tabla + ";";
 			rs2 = stmt.executeQuery(sql2);
 			rs2.next();
 			int nrows = rs2.getInt("count(*)");
-
 			// meter datos en array 2D
 			ArrayList<String> as = new ArrayList<String>();
 			while (rs1.next()) {
@@ -1467,7 +1449,6 @@ public class DBManager {
 					as.add(rs1.getObject(i).toString());
 				}
 			}
-
 			int z = 0;
 			String[][] ss = new String[nrows][ncolumns];
 			for (int j = 0; j < nrows; j++) {
@@ -1477,12 +1458,6 @@ public class DBManager {
 					z++;
 				}
 			}
-
-			rs1.close();
-			rs2.close();
-			stmt.close();
-			disconnect();
-
 			for (int i = 0; i < nrows; i++) {
 				for (int j = 0; j < ncolumns; j++) {
 					System.out.println(ss[i][j]);
@@ -1605,11 +1580,8 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-
 			stmt = conn.createStatement();
-
 			int id = 0;
-
 			if (tabla.equals("teamoftheyear_view")) {
 				String sql = "select count(id_teamoftheyear) from " + tabla;
 				rs = stmt.executeQuery(sql);
@@ -1621,7 +1593,6 @@ public class DBManager {
 				rs.next();
 				id = rs.getInt("count(id_" + tabla + ")");
 			}
-
 			return id;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());

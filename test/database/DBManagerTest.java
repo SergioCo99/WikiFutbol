@@ -180,14 +180,17 @@ public class DBManagerTest {
 		String nombre_posicion = "Delantero";
 		ArrayList<String> jugadoresPorPosicion = new ArrayList<String>();
 		jugadoresPorPosicion = DBManager.getJugadoresPorEquipo(nombre_posicion);
+		System.out.println("aa:" + jugadoresPorPosicion);
 		for (String jugadorPorPosicion : jugadoresPorPosicion) {
+			System.out.println("bb:" + jugadorPorPosicion);
 			Assert.assertNotNull(jugadorPorPosicion);
 		}
-
+		// lo que esta puesto arriba devuelve un array sin nada
+		fail();
 	}
 
 	@Test
-	public void testIdUsuario() throws DBManagerException {
+	public void testGetIdUsuario() throws DBManagerException {
 		/*
 		 * id del usuario de prueba cambia, preguntarle si usar el de prueba o uno ya
 		 * existente. Lo dejo en *fail* para acordarnos de preguntarle que hacer
@@ -205,7 +208,7 @@ public class DBManagerTest {
 	}
 
 	@Test
-	public void testIdJugador() throws DBManagerException {
+	public void testGetIdJugador() throws DBManagerException {
 		/*
 		 * no convence del todo, Lo dejo en *fail* para acordarnos de preguntarle que
 		 * hacer
@@ -231,22 +234,22 @@ public class DBManagerTest {
 		fail();
 	}
 
-	@Test
-	public void testContarJugadores() throws DBManagerException {
-		// Contar todos los jugadores es ilogico, ademas si hay nuevos jugadores cambia
-		// el numero. Lo dejo en *fail* para acordarnos de preguntarle que hacer
+	/*
+	 * @Test public void testContarJugadores() throws DBManagerException { // Contar
+	 * todos los jugadores es ilogico, ademas si hay nuevos jugadores cambia // el
+	 * numero. Lo dejo en *fail* para acordarnos de preguntarle que hacer
+	 * 
+	 * // no tiene/necesita connect()
+	 * 
+	 * fail(); }
+	 */
 
-		// no tiene/necesita connect()
-
-		fail();
-	}
-
-	@Test
-	public void testContarVotosPorJugador() throws DBManagerException {
-		// no tiene/necesita connect()
-
-		fail();
-	}
+	/*
+	 * @Test public void testContarVotosPorJugador() throws DBManagerException { //
+	 * no tiene/necesita connect()
+	 * 
+	 * fail(); }
+	 */
 
 	@Test
 	public void testActualizarVotos() throws DBManagerException {
@@ -258,19 +261,19 @@ public class DBManagerTest {
 		fail();
 	}
 
-	@Test
-	public void testCountToft() throws DBManagerException {
-		// no tiene/necesita connect()
+	/*
+	 * @Test public void testCountToft() throws DBManagerException { // no
+	 * tiene/necesita connect()
+	 * 
+	 * fail(); }
+	 */
 
-		fail();
-	}
-
-	@Test
-	public void testGetMasVotados() throws DBManagerException {
-		// no tiene/necesita connect()
-
-		fail();
-	}
+	/*
+	 * @Test public void testGetMasVotados() throws DBManagerException { // no
+	 * tiene/necesita connect()
+	 * 
+	 * fail(); }
+	 */
 
 	@Test
 	public void testToft() throws DBManagerException {
@@ -295,6 +298,7 @@ public class DBManagerTest {
 		ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
 		ciudades = DBManager.getCiudades();
 		for (Ciudad ciudad : ciudades) {
+			System.out.println("testGetCiudades ciudad:" + ciudad);
 			Assert.assertNotNull(ciudad);
 		}
 	}
@@ -357,7 +361,7 @@ public class DBManagerTest {
 	public void testMentalidadEntrenador() throws DBManagerException {
 		assertEquals("Defensiva", DBManager.mentalidadEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
-	// Fin M�todos Entrenador
+	// Fin Metodos Entrenador
 
 	@Test
 	public void testGetEstadios() throws DBManagerException {
@@ -369,7 +373,7 @@ public class DBManagerTest {
 		}
 	}
 
-	// M�todos Estadio
+	// Metodos Estadio
 	@Test
 	public void testNombreEstadio() throws DBManagerException {
 		assertEquals(es.getNombre(), DBManager.nombreEstadio("San Mames", "wikifutbolschema"));
@@ -389,7 +393,7 @@ public class DBManagerTest {
 	public void testCiudadEstadio() throws DBManagerException {
 		assertEquals(es.getCiudad(), DBManager.ciudadEstadio("San Mames", "wikifutbolschema"));
 	}
-	// Fin M�todos Estadio
+	// Fin Metodos Estadio
 
 	@Test
 	public void testGetFeedbacks() throws DBManagerException {
@@ -426,7 +430,7 @@ public class DBManagerTest {
 		 * fail();
 		 *
 		 * assertEquals(
-		 * "[Pais [id=1, nombre=Espa�a], Pais [id=2, nombre=Francia], Pais [id=3, nombre=Guinea Ecuatorial], Pais [id=4, nombre=Chile], Pais [id=5, nombre=Argentina], Pais [id=6, nombre=Paises Bajos]]"
+		 * "[Pais [id=1, nombre=España], Pais [id=2, nombre=Francia], Pais [id=3, nombre=Guinea Ecuatorial], Pais [id=4, nombre=Chile], Pais [id=5, nombre=Argentina], Pais [id=6, nombre=Paises Bajos]]"
 		 * , DBManager.getPaises()); // fail();
 		 */
 	}
@@ -540,11 +544,6 @@ public class DBManagerTest {
 		 * preguntarle como comprobar (test) que en una tabla han cambiado valores sin
 		 * tener que hacer metodos nuevos de BD
 		 */
-
-		Club e1 = new Club(1, "Athletic Club", "Bilbao", "San Mames", 1898, "25", "Gaizka Garitano");
-
-		DBManager.cambiarDatosDesdeJTable("pruebaclub", "anoCreacion_club", 2000, 1);
-		assertEquals(2000, e1.getAnyoCreacion());
 
 		fail();
 	}
