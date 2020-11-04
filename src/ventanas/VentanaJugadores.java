@@ -172,7 +172,6 @@ public class VentanaJugadores extends JFrame {
 		txtField.setColumns(10);
 
 		
-		System.out.println("Pru" + arrayJugadores2);
 		for (String e : arrayJugadores2) {
 			arrayResultado.add(e);
 		}
@@ -236,10 +235,7 @@ public class VentanaJugadores extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					ArrayList<String> jugador;
-					jugador = arrayResultado;
-					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), jugador, club, usuario);
-					System.out.println("Juga" + arrayResultado);
+					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
 					ve.setVisible(true);
 					dispose();
 				} catch (Exception e1) {
