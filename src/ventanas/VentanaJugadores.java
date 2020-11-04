@@ -155,10 +155,8 @@ public class VentanaJugadores extends JFrame {
 		navBarPanel.add(txtField);
 		txtField.setColumns(10);
 
-
 		System.out.println("Pru" + arrayJugadores2);
 
-		
 		for (String e : arrayJugadores2) {
 			arrayResultado.add(e);
 		}

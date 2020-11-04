@@ -8,8 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -70,17 +68,13 @@ public class VentanaJugador extends JFrame {
 		btnAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			/*	VentanaJugadores v1 = null;
-				try {
-					v1 = new VentanaJugadores(  );
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-				}
-				v1.setVisible(true);
-				dispose();
-*/
-			
+				/*
+				 * VentanaJugadores v1 = null; try { v1 = new VentanaJugadores( ); } catch
+				 * (DBManagerException e1) {
+				 * mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				 * e1.printStackTrace(); } v1.setVisible(true); dispose();
+				 */
+
 			}
 		});
 
@@ -148,12 +142,13 @@ public class VentanaJugador extends JFrame {
 		 * bookPanel.add(resultadoFechaNac);
 		 */
 
-		/*String fnacimi = nombreJugador.getFechaNac();
-		final JLabel resultadoFechaNac = new JLabel(fnacimi);
-		resultadoFechaNac.setBounds(260, 175, 400, 50);
-		resultadoFechaNac.setFont(fuente2);
-		resultadoFechaNac.setForeground(Color.BLACK);
-		bookPanel.add(resultadoFechaNac);*/
+		/*
+		 * String fnacimi = nombreJugador.getFechaNac(); final JLabel resultadoFechaNac
+		 * = new JLabel(fnacimi); resultadoFechaNac.setBounds(260, 175, 400, 50);
+		 * resultadoFechaNac.setFont(fuente2);
+		 * resultadoFechaNac.setForeground(Color.BLACK);
+		 * bookPanel.add(resultadoFechaNac);
+		 */
 
 		// Club
 		final JLabel labelClub = new JLabel("Club: ");

@@ -1,12 +1,9 @@
-package pruebasYEjemplos;
-
-import database.DBManager;
-import database.DBManagerException;
+package database;
 
 public class PreparedstmtExample {
 
 	public static void main(String[] args) throws DBManagerException {
-		System.out.println(DBManager.numeroDeFilasEnUnaTabla("ciudad"));
+		System.out.println(DBManager.numeroDeFilasEnUnaTabla("pais"));
 	}
 
 }
