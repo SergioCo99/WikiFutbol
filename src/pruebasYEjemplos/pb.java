@@ -14,7 +14,7 @@ import javax.swing.Timer;
 public class pb {
 
 	public static void main(String[] args) {
-		CountUpProgressBar cdpb = new CountUpProgressBar();
+		new CountUpProgressBar();
 	}
 }
 
