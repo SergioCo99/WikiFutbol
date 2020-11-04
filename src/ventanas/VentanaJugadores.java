@@ -155,7 +155,11 @@ public class VentanaJugadores extends JFrame {
 		navBarPanel.add(txtField);
 		txtField.setColumns(10);
 
+<<<<<<< HEAD
 		System.out.println("Pru" + arrayJugadores2);
+=======
+		
+>>>>>>> branch 'master' of https://github.com/SergioCo99/WikiFutbol.git
 		for (String e : arrayJugadores2) {
 			arrayResultado.add(e);
 		}
@@ -219,11 +223,15 @@ public class VentanaJugadores extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+<<<<<<< HEAD
 					ArrayList<String> jugador;
 					jugador = arrayResultado;
 					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), jugador,
 							club, usuario);
 					System.out.println("Juga" + arrayResultado);
+=======
+					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
+>>>>>>> branch 'master' of https://github.com/SergioCo99/WikiFutbol.git
 					ve.setVisible(true);
 					dispose();
 				} catch (Exception e1) {

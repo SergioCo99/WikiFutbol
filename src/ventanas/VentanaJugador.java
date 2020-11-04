@@ -34,14 +34,19 @@ public class VentanaJugador extends JFrame {
 	String nombreJugador;
 	static Component frame;
 
-	public VentanaJugador(String string, ArrayList<String> jugador1, Club club, Usuario u) throws DBManagerException {
-		init(string, jugador1, club, u);
+	public VentanaJugador(String jugador, Usuario u) throws DBManagerException {
+		init(jugador, u);
 	}
 
+<<<<<<< HEAD
 	public void init(String string, ArrayList<String> jugador1, Club club, Usuario u) {
 		// nombreJugador = jugador.getNombre();
 		nombreJugador = jugador1.toString();
 		System.out.println("Que" + nombreJugador);
+=======
+	public void init(String jugador, Usuario u) {
+		nombreJugador = jugador.toString();
+>>>>>>> branch 'master' of https://github.com/SergioCo99/WikiFutbol.git
 		this.setTitle(nombreJugador);
 		this.setSize(1200, 700);
 		this.setLayout(null);
@@ -72,16 +77,21 @@ public class VentanaJugador extends JFrame {
 		btnAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaEquipo v1 = null;
+			/*	VentanaJugadores v1 = null;
 				try {
-					v1 = new VentanaEquipo(club, u);
+					v1 = new VentanaJugadores(  );
 				} catch (DBManagerException e1) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
 				v1.setVisible(true);
+<<<<<<< HEAD
 				dispose();
 
+=======
+				dispose();*/
+			
+>>>>>>> branch 'master' of https://github.com/SergioCo99/WikiFutbol.git
 			}
 		});
 
@@ -140,6 +150,7 @@ public class VentanaJugador extends JFrame {
 		bookPanel.add(labelFechaNac);
 
 		// Resultado Fecha Nacimiento
+<<<<<<< HEAD
 		/*
 		 * String fnacimi = jugador.getFechaNac(); final JLabel resultadoFechaNac = new
 		 * JLabel(fnacimi); resultadoFechaNac.setBounds(260, 175, 400, 50);
@@ -147,6 +158,14 @@ public class VentanaJugador extends JFrame {
 		 * resultadoFechaNac.setForeground(Color.BLACK);
 		 * bookPanel.add(resultadoFechaNac);
 		 */
+=======
+		/*String fnacimi = nombreJugador.getFechaNac();
+		final JLabel resultadoFechaNac = new JLabel(fnacimi);
+		resultadoFechaNac.setBounds(260, 175, 400, 50);
+		resultadoFechaNac.setFont(fuente2);
+		resultadoFechaNac.setForeground(Color.BLACK);
+		bookPanel.add(resultadoFechaNac);*/
+>>>>>>> branch 'master' of https://github.com/SergioCo99/WikiFutbol.git
 
 		// Club
 		final JLabel labelClub = new JLabel("Club: ");
