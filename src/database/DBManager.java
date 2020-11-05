@@ -1484,14 +1484,14 @@ public class DBManager {
 			String[][] ss = new String[nrows][ncolumns];
 			for (int j = 0; j < nrows; j++) {
 				for (int i = 0; i < ncolumns; i++) {
-					System.out.println("fila: " + j + ", columna: " + i + " -> " + as.get(z));
+					//System.out.println("fila: " + j + ", columna: " + i + " -> " + as.get(z));
 					ss[j][i] = as.get(z).toString();
 					z++;
 				}
 			}
 			for (int i = 0; i < nrows; i++) {
 				for (int j = 0; j < ncolumns; j++) {
-					System.out.println(ss[i][j]);
+					//System.out.println(ss[i][j]);
 				}
 			}
 			return ss;
