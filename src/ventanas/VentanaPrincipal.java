@@ -8,11 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -85,6 +87,14 @@ public class VentanaPrincipal extends JFrame {
 	private JRadioButton rdbtnNumLigas;
 	private ArrayList<Club> arrayResultado = new ArrayList<Club>();
 
+	//Datos rapidos
+	String ciudad;
+	String anyoCreacion;
+	String estadio;
+	JLabel lblCiudad;
+	JLabel lblAnyo;
+	JLabel lblEstadio;
+	
 	public VentanaPrincipal(Usuario u) throws DBManagerException {
 		arrayEquipos = DBManager.getClubes();
 		usuario = u;
@@ -472,6 +482,87 @@ public class VentanaPrincipal extends JFrame {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					JOptionPane.showMessageDialog(frame, "Seleccione un equipo");
 				}
+			}
+		});
+		
+		JLabel lblDatos = new JLabel("Datos rápidos");
+		lblDatos.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblDatos.setBounds(50, 117, 110, 20);
+		add(lblDatos);	
+		
+		JLabel lblVer = new JLabel("  Ver");
+		lblVer.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblVer.setBounds(70, 345, 50, 25);
+		lblVer.setFocusable(false);
+		lblVer.setOpaque(false);
+		lblVer.setBorder(new LineBorder(new Color(1, 0, 0), 3, true));
+		lblVer.setFocusable(false);
+		add(lblVer);
+		
+		JLabel grande = new JLabel("");
+		grande.setBounds(5, 100, 190, 300);
+		grande.setFocusable(false);
+		grande.setOpaque(false);
+		grande.setBorder(new LineBorder(new Color(1, 0, 0), 3, true));
+		grande.setFocusable(false);
+		add(grande);
+		
+		JLabel lblCiudad = new JLabel("Ciudad: ");
+		lblCiudad.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblCiudad.setBounds(15, 155, 84, 13);
+		add(lblCiudad);
+		
+		JLabel lblAnyo = new JLabel("Fundado en: ");
+		lblAnyo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblAnyo.setBounds(15, 215, 120, 13);
+		add(lblAnyo);
+		
+		JLabel lblEstadio = new JLabel("Estadio: ");
+		lblEstadio.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblEstadio.setBounds(15, 275, 70, 13);
+		add(lblEstadio);
+		
+		JLabel lblCiudadRes = new JLabel(ciudad);
+		lblCiudadRes.setBounds(45, 185, 100, 13);
+		lblCiudadRes.setFont(new Font("Tahoma", Font.BOLD, 13));
+		add(lblCiudadRes);
+		
+		JLabel lblAnyoRes = new JLabel(anyoCreacion);
+		lblAnyoRes.setBounds(45, 240, 177, 18);
+		lblAnyoRes.setFont(new Font("Tahoma", Font.BOLD, 13));
+		add(lblAnyoRes);
+		
+		JLabel lblEstadioRes = new JLabel(estadio);
+		lblEstadioRes.setBounds(10, 305, 177, 18);
+		lblEstadioRes.setFont(new Font("Tahoma", Font.BOLD, 13));
+		add(lblEstadioRes);
+		
+		addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {	
+				ciudad = arrayEquipos.get(bookPanel.getSelectedIndex()).getCiudad();
+				lblCiudadRes.setText(ciudad);
+				
+				anyoCreacion = Integer.toString(arrayEquipos.get(bookPanel.getSelectedIndex()).getAnyoCreacion());
+				lblAnyoRes.setText(anyoCreacion);
+
+				estadio = arrayEquipos.get(bookPanel.getSelectedIndex()).getEstadio();
+				lblEstadioRes.setText(estadio);
+				
+			
 			}
 		});
 
