@@ -58,7 +58,7 @@ public class VentanaLogin extends JFrame {
 		lblCorreo.setBounds(25, 100, 300, 20);
 
 		lblPass = new JLabel();
-		lblPass.setText("Introduce la contrase\u00f1a:");
+		lblPass.setText("Introduce la contraseña:");
 		lblPass.setBounds(25, 140, 300, 20);
 
 		txtCorreo = new JTextField();

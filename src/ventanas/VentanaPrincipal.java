@@ -153,26 +153,38 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contraseña",
+				String contrasenaActual = JOptionPane.showInputDialog(null, "Introduce tu contraseña actual",
 						"Cambiar contraseña", JOptionPane.WARNING_MESSAGE);
-
-				if ((nuevaContrasena != null) && !nuevaContrasena.equals("")) {
-					try {
-						database.DBManager.cambiarContrasena(utils.PropertiesMetodos.getProp1(), nuevaContrasena);
-					} catch (DBManagerException e) {
-						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-						e.printStackTrace();
+				if (/* !contrasenaActual.equals(null) */ contrasenaActual != null) {
+					if (contrasenaActual.equals(utils.PropertiesMetodos.getProp2())) {
+						String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contraseña",
+								"Cambiar contraseña", JOptionPane.WARNING_MESSAGE);
+						if ((nuevaContrasena != null) && !nuevaContrasena.equals("")) {
+							try {
+								database.DBManager.cambiarContrasena(utils.PropertiesMetodos.getProp1(),
+										nuevaContrasena);
+							} catch (DBManagerException e) {
+								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+								e.printStackTrace();
+							}
+							JOptionPane.showMessageDialog(null, "Actualizacion exitosa, reiniciando. . .", "Alerta",
+									JOptionPane.INFORMATION_MESSAGE);
+							// reinicio
+							utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
+							dispose();
+							VentanaLogin VL = new VentanaLogin();
+							VL.setVisible(true);
+						} else {
+							JOptionPane.showMessageDialog(null, "Esa contraseña no es valida / operacion cancelada.",
+									"Error", JOptionPane.ERROR_MESSAGE);
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Esa contraseña no es valida / operacion cancelada.",
+								"Error", JOptionPane.ERROR_MESSAGE);
 					}
-					JOptionPane.showMessageDialog(null, "Actualizacion exitosa, reiniciando. . .", "Alerta",
-							JOptionPane.INFORMATION_MESSAGE);
-					// reinicio
-					utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
-					dispose();
-					VentanaLogin VL = new VentanaLogin();
-					VL.setVisible(true);
 				} else {
-					JOptionPane.showMessageDialog(null, "Esa contrase\u00f1a no es valida / operacion cancelada.",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Esa contraseña no es valida / operacion cancelada.", "Error",
+							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
