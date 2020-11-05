@@ -1,17 +1,18 @@
 package ventanas;
 
 import java.awt.Toolkit;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 
 import database.DBManagerException;
 
@@ -26,7 +27,7 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	JButton btnEjecutar;
-	JCheckBox cbHacerAdmin, cbQuitarAdmin, cbBorrarCuenta;
+	JRadioButton cbHacerAdmin, cbQuitarAdmin, cbBorrarCuenta;
 	ButtonGroup bg1;
 	JLabel lblCorreo;
 	JComboBox<String> jcbCorreos;
@@ -43,12 +44,12 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
 		bg1 = new ButtonGroup();
-		cbHacerAdmin = new JCheckBox("Hacer admin");
-		cbHacerAdmin.setBounds(136, 60, 100, 20);
-		cbQuitarAdmin = new JCheckBox("Quitar admin");
-		cbQuitarAdmin.setBounds(240, 60, 100, 20);
-		cbBorrarCuenta = new JCheckBox("Borrar cuenta DEFINITIVAMENTE");
-		cbBorrarCuenta.setBounds(342, 60, 250, 20);
+		cbHacerAdmin = new JRadioButton("Hacer admin");
+		cbHacerAdmin.setBounds(116, 29, 100, 20);
+		cbQuitarAdmin = new JRadioButton("Quitar admin");
+		cbQuitarAdmin.setBounds(116, 51, 100, 20);
+		cbBorrarCuenta = new JRadioButton("Borrar cuenta DEFINITIVAMENTE");
+		cbBorrarCuenta.setBounds(116, 73, 250, 20);
 		bg1.add(cbHacerAdmin);
 		bg1.add(cbQuitarAdmin);
 		bg1.add(cbBorrarCuenta);
@@ -82,7 +83,7 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 		getContentPane().add(jcbCorreos);
 
 		lblOpciones = new JLabel("Opciones: ");
-		lblOpciones.setBounds(10, 64, 120, 13);
+		lblOpciones.setBounds(106, 10, 120, 13);
 		getContentPane().add(lblOpciones);
 
 		btnEjecutar.addActionListener(new ActionListener() {
