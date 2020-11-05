@@ -38,8 +38,8 @@ public class DBManagerTest {
 			Mentalidad.Equilibrada);
 	static Estadio es = new Estadio(1, "San Mames", 53289, 2013, "Bilbao");
 	static Feedback f = new Feedback(1, u.getCorreo(), 5, Recomendacion.si, "opinion");
-	static Jugador j = new Jugador(1, "Alex Berenguer", "1993-10-01", "Athletic", "Bilbao", Posicion.Delantero, 8, 0,
-			182, 81, PieFav.Diestro, 84, "Jugador con desborde", 0);
+	static Jugador j = new Jugador(1, "Alex Berenguer", "1993-10-01", "Athletic Club", "Bilbao", Posicion.Delantero, 8, 0,
+			182, 81, PieFav.Diestro, 84, "Jugador con desborde", 1);
 
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -414,6 +414,14 @@ public class DBManagerTest {
 			Assert.assertNotNull(jugador);
 		}
 
+	}
+
+	@Test
+	public void testGetJugadorBd() throws DBManagerException {
+		Jugador jugador = DBManager.getJugadorBd(j.getNombre());
+		System.out.println(jugador);
+		System.out.println(j);
+		assertEquals(jugador, j);
 	}
 
 	@Test

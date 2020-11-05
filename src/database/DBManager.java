@@ -1257,7 +1257,7 @@ public class DBManager {
 			return jugador;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
-			throw new DBManagerException("Error getJugadores DBManager", e);
+			throw new DBManagerException("Error getJugadorBd DBManager", e);
 		} finally {
 			try {
 				preparedstmt.close();
