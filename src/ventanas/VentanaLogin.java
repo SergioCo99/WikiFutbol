@@ -67,7 +67,7 @@ public class VentanaLogin extends JFrame {
 
 		txtPassword = new JPasswordField();
 		txtPassword.setBounds(175, 140, 200, 20);
-		// txtPassword.setEchoChar('�');
+		// txtPassword.setEchoChar('•');
 		txtPassword.setText(utils.PropertiesMetodos.getProp2());
 
 		btnAceptar = new JButton();
@@ -162,7 +162,7 @@ public class VentanaLogin extends JFrame {
 				if (checkContrasena.isSelected() == true) {
 					txtPassword.setEchoChar((char) 0);
 				} else {
-					txtPassword.setEchoChar('�');
+					txtPassword.setEchoChar('•');
 				}
 			}
 		});
@@ -192,7 +192,7 @@ public class VentanaLogin extends JFrame {
 				} catch (DBManagerException e1) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Correo o contrase�a incorrectos.", "Alert",
+					JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos.", "Alert",
 							JOptionPane.WARNING_MESSAGE);
 				}
 

@@ -6,13 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import com.toedter.calendar.JCalendar;
@@ -33,14 +36,16 @@ public class VentanaRegistro extends JFrame {
 	private final SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
 	JLabel lblUser, lblPass, lblPassRep, lblDate, lblCorreo;
 	JButton btnRegistrar;
-	JTextField txtUsuario, txtPassword, txtPasswordRep, txtCorreo;
+	JTextField txtUsuario, txtCorreo;
+	JPasswordField txtPassword, txtPasswordRep;
 	JCalendar calendar;
+	JCheckBox checkContrasena;
 
 	public VentanaRegistro() {
 
 		this.setTitle("VentanaRegistro");
 		this.setSize(600, 400);
-		this.setLayout(null);
+		getContentPane().setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,10 +76,10 @@ public class VentanaRegistro extends JFrame {
 		txtCorreo = new JTextField();
 		txtCorreo.setBounds(300, 70, 200, 20);
 
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		txtPassword.setBounds(300, 90, 200, 20);
 
-		txtPasswordRep = new JTextField();
+		txtPasswordRep = new JPasswordField();
 		txtPasswordRep.setBounds(300, 110, 200, 20);
 
 		btnRegistrar = new JButton();
@@ -90,17 +95,22 @@ public class VentanaRegistro extends JFrame {
 			e.printStackTrace();
 		}
 
-		add(txtUsuario);
-		add(txtPassword);
-		add(txtPasswordRep);
-		add(txtCorreo);
-		add(lblUser);
-		add(lblPass);
-		add(lblPassRep);
-		add(lblDate);
-		add(lblCorreo);
-		add(btnRegistrar);
-		add(calendar);
+		checkContrasena = new JCheckBox();
+		checkContrasena.setText("Ver contrasena");
+		checkContrasena.setBounds(100, 156, 130, 20);
+
+		getContentPane().add(txtUsuario);
+		getContentPane().add(txtPassword);
+		getContentPane().add(txtPasswordRep);
+		getContentPane().add(txtCorreo);
+		getContentPane().add(lblUser);
+		getContentPane().add(lblPass);
+		getContentPane().add(lblPassRep);
+		getContentPane().add(lblDate);
+		getContentPane().add(lblCorreo);
+		getContentPane().add(btnRegistrar);
+		getContentPane().add(calendar);
+		getContentPane().add(checkContrasena);
 
 		btnRegistrar.addActionListener(new ActionListener() {
 
@@ -108,10 +118,10 @@ public class VentanaRegistro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
-					if (txtUsuario.getText().equals("") || txtPassword.getText().equals("")
-							|| txtPasswordRep.getText().equals("") || txtCorreo.getText().equals("")
-							|| txtUsuario.getText().equals(null) || txtPassword.getText().equals(null)
-							|| txtPasswordRep.getText().equals(null) || txtCorreo.getText().equals(null)
+					if (txtUsuario.getText().equals("") || txtPassword.getPassword().toString().equals("")
+							|| txtPasswordRep.getPassword().toString().equals("") || txtCorreo.getText().equals("")
+							|| txtUsuario.getText().equals(null) || txtPassword.getPassword().equals(null)
+							|| txtPasswordRep.getPassword().equals(null) || txtCorreo.getText().equals(null)
 							|| !txtUsuario.getText()
 									.matches("^(?=.{1,45}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$")
 							|| !txtCorreo.getText().matches(
@@ -119,16 +129,15 @@ public class VentanaRegistro extends JFrame {
 							|| (database.DBManager.existeCorreo(txtCorreo.getText()) == true)) {
 						JOptionPane.showMessageDialog(null, "Rellena todos los campos adecuadamente.");
 					} else {
-
-						if (txtPassword.getText().equals(txtPasswordRep.getText())) {
+						if (Arrays.equals(txtPassword.getPassword(), txtPasswordRep.getPassword())) {
 							try {
 								database.DBManager.registrarUsuario(txtUsuario.getText(), txtCorreo.getText(),
-										txtPassword.getText(), formatter.format(calendar.getDate()));
+										txtPassword.getPassword().toString(), formatter.format(calendar.getDate()));
 							} catch (DBManagerException e1) {
 								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 								e1.printStackTrace();
 							}
-							utils.PropertiesMetodos.setProp(txtCorreo.getText(), txtPassword.getText());
+							utils.PropertiesMetodos.setProp(txtCorreo.getText(), txtPassword.getPassword().toString());
 
 							dispose();
 							VentanaPrincipal VP = null;
@@ -147,7 +156,20 @@ public class VentanaRegistro extends JFrame {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
+			}
+		});
 
+		checkContrasena.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (checkContrasena.isSelected() == true) {
+					txtPassword.setEchoChar((char) 0);
+					txtPasswordRep.setEchoChar((char) 0);
+				} else {
+					txtPassword.setEchoChar('•');
+					txtPasswordRep.setEchoChar('•');
+				}
 			}
 		});
 
