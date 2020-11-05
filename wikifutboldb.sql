@@ -35,16 +35,6 @@ CREATE TABLE `ciudad` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ciudad`
---
-
-LOCK TABLES `ciudad` WRITE;
-/*!40000 ALTER TABLE `ciudad` DISABLE KEYS */;
-INSERT INTO `ciudad` VALUES (1,'Bilbao',1),(2,'San Sebastian',1),(3,'Villarreal',1),(4,'Madrid',1),(5,'Getafe',1),(6,'Cadiz',1),(7,'Granada',1),(8,'Sevilla',1),(9,'Barcelona',1),(10,'Pamplona',1),(11,'Elche',1),(12,'Valencia',1),(13,'Eibar',1),(14,'Huesca',1),(15,'Vigo',1),(16,'Vitoria-Gasteiz',1),(17,'Valladolid',1),(18,'Orio',1),(19,'Hondarribia',1),(20,'La Castellane',2),(21,'Alicante',1),(22,'Malabo',3),(23,'Santiago',4),(24,'Buenos Aires',5),(25,'Zaandam',6),(26,'Asteasu',1),(27,'Silla',1),(28,'Hospitalet de Llobregat',1),(29,'Soria',1),(30,'Sabadell',1),(31,'Berriatua',1),(32,'San Miguel',5),(33,'Zaldibar',1);
-/*!40000 ALTER TABLE `ciudad` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `club`
 --
 
@@ -70,16 +60,6 @@ CREATE TABLE `club` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `club`
---
-
-LOCK TABLES `club` WRITE;
-/*!40000 ALTER TABLE `club` DISABLE KEYS */;
-INSERT INTO `club` VALUES (1,'Athletic Club',1,1,1898,'25',1),(2,'Real Sociedad',2,2,1908,'5',2),(3,'Villarreal',3,3,1923,'2',3),(4,'Real Madrid',4,5,1902,'34',4),(5,'Huesca',14,12,1960,'1',16),(6,'Elche',11,15,1922,'2',13),(7,'Getafe',5,6,1983,'4',5),(8,'Cadiz',6,4,1909,'6',6),(9,'Granada',7,7,1931,'5',7),(10,'Betis',8,20,1907,'1',8),(11,'Atl. Madrid',4,19,1903,'24',9),(12,'Barcelona',9,18,1899,'31',10),(13,'Sevilla',8,17,1890,'19',11),(14,'Celta',15,11,1927,'5',17),(15,'Alaves',16,10,1921,'1',18),(16,'Levante',12,8,1908,'5',20),(17,'Valladolid',17,9,1928,'2',19),(18,'Eibar',13,13,1940,'3',15),(19,'Valencia',12,14,1919,'15',14),(20,'Osasuna',10,16,1920,'0',12);
-/*!40000 ALTER TABLE `club` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `entrenador`
 --
 
@@ -103,16 +83,6 @@ CREATE TABLE `entrenador` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `entrenador`
---
-
-LOCK TABLES `entrenador` WRITE;
-/*!40000 ALTER TABLE `entrenador` DISABLE KEYS */;
-INSERT INTO `entrenador` VALUES (1,'Gaizka Garitano','1975-07-09',1,1,'4-3-3','Defensiva'),(2,'Imanol Alguacil','1971-07-04',2,18,'4-1-4-1','Atacante'),(3,'Unai Emery','1971-11-03',3,19,'4-2-3-1','Equilibrada'),(4,'Zinedine Zidane','1972-06-23',4,20,'5-2-1-2','Equilibrada'),(5,'Jose Bordalas','1964-03-05',7,21,'4-3-3','Defensiva'),(6,'Alvaro Cervera','1965-09-20',8,22,'5-2-1-2','Atacante'),(7,'Diego Martinez','1980-12-16',9,15,'4-1-4-1','Atacante'),(8,'Manuel Pellegrini','1953-09-16',10,23,'4-3-3','Equilibrada'),(9,'Diego Simeone','1970-04-28',11,24,'4-2-3-1','Defensiva'),(10,'Ronald Koeman','1963-03-21',12,25,'4-1-4-1','Equilibrada'),(11,'Julen Lopetegui','1966-09-28',13,26,'4-3-3','Atacante'),(12,'Jagoba Arrasate','1978-04-22',20,31,'4-2-3-1','Defensiva'),(13,'Jorge Almiron','1971-06-19',6,32,'5-2-1-2','Equilibrada'),(14,'Javi Gracia','1970-05-01',19,10,'4-3-3','Atacante'),(15,'Jose Luis Mendilibar','1961-03-14',18,33,'4-1-4-1','Equilibrada'),(16,'Michel','1975-10-30',5,4,'5-2-1-2','Defensiva'),(17,'Oscar Garcia','1973-04-26',14,30,'4-3-3','Atacante'),(18,'Pablo Machin','1975-04-07',15,29,'5-2-1-2','Equilibrada'),(19,'Sergio','1976-11-10',17,28,'4-1-4-1','Defensiva'),(20,'Paco Lopez','1967-09-19',16,27,'4-3-3','Defensiva');
-/*!40000 ALTER TABLE `entrenador` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `estadio`
 --
 
@@ -132,16 +102,6 @@ CREATE TABLE `estadio` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `estadio`
---
-
-LOCK TABLES `estadio` WRITE;
-/*!40000 ALTER TABLE `estadio` DISABLE KEYS */;
-INSERT INTO `estadio` VALUES (1,'San Mames',53289,2013,1),(2,'Reale Arena',39500,1993,2),(3,'Estadio de la Ceramica',23500,1923,3),(4,'Estadio Ramon de Carranza',20724,1955,6),(5,'Santiago Bernabeu',81044,1947,4),(6,'Coliseum Alfonso Perez',17393,1998,5),(7,'Estadio Nuevo Los Carmenes',23156,1995,7),(8,'Cuidad de Valencia',26354,1969,12),(9,'Jose Zorrilla',27846,1982,17),(10,'Estadio de Mendizorroza',19840,1924,16),(11,'Municipal de Balaidos',31800,1928,15),(12,'El Alcoraz',7600,1972,14),(13,'Estadio Municipal de Ipurua',8164,1947,13),(14,'Mestalla',55000,1923,12),(15,'Estadio Martinez Valero',36017,1976,11),(16,'Estadio El Sadar',19800,1967,10),(17,'Ramon Sanchez Pizjuan',45500,1958,8),(18,'Camp Nou',98787,1957,9),(19,'Wanda Metropolitano',67942,2017,4),(20,'Benito Villamarin',60721,1929,8);
-/*!40000 ALTER TABLE `estadio` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `feedback`
 --
 
@@ -159,16 +119,6 @@ CREATE TABLE `feedback` (
   CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`usuario_feedback`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `feedback`
---
-
-LOCK TABLES `feedback` WRITE;
-/*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
-INSERT INTO `feedback` VALUES (1,5,'5','si','buena');
-/*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `jugador`
@@ -201,16 +151,6 @@ CREATE TABLE `jugador` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `jugador`
---
-
-LOCK TABLES `jugador` WRITE;
-/*!40000 ALTER TABLE `jugador` DISABLE KEYS */;
-INSERT INTO `jugador` VALUES (1,'Alex Berenguer','1993-10-01',1,1,'Delantero',8,0,182,81,'Diestro',84,'Jugador con desborde',0),(2,'Kenan Kodro','1998-09-04',1,1,'Delantero',9,0,179,82,'Zurdo',79,'Gran cabeceador',0),(3,'Asier Villalibre','1992-01-03',1,1,'Delantero',7,0,180,88,'Ambidiestro',77,'Depredador de area',0),(4,'Iñaki Williams','1995-03-20',1,1,'Delantero',5,0,184,86,'Zurdo',80,'Jugador rápido ',1),(5,'Raul Garcia','1989-02-23',1,1,'Centrocampista',6,1,180,78,'Diestro',77,'Es un jugador potente',0),(6,'Iker Muniain','1992-08-12',1,1,'Centrocampista',4,1,182,76,'Ambidiestro',79,'Gran regateador y capitán ',1),(7,'Unai Lopez','1994-09-04',1,1,'Centrocampista',3,2,184,75,'Diestro',84,'Buen pase interior y buen desplazamiento',0),(8,'Dani Garcia','1990-12-29',1,1,'Centrocampista',2,0,182,78,'Diestro',81,'Jugador que roba muchos balones',0),(9,'Iñigo Martinez','1992-07-20',1,1,'Defensa',15,1,177,81,'Diestro',76,'Buen juego aereo y salida de balón',1),(10,'Yuri Berchiche','1991-03-17',1,1,'Defensa',14,2,186,79,'Zurdo',80,'Jugador agresivo y goleador',0),(11,'Unai Nuñez','1995-07-12',1,1,'Defensa',12,3,179,76,'Diestro',88,'Buena salida de balón',0),(12,'Yeray Alvarez','1993-08-09',1,1,'Defensa',11,1,186,82,'Diestro',83,'Jugador que roba muchos balones',0),(13,'Ander Capa','1994-12-15',1,1,'Defensa',10,0,177,76,'Zurdo',80,'Jugador con llegada por banda',0),(14,'Unai Simon','1996-12-30',1,1,'Portero',1,0,179,81,'Diestro',80,'Gran estirada y buen despliegue de balón',1),(15,'Iago Herrerin','1994-11-13',1,1,'Portero',13,0,180,83,'Diestro',79,'Portero suplente del Athletic Club',0),(16,'David Silva','1988-11-08',2,2,'Centrocampista',8,1,174,76,'Diestro',88,'Jugador veterano con buen pase',0),(17,'Alexander Isak','1997-07-11',2,2,'Delantero',9,1,186,83,'Diestro',80,'Jugador rápido y goleador',0),(18,'Mikel Oyarzabal','1996-05-10',2,2,'Centrocampista',5,2,177,75,'Ambidiestro',83,'Jugador con buen pase final ',0),(19,'Takefusa Kubo','1993-10-01',3,3,'Centrocampista',4,3,182,82,'Diestro',79,'Gran promeso con llegada y gol',0),(20,'Paco Alcacer','1992-01-03',3,3,'Delantero',9,2,177,81,'Zurdo',81,'Goleador y jugador con mucha presencia',0),(21,'Pau Torres','1994-09-04',3,3,'Defensa',3,1,178,77,'Diestro',84,'Actual central titular de la selección ',0),(22,'Sergio Ramos','1992-07-20',4,4,'Defensa',2,1,185,81,'Zurdo',76,'Uno de los mejores defensas de la historia',0),(23,'Toni Kroos','1995-07-12',4,4,'Centrocampista',10,1,179,73,'Diestro',80,'Jugador con capacidad de no perder balones',0),(24,'Karim Benzema','1989-02-17',4,4,'Delantero',9,1,183,81,'Diestro',81,'Delantero con mucho gol',0),(25,'Rafa Mir','1992-01-03',5,14,'Delantero',7,0,184,81,'Ambidiestro',84,'Delantero veloz y ágil',0),(26,'Pablo Maffeo','1989-02-23',5,14,'Defensa',3,0,179,86,'Diestro',77,'Lateral con subida por banda',0),(27,'Dimitrios Siovas','1998-09-04',5,14,'Defensa',4,0,186,81,'Diestro',84,'Defensa Griego con mucha potencia',0),(28,'Nino','1992-01-03',6,11,'Delantero',8,0,188,86,'Diestro',80,'Gran delantero con desborde',0),(29,'Josan Fernandez','1993-10-01',6,11,'Centrocampista',5,1,185,83,'Diestro',76,'Jugador con buen toque de balón',0),(30,'Jose Manuel Sanchez','1989-02-23',6,11,'Centrocampista',6,1,180,75,'Diestro',77,'Capacidad de dar un buen último pase',0),(31,'Jaime Mata','1997-07-11',7,5,'Defensa',2,0,174,76,'Diestro',67,'Delantero potente',0),(32,'Marc Cucurella','1996-12-30',7,5,'Defensa',3,0,184,85,'Ambidiestro',88,'Jugador rápido y joven',0),(33,'Djene Dakoman','1993-10-01',7,5,'Defensa',4,1,179,82,'Diestro',77,'El mejor defensa de la historia del Getafe',0),(34,'Anthony Lozano','1995-10-11',8,6,'Delantero',9,1,184,75,'Diestro',80,'Delantero goleador',0),(35,'Jeremias Ledesma','1992-07-20',8,6,'Portero',1,2,177,82,'Zurdo',81,'Portero con gran envergadura',0),(36,'Ivan Alejo','1997-01-18',8,6,'Centrocampista',5,3,180,86,'Diestro',79,'Jugador que roba muchos balones',0),(37,'Darwin Machís ','1995-01-18',9,7,'Delantero',9,4,186,77,'Diestro',84,'Buen delantero potente',0),(38,'Yangel Herrera','1996-03-17',9,7,'Centrocampista',10,2,182,84,'Ambidiestro',80,'Tiene un buen pase en corto',0),(39,'Jesus Vallejo','1992-01-03',9,7,'Defensa',15,0,184,75,'Diestro',81,'Defensa con buen juego aereo ',0),(40,'Nabil Fekir','1994-06-29',10,8,'Centrocampista',5,0,180,77,'Diestro',79,'Gran regateador y goleador',0),(41,'Joaquín','1995-07-12',10,8,'Centrocampista',6,0,182,77,'Diestro',80,'Jugador veterano y buen desborde',0),(42,'Claudio Bravo','1992-07-20',10,8,'Portero',1,0,184,86,'Zurdo',84,'Portero veterano con buen salto',0),(43,'Joao Felix','1998-09-04',11,4,'Delantero',9,3,179,76,'Diestro',77,'Promesa del Atletico y buen asistente',0),(44,'Jan Oblak','1994-09-04',11,4,'Portero',1,0,186,84,'Diestro',75,'Para muchos el mejor portero del mundo',0),(45,'Luis Suarez','1992-01-03',11,4,'Delantero',8,3,177,83,'Ambidiestro',84,'Procedente del Barcelona y leyenda',0),(46,'Ansu Fati ','1998-09-04',12,9,'Delantero',11,3,174,75,'Ambidiestro',76,'Una de las mayores promesas del futbol',0),(47,'Philippe Coutinho','1997-07-11',12,9,'Centrocampista',10,2,182,76,'Diestro',70,'Gran tiro lejano y asistente',0),(48,'Lionel Mesii','1992-07-20',12,9,'Delantero',9,1,177,86,'Diestro',80,'El mejor jugador de la historia',0),(49,'Jules Koundé','1996-12-30',13,8,'Defensa',5,0,182,84,'Zurdo',80,'Defensa con buen juego aereo',0),(50,'Ivan Rakitic','1993-10-01',13,8,'Centrocampista',6,0,180,83,'Diestro',83,'Procedente del Barcelona y gran asistente',0),(51,'Lucas Ocampos','1989-02-23',13,8,'Delantero',9,0,174,75,'Diestro',79,'Depredador de area y goleador',0),(52,'Iago Aspas ','1988-09-12',14,15,'Delantero',11,1,182,83,'Zurdo',77,'Delantero goleador y asistente',0),(53,'Renato Tapia','1992-07-20',14,15,'Centrocampista',18,0,177,76,'Diestro',84,'Centrocampista con gran pase',0),(54,'Jeison Murillo','1992-01-03',14,15,'Centrocampista',5,0,182,82,'Diestro',77,'Buen asistente y regateador',0),(55,'Lucas Perez ','1995-07-12',15,16,'Delantero',10,0,187,76,'Ambidiestro',80,'Delantero potente y goleador',0),(56,'Victor Laguardia','1988-05-18',15,16,'Defensa',4,0,180,83,'Diestro',79,'Defensa robusto y potente',0),(57,'Fernando Pacheco','1992-01-03',15,16,'Portero',1,0,182,75,'Diestro',84,'Portero con gran envergadura',0),(58,'Jose Luis Morales','1989-02-23',16,12,'Delantero',11,1,184,82,'Diestro',88,'Uno de los mejores jugadores del Levante',0),(59,'Jose Campaña','1992-01-03',16,12,'Centrocampista',16,1,182,83,'Zurdo',81,'Capacidad de dar el ultimo pase',0),(60,'Roger Martí','1998-09-04',16,12,'Centrocampista',14,2,180,81,'Diestro',83,'Jugador con buen desborde',0),(61,'Sergi Guardiola','1995-07-12',17,17,'Delantero',9,3,177,76,'Ambidiestro',80,'Delantero con buen juego aereo',0),(62,'Roque Mesa','1994-09-04',17,17,'Centrocampista',11,2,179,84,'Zurdo',79,'Buen jugador y asistente',0),(63,'Jordi Masip','1992-07-20',17,17,'Portero',1,0,182,81,'Diestro',83,'Portero con buena estirada',0),(64,'Takashi Inui','1997-07-11',18,13,'Centrocampista',5,0,186,84,'Ambidiestro',81,'Jugador Japones con mucho gol',0),(65,'Kike Garcia','1992-01-03',18,13,'Delantero',9,1,174,75,'Diestro',80,'Delantero veterano del Eibar',0),(66,'Anaitz Arbilla','1996-12-30',18,13,'Defensa',3,1,186,83,'Diestro',84,'Lateral con subida por banda',0),(67,'Maximiliano Gomez','1992-12-01',19,12,'Delantero',14,3,180,75,'Diestro',81,'Jugador corpulento y goleador',0),(68,'Jose Luis Gaya','1992-07-20',19,12,'Defensa',5,2,182,82,'Ambidiestro',81,'Lateral con capacidad de llegada',0),(69,'Jasper Cillessen ','1994-09-04',19,12,'Portero',1,0,184,76,'Diestro',88,'Portero con buen juego de pies',0),(70,'Chimi Avila','1997-07-11',20,10,'Delantero',9,5,180,75,'Diestro',84,'Delantero goleador y asistente',0),(71,'Aridane Fernandez','1996-12-30',20,10,'Defensa',4,1,184,82,'Diestro',79,'Jugador con buena defensa',0),(72,'Rubén García','1992-01-03',20,10,'Centrocampista',6,2,174,76,'Diestro',81,'Capacidad de poner muchos balones al area',0);
-/*!40000 ALTER TABLE `jugador` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `pais`
 --
 
@@ -223,16 +163,6 @@ CREATE TABLE `pais` (
   PRIMARY KEY (`id_pais`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pais`
---
-
-LOCK TABLES `pais` WRITE;
-/*!40000 ALTER TABLE `pais` DISABLE KEYS */;
-INSERT INTO `pais` VALUES (1,'España'),(2,'Francia'),(3,'Guinea Ecuatorial'),(4,'Chile'),(5,'Argentina'),(6,'Paises Bajos');
-/*!40000 ALTER TABLE `pais` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `teamoftheyear`
@@ -249,16 +179,6 @@ CREATE TABLE `teamoftheyear` (
   CONSTRAINT `teamoftheyear_ibfk_1` FOREIGN KEY (`jugador_TeamOfTheYear`) REFERENCES `jugador` (`id_jugador`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `teamoftheyear`
---
-
-LOCK TABLES `teamoftheyear` WRITE;
-/*!40000 ALTER TABLE `teamoftheyear` DISABLE KEYS */;
-INSERT INTO `teamoftheyear` VALUES (1,4),(4,6),(7,9),(9,10),(8,11),(11,14),(5,19),(6,36),(3,37),(10,68),(2,70);
-/*!40000 ALTER TABLE `teamoftheyear` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Temporary view structure for view `teamoftheyear_view`
@@ -296,16 +216,6 @@ CREATE TABLE `usuario` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
---
-
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'na','a@gmail.com','a',1,'1970-01-01'),(2,'nb','b@gmail.com','b',0,'1970-01-01'),(3,'lopez','lopez@gmail.com','12345',0,'1999-06-24'),(4,'cogollos','cogollos@gmail.com','12345',0,'1999-06-26'),(5,'Eneko','eneko.perez23@gmail.com','12345',1,'2020-10-01');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `usuariovotacion`
 --
 
@@ -332,16 +242,6 @@ CREATE TABLE `usuariovotacion` (
   CONSTRAINT `usuariovotacion_ibfk_5` FOREIGN KEY (`porteroVotado_usuarioVotacion`) REFERENCES `jugador` (`id_jugador`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuariovotacion`
---
-
-LOCK TABLES `usuariovotacion` WRITE;
-/*!40000 ALTER TABLE `usuariovotacion` DISABLE KEYS */;
-INSERT INTO `usuariovotacion` VALUES (11,1,4,6,9,14);
-/*!40000 ALTER TABLE `usuariovotacion` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Final view structure for view `teamoftheyear_view`
