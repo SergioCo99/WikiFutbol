@@ -1641,7 +1641,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		System.out.println(getJugadorBd("Iñaki Williams"));
-		System.out.println(getJugadorBd("Iñaki Williams").getAltura());
+		connect();
 	}
 }
