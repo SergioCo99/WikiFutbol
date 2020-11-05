@@ -593,51 +593,5 @@ public class DBManagerTest {
 		// fail();
 	}
 
-	/*
-	 * @Test public void getClubes() throws DBManagerException { ArrayList<String>
-	 * equipos = new ArrayList<>(); equipos.
-	 * add("id=1, nombre=Athletic Club, ciudad=Bilbao, estadio=San Mames, anyoCreacion=1898, palmares=0, entrenador=Gaizka Garitano, id=2, nombre=Real Sociedad, ciudad=San Sebastian, estadio=Reale Arena, anyoCreacion=1908, palmares=0, entrenador=Imanol Alguacil, "
-	 * +
-	 * "id=3, nombre=Villarreal, ciudad=Villarreal, estadio=Estadio de la Ceramica, anyoCreacion=1923, palmares=0, entrenador=Unai Emery, "
-	 * +
-	 * "id=4, nombre=Real Madrid, ciudad=Madrid, estadio=Santiago Bernabeu, anyoCreacion=1902, palmares=0, entrenador=Zinedine Zidane, "
-	 * +
-	 * "id=5, nombre=Huesca, ciudad=Huesca, estadio=El Alcoraz, anyoCreacion=1960, palmares=0, entrenador=Michel,"
-	 * +
-	 * "id=6, nombre=Elche, ciudad=Elche, estadio=Estadio Martinez Valero, anyoCreacion=1922, palmares=0, entrenador=Jorge Almiron, "
-	 * +
-	 * "id=7, nombre=Getafe, ciudad=Getafe, estadio=Coliseum Alfonso Perez, anyoCreacion=1983, palmares=0, entrenador=Jose Bordalas, "
-	 * +
-	 * "id=8, nombre=Cadiz, ciudad=Cadiz, estadio=Estadio Ramon de Carranza, anyoCreacion=1909, palmares=0, entrenador=Alvaro Cervera, "
-	 * +
-	 * "id=9, nombre=Granada, ciudad=Granada, estadio=Estadio Nuevo Los Carmenes, anyoCreacion=1931, palmares=0, entrenador=Diego Martinez, "
-	 * +
-	 * "id=10, nombre=Betis, ciudad=Sevilla, estadio=Benito Villamarin, anyoCreacion=1907, palmares=0, entrenador=Manuel Pellegrini, "
-	 * +
-	 * "id=11, nombre=Atl. Madrid, ciudad=Madrid, estadio=Wanda Metropolitano, anyoCreacion=1903, palmares=0, entrenador=Diego Simeone, "
-	 * +
-	 * "id=12, nombre=Barcelona, ciudad=Barcelona, estadio=Camp Nou, anyoCreacion=1899, palmares=0, entrenador=Ronald Koeman, "
-	 * +
-	 * "id=13, nombre=Sevilla, ciudad=Sevilla, estadio=Ramon Sanchez Pizjuan, anyoCreacion=1890, palmares=0, entrenador=Julen Lopetegui, "
-	 * +
-	 * "id=14, nombre=Celta, ciudad=Vigo, estadio=Municipal de Balaidos, anyoCreacion=1927, palmares=0, entrenador=Oscar Garcia, "
-	 * +
-	 * "id=15, nombre=Alaves, ciudad=Vitoria-Gasteiz, estadio=Estadio de Mendizorroza, anyoCreacion=1921, palmares=0, entrenador=Pablo Machin,"
-	 * +
-	 * "id=16, nombre=Levante, ciudad=Valencia, estadio=Cuidad de Valencia, anyoCreacion=1908, palmares=0, entrenador=Paco Lopez, "
-	 * +
-	 * "id=17, nombre=Valladolid, ciudad=Valladolid, estadio=Jose Zorrilla, anyoCreacion=1928, palmares=0, entrenador=Sergio, "
-	 * +
-	 * "id=18, nombre=Eibar, ciudad=Eibar, estadio=Estadio Municipal de Ipurua, anyoCreacion=1940, palmares=0, entrenador=Jose Luis Mendilibar, "
-	 * +
-	 * "id=19, nombre=Valencia, ciudad=Valencia, estadio=Mestalla, anyoCreacion=1919, palmares=0, entrenador=Javi Gracia, "
-	 * +
-	 * "id=20, nombre=Osasuna, ciudad=Pamplona, estadio=Estadio El Sadar, anyoCreacion=1920, palmares=0, entrenador=Jagoba Arrasate"
-	 * );
-	 *
-	 * assertEquals("id=1, nombre=Athletic Club, ciudad=Bilbao, estadio=San Mames, anyoCreacion=1898, palmares=0, entrenador=Gaizka Garitano, id=2, nombre=Real Sociedad, ciudad=San Sebastian, estadio=Reale Arena, anyoCreacion=1908, palmares=0, entrenador=Imanol Alguacil, id=3, nombre=Villarreal, ciudad=Villarreal, estadio=Estadio de la Ceramica, anyoCreacion=1923, palmares=0, entrenador=Unai Emery, id=4, nombre=Real Madrid, ciudad=Madrid, estadio=Santiago Bernabeu, anyoCreacion=1902, palmares=0, entrenador=Zinedine Zidane, id=5, nombre=Huesca, ciudad=Huesca, estadio=El Alcoraz, anyoCreacion=1960, palmares=0, entrenador=Michel,id=6, nombre=Elche, ciudad=Elche, estadio=Estadio Martinez Valero, anyoCreacion=1922, palmares=0, entrenador=Jorge Almiron, id=7, nombre=Getafe, ciudad=Getafe, estadio=Coliseum Alfonso Perez, anyoCreacion=1983, palmares=0, entrenador=Jose Bordalas, id=8, nombre=Cadiz, ciudad=Cadiz, estadio=Estadio Ramon de Carranza, anyoCreacion=1909, palmares=0, entrenador=Alvaro Cervera, id=9, nombre=Granada, ciudad=Granada, estadio=Estadio Nuevo Los Carmenes, anyoCreacion=1931, palmares=0, entrenador=Diego Martinez, id=10, nombre=Betis, ciudad=Sevilla, estadio=Benito Villamarin, anyoCreacion=1907, palmares=0, entrenador=Manuel Pellegrini, id=11, nombre=Atl. Madrid, ciudad=Madrid, estadio=Wanda Metropolitano, anyoCreacion=1903, palmares=0, entrenador=Diego Simeone, id=12, nombre=Barcelona, ciudad=Barcelona, estadio=Camp Nou, anyoCreacion=1899, palmares=0, entrenador=Ronald Koeman, id=13, nombre=Sevilla, ciudad=Sevilla, estadio=Ramon Sanchez Pizjuan, anyoCreacion=1890, palmares=0, entrenador=Julen Lopetegui, id=14, nombre=Celta, ciudad=Vigo, estadio=Municipal de Balaidos, anyoCreacion=1927, palmares=0, entrenador=Oscar Garcia, id=15, nombre=Alaves, ciudad=Vitoria-Gasteiz, estadio=Estadio de Mendizorroza, anyoCreacion=1921, palmares=0, entrenador=Pablo Machin,id=16, nombre=Levante, ciudad=Valencia, estadio=Cuidad de Valencia, anyoCreacion=1908, palmares=0, entrenador=Paco Lopez, id=17, nombre=Valladolid, ciudad=Valladolid, estadio=Jose Zorrilla, anyoCreacion=1928, palmares=0, entrenador=Sergio, id=18, nombre=Eibar, ciudad=Eibar, estadio=Estadio Municipal de Ipurua, anyoCreacion=1940, palmares=0, entrenador=Jose Luis Mendilibar, id=19, nombre=Valencia, ciudad=Valencia, estadio=Mestalla, anyoCreacion=1919, palmares=0, entrenador=Javi Gracia, id=20, nombre=Osasuna, ciudad=Pamplona, estadio=Estadio El Sadar, anyoCreacion=1920, palmares=0, entrenador=Jagoba Arrasate"
-	 * , DBManager.getClubes());
-	 *
-	 * }
-	 */
+	
 }
