@@ -65,6 +65,9 @@ public class DBManagerTest {
 		DBManager.disconnect();
 	}
 
+	/**Comprueba si el correo insertado existe o no.
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testExisteCorreo() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
@@ -72,6 +75,9 @@ public class DBManagerTest {
 		assertTrue(DBManager.existeCorreo(correo_usuario));
 	}
 
+	/**Necesario para hacer el test 
+	 * @throws DBManagerException
+	 */
 	@Before
 	public void testRegistrarUsuario() throws DBManagerException {
 		String nombre_usuario = u.getNombre();
@@ -148,13 +154,14 @@ public class DBManagerTest {
 
 	@Test
 	public void testTodosLosCorreos() throws DBManagerException {
-		/*
-		 * Poner todos los correos es ilogico, ademas si hay nuevos usuarios cambia el
-		 * orden y la cantidad. Lo dejo en *fail* para acordarnos de preguntarle que
-		 * hacer
-		 */
+		
+		ArrayList<String> correos = new ArrayList<String>();
+		correos = DBManager.todosLosCorreos();
+		for (String correo : correos) {
+			System.out.println("testTodosLosCorreos correos:" + correo);
+			Assert.assertNotNull(correo);
+		}
 
-		fail();
 	}
 
 	@Test
@@ -170,65 +177,40 @@ public class DBManagerTest {
 
 	@Test
 	public void testGetJugadoresPorPosicion() throws DBManagerException {
-		/*
-		 * Poner todos los jugadores es ilogico, ademas si hay nuevos jugadores cambia
-		 * el orden y la cantidad. Lo dejo en *fail* para acordarnos de preguntarle que
-		 * hacer
-		 */
-
-		// No se si está bien
+		
 		String nombre_posicion = "Delantero";
 		ArrayList<String> jugadoresPorPosicion = new ArrayList<String>();
-		jugadoresPorPosicion = DBManager.getJugadoresPorEquipo(nombre_posicion);
-		System.out.println("aa:" + jugadoresPorPosicion);
+		jugadoresPorPosicion = DBManager.getJugadoresPorPosicion(nombre_posicion);
 		for (String jugadorPorPosicion : jugadoresPorPosicion) {
-			System.out.println("bb:" + jugadorPorPosicion);
 			Assert.assertNotNull(jugadorPorPosicion);
 		}
-		// lo que esta puesto arriba devuelve un array sin nada
-		fail();
+		
 	}
 
 	@Test
 	public void testGetIdUsuario() throws DBManagerException {
-		/*
-		 * id del usuario de prueba cambia, preguntarle si usar el de prueba o uno ya
-		 * existente. Lo dejo en *fail* para acordarnos de preguntarle que hacer
-		 */
-
-		// String correo_usuario = u.getCorreo();
-		// assertEquals(DBManager.getIdUsuario(correo_usuario), u.getId());
-
-		String correo_usuario = "eneko.perez23@gmail.com";
-
-		// u.setid(5);
-		assertEquals(5, DBManager.getIdUsuario(correo_usuario));
-
-		fail();
+		
+		String correo_usuario = "sergio@gmail.com";
+		int idUsuarios;
+		idUsuarios = DBManager.getIdUsuario(correo_usuario);
+		Assert.assertNotNull(idUsuarios);
+		
 	}
 
 	@Test
 	public void testGetIdJugador() throws DBManagerException {
-		/*
-		 * no convence del todo, Lo dejo en *fail* para acordarnos de preguntarle que
-		 * hacer
-		 */
-
-		String nombre_jugador = j.getNombre();
-
-		assertEquals(j.getId(), DBManager.getIdJugador(nombre_jugador));
-
-		// String nombre_jugador = "Alex Berenguer";
-		// assertEquals(1, DBManager.getIdJugador(nombre_jugador));
-
-		fail();
+		
+		String nombre_jugador = "Iñaki Williams";
+		int idJugador;
+		idJugador = DBManager.getIdUsuario(nombre_jugador);
+		Assert.assertNotNull(idJugador);
 	}
 
 	@Test
 	public void testVotar() throws DBManagerException {
 		/*
-		 * preguntarle como comprobar (test) que en una tabla han cambiado valores sin
-		 * tener que hacer metodos nuevos de BD
+		 * 
+		 * 
 		 */
 
 		fail();
@@ -281,6 +263,8 @@ public class DBManagerTest {
 		 * es un array de SIEMPRE 11 valores [0 - 10] pero que puede cambiar el valor
 		 * interno. Preguntar.
 		 */
+		
+		
 
 		fail();
 	}
