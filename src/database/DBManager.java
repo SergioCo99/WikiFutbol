@@ -1238,6 +1238,37 @@ public class DBManager {
 		}
 	}
 
+	public static Jugador getJugadorBd(String nombre_jugador) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			String sql = "select id_jugador, nombre_jugador, fechaNac_jugador, nombre_club, nombre_ciudad, posicion_jugador,"
+					+ " dorsal_jugador, goles_jugador, altura_jugador, peso_jugador, pieFav_jugador, valoracion_jugador,"
+					+ " descripcion_jugador, voto_jugador from jugador, club, ciudad "
+					+ "where club_jugador = id_club and ciudad_jugador = id_ciudad and nombre_jugador = ?";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, nombre_jugador);
+			rs = preparedstmt.executeQuery();
+			rs.next();
+			Jugador jugador = new Jugador(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+					rs.getString(5), Posicion.valueOf(rs.getString(6)), rs.getInt(7), rs.getInt(8), rs.getInt(9),
+					rs.getInt(10), PieFav.valueOf(rs.getString(11)), rs.getInt(12), rs.getString(13), rs.getInt(14));
+
+			return jugador;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error getJugadores DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
 	/**
 	 * Este metodo recopila todos los paises existentes
 	 *
@@ -1610,6 +1641,7 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-
+		System.out.println(getJugadorBd("Iñaki Williams"));
+		System.out.println(getJugadorBd("Iñaki Williams").getAltura());
 	}
 }
