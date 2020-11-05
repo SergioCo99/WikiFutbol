@@ -52,6 +52,7 @@ public class VentanaEquipo extends JFrame {
 		add(navBarPanel);
 		navBarPanel.setLayout(null);
 
+		// Btn ventana anterior
 		final JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(1040, 20, 140, 30);
 		btnAtras.setForeground(Color.WHITE);
@@ -244,6 +245,7 @@ public class VentanaEquipo extends JFrame {
 		fotoEquipo.setLocation(600, 50);
 		bookPanel.add(fotoEquipo);
 
+		// Btn ver plantilla del equipo seleccionado
 		final JButton btnPlantilla = new JButton("Ver Plantilla");
 		btnPlantilla.setBounds(330, 515, 150, 50);
 		btnPlantilla.setForeground(Color.WHITE);

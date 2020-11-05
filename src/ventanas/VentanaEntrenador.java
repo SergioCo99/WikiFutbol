@@ -56,6 +56,7 @@ public class VentanaEntrenador extends JFrame {
 		add(navBarPanel);
 		navBarPanel.setLayout(null);
 
+		// Btn ventana anterior
 		final JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(1040, 20, 140, 30);
 		btnAtras.setForeground(Color.WHITE);
@@ -235,6 +236,7 @@ public class VentanaEntrenador extends JFrame {
 		resultadoMentalidad.setForeground(Color.BLACK);
 		bookPanel.add(resultadoMentalidad);
 
+		//Imagen logo
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
 		bookPanel.add(fotoEquipo);

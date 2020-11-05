@@ -56,6 +56,7 @@ public class VentanaEstadio extends JFrame {
 		add(navBarPanel);
 		navBarPanel.setLayout(null);
 
+		// Btn ventana equipo
 		final JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(1040, 20, 140, 30);
 		btnAtras.setForeground(Color.WHITE);
