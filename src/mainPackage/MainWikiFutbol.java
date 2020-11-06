@@ -11,12 +11,17 @@ import java.util.logging.Logger;
 
 import ventanas.VentanaLogin;
 
+/**
+ * Clase MainWikiFutbol
+ * @author sergi
+ *
+ */
 public class MainWikiFutbol {
 
 	public static PrintStream logFeedback;
 
 	/**
-	 * Método para poder crear ficheros log, en nuestro caso el de FeedbackLog.log
+	 * Metodo para poder crear ficheros log, en nuestro caso el de FeedbackLog.log
 	 *
 	 */
 	public static void crearFicheroLog() {
@@ -37,7 +42,7 @@ public class MainWikiFutbol {
 	public static Logger loggerGeneral = Logger.getLogger(MainWikiFutbol.class.getName());
 
 	/**
-	 * Método para crear ficheros logger
+	 * Metodo para crear ficheros logger
 	 *
 	 */
 	public static void crearFicheroLogger() {
@@ -61,7 +66,7 @@ public class MainWikiFutbol {
 	}
 
 	/**
-	 * Método para crear nuestros archivos: account.properties (con informacion del
+	 * Metodo para crear nuestros archivos: account.properties (con informacion del
 	 * usuario) y jdbc.properties (con informacion de la BD)
 	 */
 	public static void crearFicherosProperties() {

@@ -1,7 +1,7 @@
 package clases;
 
 /**
- * Clase para la creación de paises
+ * Clase para la creacion de paises
  *
  * @author sergiolopez
  *

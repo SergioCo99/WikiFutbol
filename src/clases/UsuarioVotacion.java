@@ -1,7 +1,7 @@
 package clases;
 
 /**
- * Clase que hace referencia a la votación dle los usuarios
+ * Clase que hace referencia a la votacion de los usuarios
  *
  * @author sergiolopez
  *

@@ -6,6 +6,11 @@ import java.sql.DriverManager;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test de DBManagerException
+ * @author sergi
+ *
+ */
 public class DBManagerExceptionTest {
 
 	DBManagerException dbme = new DBManagerException("Mensaje");

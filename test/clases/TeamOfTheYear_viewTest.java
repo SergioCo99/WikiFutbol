@@ -7,6 +7,12 @@ import org.junit.Test;
 
 import clases.TeamOfTheYear_view.Posicion;
 
+/**
+ * Test de la clase TeamOfTheYear_view
+ * 
+ * @author sergi
+ *
+ */
 public class TeamOfTheYear_viewTest {
 
 	private TeamOfTheYear_view t;

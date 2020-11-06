@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ * Test EstadisticaFeedback
+ * @author sergi
+ *
+ */
 public class EstadisticaFeedbackTest {
 
 	static EstadisticaFeedback ef = new EstadisticaFeedback();
@@ -23,7 +28,7 @@ public class EstadisticaFeedbackTest {
 	}
 
 	/**
-	 * Comprueba el método que sirve para realizar una puntuacion media de los
+	 * Comprueba el metodo que sirve para realizar una puntuacion media de los
 	 * feedbacks que realizan los usuarios
 	 *
 	 */
@@ -43,7 +48,7 @@ public class EstadisticaFeedbackTest {
 	}
 
 	/**
-	 * Comprueba el método de la recomendación "si" o "no" que realizan los usuarios
+	 * Comprueba el metodo de la recomendación "si" o "no" que realizan los usuarios
 	 *
 	 */
 	@Test
@@ -69,7 +74,7 @@ public class EstadisticaFeedbackTest {
 	}
 
 	/**
-	 * Comprueba el método que sirve para recibir y guardar el Feedback de los
+	 * Comprueba el metodo que sirve para recibir y guardar el Feedback de los
 	 * usuarios en un .log Recibe y guarda la valoracion del usuario (del 1 al 5) y
 	 * la recomendacion (si o no) Ademas, con esos datos realiza la media de
 	 * valoracion y el porcentaje de si o no

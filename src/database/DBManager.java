@@ -28,6 +28,11 @@ import clases.TeamOfTheYear_view;
 import clases.Usuario;
 import clases.UsuarioVotacion;
 
+/**
+ * Clase DBManager
+ * @author sergi
+ *
+ */
 public class DBManager {
 
 	private static Connection conn;
@@ -35,7 +40,7 @@ public class DBManager {
 	private static PreparedStatement preparedstmt = null;
 
 	/**
-	 * Método para conectar con la BD
+	 * Metodo para conectar con la BD
 	 *
 	 * @return Devuelve la conexión con la BD
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
@@ -58,7 +63,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Método para desconectar con la BD
+	 * Metodo para desconectar con la BD
 	 *
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
@@ -73,7 +78,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Método para comprobar si un correo ya esta en la BD o no
+	 * Metodo para comprobar si un correo ya esta en la BD o no
 	 *
 	 * @param correo_usuario Correo a comprobar su existencia
 	 * @return Devuelve true en caso de existir el correo y false en caso de no
@@ -112,7 +117,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Método para registrar un usuario en la base de datos
+	 * Metodo para registrar un usuario en la base de datos
 	 *
 	 * @param nombre_usuario     Nombre con el que el usuario se quiere registrar
 	 * @param correo_usuario     Correo con el que el usuario se quiere registrar
@@ -145,7 +150,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Método para realizar un login correcto para entrar a la aplicación
+	 * Metodo para realizar un login correcto para entrar a la aplicación
 	 *
 	 * @param correo_usuario     Correo del usuario
 	 * @param contrasena_usuario Contrasena del usuario
@@ -183,7 +188,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Método que te devuelve si un usuario es admin o no
+	 * Metodo que te devuelve si un usuario es admin o no
 	 *
 	 * @param correo_usuario Correo del usuario
 	 * @return True en caso de ser admin. False en caso de no ser admin
@@ -250,7 +255,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Método para eliminar a los usuarios de la BD
+	 * Metodo para eliminar a los usuarios de la BD
 	 *
 	 * @param correo_usuario Correo del usuario a eliminar
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
@@ -276,7 +281,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Método para cambiar la contrasena de los usuarios
+	 * Metodo para cambiar la contrasena de los usuarios
 	 *
 	 * @param correo_usuario     Correo del usuario
 	 * @param contrasena_usuario Contrasena del usuario
@@ -304,7 +309,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Método que permite ver las tablas de la BD
+	 * Metodo que permite ver las tablas de la BD
 	 *
 	 * @return Devuelve un array con el contenido
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
@@ -338,7 +343,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Método que permite ver todos los correos registrados
+	 * Metodo que permite ver todos los correos registrados
 	 *
 	 * @return Devuelve un array con los correos
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
@@ -459,7 +464,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Método que devuelve el Id del usuario
+	 * Metodo que devuelve el Id del usuario
 	 *
 	 * @param correo_usuario Correo del usuario
 	 * @return Id del usuario
@@ -491,7 +496,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Método que devuelve el id del jugador
+	 * Metodo que devuelve el id del jugador
 	 *
 	 * @param nombre_jugador Nombre del jugador
 	 * @return Id del jugador
@@ -638,7 +643,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Método para actualizar los votos que reciben los jugadores, dependiendo de su
+	 * Metodo para actualizar los votos que reciben los jugadores, dependiendo de su
 	 * posicion
 	 *
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
@@ -1471,7 +1476,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Este método devuelve un Array con el Team of The Year
+	 * Este metodo devuelve un Array con el Team of The Year
 	 *
 	 * @return Array con el Team of The Year
 	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
@@ -1646,7 +1651,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Este método vuelca los datos de cualquier tabla de la BD a un array 2D El
+	 * Este metodo vuelca los datos de cualquier tabla de la BD a un array 2D El
 	 * objetivo es rellenar una JTable
 	 *
 	 * @param tabla La tabla que queremos volcar los datos

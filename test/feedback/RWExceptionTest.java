@@ -7,6 +7,11 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test RWException
+ * @author sergi
+ *
+ */
 public class RWExceptionTest {
 
 	RWException rwe = new RWException("Mensaje", null);

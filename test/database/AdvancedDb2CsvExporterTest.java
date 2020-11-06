@@ -12,6 +12,11 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test de AdvancedDb2CsvExporter
+ * @author sergi
+ *
+ */
 public class AdvancedDb2CsvExporterTest {
 
 	static AdvancedDb2CsvExporter exporter = new AdvancedDb2CsvExporter();
@@ -30,7 +35,7 @@ public class AdvancedDb2CsvExporterTest {
 	}
 
 	/**
-	 * Prueba el método preparado para exportar tablas
+	 * Prueba el metodo preparado para exportar tablas
 	 *
 	 */
 	@Test
@@ -65,7 +70,7 @@ public class AdvancedDb2CsvExporterTest {
 	}
 
 	/**
-	 * Prueba el método que sirve para exportar en un archivo csv tablas de la base
+	 * Prueba el metodo que sirve para exportar en un archivo csv tablas de la base
 	 * de datos
 	 *
 	 */

@@ -13,7 +13,7 @@ import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
 /**
- * Ventana para la visualiozacion del equipo del año
+ * Ventana para la visualiozacion del equipo del anyo
  *
  * @author sergiolopez
  *

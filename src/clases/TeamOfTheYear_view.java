@@ -2,13 +2,18 @@ package clases;
 
 // es una clase basica de una VIEW, NO DE UNA TABLA!!! SOLO SE VE, NO SE ACTUALIZA!!! SOLO GETTERS!!!
 /**
- * Esta clase hace referencia al equipo del año
+ * Esta clase hace referencia al equipo del anyo
  *
  * @author sergiolopez
  *
  */
 public class TeamOfTheYear_view {
 
+	/**
+	 * Posicion del jugador
+	 * @author sergi
+	 *
+	 */
 	public enum Posicion {
 		Delantero, Centrocampista, Defensa, Portero
 	}

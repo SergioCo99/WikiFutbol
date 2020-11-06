@@ -36,6 +36,11 @@ import clases.TeamOfTheYear_view;
 import clases.Usuario;
 import clases.UsuarioVotacion;
 
+/**
+ * Test de DBManager
+ * @author sergi
+ *
+ */
 public class DBManagerTest {
 
 	static DBManager db = new DBManager();
@@ -114,7 +119,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Test que comprueba el correcto funcionamiento del método login
+	 * Test que comprueba el correcto funcionamiento del metodo login
 	 *
 	 * @throws DBManagerException En caso de fallo
 	 */
@@ -141,7 +146,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba si funciona el método que nos permite cambiar a un usuario como
+	 * Comprueba si funciona el metodo que nos permite cambiar a un usuario como
 	 * admin o como usuario normal
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -229,7 +234,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todos los
 	 * correos de la BD
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -260,7 +265,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todos los
 	 * jugadores de la BD, teniendo en cuenta su posición
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -283,7 +288,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve el ID de un
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve el ID de un
 	 * usuario especifico que se encuentran en la BD
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -298,7 +303,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve el ID de un
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve el ID de un
 	 * jugador especifico que se encuentran en la BD
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -615,7 +620,7 @@ public class DBManagerTest {
 	 */
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve todas las
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todas las
 	 * ciudades que se encuentran en la BD
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -630,7 +635,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todos los
 	 * clubes que se encuentran en la BD
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -646,7 +651,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todos los
 	 * entrenadores que se encuentran en la BD
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -725,7 +730,7 @@ public class DBManagerTest {
 	// Fin Metodos Entrenador
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todos los
 	 * estadios que se encuentran en la BD
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -783,7 +788,7 @@ public class DBManagerTest {
 	// Fin Metodos Estadio
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todos los
 	 * Feedbacks que se encuentran en la BD
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -799,7 +804,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todos los
 	 * jugadores que se encuentran en la BD
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -816,7 +821,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todos los
 	 * jugadores que se encuentran en la BD
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -842,7 +847,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todos los
 	 * paises que se encuentran en la BD
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -872,7 +877,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todos los
 	 * jugadores que se encuentran en el Team of The Year
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -888,7 +893,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todos los
 	 * usuarios que se encuentran en la BD
 	 *
 	 * @throws DBManagerException En caso de fallo
@@ -903,7 +908,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento del método de la BD getUsuarioVotaciones
+	 * Comprueba el correcto funcionamiento del metodo de la BD getUsuarioVotaciones
 	 *
 	 * @throws DBManagerException En caso de fallo
 	 */
@@ -1043,6 +1048,10 @@ public class DBManagerTest {
 		assertEquals(DBManager.verColumnas(tabla), actualtoftview);
 	}
 
+	/**Prueba el metodo que vuelca los datos de cualquier tabla de la BD a un array 2D 
+	 * El objetivo es rellenar una JTable
+	 * @throws DBManagerException En caso de fallos
+	 */
 	@Test
 	public void testData() throws DBManagerException {
 		for (String tabla : DBManager.verTablas()) {
@@ -1119,7 +1128,7 @@ public class DBManagerTest {
 	}
 
 	/**
-	 * Comprueba el método que nos permite ver a los jugadores dependiendo del
+	 * Comprueba el metodo que nos permite ver a los jugadores dependiendo del
 	 * equipo al que pertenezcan
 	 *
 	 * @throws DBManagerException En caso de fallo

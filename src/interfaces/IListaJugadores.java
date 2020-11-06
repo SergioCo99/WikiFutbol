@@ -10,6 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 
+/**
+ * Interfaz IListaJugadores
+ * @author sergi
+ *
+ */
 public interface IListaJugadores {
 
 	/**

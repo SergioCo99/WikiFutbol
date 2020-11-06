@@ -3,10 +3,16 @@ package utils;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+/**
+ * Clase FileChooser
+ * 
+ * @author sergi
+ *
+ */
 public class FileChooser {
 
 	/**
-	 * Este método sirve para seleccionar distintos tipos de archivos
+	 * Este metodo sirve para seleccionar distintos tipos de archivos
 	 *
 	 * @return El archivo seleccionado
 	 */

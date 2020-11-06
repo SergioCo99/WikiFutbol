@@ -12,10 +12,16 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * Clase MailSinFichero
+ * 
+ * @author sergi
+ *
+ */
 public class MailSinFichero {
 
 	/**
-	 * Información sobre el email
+	 * Informacion sobre el email
 	 *
 	 * @param session Espacio de memoria donde se recoge todo lo referente al email
 	 * @param toEmail Email del destinatario
@@ -50,7 +56,7 @@ public class MailSinFichero {
 	}
 
 	/**
-	 * Método para enviar un email que no contenga fichero
+	 * Metodo para enviar un email que no contenga fichero
 	 *
 	 * @param toEmail Email del destinatario
 	 * @param asunto  Asunto del email

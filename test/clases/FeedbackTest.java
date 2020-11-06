@@ -7,6 +7,12 @@ import org.junit.Test;
 
 import clases.Feedback.Recomendacion;
 
+/**
+ * Test de la clase Feedback
+ * 
+ * @author sergi
+ *
+ */
 public class FeedbackTest {
 
 	private Feedback f;

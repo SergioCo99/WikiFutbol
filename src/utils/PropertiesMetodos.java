@@ -8,6 +8,11 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Level;
 
+/**
+ * Clase PropertiesMetodos
+ * @author sergi
+ *
+ */
 public class PropertiesMetodos {
 
 	/**
@@ -80,7 +85,7 @@ public class PropertiesMetodos {
 	 */
 
 	/**
-	 * Crea el archivo jdbc.properties donde se recoge información sobre la BD
+	 * Crea el archivo jdbc.properties donde se recoge informacion sobre la BD
 	 *
 	 * @return El archivo properties
 	 * @throws Exception En caso de error

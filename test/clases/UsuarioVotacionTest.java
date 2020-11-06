@@ -5,6 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test de la clase UsuarioVotacion
+ * @author sergi
+ *
+ */
 public class UsuarioVotacionTest {
 
 	private UsuarioVotacion uv;

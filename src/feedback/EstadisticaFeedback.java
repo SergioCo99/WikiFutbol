@@ -9,12 +9,17 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+/**
+ * Estadistica feedback
+ * @author sergi
+ *
+ */
 public class EstadisticaFeedback {
 
 	static double ans;
 
 	/**
-	 * Este método sirve para realizar una puntuacion media de los feedbacks que
+	 * Este metodo sirve para realizar una puntuacion media de los feedbacks que
 	 * realizan los usuarios
 	 *
 	 * @param a Puntuacion a
@@ -58,7 +63,7 @@ public class EstadisticaFeedback {
 	}
 
 	/**
-	 * Este método sirve para recibir y guardar el Feedback de los usuarios en un
+	 * Este metodo sirve para recibir y guardar el Feedback de los usuarios en un
 	 * .log Recibe y guarda la valoracion del usuario (del 1 al 5) y la
 	 * recomendacion (si o no) Ademas, con esos datos realiza la media de valoracion
 	 * y el porcentaje de si o no

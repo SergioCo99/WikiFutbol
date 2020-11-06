@@ -8,6 +8,11 @@ import org.junit.Test;
 import clases.Jugador.PieFav;
 import clases.Jugador.Posicion;
 
+/**
+ * Test de la clase Jugador
+ * @author sergi
+ *
+ */
 public class JugadorTest {
 
 	private Jugador j;
