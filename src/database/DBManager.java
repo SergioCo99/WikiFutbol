@@ -721,7 +721,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Metodo para recivir los jugadores mas votados.
+	 * Metodo para recibir los jugadores mas votados.
 	 *
 	 * @param posicion - Posicion del jugador.
 	 * @param limit    -
@@ -1645,6 +1645,14 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este método vuelca los datos de cualquier tabla de la BD a un array 2D El
+	 * objetivo es rellenar una JTable
+	 *
+	 * @param tabla La tabla que queremos volcar los datos
+	 * @return Rellenar JTable
+	 * @throws DBManagerException En caso de fallo
+	 */
 	public static Object[][] data(String tabla) throws DBManagerException {
 		connect();
 		ResultSet rs1 = null;
