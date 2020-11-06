@@ -803,7 +803,21 @@ public class DBManagerTest {
 	@Test
 	public void testGetJugadorBd() throws DBManagerException {
 		Jugador jugador = DBManager.getJugadorBd(j.getNombre());
-		assertEquals(jugador, j);
+
+		assertEquals(jugador.getId(), j.getId());
+		assertEquals(jugador.getNombre(), j.getNombre());
+		assertEquals(jugador.getFechaNac(), j.getFechaNac());
+		assertEquals(jugador.getClub(), j.getClub());
+		assertEquals(jugador.getCiudad(), j.getCiudad());
+		assertEquals(jugador.getPosicion(), j.getPosicion());
+		assertEquals(jugador.getDorsal(), j.getDorsal());
+		assertEquals(jugador.getGoles(), j.getGoles());
+		assertEquals(jugador.getAltura(), j.getAltura());
+		assertEquals(jugador.getPeso(), j.getPeso());
+		assertEquals(jugador.getPiefav(), j.getPiefav());
+		assertEquals(jugador.getValoracion(), j.getValoracion());
+		assertEquals(jugador.getDescripcion(), j.getDescripcion());
+		assertEquals(jugador.getVoto(), j.getVoto());
 	}
 
 	/**
