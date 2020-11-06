@@ -38,8 +38,8 @@ public class DBManagerTest {
 			Mentalidad.Equilibrada);
 	static Estadio es = new Estadio(1, "San Mames", 53289, 2013, "Bilbao");
 	static Feedback f = new Feedback(1, u.getCorreo(), 5, Recomendacion.si, "opinion");
-	static Jugador j = new Jugador(1, "Alex Berenguer", "1993-10-01", "Athletic Club", "Bilbao", Posicion.Delantero, 8, 0,
-			182, 81, PieFav.Diestro, 84, "Jugador con desborde", 1);
+	static Jugador j = new Jugador(1, "Alex Berenguer", "1993-10-01", "Athletic Club", "Bilbao", Posicion.Delantero, 8,
+			0, 182, 81, PieFav.Diestro, 84, "Jugador con desborde", 1);
 
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -55,17 +55,29 @@ public class DBManagerTest {
 
 	}
 
+	/**
+	 * Comprueba si se puede conectar al servidor
+	 * 
+	 * @throws DBManagerException
+	 */
 	@BeforeClass
 	public static void testConnect() throws DBManagerException {
 		DBManager.connect();
 	}
 
+	/**
+	 * Comprueba si se puede desconectar del servidor
+	 * 
+	 * @throws DBManagerException
+	 */
 	@BeforeClass
 	public static void testDisconnect() throws DBManagerException {
 		DBManager.disconnect();
 	}
 
-	/**Comprueba si el correo insertado existe o no.
+	/**
+	 * Comprueba si el correo insertado existe o no
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -75,7 +87,9 @@ public class DBManagerTest {
 		assertTrue(DBManager.existeCorreo(correo_usuario));
 	}
 
-	/**Necesario para hacer el test 
+	/**
+	 * Comprueba si se puede registrar un usuario nuevo
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Before
@@ -90,6 +104,7 @@ public class DBManagerTest {
 
 	/**
 	 * Test que comprueba el correcto funcionamiento del método login
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -100,7 +115,9 @@ public class DBManagerTest {
 		assertTrue(DBManager.login(correo_usuario, contrasena_usuario));
 	}
 
-	/**Comprueba si el usuario tiene los permisos de Admin o no
+	/**
+	 * Comprueba si el usuario tiene los permisos de Admin o no
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -112,8 +129,10 @@ public class DBManagerTest {
 		assertTrue(DBManager.esAdmin(correoDeUnAdmin));
 	}
 
-	/**Comprueba si funciona el método que nos permite cambiar
-	 *  a un usuario como admin o como usuario normal
+	/**
+	 * Comprueba si funciona el método que nos permite cambiar a un usuario como
+	 * admin o como usuario normal
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -128,7 +147,9 @@ public class DBManagerTest {
 		DBManager.cambiarAdmin(correo_usuario, nuevoValor_admin_usuario);
 	}
 
-	/**Comprueba si se pueden eliminar los usuarios
+	/**
+	 * Comprueba si se pueden eliminar los usuarios
+	 * 
 	 * @throws DBManagerException
 	 */
 	@After
@@ -138,7 +159,9 @@ public class DBManagerTest {
 		DBManager.eliminarUsuario(correo_usuario);
 	}
 
-	/**Comprueba si se puede cambiar la contrasena de los usuarios
+	/**
+	 * Comprueba si se puede cambiar la contrasena de los usuarios
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -149,7 +172,10 @@ public class DBManagerTest {
 		DBManager.cambiarContrasena(correo_usuario, nuevoValor_contrasena_usuario);
 	}
 
-	/** Comprueba si se pueden ver las tablas de la base de datos
+	/**
+	 * Comprueba si se devuelve un arraylist de strings con el nombre de todas las
+	 * tablas de la base de datos
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -172,22 +198,24 @@ public class DBManagerTest {
 		assertEquals(expectedArr, actualArr);
 	}
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los correos de la BD
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * correos de la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
 	public void testTodosLosCorreos() throws DBManagerException {
-		
 		ArrayList<String> correos = new ArrayList<String>();
 		correos = DBManager.todosLosCorreos();
 		for (String correo : correos) {
-			System.out.println("testTodosLosCorreos correos:" + correo);
 			Assert.assertNotNull(correo);
 		}
-
 	}
 
-	/**Comprueba si funciona la opción de añadir Feedback en la aplicación
+	/**
+	 * Comprueba si funciona la opción de añadir Feedback en la aplicación
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -201,47 +229,63 @@ public class DBManagerTest {
 		DBManager.registrarFeedback(correo_usuario, valoracion_feedback2, recomendacion_feedback, opinion_feedback);
 	}
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los jugadores de la BD, teniendo en cuenta su posición
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * jugadores de la BD, teniendo en cuenta su posición
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
 	public void testGetJugadoresPorPosicion() throws DBManagerException {
-		
-		String nombre_posicion = "Delantero";
-		ArrayList<String> jugadoresPorPosicion = new ArrayList<String>();
-		jugadoresPorPosicion = DBManager.getJugadoresPorPosicion(nombre_posicion);
-		for (String jugadorPorPosicion : jugadoresPorPosicion) {
-			Assert.assertNotNull(jugadorPorPosicion);
+		ArrayList<String> nombre_posicion = new ArrayList<String>();
+		nombre_posicion.add("Delantero");
+		nombre_posicion.add("Centrocampista");
+		nombre_posicion.add("Defensa");
+		nombre_posicion.add("Portero");
+
+		for (String posicion : nombre_posicion) {
+			ArrayList<String> jugadoresPorPosicion = new ArrayList<String>();
+			jugadoresPorPosicion = DBManager.getJugadoresPorPosicion(posicion);
+			for (String jugadorPorPosicion : jugadoresPorPosicion) {
+				Assert.assertNotNull(jugadorPorPosicion);
+			}
 		}
-		
 	}
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los ID de los usuarios que se encuentran en la BD
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve el ID de un
+	 * usuario especifico que se encuentran en la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
 	public void testGetIdUsuario() throws DBManagerException {
-		
-		String correo_usuario = "sergio@gmail.com";
-		int idUsuarios;
-		idUsuarios = DBManager.getIdUsuario(correo_usuario);
-		Assert.assertNotNull(idUsuarios);
-		
+		String correo_usuario = "lopez@gmail.com";
+		int idUsuario;
+		idUsuario = DBManager.getIdUsuario(correo_usuario);
+		Assert.assertNotNull(idUsuario);
+		assertEquals(3, idUsuario);
 	}
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los ID de los jugadores que se encuentran en la BD
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve el ID de un
+	 * jugador especifico que se encuentran en la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
 	public void testGetIdJugador() throws DBManagerException {
-		
 		String nombre_jugador = "Iñaki Williams";
 		int idJugador;
-		idJugador = DBManager.getIdUsuario(nombre_jugador);
+		idJugador = DBManager.getIdJugador(nombre_jugador);
 		Assert.assertNotNull(idJugador);
+		assertEquals(4, idJugador);
 	}
 
-	/**Comprueba opción de Votar a los jugadores, que la tienen disponible los usuarios
+	/**
+	 * Comprueba opción de Votar a los jugadores, que la tienen disponible los
+	 * usuarios
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -271,7 +315,9 @@ public class DBManagerTest {
 	 * fail(); }
 	 */
 
-	/**Comprueba que se actualizan los votos en la BD
+	/**
+	 * Comprueba que se actualizan los votos en la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -304,8 +350,6 @@ public class DBManagerTest {
 		 * es un array de SIEMPRE 11 valores [0 - 10] pero que puede cambiar el valor
 		 * interno. Preguntar.
 		 */
-		
-		
 
 		fail();
 	}
@@ -317,7 +361,10 @@ public class DBManagerTest {
 		fail();
 	}
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todas las ciudades que se encuentran en la BD
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve todas las
+	 * ciudades que se encuentran en la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -331,7 +378,10 @@ public class DBManagerTest {
 		}
 	}
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los clubes que se encuentran en la BD
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * clubes que se encuentran en la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -352,7 +402,10 @@ public class DBManagerTest {
 
 	}
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los entrenadores que se encuentran en la BD
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * entrenadores que se encuentran en la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -366,8 +419,10 @@ public class DBManagerTest {
 	}
 
 	// M�todos Entrenador
-	
-	/**Devuelve el nombre del entrenador
+
+	/**
+	 * Devuelve el nombre del entrenador
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -375,7 +430,9 @@ public class DBManagerTest {
 		assertEquals(e.getNombre(), DBManager.nombreEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 
-	/**Devuelve la fecha de nacimiento del entrenador
+	/**
+	 * Devuelve la fecha de nacimiento del entrenador
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -383,7 +440,9 @@ public class DBManagerTest {
 		assertEquals(e.getFechaNac(), DBManager.fechaNacimiento("Gaizka Garitano", "wikifutbolschema"));
 	}
 
-	/**Devuelve el club al cual pertenece el entrenador
+	/**
+	 * Devuelve el club al cual pertenece el entrenador
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -391,7 +450,9 @@ public class DBManagerTest {
 		assertEquals(e.getClub(), DBManager.clubEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 
-	/**Devuelve la ciudad del entrenador
+	/**
+	 * Devuelve la ciudad del entrenador
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -399,7 +460,9 @@ public class DBManagerTest {
 		assertEquals(e.getCiudad(), DBManager.ciudadEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 
-	/**Devuelve la formacion del entrenador
+	/**
+	 * Devuelve la formacion del entrenador
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -407,7 +470,9 @@ public class DBManagerTest {
 		assertEquals(e.getFormacion(), DBManager.formacionEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 
-	/**Devuelve la mentalidad del entrenador
+	/**
+	 * Devuelve la mentalidad del entrenador
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -416,7 +481,10 @@ public class DBManagerTest {
 	}
 	// Fin Metodos Entrenador
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los estadios que se encuentran en la BD
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * estadios que se encuentran en la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -430,7 +498,9 @@ public class DBManagerTest {
 	}
 
 	// Metodos Estadio
-	/**Devuelve el nombre del estadio
+	/**
+	 * Devuelve el nombre del estadio
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -438,7 +508,9 @@ public class DBManagerTest {
 		assertEquals(es.getNombre(), DBManager.nombreEstadio("San Mames", "wikifutbolschema"));
 	}
 
-	/**Devuelve el aforo del estadio
+	/**
+	 * Devuelve el aforo del estadio
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -446,7 +518,9 @@ public class DBManagerTest {
 		assertEquals(es.getAforo(), DBManager.aforoEstadio("San Mames", "wikifutbolschema"));
 	}
 
-	/**Devuelve el anyo que el estadio fue construido
+	/**
+	 * Devuelve el anyo que el estadio fue construido
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -454,7 +528,9 @@ public class DBManagerTest {
 		assertEquals(es.getAnyoCreacion(), DBManager.anyoEstadio("San Mames", "wikifutbolschema"));
 	}
 
-	/**Devuelve la ciudad donde se encuentra el estadio
+	/**
+	 * Devuelve la ciudad donde se encuentra el estadio
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -463,7 +539,10 @@ public class DBManagerTest {
 	}
 	// Fin Metodos Estadio
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los Feedbacks que se encuentran en la BD
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * Feedbacks que se encuentran en la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -476,7 +555,10 @@ public class DBManagerTest {
 		}
 	}
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los jugadores que se encuentran en la BD
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * jugadores que se encuentran en la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -490,7 +572,10 @@ public class DBManagerTest {
 
 	}
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los jugadores que se encuentran en la BD
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * jugadores que se encuentran en la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -501,7 +586,10 @@ public class DBManagerTest {
 		assertEquals(jugador, j);
 	}
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los paises que se encuentran en la BD
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * paises que se encuentran en la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -523,7 +611,9 @@ public class DBManagerTest {
 		 */
 	}
 
-	/**Comprueba que el Team of The Year se ve correctamente
+	/**
+	 * Comprueba que el Team of The Year se ve correctamente
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -536,7 +626,10 @@ public class DBManagerTest {
 		}
 	}
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los jugadores que se encuentran en el Team of The Year
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * jugadores que se encuentran en el Team of The Year
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -549,7 +642,10 @@ public class DBManagerTest {
 		}
 	}
 
-	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los usuarios que se encuentran en la BD
+	/**
+	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
+	 * usuarios que se encuentran en la BD
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -572,7 +668,9 @@ public class DBManagerTest {
 
 	}
 
-	/**Comprueba el correcto funcionamiento del método de la BD getUsuarioVotaciones
+	/**
+	 * Comprueba el correcto funcionamiento del método de la BD getUsuarioVotaciones
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -585,7 +683,9 @@ public class DBManagerTest {
 		}
 	}
 
-	/**Comprueba si se pueden ver las columnas de la BD correctamente
+	/**
+	 * Comprueba si se pueden ver las columnas de la BD correctamente
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -623,7 +723,9 @@ public class DBManagerTest {
 		fail();
 	}
 
-	/**Comprueba la opcion de cambiar datos que tiene el administrador
+	/**
+	 * Comprueba la opcion de cambiar datos que tiene el administrador
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -654,7 +756,10 @@ public class DBManagerTest {
 		fail();
 	}
 
-	/**Comprueba el método que nos permite ver a los jugadores dependiendo del equipo al que pertenezcan
+	/**
+	 * Comprueba el método que nos permite ver a los jugadores dependiendo del
+	 * equipo al que pertenezcan
+	 * 
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -694,5 +799,4 @@ public class DBManagerTest {
 		// fail();
 	}
 
-	
 }
