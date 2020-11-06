@@ -27,7 +27,8 @@ public class PaisTest {
 	}
 
 	/**
-	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del pais
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del
+	 * pais
 	 */
 	@Test
 	public void testNombre() {

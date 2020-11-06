@@ -34,8 +34,8 @@ public class IListaTest {
 	}
 
 	/**
-	 * Realiza un "get" para recibir todos los jugadores de un equipo concreto
-	 * En este caso "Athletic Club"
+	 * Realiza un "get" para recibir todos los jugadores de un equipo concreto En
+	 * este caso "Athletic Club"
 	 */
 	@Before
 	public void setUp1() {
@@ -51,8 +51,8 @@ public class IListaTest {
 	}
 
 	/**
-	 * Carga esos datos en la ILista correspondiente 
-	 * Verifica que el tamaño del array y el de la lista es el mismo
+	 * Carga esos datos en la ILista correspondiente Verifica que el tamaño del
+	 * array y el de la lista es el mismo
 	 */
 	@Test
 	public void actualizarLista() {

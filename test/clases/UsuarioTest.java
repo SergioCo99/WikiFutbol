@@ -27,7 +27,8 @@ public class UsuarioTest {
 	}
 
 	/**
-	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del usuario
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del
+	 * usuario
 	 */
 	@Test
 	public void testNombre() {
@@ -36,7 +37,8 @@ public class UsuarioTest {
 	}
 
 	/**
-	 * Comprueba que getContrasena() funciona correctamente devolviendo la contrasena del usuario
+	 * Comprueba que getContrasena() funciona correctamente devolviendo la
+	 * contrasena del usuario
 	 */
 	@Test
 	public void testContrasena() {
@@ -45,7 +47,8 @@ public class UsuarioTest {
 	}
 
 	/**
-	 * Comprueba que getCorreo() funciona correctamente devolviendo el correo del usuario
+	 * Comprueba que getCorreo() funciona correctamente devolviendo el correo del
+	 * usuario
 	 */
 	@Test
 	public void testCorreo() {
@@ -54,7 +57,8 @@ public class UsuarioTest {
 	}
 
 	/**
-	 * Comprueba que getAdmin() funciona correctamente devolviendo si el usuario es admin o no
+	 * Comprueba que getAdmin() funciona correctamente devolviendo si el usuario es
+	 * admin o no
 	 */
 	@Test
 	public void testAdmin() {
@@ -64,7 +68,8 @@ public class UsuarioTest {
 	}
 
 	/**
-	 * Comprueba que getFechaNac() funciona correctamente devolviendo la fecha de nacimiento del usuario
+	 * Comprueba que getFechaNac() funciona correctamente devolviendo la fecha de
+	 * nacimiento del usuario
 	 */
 	@Test
 	public void testFechaNac() {

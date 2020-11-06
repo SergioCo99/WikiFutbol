@@ -11,6 +11,7 @@ public class FileChooserTest {
 
 	/**
 	 * Crea un nuevo FileChooser
+	 *
 	 * @throws Exception
 	 */
 	@Before
@@ -20,10 +21,12 @@ public class FileChooserTest {
 
 	/**
 	 * Primero tiene que seleccionar el archivo del "String actual" en concreto
-	 * Despues comprueba si el archivo que se recibe del método "FileChooser.Choose()" y el que se encuentra en "String actual" son iguales
-	 * 
-	 * En la segunda prueba, no selecciona nada, es decir, se pulsa en el botón cancelar o en la X
-	 * Verifica que lo que ha recibido FileChooser.Choose() y el "String actual2" son iguales
+	 * Despues comprueba si el archivo que se recibe del método
+	 * "FileChooser.Choose()" y el que se encuentra en "String actual" son iguales
+	 *
+	 * En la segunda prueba, no selecciona nada, es decir, se pulsa en el botón
+	 * cancelar o en la X Verifica que lo que ha recibido FileChooser.Choose() y el
+	 * "String actual2" son iguales
 	 */
 	@Test
 	public void test() {

@@ -27,7 +27,8 @@ public class EstadioTest {
 	}
 
 	/**
-	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del estadio
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del
+	 * estadio
 	 */
 	@Test
 	public void testNombre() {
@@ -36,7 +37,8 @@ public class EstadioTest {
 	}
 
 	/**
-	 * Comprueba que getAforo() funciona correctamente devolviendo el aforo del estadio
+	 * Comprueba que getAforo() funciona correctamente devolviendo el aforo del
+	 * estadio
 	 */
 	@Test
 	public void testAforo() {
@@ -45,7 +47,8 @@ public class EstadioTest {
 	}
 
 	/**
-	 * Comprueba que getAnyoCreacion() funciona correctamente devolviendo el anyoCreacion del estadio
+	 * Comprueba que getAnyoCreacion() funciona correctamente devolviendo el
+	 * anyoCreacion del estadio
 	 */
 	@Test
 	public void testAnyoCreacion() {
@@ -54,7 +57,8 @@ public class EstadioTest {
 	}
 
 	/**
-	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del estadio
+	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del
+	 * estadio
 	 */
 	@Test
 	public void testCiudad() {

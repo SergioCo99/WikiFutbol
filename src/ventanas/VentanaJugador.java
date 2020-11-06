@@ -25,7 +25,7 @@ import utils.JLabelGraficoAjustado;
 
 /**
  * Ventana para la visualizacion de la informacion de cada jugador
- * 
+ *
  * @author sergiolopez
  *
  */

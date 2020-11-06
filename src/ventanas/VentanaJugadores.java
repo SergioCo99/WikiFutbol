@@ -31,7 +31,7 @@ import utils.JLabelGraficoAjustado;
 
 /**
  * Ventana en la cual se visualiza los jugadores
- * 
+ *
  * @author sergiolopez
  *
  */
@@ -86,11 +86,11 @@ public class VentanaJugadores extends JFrame {
 		lupa.setLocation(1005, 25);
 		/*
 		 * lupa.addMouseListener(new MouseAdapter() {
-		 * 
+		 *
 		 * @Override public void mouseClicked(MouseEvent e) {
-		 * 
+		 *
 		 * jugadorBuscado = txtField.getText().toLowerCase(); arrayResultado.clear();
-		 * 
+		 *
 		 * if (jugadorBuscado.isEmpty()) { for (Jugador a : arrayJugadores) {
 		 * arrayResultado.add(a); } IListaJugadores.cargarLista(bookPanel,
 		 * arrayResultado); } else { if (rdbtnNombreJugador.isSelected() == true) { for
@@ -108,7 +108,7 @@ public class VentanaJugadores extends JFrame {
 		 * (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getPosicion())) {
 		 * arrayResultado.add(arrayJugadores.get(i)); } }
 		 * IListaJugadores.cargarLista(bookPanel, arrayResultado); }
-		 * 
+		 *
 		 * if (arrayResultado.isEmpty()) { JOptionPane.showMessageDialog(frame,
 		 * "No se han encontrado jugadores."); } } } });
 		 */

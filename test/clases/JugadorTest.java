@@ -31,7 +31,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del jugador
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del
+	 * jugador
 	 */
 	@Test
 	public void testNombre() {
@@ -41,7 +42,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getFechaNac() funciona correctamente devolviendo la fecha de nacimiento del jugador
+	 * Comprueba que getFechaNac() funciona correctamente devolviendo la fecha de
+	 * nacimiento del jugador
 	 */
 	@Test
 	public void testAnyoNacimiento() {
@@ -51,7 +53,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getClub() funciona correctamente devolviendo el club del jugador
+	 * Comprueba que getClub() funciona correctamente devolviendo el club del
+	 * jugador
 	 */
 	@Test
 	public void testClub() {
@@ -61,7 +64,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del jugador
+	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del
+	 * jugador
 	 */
 	@Test
 	public void testCiudad() {
@@ -71,7 +75,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getPosicion() funciona correctamente devolviendo la posicion del jugador
+	 * Comprueba que getPosicion() funciona correctamente devolviendo la posicion
+	 * del jugador
 	 */
 	@Test
 	public void testPosicion() {
@@ -81,7 +86,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getDorsal() funciona correctamente devolviendo el dorsal del jugador
+	 * Comprueba que getDorsal() funciona correctamente devolviendo el dorsal del
+	 * jugador
 	 */
 	@Test
 	public void testDorsal() {
@@ -91,7 +97,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getGoles() funciona correctamente devolviendo los goles del jugador
+	 * Comprueba que getGoles() funciona correctamente devolviendo los goles del
+	 * jugador
 	 */
 	@Test
 	public void testGoles() {
@@ -101,7 +108,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getAltura() funciona correctamente devolviendo la altura del jugador
+	 * Comprueba que getAltura() funciona correctamente devolviendo la altura del
+	 * jugador
 	 */
 	@Test
 	public void testAltura() {
@@ -111,7 +119,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getPeso() funciona correctamente devolviendo el peso del jugador
+	 * Comprueba que getPeso() funciona correctamente devolviendo el peso del
+	 * jugador
 	 */
 	@Test
 	public void testPeso() {
@@ -121,7 +130,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getPieFav() funciona correctamente devolviendo el pie favorito del jugador
+	 * Comprueba que getPieFav() funciona correctamente devolviendo el pie favorito
+	 * del jugador
 	 */
 	@Test
 	public void testPieFav() {
@@ -131,7 +141,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getValoracion() funciona correctamente devolviendo la valoracion del jugador
+	 * Comprueba que getValoracion() funciona correctamente devolviendo la
+	 * valoracion del jugador
 	 */
 	@Test
 	public void testValoracion() {
@@ -141,7 +152,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getDescripcion() funciona correctamente devolviendo la descripcion del jugador
+	 * Comprueba que getDescripcion() funciona correctamente devolviendo la
+	 * descripcion del jugador
 	 */
 	@Test
 	public void testDescripcion() {
@@ -151,7 +163,8 @@ public class JugadorTest {
 	}
 
 	/**
-	 * Comprueba que getVoto() funciona correctamente devolviendo el voto del jugador
+	 * Comprueba que getVoto() funciona correctamente devolviendo el voto del
+	 * jugador
 	 */
 	@Test
 	public void testVoto() {

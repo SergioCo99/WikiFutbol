@@ -12,8 +12,6 @@ import java.util.Comparator;
 import java.util.Properties;
 import java.util.logging.Level;
 
-import org.junit.Test;
-
 import clases.Ciudad;
 import clases.Club;
 import clases.Entrenador;

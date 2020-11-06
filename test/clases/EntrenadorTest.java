@@ -30,7 +30,8 @@ public class EntrenadorTest {
 	}
 
 	/**
-	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del entrenador
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del
+	 * entrenador
 	 */
 	@Test
 	public void testNombre() {
@@ -40,7 +41,8 @@ public class EntrenadorTest {
 	}
 
 	/**
-	 * Comprueba que getFechaNac() funciona correctamente devolviendo la fecha de nacimiento del entrenador
+	 * Comprueba que getFechaNac() funciona correctamente devolviendo la fecha de
+	 * nacimiento del entrenador
 	 */
 	@Test
 	public void testAnyoNacimiento() {
@@ -50,7 +52,8 @@ public class EntrenadorTest {
 	}
 
 	/**
-	 * Comprueba que getClub() funciona correctamente devolviendo el club del entrenador
+	 * Comprueba que getClub() funciona correctamente devolviendo el club del
+	 * entrenador
 	 */
 	@Test
 	public void testClub() {
@@ -60,7 +63,8 @@ public class EntrenadorTest {
 	}
 
 	/**
-	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del entrenador
+	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del
+	 * entrenador
 	 */
 	@Test
 	public void testCiudad() {
@@ -70,7 +74,8 @@ public class EntrenadorTest {
 	}
 
 	/**
-	 * Comprueba que getFormacion() funciona correctamente devolviendo la formacion del entrenador
+	 * Comprueba que getFormacion() funciona correctamente devolviendo la formacion
+	 * del entrenador
 	 */
 	@Test
 	public void testFormacion() {
@@ -80,7 +85,8 @@ public class EntrenadorTest {
 	}
 
 	/**
-	 * Comprueba que getMentalidad() funciona correctamente devolviendo la mentalidad del entrenador
+	 * Comprueba que getMentalidad() funciona correctamente devolviendo la
+	 * mentalidad del entrenador
 	 */
 	@Test
 	public void testMentalidad() {

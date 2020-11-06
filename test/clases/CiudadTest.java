@@ -27,7 +27,8 @@ public class CiudadTest {
 	}
 
 	/**
-	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre de la ciudad
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre de la
+	 * ciudad
 	 */
 	@Test
 	public void testNombre() {
@@ -37,7 +38,8 @@ public class CiudadTest {
 	}
 
 	/**
-	 * Comprueba que getPais() funciona correctamente devolviendo el pais de la ciudad
+	 * Comprueba que getPais() funciona correctamente devolviendo el pais de la
+	 * ciudad
 	 */
 	@Test
 	public void testPais() {

@@ -18,7 +18,8 @@ public class EmpleadoClubTest {
 	}
 
 	/**
-	 * Comprueba que getId() funciona correctamente devolviendo el id del empleado del club
+	 * Comprueba que getId() funciona correctamente devolviendo el id del empleado
+	 * del club
 	 */
 	@Test
 	public void testId() {
@@ -28,7 +29,8 @@ public class EmpleadoClubTest {
 	}
 
 	/**
-	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del empleado del club
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del
+	 * empleado del club
 	 */
 	@Test
 	public void testNombre() {
@@ -38,7 +40,8 @@ public class EmpleadoClubTest {
 	}
 
 	/**
-	 * Comprueba que getFechaNac() funciona correctamente devolviendo la fecha de nacimiento del empleado del club
+	 * Comprueba que getFechaNac() funciona correctamente devolviendo la fecha de
+	 * nacimiento del empleado del club
 	 */
 	@Test
 	public void testAnyoNacimiento() {
@@ -48,7 +51,8 @@ public class EmpleadoClubTest {
 	}
 
 	/**
-	 * Comprueba que getClub() funciona correctamente devolviendo el club del empleado
+	 * Comprueba que getClub() funciona correctamente devolviendo el club del
+	 * empleado
 	 */
 	@Test
 	public void testClub() {
@@ -58,7 +62,8 @@ public class EmpleadoClubTest {
 	}
 
 	/**
-	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del empleado
+	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del
+	 * empleado
 	 */
 	@Test
 	public void testCiudad() {

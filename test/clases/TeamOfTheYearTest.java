@@ -18,7 +18,8 @@ public class TeamOfTheYearTest {
 	}
 
 	/**
-	 * Comprueba que getID() funciona correctamente devolviendo el id del team of the year
+	 * Comprueba que getID() funciona correctamente devolviendo el id del team of
+	 * the year
 	 */
 	@Test
 	public void testId() {

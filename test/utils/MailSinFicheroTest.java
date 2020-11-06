@@ -9,6 +9,7 @@ public class MailSinFicheroTest {
 
 	/**
 	 * Crea un nuevo MailSinFichero
+	 *
 	 * @throws Exception
 	 */
 	@Before
@@ -17,8 +18,8 @@ public class MailSinFicheroTest {
 	}
 
 	/**
-	 * Crea un correo con su destinatario, asunto y contenido a enviar
-	 * Comprueba que el metodo SendMail() funciona correctamente
+	 * Crea un correo con su destinatario, asunto y contenido a enviar Comprueba que
+	 * el metodo SendMail() funciona correctamente
 	 */
 	@Test
 	public void test() {

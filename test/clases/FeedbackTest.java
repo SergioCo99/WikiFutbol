@@ -29,7 +29,8 @@ public class FeedbackTest {
 	}
 
 	/**
-	 * Comprueba que getUsuario() funciona correctamente devolviendo el usuario del feedback
+	 * Comprueba que getUsuario() funciona correctamente devolviendo el usuario del
+	 * feedback
 	 */
 	@Test
 	public void testUsuario() {
@@ -38,7 +39,8 @@ public class FeedbackTest {
 	}
 
 	/**
-	 * Comprueba que getValoracion() funciona correctamente devolviendo la valoracion del feedback
+	 * Comprueba que getValoracion() funciona correctamente devolviendo la
+	 * valoracion del feedback
 	 */
 	@Test
 	public void testValoracion() {
@@ -47,7 +49,8 @@ public class FeedbackTest {
 	}
 
 	/**
-	 * Comprueba que getRecomendacion() funciona correctamente devolviendo el si o el no de la recomendacion
+	 * Comprueba que getRecomendacion() funciona correctamente devolviendo el si o
+	 * el no de la recomendacion
 	 */
 	@Test
 	public void testRecomendacion() {
@@ -56,7 +59,8 @@ public class FeedbackTest {
 	}
 
 	/**
-	 * Comprueba que getOpinion() funciona correctamente devolviendo la opinion del feedback
+	 * Comprueba que getOpinion() funciona correctamente devolviendo la opinion del
+	 * feedback
 	 */
 	@Test
 	public void testOpinion() {

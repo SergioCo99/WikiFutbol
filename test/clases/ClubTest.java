@@ -27,7 +27,8 @@ public class ClubTest {
 	}
 
 	/**
-	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del club
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del
+	 * club
 	 */
 	@Test
 	public void testNombre() {
@@ -36,7 +37,8 @@ public class ClubTest {
 	}
 
 	/**
-	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del club
+	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del
+	 * club
 	 */
 	@Test
 	public void testCiudad() {
@@ -45,7 +47,8 @@ public class ClubTest {
 	}
 
 	/**
-	 * Comprueba que getEstadio() funciona correctamente devolviendo el estadio del club
+	 * Comprueba que getEstadio() funciona correctamente devolviendo el estadio del
+	 * club
 	 */
 	@Test
 	public void testEstadio() {
@@ -54,7 +57,8 @@ public class ClubTest {
 	}
 
 	/**
-	 * Comprueba que getAnyoCreacion() funciona correctamente devolviendo el anyoCreacion del club
+	 * Comprueba que getAnyoCreacion() funciona correctamente devolviendo el
+	 * anyoCreacion del club
 	 */
 	@Test
 	public void testAnyoCreacion() {
@@ -63,7 +67,8 @@ public class ClubTest {
 	}
 
 	/**
-	 * Comprueba que getPalmares() funciona correctamente devolviendo el palmares del club
+	 * Comprueba que getPalmares() funciona correctamente devolviendo el palmares
+	 * del club
 	 */
 	@Test
 	public void testPalmares() {
@@ -72,7 +77,8 @@ public class ClubTest {
 	}
 
 	/**
-	 * Comprueba que getEntrenador() funciona correctamente devolviendo el entrenador del club
+	 * Comprueba que getEntrenador() funciona correctamente devolviendo el
+	 * entrenador del club
 	 */
 	@Test
 	public void testEntrenador() {

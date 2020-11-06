@@ -66,7 +66,7 @@ public class DBManagerTest {
 
 	/**
 	 * Comprueba si se puede conectar al servidor
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@BeforeClass
@@ -76,7 +76,7 @@ public class DBManagerTest {
 
 	/**
 	 * Comprueba si se puede desconectar del servidor
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@BeforeClass
@@ -86,7 +86,7 @@ public class DBManagerTest {
 
 	/**
 	 * Comprueba si el correo insertado existe o no
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -98,7 +98,7 @@ public class DBManagerTest {
 
 	/**
 	 * Comprueba si se puede registrar un usuario nuevo
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Before
@@ -113,7 +113,7 @@ public class DBManagerTest {
 
 	/**
 	 * Test que comprueba el correcto funcionamiento del método login
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -126,7 +126,7 @@ public class DBManagerTest {
 
 	/**
 	 * Comprueba si el usuario tiene los permisos de Admin o no
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -141,7 +141,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba si funciona el método que nos permite cambiar a un usuario como
 	 * admin o como usuario normal
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -158,7 +158,7 @@ public class DBManagerTest {
 
 	/**
 	 * Comprueba si se pueden eliminar los usuarios
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@After
@@ -170,7 +170,7 @@ public class DBManagerTest {
 
 	/**
 	 * Comprueba si se puede cambiar la contrasena de los usuarios
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -184,7 +184,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba si se devuelve un arraylist de strings con el nombre de todas las
 	 * tablas de la base de datos
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -210,7 +210,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * correos de la BD
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -224,7 +224,7 @@ public class DBManagerTest {
 
 	/**
 	 * Comprueba si funciona la opción de añadir Feedback en la aplicación
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -241,7 +241,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * jugadores de la BD, teniendo en cuenta su posición
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -264,7 +264,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve el ID de un
 	 * usuario especifico que se encuentran en la BD
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -279,7 +279,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve el ID de un
 	 * jugador especifico que se encuentran en la BD
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -294,50 +294,50 @@ public class DBManagerTest {
 	/**
 	 * Comprueba opción de Votar a los jugadores, que la tienen disponible los
 	 * usuarios
-	 * 
+	 *
 	 * Comprueba que se actualizan los votos en la BD
-	 * 
+	 *
 	 * 0. Se obtienen los id de un usuario y de los jugadores a votar, se crea un
 	 * arraylist con el id de los jugadores para poder hacer un loop y acortar el
 	 * codigo, y se llama al metodo de actulizarVotos para que los votos a cada
 	 * jugador esten acorde a lo votado por los usuarios
-	 * 
+	 *
 	 * 1. verifica que el usuario u no ha votado (no ha podido votar, es un usuario
 	 * de prueba que hemos creado en los test)
-	 * 
+	 *
 	 * 1.2 se almacenan en memoria los votos que tienen cada uno de los 5 jugadores
 	 * que tenemos para usar como ejemplo
-	 * 
+	 *
 	 * 2. vota
-	 * 
+	 *
 	 * 2.1 actualiza los votos que tiene cada jugador (esto se guarda en la columna
 	 * votos de la tabla jugador)
-	 * 
+	 *
 	 * 2.2 se verifica que la cantidad de votos que tenia cada jugador, n votos, ha
 	 * aumentado y ahora es n+1, esto sucede en todos menos en el portero2 que es
 	 * n+0 por no haber sido votado
-	 * 
+	 *
 	 * 3. se verifica que en la BD se han guardado el id de usuario y de los
 	 * jugadores correctos
-	 * 
+	 *
 	 * 4. verifica que el usuario u ha votado 1 vez (se cuentan las filas con el id
 	 * del usuario u)
-	 * 
+	 *
 	 * 5. vota, pero cambia el portero votado
-	 * 
+	 *
 	 * 5.1 actualiza los votos que tiene cada jugador (esto se guarda en la columna
 	 * votos de la tabla jugador)
-	 * 
+	 *
 	 * 5.2 se verifica que la cantidad de votos que tenia cada jugador al principio
 	 * ha aumentado en +1, pero que al haber cambiado de portero votado, el portero1
 	 * vuelve a tener n votos mientras que el portero2 tiene ahora n+1 votos
-	 * 
+	 *
 	 * 6. se verifica que en la BD se han guardado el id de usuario y de los
 	 * jugadores correctos
-	 * 
+	 *
 	 * 7. verifica que aun habiendo votado 2 veces, solo se guarda la ultima
 	 * votacion del usuario u
-	 * 
+	 *
 	 * @throws DBManagerException
 	 * @throws SQLException
 	 */
@@ -485,7 +485,7 @@ public class DBManagerTest {
 	/**
 	 * Restaura los votos despues de la eliminacion (que ocurre en @after) del
 	 * usuario de prueba para los test
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@After
@@ -498,49 +498,49 @@ public class DBManagerTest {
 
 	/*
 	 * @Test public void testContarJugadores() throws DBManagerException {
-	 * 
+	 *
 	 * // private
-	 * 
+	 *
 	 * }
 	 */
 
 	/*
 	 * @Test public void testContarVotosPorJugador() throws DBManagerException {
-	 * 
+	 *
 	 * // private
-	 * 
+	 *
 	 * }
 	 */
 
 	/*
 	 * @Test public void testActualizarVotos() throws DBManagerException {
-	 * 
+	 *
 	 * // Arriba, con testVotar
-	 * 
+	 *
 	 * }
 	 */
 
 	/*
 	 * @Test public void testCountToft() throws DBManagerException {
-	 * 
+	 *
 	 * // private
-	 * 
+	 *
 	 * }
 	 */
 
 	/*
 	 * @Test public void testGetMasVotados() throws DBManagerException {
-	 * 
+	 *
 	 * // private
-	 * 
+	 *
 	 * }
 	 */
 
 	/**
 	 * Devuelve un arraylist con 11 ids de los jugadores mas votados
-	 * 
+	 *
 	 * Devuelve un arraylist con los nombres de los 11 jugadores del toft
-	 * 
+	 *
 	 * @throws DBManagerException
 	 * @throws SQLException
 	 */
@@ -581,11 +581,11 @@ public class DBManagerTest {
 			int actual = rs.getInt("id_jugador");
 			assertEquals(expected, actual);
 
-			if (contador == 1 || contador == 2 || contador == 3) {
+			if ((contador == 1) || (contador == 2) || (contador == 3)) {
 				assertEquals("Delantero", rs.getString("posicion_jugador"));
-			} else if (contador == 4 || contador == 5 || contador == 6) {
+			} else if ((contador == 4) || (contador == 5) || (contador == 6)) {
 				assertEquals("Centrocampista", rs.getString("posicion_jugador"));
-			} else if (contador == 7 || contador == 8 || contador == 9 || contador == 10) {
+			} else if ((contador == 7) || (contador == 8) || (contador == 9) || (contador == 10)) {
 				assertEquals("Defensa", rs.getString("posicion_jugador"));
 			} else if (contador == 11) {
 				assertEquals("Portero", rs.getString("posicion_jugador"));
@@ -598,16 +598,16 @@ public class DBManagerTest {
 
 	/*
 	 * @Test public void testToftNombres() throws DBManagerException, SQLException {
-	 * 
+	 *
 	 * // Arriba, con testToft
-	 * 
+	 *
 	 * }
 	 */
 
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todas las
 	 * ciudades que se encuentran en la BD
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -622,7 +622,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * clubes que se encuentran en la BD
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -638,7 +638,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * entrenadores que se encuentran en la BD
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -655,7 +655,7 @@ public class DBManagerTest {
 
 	/**
 	 * Devuelve el nombre del entrenador
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -665,7 +665,7 @@ public class DBManagerTest {
 
 	/**
 	 * Devuelve la fecha de nacimiento del entrenador
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -675,7 +675,7 @@ public class DBManagerTest {
 
 	/**
 	 * Devuelve el club al cual pertenece el entrenador
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -685,7 +685,7 @@ public class DBManagerTest {
 
 	/**
 	 * Devuelve la ciudad del entrenador
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -695,7 +695,7 @@ public class DBManagerTest {
 
 	/**
 	 * Devuelve la formacion del entrenador
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -705,7 +705,7 @@ public class DBManagerTest {
 
 	/**
 	 * Devuelve la mentalidad del entrenador
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -717,7 +717,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * estadios que se encuentran en la BD
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -733,7 +733,7 @@ public class DBManagerTest {
 	// Metodos Estadio
 	/**
 	 * Devuelve el nombre del estadio
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -743,7 +743,7 @@ public class DBManagerTest {
 
 	/**
 	 * Devuelve el aforo del estadio
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -753,7 +753,7 @@ public class DBManagerTest {
 
 	/**
 	 * Devuelve el anyo que el estadio fue construido
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -763,7 +763,7 @@ public class DBManagerTest {
 
 	/**
 	 * Devuelve la ciudad donde se encuentra el estadio
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -775,7 +775,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * Feedbacks que se encuentran en la BD
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -791,7 +791,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * jugadores que se encuentran en la BD
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -808,7 +808,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * jugadores que se encuentran en la BD
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -820,7 +820,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * paises que se encuentran en la BD
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -834,7 +834,7 @@ public class DBManagerTest {
 
 	/**
 	 * Comprueba que el Team of The Year se ve correctamente
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -850,7 +850,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * jugadores que se encuentran en el Team of The Year
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -866,7 +866,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * usuarios que se encuentran en la BD
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -880,7 +880,7 @@ public class DBManagerTest {
 
 	/**
 	 * Comprueba el correcto funcionamiento del método de la BD getUsuarioVotaciones
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -895,7 +895,7 @@ public class DBManagerTest {
 
 	/**
 	 * Comprueba si se devuelven las columnas de la BD correctamente
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -1022,7 +1022,7 @@ public class DBManagerTest {
 
 	/**
 	 * Comprueba la opcion de cambiar datos que tiene el administrador
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test
@@ -1056,7 +1056,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el método que nos permite ver a los jugadores dependiendo del
 	 * equipo al que pertenezcan
-	 * 
+	 *
 	 * @throws DBManagerException
 	 */
 	@Test

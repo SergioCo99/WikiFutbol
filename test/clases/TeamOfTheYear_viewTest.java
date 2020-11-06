@@ -20,7 +20,8 @@ public class TeamOfTheYear_viewTest {
 	}
 
 	/**
-	 * Comprueba que getId_teamoftheyear() funciona correctamente devolviendo el id del team of the year
+	 * Comprueba que getId_teamoftheyear() funciona correctamente devolviendo el id
+	 * del team of the year
 	 */
 	@Test
 	public void testIdTeam() {
@@ -28,7 +29,8 @@ public class TeamOfTheYear_viewTest {
 	}
 
 	/**
-	 * Comprueba que getId_jugador() funciona correctamente devolviendo el id del jugador
+	 * Comprueba que getId_jugador() funciona correctamente devolviendo el id del
+	 * jugador
 	 */
 	@Test
 	public void testIdJugador() {
@@ -36,7 +38,8 @@ public class TeamOfTheYear_viewTest {
 	}
 
 	/**
-	 * Comprueba que getNombre_jugador() funciona correctamente devolviendo el nombre del jugador
+	 * Comprueba que getNombre_jugador() funciona correctamente devolviendo el
+	 * nombre del jugador
 	 */
 	@Test
 	public void testNombreJugador() {
@@ -44,7 +47,8 @@ public class TeamOfTheYear_viewTest {
 	}
 
 	/**
-	 * Comprueba que getPosicion_jugador() funciona correctamente devolviendo la posicion del jugador
+	 * Comprueba que getPosicion_jugador() funciona correctamente devolviendo la
+	 * posicion del jugador
 	 */
 	@Test
 	public void testPosicionJugador() {
@@ -52,7 +56,8 @@ public class TeamOfTheYear_viewTest {
 	}
 
 	/**
-	 * Comprueba que getVoto_jugador() funciona correctamente devolviendo los votos del jugador
+	 * Comprueba que getVoto_jugador() funciona correctamente devolviendo los votos
+	 * del jugador
 	 */
 	@Test
 	public void testVotoJugador() {
@@ -60,7 +65,8 @@ public class TeamOfTheYear_viewTest {
 	}
 
 	/**
-	 * Comprueba que getGoles_jugador() funciona correctamente devolviendo los goles del jugador
+	 * Comprueba que getGoles_jugador() funciona correctamente devolviendo los goles
+	 * del jugador
 	 */
 	@Test
 	public void testGolesJugador() {

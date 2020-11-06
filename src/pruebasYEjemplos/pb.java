@@ -20,7 +20,7 @@ public class pb {
 
 class CountUpProgressBar extends JPanel {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	JProgressBar bar = new JProgressBar(JProgressBar.HORIZONTAL, 0, 100);

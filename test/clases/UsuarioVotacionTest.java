@@ -45,7 +45,8 @@ public class UsuarioVotacionTest {
 	}
 
 	/**
-	 * Comprueba que getCentrocampista() funciona correctamente devolviendo los centrocampistas
+	 * Comprueba que getCentrocampista() funciona correctamente devolviendo los
+	 * centrocampistas
 	 */
 	@Test
 	public void testCentrocampista() {
