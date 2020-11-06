@@ -12,6 +12,11 @@ import javax.swing.ListSelectionModel;
 
 import clases.Club;
 
+/**
+ * Interfaz IListaEquipos
+ * @author sergi
+ *
+ */
 public interface IListaEquipos {
 
 	/**

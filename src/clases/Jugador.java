@@ -1,17 +1,28 @@
 package clases;
 
 /**
- * Clase para la creación de Jugadores
+ * Clase para la creacion de Jugadores
  *
  * @author sergiolopez
  *
  */
 public class Jugador extends EmpleadoDeClub {
 
+	/**
+	 * Pie favorito del jugador
+	 * @author sergi
+	 *
+	 */
 	public enum PieFav {
 		Diestro, Zurdo, Ambidiestro
 	}
 
+	/**
+	 * Posicion del jugador
+	 * 
+	 * @author sergi
+	 *
+	 */
 	public enum Posicion {
 		Delantero, Centrocampista, Defensa, Portero
 	}

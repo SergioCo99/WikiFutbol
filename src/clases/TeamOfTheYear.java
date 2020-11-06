@@ -1,7 +1,7 @@
 package clases;
 
 /**
- * Clase que hace referencia al equipo del año
+ * Clase que hace referencia al equipo del anyo
  *
  * @author sergiolopez
  *

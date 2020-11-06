@@ -1,5 +1,10 @@
 package feedback;
 
+/**
+ * Clase RWException
+ * @author sergi
+ *
+ */
 public class RWException extends Exception {
 
 	/**

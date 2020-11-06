@@ -3,6 +3,11 @@ package utils;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test MailConFichero
+ * @author sergi
+ *
+ */
 public class MailConFicheroTest {
 
 	static MailConFichero mcf = new MailConFichero();

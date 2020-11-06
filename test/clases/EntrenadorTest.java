@@ -7,6 +7,12 @@ import org.junit.Test;
 
 import clases.Entrenador.Mentalidad;
 
+/**
+ * Test de la clase Entrenador
+ * 
+ * @author sergi
+ *
+ */
 public class EntrenadorTest {
 
 	private Entrenador e;

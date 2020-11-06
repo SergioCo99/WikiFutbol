@@ -1,7 +1,7 @@
 package clases;
 
 /**
- * Clase para la creación de estadios
+ * Clase para la creacion de estadios
  *
  * @author sergiolopez
  *

@@ -5,6 +5,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test de la clase Club
+ * 
+ * @author sergi
+ *
+ */
 public class ClubTest {
 
 	private Club a;

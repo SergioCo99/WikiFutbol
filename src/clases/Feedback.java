@@ -1,13 +1,19 @@
 package clases;
 
 /**
- * Clase para la creación de feedback
+ * Clase para la creacion de feedback
  *
  * @author sergiolopez
  *
  */
 public class Feedback {
 
+	/**
+	 * Recomendacion si o no
+	 * 
+	 * @author sergi
+	 *
+	 */
 	public enum Recomendacion {
 		si, no
 	}

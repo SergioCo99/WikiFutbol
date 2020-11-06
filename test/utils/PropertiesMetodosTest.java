@@ -16,6 +16,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ * Test PropertiesMetodos
+ * @author sergi
+ *
+ */
 public class PropertiesMetodosTest {
 
 	static PropertiesMetodos pm = new PropertiesMetodos();
@@ -34,7 +39,7 @@ public class PropertiesMetodosTest {
 	}
 
 	/**
-	 * Añade esos valores
+	 * Incorpora esos valores
 	 *
 	 * @throws Exception En caso de fallo
 	 */

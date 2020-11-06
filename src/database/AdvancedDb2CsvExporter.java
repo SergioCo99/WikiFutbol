@@ -16,12 +16,17 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.logging.Level;
 
+/**
+ * Clase AdvancedDb2CsvExporter
+ * @author sergi
+ *
+ */
 public class AdvancedDb2CsvExporter {
 
 	private static BufferedWriter fileWriter;
 
 	/**
-	 * Este método sirve para exportar tablas de la BD
+	 * Este metodo sirve para exportar tablas de la BD
 	 *
 	 * @param table Nombre de la tabla que queremos exportar
 	 * @throws Exception En caso de error
@@ -92,7 +97,7 @@ public class AdvancedDb2CsvExporter {
 	}
 
 	/**
-	 * Este método devuelve el nombre del archivo en "String" con la fecha y hora
+	 * Este metodo devuelve el nombre del archivo en "String" con la fecha y hora
 	 *
 	 * @param baseName
 	 * @return nombre del archivo en String
@@ -104,9 +109,9 @@ public class AdvancedDb2CsvExporter {
 	}
 
 	/**
-	 * Este método sirve para escibir los nombres de las columnas en el .csv
+	 * Este metodo sirve para escibir los nombres de las columnas en el .csv
 	 *
-	 * @return Numero de columnas, para usar en otros métodos
+	 * @return Numero de columnas, para usar en otros metodos
 	 * @throws SQLException En caso de error
 	 * @throws IOException  En caso de error
 	 */
@@ -138,7 +143,7 @@ public class AdvancedDb2CsvExporter {
 	}
 
 	/**
-	 * Este método sirve para exportar en un archivo csv tablas de la base de datos
+	 * Este metodo sirve para exportar en un archivo csv tablas de la base de datos
 	 *
 	 * @param table Nombre de la tabla a exportar
 	 * @throws DBManagerException En caso de error

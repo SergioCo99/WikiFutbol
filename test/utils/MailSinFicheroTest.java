@@ -3,6 +3,11 @@ package utils;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test MailSinFichero
+ * @author sergi
+ *
+ */
 public class MailSinFicheroTest {
 
 	static MailSinFichero msf = new MailSinFichero();

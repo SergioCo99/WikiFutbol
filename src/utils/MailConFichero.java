@@ -22,10 +22,16 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+/**
+ * Clase MailConFichero
+ * 
+ * @author sergi
+ *
+ */
 public class MailConFichero {
 
 	/**
-	 * Método para enviar un email que contiene un fichero
+	 * Metodo para enviar un email que contiene un fichero
 	 *
 	 * @param dest     Correo del destinatario del correo
 	 * @param asunto   Asunto del email

@@ -5,6 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test FileChooser
+ * @author sergi
+ *
+ */
 public class FileChooserTest {
 
 	static FileChooser fc = new FileChooser();
@@ -21,10 +26,10 @@ public class FileChooserTest {
 
 	/**
 	 * Primero tiene que seleccionar el archivo del "String actual" en concreto
-	 * Despues comprueba si el archivo que se recibe del método
+	 * Despues comprueba si el archivo que se recibe del metodo
 	 * "FileChooser.Choose()" y el que se encuentra en "String actual" son iguales
 	 *
-	 * En la segunda prueba, no selecciona nada, es decir, se pulsa en el botón
+	 * En la segunda prueba, no selecciona nada, es decir, se pulsa en el boton
 	 * cancelar o en la X Verifica que lo que ha recibido FileChooser.Choose() y el
 	 * "String actual2" son iguales
 	 */

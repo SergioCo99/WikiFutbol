@@ -24,6 +24,12 @@ import javax.swing.text.PlainDocument;
  * To view a copy of the public domain dedication, visit
  * http://creativecommons.org/licenses/publicdomain/
  */
+/**
+ * Clase JComboBoxAutoCompletion
+ * 
+ * @author sergi
+ *
+ */
 public class JComboBoxAutoCompletion extends PlainDocument {
 
 	private static final long serialVersionUID = 1L;

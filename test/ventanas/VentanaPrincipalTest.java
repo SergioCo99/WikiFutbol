@@ -5,6 +5,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+/**
+ * Test de la clase VentanaPrincipal
+ * 
+ * @author sergi
+ *
+ */
 public class VentanaPrincipalTest {
 
 	/**

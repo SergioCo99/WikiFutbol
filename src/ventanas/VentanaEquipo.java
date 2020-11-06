@@ -24,6 +24,12 @@ import database.DBManager;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
+/**
+ * Ventana que muestra informacion sobre los equipos
+ * 
+ * @author sergi
+ *
+ */
 public class VentanaEquipo extends JFrame {
 
 	private static final long serialVersionUID = 1L;

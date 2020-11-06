@@ -8,6 +8,12 @@ import java.io.File;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test MainWikiFutbol
+ * 
+ * @author sergi
+ *
+ */
 public class MainWikiFutbolTest {
 
 	static MainWikiFutbol mwf = new MainWikiFutbol();
@@ -23,7 +29,7 @@ public class MainWikiFutbolTest {
 	}
 
 	/**
-	 * Verifica la creación del fichero log FeedbackLog.log
+	 * Verifica la creacion del fichero log FeedbackLog.log
 	 *
 	 * En caso de crearlo con exito devuelve true En caso de no crearlo, nos
 	 * avisaria del fallo
@@ -41,10 +47,10 @@ public class MainWikiFutbolTest {
 	}
 
 	/**
-	 * Verifica la creación de los ficheros logger BDLogger.log y GeneralLogger.log
+	 * Verifica la creacion de los ficheros logger BDLogger.log y GeneralLogger.log
 	 *
-	 * En caso de que exista, nos devuelve true En caso de que no exista, el método
-	 * crearFicherLogger() crearía dicho logger Si el método ha realizado con exito
+	 * En caso de que exista, nos devuelve true En caso de que no exista, el metodo
+	 * crearFicherLogger() crearía dicho logger Si el metodo ha realizado con exito
 	 * la operación nos devuelve true En caso contrario, nos avisa de que el fichero
 	 * no existe
 	 */
@@ -77,10 +83,10 @@ public class MainWikiFutbolTest {
 	}
 
 	/**
-	 * Verifica la creación de los ficheros properties account.properties y
+	 * Verifica la creacion de los ficheros properties account.properties y
 	 * jdbc.properties
 	 *
-	 * Si el método crearFicheroLogger() ha funcionado correctamente, recibimos el
+	 * Si el metodo crearFicheroLogger() ha funcionado correctamente, recibimos el
 	 * true En caso contrario, nos avisa que el fichero no existe
 	 */
 	@Test

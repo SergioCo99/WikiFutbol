@@ -13,6 +13,11 @@ import clases.Club;
 import database.DBManager;
 import database.DBManagerException;
 
+/**
+ * Test de las IListas
+ * @author sergi
+ *
+ */
 public class IListaTest {
 
 	private ArrayList<Club> arrayClub = new ArrayList<Club>();
@@ -51,7 +56,7 @@ public class IListaTest {
 	}
 
 	/**
-	 * Carga esos datos en la ILista correspondiente Verifica que el tamaño del
+	 * Carga esos datos en la ILista correspondiente Verifica que el tamanyo del
 	 * array y el de la lista es el mismo
 	 */
 	@Test
