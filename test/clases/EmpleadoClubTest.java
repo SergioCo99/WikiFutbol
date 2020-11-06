@@ -9,11 +9,17 @@ public class EmpleadoClubTest {
 
 	private EmpleadoDeClub ect;
 
+	/**
+	 * Crea un nuevo empleado del club
+	 */
 	@Before
 	public void setUp() {
 		ect = new EmpleadoDeClub(1, "Koikili", "1990-06-25", "Athletic Club", "Bilbao");
 	}
 
+	/**
+	 * Comprueba que getId() funciona correctamente devolviendo el id del empleado del club
+	 */
 	@Test
 	public void testId() {
 
@@ -21,6 +27,9 @@ public class EmpleadoClubTest {
 		assertEquals(1, ect.getId());
 	}
 
+	/**
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del empleado del club
+	 */
 	@Test
 	public void testNombre() {
 
@@ -28,6 +37,9 @@ public class EmpleadoClubTest {
 		assertEquals("Koikili", ect.getNombre());
 	}
 
+	/**
+	 * Comprueba que getFechaNac() funciona correctamente devolviendo la fecha de nacimiento del empleado del club
+	 */
 	@Test
 	public void testAnyoNacimiento() {
 
@@ -35,6 +47,9 @@ public class EmpleadoClubTest {
 		assertEquals("1990-06-25", ect.getFechaNac());
 	}
 
+	/**
+	 * Comprueba que getClub() funciona correctamente devolviendo el club del empleado
+	 */
 	@Test
 	public void testClub() {
 
@@ -42,12 +57,18 @@ public class EmpleadoClubTest {
 		assertEquals("Athletic Club", ect.getClub());
 	}
 
+	/**
+	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del empleado
+	 */
 	@Test
 	public void testCiudad() {
 		ect.setCiudad("Bilbao");
 		assertEquals("Bilbao", ect.getCiudad());
 	}
 
+	/**
+	 * Comprueba el método toString() de la clase EmpleadoClub
+	 */
 	@Test
 	public void metodoToString() {
 

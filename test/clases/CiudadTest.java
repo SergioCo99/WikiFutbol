@@ -9,17 +9,26 @@ public class CiudadTest {
 
 	private Ciudad c;
 
+	/**
+	 * Crea una nueva ciudad
+	 */
 	@Before
 	public void setUp() {
-		c = new Ciudad(1, "Bilbao", "España");
+		c = new Ciudad(1, "Bilbao", "Espaï¿½a");
 	}
 
+	/**
+	 * Comprueba que getId() funciona correctamente devolviendo el id de la ciudad
+	 */
 	@Test
 	public void testId() {
 		c.setId(1);
 		assertEquals(1, c.getId());
 	}
 
+	/**
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre de la ciudad
+	 */
 	@Test
 	public void testNombre() {
 
@@ -27,22 +36,28 @@ public class CiudadTest {
 		assertEquals("Bilbao", c.getNombre());
 	}
 
+	/**
+	 * Comprueba que getPais() funciona correctamente devolviendo el pais de la ciudad
+	 */
 	@Test
 	public void testPais() {
 
-		c.setPais("España");
-		assertEquals("España", c.getPais());
+		c.setPais("Espaï¿½a");
+		assertEquals("Espaï¿½a", c.getPais());
 	}
 
+	/**
+	 * Comprueba el mÃ©todo toString() de la clase Ciudad
+	 */
 	@Test
 	public void metodoToString() {
 
 		c.setId(1);
 		c.setNombre("Bilbao");
-		c.setPais("España");
+		c.setPais("Espaï¿½a");
 
 		System.out.println(c.toString());
 
-		assertEquals("Ciudad [id=1, nombre=Bilbao, pais=España]", c.toString());
+		assertEquals("Ciudad [id=1, nombre=Bilbao, pais=Espaï¿½a]", c.toString());
 	}
 }

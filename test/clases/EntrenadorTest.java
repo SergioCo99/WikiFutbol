@@ -11,18 +11,27 @@ public class EntrenadorTest {
 
 	private Entrenador e;
 
+	/**
+	 * Crea un nuevo entrenador
+	 */
 	@Before
 	public void setUp() {
 		e = new Entrenador(1, "Gaizka Garitano", "1970", "Athletic Club", "Bilbao", "Escuela Albacete",
 				Mentalidad.Defensiva);
 	}
 
+	/**
+	 * Comprueba que getId() funciona correctamente devolviendo el id del entrenador
+	 */
 	@Test
 	public void testId() {
 		e.setId(1);
 		assertEquals(1, e.getId());
 	}
 
+	/**
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del entrenador
+	 */
 	@Test
 	public void testNombre() {
 
@@ -30,6 +39,9 @@ public class EntrenadorTest {
 		assertEquals("Gaizka Garitano", e.getNombre());
 	}
 
+	/**
+	 * Comprueba que getFechaNac() funciona correctamente devolviendo la fecha de nacimiento del entrenador
+	 */
 	@Test
 	public void testAnyoNacimiento() {
 
@@ -37,6 +49,9 @@ public class EntrenadorTest {
 		assertEquals("1970", e.getFechaNac());
 	}
 
+	/**
+	 * Comprueba que getClub() funciona correctamente devolviendo el club del entrenador
+	 */
 	@Test
 	public void testClub() {
 
@@ -44,6 +59,9 @@ public class EntrenadorTest {
 		assertEquals("Athletic Club", e.getClub());
 	}
 
+	/**
+	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del entrenador
+	 */
 	@Test
 	public void testCiudad() {
 
@@ -51,6 +69,9 @@ public class EntrenadorTest {
 		assertEquals("Bilbao", e.getCiudad());
 	}
 
+	/**
+	 * Comprueba que getFormacion() funciona correctamente devolviendo la formacion del entrenador
+	 */
 	@Test
 	public void testFormacion() {
 
@@ -58,6 +79,9 @@ public class EntrenadorTest {
 		assertEquals("Escuela Albacete", e.getFormacion());
 	}
 
+	/**
+	 * Comprueba que getMentalidad() funciona correctamente devolviendo la mentalidad del entrenador
+	 */
 	@Test
 	public void testMentalidad() {
 
@@ -65,6 +89,9 @@ public class EntrenadorTest {
 		assertEquals(Mentalidad.Defensiva, e.getMentalidad());
 	}
 
+	/**
+	 * Comprueba el método toString() de la clase entrenador
+	 */
 	@Test
 	public void metodoToString() {
 
