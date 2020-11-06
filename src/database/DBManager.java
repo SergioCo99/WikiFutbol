@@ -216,6 +216,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Cambia la propidedad de un usuario para que sea admin
+	 * 
+	 * @param correo_usuario Correo del usuario
+	 * @param admin_usuario 1 o 0. Dependiendo del usuario
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static void cambiarAdmin(String correo_usuario, int admin_usuario) throws DBManagerException {
 		if ((admin_usuario == 1) || (admin_usuario == 0)) {
 			connect();
@@ -239,6 +246,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Método para eliminar a los usuarios de la BD
+	 * 
+	 * @param correo_usuario Correo del usuario a eliminar
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static void eliminarUsuario(String correo_usuario) throws DBManagerException {
 		connect();
 		try {
@@ -259,6 +272,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Método para cambiar la contrasena de los usuarios
+	 * 
+	 * @param correo_usuario Correo del usuario
+	 * @param contrasena_usuario Contrasena del usuario
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static void cambiarContrasena(String correo_usuario, String contrasena_usuario) throws DBManagerException {
 		connect();
 		try {
@@ -280,6 +300,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Método que permite ver las tablas de la BD
+	 * 
+	 * @return Devuelve un array con el contenido
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static ArrayList<String> verTablas() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -308,6 +334,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Método que permite ver todos los correos registrados
+	 * 
+	 * @return Devuelve un array con los correos
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static ArrayList<String> todosLosCorreos() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -342,6 +374,15 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Permite a los usuarios añadir Feedback en la aplicacion
+	 * 
+	 * @param correo_usuario Correo del usuario del feedback
+	 * @param valoracion_feedback Valoracion añadida por el usuario
+	 * @param recomendacion_feedback Recomendacion añadida por el usuario
+	 * @param opinion_feedback Opinion escrita por el usuario
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static void registrarFeedback(String correo_usuario, String valoracion_feedback,
 			String recomendacion_feedback, String opinion_feedback) throws DBManagerException {
 		connect();
@@ -374,6 +415,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Devuelve una lista de los jugadores dependiendo de su posicion
+	 * 
+	 * @param posicion_jugador Posicion en la que juega el futbolista
+	 * @return Array con los futbolistas de dicha posicion
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static ArrayList<String> getJugadoresPorPosicion(String posicion_jugador) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -407,6 +455,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Método que devuelve el Id del usuario
+	 * 
+	 * @param correo_usuario Correo del usuario
+	 * @return Id del usuario
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static int getIdUsuario(String correo_usuario) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -432,6 +487,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Método que devuelve el id del jugador
+	 * 
+	 * @param nombre_jugador Nombre del jugador
+	 * @return Id del jugador
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static int getIdJugador(String nombre_jugador) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -457,6 +519,16 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Sirve para que los usuarios puedan realizar la votacion a los jugadores
+	 * 
+	 * @param usuario_usuarioVotacion Usuario que realiza la votacion
+	 * @param delanteroVotado_usuarioVotacion Delantero votado por el usuario
+	 * @param centrocampistaVotado_usuarioVotacion Centrocampista votado por el usuario
+	 * @param defensaVotado_usuarioVotacion Defensa votado por el usuario
+	 * @param porteroVotado_usuarioVotacion Portero votado por el usuario
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static void votar(int usuario_usuarioVotacion, int delanteroVotado_usuarioVotacion,
 			int centrocampistaVotado_usuarioVotacion, int defensaVotado_usuarioVotacion,
 			int porteroVotado_usuarioVotacion) throws DBManagerException {
@@ -505,7 +577,12 @@ public class DBManager {
 		}
 	}
 
-	// CONTAR VOTOS
+	/**
+	 * Cuenta los jugadores existentes en la tabla "jugador" de la BD
+	 * 
+	 * @return Devuelve el numero con la cantidad de jugadores
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	private static int contarJugadores() throws DBManagerException {
 		ResultSet rs = null;
 		try {
@@ -526,6 +603,7 @@ public class DBManager {
 		}
 	}
 
+	
 	private static int contarVotosPorJugador(int i, String jugadorVotado_usuarioVotacion) throws DBManagerException {
 		ResultSet rs = null;
 		try {
@@ -547,6 +625,11 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Método para actualizar los votos que reciben los jugadores, dependiendo de su posicion
+	 * 
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static void actualizarVotos() throws DBManagerException {
 		System.out.println("Inicio actualizarVotos, puede tardar un rato...");
 		connect();
@@ -596,6 +679,13 @@ public class DBManager {
 	// HASTA AQUI CONTAR VOTOS
 
 	// CREAR TEAM OF THE YEAR
+	/**
+	 * Cuenta los jugadores que estan el el Team Of The Year
+	 * 
+	 * @param n Id
+	 * @return Numero de jugadores en la tabla teamoftheyear
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	private static int countTOFT(int n) throws DBManagerException {
 		ResultSet rs = null;
 		try {
@@ -617,6 +707,8 @@ public class DBManager {
 		}
 	}
 
+
+	
 	private static int getMasVotados(String posicion, int limit, int i) throws DBManagerException {
 		ResultSet rs = null;
 		try {
@@ -1281,6 +1373,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Nos permite a los jugadores partiendo del nombre del jugador como "String"
+	 * 
+	 * @param nombre_jugador Nombre del jugador en String
+	 * @return Nos devuelve al Jugador
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static Jugador getJugadorBd(String nombre_jugador) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -1344,6 +1443,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Este método devuelve un Array con el Team of The Year
+	 * 
+	 * @return Array con el Team of The Year
+	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 */
 	public static ArrayList<TeamOfTheYear_view> getTeamOfTheYear_view() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
