@@ -33,9 +33,8 @@ public class JLabelGraficoAjustado extends JLabel {
 	protected BufferedImage imagenLogoWiki;
 
 	/**
-	 * Crea un nuevo JLabel grafico.<br>
-	 * Si no existe el fichero de imagen, se crea un rectangulo blanco con borde
-	 * rojo
+	 * Crea un nuevo JLabel grafico.
+	 * Si no existe el fichero de imagen, se crea una imagen negra
 	 *
 	 * @param nombreimagenLogoWiki Nombre fichero donde esta la imagen del objeto.
 	 *                             Puede ser tambien un nombre de recurso desde el
@@ -71,13 +70,10 @@ public class JLabelGraficoAjustado extends JLabel {
 	}
 
 	/**
-	 * Este m�todo cambia la imagen del objeto
+	 * Este  método cambia la imagen del objeto
 	 *
-	 * @param nomImagenObjeto Nombre fichero donde est� la imagen del objeto. Puede
-	 *                        ser tambi�n un nombre de recurso desde el paquete de
-	 *                        esta clase. =======
-	 * @param nomImagenLogo   Nombre fichero donde est� la imagen del objeto. Puede
-	 *                        ser tambi�n un nombre de recurso desde el paquete de
+	 * @param nomImagenLogo   Nombre fichero donde está la imagen del objeto. Puede
+	 *                        ser también un nombre de recurso desde el paquete de
 	 *                        esta clase.
 	 */
 	public void setImagen(String nomImagenLogo) {

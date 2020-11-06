@@ -10,8 +10,12 @@ import java.util.logging.Level;
 
 public class PropertiesMetodos {
 
+	
 	/**
-	 * setProp(String mail, String password)
+	 * Es el setter del account.properties
+	 * 
+	 * @param mail Email del usuario
+	 * @param password Contrasena del usuario
 	 */
 	public static void setProp(String mail, String password) {
 		File archivo = new File("account.properties");
@@ -30,7 +34,9 @@ public class PropertiesMetodos {
 	}
 
 	/**
-	 * es el correo
+	 * Es el getter del correo del usuario del archivo account.properties
+	 * 
+	 * @return Devuelve el correo del usuario
 	 */
 	public static String getProp1() {
 		File archivo = new File("account.properties");
@@ -48,7 +54,9 @@ public class PropertiesMetodos {
 	}
 
 	/**
-	 * es la contrasena
+	 * Es el getter de la contrasena del usuario del archivo account.properties
+	 * 
+	 * @return Devuelve la contrasena del usuario
 	 */
 	public static String getProp2() {
 		File archivo = new File("account.properties");
@@ -70,6 +78,13 @@ public class PropertiesMetodos {
 	 * CONTROLADOR = prop.getProperty("DB.CONTROLADOR"); String URL =
 	 * prop.getProperty("DB.URL"); String USUARIO = prop.getProperty("DB.USUARIO");
 	 * String CONTRASENA = prop.getProperty("DB.CONTRASENA");
+	 */
+	
+	/**
+	 * Crea el archivo jdbc.properties donde se recoge información sobre la BD
+	 * 
+	 * @return El archivo properties
+	 * @throws Exception En caso de error
 	 */
 	public static Properties loadPropertiesFile() throws Exception {
 		Properties prop = new Properties();

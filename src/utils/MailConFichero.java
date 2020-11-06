@@ -24,6 +24,14 @@ import javax.mail.internet.MimeMultipart;
 
 public class MailConFichero {
 
+	/**
+	 * Método para enviar un email que contiene un fichero
+	 * 
+	 * @param dest Correo del destinatario del correo
+	 * @param asunto Asunto del email
+	 * @param texto Contenido del email
+	 * @param filename Nombre del fichero que se envia en el correo
+	 */
 	public static void SendMailConFichero(String dest, String asunto, String texto, String filename) {
 		// Recipient's email ID needs to be mentioned.
 		// dest = "eneko.perez@opendeusto.es";

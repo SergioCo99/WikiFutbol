@@ -14,6 +14,14 @@ import javax.mail.internet.MimeMessage;
 
 public class MailSinFichero {
 
+	/**
+	 * Información sobre el email
+	 * 
+	 * @param session Espacio de memoria donde se recoge todo lo referente al email
+	 * @param toEmail Email del destinatario
+	 * @param subject Asunto del email
+	 * @param body Contenido del email
+	 */
 	private static void Email(Session session, String toEmail, String subject, String body) {
 		try {
 			MimeMessage msg = new MimeMessage(session);
@@ -41,6 +49,13 @@ public class MailSinFichero {
 		}
 	}
 
+	/**
+	 * Método para enviar un email que no contenga fichero
+	 * 
+	 * @param toEmail Email del destinatario
+	 * @param asunto Asunto del email
+	 * @param texto El contenido del email (solo texto)
+	 */
 	public static void SendMail(String toEmail, String asunto, String texto) {
 
 		final String fromEmail = "wikifutbolteam@gmail.com"; // requires valid gmail id
