@@ -7,11 +7,19 @@ public class MailConFicheroTest {
 
 	static MailConFichero mcf = new MailConFichero();
 
+	/**
+	 * Crea un nuevo MailConFichero
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		mcf = new MailConFichero();
 	}
 
+	/**
+	 * Crea un correo con su destinatario, asunto, contenido y el fichero a enviar
+	 * Comprueba que el metodo SendMailConFichero() funciona correctamente
+	 */
 	@Test
 	public void test() {
 		String dest = "wikifutbol@gmail.com"; // tiene que ser una direccion de correo

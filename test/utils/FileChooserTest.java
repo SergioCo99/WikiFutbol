@@ -9,20 +9,29 @@ public class FileChooserTest {
 
 	static FileChooser fc = new FileChooser();
 
+	/**
+	 * Crea un nuevo FileChooser
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		fc = new FileChooser();
 	}
 
+	/**
+	 * Primero tiene que seleccionar el archivo del "String actual" en concreto
+	 * Despues comprueba si el archivo que se recibe del método "FileChooser.Choose()" y el que se encuentra en "String actual" son iguales
+	 * 
+	 * En la segunda prueba, no selecciona nada, es decir, se pulsa en el botón cancelar o en la X
+	 * Verifica que lo que ha recibido FileChooser.Choose() y el "String actual2" son iguales
+	 */
 	@Test
 	public void test() {
-		// Hay que seleccionar el archivo del "String actual" en concreto
 		String finalPath = utils.FileChooser.Choose();
 		String actual = System.getProperty("user.home") + "\\git\\WikiFutbol\\resources\\wf.png";
 
 		assertEquals(finalPath, actual);
 
-		// Esta vez no se selecciona nada, es decir, boton cancelar o X
 		String finalPath2 = utils.FileChooser.Choose();
 		String actual2 = "";
 
