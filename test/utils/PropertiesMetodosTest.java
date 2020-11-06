@@ -113,7 +113,7 @@ public class PropertiesMetodosTest {
 			String URL = prop.getProperty("DB.URL");
 			String USUARIO = prop.getProperty("DB.USUARIO");
 			String CONTRASENA = prop.getProperty("DB.CONTRASENA");
-			String EXCLUIDAS = prop.getProperty("DB.TABLASEXCLUIDAS");
+			//String EXCLUIDAS = prop.getProperty("DB.TABLASEXCLUIDAS");
 
 			reader = new BufferedReader(new FileReader("jdbc.properties"));
 
@@ -121,8 +121,7 @@ public class PropertiesMetodosTest {
 			assertEquals("com.mysql.cj.jdbc.Driver", CONTROLADOR);
 
 			line = reader.readLine();
-			assertEquals(
-					"jdbc:mysql://localhost:3306/wikifutbolschema?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+			assertEquals("jdbc:mysql://wikifutboldb.cdzgkizlagy4.eu-west-3.rds.amazonaws.com:3306/wikifutbolschema",
 					URL);
 
 			line = reader.readLine();
@@ -130,15 +129,16 @@ public class PropertiesMetodosTest {
 			assertEquals("root", USUARIO);
 
 			line = reader.readLine();
-			assertEquals("admin", CONTRASENA);
+			assertEquals("adminadmin", CONTRASENA);
 
 			line = reader.readLine();
 			assertEquals(
 					"# en DB.TABLASEXCLUIDA las tablas se diferencian entre comas y todo JUNTO (p.e.:usuario,jugador,club), �SI LO CAMBIAS REVISA QUE FUNCIONA en VentanaDescargar!",
 					line);
 
-			line = reader.readLine();
-			assertEquals("usuario", EXCLUIDAS);
+			/*
+			 * line = reader.readLine(); assertEquals("usuario", EXCLUIDAS);
+			 */
 
 			reader.close();
 		} catch (IOException e) {

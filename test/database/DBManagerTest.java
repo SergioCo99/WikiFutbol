@@ -47,7 +47,7 @@ public class DBManagerTest {
 	static Jugador j = new Jugador(1, "Alex Berenguer", "1993-10-01", "Athletic Club", "Bilbao", Posicion.Delantero, 8,
 			0, 182, 81, PieFav.Diestro, 84, "Jugador con desborde", 1);
 
-	private static Connection conn;
+	// private static Connection conn;
 	private static Statement stmt = null;
 	private static PreparedStatement preparedstmt = null;
 
@@ -145,7 +145,7 @@ public class DBManagerTest {
 	 * admin o como usuario normal
 	 *
 	 * @throws DBManagerException En caso de fallo
-	 * @throws SQLException En caso de fallo En caso de fallo
+	 * @throws SQLException       En caso de fallo En caso de fallo
 	 */
 	@Test
 	public void testCambiarAdmin() throws DBManagerException, SQLException {
@@ -360,7 +360,7 @@ public class DBManagerTest {
 	 * votacion del usuario u
 	 *
 	 * @throws DBManagerException En caso de fallo
-	 * @throws SQLException En caso de fallo En caso de fallo
+	 * @throws SQLException       En caso de fallo En caso de fallo
 	 */
 	@Test
 	public void testVotar_y_testActualizarVotos() throws DBManagerException, SQLException {
@@ -552,7 +552,7 @@ public class DBManagerTest {
 	 * Devuelve un arraylist con los nombres de los 11 jugadores del toft
 	 *
 	 * @throws DBManagerException En caso de fallo
-	 * @throws SQLException En caso de fallo En caso de fallo
+	 * @throws SQLException       En caso de fallo En caso de fallo
 	 */
 	@Test
 	public void testToft_y_testToftNombres() throws DBManagerException, SQLException {
@@ -1056,7 +1056,7 @@ public class DBManagerTest {
 	 * especie de cosnola
 	 *
 	 * @throws DBManagerException En caso de fallo
-	 * @throws SQLException En caso de fallo En caso de fallo
+	 * @throws SQLException       En caso de fallo En caso de fallo
 	 */
 	@Test
 	public void testCambiarDatos() throws DBManagerException, SQLException {
@@ -1088,7 +1088,7 @@ public class DBManagerTest {
 	 * administrador, luego restaura el valor
 	 *
 	 * @throws DBManagerException En caso de fallo
-	 * @throws SQLException En caso de fallo En caso de fallo
+	 * @throws SQLException       En caso de fallo En caso de fallo
 	 */
 	@Test
 	public void testCambiarDatosDesdeJTable() throws DBManagerException, SQLException {
