@@ -88,6 +88,10 @@ public class DBManagerTest {
 		DBManager.registrarUsuario(nombre_usuario, correo_usuario, contrasena_usuario, fechaNac_usuario);
 	}
 
+	/**
+	 * Test que comprueba el correcto funcionamiento del método login
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testLogin() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
@@ -96,6 +100,9 @@ public class DBManagerTest {
 		assertTrue(DBManager.login(correo_usuario, contrasena_usuario));
 	}
 
+	/**Comprueba si el usuario tiene los permisos de Admin o no
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testEsAdmin() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
@@ -105,6 +112,10 @@ public class DBManagerTest {
 		assertTrue(DBManager.esAdmin(correoDeUnAdmin));
 	}
 
+	/**Comprueba si funciona el método que nos permite cambiar
+	 *  a un usuario como admin o como usuario normal
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testCambiarAdmin() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
@@ -117,6 +128,9 @@ public class DBManagerTest {
 		DBManager.cambiarAdmin(correo_usuario, nuevoValor_admin_usuario);
 	}
 
+	/**Comprueba si se pueden eliminar los usuarios
+	 * @throws DBManagerException
+	 */
 	@After
 	public void testEliminarUsuario() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
@@ -124,6 +138,9 @@ public class DBManagerTest {
 		DBManager.eliminarUsuario(correo_usuario);
 	}
 
+	/**Comprueba si se puede cambiar la contrasena de los usuarios
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testCambiarContrasena() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
@@ -132,6 +149,9 @@ public class DBManagerTest {
 		DBManager.cambiarContrasena(correo_usuario, nuevoValor_contrasena_usuario);
 	}
 
+	/** Comprueba si se pueden ver las tablas de la base de datos
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testVerTablas() throws DBManagerException {
 		ArrayList<String> actualArr = DBManager.verTablas();
@@ -152,6 +172,9 @@ public class DBManagerTest {
 		assertEquals(expectedArr, actualArr);
 	}
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los correos de la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testTodosLosCorreos() throws DBManagerException {
 		
@@ -164,6 +187,9 @@ public class DBManagerTest {
 
 	}
 
+	/**Comprueba si funciona la opción de añadir Feedback en la aplicación
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testRegistrarFeedback() throws DBManagerException {
 		String correo_usuario = f.getUsuario();
@@ -175,6 +201,9 @@ public class DBManagerTest {
 		DBManager.registrarFeedback(correo_usuario, valoracion_feedback2, recomendacion_feedback, opinion_feedback);
 	}
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los jugadores de la BD, teniendo en cuenta su posición
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetJugadoresPorPosicion() throws DBManagerException {
 		
@@ -187,6 +216,9 @@ public class DBManagerTest {
 		
 	}
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los ID de los usuarios que se encuentran en la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetIdUsuario() throws DBManagerException {
 		
