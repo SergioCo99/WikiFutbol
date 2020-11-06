@@ -6,7 +6,13 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -41,6 +47,10 @@ public class DBManagerTest {
 	static Jugador j = new Jugador(1, "Alex Berenguer", "1993-10-01", "Athletic Club", "Bilbao", Posicion.Delantero, 8,
 			0, 182, 81, PieFav.Diestro, 84, "Jugador con desborde", 1);
 
+	// private static Connection conn;
+	private static Statement stmt = null;
+	private static PreparedStatement preparedstmt = null;
+
 	@BeforeClass
 	public static void setUp() throws Exception {
 		db = new DBManager();
@@ -52,7 +62,6 @@ public class DBManagerTest {
 		j = new Jugador(j.getId(), j.getNombre(), j.getFechaNac(), j.getClub(), j.getCiudad(), j.getPosicion(),
 				j.getDorsal(), j.getGoles(), j.getAltura(), j.getPeso(), j.getPiefav(), j.getValoracion(),
 				j.getDescripcion(), j.getVoto());
-
 	}
 
 	/**
@@ -286,16 +295,94 @@ public class DBManagerTest {
 	 * Comprueba opción de Votar a los jugadores, que la tienen disponible los
 	 * usuarios
 	 * 
+	 * 1. verifica que el usuario u no ha votado (no ha podido votar, es un usuario
+	 * de prueba que hemos creado en los test)
+	 * 
+	 * 2. vota
+	 * 
+	 * 3. se verifica que en la BD se han guardado el id de usuario y de los
+	 * jugadores correctos
+	 * 
+	 * 4. verifica que el usuario u ha votado 1 vez (se cuentan las filas con el id
+	 * del usuario u)
+	 * 
+	 * 5. vota, pero cambia el portero votado
+	 * 
+	 * 6. se verifica que en la BD se han guardado el id de usuario y de los
+	 * jugadores correctos
+	 * 
+	 * 7. verifica que aun habiendo votado 2 veces, solo se guarda la ultima
+	 * votacion del usuario u
+	 * 
 	 * @throws DBManagerException
+	 * @throws SQLException
 	 */
 	@Test
-	public void testVotar() throws DBManagerException {
-		/*
-		 * 
-		 * 
-		 */
+	public void testVotar() throws DBManagerException, SQLException {
+		int usuario_usuarioVotacion = DBManager.getIdUsuario(u.getCorreo());
+		int delanteroVotado_usuarioVotacion = DBManager.getIdJugador("Iñaki Williams");
+		int centrocampistaVotado_usuarioVotacion = DBManager.getIdJugador("Raul Garcia");
+		int defensaVotado_usuarioVotacion = DBManager.getIdJugador("Iñigo Martinez");
+		int porteroVotado_usuarioVotacion = DBManager.getIdJugador("Unai Simon");
+		int porteroVotado_usuarioVotacion2 = DBManager.getIdJugador("Iago Herrerin");
 
-		fail();
+		Connection conn = DBManager.connect();
+		ResultSet rs = null;
+
+		String sql1 = "select count(usuario_usuarioVotacion) from usuariovotacion where usuario_usuarioVotacion = ?";
+		preparedstmt = conn.prepareStatement(sql1);
+		preparedstmt.setInt(1, usuario_usuarioVotacion);
+		rs = preparedstmt.executeQuery();
+		rs.next();
+		System.out.println("1c " + rs.getInt("count(usuario_usuarioVotacion)"));
+		assertEquals(0, rs.getInt("count(usuario_usuarioVotacion)"));
+
+		DBManager.votar(usuario_usuarioVotacion, delanteroVotado_usuarioVotacion, centrocampistaVotado_usuarioVotacion,
+				defensaVotado_usuarioVotacion, porteroVotado_usuarioVotacion);
+
+		DBManager.connect();
+		String sql01 = "select * from usuariovotacion where usuario_usuarioVotacion = " + usuario_usuarioVotacion;
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql01);
+		rs.next();
+		assertEquals(rs.getInt("usuario_usuarioVotacion"), usuario_usuarioVotacion);
+		assertEquals(rs.getInt("delanteroVotado_usuarioVotacion"), delanteroVotado_usuarioVotacion);
+		assertEquals(rs.getInt("centrocampistaVotado_usuarioVotacion"), centrocampistaVotado_usuarioVotacion);
+		assertEquals(rs.getInt("defensaVotado_usuarioVotacion"), defensaVotado_usuarioVotacion);
+		assertEquals(rs.getInt("porteroVotado_usuarioVotacion"), porteroVotado_usuarioVotacion);
+
+		DBManager.connect();
+		String sql2 = "select count(usuario_usuarioVotacion) from usuariovotacion where usuario_usuarioVotacion = ?";
+		preparedstmt = conn.prepareStatement(sql2);
+		preparedstmt.setInt(1, usuario_usuarioVotacion);
+		rs = preparedstmt.executeQuery();
+		rs.next();
+		System.out.println("2c " + rs.getInt("count(usuario_usuarioVotacion)"));
+		assertEquals(1, rs.getInt("count(usuario_usuarioVotacion)"));
+
+		DBManager.votar(usuario_usuarioVotacion, delanteroVotado_usuarioVotacion, centrocampistaVotado_usuarioVotacion,
+				defensaVotado_usuarioVotacion, porteroVotado_usuarioVotacion2);
+
+		DBManager.connect();
+		String sql02 = "select * from usuariovotacion where usuario_usuarioVotacion = " + usuario_usuarioVotacion;
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql02);
+		rs.next();
+		assertEquals(rs.getInt("usuario_usuarioVotacion"), usuario_usuarioVotacion);
+		assertEquals(rs.getInt("delanteroVotado_usuarioVotacion"), delanteroVotado_usuarioVotacion);
+		assertEquals(rs.getInt("centrocampistaVotado_usuarioVotacion"), centrocampistaVotado_usuarioVotacion);
+		assertEquals(rs.getInt("defensaVotado_usuarioVotacion"), defensaVotado_usuarioVotacion);
+		assertEquals(rs.getInt("porteroVotado_usuarioVotacion"), porteroVotado_usuarioVotacion2);
+
+		DBManager.connect();
+		String sql3 = "select count(usuario_usuarioVotacion) from usuariovotacion where usuario_usuarioVotacion = ?";
+		preparedstmt = conn.prepareStatement(sql3);
+		preparedstmt.setInt(1, usuario_usuarioVotacion);
+		rs = preparedstmt.executeQuery();
+		rs.next();
+		System.out.println("3c " + rs.getInt("count(usuario_usuarioVotacion)"));
+		assertEquals(1, rs.getInt("count(usuario_usuarioVotacion)"));
+		DBManager.disconnect();
 	}
 
 	/*

@@ -12,6 +12,8 @@ import java.util.Comparator;
 import java.util.Properties;
 import java.util.logging.Level;
 
+import org.junit.Test;
+
 import clases.Ciudad;
 import clases.Club;
 import clases.Entrenador;
@@ -34,7 +36,7 @@ public class DBManager {
 	private static Statement stmt = null;
 	private static PreparedStatement preparedstmt = null;
 
-	public static void connect() throws DBManagerException {
+	public static Connection connect() throws DBManagerException {
 		try {
 			Properties prop = utils.PropertiesMetodos.loadPropertiesFile();
 			String CONTROLADOR = prop.getProperty("DB.CONTROLADOR");
@@ -48,6 +50,7 @@ public class DBManager {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error connect DBManager", e);
 		}
+		return conn;
 	}
 
 	public static void disconnect() throws DBManagerException {
@@ -422,7 +425,7 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			String sql1 = "select count(usuario_usuarioVotacion) from usuarioVotacion where usuario_usuarioVotacion = ?";
+			String sql1 = "select count(usuario_usuarioVotacion) from usuariovotacion where usuario_usuarioVotacion = ?";
 			preparedstmt = conn.prepareStatement(sql1);
 			preparedstmt.setInt(1, usuario_usuarioVotacion);
 			rs = preparedstmt.executeQuery();
@@ -488,7 +491,7 @@ public class DBManager {
 	private static int contarVotosPorJugador(int i, String jugadorVotado_usuarioVotacion) throws DBManagerException {
 		ResultSet rs = null;
 		try {
-			String sql = "select count(" + jugadorVotado_usuarioVotacion + ") from usuarioVotacion where "
+			String sql = "select count(" + jugadorVotado_usuarioVotacion + ") from usuariovotacion where "
 					+ jugadorVotado_usuarioVotacion + " = " + i;
 			rs = stmt.executeQuery(sql);
 			rs.next();
@@ -1641,6 +1644,7 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		connect();
+		votar(1, 1, 5, 9, 15);
+		actualizarVotos();
 	}
 }
