@@ -5,6 +5,7 @@ import org.junit.Test;
 
 /**
  * Test MailConFichero
+ *
  * @author sergi
  *
  */

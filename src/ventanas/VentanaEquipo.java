@@ -26,7 +26,7 @@ import utils.JLabelGraficoAjustado;
 
 /**
  * Ventana que muestra informacion sobre los equipos
- * 
+ *
  * @author sergi
  *
  */

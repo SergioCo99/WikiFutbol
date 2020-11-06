@@ -38,6 +38,7 @@ import clases.UsuarioVotacion;
 
 /**
  * Test de DBManager
+ *
  * @author sergi
  *
  */
@@ -204,7 +205,9 @@ public class DBManagerTest {
 		String correo_usuario = u.getCorreo();
 		String nuevoValor_contrasena_usuario = "contrasena2";
 
+		DBManager.login(u.getCorreo(), u.getContrasena());
 		DBManager.cambiarContrasena(correo_usuario, nuevoValor_contrasena_usuario);
+		DBManager.login(u.getCorreo(), nuevoValor_contrasena_usuario);
 	}
 
 	/**
@@ -642,7 +645,6 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetClubes() throws DBManagerException {
-
 		ArrayList<Club> clubes = new ArrayList<Club>();
 		clubes = DBManager.getClubes();
 		for (Club club : clubes) {
@@ -658,7 +660,6 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetEntrenadores() throws DBManagerException {
-
 		ArrayList<Entrenador> entrenadores = new ArrayList<Entrenador>();
 		entrenadores = DBManager.getEntrenadores();
 		for (Entrenador entrenador : entrenadores) {
@@ -666,7 +667,7 @@ public class DBManagerTest {
 		}
 	}
 
-	// M�todos Entrenador
+	// Metodos Entrenador
 
 	/**
 	 * Devuelve el nombre del entrenador
@@ -737,7 +738,6 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetEstadios() throws DBManagerException {
-
 		ArrayList<Estadio> estadios = new ArrayList<Estadio>();
 		estadios = DBManager.getEstadios();
 		for (Estadio estadio : estadios) {
@@ -795,7 +795,6 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetFeedbacks() throws DBManagerException {
-
 		ArrayList<Feedback> feedbacks = new ArrayList<Feedback>();
 		feedbacks = DBManager.getFeedbacks();
 		for (Feedback feedback : feedbacks) {
@@ -811,7 +810,6 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetJugadores() throws DBManagerException {
-
 		ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
 		jugadores = DBManager.getJugadores();
 		for (Jugador jugador : jugadores) {
@@ -884,7 +882,6 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetTeamOfTheYear() throws DBManagerException {
-
 		ArrayList<TeamOfTheYear> toty = new ArrayList<TeamOfTheYear>();
 		toty = DBManager.getTeamOfTheYear();
 		for (TeamOfTheYear teamOfTheYear : toty) {
@@ -914,7 +911,6 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetUsuarioVotaciones() throws DBManagerException {
-
 		ArrayList<UsuarioVotacion> usuarioVotaciones = new ArrayList<UsuarioVotacion>();
 		usuarioVotaciones = DBManager.getUsuarioVotaciones();
 		for (UsuarioVotacion usuarioVotacion : usuarioVotaciones) {
@@ -1048,8 +1044,10 @@ public class DBManagerTest {
 		assertEquals(DBManager.verColumnas(tabla), actualtoftview);
 	}
 
-	/**Prueba el metodo que vuelca los datos de cualquier tabla de la BD a un array 2D 
-	 * El objetivo es rellenar una JTable
+	/**
+	 * Prueba el metodo que vuelca los datos de cualquier tabla de la BD a un array
+	 * 2D El objetivo es rellenar una JTable
+	 *
 	 * @throws DBManagerException En caso de fallos
 	 */
 	@Test
@@ -1153,7 +1151,6 @@ public class DBManagerTest {
 	@Test
 	public void testNumeroDeFilasEnUnaTabla() throws DBManagerException {
 		for (String table : database.DBManager.verTablas()) {
-			System.out.println(DBManager.numeroDeFilasEnUnaTabla(table));
 			Assert.assertNotNull(DBManager.numeroDeFilasEnUnaTabla(table));
 		}
 	}

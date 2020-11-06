@@ -18,6 +18,7 @@ import java.util.logging.Level;
 
 /**
  * Clase AdvancedDb2CsvExporter
+ *
  * @author sergi
  *
  */

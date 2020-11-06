@@ -26,7 +26,7 @@ import javax.swing.text.PlainDocument;
  */
 /**
  * Clase JComboBoxAutoCompletion
- * 
+ *
  * @author sergi
  *
  */

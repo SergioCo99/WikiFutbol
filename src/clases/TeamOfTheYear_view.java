@@ -11,6 +11,7 @@ public class TeamOfTheYear_view {
 
 	/**
 	 * Posicion del jugador
+	 *
 	 * @author sergi
 	 *
 	 */

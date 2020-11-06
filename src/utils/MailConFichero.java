@@ -24,7 +24,7 @@ import javax.mail.internet.MimeMultipart;
 
 /**
  * Clase MailConFichero
- * 
+ *
  * @author sergi
  *
  */

@@ -2,6 +2,7 @@ package feedback;
 
 /**
  * Clase RWException
+ *
  * @author sergi
  *
  */

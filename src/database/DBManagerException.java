@@ -2,6 +2,7 @@ package database;
 
 /**
  * Clase DBManagerException
+ *
  * @author sergi
  *
  */

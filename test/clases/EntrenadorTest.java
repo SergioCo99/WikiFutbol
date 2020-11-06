@@ -9,7 +9,7 @@ import clases.Entrenador.Mentalidad;
 
 /**
  * Test de la clase Entrenador
- * 
+ *
  * @author sergi
  *
  */

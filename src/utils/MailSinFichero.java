@@ -14,7 +14,7 @@ import javax.mail.internet.MimeMessage;
 
 /**
  * Clase MailSinFichero
- * 
+ *
  * @author sergi
  *
  */

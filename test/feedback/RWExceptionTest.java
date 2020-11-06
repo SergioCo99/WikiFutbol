@@ -9,6 +9,7 @@ import org.junit.Test;
 
 /**
  * Test RWException
+ *
  * @author sergi
  *
  */

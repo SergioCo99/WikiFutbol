@@ -10,6 +10,7 @@ import org.junit.Test;
 
 /**
  * Test EstadisticaFeedback
+ *
  * @author sergi
  *
  */

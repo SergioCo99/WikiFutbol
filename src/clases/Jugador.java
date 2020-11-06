@@ -10,6 +10,7 @@ public class Jugador extends EmpleadoDeClub {
 
 	/**
 	 * Pie favorito del jugador
+	 *
 	 * @author sergi
 	 *
 	 */
@@ -19,7 +20,7 @@ public class Jugador extends EmpleadoDeClub {
 
 	/**
 	 * Posicion del jugador
-	 * 
+	 *
 	 * @author sergi
 	 *
 	 */

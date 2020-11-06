@@ -14,6 +14,7 @@ import clases.Club;
 
 /**
  * Interfaz IListaEquipos
+ *
  * @author sergi
  *
  */

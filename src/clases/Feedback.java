@@ -10,7 +10,7 @@ public class Feedback {
 
 	/**
 	 * Recomendacion si o no
-	 * 
+	 *
 	 * @author sergi
 	 *
 	 */

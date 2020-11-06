@@ -18,6 +18,7 @@ import org.junit.Test;
 
 /**
  * Test PropertiesMetodos
+ *
  * @author sergi
  *
  */
@@ -118,7 +119,7 @@ public class PropertiesMetodosTest {
 			String URL = prop.getProperty("DB.URL");
 			String USUARIO = prop.getProperty("DB.USUARIO");
 			String CONTRASENA = prop.getProperty("DB.CONTRASENA");
-			//String EXCLUIDAS = prop.getProperty("DB.TABLASEXCLUIDAS");
+			// String EXCLUIDAS = prop.getProperty("DB.TABLASEXCLUIDAS");
 
 			reader = new BufferedReader(new FileReader("jdbc.properties"));
 

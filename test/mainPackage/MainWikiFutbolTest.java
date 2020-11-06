@@ -10,7 +10,7 @@ import org.junit.Test;
 
 /**
  * Test MainWikiFutbol
- * 
+ *
  * @author sergi
  *
  */

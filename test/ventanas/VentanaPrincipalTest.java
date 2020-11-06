@@ -7,7 +7,7 @@ import org.junit.Test;
 
 /**
  * Test de la clase VentanaPrincipal
- * 
+ *
  * @author sergi
  *
  */

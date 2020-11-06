@@ -10,6 +10,7 @@ import java.util.logging.Level;
 
 /**
  * Clase PropertiesMetodos
+ *
  * @author sergi
  *
  */

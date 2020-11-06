@@ -10,7 +10,7 @@ public class Entrenador extends EmpleadoDeClub {
 
 	/**
 	 * Distintas opciones de mentalidad del Entrenador
-	 * 
+	 *
 	 * @author sergi
 	 *
 	 */

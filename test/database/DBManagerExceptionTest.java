@@ -8,6 +8,7 @@ import org.junit.Test;
 
 /**
  * Test de DBManagerException
+ *
  * @author sergi
  *
  */

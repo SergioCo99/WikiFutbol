@@ -14,6 +14,7 @@ import org.junit.Test;
 
 /**
  * Test de AdvancedDb2CsvExporter
+ *
  * @author sergi
  *
  */

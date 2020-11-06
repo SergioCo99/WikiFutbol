@@ -30,6 +30,7 @@ import clases.UsuarioVotacion;
 
 /**
  * Clase DBManager
+ *
  * @author sergi
  *
  */

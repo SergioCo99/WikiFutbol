@@ -7,6 +7,7 @@ import org.junit.Test;
 
 /**
  * Test FileChooser
+ *
  * @author sergi
  *
  */

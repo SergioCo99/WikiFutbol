@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Clase FileChooser
- * 
+ *
  * @author sergi
  *
  */
