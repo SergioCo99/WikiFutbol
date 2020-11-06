@@ -236,7 +236,7 @@ public class VentanaEntrenador extends JFrame {
 		resultadoMentalidad.setForeground(Color.BLACK);
 		bookPanel.add(resultadoMentalidad);
 
-		//Imagen logo
+		// Imagen logo
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
 		bookPanel.add(fotoEquipo);

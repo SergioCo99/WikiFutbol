@@ -106,6 +106,7 @@ public class VentanaEstadisticas extends JFrame {
 			valoracion.setString(Integer.toString(nuevaValoracion));
 			getContentPane().add(valoracion);
 		} catch (RWException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 

@@ -42,7 +42,7 @@ public class VentanaJugador extends JFrame {
 	public void init(String jugador, Club club, Usuario u) throws DBManagerException {
 		nombreJugador = jugador.toString();
 		Jugador nombre = DBManager.getJugadorBd(nombreJugador);
-	
+
 		this.setTitle(nombreJugador);
 		this.setSize(1200, 700);
 		this.setLayout(null);
@@ -157,11 +157,12 @@ public class VentanaJugador extends JFrame {
 
 		// Resultado Club
 		String club1 = nombre.getClub();
-		final JLabel resultadoClub = new JLabel(club1); 
+		final JLabel resultadoClub = new JLabel(club1);
 		resultadoClub.setBounds(100, 240, 400, 50);
-		resultadoClub.setFont(fuente2); resultadoClub.setForeground(Color.BLACK);
+		resultadoClub.setFont(fuente2);
+		resultadoClub.setForeground(Color.BLACK);
 		bookPanel.add(resultadoClub);
-		
+
 		// Ciudad
 		final JLabel labelCiudad = new JLabel("Ciudad: ");
 		labelCiudad.setBounds(20, 305, 150, 50);
@@ -171,9 +172,10 @@ public class VentanaJugador extends JFrame {
 
 		// Resultado Ciudad
 		String ciudad = nombre.getCiudad();
-		final JLabel resultadoCiudad = new JLabel(ciudad); 
+		final JLabel resultadoCiudad = new JLabel(ciudad);
 		resultadoCiudad.setBounds(115, 305, 400, 50);
-		resultadoCiudad.setFont(fuente2); resultadoCiudad.setForeground(Color.BLACK);
+		resultadoCiudad.setFont(fuente2);
+		resultadoCiudad.setForeground(Color.BLACK);
 		bookPanel.add(resultadoCiudad);
 
 		// Posicion
@@ -185,12 +187,11 @@ public class VentanaJugador extends JFrame {
 
 		// Resultado Posicion
 		String posicion = nombre.getClub().toString();
-		final JLabel resultadoPosicion = new JLabel(posicion); 
+		final JLabel resultadoPosicion = new JLabel(posicion);
 		resultadoPosicion.setBounds(127, 370, 400, 50);
 		resultadoPosicion.setFont(fuente2);
 		resultadoPosicion.setForeground(Color.BLACK);
 		bookPanel.add(resultadoPosicion);
-		
 
 		// Dorsal
 		final JLabel labelDorsal = new JLabel("Dorsal: ");
@@ -200,13 +201,12 @@ public class VentanaJugador extends JFrame {
 		bookPanel.add(labelDorsal);
 
 		// Resultado Dorsal
-		String dorsal = Integer.toString(nombre.getDorsal()); 
+		String dorsal = Integer.toString(nombre.getDorsal());
 		final JLabel resultadoDorsal = new JLabel(dorsal);
 		resultadoDorsal.setBounds(120, 435, 400, 50);
 		resultadoDorsal.setFont(fuente2);
 		resultadoDorsal.setForeground(Color.BLACK);
 		bookPanel.add(resultadoDorsal);
-		 
 
 		// Goles
 		final JLabel labelGoles = new JLabel("Goles: ");
@@ -235,7 +235,7 @@ public class VentanaJugador extends JFrame {
 		final JLabel resultadoAltura = new JLabel(altura);
 		resultadoAltura.setBounds(500, 240, 400, 50);
 		resultadoAltura.setFont(fuente2);
-		resultadoAltura.setForeground(Color.BLACK); 
+		resultadoAltura.setForeground(Color.BLACK);
 		bookPanel.add(resultadoAltura);
 
 		// Peso
@@ -261,13 +261,12 @@ public class VentanaJugador extends JFrame {
 		bookPanel.add(labelPieFav);
 
 		// Resultado Pie Fav
-		String piefav = nombre.getPiefav().toString(); 
+		String piefav = nombre.getPiefav().toString();
 		final JLabel resultadoPieFav = new JLabel(piefav);
 		resultadoPieFav.setBounds(500, 370, 400, 50);
 		resultadoPieFav.setFont(fuente2);
 		resultadoPieFav.setForeground(Color.BLACK);
 		bookPanel.add(resultadoPieFav);
-		 
 
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);

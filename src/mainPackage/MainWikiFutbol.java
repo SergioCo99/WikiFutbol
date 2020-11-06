@@ -19,6 +19,7 @@ public class MainWikiFutbol {
 		try {
 			logFeedback = new PrintStream(new FileOutputStream("FeedbackLog.log", true));
 		} catch (FileNotFoundException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 		// ->en esta misma clase
@@ -39,6 +40,7 @@ public class MainWikiFutbol {
 			loggerBD.addHandler(new FileHandler("BDLogger.log", true));
 			loggerGeneral.addHandler(new FileHandler("GeneralLogger.log", true));
 		} catch (SecurityException | IOException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 		// ->en esta misma clase
@@ -58,6 +60,7 @@ public class MainWikiFutbol {
 			File jdbcprop = new File("jdbc.properties");
 			jdbcprop.createNewFile();
 		} catch (IOException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 	}
