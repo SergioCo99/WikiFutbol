@@ -14,7 +14,7 @@ public class EstadisticaFeedback {
 	static double ans;
 
 	/**
-	 * Este método sirve para realidad una puntuacion media de los feedbacks que realizan los usuarios
+	 * Este método sirve para realizar una puntuacion media de los feedbacks que realizan los usuarios
 	 * 
 	 * @param a Puntuacion a
 	 * @param b Puntuacion b

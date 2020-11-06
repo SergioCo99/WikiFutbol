@@ -12,11 +12,20 @@ public class EstadisticaFeedbackTest {
 
 	static EstadisticaFeedback ef = new EstadisticaFeedback();
 
+	/**
+	 * Cre un nuevo EstadisticaFeedback 
+	 * 
+	 * @throws Exception En caso de error
+	 */
 	@BeforeClass
 	public static void setUp() throws Exception {
 		ef = new EstadisticaFeedback();
 	}
 
+	/**
+	 * Comprueba el método que sirve para realizar una puntuacion media de los feedbacks que realizan los usuarios
+	 * 
+	 */
 	@Test
 	public void testMediaPuntuacion() {
 		double a = 4;
@@ -32,6 +41,10 @@ public class EstadisticaFeedbackTest {
 		assertEquals(expected, actual, delta);
 	}
 
+	/**
+	 * Comprueba el método de la recomendación "si" o "no" que realizan los usuarios
+	 * 
+	 */
 	@Test
 	public void testSiNO() {
 		double a = 6;
@@ -54,6 +67,12 @@ public class EstadisticaFeedbackTest {
 		assertEquals(arr, EstadisticaFeedback.siNo(a, b, c));
 	}
 
+	/**
+	 * Comprueba el método que sirve para recibir y guardar el Feedback de los usuarios en un .log
+	 * Recibe y guarda la valoracion del usuario (del 1 al 5) y  la recomendacion (si o no)
+	 * Ademas, con esos datos realiza la media de valoracion y el porcentaje de si o no
+	 * 
+	 */
 	@Test
 	public void testReadAndLoad() {
 		try {

@@ -23,16 +23,31 @@ public class PropertiesMetodosTest {
 	String mail = "abc@gmail.com";
 	String password = "passw";
 
+	/**
+	 * Crea un nuevo PropertiesMetodos
+	 * 
+	 * @throws Exception En caso de error
+	 */
 	@BeforeClass
 	public static void setUp() throws Exception {
 		pm = new PropertiesMetodos();
 	}
 
+	
+	/**
+	 * Añade esos valores
+	 * 
+	 * @throws Exception En caso de fallo
+	 */
 	@After
 	public void rollBack() throws Exception {
 		utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
 	}
 
+	/**
+	 * Realiza un setter para añadir los valores a mail y password, y añadirlos en account.properties
+	 * 
+	 */
 	@Before
 	public void testSetProp() {
 		utils.PropertiesMetodos.setProp(mail, password);
@@ -61,6 +76,10 @@ public class PropertiesMetodosTest {
 		}
 	}
 
+	/**
+	 * Recibe el mail y lo compara con el esperado
+	 * 
+	 */
 	@Test
 	public void testGetProp1() {
 		String actual = utils.PropertiesMetodos.getProp1();
@@ -69,6 +88,9 @@ public class PropertiesMetodosTest {
 		assertEquals(expected, actual);
 	}
 
+	/**
+	 * Recibe la contrasena y la compara con la esperada
+	 */
 	@Test
 	public void testGetProp2() {
 		String actual = utils.PropertiesMetodos.getProp2();
@@ -77,6 +99,9 @@ public class PropertiesMetodosTest {
 		assertEquals(expected, actual);
 	}
 
+	/**
+	 * Pueba el archivo jdbc.properties donde se recoge información sobre la BD
+	 */
 	@Test
 	public void testLoadPropertiesFile() {
 		BufferedReader reader;
@@ -109,7 +134,7 @@ public class PropertiesMetodosTest {
 
 			line = reader.readLine();
 			assertEquals(
-					"# en DB.TABLASEXCLUIDA las tablas se diferencian entre comas y todo JUNTO (p.e.:usuario,jugador,club), �SI LO CAMBIAS REVISA QUE FUNCIONA en VentanaDescargar!",
+					"# en DB.TABLASEXCLUIDA las tablas se diferencian entre comas y todo JUNTO (p.e.:usuario,jugador,club), �SI LO CAMBIAS REVISA QUE FUNCIONA en VentanaDescargar!",
 					line);
 
 			line = reader.readLine();
