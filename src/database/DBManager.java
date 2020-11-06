@@ -1633,9 +1633,12 @@ public class DBManager {
 	}
 
 	/**
-	 * @param tabla
-	 * @return
-	 * @throws DBManagerException
+	 * Este método vuelca los datos de cualquier tabla de la BD a un array 2D
+	 * El objetivo es rellenar una JTable
+	 * 
+	 * @param tabla La tabla que queremos volcar los datos
+	 * @return Rellenar JTable
+	 * @throws DBManagerException En caso de fallo
 	 */
 	public static Object[][] data(String tabla) throws DBManagerException {
 		connect();
