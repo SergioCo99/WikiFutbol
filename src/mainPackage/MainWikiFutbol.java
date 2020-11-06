@@ -17,7 +17,7 @@ public class MainWikiFutbol {
 
 	/**
 	 * Método para poder crear ficheros log, en nuestro caso el de FeedbackLog.log
-	 * 
+	 *
 	 */
 	public static void crearFicheroLog() {
 		try {
@@ -38,7 +38,7 @@ public class MainWikiFutbol {
 
 	/**
 	 * Método para crear ficheros logger
-	 * 
+	 *
 	 */
 	public static void crearFicheroLogger() {
 		// FINEST / FINER / FINE / CONFIG / INFO / WARNING / SEVERE
@@ -60,10 +60,9 @@ public class MainWikiFutbol {
 		// mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 	}
 
-
 	/**
-	 * Método para crear nuestros archivos:
-	 * account.properties (con informacion del usuario) y jdbc.properties (con informacion de la BD)
+	 * Método para crear nuestros archivos: account.properties (con informacion del
+	 * usuario) y jdbc.properties (con informacion de la BD)
 	 */
 	public static void crearFicherosProperties() {
 		try {

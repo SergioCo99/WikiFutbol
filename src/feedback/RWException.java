@@ -9,9 +9,10 @@ public class RWException extends Exception {
 
 	/**
 	 * Nos lanza un mensaje en caso de excepcion
-	 * 
+	 *
 	 * @param mensaje Mensaje en caso de excepcion
-	 * @param e La clase Throwable representa a todas las excepciones que pueden ocurrir en el programa
+	 * @param e       La clase Throwable representa a todas las excepciones que
+	 *                pueden ocurrir en el programa
 	 */
 	public RWException(String mensaje, Throwable e) {
 		super(mensaje, e);

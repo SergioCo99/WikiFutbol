@@ -22,7 +22,7 @@ public class AdvancedDb2CsvExporter {
 
 	/**
 	 * Este método sirve para exportar tablas de la BD
-	 * 
+	 *
 	 * @param table Nombre de la tabla que queremos exportar
 	 * @throws Exception En caso de error
 	 */
@@ -93,7 +93,7 @@ public class AdvancedDb2CsvExporter {
 
 	/**
 	 * Este método devuelve el nombre del archivo en "String" con la fecha y hora
-	 * 
+	 *
 	 * @param baseName
 	 * @return nombre del archivo en String
 	 */
@@ -105,10 +105,10 @@ public class AdvancedDb2CsvExporter {
 
 	/**
 	 * Este método sirve para escibir los nombres de las columnas en el .csv
-	 * 
+	 *
 	 * @return Numero de columnas, para usar en otros métodos
 	 * @throws SQLException En caso de error
-	 * @throws IOException En caso de error
+	 * @throws IOException  En caso de error
 	 */
 	private static int writeHeaderLine(ResultSet result) throws SQLException, IOException {
 		// write header line containing column names
@@ -129,7 +129,7 @@ public class AdvancedDb2CsvExporter {
 
 	/**
 	 * Sirve para sustituir el contenido de un String por el de otro String
-	 * 
+	 *
 	 * @param value Contenido que queremos añadir
 	 * @return Devuelve el cambio de contenido
 	 */
@@ -139,7 +139,7 @@ public class AdvancedDb2CsvExporter {
 
 	/**
 	 * Este método sirve para exportar en un archivo csv tablas de la base de datos
-	 * 
+	 *
 	 * @param table Nombre de la tabla a exportar
 	 * @throws DBManagerException En caso de error
 	 */

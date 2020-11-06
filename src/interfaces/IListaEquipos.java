@@ -13,12 +13,12 @@ import javax.swing.ListSelectionModel;
 import clases.Club;
 
 public interface IListaEquipos {
-	
+
 	/**
 	 * Sirve para mostrar la lista de equipos en la VentanaPrincipal
-	 * 
+	 *
 	 * @param bookPanel Ubicación de la lista de Equipos
-	 * @param a ArrayList de los clubes
+	 * @param a         ArrayList de los clubes
 	 */
 	public static void cargarLista(JList<String> bookPanel, ArrayList<Club> a) {
 

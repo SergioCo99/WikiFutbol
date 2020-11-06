@@ -47,7 +47,7 @@ public class DBManagerTest {
 	static Jugador j = new Jugador(1, "Alex Berenguer", "1993-10-01", "Athletic Club", "Bilbao", Posicion.Delantero, 8,
 			0, 182, 81, PieFav.Diestro, 84, "Jugador con desborde", 1);
 
-	// private static Connection conn;
+	private static Connection conn;
 	private static Statement stmt = null;
 	private static PreparedStatement preparedstmt = null;
 
@@ -92,8 +92,10 @@ public class DBManagerTest {
 	@Test
 	public void testExisteCorreo() throws DBManagerException {
 		String correo_usuario = u.getCorreo();
-
 		assertTrue(DBManager.existeCorreo(correo_usuario));
+
+		String correoInventado = "xxxxx@gmail.com";
+		assertFalse(DBManager.existeCorreo(correoInventado));
 	}
 
 	/**
@@ -143,17 +145,36 @@ public class DBManagerTest {
 	 * admin o como usuario normal
 	 *
 	 * @throws DBManagerException
+	 * @throws SQLException
 	 */
 	@Test
-	public void testCambiarAdmin() throws DBManagerException {
+	public void testCambiarAdmin() throws DBManagerException, SQLException {
 		String correo_usuario = u.getCorreo();
 		int nuevoValor_admin_usuario = 1;
+
+		Connection conn = DBManager.connect();
+		ResultSet rs = null;
+
+		String sql = "select admin_usuario from usuario where correo_usuario = ?";
+		preparedstmt = conn.prepareStatement(sql);
+		preparedstmt.setString(1, u.getCorreo());
+		rs = preparedstmt.executeQuery();
+		rs.next();
+		assertEquals(rs.getInt("admin_usuario"), u.getAdmin());
+		assertEquals(rs.getInt("admin_usuario"), 0);
 
 		if ((nuevoValor_admin_usuario != 1) && (nuevoValor_admin_usuario != 0)) {
 			fail("Tiene que ser 0 o 1");
 		}
 
 		DBManager.cambiarAdmin(correo_usuario, nuevoValor_admin_usuario);
+
+		String sql2 = "select admin_usuario from usuario where correo_usuario = ?";
+		preparedstmt = conn.prepareStatement(sql2);
+		preparedstmt.setString(1, u.getCorreo());
+		rs = preparedstmt.executeQuery();
+		rs.next();
+		assertEquals(rs.getInt("admin_usuario"), 1);
 	}
 
 	/**
@@ -1065,7 +1086,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba la opcion de cambiar datos desde la JTable que tiene el
 	 * administrador, luego restaura el valor
-	 * 
+	 *
 	 * @throws DBManagerException
 	 * @throws SQLException
 	 */

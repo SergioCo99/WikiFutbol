@@ -33,8 +33,8 @@ public class JLabelGraficoAjustado extends JLabel {
 	protected BufferedImage imagenLogoWiki;
 
 	/**
-	 * Crea un nuevo JLabel grafico.
-	 * Si no existe el fichero de imagen, se crea una imagen negra
+	 * Crea un nuevo JLabel grafico. Si no existe el fichero de imagen, se crea una
+	 * imagen negra
 	 *
 	 * @param nombreimagenLogoWiki Nombre fichero donde esta la imagen del objeto.
 	 *                             Puede ser tambien un nombre de recurso desde el
@@ -70,11 +70,11 @@ public class JLabelGraficoAjustado extends JLabel {
 	}
 
 	/**
-	 * Este  método cambia la imagen del objeto
+	 * Este método cambia la imagen del objeto
 	 *
-	 * @param nomImagenLogo   Nombre fichero donde está la imagen del objeto. Puede
-	 *                        ser también un nombre de recurso desde el paquete de
-	 *                        esta clase.
+	 * @param nomImagenLogo Nombre fichero donde está la imagen del objeto. Puede
+	 *                      ser también un nombre de recurso desde el paquete de
+	 *                      esta clase.
 	 */
 	public void setImagen(String nomImagenLogo) {
 		File futbolFile = new File(nomImagenLogo);

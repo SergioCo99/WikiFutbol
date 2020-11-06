@@ -4,10 +4,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class FileChooser {
-	
+
 	/**
 	 * Este método sirve para seleccionar distintos tipos de archivos
-	 * 
+	 *
 	 * @return El archivo seleccionado
 	 */
 	public static String Choose() {

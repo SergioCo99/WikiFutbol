@@ -25,7 +25,7 @@ public class PropertiesMetodosTest {
 
 	/**
 	 * Crea un nuevo PropertiesMetodos
-	 * 
+	 *
 	 * @throws Exception En caso de error
 	 */
 	@BeforeClass
@@ -33,10 +33,9 @@ public class PropertiesMetodosTest {
 		pm = new PropertiesMetodos();
 	}
 
-	
 	/**
 	 * Añade esos valores
-	 * 
+	 *
 	 * @throws Exception En caso de fallo
 	 */
 	@After
@@ -45,8 +44,9 @@ public class PropertiesMetodosTest {
 	}
 
 	/**
-	 * Realiza un setter para añadir los valores a mail y password, y añadirlos en account.properties
-	 * 
+	 * Realiza un setter para añadir los valores a mail y password, y añadirlos en
+	 * account.properties
+	 *
 	 */
 	@Before
 	public void testSetProp() {
@@ -78,7 +78,7 @@ public class PropertiesMetodosTest {
 
 	/**
 	 * Recibe el mail y lo compara con el esperado
-	 * 
+	 *
 	 */
 	@Test
 	public void testGetProp1() {

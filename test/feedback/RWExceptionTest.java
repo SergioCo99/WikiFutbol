@@ -14,7 +14,7 @@ public class RWExceptionTest {
 
 	/**
 	 * Crea un nuevo RWException
-	 * 
+	 *
 	 * @throws Exception En caso de fallos
 	 */
 	@Before
@@ -24,7 +24,7 @@ public class RWExceptionTest {
 
 	/**
 	 * Prueba que nos lanza un mensaje en caso de execepcion y la causa
-	 * 
+	 *
 	 * @throws RWException En caso de fallo
 	 */
 	@Test(expected = RWException.class)

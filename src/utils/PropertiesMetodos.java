@@ -10,11 +10,10 @@ import java.util.logging.Level;
 
 public class PropertiesMetodos {
 
-	
 	/**
 	 * Es el setter del account.properties
-	 * 
-	 * @param mail Email del usuario
+	 *
+	 * @param mail     Email del usuario
 	 * @param password Contrasena del usuario
 	 */
 	public static void setProp(String mail, String password) {
@@ -35,7 +34,7 @@ public class PropertiesMetodos {
 
 	/**
 	 * Es el getter del correo del usuario del archivo account.properties
-	 * 
+	 *
 	 * @return Devuelve el correo del usuario
 	 */
 	public static String getProp1() {
@@ -55,7 +54,7 @@ public class PropertiesMetodos {
 
 	/**
 	 * Es el getter de la contrasena del usuario del archivo account.properties
-	 * 
+	 *
 	 * @return Devuelve la contrasena del usuario
 	 */
 	public static String getProp2() {
@@ -79,10 +78,10 @@ public class PropertiesMetodos {
 	 * prop.getProperty("DB.URL"); String USUARIO = prop.getProperty("DB.USUARIO");
 	 * String CONTRASENA = prop.getProperty("DB.CONTRASENA");
 	 */
-	
+
 	/**
 	 * Crea el archivo jdbc.properties donde se recoge información sobre la BD
-	 * 
+	 *
 	 * @return El archivo properties
 	 * @throws Exception En caso de error
 	 */

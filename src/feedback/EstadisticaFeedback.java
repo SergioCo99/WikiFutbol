@@ -14,8 +14,9 @@ public class EstadisticaFeedback {
 	static double ans;
 
 	/**
-	 * Este método sirve para realizar una puntuacion media de los feedbacks que realizan los usuarios
-	 * 
+	 * Este método sirve para realizar una puntuacion media de los feedbacks que
+	 * realizan los usuarios
+	 *
 	 * @param a Puntuacion a
 	 * @param b Puntuacion b
 	 * @return El valor de la puntuacion media
@@ -32,7 +33,7 @@ public class EstadisticaFeedback {
 
 	/**
 	 * Resultado de la recomendacion "si" o "no" que realizan los usuarios
-	 * 
+	 *
 	 * @param a Recomendacion Si
 	 * @param b Recomendacion No
 	 * @param c
@@ -57,11 +58,13 @@ public class EstadisticaFeedback {
 	}
 
 	/**
-	 * Este método sirve para recibir y guardar el Feedback de los usuarios en un .log
-	 * Recibe y guarda la valoracion del usuario (del 1 al 5) y  la recomendacion (si o no)
-	 * Ademas, con esos datos realiza la media de valoracion y el porcentaje de si o no
-	 * 
-	 * @return Array con los resultados de la media de valoracion y el porcentaje si o no
+	 * Este método sirve para recibir y guardar el Feedback de los usuarios en un
+	 * .log Recibe y guarda la valoracion del usuario (del 1 al 5) y la
+	 * recomendacion (si o no) Ademas, con esos datos realiza la media de valoracion
+	 * y el porcentaje de si o no
+	 *
+	 * @return Array con los resultados de la media de valoracion y el porcentaje si
+	 *         o no
 	 * @throws RWException En caso de error
 	 */
 	public static ArrayList<Double> ReadAndLoad() throws RWException {

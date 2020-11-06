@@ -21,7 +21,7 @@ public class AdvancedDb2CsvExporterTest {
 
 	/**
 	 * Crea una nuevo AdvancedDb2CsvExporter
-	 * 
+	 *
 	 * @throws Exception En caso de error
 	 */
 	@Before
@@ -31,7 +31,7 @@ public class AdvancedDb2CsvExporterTest {
 
 	/**
 	 * Prueba el método preparado para exportar tablas
-	 * 
+	 *
 	 */
 	@Test
 	public void testExport() {
@@ -65,8 +65,9 @@ public class AdvancedDb2CsvExporterTest {
 	}
 
 	/**
-	 * Prueba el método que sirve para exportar en un archivo csv tablas de la base de datos
-	 * 
+	 * Prueba el método que sirve para exportar en un archivo csv tablas de la base
+	 * de datos
+	 *
 	 */
 	@Test
 	public void classesExport() {
