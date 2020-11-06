@@ -479,24 +479,10 @@ public class DBManagerTest {
 		rs = preparedstmt.executeQuery();
 		rs.next();
 		assertEquals(1, rs.getInt("count(usuario_usuarioVotacion)"));
-		DBManager.disconnect();
-	}
 
-	/**
-	 * Restaura los votos despues de la eliminacion (que ocurre en @after) del
-	 * usuario de prueba para los test
-	 * 
-	 * Cierra conexion por si se ha dejado abierto en algun test
-	 *
-	 * @throws DBManagerException
-	 */
-	@After
-	public void testRestaurarVotos() throws DBManagerException {
-		int x;
-		// quitar este comentario, y quitar las dos barras "//" al de abajo pero DEJAR
-		// el metodo!!!
-		// DBManager.actualizarVotos();
-		// DBManager.disconnect();
+		DBManager.actualizarVotos();
+
+		DBManager.disconnect();
 	}
 
 	/*
