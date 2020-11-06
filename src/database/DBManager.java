@@ -34,6 +34,11 @@ public class DBManager {
 	private static Statement stmt = null;
 	private static PreparedStatement preparedstmt = null;
 
+	/**
+	 * Método para conectar con la BD
+	 * @return Devuelve la conexión con la BD
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static Connection connect() throws DBManagerException {
 		try {
 			Properties prop = utils.PropertiesMetodos.loadPropertiesFile();
@@ -51,6 +56,10 @@ public class DBManager {
 		return conn;
 	}
 
+	/**
+	 * Método para desconectar con la BD
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static void disconnect() throws DBManagerException {
 		try {
 			conn.close();
@@ -61,6 +70,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Método para comprobar si un correo ya esta en la BD o no
+	 * 
+	 * @param correo_usuario Correo a comprobar su existencia
+	 * @return Devuelve true en caso de existir el correo y false en caso de no existir
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static boolean existeCorreo(String correo_usuario) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -92,6 +108,15 @@ public class DBManager {
 		return false;
 	}
 
+	/**
+	 * Método para registrar un usuario en la base de datos
+	 * 
+	 * @param nombre_usuario Nombre con el que el usuario se quiere registrar
+	 * @param correo_usuario Correo con el que el usuario se quiere registrar
+	 * @param contrasena_usuario Contrasena que el usuario se quiere registrar
+	 * @param fechaNac_usuario Fecha de nacimiento del usuario
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static void registrarUsuario(String nombre_usuario, String correo_usuario, String contrasena_usuario,
 			String fechaNac_usuario) throws DBManagerException {
 		connect();
@@ -116,6 +141,14 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Método para realizar un login correcto para entrar a la aplicación
+	 * 
+	 * @param correo_usuario Correo del usuario
+	 * @param contrasena_usuario Contrasena del usuario
+	 * @return Verifica que la contrasena es correcta
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static boolean login(String correo_usuario, String contrasena_usuario) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -146,6 +179,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Método que te devuelve si un usuario es admin o no
+	 * 
+	 * @param correo_usuario Correo del usuario
+	 * @return True en caso de ser admin. False en caso de no ser admin
+	 * @throws DBManagerException En caso de existir algun problema
+	 */
 	public static boolean esAdmin(String correo_usuario) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
