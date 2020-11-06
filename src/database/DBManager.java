@@ -715,7 +715,7 @@ public class DBManager {
 
 
 	
-	/**  Metodo para recivir los jugadores mas votados.
+	/**  Metodo para recibir los jugadores mas votados.
 	 * @param posicion - Posicion del jugador.
 	 * @param limit - 
 	 * @param i - Indica si el jugador es votado o no.
@@ -1632,6 +1632,11 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * @param tabla
+	 * @return
+	 * @throws DBManagerException
+	 */
 	public static Object[][] data(String tabla) throws DBManagerException {
 		connect();
 		ResultSet rs1 = null;

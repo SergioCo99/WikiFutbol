@@ -7,6 +7,10 @@ import org.junit.Test;
 
 public class VentanaPrincipalTest {
 
+	/**
+	 * Comprueba si el usuario es admin o no lo es
+	 * 
+	 */
 	@Test
 	public void testPrivilegiosAdmin() {
 
