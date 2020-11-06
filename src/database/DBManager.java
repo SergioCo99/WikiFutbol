@@ -604,6 +604,12 @@ public class DBManager {
 	}
 
 	
+	/** Metodo que cuenta los votos que recive cada jugador 
+	 * @param i - Número de votos de un jugador 
+	 * @param jugadorVotado_usuarioVotacion - Jugador el cual es votado por un usuario
+	 * @return Devuelve todo slos votos recividos
+	 * @throws DBManagerException
+	 */
 	private static int contarVotosPorJugador(int i, String jugadorVotado_usuarioVotacion) throws DBManagerException {
 		ResultSet rs = null;
 		try {
@@ -709,6 +715,13 @@ public class DBManager {
 
 
 	
+	/**  Metodo para recivir los jugadores mas votados.
+	 * @param posicion - Posicion del jugador.
+	 * @param limit - 
+	 * @param i - Indica si el jugador es votado o no.
+	 * @return Devuelve el id del jugador mas votado
+	 * @throws DBManagerException
+	 */
 	private static int getMasVotados(String posicion, int limit, int i) throws DBManagerException {
 		ResultSet rs = null;
 		try {
@@ -741,6 +754,11 @@ public class DBManager {
 		}
 	}
 
+	/** Metodo que recive los juagadores mas votados para hacer un equipo
+	 * @return arr - Devuelve un arraylist del id de los tres delantero, 
+	 * los tres centrocampistas, los tres defensas y el portero mas votado.
+	 * @throws DBManagerException
+	 */
 	public static ArrayList<Integer> toft() throws DBManagerException {
 		connect();
 		try {
@@ -1543,6 +1561,10 @@ public class DBManager {
 		}
 	}
 
+	/** Metodo que recoge el id y el correo del usuario que ha hecho la votacion 
+	 * @return Devuelve un array de los usuarios que han votado
+	 * @throws DBManagerException
+	 */
 	public static ArrayList<UsuarioVotacion> getUsuarioVotaciones() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -1577,6 +1599,11 @@ public class DBManager {
 	// HASTA AQUI getClasesBasicas
 
 	// CAMBIAR DATOS
+	/** Metodo para ver las columnas de las tablas 
+	 * @param tabla - El nombre de la tabla
+	 * @return arr - Array de los nombres de las columnas
+	 * @throws DBManagerException
+	 */
 	public static ArrayList<String> verColumnas(String tabla) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -1755,6 +1782,11 @@ public class DBManager {
 		}
 	}
 
+	/** Recoge el numero de filas de una tabla
+	 * @param tabla - Tabla de la cual queremos recoger la informacion
+	 * @return Devuelve el numero de filas de una tabla 
+	 * @throws DBManagerException
+	 */
 	public static int numeroDeFilasEnUnaTabla(String tabla) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
