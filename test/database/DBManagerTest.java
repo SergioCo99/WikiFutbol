@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -295,10 +294,27 @@ public class DBManagerTest {
 	 * Comprueba opción de Votar a los jugadores, que la tienen disponible los
 	 * usuarios
 	 * 
+	 * Comprueba que se actualizan los votos en la BD
+	 * 
+	 * 0. Se obtienen los id de un usuario y de los jugadores a votar, se crea un
+	 * arraylist con el id de los jugadores para poder hacer un loop y acortar el
+	 * codigo, y se llama al metodo de actulizarVotos para que los votos a cada
+	 * jugador esten acorde a lo votado por los usuarios
+	 * 
 	 * 1. verifica que el usuario u no ha votado (no ha podido votar, es un usuario
 	 * de prueba que hemos creado en los test)
 	 * 
+	 * 1.2 se almacenan en memoria los votos que tienen cada uno de los 5 jugadores
+	 * que tenemos para usar como ejemplo
+	 * 
 	 * 2. vota
+	 * 
+	 * 2.1 actualiza los votos que tiene cada jugador (esto se guarda en la columna
+	 * votos de la tabla jugador)
+	 * 
+	 * 2.2 se verifica que la cantidad de votos que tenia cada jugador, n votos, ha
+	 * aumentado y ahora es n+1, esto sucede en todos menos en el portero2 que es
+	 * n+0 por no haber sido votado
 	 * 
 	 * 3. se verifica que en la BD se han guardado el id de usuario y de los
 	 * jugadores correctos
@@ -307,6 +323,13 @@ public class DBManagerTest {
 	 * del usuario u)
 	 * 
 	 * 5. vota, pero cambia el portero votado
+	 * 
+	 * 5.1 actualiza los votos que tiene cada jugador (esto se guarda en la columna
+	 * votos de la tabla jugador)
+	 * 
+	 * 5.2 se verifica que la cantidad de votos que tenia cada jugador al principio
+	 * ha aumentado en +1, pero que al haber cambiado de portero votado, el portero1
+	 * vuelve a tener n votos mientras que el portero2 tiene ahora n+1 votos
 	 * 
 	 * 6. se verifica que en la BD se han guardado el id de usuario y de los
 	 * jugadores correctos
@@ -318,27 +341,81 @@ public class DBManagerTest {
 	 * @throws SQLException
 	 */
 	@Test
-	public void testVotar() throws DBManagerException, SQLException {
+	public void testVotar_y_testActualizarVotos() throws DBManagerException, SQLException {
 		int usuario_usuarioVotacion = DBManager.getIdUsuario(u.getCorreo());
 		int delanteroVotado_usuarioVotacion = DBManager.getIdJugador("Iñaki Williams");
 		int centrocampistaVotado_usuarioVotacion = DBManager.getIdJugador("Raul Garcia");
 		int defensaVotado_usuarioVotacion = DBManager.getIdJugador("Iñigo Martinez");
-		int porteroVotado_usuarioVotacion = DBManager.getIdJugador("Unai Simon");
+		int porteroVotado_usuarioVotacion1 = DBManager.getIdJugador("Unai Simon");
 		int porteroVotado_usuarioVotacion2 = DBManager.getIdJugador("Iago Herrerin");
+
+		ArrayList<Integer> jugadores = new ArrayList<Integer>();
+		jugadores.add(delanteroVotado_usuarioVotacion);
+		jugadores.add(centrocampistaVotado_usuarioVotacion);
+		jugadores.add(defensaVotado_usuarioVotacion);
+		jugadores.add(porteroVotado_usuarioVotacion1);
+		jugadores.add(porteroVotado_usuarioVotacion2);
+
+		int voto_delantero = 0;
+		int voto_centrocampista = 0;
+		int voto_defensa = 0;
+		int voto_portero = 0;
+		int voto_portero2 = 0;
 
 		Connection conn = DBManager.connect();
 		ResultSet rs = null;
+
+		DBManager.actualizarVotos();
 
 		String sql1 = "select count(usuario_usuarioVotacion) from usuariovotacion where usuario_usuarioVotacion = ?";
 		preparedstmt = conn.prepareStatement(sql1);
 		preparedstmt.setInt(1, usuario_usuarioVotacion);
 		rs = preparedstmt.executeQuery();
 		rs.next();
-		System.out.println("1c " + rs.getInt("count(usuario_usuarioVotacion)"));
 		assertEquals(0, rs.getInt("count(usuario_usuarioVotacion)"));
 
+		for (Integer jugador : jugadores) {
+			String sql12 = "select voto_jugador from jugador where id_jugador = ?";
+			preparedstmt = conn.prepareStatement(sql12);
+			preparedstmt.setInt(1, jugador);
+			rs = preparedstmt.executeQuery();
+			rs.next();
+			if (jugador == delanteroVotado_usuarioVotacion) {
+				voto_delantero = rs.getInt("voto_jugador");
+			} else if (jugador == centrocampistaVotado_usuarioVotacion) {
+				voto_centrocampista = rs.getInt("voto_jugador");
+			} else if (jugador == defensaVotado_usuarioVotacion) {
+				voto_defensa = rs.getInt("voto_jugador");
+			} else if (jugador == porteroVotado_usuarioVotacion1) {
+				voto_portero = rs.getInt("voto_jugador");
+			} else if (jugador == porteroVotado_usuarioVotacion2) {
+				voto_portero2 = rs.getInt("voto_jugador");
+			}
+		}
+
 		DBManager.votar(usuario_usuarioVotacion, delanteroVotado_usuarioVotacion, centrocampistaVotado_usuarioVotacion,
-				defensaVotado_usuarioVotacion, porteroVotado_usuarioVotacion);
+				defensaVotado_usuarioVotacion, porteroVotado_usuarioVotacion1);
+
+		DBManager.actualizarVotos();
+
+		for (Integer jugador : jugadores) {
+			String sql12 = "select voto_jugador from jugador where id_jugador = ?";
+			preparedstmt = conn.prepareStatement(sql12);
+			preparedstmt.setInt(1, jugador);
+			rs = preparedstmt.executeQuery();
+			rs.next();
+			if (jugador == delanteroVotado_usuarioVotacion) {
+				assertEquals(voto_delantero + 1, rs.getInt("voto_jugador"));
+			} else if (jugador == centrocampistaVotado_usuarioVotacion) {
+				assertEquals(voto_centrocampista + 1, rs.getInt("voto_jugador"));
+			} else if (jugador == defensaVotado_usuarioVotacion) {
+				assertEquals(voto_defensa + 1, rs.getInt("voto_jugador"));
+			} else if (jugador == porteroVotado_usuarioVotacion1) {
+				assertEquals(voto_portero + 1, rs.getInt("voto_jugador"));
+			} else if (jugador == porteroVotado_usuarioVotacion2) {
+				assertEquals(voto_portero2 + 0, rs.getInt("voto_jugador"));
+			}
+		}
 
 		DBManager.connect();
 		String sql01 = "select * from usuariovotacion where usuario_usuarioVotacion = " + usuario_usuarioVotacion;
@@ -349,7 +426,7 @@ public class DBManagerTest {
 		assertEquals(rs.getInt("delanteroVotado_usuarioVotacion"), delanteroVotado_usuarioVotacion);
 		assertEquals(rs.getInt("centrocampistaVotado_usuarioVotacion"), centrocampistaVotado_usuarioVotacion);
 		assertEquals(rs.getInt("defensaVotado_usuarioVotacion"), defensaVotado_usuarioVotacion);
-		assertEquals(rs.getInt("porteroVotado_usuarioVotacion"), porteroVotado_usuarioVotacion);
+		assertEquals(rs.getInt("porteroVotado_usuarioVotacion"), porteroVotado_usuarioVotacion1);
 
 		DBManager.connect();
 		String sql2 = "select count(usuario_usuarioVotacion) from usuariovotacion where usuario_usuarioVotacion = ?";
@@ -357,11 +434,31 @@ public class DBManagerTest {
 		preparedstmt.setInt(1, usuario_usuarioVotacion);
 		rs = preparedstmt.executeQuery();
 		rs.next();
-		System.out.println("2c " + rs.getInt("count(usuario_usuarioVotacion)"));
 		assertEquals(1, rs.getInt("count(usuario_usuarioVotacion)"));
 
 		DBManager.votar(usuario_usuarioVotacion, delanteroVotado_usuarioVotacion, centrocampistaVotado_usuarioVotacion,
 				defensaVotado_usuarioVotacion, porteroVotado_usuarioVotacion2);
+
+		DBManager.actualizarVotos();
+
+		for (Integer jugador : jugadores) {
+			String sql12 = "select voto_jugador from jugador where id_jugador = ?";
+			preparedstmt = conn.prepareStatement(sql12);
+			preparedstmt.setInt(1, jugador);
+			rs = preparedstmt.executeQuery();
+			rs.next();
+			if (jugador == delanteroVotado_usuarioVotacion) {
+				assertEquals(voto_delantero + 1, rs.getInt("voto_jugador"));
+			} else if (jugador == centrocampistaVotado_usuarioVotacion) {
+				assertEquals(voto_centrocampista + 1, rs.getInt("voto_jugador"));
+			} else if (jugador == defensaVotado_usuarioVotacion) {
+				assertEquals(voto_defensa + 1, rs.getInt("voto_jugador"));
+			} else if (jugador == porteroVotado_usuarioVotacion1) {
+				assertEquals(voto_portero + 0, rs.getInt("voto_jugador"));
+			} else if (jugador == porteroVotado_usuarioVotacion2) {
+				assertEquals(voto_portero2 + 1, rs.getInt("voto_jugador"));
+			}
+		}
 
 		DBManager.connect();
 		String sql02 = "select * from usuariovotacion where usuario_usuarioVotacion = " + usuario_usuarioVotacion;
@@ -380,42 +477,33 @@ public class DBManagerTest {
 		preparedstmt.setInt(1, usuario_usuarioVotacion);
 		rs = preparedstmt.executeQuery();
 		rs.next();
-		System.out.println("3c " + rs.getInt("count(usuario_usuarioVotacion)"));
 		assertEquals(1, rs.getInt("count(usuario_usuarioVotacion)"));
 		DBManager.disconnect();
 	}
 
 	/*
-	 * @Test public void testContarJugadores() throws DBManagerException { // Contar
-	 * todos los jugadores es ilogico, ademas si hay nuevos jugadores cambia // el
-	 * numero. Lo dejo en *fail* para acordarnos de preguntarle que hacer
+	 * @Test public void testContarJugadores() throws DBManagerException {
 	 * 
-	 * // no tiene/necesita connect()
+	 * // private
 	 * 
-	 * fail(); }
+	 * }
 	 */
 
 	/*
-	 * @Test public void testContarVotosPorJugador() throws DBManagerException { //
-	 * no tiene/necesita connect()
+	 * @Test public void testContarVotosPorJugador() throws DBManagerException {
 	 * 
-	 * fail(); }
+	 * // private
+	 * 
+	 * }
 	 */
 
-	/**
-	 * Comprueba que se actualizan los votos en la BD
+	/*
+	 * @Test public void testActualizarVotos() throws DBManagerException {
 	 * 
-	 * @throws DBManagerException
+	 * // Arriba, con testVotar
+	 * 
+	 * }
 	 */
-	@Test
-	public void testActualizarVotos() throws DBManagerException {
-		/*
-		 * preguntarle como comprobar (test) que en una tabla han cambiado valores sin
-		 * tener que hacer metodos nuevos de BD
-		 */
-
-		fail();
-	}
 
 	/*
 	 * @Test public void testCountToft() throws DBManagerException { // no

@@ -510,6 +510,7 @@ public class DBManager {
 	}
 
 	public static void actualizarVotos() throws DBManagerException {
+		System.out.println("Inicio actualizarVotos, puede tardar un rato...");
 		connect();
 		try {
 			stmt = conn.createStatement();
@@ -551,6 +552,7 @@ public class DBManager {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
 			disconnect();
+			System.out.println("Fin de actualizarVotos.");
 		}
 	}
 	// HASTA AQUI CONTAR VOTOS
