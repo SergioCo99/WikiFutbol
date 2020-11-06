@@ -35,11 +35,11 @@ public class VentanaJugador extends JFrame {
 	String nombreJugador;
 	static Component frame;
 
-	public VentanaJugador(String jugador, Usuario u) throws DBManagerException {
-		init(jugador, u);
+	public VentanaJugador(String jugador, Club club, Usuario u) throws DBManagerException {
+		init(jugador, club, u);
 	}
 
-	public void init(String jugador, Usuario u) throws DBManagerException {
+	public void init(String jugador, Club club, Usuario u) throws DBManagerException {
 		nombreJugador = jugador.toString();
 		Jugador nombre = DBManager.getJugadorBd(nombreJugador);
 	
@@ -73,7 +73,15 @@ public class VentanaJugador extends JFrame {
 		btnAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VentanaEquipo v1 = null;
+				try {
+					v1 = new VentanaEquipo(club, u);
+				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+					e1.printStackTrace();
+				}
+				v1.setVisible(true);
+				dispose();
 
 			}
 		});

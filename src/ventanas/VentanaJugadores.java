@@ -221,7 +221,7 @@ public class VentanaJugadores extends JFrame {
 
 					ArrayList<String> jugador;
 					jugador = arrayResultado;
-					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
+					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), club, usuario);
 					ve.setVisible(true);
 					dispose();
 				} catch (Exception e1) {
