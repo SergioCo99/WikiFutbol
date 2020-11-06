@@ -12,7 +12,7 @@ public class FileChooserTest {
 	/**
 	 * Crea un nuevo FileChooser
 	 *
-	 * @throws Exception
+	 * @throws Exception En caso de fallo
 	 */
 	@Before
 	public void setUp() throws Exception {

@@ -9,7 +9,7 @@ public class ProgressBarWithTime extends JFrame {
 	static JProgressBar progress;
 
 	/**
-	 * @param int tiempos, cuanto menos pongas mas rapido carga la progressBar
+	 * @param tiempoms cuanto menos pongas mas rapido carga la progressBar
 	 */
 	public static void ProgressBarWithTimeCall(int tiempoms) {
 

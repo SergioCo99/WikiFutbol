@@ -38,7 +38,7 @@ public class DBManager {
 	 * Método para conectar con la BD
 	 *
 	 * @return Devuelve la conexión con la BD
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static Connection connect() throws DBManagerException {
 		try {
@@ -60,7 +60,7 @@ public class DBManager {
 	/**
 	 * Método para desconectar con la BD
 	 *
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static void disconnect() throws DBManagerException {
 		try {
@@ -78,7 +78,7 @@ public class DBManager {
 	 * @param correo_usuario Correo a comprobar su existencia
 	 * @return Devuelve true en caso de existir el correo y false en caso de no
 	 *         existir
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static boolean existeCorreo(String correo_usuario) throws DBManagerException {
 		connect();
@@ -118,7 +118,7 @@ public class DBManager {
 	 * @param correo_usuario     Correo con el que el usuario se quiere registrar
 	 * @param contrasena_usuario Contrasena que el usuario se quiere registrar
 	 * @param fechaNac_usuario   Fecha de nacimiento del usuario
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static void registrarUsuario(String nombre_usuario, String correo_usuario, String contrasena_usuario,
 			String fechaNac_usuario) throws DBManagerException {
@@ -150,7 +150,7 @@ public class DBManager {
 	 * @param correo_usuario     Correo del usuario
 	 * @param contrasena_usuario Contrasena del usuario
 	 * @return Verifica que la contrasena es correcta
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static boolean login(String correo_usuario, String contrasena_usuario) throws DBManagerException {
 		connect();
@@ -187,7 +187,7 @@ public class DBManager {
 	 *
 	 * @param correo_usuario Correo del usuario
 	 * @return True en caso de ser admin. False en caso de no ser admin
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static boolean esAdmin(String correo_usuario) throws DBManagerException {
 		connect();
@@ -224,7 +224,7 @@ public class DBManager {
 	 *
 	 * @param correo_usuario Correo del usuario
 	 * @param admin_usuario  1 o 0. Dependiendo del usuario
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static void cambiarAdmin(String correo_usuario, int admin_usuario) throws DBManagerException {
 		if ((admin_usuario == 1) || (admin_usuario == 0)) {
@@ -253,7 +253,7 @@ public class DBManager {
 	 * Método para eliminar a los usuarios de la BD
 	 *
 	 * @param correo_usuario Correo del usuario a eliminar
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static void eliminarUsuario(String correo_usuario) throws DBManagerException {
 		connect();
@@ -280,7 +280,7 @@ public class DBManager {
 	 *
 	 * @param correo_usuario     Correo del usuario
 	 * @param contrasena_usuario Contrasena del usuario
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static void cambiarContrasena(String correo_usuario, String contrasena_usuario) throws DBManagerException {
 		connect();
@@ -307,7 +307,7 @@ public class DBManager {
 	 * Método que permite ver las tablas de la BD
 	 *
 	 * @return Devuelve un array con el contenido
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static ArrayList<String> verTablas() throws DBManagerException {
 		connect();
@@ -341,7 +341,7 @@ public class DBManager {
 	 * Método que permite ver todos los correos registrados
 	 *
 	 * @return Devuelve un array con los correos
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static ArrayList<String> todosLosCorreos() throws DBManagerException {
 		connect();
@@ -384,7 +384,7 @@ public class DBManager {
 	 * @param valoracion_feedback    Valoracion añadida por el usuario
 	 * @param recomendacion_feedback Recomendacion añadida por el usuario
 	 * @param opinion_feedback       Opinion escrita por el usuario
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static void registrarFeedback(String correo_usuario, String valoracion_feedback,
 			String recomendacion_feedback, String opinion_feedback) throws DBManagerException {
@@ -423,7 +423,7 @@ public class DBManager {
 	 *
 	 * @param posicion_jugador Posicion en la que juega el futbolista
 	 * @return Array con los futbolistas de dicha posicion
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static ArrayList<String> getJugadoresPorPosicion(String posicion_jugador) throws DBManagerException {
 		connect();
@@ -463,7 +463,7 @@ public class DBManager {
 	 *
 	 * @param correo_usuario Correo del usuario
 	 * @return Id del usuario
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static int getIdUsuario(String correo_usuario) throws DBManagerException {
 		connect();
@@ -495,7 +495,7 @@ public class DBManager {
 	 *
 	 * @param nombre_jugador Nombre del jugador
 	 * @return Id del jugador
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static int getIdJugador(String nombre_jugador) throws DBManagerException {
 		connect();
@@ -531,7 +531,7 @@ public class DBManager {
 	 *                                             usuario
 	 * @param defensaVotado_usuarioVotacion        Defensa votado por el usuario
 	 * @param porteroVotado_usuarioVotacion        Portero votado por el usuario
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static void votar(int usuario_usuarioVotacion, int delanteroVotado_usuarioVotacion,
 			int centrocampistaVotado_usuarioVotacion, int defensaVotado_usuarioVotacion,
@@ -585,7 +585,7 @@ public class DBManager {
 	 * Cuenta los jugadores existentes en la tabla "jugador" de la BD
 	 *
 	 * @return Devuelve el numero con la cantidad de jugadores
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	private static int contarJugadores() throws DBManagerException {
 		ResultSet rs = null;
@@ -614,7 +614,7 @@ public class DBManager {
 	 * @param jugadorVotado_usuarioVotacion - Jugador el cual es votado por un
 	 *                                      usuario
 	 * @return Devuelve todo slos votos recividos
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	private static int contarVotosPorJugador(int i, String jugadorVotado_usuarioVotacion) throws DBManagerException {
 		ResultSet rs = null;
@@ -641,7 +641,7 @@ public class DBManager {
 	 * Método para actualizar los votos que reciben los jugadores, dependiendo de su
 	 * posicion
 	 *
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static void actualizarVotos() throws DBManagerException {
 		System.out.println("Inicio actualizarVotos, puede tardar un rato...");
@@ -697,7 +697,7 @@ public class DBManager {
 	 *
 	 * @param n Id
 	 * @return Numero de jugadores en la tabla teamoftheyear
-	 * @throws DBManagerException En caso de existir algun problema
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	private static int countTOFT(int n) throws DBManagerException {
 		ResultSet rs = null;
@@ -727,7 +727,7 @@ public class DBManager {
 	 * @param limit    -
 	 * @param i        - Indica si el jugador es votado o no.
 	 * @return Devuelve el id del jugador mas votado
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	private static int getMasVotados(String posicion, int limit, int i) throws DBManagerException {
 		ResultSet rs = null;
@@ -766,7 +766,7 @@ public class DBManager {
 	 *
 	 * @return arr - Devuelve un arraylist del id de los tres delantero, los tres
 	 *         centrocampistas, los tres defensas y el portero mas votado.
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	public static ArrayList<Integer> toft() throws DBManagerException {
 		connect();
@@ -803,7 +803,7 @@ public class DBManager {
 	 * Este metodo nos da el nombre de los jugadores TOFT
 	 *
 	 * @return Nos devuelve el nombre del jugador
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static ArrayList<String> toftNombres() throws DBManagerException {
 		connect();
@@ -838,7 +838,7 @@ public class DBManager {
 	 * Este metodo recopila todas las Ciudades guardadas
 	 *
 	 * @return Nos devulve las ciudades existentes en la base de datos
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static ArrayList<Ciudad> getCiudades() throws DBManagerException {
 		connect();
@@ -871,7 +871,7 @@ public class DBManager {
 	 * Este metodo recopila todos los Clubes guardados en la base de datos
 	 *
 	 * @return Devuelve el conjunto de libros en la BD en formato ArrayList
-	 * @throws DBManagerException En caso de existir algun problema de acceso a la
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema de acceso a la
 	 *                            BD
 	 */
 	public static ArrayList<Club> getClubes() throws DBManagerException {
@@ -907,7 +907,7 @@ public class DBManager {
 	 * Este metodo recopila todos los entrenadores guardados en la base de datos
 	 *
 	 * @return Devuelve el conjunto de Entrenadores en la BD en formato arrayList
-	 * @throws DBManagerException En caso de existir algun problema de acceso a la
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema de acceso a la
 	 *                            BD
 	 */
 	public static ArrayList<Entrenador> getEntrenadores() throws DBManagerException {
@@ -945,7 +945,7 @@ public class DBManager {
 	 * @param Entrenador El entrenador del que queremos saber el nombre
 	 * @param BD         La BD a utilizar
 	 * @return Nos devuelve el nombre del entrenador
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static String nombreEntrenador(String Entrenador, String BD) throws DBManagerException {
 		connect();
@@ -980,7 +980,7 @@ public class DBManager {
 	 * @param Entrenador Nombre del entrenador del que se desa el anyo de nacimiento
 	 * @param BD         Nombre de la base de datos a utilizar
 	 * @return Devuelve la fecha de nacimiento del entrenador
-	 * @throws DBManagerException En caso de existir algun problema de acceso a la
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema de acceso a la
 	 *                            BD
 	 */
 	public static String fechaNacimiento(String Entrenador, String BD) throws DBManagerException {
@@ -1016,7 +1016,7 @@ public class DBManager {
 	 * @param Entrenador Nombre del entrenador del que queremos saber el club
 	 * @param BD         Nombre de la BD a usar
 	 * @return Devuelve el nombre del equipo del entrenador
-	 * @throws DBManagerException En caso de existir algun problema de acceso a la
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema de acceso a la
 	 *                            BD
 	 */
 	public static String clubEntrenador(String Entrenador, String BD) throws DBManagerException {
@@ -1052,7 +1052,7 @@ public class DBManager {
 	 * @param Entrenador Nombre del entrenador del que queremos saber la ciudad
 	 * @param BD         Nombre de la BD a usar
 	 * @return Devuelve el nombre de la ciudad del entrenador
-	 * @throws DBManagerException En caso de existir algun problema de acceso a la
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema de acceso a la
 	 *                            BD
 	 */
 	public static String ciudadEntrenador(String Entrenador, String BD) throws DBManagerException {
@@ -1088,7 +1088,7 @@ public class DBManager {
 	 * @param Entrenador El entrenador del que queremos saber la formacion
 	 * @param BD         El nombre de la BD a usar
 	 * @return Devuelve la formacion
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static String formacionEntrenador(String Entrenador, String BD) throws DBManagerException {
 		connect();
@@ -1124,7 +1124,7 @@ public class DBManager {
 	 * @param Entrenador El entrenador del que queremos saber la mentalidad
 	 * @param BD         Nombre de la BD
 	 * @return Devuelve la mentalidad del entrenador
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static String mentalidadEntrenador(String Entrenador, String BD) throws DBManagerException {
 		connect();
@@ -1157,7 +1157,7 @@ public class DBManager {
 	 * Este metodo recopila todos los estadios existentes
 	 *
 	 * @return Devuelve el conjunto de estadios que tenemos en la BD
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static ArrayList<Estadio> getEstadios() throws DBManagerException {
 		connect();
@@ -1195,7 +1195,7 @@ public class DBManager {
 	 * @param Estadio El estadio del que queremos saber el nombre
 	 * @param BD      El nombre de la BD a utilizar
 	 * @return Devuelve el nombre del estadio
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static String nombreEstadio(String Estadio, String BD) throws DBManagerException {
 		connect();
@@ -1230,7 +1230,7 @@ public class DBManager {
 	 * @param Estadio El estadio del que queremos saber su aforo
 	 * @param BD      Nombre de la BD a usar
 	 * @return Nos devuelve el aforo del estadio
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static int aforoEstadio(String Estadio, String BD) throws DBManagerException {
 		connect();
@@ -1265,7 +1265,7 @@ public class DBManager {
 	 * @param Estadio El estadio del que queremos saber el anyo de construccion
 	 * @param BD      La BD a usar
 	 * @return Nos devuelve el aforo del estadio
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static int anyoEstadio(String Estadio, String BD) throws DBManagerException {
 		connect();
@@ -1301,7 +1301,7 @@ public class DBManager {
 	 * @param Estadio Nombre del estadio del que queremos saber la ciudad
 	 * @param BD      Nombre de la BD a utilizar
 	 * @return Devuelve el nombre de la ciudad en la que se encuentra el estadio
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	public static String ciudadEstadio(String Estadio, String BD) throws DBManagerException {
 		connect();
@@ -1334,7 +1334,7 @@ public class DBManager {
 	 * Este metodo recopila todos los "Feedbacks" existentes
 	 *
 	 * @return Devuelve el conjunto de "Feedbacks" de nuestra base de datos
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static ArrayList<Feedback> getFeedbacks() throws DBManagerException {
 		connect();
@@ -1368,7 +1368,7 @@ public class DBManager {
 	 * Este metodo recopila todos los jugadores guardados
 	 *
 	 * @return Devuelve el conjunto de jugadores existentes en nuestra base de datos
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static ArrayList<Jugador> getJugadores() throws DBManagerException {
 		connect();
@@ -1405,7 +1405,7 @@ public class DBManager {
 	 *
 	 * @param nombre_jugador Nombre del jugador en String
 	 * @return Nos devuelve al Jugador
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static Jugador getJugadorBd(String nombre_jugador) throws DBManagerException {
 		connect();
@@ -1442,7 +1442,7 @@ public class DBManager {
 	 * Este metodo recopila todos los paises existentes
 	 *
 	 * @return Devuelve el conjunto de paises que se encuentran en la base de datos
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static ArrayList<Pais> getPaises() throws DBManagerException {
 		connect();
@@ -1474,7 +1474,7 @@ public class DBManager {
 	 * Este método devuelve un Array con el Team of The Year
 	 *
 	 * @return Array con el Team of The Year
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static ArrayList<TeamOfTheYear_view> getTeamOfTheYear_view() throws DBManagerException {
 		connect();
@@ -1507,7 +1507,7 @@ public class DBManager {
 	 * Este metodo nos da los jugadores que pertenecen al Team Of The Year
 	 *
 	 * @return Nos devuelve los jugadores pertenecientes al Team Of The Year
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static ArrayList<TeamOfTheYear> getTeamOfTheYear() throws DBManagerException {
 		connect();
@@ -1540,7 +1540,7 @@ public class DBManager {
 	 * Este metodo recopila los usuarios existentes
 	 *
 	 * @return Devuelve el conjunto de usuarios de la base de datos
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static ArrayList<Usuario> getUsuarios() throws DBManagerException {
 		connect();
@@ -1574,7 +1574,7 @@ public class DBManager {
 	 * Metodo que recoge el id y el correo del usuario que ha hecho la votacion
 	 *
 	 * @return Devuelve un array de los usuarios que han votado
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	public static ArrayList<UsuarioVotacion> getUsuarioVotaciones() throws DBManagerException {
 		connect();
@@ -1615,7 +1615,7 @@ public class DBManager {
 	 *
 	 * @param tabla - El nombre de la tabla
 	 * @return arr - Array de los nombres de las columnas
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	public static ArrayList<String> verColumnas(String tabla) throws DBManagerException {
 		connect();
@@ -1651,7 +1651,7 @@ public class DBManager {
 	 *
 	 * @param tabla La tabla que queremos volcar los datos
 	 * @return Rellenar JTable
-	 * @throws DBManagerException En caso de fallo
+	 * @throws DBManagerException En caso de fallo En caso de fallo
 	 */
 	public static Object[][] data(String tabla) throws DBManagerException {
 		connect();
@@ -1710,7 +1710,7 @@ public class DBManager {
 	 * Este metodo nos permite cambiar los datos de la BD
 	 *
 	 * @param consulta La consulta SQL con la que modificaremos la BD
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	// ???
 	public static void cambiarDatos(String consulta) throws DBManagerException {
@@ -1738,8 +1738,8 @@ public class DBManager {
 	 * @param tabla   La tabla de la BD en la que queremos realizar la modificacion
 	 * @param columna La columna de la tabla anteriormente definida
 	 * @param valor   El nuevo valor que queremos que obtenga ese campo en concreto
-	 * @param id
-	 * @throws DBManagerException Si hay algun problema de acceso a la base de datos
+	 * @param id 		Id
+	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a la base de datos
 	 */
 	public static void cambiarDatosDesdeJTable(String tabla, String columna, Object valor, int id)
 			throws DBManagerException {
@@ -1768,7 +1768,7 @@ public class DBManager {
 	 *
 	 * @param nombre_club Nombre del equipo del que queremos saber los jugadores
 	 * @return Nos devuelve los jugadores que estan en ese equipo
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	public static ArrayList<String> getJugadoresPorEquipo(String nombre_club) throws DBManagerException {
 		connect();
@@ -1808,7 +1808,7 @@ public class DBManager {
 	 *
 	 * @param tabla - Tabla de la cual queremos recoger la informacion
 	 * @return Devuelve el numero de filas de una tabla
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	public static int numeroDeFilasEnUnaTabla(String tabla) throws DBManagerException {
 		connect();

@@ -167,8 +167,8 @@ public class VentanaRegistro extends JFrame {
 					txtPassword.setEchoChar((char) 0);
 					txtPasswordRep.setEchoChar((char) 0);
 				} else {
-					txtPassword.setEchoChar('•');
-					txtPasswordRep.setEchoChar('•');
+					//txtPassword.setEchoChar('•');
+					//txtPasswordRep.setEchoChar('•');
 				}
 			}
 		});

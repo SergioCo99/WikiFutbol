@@ -15,7 +15,7 @@ public class MainWikiFutbolTest {
 	/**
 	 * Crea un nuevo MainWikiFutbol
 	 *
-	 * @throws Exception
+	 * @throws Exception En caso de fallo
 	 */
 	@Before
 	public void setUp() throws Exception {

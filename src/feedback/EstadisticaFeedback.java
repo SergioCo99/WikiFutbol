@@ -36,7 +36,7 @@ public class EstadisticaFeedback {
 	 *
 	 * @param a Recomendacion Si
 	 * @param b Recomendacion No
-	 * @param c
+	 * @param c c
 	 * @return Devuelve el array con los resultado de las recomendaciones
 	 */
 	public static ArrayList<Double> siNo(double a, double b, double c) {

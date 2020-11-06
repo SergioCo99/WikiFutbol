@@ -10,7 +10,7 @@ public class MailSinFicheroTest {
 	/**
 	 * Crea un nuevo MailSinFichero
 	 *
-	 * @throws Exception
+	 * @throws Exception En caso de fallo
 	 */
 	@Before
 	public void setUp() throws Exception {

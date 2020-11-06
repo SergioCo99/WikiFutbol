@@ -36,7 +36,7 @@ public class JLabelGraficoAjustado extends JLabel {
 	 * Crea un nuevo JLabel grafico. Si no existe el fichero de imagen, se crea una
 	 * imagen negra
 	 *
-	 * @param nombreimagenLogoWiki Nombre fichero donde esta la imagen del objeto.
+	 * @param nombreImagenLogoWiki Nombre fichero donde esta la imagen del objeto.
 	 *                             Puede ser tambien un nombre de recurso desde el
 	 *                             paquete de esta clase.
 	 * @param anchura              Anchura del grafico en pixels

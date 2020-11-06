@@ -67,7 +67,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba si se puede conectar al servidor
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@BeforeClass
 	public static void testConnect() throws DBManagerException {
@@ -77,7 +77,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba si se puede desconectar del servidor
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@BeforeClass
 	public static void testDisconnect() throws DBManagerException {
@@ -87,7 +87,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba si el correo insertado existe o no
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testExisteCorreo() throws DBManagerException {
@@ -101,7 +101,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba si se puede registrar un usuario nuevo
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Before
 	public void testRegistrarUsuario() throws DBManagerException {
@@ -116,7 +116,7 @@ public class DBManagerTest {
 	/**
 	 * Test que comprueba el correcto funcionamiento del método login
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testLogin() throws DBManagerException {
@@ -129,7 +129,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba si el usuario tiene los permisos de Admin o no
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testEsAdmin() throws DBManagerException {
@@ -144,8 +144,8 @@ public class DBManagerTest {
 	 * Comprueba si funciona el método que nos permite cambiar a un usuario como
 	 * admin o como usuario normal
 	 *
-	 * @throws DBManagerException
-	 * @throws SQLException
+	 * @throws DBManagerException En caso de fallo
+	 * @throws SQLException En caso de fallo En caso de fallo
 	 */
 	@Test
 	public void testCambiarAdmin() throws DBManagerException, SQLException {
@@ -180,7 +180,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba si se pueden eliminar los usuarios
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@After
 	public void testEliminarUsuario() throws DBManagerException {
@@ -192,7 +192,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba si se puede cambiar la contrasena de los usuarios
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testCambiarContrasena() throws DBManagerException {
@@ -206,7 +206,7 @@ public class DBManagerTest {
 	 * Comprueba si se devuelve un arraylist de strings con el nombre de todas las
 	 * tablas de la base de datos
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testVerTablas() throws DBManagerException {
@@ -232,7 +232,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * correos de la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testTodosLosCorreos() throws DBManagerException {
@@ -246,7 +246,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba si funciona la opción de añadir Feedback en la aplicación
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testRegistrarFeedback() throws DBManagerException {
@@ -263,7 +263,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * jugadores de la BD, teniendo en cuenta su posición
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetJugadoresPorPosicion() throws DBManagerException {
@@ -286,7 +286,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve el ID de un
 	 * usuario especifico que se encuentran en la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetIdUsuario() throws DBManagerException {
@@ -301,7 +301,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve el ID de un
 	 * jugador especifico que se encuentran en la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetIdJugador() throws DBManagerException {
@@ -359,8 +359,8 @@ public class DBManagerTest {
 	 * 7. verifica que aun habiendo votado 2 veces, solo se guarda la ultima
 	 * votacion del usuario u
 	 *
-	 * @throws DBManagerException
-	 * @throws SQLException
+	 * @throws DBManagerException En caso de fallo
+	 * @throws SQLException En caso de fallo En caso de fallo
 	 */
 	@Test
 	public void testVotar_y_testActualizarVotos() throws DBManagerException, SQLException {
@@ -551,8 +551,8 @@ public class DBManagerTest {
 	 *
 	 * Devuelve un arraylist con los nombres de los 11 jugadores del toft
 	 *
-	 * @throws DBManagerException
-	 * @throws SQLException
+	 * @throws DBManagerException En caso de fallo
+	 * @throws SQLException En caso de fallo En caso de fallo
 	 */
 	@Test
 	public void testToft_y_testToftNombres() throws DBManagerException, SQLException {
@@ -618,7 +618,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todas las
 	 * ciudades que se encuentran en la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetCiudades() throws DBManagerException {
@@ -633,7 +633,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * clubes que se encuentran en la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetClubes() throws DBManagerException {
@@ -649,7 +649,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * entrenadores que se encuentran en la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetEntrenadores() throws DBManagerException {
@@ -666,7 +666,7 @@ public class DBManagerTest {
 	/**
 	 * Devuelve el nombre del entrenador
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testNombreEntrenador() throws DBManagerException {
@@ -676,7 +676,7 @@ public class DBManagerTest {
 	/**
 	 * Devuelve la fecha de nacimiento del entrenador
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testFechaNacimiento() throws DBManagerException {
@@ -686,7 +686,7 @@ public class DBManagerTest {
 	/**
 	 * Devuelve el club al cual pertenece el entrenador
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testClubEntrenador() throws DBManagerException {
@@ -696,7 +696,7 @@ public class DBManagerTest {
 	/**
 	 * Devuelve la ciudad del entrenador
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testCiudadEntrenador() throws DBManagerException {
@@ -706,7 +706,7 @@ public class DBManagerTest {
 	/**
 	 * Devuelve la formacion del entrenador
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testFormacionEntrenador() throws DBManagerException {
@@ -716,7 +716,7 @@ public class DBManagerTest {
 	/**
 	 * Devuelve la mentalidad del entrenador
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testMentalidadEntrenador() throws DBManagerException {
@@ -728,7 +728,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * estadios que se encuentran en la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetEstadios() throws DBManagerException {
@@ -744,7 +744,7 @@ public class DBManagerTest {
 	/**
 	 * Devuelve el nombre del estadio
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testNombreEstadio() throws DBManagerException {
@@ -754,7 +754,7 @@ public class DBManagerTest {
 	/**
 	 * Devuelve el aforo del estadio
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testAforoEstadio() throws DBManagerException {
@@ -764,7 +764,7 @@ public class DBManagerTest {
 	/**
 	 * Devuelve el anyo que el estadio fue construido
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testAnyoEstadio() throws DBManagerException {
@@ -774,7 +774,7 @@ public class DBManagerTest {
 	/**
 	 * Devuelve la ciudad donde se encuentra el estadio
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testCiudadEstadio() throws DBManagerException {
@@ -786,7 +786,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * Feedbacks que se encuentran en la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetFeedbacks() throws DBManagerException {
@@ -802,7 +802,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * jugadores que se encuentran en la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetJugadores() throws DBManagerException {
@@ -819,7 +819,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * jugadores que se encuentran en la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetJugadorBd() throws DBManagerException {
@@ -845,7 +845,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * paises que se encuentran en la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetPaises() throws DBManagerException {
@@ -859,7 +859,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba que el Team of The Year se ve correctamente
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetTeamOfTheYear_view() throws DBManagerException {
@@ -875,7 +875,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * jugadores que se encuentran en el Team of The Year
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetTeamOfTheYear() throws DBManagerException {
@@ -891,7 +891,7 @@ public class DBManagerTest {
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todos los
 	 * usuarios que se encuentran en la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetUsuarios() throws DBManagerException {
@@ -905,7 +905,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba el correcto funcionamiento del método de la BD getUsuarioVotaciones
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetUsuarioVotaciones() throws DBManagerException {
@@ -920,7 +920,7 @@ public class DBManagerTest {
 	/**
 	 * Comprueba si se devuelven las columnas de la BD correctamente
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testVerColumnas() throws DBManagerException {
@@ -1055,8 +1055,8 @@ public class DBManagerTest {
 	 * Comprueba la opcion de cambiar datos que tiene el administrador desde una
 	 * especie de cosnola
 	 *
-	 * @throws DBManagerException
-	 * @throws SQLException
+	 * @throws DBManagerException En caso de fallo
+	 * @throws SQLException En caso de fallo En caso de fallo
 	 */
 	@Test
 	public void testCambiarDatos() throws DBManagerException, SQLException {
@@ -1087,8 +1087,8 @@ public class DBManagerTest {
 	 * Comprueba la opcion de cambiar datos desde la JTable que tiene el
 	 * administrador, luego restaura el valor
 	 *
-	 * @throws DBManagerException
-	 * @throws SQLException
+	 * @throws DBManagerException En caso de fallo
+	 * @throws SQLException En caso de fallo En caso de fallo
 	 */
 	@Test
 	public void testCambiarDatosDesdeJTable() throws DBManagerException, SQLException {
@@ -1122,7 +1122,7 @@ public class DBManagerTest {
 	 * Comprueba el método que nos permite ver a los jugadores dependiendo del
 	 * equipo al que pertenezcan
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo
 	 */
 	@Test
 	public void testGetJugadoresPorEquipo() throws DBManagerException {
@@ -1139,7 +1139,7 @@ public class DBManagerTest {
 	 * Comprueba que devuelve el numero de filas que tiene cada una de las tablas de
 	 * la BD
 	 *
-	 * @throws DBManagerException
+	 * @throws DBManagerException En caso de fallo En caso de fallo
 	 */
 	@Test
 	public void testNumeroDeFilasEnUnaTabla() throws DBManagerException {

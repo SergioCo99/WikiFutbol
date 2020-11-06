@@ -10,7 +10,7 @@ public class MailConFicheroTest {
 	/**
 	 * Crea un nuevo MailConFichero
 	 *
-	 * @throws Exception
+	 * @throws Exception En caso de fallo
 	 */
 	@Before
 	public void setUp() throws Exception {
