@@ -929,80 +929,91 @@ public class DBManagerTest {
 		actualClub.add(0, "id_club");
 		actualClub.add(1, "nombre_club");
 		actualClub.add(2, "ciudad_club");
-		actualClub.add(4, "estadio_club");
-		actualClub.add(5, "anoCreacion_club");
-		actualClub.add(6, "palmares_club");
-		actualClub.add(7, "entrenador_club");
+		actualClub.add(3, "estadio_club");
+		actualClub.add(4, "anoCreacion_club");
+		actualClub.add(5, "palmares_club");
+		actualClub.add(6, "entrenador_club");
 
 		tabla = "club";
 		assertEquals(DBManager.verColumnas(tabla), actualClub);
 
 		ArrayList<String> actualEntrenador = new ArrayList<String>();
-		actualEntrenador.add(0, "id_estadio");
-		actualEntrenador.add(1, "nombre_estadio");
-		actualEntrenador.add(2, "aforo_estadio");
-		actualEntrenador.add(3, "anoCreacion_estadio");
-		actualEntrenador.add(4, "ciudad_estadio");
+		actualEntrenador.add(0, "id_entrenador");
+		actualEntrenador.add(1, "nombre_entrenador");
+		actualEntrenador.add(2, "fechaNac_entrenador");
+		actualEntrenador.add(3, "club_entrenador");
+		actualEntrenador.add(4, "ciudad_entrenador");
+		actualEntrenador.add(5, "formacion_entrenador");
+		actualEntrenador.add(6, "mentalidad_entrenador");
 
 		tabla = "entrenador";
 		assertEquals(DBManager.verColumnas(tabla), actualEntrenador);
 
 		ArrayList<String> actualFeedback = new ArrayList<String>();
-		actualFeedback.add(0, "id_estadio");
-		actualFeedback.add(1, "nombre_estadio");
-		actualFeedback.add(2, "aforo_estadio");
-		actualFeedback.add(3, "anoCreacion_estadio");
-		actualFeedback.add(4, "ciudad_estadio");
+		actualFeedback.add(0, "id_feedback");
+		actualFeedback.add(1, "usuario_feedback");
+		actualFeedback.add(2, "valoracion_feedback");
+		actualFeedback.add(3, "recomendacion_feedback");
+		actualFeedback.add(4, "opinion_feedback");
 
 		tabla = "feedback";
 		assertEquals(DBManager.verColumnas(tabla), actualFeedback);
 
 		ArrayList<String> actualJugador = new ArrayList<String>();
-		actualJugador.add(0, "id_estadio");
-		actualJugador.add(1, "nombre_estadio");
-		actualJugador.add(2, "aforo_estadio");
-		actualJugador.add(3, "anoCreacion_estadio");
-		actualJugador.add(4, "ciudad_estadio");
+		actualJugador.add(0, "id_jugador");
+		actualJugador.add(1, "nombre_jugador");
+		actualJugador.add(2, "fechaNac_jugador");
+		actualJugador.add(3, "club_jugador");
+		actualJugador.add(4, "ciudad_jugador");
+		actualJugador.add(5, "posicion_jugador");
+		actualJugador.add(6, "dorsal_jugador");
+		actualJugador.add(7, "goles_jugador");
+		actualJugador.add(8, "altura_jugador");
+		actualJugador.add(9, "peso_jugador");
+		actualJugador.add(10, "pieFav_jugador");
+		actualJugador.add(11, "valoracion_jugador");
+		actualJugador.add(12, "descripcion_jugador");
+		actualJugador.add(13, "voto_jugador");
 
 		tabla = "jugador";
 		assertEquals(DBManager.verColumnas(tabla), actualJugador);
 
 		ArrayList<String> actualtoft = new ArrayList<String>();
-		actualtoft.add(0, "id_estadio");
-		actualtoft.add(1, "nombre_estadio");
-		actualtoft.add(2, "aforo_estadio");
-		actualtoft.add(3, "anoCreacion_estadio");
-		actualtoft.add(4, "ciudad_estadio");
+		actualtoft.add(0, "id_TeamOfTheYear");
+		actualtoft.add(1, "jugador_TeamOfTheYear");
 
 		tabla = "teamoftheyear";
 		assertEquals(DBManager.verColumnas(tabla), actualtoft);
 
 		ArrayList<String> actualusuario = new ArrayList<String>();
-		actualusuario.add(0, "id_estadio");
-		actualusuario.add(1, "nombre_estadio");
-		actualusuario.add(2, "aforo_estadio");
-		actualusuario.add(3, "anoCreacion_estadio");
-		actualusuario.add(4, "ciudad_estadio");
+		actualusuario.add(0, "id_usuario");
+		actualusuario.add(1, "nombre_usuario");
+		actualusuario.add(2, "correo_usuario");
+		actualusuario.add(3, "contrasena_usuario");
+		actualusuario.add(4, "admin_usuario");
+		actualusuario.add(5, "fechaNac_usuario");
 
 		tabla = "usuario";
 		assertEquals(DBManager.verColumnas(tabla), actualusuario);
 
 		ArrayList<String> actualusuariovotacion = new ArrayList<String>();
-		actualusuariovotacion.add(0, "id_estadio");
-		actualusuariovotacion.add(1, "nombre_estadio");
-		actualusuariovotacion.add(2, "aforo_estadio");
-		actualusuariovotacion.add(3, "anoCreacion_estadio");
-		actualusuariovotacion.add(4, "ciudad_estadio");
+		actualusuariovotacion.add(0, "id_usuarioVotacion");
+		actualusuariovotacion.add(1, "usuario_usuarioVotacion");
+		actualusuariovotacion.add(2, "delanteroVotado_usuarioVotacion");
+		actualusuariovotacion.add(3, "centrocampistaVotado_usuarioVotacion");
+		actualusuariovotacion.add(4, "defensaVotado_usuarioVotacion");
+		actualusuariovotacion.add(5, "porteroVotado_usuarioVotacion");
 
 		tabla = "usuariovotacion";
 		assertEquals(DBManager.verColumnas(tabla), actualusuariovotacion);
 
 		ArrayList<String> actualtoftview = new ArrayList<String>();
-		actualtoftview.add(0, "id_estadio");
-		actualtoftview.add(1, "nombre_estadio");
-		actualtoftview.add(2, "aforo_estadio");
-		actualtoftview.add(3, "anoCreacion_estadio");
-		actualtoftview.add(4, "ciudad_estadio");
+		actualtoftview.add(0, "id_teamoftheyear");
+		actualtoftview.add(1, "id_jugador");
+		actualtoftview.add(2, "nombre_jugador");
+		actualtoftview.add(3, "posicion_jugador");
+		actualtoftview.add(4, "voto_jugador");
+		actualtoftview.add(5, "goles_jugador");
 
 		tabla = "teamoftheyear_view";
 		assertEquals(DBManager.verColumnas(tabla), actualtoftview);
