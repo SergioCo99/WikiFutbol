@@ -485,6 +485,8 @@ public class DBManagerTest {
 	/**
 	 * Restaura los votos despues de la eliminacion (que ocurre en @after) del
 	 * usuario de prueba para los test
+	 * 
+	 * Cierra conexion por si se ha dejado abierto en algun test
 	 *
 	 * @throws DBManagerException
 	 */
@@ -494,6 +496,7 @@ public class DBManagerTest {
 		// quitar este comentario, y quitar las dos barras "//" al de abajo pero DEJAR
 		// el metodo!!!
 		// DBManager.actualizarVotos();
+		// DBManager.disconnect();
 	}
 
 	/*
@@ -1021,47 +1024,77 @@ public class DBManagerTest {
 
 	@Test
 	public void testData() throws DBManagerException {
-		/*
-		 * es un metodo que devuelve en un array 2D de object todos los datos de una
-		 * tabla. Preguntarle �como hacer un test de eso si los datos de la tabla puede
-		 * que sean modificados (incluso insertando valores nuevos o siendo borrados
-		 * otros)?
-		 */
-
-		fail();
+		for (String tabla : DBManager.verTablas()) {
+			Object[][] o = DBManager.data(tabla);
+			assertNotNull(o);
+		}
 	}
 
 	/**
-	 * Comprueba la opcion de cambiar datos que tiene el administrador
+	 * Comprueba la opcion de cambiar datos que tiene el administrador desde una
+	 * especie de cosnola
 	 *
 	 * @throws DBManagerException
+	 * @throws SQLException
 	 */
 	@Test
-	public void testCambiarDatos() throws DBManagerException {
+	public void testCambiarDatos() throws DBManagerException, SQLException {
+		Connection conn = DBManager.connect();
+		ResultSet rs = null;
 
-		/*
-		 * preguntarle como comprobar (test) que en una tabla han cambiado valores sin
-		 * tener que hacer metodos nuevos de BD
-		 */
+		String sql1 = "select nombre_usuario from usuario where correo_usuario = ?";
+		preparedstmt = conn.prepareStatement(sql1);
+		preparedstmt.setString(1, u.getCorreo());
+		rs = preparedstmt.executeQuery();
+		rs.next();
+		String primerDato = rs.getString("nombre_usuario");
 
-		fail();
+		String sql2 = "update usuario set nombre_usuario = 'nombre nuevo' where correo_usuario = '" + u.getCorreo()
+				+ "'";
+		DBManager.cambiarDatos(sql2);
 
-		Club e1 = new Club(1, "Athletic Club", "Bilbao", "San Mames", 1898, "25", "Gaizka Garitano");
-		DBManager.cambiarDatos(
-				"UPDATE `wikifutbolschema`.`pruebaclub` SET `nombre_club` = 'Athletic Clu' WHERE (`id_club` = '1');");
-		assertNotEquals(e1.getNombre(), "Athletic Clu");
-		// fail();
+		String sql3 = "select nombre_usuario from usuario where correo_usuario = ?";
+		preparedstmt = conn.prepareStatement(sql3);
+		preparedstmt.setString(1, u.getCorreo());
+		rs = preparedstmt.executeQuery();
+		rs.next();
+
+		assertNotEquals(primerDato, rs.getString("nombre_usuario"));
 	}
 
+	/**
+	 * Comprueba la opcion de cambiar datos desde la JTable que tiene el
+	 * administrador, luego restaura el valor
+	 * 
+	 * @throws DBManagerException
+	 * @throws SQLException
+	 */
 	@Test
-	public void testCambiarDatosDesdeJTable() throws DBManagerException {
+	public void testCambiarDatosDesdeJTable() throws DBManagerException, SQLException {
 
-		/*
-		 * preguntarle como comprobar (test) que en una tabla han cambiado valores sin
-		 * tener que hacer metodos nuevos de BD
-		 */
+		Connection conn = DBManager.connect();
+		ResultSet rs = null;
 
-		fail();
+		String sql1 = "select nombre_usuario from usuario where correo_usuario = 'a@gmail.com'";
+		preparedstmt = conn.prepareStatement(sql1);
+		rs = preparedstmt.executeQuery();
+		rs.next();
+		String primerDato = rs.getString("nombre_usuario");
+
+		String tabla = "usuario";
+		String columna = "nombre_usuario";
+		Object valor = "nuevoNombre";
+		int id = 1;
+		DBManager.cambiarDatosDesdeJTable(tabla, columna, valor, id);
+
+		String sql3 = "select nombre_usuario from usuario where correo_usuario = 'a@gmail.com'";
+		preparedstmt = conn.prepareStatement(sql3);
+		rs = preparedstmt.executeQuery();
+		rs.next();
+
+		assertNotEquals(primerDato, rs.getString("nombre_usuario"));
+
+		DBManager.cambiarDatosDesdeJTable(tabla, columna, primerDato, id);
 	}
 
 	/**
@@ -1081,11 +1114,17 @@ public class DBManagerTest {
 		}
 	}
 
+	/**
+	 * Comprueba que devuelve el numero de filas que tiene cada una de las tablas de
+	 * la BD
+	 *
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testNumeroDeFilasEnUnaTabla() throws DBManagerException {
 		for (String table : database.DBManager.verTablas()) {
-			DBManager.numeroDeFilasEnUnaTabla(table);
-			Assert.assertNotNull(table);
+			System.out.println(DBManager.numeroDeFilasEnUnaTabla(table));
+			Assert.assertNotNull(DBManager.numeroDeFilasEnUnaTabla(table));
 		}
 	}
 
