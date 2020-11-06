@@ -20,6 +20,12 @@ public class AdvancedDb2CsvExporter {
 
 	private static BufferedWriter fileWriter;
 
+	/**
+	 * Este método sirve para exportar tablas de la BD
+	 * 
+	 * @param table Nombre de la tabla que queremos exportar
+	 * @throws Exception En caso de error
+	 */
 	public static void export(String table) throws Exception {
 
 		Properties prop = utils.PropertiesMetodos.loadPropertiesFile();
@@ -85,6 +91,12 @@ public class AdvancedDb2CsvExporter {
 
 	}
 
+	/**
+	 * Este método devuelve el nombre del archivo en "String"
+	 * 
+	 * @param baseName
+	 * @return nombre del archivo en String
+	 */
 	private static String getFileName(String baseName) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
 		String dateTimeInfo = dateFormat.format(new Date());
@@ -112,6 +124,12 @@ public class AdvancedDb2CsvExporter {
 		return value.replaceAll("\"", "\"\"");
 	}
 
+	/**
+	 * Este método sirve para exportar tablas de la base de datos
+	 * 
+	 * @param table Nombre de la tabla a exportar
+	 * @throws DBManagerException En caso de error
+	 */
 	public static void classesExport(String table) throws DBManagerException {
 		String csvFileName = getFileName(table.concat("_ExportFromClasses"));
 		ArrayList<?> arr = null;
