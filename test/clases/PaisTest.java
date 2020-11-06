@@ -9,32 +9,44 @@ public class PaisTest {
 
 	private Pais p;
 
+	/**
+	 * Crea un nuevo pais
+	 */
 	@Before
 	public void setUp() {
-		p = new Pais(1, "España");
+		p = new Pais(1, "Espaï¿½a");
 	}
 
+	/**
+	 * Comprueba que getId() funciona correctamente devolviendo el id del pais
+	 */
 	@Test
 	public void testId() {
 		p.setId(1);
 		assertEquals(1, p.getId());
 	}
 
+	/**
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del pais
+	 */
 	@Test
 	public void testNombre() {
 
-		p.setNombre("España");
-		assertEquals("España", p.getNombre());
+		p.setNombre("Espaï¿½a");
+		assertEquals("Espaï¿½a", p.getNombre());
 	}
 
+	/**
+	 * Comprueba el mÃ©todo toString() de la clase Pais
+	 */
 	@Test
 	public void metodoToString() {
 
 		p.setId(1);
-		p.setNombre("España");
+		p.setNombre("Espaï¿½a");
 
 		System.out.println(p.toString());
 
-		assertEquals("Pais [id=1, nombre=España]", p.toString());
+		assertEquals("Pais [id=1, nombre=Espaï¿½a]", p.toString());
 	}
 }

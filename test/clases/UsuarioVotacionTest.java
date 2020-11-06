@@ -9,47 +9,71 @@ public class UsuarioVotacionTest {
 
 	private UsuarioVotacion uv;
 
+	/**
+	 * Crea un nuevo usuario votacion
+	 */
 	@Before
 	public void setUp() {
 		uv = new UsuarioVotacion(1, "a", "d", "c", "d", "p");
 	}
 
+	/**
+	 * Comprueba que getUsuario() funciona correctamente devolviendo el usuario
+	 */
 	@Test
 	public void testUsuario() {
 		uv.setUsuario("a");
 		assertEquals("a", uv.getUsuario());
 	}
 
+	/**
+	 * Comprueba que getId() funciona correctamente devolviendo el id
+	 */
 	@Test
 	public void testId() {
 		uv.setId(1);
 		assertEquals(1, uv.getId());
 	}
 
+	/**
+	 * Comprueba que getDelanero() funciona correctamente devolviendo los delanteros
+	 */
 	@Test
 	public void testDelantero() {
 		uv.setDelantero("d");
 		assertEquals("d", uv.getDelantero());
 	}
 
+	/**
+	 * Comprueba que getCentrocampista() funciona correctamente devolviendo los centrocampistas
+	 */
 	@Test
 	public void testCentrocampista() {
 		uv.setCentrocampista("c");
 		assertEquals("c", uv.getCentrocampista());
 	}
 
+	/**
+	 * Comprueba que getDefensa() funciona correctamente devolviendo los defensas
+	 */
 	@Test
 	public void testDefensa() {
 		uv.setDefensa("d");
 		assertEquals("d", uv.getDefensa());
 	}
 
+	/**
+	 * Comprueba que getPortero() funciona correctamente devolviendo los porteros
+	 */
 	@Test
 	public void testPortero() {
 		uv.setPortero("p");
 		assertEquals("p", uv.getPortero());
 	}
 
+	/**
+	 * Comprueba el método toString() de la clase UsuarioVotacion
+	 */
 	@Test
 	public void metodoToString() {
 

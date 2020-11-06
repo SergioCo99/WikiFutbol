@@ -9,52 +9,73 @@ public class EstadioTest {
 
 	private Estadio e;
 
+	/**
+	 * Crea un nuevo estadio
+	 */
 	@Before
 	public void setUp() {
-		e = new Estadio(1, "San Mamés", 20000, 1900, "Bilbao");
+		e = new Estadio(1, "San Mamï¿½s", 20000, 1900, "Bilbao");
 	}
 
+	/**
+	 * Comprueba que getId() funciona correctamente devolviendo el id del estadio
+	 */
 	@Test
 	public void testId() {
 		e.setId(1);
 		assertEquals(1, e.getId());
 	}
 
+	/**
+	 * Comprueba que getNombre() funciona correctamente devolviendo el nombre del estadio
+	 */
 	@Test
 	public void testNombre() {
-		e.setNombre("San Mamés");
-		assertEquals("San Mamés", e.getNombre());
+		e.setNombre("San Mamï¿½s");
+		assertEquals("San Mamï¿½s", e.getNombre());
 	}
 
+	/**
+	 * Comprueba que getAforo() funciona correctamente devolviendo el aforo del estadio
+	 */
 	@Test
 	public void testAforo() {
 		e.setAforo(2000);
 		assertEquals(2000, e.getAforo());
 	}
 
+	/**
+	 * Comprueba que getAnyoCreacion() funciona correctamente devolviendo el anyoCreacion del estadio
+	 */
 	@Test
 	public void testAnyoCreacion() {
 		e.setAnyoCreacion(1900);
 		assertEquals(1900, e.getAnyoCreacion());
 	}
 
+	/**
+	 * Comprueba que getCiudad() funciona correctamente devolviendo la ciudad del estadio
+	 */
 	@Test
 	public void testCiudad() {
 		e.setCiudad("Bilbao");
 		assertEquals("Bilbao", e.getCiudad());
 	}
 
+	/**
+	 * Comprueba el mÃ©todo toString() de la clase Estadio
+	 */
 	@Test
 	public void metodoToString() {
 		e.setId(1);
-		e.setNombre("San Mamés");
+		e.setNombre("San Mamï¿½s");
 		e.setAforo(20000);
 		e.setAnyoCreacion(1900);
 		e.setCiudad("Bilbao");
 
 		System.out.println(e.toString());
 
-		assertEquals("Estadio [id=1, nombre=San Mamés, aforo=20000, anyoCreacion=1900, ciudad=Bilbao]", e.toString());
+		assertEquals("Estadio [id=1, nombre=San Mamï¿½s, aforo=20000, anyoCreacion=1900, ciudad=Bilbao]", e.toString());
 	}
 
 }
