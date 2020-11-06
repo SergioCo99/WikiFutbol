@@ -11,6 +11,13 @@ import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 
 public interface IListaJugadores {
+	
+	/**
+	 * Sirve para mostrar la lista de jugadores en la VentanaJugadores
+	 * 
+	 * @param bookPanel Ubicación de la lista de Jugadores
+	 * @param a ArrayList de los jugadores
+	 */
 	public static void cargarLista(JList<String> bookPanel, ArrayList<String> a) {
 
 		DefaultListModel<String> modelo = new DefaultListModel<String>();
