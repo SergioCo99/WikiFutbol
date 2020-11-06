@@ -229,6 +229,9 @@ public class DBManagerTest {
 		
 	}
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los ID de los jugadores que se encuentran en la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetIdJugador() throws DBManagerException {
 		
@@ -238,6 +241,9 @@ public class DBManagerTest {
 		Assert.assertNotNull(idJugador);
 	}
 
+	/**Comprueba opción de Votar a los jugadores, que la tienen disponible los usuarios
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testVotar() throws DBManagerException {
 		/*
@@ -265,6 +271,9 @@ public class DBManagerTest {
 	 * fail(); }
 	 */
 
+	/**Comprueba que se actualizan los votos en la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testActualizarVotos() throws DBManagerException {
 		/*
@@ -308,6 +317,9 @@ public class DBManagerTest {
 		fail();
 	}
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todas las ciudades que se encuentran en la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetCiudades() throws DBManagerException {
 
@@ -319,6 +331,9 @@ public class DBManagerTest {
 		}
 	}
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los clubes que se encuentran en la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetClubes() throws DBManagerException {
 
@@ -337,6 +352,9 @@ public class DBManagerTest {
 
 	}
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los entrenadores que se encuentran en la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetEntrenadores() throws DBManagerException {
 
@@ -348,37 +366,59 @@ public class DBManagerTest {
 	}
 
 	// M�todos Entrenador
+	
+	/**Devuelve el nombre del entrenador
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testNombreEntrenador() throws DBManagerException {
 		assertEquals(e.getNombre(), DBManager.nombreEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 
+	/**Devuelve la fecha de nacimiento del entrenador
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testFechaNacimiento() throws DBManagerException {
 		assertEquals(e.getFechaNac(), DBManager.fechaNacimiento("Gaizka Garitano", "wikifutbolschema"));
 	}
 
+	/**Devuelve el club al cual pertenece el entrenador
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testClubEntrenador() throws DBManagerException {
 		assertEquals(e.getClub(), DBManager.clubEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 
+	/**Devuelve la ciudad del entrenador
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testCiudadEntrenador() throws DBManagerException {
 		assertEquals(e.getCiudad(), DBManager.ciudadEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 
+	/**Devuelve la formacion del entrenador
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testFormacionEntrenador() throws DBManagerException {
 		assertEquals(e.getFormacion(), DBManager.formacionEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 
+	/**Devuelve la mentalidad del entrenador
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testMentalidadEntrenador() throws DBManagerException {
 		assertEquals("Defensiva", DBManager.mentalidadEntrenador("Gaizka Garitano", "wikifutbolschema"));
 	}
 	// Fin Metodos Entrenador
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los estadios que se encuentran en la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetEstadios() throws DBManagerException {
 
@@ -390,27 +430,42 @@ public class DBManagerTest {
 	}
 
 	// Metodos Estadio
+	/**Devuelve el nombre del estadio
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testNombreEstadio() throws DBManagerException {
 		assertEquals(es.getNombre(), DBManager.nombreEstadio("San Mames", "wikifutbolschema"));
 	}
 
+	/**Devuelve el aforo del estadio
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testAforoEstadio() throws DBManagerException {
 		assertEquals(es.getAforo(), DBManager.aforoEstadio("San Mames", "wikifutbolschema"));
 	}
 
+	/**Devuelve el anyo que el estadio fue construido
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testAnyoEstadio() throws DBManagerException {
 		assertEquals(es.getAnyoCreacion(), DBManager.anyoEstadio("San Mames", "wikifutbolschema"));
 	}
 
+	/**Devuelve la ciudad donde se encuentra el estadio
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testCiudadEstadio() throws DBManagerException {
 		assertEquals(es.getCiudad(), DBManager.ciudadEstadio("San Mames", "wikifutbolschema"));
 	}
 	// Fin Metodos Estadio
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los Feedbacks que se encuentran en la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetFeedbacks() throws DBManagerException {
 
@@ -421,6 +476,9 @@ public class DBManagerTest {
 		}
 	}
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los jugadores que se encuentran en la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetJugadores() throws DBManagerException {
 
@@ -432,6 +490,9 @@ public class DBManagerTest {
 
 	}
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los jugadores que se encuentran en la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetJugadorBd() throws DBManagerException {
 		Jugador jugador = DBManager.getJugadorBd(j.getNombre());
@@ -440,6 +501,9 @@ public class DBManagerTest {
 		assertEquals(jugador, j);
 	}
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los paises que se encuentran en la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetPaises() throws DBManagerException {
 		// DA LO MISMO PERO DA ERROR
@@ -459,6 +523,9 @@ public class DBManagerTest {
 		 */
 	}
 
+	/**Comprueba que el Team of The Year se ve correctamente
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetTeamOfTheYear_view() throws DBManagerException {
 
@@ -469,6 +536,9 @@ public class DBManagerTest {
 		}
 	}
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los jugadores que se encuentran en el Team of The Year
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetTeamOfTheYear() throws DBManagerException {
 
@@ -479,6 +549,9 @@ public class DBManagerTest {
 		}
 	}
 
+	/**Comprueba el correcto funcionamiento del método que nos devuelve todos los usuarios que se encuentran en la BD
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetUsuarios() throws DBManagerException {
 
@@ -499,6 +572,9 @@ public class DBManagerTest {
 
 	}
 
+	/**Comprueba el correcto funcionamiento del método de la BD getUsuarioVotaciones
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetUsuarioVotaciones() throws DBManagerException {
 
@@ -509,6 +585,9 @@ public class DBManagerTest {
 		}
 	}
 
+	/**Comprueba si se pueden ver las columnas de la BD correctamente
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testVerColumnas() throws DBManagerException {
 		ArrayList<String> actualPais = new ArrayList<String>();
@@ -544,6 +623,9 @@ public class DBManagerTest {
 		fail();
 	}
 
+	/**Comprueba la opcion de cambiar datos que tiene el administrador
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testCambiarDatos() throws DBManagerException {
 
@@ -572,6 +654,9 @@ public class DBManagerTest {
 		fail();
 	}
 
+	/**Comprueba el método que nos permite ver a los jugadores dependiendo del equipo al que pertenezcan
+	 * @throws DBManagerException
+	 */
 	@Test
 	public void testGetJugadoresPorEquipo() throws DBManagerException {
 
