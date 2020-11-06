@@ -6,6 +6,7 @@ public class DBManagerException extends Exception {
 
 	/**
 	 * En caso de error nos avisa con un mensaje
+	 * 
 	 * @param message Mensaje del error
 	 */
 	public DBManagerException(String message) {
