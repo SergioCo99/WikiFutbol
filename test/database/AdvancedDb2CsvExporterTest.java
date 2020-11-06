@@ -19,11 +19,20 @@ public class AdvancedDb2CsvExporterTest {
 	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
 	String dateTimeInfo = dateFormat.format(new Date());
 
+	/**
+	 * Crea una nuevo AdvancedDb2CsvExporter
+	 * 
+	 * @throws Exception En caso de error
+	 */
 	@Before
 	public void setUp() throws Exception {
 		exporter = new AdvancedDb2CsvExporter();
 	}
 
+	/**
+	 * Prueba el método preparado para exportar tablas
+	 * 
+	 */
 	@Test
 	public void testExport() {
 		try {
@@ -55,6 +64,10 @@ public class AdvancedDb2CsvExporterTest {
 		}
 	}
 
+	/**
+	 * Prueba el método que sirve para exportar en un archivo csv tablas de la base de datos
+	 * 
+	 */
 	@Test
 	public void classesExport() {
 		try {
