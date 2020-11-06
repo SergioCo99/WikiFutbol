@@ -3,6 +3,7 @@ package database;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -481,6 +482,20 @@ public class DBManagerTest {
 		DBManager.disconnect();
 	}
 
+	/**
+	 * Restaura los votos despues de la eliminacion (que ocurre en @after) del
+	 * usuario de prueba para los test
+	 * 
+	 * @throws DBManagerException
+	 */
+	@After
+	public void testRestaurarVotos() throws DBManagerException {
+		int x;
+		// quitar este comentario, y quitar las dos barras "//" al de abajo pero DEJAR
+		// el metodo!!!
+		// DBManager.actualizarVotos();
+	}
+
 	/*
 	 * @Test public void testContarJugadores() throws DBManagerException {
 	 * 
@@ -506,35 +521,84 @@ public class DBManagerTest {
 	 */
 
 	/*
-	 * @Test public void testCountToft() throws DBManagerException { // no
-	 * tiene/necesita connect()
+	 * @Test public void testCountToft() throws DBManagerException {
 	 * 
-	 * fail(); }
+	 * // private
+	 * 
+	 * }
 	 */
 
 	/*
-	 * @Test public void testGetMasVotados() throws DBManagerException { // no
-	 * tiene/necesita connect()
+	 * @Test public void testGetMasVotados() throws DBManagerException {
 	 * 
-	 * fail(); }
+	 * // private
+	 * 
+	 * }
 	 */
 
+	/**
+	 * Devuelve un arraylist con 11 ids de los jugadores mas votados
+	 * 
+	 * Devuelve un arraylist con los nombres de los 11 jugadores del toft
+	 * 
+	 * @throws DBManagerException
+	 * @throws SQLException
+	 */
 	@Test
-	public void testToft() throws DBManagerException {
-		/*
-		 * es un array de SIEMPRE 11 valores [0 - 10] pero que puede cambiar el valor
-		 * interno. Preguntar.
-		 */
+	public void testToft_y_testToftNombres() throws DBManagerException, SQLException {
+		ArrayList<Integer> toft = new ArrayList<Integer>();
+		toft = DBManager.toft();
 
-		fail();
+		for (Integer jugador : toft) {
+			assertNotNull(jugador);
+			assertNotEquals(null, jugador);
+			assertNotEquals("", jugador);
+		}
+		if (toft.size() != 11) {
+			fail("Tiene que ser 11, por 11 jugadores");
+		}
+		for (var i = 0; i < toft.size(); i++) {
+			if (toft.indexOf(toft.get(i)) != toft.lastIndexOf(toft.get(i))) {
+				fail("No puede haber dos ids iguales, tienen que ser 11 diferentes");
+			}
+		}
+
+		ArrayList<String> toftNombre = new ArrayList<String>();
+		toftNombre = DBManager.toftNombres();
+
+		Connection conn = DBManager.connect();
+		ResultSet rs = null;
+
+		int contador = 1;
+		for (String jugador : toftNombre) {
+			String sql1 = "select * from jugador where nombre_jugador = ?";
+			preparedstmt = conn.prepareStatement(sql1);
+			preparedstmt.setString(1, jugador);
+			rs = preparedstmt.executeQuery();
+			rs.next();
+
+			if (contador == 1 || contador == 2 || contador == 3) {
+				assertEquals("Delantero", rs.getString("posicion_jugador"));
+			} else if (contador == 4 || contador == 5 || contador == 6) {
+				assertEquals("Centrocampista", rs.getString("posicion_jugador"));
+			} else if (contador == 7 || contador == 8 || contador == 9 || contador == 10) {
+				assertEquals("Defensa", rs.getString("posicion_jugador"));
+			} else if (contador == 11) {
+				assertEquals("Portero", rs.getString("posicion_jugador"));
+			} else {
+				fail("Tienen que ser 3 delanteros, 3 centrocampistas, 4 defensas, 1 portero, y ademas en ese orden");
+			}
+			contador++;
+		}
 	}
 
-	@Test
-	public void testToftNombres() throws DBManagerException {
-		/* depende del anterior, y por lo tanto mismo problema */
-
-		fail();
-	}
+	/*
+	 * @Test public void testToftNombres() throws DBManagerException, SQLException {
+	 * 
+	 * // Arriba, con testToft
+	 * 
+	 * }
+	 */
 
 	/**
 	 * Comprueba el correcto funcionamiento del método que nos devuelve todas las

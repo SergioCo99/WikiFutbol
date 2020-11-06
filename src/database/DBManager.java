@@ -562,10 +562,10 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			String sql = "select count(id_TeamOfTheYear) from TeamOfTheYear where id_TeamOfTheYear = '" + n + "';";
+			String sql = "select count(id_teamoftheyear) from teamoftheyear where id_TeamOfTheYear = '" + n + "';";
 			rs = stmt.executeQuery(sql);
 			rs.next();
-			n = rs.getInt("count(id_TeamOfTheYear)");
+			n = rs.getInt("count(id_teamoftheyear)");
 			return n;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
