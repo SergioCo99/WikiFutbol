@@ -16,7 +16,7 @@ Además, el usuario podrá votar a sus equipos favoritos, sumando un punto al eq
 En el repositorio hay adjunto un archivo .sql con el que se pueden importar las tablas vacías, es decir sin ningún dato (por si se quisiera escribir desde 0) de la base de datos, incluyendo las claves primarias, secundarias y las relaciones entre ellas y las tablas. Además de esto también hay un "view" para poder visualizar el Team Of The Year con mayor comodidad.
 
 #### Ejecutar el programa
-1.  La clase principal, es decir el main, se encuentra en el siguiente directorio:
+La clase principal, es decir el main, se encuentra en el siguiente directorio:
 ```
 /WikiFutbol/src/mainPackage/MainWikiFutbol.java
 ```
