@@ -13,17 +13,17 @@ Además, el usuario podrá votar a sus equipos favoritos, sumando un punto al eq
 * Servidor online (opcional)
 
 ### Creacion del "schema" en MySQL
-En el repositorio hay adjunto un archivo .sql con el que se pueden importar las tablas vacías, es decir sin ningún dato (por si se quisiera escribir desde 0), de la base de datos, incluyendo las claves primarias, secundarias y las relaciones entre ellas y las tablas. Además de esto también hay un "view" para poder visualizar el Team Of The Year con mayor comodidad.
+En el repositorio hay adjunto un archivo .sql con el que se pueden importar las tablas vacías, es decir sin ningún dato (por si se quisiera escribir desde 0) de la base de datos, incluyendo las claves primarias, secundarias y las relaciones entre ellas y las tablas. Además de esto también hay un "view" para poder visualizar el Team Of The Year con mayor comodidad.
 
-#### 2.  Ejecutar el programa
+#### Ejecutar el programa
 1.  La clase principal, es decir el main, se encuentra en el siguiente directorio:
 ```
 /WikiFutbol/src/mainPackage/MainWikiFutbol.java
 ```
 Ejecutando esa clase, la única que debería tener un método main, podrá ser utilizado todo el programa sin ningún problema.
-También existe (también no), la oportunidad de ejecutar el archivo WikiFutbol.jar para poder usar el software.
+También existe (todavía no), la oportunidad de ejecutar el archivo WikiFutbol.jar para poder usar el software.
 
-## Ejecutar los test
+### Ejecutar los test
 Todos los test se encuentran en el siguiente directorio:
 ```
 /WikiFutbol/test
