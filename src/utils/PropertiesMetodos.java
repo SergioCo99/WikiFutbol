@@ -79,14 +79,17 @@ public class PropertiesMetodos {
 	}
 
 	/**
-	 * Properties prop = mainPackage.PropertiesMetodos.loadPropertiesFile(); String
-	 * CONTROLADOR = prop.getProperty("DB.CONTROLADOR"); String URL =
-	 * prop.getProperty("DB.URL"); String USUARIO = prop.getProperty("DB.USUARIO");
-	 * String CONTRASENA = prop.getProperty("DB.CONTRASENA");
-	 */
-
-	/**
 	 * Crea el archivo jdbc.properties donde se recoge informacion sobre la BD
+	 *
+	 * Properties prop = mainPackage.PropertiesMetodos.loadPropertiesFile();
+	 *
+	 * String CONTROLADOR = prop.getProperty("DB.CONTROLADOR");
+	 *
+	 * String URL = prop.getProperty("DB.URL");
+	 *
+	 * String USUARIO = prop.getProperty("DB.USUARIO");
+	 *
+	 * String CONTRASENA = prop.getProperty("DB.CONTRASENA");
 	 *
 	 * @return El archivo properties
 	 * @throws Exception En caso de error
