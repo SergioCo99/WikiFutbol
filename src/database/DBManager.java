@@ -1866,6 +1866,447 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Metodo para que un administrador pueda registrar una ciudad desde la
+	 * ventanaCambiarDatos
+	 *
+	 * @param id_ciudad
+	 * @param nombre_ciudad
+	 * @param pais_ciudad
+	 * @throws DBManagerException
+	 */
+	public static void nuevaCiudad(Object id_ciudad, Object nombre_ciudad, Object pais_ciudad)
+			throws DBManagerException {
+		connect();
+		try {
+			String sql = "insert into ciudad values(?,?,?)";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setObject(1, id_ciudad);
+			preparedstmt.setObject(2, nombre_ciudad);
+			preparedstmt.setObject(3, pais_ciudad);
+			preparedstmt.executeUpdate();
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error nuevaCiudad DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
+	/**
+	 * Metodo para que un administrador pueda registrar un club desde la
+	 * ventanaCambiarDatos
+	 *
+	 * @param id_club
+	 * @param nombre_club
+	 * @param ciudad_club
+	 * @param estadio_club
+	 * @param anoCreacion_club
+	 * @param palmares_club
+	 * @param entrenador_club
+	 * @throws DBManagerException
+	 */
+	public static void nuevoClub(Object id_club, Object nombre_club, Object ciudad_club, Object estadio_club,
+			Object anoCreacion_club, Object palmares_club, Object entrenador_club) throws DBManagerException {
+		connect();
+		try {
+			String sql = "insert into club values(?,?,?,?,?,?,?)";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setObject(1, id_club);
+			preparedstmt.setObject(2, nombre_club);
+			preparedstmt.setObject(3, ciudad_club);
+			preparedstmt.setObject(4, estadio_club);
+			preparedstmt.setObject(5, anoCreacion_club);
+			preparedstmt.setObject(6, palmares_club);
+			preparedstmt.setObject(7, entrenador_club);
+			preparedstmt.executeUpdate();
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error nuevoClub DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
+	/**
+	 * Metodo para que un administrador pueda registrar un entrenador desde la
+	 * ventanaCambiarDatos
+	 *
+	 * @param id_entrenador
+	 * @param nombre_entrenador
+	 * @param fechaNac_entrenador
+	 * @param club_entrenador
+	 * @param ciudad_entrenador
+	 * @param formacion_entrenador
+	 * @param mentalidad_entrenador
+	 * @throws DBManagerException
+	 */
+	public static void nuevoEntrenador(Object id_entrenador, Object nombre_entrenador, Object fechaNac_entrenador,
+			Object club_entrenador, Object ciudad_entrenador, Object formacion_entrenador, Object mentalidad_entrenador)
+			throws DBManagerException {
+		connect();
+		try {
+			String sql = "insert into entrenador values(?,?,?,?,?,?,?)";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setObject(1, id_entrenador);
+			preparedstmt.setObject(2, nombre_entrenador);
+			preparedstmt.setObject(3, fechaNac_entrenador);
+			preparedstmt.setObject(4, club_entrenador);
+			preparedstmt.setObject(5, ciudad_entrenador);
+			preparedstmt.setObject(6, formacion_entrenador);
+			preparedstmt.setObject(7, mentalidad_entrenador);
+			preparedstmt.executeUpdate();
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error nuevoEntrenador DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
+	/**
+	 * Metodo para que un administrador pueda registrar un estadio desde la
+	 * ventanaCambiarDatos
+	 *
+	 * @param id_estadio
+	 * @param nombre_estadio
+	 * @param aforo_estadio
+	 * @param anoCreacion_estadio
+	 * @param ciudad_estadio
+	 * @throws DBManagerException
+	 */
+	public static void nuevoEstadio(Object id_estadio, Object nombre_estadio, Object aforo_estadio,
+			Object anoCreacion_estadio, Object ciudad_estadio) throws DBManagerException {
+		connect();
+		try {
+			String sql = "insert into estadio values(?,?,?,?,?)";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setObject(1, id_estadio);
+			preparedstmt.setObject(2, nombre_estadio);
+			preparedstmt.setObject(3, aforo_estadio);
+			preparedstmt.setObject(4, anoCreacion_estadio);
+			preparedstmt.setObject(5, ciudad_estadio);
+			preparedstmt.executeUpdate();
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error nuevoEstadio DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
+	/**
+	 * Metodo para que un administrador pueda registrar un feedback desde la
+	 * ventanaCambiarDatos
+	 *
+	 * @param id_feedback
+	 * @param usuario_feedback
+	 * @param valoracion_feedback
+	 * @param recomendacion_feedback
+	 * @param opinion_feedback
+	 * @throws DBManagerException
+	 */
+	public static void nuevoFeedback(Object id_feedback, Object usuario_feedback, Object valoracion_feedback,
+			Object recomendacion_feedback, Object opinion_feedback) throws DBManagerException {
+		connect();
+		try {
+			String sql = "insert into feedback values(?,?,?,?,?)";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setObject(1, id_feedback);
+			preparedstmt.setObject(2, usuario_feedback);
+			preparedstmt.setObject(3, valoracion_feedback);
+			preparedstmt.setObject(4, recomendacion_feedback);
+			preparedstmt.setObject(5, opinion_feedback);
+			preparedstmt.executeUpdate();
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error nuevoFeedback DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
+	/**
+	 * Metodo para que un administrador pueda registrar un jugador desde la
+	 * ventanaCambiarDatos
+	 *
+	 * @param id_jugador
+	 * @param nombre_jugador
+	 * @param fechaNac_jugador
+	 * @param club_jugador
+	 * @param ciudad_jugador
+	 * @param posicion_jugador
+	 * @param dorsal_jugador
+	 * @param goles_jugador
+	 * @param altura_jugador
+	 * @param peso_jugador
+	 * @param pieFav_jugador
+	 * @param valoracion_jugador
+	 * @param descripcion_jugador
+	 * @param voto_jugador
+	 * @throws DBManagerException
+	 */
+	public static void nuevoJugador(Object id_jugador, Object nombre_jugador, Object fechaNac_jugador,
+			Object club_jugador, Object ciudad_jugador, Object posicion_jugador, Object dorsal_jugador,
+			Object goles_jugador, Object altura_jugador, Object peso_jugador, Object pieFav_jugador,
+			Object valoracion_jugador, Object descripcion_jugador, Object voto_jugador) throws DBManagerException {
+		connect();
+		try {
+			String sql = "insert into jugador values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setObject(1, id_jugador);
+			preparedstmt.setObject(2, nombre_jugador);
+			preparedstmt.setObject(3, fechaNac_jugador);
+			preparedstmt.setObject(4, club_jugador);
+			preparedstmt.setObject(5, ciudad_jugador);
+			preparedstmt.setObject(6, posicion_jugador);
+			preparedstmt.setObject(7, dorsal_jugador);
+			preparedstmt.setObject(8, goles_jugador);
+			preparedstmt.setObject(9, altura_jugador);
+			preparedstmt.setObject(10, peso_jugador);
+			preparedstmt.setObject(11, pieFav_jugador);
+			preparedstmt.setObject(12, valoracion_jugador);
+			preparedstmt.setObject(13, descripcion_jugador);
+			preparedstmt.setObject(14, voto_jugador);
+			preparedstmt.executeUpdate();
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error nuevoJugador DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
+	/**
+	 * Metodo para que un administrador pueda registrar un pais desde la
+	 * ventanaCambiarDatos
+	 *
+	 * @param id_pais
+	 * @param nombre_pais
+	 * @throws DBManagerException
+	 */
+	public static void nuevoPais(Object id_pais, Object nombre_pais) throws DBManagerException {
+		connect();
+		try {
+			String sql = "insert into pais values(?,?)";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setObject(1, id_pais);
+			preparedstmt.setObject(2, nombre_pais);
+			preparedstmt.executeUpdate();
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error nuevoPais DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
+	/**
+	 * Metodo para que un administrador pueda registrar un jugador en el
+	 * teamoftheyear desde la ventanaCambiarDatos
+	 *
+	 * @param id_teamoftheyear
+	 * @param jugador_teamoftheyear
+	 * @throws DBManagerException
+	 */
+	public static void nuevoTeamofTheYear(Object id_teamoftheyear, Object jugador_teamoftheyear)
+			throws DBManagerException {
+		connect();
+		try {
+			String sql = "insert into teamoftheyear values(?,?)";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setObject(1, id_teamoftheyear);
+			preparedstmt.setObject(2, jugador_teamoftheyear);
+			preparedstmt.executeUpdate();
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error nuevoTeamofTheYear DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
+	/**
+	 * Metodo para que un administrador pueda registrar un usuario desde la
+	 * ventanaCambiarDatos
+	 *
+	 * @param id_usuario
+	 * @param nombre_usuario
+	 * @param correo_usuario
+	 * @param contrasena_usuario
+	 * @param admin_usuario
+	 * @param fechaNac_usuario
+	 * @throws DBManagerException
+	 */
+	public static void nuevoUsuario(Object id_usuario, Object nombre_usuario, Object correo_usuario,
+			Object contrasena_usuario, Object admin_usuario, Object fechaNac_usuario) throws DBManagerException {
+		connect();
+		try {
+			String sql = "insert into usuario values(?,?,?,?,?,?)";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setObject(1, id_usuario);
+			preparedstmt.setObject(2, nombre_usuario);
+			preparedstmt.setObject(3, correo_usuario);
+			preparedstmt.setObject(4, contrasena_usuario);
+			preparedstmt.setObject(5, admin_usuario);
+			preparedstmt.setObject(6, fechaNac_usuario);
+			preparedstmt.executeUpdate();
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error nuevoUsuario DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
+	/**
+	 * Metodo para que un administrador pueda registrar una votacion desde la
+	 * ventanaCambiarDatos
+	 *
+	 * @param id_usuarioVotacion
+	 * @param usuario_usuarioVotacion
+	 * @param delanteroVotado_usuarioVotacion
+	 * @param centrocampistaVotado_usuarioVotacion
+	 * @param defensaVotado_usuarioVotacion
+	 * @param porteroVotado_usuarioVotacion
+	 * @throws DBManagerException
+	 */
+	public static void nuevoUsuarioVotacion(Object id_usuarioVotacion, Object usuario_usuarioVotacion,
+			Object delanteroVotado_usuarioVotacion, Object centrocampistaVotado_usuarioVotacion,
+			Object defensaVotado_usuarioVotacion, Object porteroVotado_usuarioVotacion) throws DBManagerException {
+		connect();
+		try {
+			String sql = "insert into usuariovotacion values(?,?,?,?,?,?)";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setObject(1, id_usuarioVotacion);
+			preparedstmt.setObject(2, usuario_usuarioVotacion);
+			preparedstmt.setObject(3, delanteroVotado_usuarioVotacion);
+			preparedstmt.setObject(4, centrocampistaVotado_usuarioVotacion);
+			preparedstmt.setObject(5, defensaVotado_usuarioVotacion);
+			preparedstmt.setObject(6, porteroVotado_usuarioVotacion);
+			preparedstmt.executeUpdate();
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error nuevoUsuarioVotacion DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
+	/**
+	 * Metodo para que un administrador pueda borrar filas desde la
+	 * ventanaCambiarDatos
+	 *
+	 * @param tabla
+	 * @param id
+	 * @throws DBManagerException
+	 */
+	public static void borrar(String tabla, Object id) throws DBManagerException {
+		connect();
+		try {
+			String sql = "delete from " + tabla + " where id_" + tabla + " = " + id;
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.executeUpdate();
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error borrar DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
+	/**
+	 * Metodo que devuelve el id sin usar mas bajo de la tabla que se le pida
+	 *
+	 * @param tabla
+	 * @return
+	 * @throws DBManagerException
+	 */
+	public static int idMasBajoSinUsar(String tabla) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			stmt = conn.createStatement();
+			String sql = "SELECT MIN(t1.id_" + tabla + " + 1) AS nextID FROM " + tabla + " t1 LEFT JOIN " + tabla
+					+ " t2 ON t1.id_" + tabla + " + 1 = t2.id_" + tabla + " WHERE t2.id_" + tabla + " IS NULL";
+			if (tabla.equals("teamoftheyear_view")) {
+				sql = "SELECT MIN(t1.id_teamoftheyear + 1) AS nextID FROM " + tabla + " t1 LEFT JOIN " + tabla
+						+ " t2 ON t1.id_teamoftheyear + 1 = t2.id_teamoftheyear WHERE t2.id_teamoftheyear IS NULL";
+			}
+			stmt.executeQuery(sql);
+			rs = stmt.executeQuery(sql);
+			rs.next();
+			int id = rs.getInt("nextID");
+			return id;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error idMasBajoSinUsar DBManager", e);
+		} finally {
+			try {
+				stmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
 

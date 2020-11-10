@@ -841,7 +841,8 @@ public class DBManagerTest {
 		assertEquals(jugador.getPiefav(), j.getPiefav());
 		assertEquals(jugador.getValoracion(), j.getValoracion());
 		assertEquals(jugador.getDescripcion(), j.getDescripcion());
-		assertEquals(jugador.getVoto(), j.getVoto());
+		// assertEquals(jugador.getVoto(), j.getVoto());
+		/* si se le vota o no puede cambiar el valor y dar error */
 	}
 
 	/**
@@ -1152,6 +1153,68 @@ public class DBManagerTest {
 	public void testNumeroDeFilasEnUnaTabla() throws DBManagerException {
 		for (String table : database.DBManager.verTablas()) {
 			Assert.assertNotNull(DBManager.numeroDeFilasEnUnaTabla(table));
+		}
+	}
+
+	/**
+	 * Comprueba que inserta nuevos valores (filas) en la BD y luego es capaz de
+	 * borrar verificando el metodo borrar de DBManager.class
+	 *
+	 * @throws DBManagerException
+	 */
+	@Test
+	public void testNuevasFilas_y_borrar() throws DBManagerException {
+		fail();
+	}
+
+	/**
+	 * Comprueba que devuelve el id mas bajo sin usar de cada tabla
+	 *
+	 * @throws DBManagerException
+	 * @throws SQLException
+	 */
+	@Test
+	public void TestIdMasBajoSinUsar() throws DBManagerException, SQLException {
+		Connection conn = DBManager.connect();
+		ResultSet rs = null;
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		String sql1;
+		int id;
+
+		for (String tabla : DBManager.verTablas()) {
+			if (!tabla.equals("usuariovotacion")) { // !!!
+				ids.clear();
+				if (tabla.equals("teamoftheyear_view")) {
+					sql1 = "SELECT id_teamoftheyear FROM teamoftheyear_view order by id_teamoftheyear";
+				} else {
+					sql1 = "select id_" + tabla + " from " + tabla + " order by id_" + tabla;
+				}
+				preparedstmt = conn.prepareStatement(sql1);
+				rs = preparedstmt.executeQuery();
+				while (rs.next()) {
+					if (tabla.equals("teamoftheyear_view")) {
+						id = rs.getInt("id_teamoftheyear");
+					} else {
+						id = rs.getInt("id_" + tabla);
+					}
+					ids.add(id);
+				}
+				int noId = 0;
+				int filas = DBManager.numeroDeFilasEnUnaTabla(tabla) + 1;
+				for (int i = 1; i < filas; i++) {
+					if (i != ids.get(i - 1)) {
+						System.out.println("Tabla: " + tabla + ", " + i + " - " + ids.get(i - 1));
+						noId = i;
+						break;
+					}
+				}
+				if (noId != 0) {
+					// si noId es 0 es que no hay nignun id sin usar entre filas
+					assertEquals(noId, DBManager.idMasBajoSinUsar(tabla));
+				} else {
+					assertEquals(filas, DBManager.idMasBajoSinUsar(tabla));
+				}
+			}
 		}
 	}
 
