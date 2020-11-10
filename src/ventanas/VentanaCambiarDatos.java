@@ -87,7 +87,7 @@ public class VentanaCambiarDatos extends JFrame {
 			e.printStackTrace();
 		}
 		utils.JComboBoxAutoCompletion.enable(jcbTablas);
-		jcbTablas.setBounds(10, 300, 120, 30);
+		jcbTablas.setBounds(10, 300, 140, 30);
 		jcbTablas.setSelectedIndex(0);
 
 		getContentPane().add(btnCambiarDato);
