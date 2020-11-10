@@ -1164,7 +1164,57 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testNuevasFilas_y_borrar() throws DBManagerException {
-		fail();
+		for (String tabla : DBManager.verTablas()) {
+			int idMasBajo = DBManager.idMasBajoSinUsar(tabla);
+			int filas = DBManager.numeroDeFilasEnUnaTabla(tabla);
+			if (tabla.equals("ciudad")) {
+				DBManager.nuevaCiudad(idMasBajo, "ciudad", 1);
+				assertEquals(filas + 1, DBManager.numeroDeFilasEnUnaTabla(tabla));
+				DBManager.borrar(tabla, idMasBajo);
+				assertEquals(filas, DBManager.numeroDeFilasEnUnaTabla(tabla));
+			} else if (tabla.equals("club")) {
+				DBManager.nuevoClub(idMasBajo, "club", 1, 1, 1970, 10, 1);
+				assertEquals(filas + 1, DBManager.numeroDeFilasEnUnaTabla(tabla));
+				DBManager.borrar(tabla, idMasBajo);
+				assertEquals(filas, DBManager.numeroDeFilasEnUnaTabla(tabla));
+			} else if (tabla.equals("entrenador")) {
+				DBManager.nuevoEntrenador(idMasBajo, "entrenador", "1970-01-01", 1, 1, "4-3-3", "Defensiva");
+				assertEquals(filas + 1, DBManager.numeroDeFilasEnUnaTabla(tabla));
+				DBManager.borrar(tabla, idMasBajo);
+				assertEquals(filas, DBManager.numeroDeFilasEnUnaTabla(tabla));
+			} else if (tabla.equals("estadio")) {
+				DBManager.nuevoEstadio(idMasBajo, "estadio", 1000, 1970, 1);
+				assertEquals(filas + 1, DBManager.numeroDeFilasEnUnaTabla(tabla));
+				DBManager.borrar(tabla, idMasBajo);
+				assertEquals(filas, DBManager.numeroDeFilasEnUnaTabla(tabla));
+			} else if (tabla.equals("feedback")) {
+				DBManager.nuevoFeedback(idMasBajo, DBManager.getIdUsuario(u.getCorreo()), 5, "si", "opinion");
+				assertEquals(filas + 1, DBManager.numeroDeFilasEnUnaTabla(tabla));
+				DBManager.borrar(tabla, idMasBajo);
+				assertEquals(filas, DBManager.numeroDeFilasEnUnaTabla(tabla));
+			} else if (tabla.equals("jugador")) {
+				DBManager.nuevoJugador(idMasBajo, "jugador", "1970-01-01", 1, 1, "Delantero", 9, 5, 175, 75, "Diestro",
+						84, "Descripcion", 0);
+				assertEquals(filas + 1, DBManager.numeroDeFilasEnUnaTabla(tabla));
+				DBManager.borrar(tabla, idMasBajo);
+				assertEquals(filas, DBManager.numeroDeFilasEnUnaTabla(tabla));
+			} else if (tabla.equals("pais")) {
+				DBManager.nuevoPais(idMasBajo, "pais");
+				assertEquals(filas + 1, DBManager.numeroDeFilasEnUnaTabla(tabla));
+				DBManager.borrar(tabla, idMasBajo);
+				assertEquals(filas, DBManager.numeroDeFilasEnUnaTabla(tabla));
+			} else if (tabla.equals("usuario")) {
+				DBManager.nuevoUsuario(idMasBajo, "nombre usuario", "correo@gmail.com", "passw", 1, "1970-01-01");
+				assertEquals(filas + 1, DBManager.numeroDeFilasEnUnaTabla(tabla));
+				DBManager.borrar(tabla, idMasBajo);
+				assertEquals(filas, DBManager.numeroDeFilasEnUnaTabla(tabla));
+			} else if (tabla.equals("usuariovotacion")) {
+				DBManager.nuevoUsuarioVotacion(idMasBajo, DBManager.getIdUsuario(u.getCorreo()), 1, 5, 9, 14);
+				assertEquals(filas + 1, DBManager.numeroDeFilasEnUnaTabla(tabla));
+				DBManager.borrar(tabla, idMasBajo);
+				assertEquals(filas, DBManager.numeroDeFilasEnUnaTabla(tabla));
+			}
+		}
 	}
 
 	/**
@@ -1203,7 +1253,6 @@ public class DBManagerTest {
 				int filas = DBManager.numeroDeFilasEnUnaTabla(tabla) + 1;
 				for (int i = 1; i < filas; i++) {
 					if (i != ids.get(i - 1)) {
-						System.out.println("Tabla: " + tabla + ", " + i + " - " + ids.get(i - 1));
 						noId = i;
 						break;
 					}
