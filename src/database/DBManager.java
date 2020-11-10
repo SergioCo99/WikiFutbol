@@ -2144,27 +2144,33 @@ public class DBManager {
 	 * @param jugador_teamoftheyear
 	 * @throws DBManagerException
 	 */
-	public static void nuevoTeamofTheYear(Object id_teamoftheyear, Object jugador_teamoftheyear)
-			throws DBManagerException {
-		connect();
-		try {
-			String sql = "insert into teamoftheyear values(?,?)";
-			preparedstmt = conn.prepareStatement(sql);
-			preparedstmt.setObject(1, id_teamoftheyear);
-			preparedstmt.setObject(2, jugador_teamoftheyear);
-			preparedstmt.executeUpdate();
-		} catch (SQLException e) {
-			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
-			throw new DBManagerException("Error nuevoTeamofTheYear DBManager", e);
-		} finally {
-			try {
-				preparedstmt.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
-			}
-			disconnect();
-		}
-	}
+	/*
+	 * public static void nuevoTeamofTheYear(Object id_teamoftheyear, Object
+	 * jugador_teamoftheyear) throws DBManagerException {
+	 *
+	 * connect();
+	 *
+	 * try {
+	 *
+	 * String sql = "insert into teamoftheyear values(?,?)";
+	 *
+	 * preparedstmt = conn.prepareStatement(sql);
+	 *
+	 * preparedstmt.setObject(1, id_teamoftheyear);
+	 *
+	 * preparedstmt.setObject(2, jugador_teamoftheyear);
+	 *
+	 * preparedstmt.executeUpdate();
+	 *
+	 * } catch (SQLException e) {
+	 * mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString()); throw
+	 * new DBManagerException("Error nuevoTeamofTheYear DBManager", e);
+	 *
+	 * } finally { try { preparedstmt.close(); } catch (SQLException e) {
+	 *
+	 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
+	 * disconnect(); } }
+	 */
 
 	/**
 	 * Metodo para que un administrador pueda registrar un usuario desde la
@@ -2309,6 +2315,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-
+		connect();
 	}
 }
