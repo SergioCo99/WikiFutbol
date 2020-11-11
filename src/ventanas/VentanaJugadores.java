@@ -218,11 +218,7 @@ public class VentanaJugadores extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-
-					ArrayList<String> jugador;
-					jugador = arrayResultado;
-					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), club,
-							usuario);
+					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), club, usuario);
 					ve.setVisible(true);
 					dispose();
 				} catch (Exception e1) {
