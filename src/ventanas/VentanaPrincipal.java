@@ -70,8 +70,7 @@ public class VentanaPrincipal extends JFrame {
 	JMenuItem miVotar, miVerEquipo;
 
 	private ArrayList<Club> arrayEquipos = new ArrayList<Club>();
-	@SuppressWarnings("rawtypes")
-	private JList bookPanel = new JList();
+	private JList<String> bookPanel = new JList<String>();
 	private static Usuario usuario;
 
 	// Filtrado de equipos
