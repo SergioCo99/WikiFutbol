@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -218,8 +219,8 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testVerTablas() throws DBManagerException {
-		ArrayList<String> actualArr = DBManager.verTablas();
-		ArrayList<String> expectedArr = new ArrayList<String>();
+		List<String> actualArr = DBManager.verTablas();
+		List<String> expectedArr = new ArrayList<String>();
 
 		expectedArr.add("ciudad");
 		expectedArr.add("club");
@@ -244,7 +245,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testTodosLosCorreos() throws DBManagerException {
-		ArrayList<String> correos = new ArrayList<String>();
+		List<String> correos = new ArrayList<String>();
 		correos = DBManager.todosLosCorreos();
 		for (String correo : correos) {
 			Assert.assertNotNull(correo);
@@ -282,7 +283,7 @@ public class DBManagerTest {
 		nombre_posicion.add("Portero");
 
 		for (String posicion : nombre_posicion) {
-			ArrayList<String> jugadoresPorPosicion = new ArrayList<String>();
+			List<String> jugadoresPorPosicion = new ArrayList<String>();
 			jugadoresPorPosicion = DBManager.getJugadoresPorPosicion(posicion);
 			for (String jugadorPorPosicion : jugadoresPorPosicion) {
 				Assert.assertNotNull(jugadorPorPosicion);
@@ -564,7 +565,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testToft_y_testToftNombres() throws DBManagerException, SQLException {
-		ArrayList<Integer> toft = new ArrayList<Integer>();
+		List<Integer> toft = new ArrayList<Integer>();
 		toft = DBManager.toft();
 
 		for (Integer jugador : toft) {
@@ -581,7 +582,7 @@ public class DBManagerTest {
 			}
 		}
 
-		ArrayList<String> toftNombre = new ArrayList<String>();
+		List<String> toftNombre = new ArrayList<String>();
 		toftNombre = DBManager.toftNombres();
 
 		Connection conn = DBManager.connect();
@@ -630,7 +631,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetCiudades() throws DBManagerException {
-		ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
+		List<Ciudad> ciudades = new ArrayList<Ciudad>();
 		ciudades = DBManager.getCiudades();
 		for (Ciudad ciudad : ciudades) {
 			Assert.assertNotNull(ciudad);
@@ -645,7 +646,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetClubes() throws DBManagerException {
-		ArrayList<Club> clubes = new ArrayList<Club>();
+		List<Club> clubes = new ArrayList<Club>();
 		clubes = DBManager.getClubes();
 		for (Club club : clubes) {
 			Assert.assertNotNull(club);
@@ -660,7 +661,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetEntrenadores() throws DBManagerException {
-		ArrayList<Entrenador> entrenadores = new ArrayList<Entrenador>();
+		List<Entrenador> entrenadores = new ArrayList<Entrenador>();
 		entrenadores = DBManager.getEntrenadores();
 		for (Entrenador entrenador : entrenadores) {
 			Assert.assertNotNull(entrenador);
@@ -738,7 +739,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetEstadios() throws DBManagerException {
-		ArrayList<Estadio> estadios = new ArrayList<Estadio>();
+		List<Estadio> estadios = new ArrayList<Estadio>();
 		estadios = DBManager.getEstadios();
 		for (Estadio estadio : estadios) {
 			Assert.assertNotNull(estadio);
@@ -795,7 +796,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetFeedbacks() throws DBManagerException {
-		ArrayList<Feedback> feedbacks = new ArrayList<Feedback>();
+		List<Feedback> feedbacks = new ArrayList<Feedback>();
 		feedbacks = DBManager.getFeedbacks();
 		for (Feedback feedback : feedbacks) {
 			Assert.assertNotNull(feedback);
@@ -810,7 +811,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetJugadores() throws DBManagerException {
-		ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+		List<Jugador> jugadores = new ArrayList<Jugador>();
 		jugadores = DBManager.getJugadores();
 		for (Jugador jugador : jugadores) {
 			Assert.assertNotNull(jugador);
@@ -853,7 +854,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetPaises() throws DBManagerException {
-		ArrayList<Pais> paises = new ArrayList<Pais>();
+		List<Pais> paises = new ArrayList<Pais>();
 		paises = DBManager.getPaises();
 		for (Pais pais : paises) {
 			Assert.assertNotNull(pais);
@@ -868,7 +869,7 @@ public class DBManagerTest {
 	@Test
 	public void testGetTeamOfTheYear_view() throws DBManagerException {
 
-		ArrayList<TeamOfTheYear_view> totyv = new ArrayList<TeamOfTheYear_view>();
+		List<TeamOfTheYear_view> totyv = new ArrayList<TeamOfTheYear_view>();
 		totyv = DBManager.getTeamOfTheYear_view();
 		for (TeamOfTheYear_view teamOfTheYear_view : totyv) {
 			Assert.assertNotNull(teamOfTheYear_view);
@@ -883,7 +884,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetTeamOfTheYear() throws DBManagerException {
-		ArrayList<TeamOfTheYear> toty = new ArrayList<TeamOfTheYear>();
+		List<TeamOfTheYear> toty = new ArrayList<TeamOfTheYear>();
 		toty = DBManager.getTeamOfTheYear();
 		for (TeamOfTheYear teamOfTheYear : toty) {
 			Assert.assertNotNull(teamOfTheYear);
@@ -898,7 +899,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetUsuarios() throws DBManagerException {
-		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+		List<Usuario> usuarios = new ArrayList<Usuario>();
 		usuarios = DBManager.getUsuarios();
 		for (Usuario usuario : usuarios) {
 			Assert.assertNotNull(usuario);
@@ -912,7 +913,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetUsuarioVotaciones() throws DBManagerException {
-		ArrayList<UsuarioVotacion> usuarioVotaciones = new ArrayList<UsuarioVotacion>();
+		List<UsuarioVotacion> usuarioVotaciones = new ArrayList<UsuarioVotacion>();
 		usuarioVotaciones = DBManager.getUsuarioVotaciones();
 		for (UsuarioVotacion usuarioVotacion : usuarioVotaciones) {
 			Assert.assertNotNull(usuarioVotacion);
@@ -1136,7 +1137,7 @@ public class DBManagerTest {
 	public void testGetJugadoresPorEquipo() throws DBManagerException {
 
 		String nombre_club = "Athletic Club";
-		ArrayList<String> jugadoresPorEquipo = new ArrayList<String>();
+		List<String> jugadoresPorEquipo = new ArrayList<String>();
 		jugadoresPorEquipo = DBManager.getJugadoresPorEquipo(nombre_club);
 		for (String jugadorPorEquipo : jugadoresPorEquipo) {
 			Assert.assertNotNull(jugadorPorEquipo);

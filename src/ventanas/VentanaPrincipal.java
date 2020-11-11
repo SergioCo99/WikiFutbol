@@ -12,6 +12,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 import javax.swing.ButtonGroup;
@@ -69,9 +70,8 @@ public class VentanaPrincipal extends JFrame {
 	JMenu menuTeamOfTheYear;
 	JMenuItem miVotar, miVerEquipo;
 
-	private ArrayList<Club> arrayEquipos = new ArrayList<Club>();
-	@SuppressWarnings("rawtypes")
-	private JList bookPanel = new JList();
+	private List<Club> arrayEquipos = new ArrayList<Club>();
+	private JList<String> bookPanel = new JList<String>();
 	private static Usuario usuario;
 
 	// Filtrado de equipos
@@ -568,6 +568,24 @@ public class VentanaPrincipal extends JFrame {
 
 			}
 		});
+
+		MouseListener mouseListener = new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() == 1) {
+					ciudad = arrayEquipos.get(bookPanel.getSelectedIndex()).getCiudad();
+					lblCiudadRes.setText(ciudad);
+
+					anyoCreacion = Integer.toString(arrayEquipos.get(bookPanel.getSelectedIndex()).getAnyoCreacion());
+					lblAnyoRes.setText(anyoCreacion);
+
+					estadio = arrayEquipos.get(bookPanel.getSelectedIndex()).getEstadio();
+					lblEstadioRes.setText(estadio);
+
+				}
+			}
+		};
+		bookPanel.addMouseListener(mouseListener);
 
 	}
 

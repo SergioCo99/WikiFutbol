@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 
@@ -315,7 +316,7 @@ public class DBManager {
 	 * @return Devuelve un array con el contenido
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
-	public static ArrayList<String> verTablas() throws DBManagerException {
+	public static List<String> verTablas() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
@@ -324,7 +325,7 @@ public class DBManager {
 			stmt.executeQuery(sql1);
 			String sql2 = "show tables;";
 			rs = stmt.executeQuery(sql2);
-			ArrayList<String> arr = new ArrayList<String>();
+			List<String> arr = new ArrayList<String>();
 			while (rs.next()) {
 				arr.add(rs.getString("Tables_in_wikifutbolschema"));
 			}
@@ -349,14 +350,14 @@ public class DBManager {
 	 * @return Devuelve un array con los correos
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
-	public static ArrayList<String> todosLosCorreos() throws DBManagerException {
+	public static List<String> todosLosCorreos() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
 			String sql = "select correo_usuario from usuario";
 			rs = stmt.executeQuery(sql);
-			ArrayList<String> arr = new ArrayList<String>();
+			List<String> arr = new ArrayList<String>();
 			while (rs.next()) {
 				arr.add(rs.getString("correo_usuario"));
 			}
@@ -431,7 +432,7 @@ public class DBManager {
 	 * @return Array con los futbolistas de dicha posicion
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
-	public static ArrayList<String> getJugadoresPorPosicion(String posicion_jugador) throws DBManagerException {
+	public static List<String> getJugadoresPorPosicion(String posicion_jugador) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
@@ -439,7 +440,7 @@ public class DBManager {
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setString(1, posicion_jugador);
 			rs = preparedstmt.executeQuery();
-			ArrayList<String> arr = new ArrayList<String>();
+			List<String> arr = new ArrayList<String>();
 			while (rs.next()) {
 				arr.add(rs.getString("nombre_jugador"));
 			}
@@ -774,12 +775,12 @@ public class DBManager {
 	 *         centrocampistas, los tres defensas y el portero mas votado.
 	 * @throws DBManagerException En caso de fallo
 	 */
-	public static ArrayList<Integer> toft() throws DBManagerException {
+	public static List<Integer> toft() throws DBManagerException {
 		connect();
 		try {
 			stmt = conn.createStatement();
 			// ademas de meter los datos en el array, ejecuta el metodo getMasVotados()
-			ArrayList<Integer> arr = new ArrayList<Integer>();
+			List<Integer> arr = new ArrayList<Integer>();
 			arr.add(getMasVotados("Delantero", 1, 1));
 			arr.add(getMasVotados("Delantero", 2, 2));
 			arr.add(getMasVotados("Delantero", 3, 3));
@@ -812,7 +813,7 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a
 	 *                            la base de datos
 	 */
-	public static ArrayList<String> toftNombres() throws DBManagerException {
+	public static List<String> toftNombres() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
@@ -820,7 +821,7 @@ public class DBManager {
 			String sql = "select jugador_TeamOfTheYear, nombre_jugador from jugador, "
 					+ "teamoftheyear where id_jugador = jugador_TeamOfTheYear " + "order by id_TeamOfTheYear";
 			rs = stmt.executeQuery(sql);
-			ArrayList<String> arr = new ArrayList<String>();
+			List<String> arr = new ArrayList<String>();
 			while (rs.next()) {
 				arr.add(rs.getString("nombre_jugador"));
 			}
@@ -848,12 +849,12 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a
 	 *                            la base de datos
 	 */
-	public static ArrayList<Ciudad> getCiudades() throws DBManagerException {
+	public static List<Ciudad> getCiudades() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			ArrayList<Ciudad> array = new ArrayList<Ciudad>();
+			List<Ciudad> array = new ArrayList<Ciudad>();
 			rs = stmt.executeQuery(
 					"select id_ciudad, nombre_ciudad, nombre_pais from ciudad, pais where pais_ciudad = id_pais");
 			while (rs.next()) {
@@ -882,12 +883,12 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 *                            de acceso a la BD
 	 */
-	public static ArrayList<Club> getClubes() throws DBManagerException {
+	public static List<Club> getClubes() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			ArrayList<Club> array = new ArrayList<Club>();
+			List<Club> array = new ArrayList<Club>();
 			rs = stmt.executeQuery(
 					"select id_club, nombre_club, nombre_ciudad, nombre_estadio, anoCreacion_club, palmares_club, nombre_entrenador from club, ciudad, estadio, entrenador where ciudad_club = id_ciudad and estadio_club = id_estadio and entrenador_club = id_entrenador ");
 			while (rs.next()) {
@@ -918,12 +919,12 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 *                            de acceso a la BD
 	 */
-	public static ArrayList<Entrenador> getEntrenadores() throws DBManagerException {
+	public static List<Entrenador> getEntrenadores() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			ArrayList<Entrenador> array = new ArrayList<Entrenador>();
+			List<Entrenador> array = new ArrayList<Entrenador>();
 			rs = stmt.executeQuery(
 					"select id_entrenador, nombre_entrenador, fechaNac_entrenador, nombre_club, nombre_ciudad, formacion_entrenador, mentalidad_entrenador from entrenador, club, ciudad where club_entrenador = id_club and ciudad_entrenador = id_ciudad");
 			while (rs.next()) {
@@ -1171,13 +1172,13 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a
 	 *                            la base de datos
 	 */
-	public static ArrayList<Estadio> getEstadios() throws DBManagerException {
+	public static List<Estadio> getEstadios() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
 			connect();
 			stmt = conn.createStatement();
-			ArrayList<Estadio> array = new ArrayList<Estadio>();
+			List<Estadio> array = new ArrayList<Estadio>();
 			rs = stmt.executeQuery(
 					"select id_estadio, nombre_estadio, aforo_estadio, anoCreacion_estadio, nombre_ciudad from estadio, ciudad where ciudad_estadio = id_ciudad");
 			while (rs.next()) {
@@ -1352,12 +1353,12 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a
 	 *                            la base de datos
 	 */
-	public static ArrayList<Feedback> getFeedbacks() throws DBManagerException {
+	public static List<Feedback> getFeedbacks() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			ArrayList<Feedback> array = new ArrayList<Feedback>();
+			List<Feedback> array = new ArrayList<Feedback>();
 			rs = stmt.executeQuery(
 					"select id_feedback, correo_usuario, valoracion_feedback, recomendacion_feedback, opinion_feedback from feedback, usuario where usuario_feedback = id_usuario");
 			while (rs.next()) {
@@ -1387,12 +1388,12 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a
 	 *                            la base de datos
 	 */
-	public static ArrayList<Jugador> getJugadores() throws DBManagerException {
+	public static List<Jugador> getJugadores() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			ArrayList<Jugador> array = new ArrayList<Jugador>();
+			List<Jugador> array = new ArrayList<Jugador>();
 			rs = stmt.executeQuery(
 					"select id_jugador, nombre_jugador, fechaNac_jugador, nombre_club, nombre_ciudad, posicion_jugador, dorsal_jugador, goles_jugador, altura_jugador, peso_jugador, pieFav_jugador, valoracion_jugador, descripcion_jugador, voto_jugador from jugador, club, ciudad where club_jugador = id_club and ciudad_jugador = id_ciudad");
 			while (rs.next()) {
@@ -1463,12 +1464,12 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a
 	 *                            la base de datos
 	 */
-	public static ArrayList<Pais> getPaises() throws DBManagerException {
+	public static List<Pais> getPaises() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			ArrayList<Pais> array = new ArrayList<Pais>();
+			List<Pais> array = new ArrayList<Pais>();
 			rs = stmt.executeQuery("select id_pais, nombre_pais from pais");
 			while (rs.next()) {
 				Pais pais = new Pais(rs.getInt(1), rs.getString(2));
@@ -1496,12 +1497,12 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a
 	 *                            la base de datos
 	 */
-	public static ArrayList<TeamOfTheYear_view> getTeamOfTheYear_view() throws DBManagerException {
+	public static List<TeamOfTheYear_view> getTeamOfTheYear_view() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			ArrayList<TeamOfTheYear_view> array = new ArrayList<TeamOfTheYear_view>();
+			List<TeamOfTheYear_view> array = new ArrayList<TeamOfTheYear_view>();
 			rs = stmt.executeQuery("select * from teamoftheyear_view");
 			while (rs.next()) {
 				TeamOfTheYear_view toft_v = new TeamOfTheYear_view(rs.getInt(1), rs.getInt(2), rs.getString(3),
@@ -1530,12 +1531,12 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a
 	 *                            la base de datos
 	 */
-	public static ArrayList<TeamOfTheYear> getTeamOfTheYear() throws DBManagerException {
+	public static List<TeamOfTheYear> getTeamOfTheYear() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			ArrayList<TeamOfTheYear> array = new ArrayList<TeamOfTheYear>();
+			List<TeamOfTheYear> array = new ArrayList<TeamOfTheYear>();
 			rs = stmt.executeQuery(
 					"select id_TeamOfTheYear, nombre_jugador from teamoftheyear, jugador where jugador_TeamOfTheYear = id_jugador order by id_TeamOfTheYear asc");
 			while (rs.next()) {
@@ -1564,12 +1565,12 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo Si hay algun problema de acceso a
 	 *                            la base de datos
 	 */
-	public static ArrayList<Usuario> getUsuarios() throws DBManagerException {
+	public static List<Usuario> getUsuarios() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			ArrayList<Usuario> array = new ArrayList<Usuario>();
+			List<Usuario> array = new ArrayList<Usuario>();
 			rs = stmt.executeQuery(
 					"select id_usuario, nombre_usuario, correo_usuario, contrasena_usuario, admin_usuario, fechaNac_usuario from usuario;");
 			while (rs.next()) {
@@ -1598,12 +1599,12 @@ public class DBManager {
 	 * @return Devuelve un array de los usuarios que han votado
 	 * @throws DBManagerException En caso de fallo
 	 */
-	public static ArrayList<UsuarioVotacion> getUsuarioVotaciones() throws DBManagerException {
+	public static List<UsuarioVotacion> getUsuarioVotaciones() throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			ArrayList<UsuarioVotacion> array = new ArrayList<UsuarioVotacion>();
+			List<UsuarioVotacion> array = new ArrayList<UsuarioVotacion>();
 			rs = stmt.executeQuery("select id_usuarioVotacion, correo_usuario, "
 					+ "(select nombre_jugador from jugador where delanteroVotado_usuarioVotacion = id_jugador),"
 					+ "(select nombre_jugador from jugador where centrocampistaVotado_usuarioVotacion = id_jugador),"
@@ -1639,7 +1640,7 @@ public class DBManager {
 	 * @return arr - Array de los nombres de las columnas
 	 * @throws DBManagerException En caso de fallo
 	 */
-	public static ArrayList<String> verColumnas(String tabla) throws DBManagerException {
+	public static List<String> verColumnas(String tabla) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
@@ -1648,7 +1649,7 @@ public class DBManager {
 					+ "' order by ordinal_position";
 			rs = stmt.executeQuery(sql1);
 
-			ArrayList<String> arr = new ArrayList<String>();
+			List<String> arr = new ArrayList<String>();
 			while (rs.next()) {
 				arr.add(rs.getString("column_name"));
 			}
@@ -1692,7 +1693,7 @@ public class DBManager {
 			rs2.next();
 			int nrows = rs2.getInt("count(*)");
 			// meter datos en array 2D
-			ArrayList<String> as = new ArrayList<String>();
+			List<String> as = new ArrayList<String>();
 			while (rs1.next()) {
 				for (int i = 1; i <= ncolumns; i++) {
 					as.add(rs1.getObject(i).toString());
@@ -1794,7 +1795,7 @@ public class DBManager {
 	 * @return Nos devuelve los jugadores que estan en ese equipo
 	 * @throws DBManagerException En caso de fallo
 	 */
-	public static ArrayList<String> getJugadoresPorEquipo(String nombre_club) throws DBManagerException {
+	public static List<String> getJugadoresPorEquipo(String nombre_club) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
 		try {
@@ -1802,7 +1803,7 @@ public class DBManager {
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setString(1, nombre_club);
 			rs = preparedstmt.executeQuery();
-			ArrayList<String> arr = new ArrayList<String>();
+			List<String> arr = new ArrayList<String>();
 			while (rs.next()) {
 				arr.add(rs.getString("nombre_jugador"));
 			}

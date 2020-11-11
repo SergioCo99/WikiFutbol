@@ -3,6 +3,7 @@ package interfaces;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JList;
 
@@ -21,8 +22,8 @@ import database.DBManagerException;
  */
 public class IListaTest {
 
-	private ArrayList<Club> arrayClub = new ArrayList<Club>();
-	private ArrayList<String> arrayJugador = new ArrayList<String>();
+	private List<Club> arrayClub = new ArrayList<Club>();
+	private List<String> arrayJugador = new ArrayList<String>();
 	private JList<String> listaClub = new JList<String>();
 	private JList<String> listaJugador = new JList<String>();
 

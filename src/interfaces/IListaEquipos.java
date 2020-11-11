@@ -2,7 +2,7 @@ package interfaces;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
@@ -24,12 +24,12 @@ public interface IListaEquipos {
 	 * Sirve para mostrar la lista de equipos en la VentanaPrincipal
 	 *
 	 * @param bookPanel Ubicación de la lista de Equipos
-	 * @param a         ArrayList de los clubes
+	 * @param arrayClub ArrayList de los clubes
 	 */
-	public static void cargarLista(JList<String> bookPanel, ArrayList<Club> a) {
+	public static void cargarLista(JList<String> bookPanel, List<Club> arrayClub) {
 
 		DefaultListModel<String> modelo = new DefaultListModel<String>();
-		for (Club e : a) {
+		for (Club e : arrayClub) {
 			modelo.addElement(e.getNombre());
 		}
 		bookPanel.setModel(modelo);

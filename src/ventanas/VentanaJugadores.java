@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 import javax.swing.ButtonGroup;
@@ -53,10 +54,10 @@ public class VentanaJugadores extends JFrame {
 	private JRadioButton rdbtnPosicionJugador;
 	private ArrayList<String> arrayResultado = new ArrayList<String>();
 
-	public VentanaJugadores(ArrayList<String> arrayJugadores2, Club club, Usuario u) throws DBManagerException {
+	public VentanaJugadores(List<String> arrayJugadores, Club club, Usuario u) throws DBManagerException {
 		Usuario usuario = u;
 		nombreEquipo = club.getNombre();
-		arrayJugadores2 = DBManager.getJugadoresPorEquipo(nombreEquipo);
+		arrayJugadores = DBManager.getJugadoresPorEquipo(nombreEquipo);
 		this.setTitle("Plantilla del " + nombreEquipo);
 		this.setSize(1200, 700);
 		this.setLayout(null);
@@ -155,7 +156,7 @@ public class VentanaJugadores extends JFrame {
 		navBarPanel.add(txtField);
 		txtField.setColumns(10);
 
-		for (String e : arrayJugadores2) {
+		for (String e : arrayJugadores) {
 			arrayResultado.add(e);
 		}
 
@@ -219,8 +220,6 @@ public class VentanaJugadores extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 
-					ArrayList<String> jugador;
-					jugador = arrayResultado;
 					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), club,
 							usuario);
 					ve.setVisible(true);

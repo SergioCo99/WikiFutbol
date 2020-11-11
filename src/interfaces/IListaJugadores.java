@@ -2,7 +2,7 @@ package interfaces;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
@@ -21,13 +21,13 @@ public interface IListaJugadores {
 	/**
 	 * Sirve para mostrar la lista de jugadores en la VentanaJugadores
 	 *
-	 * @param bookPanel Ubicación de la lista de Jugadores
-	 * @param a         ArrayList de los jugadores
+	 * @param bookPanel    Ubicación de la lista de Jugadores
+	 * @param arrayJugador ArrayList de los jugadores
 	 */
-	public static void cargarLista(JList<String> bookPanel, ArrayList<String> a) {
+	public static void cargarLista(JList<String> bookPanel, List<String> arrayJugador) {
 
 		DefaultListModel<String> modelo = new DefaultListModel<String>();
-		for (String j : a) {
+		for (String j : arrayJugador) {
 			modelo.addElement(j);
 		}
 		bookPanel.setModel(modelo);

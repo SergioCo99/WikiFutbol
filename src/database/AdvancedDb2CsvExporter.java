@@ -11,8 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 
@@ -151,7 +151,7 @@ public class AdvancedDb2CsvExporter {
 	 */
 	public static void classesExport(String table) throws DBManagerException {
 		String csvFileName = getFileName(table.concat("_ExportFromClasses"));
-		ArrayList<?> arr = null;
+		List<?> arr = null;
 
 		if (table.equals("ciudad")) {
 			arr = database.DBManager.getCiudades();

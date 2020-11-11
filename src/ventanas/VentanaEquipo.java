@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -267,7 +268,7 @@ public class VentanaEquipo extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					ArrayList<String> arrayJugadores = new ArrayList<String>();
+					List<String> arrayJugadores = new ArrayList<String>();
 					arrayJugadores = DBManager.getJugadoresPorEquipo(nombreEquipo);
 					VentanaJugadores ve = new VentanaJugadores(arrayJugadores, club, u);
 					ve.setVisible(true);

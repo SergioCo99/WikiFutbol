@@ -2,6 +2,8 @@ package utils;
 
 import static org.junit.Assert.assertEquals;
 
+import javax.swing.JOptionPane;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,11 +38,13 @@ public class FileChooserTest {
 	 */
 	@Test
 	public void test() {
+		JOptionPane.showMessageDialog(null, "Elige: \\git\\WikiFutbol\\resources\\wf.png");
 		String finalPath = utils.FileChooser.Choose();
 		String actual = System.getProperty("user.home") + "\\git\\WikiFutbol\\resources\\wf.png";
 
 		assertEquals(finalPath, actual);
 
+		JOptionPane.showMessageDialog(null, "Elige: boton Cancelar o X");
 		String finalPath2 = utils.FileChooser.Choose();
 		String actual2 = "";
 
