@@ -537,38 +537,6 @@ public class VentanaPrincipal extends JFrame {
 		lblEstadioRes.setFont(new Font("Tahoma", Font.BOLD, 13));
 		add(lblEstadioRes);
 
-		addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ciudad = arrayEquipos.get(bookPanel.getSelectedIndex()).getCiudad();
-				lblCiudadRes.setText(ciudad);
-
-				anyoCreacion = Integer.toString(arrayEquipos.get(bookPanel.getSelectedIndex()).getAnyoCreacion());
-				lblAnyoRes.setText(anyoCreacion);
-
-				estadio = arrayEquipos.get(bookPanel.getSelectedIndex()).getEstadio();
-				lblEstadioRes.setText(estadio);
-
-			}
-		});
-
 		MouseListener mouseListener = new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
