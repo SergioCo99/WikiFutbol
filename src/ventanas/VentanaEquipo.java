@@ -145,11 +145,11 @@ public class VentanaEquipo extends JFrame {
 		// ResultadoCiudadEquipo
 		String nombreCiudad = club.getCiudad();
 		final JButton botonCiudad = new JButton(nombreCiudad);
-		botonCiudad.setBounds(120, 175, 400, 50);
+		botonCiudad.setBounds(120, 175, 200, 50);
 		botonCiudad.setFont(fuente2);
 		botonCiudad.setForeground(Color.BLACK);
 		botonCiudad.setContentAreaFilled(false);
-		botonCiudad.setFocusable(true);
+		botonCiudad.setFocusable(false);
 		bookPanel.add(botonCiudad);
 
 		botonCiudad.addActionListener(new ActionListener() {
@@ -181,7 +181,7 @@ public class VentanaEquipo extends JFrame {
 		botonEquipo.setFont(fuente2);
 		botonEquipo.setForeground(Color.BLACK);
 		botonEquipo.setContentAreaFilled(false);
-		botonEquipo.setFocusable(true);
+		botonEquipo.setFocusable(false);
 		bookPanel.add(botonEquipo);
 
 		botonEquipo.addActionListener(new ActionListener() {
@@ -246,7 +246,7 @@ public class VentanaEquipo extends JFrame {
 		botonEntrenador.setFont(fuente2);
 		botonEntrenador.setForeground(Color.BLACK);
 		botonEntrenador.setContentAreaFilled(false);
-		botonEntrenador.setFocusable(true);
+		botonEntrenador.setFocusable(false);
 		bookPanel.add(botonEntrenador);
 
 		botonEntrenador.addActionListener(new ActionListener() {

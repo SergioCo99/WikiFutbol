@@ -2375,6 +2375,33 @@ public class DBManager {
 			disconnect();
 		}
 	}
+	
+	public static String paisCiudad(String Ciudad, String BD) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			String paisCiudad = "";
+			String sql = "select nombre_pais from pais, ciudad where id_pais = pais_ciudad and nombre_ciudad = ?";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Ciudad);
+			rs = preparedstmt.executeQuery();
+			while (rs.next()) {
+				paisCiudad = rs.getString("nombre_pais");
+			}
+			return paisCiudad;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error paisCiudad DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
 
 
 	// este main es para pruebas, habria que quitarlo

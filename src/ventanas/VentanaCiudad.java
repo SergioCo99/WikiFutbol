@@ -116,19 +116,42 @@ public class VentanaCiudad extends JFrame {
 		cabecera.setForeground(Color.BLACK);
 		bookPanel.add(cabecera);
 		
-		// NombreEntrenador
+		// NombreCiudad
 		final JLabel labelNombre = new JLabel("Nombre: ");
 		labelNombre.setBounds(20, 110, 150, 50);
 		labelNombre.setFont(fuente2);
 		labelNombre.setForeground(Color.BLACK);
 		bookPanel.add(labelNombre);
 
-		// ResultadoNombreEntrenador
+		// ResultadoNombreCiudad
 		final JLabel resultadoNombre = new JLabel(nombreCiudad);
 		resultadoNombre.setBounds(120, 110, 400, 50);
 		resultadoNombre.setFont(fuente2);
 		resultadoNombre.setForeground(Color.BLACK);
 		bookPanel.add(resultadoNombre);
+		
+		// NombrePais
+		final JLabel labelPais = new JLabel("Pais: ");
+		labelPais.setBounds(20, 175, 150, 50);
+		labelPais.setFont(fuente2);
+		labelPais.setForeground(Color.BLACK);
+		bookPanel.add(labelPais);
+		
+		// ResultadoPais
+		String nombrePais = null;
+		try {
+			nombrePais = DBManager.paisCiudad(ciudad, "wikifutbolschema");
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
+		}
+		System.out.println(nombrePais);
+		
+		final JLabel resultadoPais = new JLabel(nombrePais);
+		resultadoPais.setBounds(100, 175, 400, 50);
+		resultadoPais.setFont(fuente2);
+		resultadoPais.setForeground(Color.BLACK);
+		bookPanel.add(resultadoPais);
 		
 		
 		// Imagen logo
