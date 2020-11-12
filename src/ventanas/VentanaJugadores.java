@@ -11,16 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import clases.Club;
@@ -44,8 +41,6 @@ public class VentanaJugadores extends JFrame {
 	String nombreEquipo;
 	private JList<String> bookPanel = new JList<String>();
 
-	// Filtrado de equipos
-	private JTextField txtField;
 	private static VentanaJugadores frame;
 
 
