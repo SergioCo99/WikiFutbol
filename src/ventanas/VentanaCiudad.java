@@ -115,7 +115,22 @@ public class VentanaCiudad extends JFrame {
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));
 		cabecera.setForeground(Color.BLACK);
 		bookPanel.add(cabecera);
+		
+		// NombreEntrenador
+		final JLabel labelNombre = new JLabel("Nombre: ");
+		labelNombre.setBounds(20, 110, 150, 50);
+		labelNombre.setFont(fuente2);
+		labelNombre.setForeground(Color.BLACK);
+		bookPanel.add(labelNombre);
 
+		// ResultadoNombreEntrenador
+		final JLabel resultadoNombre = new JLabel(nombreCiudad);
+		resultadoNombre.setBounds(120, 110, 400, 50);
+		resultadoNombre.setFont(fuente2);
+		resultadoNombre.setForeground(Color.BLACK);
+		bookPanel.add(resultadoNombre);
+		
+		
 		// Imagen logo
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
