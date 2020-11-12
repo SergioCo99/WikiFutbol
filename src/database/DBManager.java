@@ -2316,8 +2316,40 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * 
+	 * @param tabla
+	 * @return
+	 * @throws DBManagerException
+	 */
+	public static Pais getPaisPorCiudad(String ciudad) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			
+			String sql = "select id_pais, nombre_pais from pais, ciudad where pais_ciudad=id_pais and nombre_ciudad = ?";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, ciudad);
+			rs = preparedstmt.executeQuery();
+			rs.next();
+			Pais pais = new Pais(rs.getInt(1), rs.getString(2));
+			return pais;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error getPaises DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		connect();
+		System.out.println(getPaisPorCiudad("Bilbao"));
 	}
 }
