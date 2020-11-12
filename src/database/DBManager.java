@@ -858,9 +858,9 @@ public class DBManager {
 			stmt = conn.createStatement();
 			List<Ciudad> array = new ArrayList<Ciudad>();
 			rs = stmt.executeQuery(
-					"select id_ciudad, nombre_ciudad, nombre_pais from ciudad, pais where pais_ciudad = id_pais");
+					"select id_ciudad, nombre_ciudad, nombre_pais, poblacion, gentilicio, provincia, comAutonoma from ciudad, pais where pais_ciudad = id_pais");
 			while (rs.next()) {
-				Ciudad ciudad = new Ciudad(rs.getInt(1), rs.getString(2), rs.getString(3));
+				Ciudad ciudad = new Ciudad(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7));
 				array.add(ciudad);
 			}
 			return array;
@@ -2402,7 +2402,114 @@ public class DBManager {
 			disconnect();
 		}
 	}
+	
+	public static String provinciaCiudad(String Ciudad, String BD) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			String provinciaCiudad = "";
+			String sql = "select provincia from ciudad where nombre_ciudad = ?";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Ciudad);
+			rs = preparedstmt.executeQuery();
+			while (rs.next()) {
+				provinciaCiudad = rs.getString("provincia");
+			}
+			return provinciaCiudad;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error provinciaCiudad DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+	
+	public static String comAutonomaCiudad(String Ciudad, String BD) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			String comAutonomaCiudad = "";
+			String sql = "select comAutonoma from ciudad where nombre_ciudad = ?";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Ciudad);
+			rs = preparedstmt.executeQuery();
+			while (rs.next()) {
+				comAutonomaCiudad = rs.getString("comAutonoma");
+			}
+			return comAutonomaCiudad;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error comAutonomaCiudad DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+	
+	public static String poblacionCiudad(String Ciudad, String BD) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			String poblacionCiudad = "";
+			String sql = "select poblacion from ciudad where nombre_ciudad = ?";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Ciudad);
+			rs = preparedstmt.executeQuery();
+			while (rs.next()) {
+				poblacionCiudad = rs.getString("poblacion");
+			}
+			return poblacionCiudad;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error poblacionCiudad DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
 
+	public static String gentilicioCiudad(String Ciudad, String BD) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			String gentilicioCiudad = "";
+			String sql = "select gentilicio from ciudad where nombre_ciudad = ?";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Ciudad);
+			rs = preparedstmt.executeQuery();
+			while (rs.next()) {
+				gentilicioCiudad = rs.getString("gentilicio");
+			}
+			return gentilicioCiudad;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error gentilicioCiudad DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {

@@ -130,9 +130,53 @@ public class VentanaCiudad extends JFrame {
 		resultadoNombre.setForeground(Color.BLACK);
 		bookPanel.add(resultadoNombre);
 		
+		// NombreProvincia
+		final JLabel labelProvincia = new JLabel("Provincia: ");
+		labelProvincia.setBounds(20, 175, 150, 50);
+		labelProvincia.setFont(fuente2);
+		labelProvincia.setForeground(Color.BLACK);
+		bookPanel.add(labelProvincia);
+				
+		// ResultadoProvincia
+		String nombreProvincia = null;
+		try {
+			nombreProvincia = DBManager.provinciaCiudad(ciudad, "wikifutbolschema");
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
+		}
+		
+		final JLabel resultadoProvincia = new JLabel(nombreProvincia);
+		resultadoProvincia.setBounds(135, 175, 400, 50);
+		resultadoProvincia.setFont(fuente2);
+		resultadoProvincia.setForeground(Color.BLACK);
+		bookPanel.add(resultadoProvincia);
+		
+		// NombreComAutonoma
+		final JLabel labelComAutonoma = new JLabel("Com. Autónoma: ");
+		labelComAutonoma.setBounds(20, 240, 200, 50);
+		labelComAutonoma.setFont(fuente2);
+		labelComAutonoma.setForeground(Color.BLACK);
+		bookPanel.add(labelComAutonoma);
+						
+		// ResultadoComAutonoma
+		String nombreComAutonoma = null;
+		try {
+			nombreComAutonoma = DBManager.comAutonomaCiudad(ciudad, "wikifutbolschema");
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
+		}
+				
+		final JLabel resultadoComAutonoma = new JLabel(nombreComAutonoma);
+		resultadoComAutonoma.setBounds(200, 240, 400, 50);
+		resultadoComAutonoma.setFont(fuente2);
+		resultadoComAutonoma.setForeground(Color.BLACK);
+		bookPanel.add(resultadoComAutonoma);
+		
 		// NombrePais
 		final JLabel labelPais = new JLabel("Pais: ");
-		labelPais.setBounds(20, 175, 150, 50);
+		labelPais.setBounds(20, 305, 150, 50);
 		labelPais.setFont(fuente2);
 		labelPais.setForeground(Color.BLACK);
 		bookPanel.add(labelPais);
@@ -145,14 +189,56 @@ public class VentanaCiudad extends JFrame {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-		System.out.println(nombrePais);
-		
+
 		final JLabel resultadoPais = new JLabel(nombrePais);
-		resultadoPais.setBounds(100, 175, 400, 50);
+		resultadoPais.setBounds(85, 305, 400, 50);
 		resultadoPais.setFont(fuente2);
 		resultadoPais.setForeground(Color.BLACK);
 		bookPanel.add(resultadoPais);
 		
+		// Poblacion
+		final JLabel labelPoblacion = new JLabel("Población: ");
+		labelPoblacion.setBounds(20, 370, 150, 50);
+		labelPoblacion.setFont(fuente2);
+		labelPoblacion.setForeground(Color.BLACK);
+		bookPanel.add(labelPoblacion);
+				
+		// ResultadoPoblacion
+		String poblacion = null;
+		try {
+			poblacion = DBManager.poblacionCiudad(ciudad, "wikifutbolschema");
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
+		}
+	
+		final JLabel resultadoPoblacion = new JLabel(poblacion + " habitantes");
+		resultadoPoblacion.setBounds(135, 370, 400, 50);
+		resultadoPoblacion.setFont(fuente2);
+		resultadoPoblacion.setForeground(Color.BLACK);
+		bookPanel.add(resultadoPoblacion);
+		
+		// Gentilicio
+		final JLabel labelGentilicio = new JLabel("Gentilicio: ");
+		labelGentilicio.setBounds(400, 370, 150, 50);
+		labelGentilicio.setFont(fuente2);
+		labelGentilicio.setForeground(Color.BLACK);
+		bookPanel.add(labelGentilicio);
+						
+		// ResultadoPoblacion
+		String gentilicio = null;
+		try {
+			gentilicio = DBManager.gentilicioCiudad(ciudad, "wikifutbolschema");
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
+		}
+			
+		final JLabel resultadoGentilicio = new JLabel(gentilicio);
+		resultadoGentilicio.setBounds(520, 370, 400, 50);
+		resultadoGentilicio.setFont(fuente2);
+		resultadoGentilicio.setForeground(Color.BLACK);
+		bookPanel.add(resultadoGentilicio);
 		
 		// Imagen logo
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
