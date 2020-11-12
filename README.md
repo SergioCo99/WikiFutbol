@@ -15,7 +15,15 @@ Además, el usuario podrá votar a sus equipos favoritos, sumando un punto al eq
 ### Creacion del "schema" en MySQL
 En el repositorio hay adjunto un archivo .sql con el que se pueden importar las tablas vacías, es decir sin ningún dato (por si se quisiera escribir desde 0) de la base de datos, incluyendo las claves primarias, secundarias y las relaciones entre ellas y las tablas. Además de esto también hay un "view" para poder visualizar el Team Of The Year con mayor comodidad.
 
-Para conectarse a la base de datos, hay que escribir en el archivo jdbc.properties el controlador, la URL, el usuario y la contraseña adecuadas, ademas de la posibilidad de añadir las tablas que quieren excluirse.
+Para conectarse a la base de datos, hay que copiar y pegar lo siguiente, y escribir en un fichero llamado jdbc.properties el controlador, la URL, el usuario y la contraseña adecuados, ademas de la posibilidad de añadir las tablas que quieren excluirse.
+```
+DB.CONTROLADOR=com.mysql.cj.jdbc.Driver
+DB.URL=
+DB.USUARIO=
+DB.CONTRASENA=
+# en DB.TABLASEXCLUIDA las tablas se diferencian entre comas y todo JUNTO (p.e.:usuario,jugador,club), ¡SI LO CAMBIAS REVISA QUE FUNCIONA en VentanaDescargar!
+DB.TABLASEXCLUIDAS=usuario
+```
 
 #### Ejecutar el programa
 La clase principal, es decir el main, se encuentra en el siguiente directorio:
