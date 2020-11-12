@@ -143,13 +143,30 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(labelCiudad);
 
 		// ResultadoCiudadEquipo
-		String ciudadEquipo = club.getCiudad();
-		final JLabel resultadoCiudad = new JLabel(ciudadEquipo);
-		resultadoCiudad.setBounds(120, 175, 400, 50);
-		resultadoCiudad.setFont(fuente2);
-		resultadoCiudad.setForeground(Color.BLACK);
-		bookPanel.add(resultadoCiudad);
+		String nombreCiudad = club.getCiudad();
+		final JButton botonCiudad = new JButton(nombreCiudad);
+		botonCiudad.setBounds(120, 175, 400, 50);
+		botonCiudad.setFont(fuente2);
+		botonCiudad.setForeground(Color.BLACK);
+		botonCiudad.setContentAreaFilled(false);
+		botonCiudad.setFocusable(true);
+		bookPanel.add(botonCiudad);
 
+		botonCiudad.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					System.out.println(nombreCiudad);
+					VentanaCiudad ve = new VentanaCiudad(nombreCiudad, club, u);
+					ve.setVisible(true);
+					dispose();
+				} catch (Exception e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+					JOptionPane.showMessageDialog(frame, "Esta ciudad no existe");
+				}
+
+			}
+		});
 		// EstadioEquipo
 		final JLabel labelEstadio = new JLabel("Estadio: ");
 		labelEstadio.setBounds(20, 240, 150, 50);

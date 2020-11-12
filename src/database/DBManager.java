@@ -2347,6 +2347,35 @@ public class DBManager {
 			disconnect();
 		}
 	}
+	
+
+	public static String nombreCiudad(String Ciudad, String BD) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			String nombre = "";
+			String sql = "SELECT nombre_ciudad FROM ciudad WHERE nombre_ciudad = ?";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Ciudad);
+			rs = preparedstmt.executeQuery();
+			while (rs.next()) {
+				nombre = rs.getString("nombre_ciudad");
+			}
+			return nombre;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error nombreEntrenador DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
