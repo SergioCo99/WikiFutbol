@@ -3,7 +3,8 @@ package feedback;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -67,11 +68,11 @@ public class EstadisticaFeedbackTest {
 		double ans1 = (a / c) * 100;
 		double ans2 = (b / c) * 100;
 
-		ArrayList<Double> arr = new ArrayList<>();
-		arr.add(0, ans1);
-		arr.add(1, ans2);
+		Map<Integer, Double> map = new HashMap<Integer, Double>();
+		map.put(0, ans1);
+		map.put(1, ans2);
 
-		assertEquals(arr, EstadisticaFeedback.siNo(a, b, c));
+		assertEquals(map, EstadisticaFeedback.siNo(a, b, c));
 	}
 
 	/**
@@ -86,16 +87,16 @@ public class EstadisticaFeedbackTest {
 		try {
 			assertEquals(EstadisticaFeedback.ReadAndLoad().size(), 4);
 
-			if ((EstadisticaFeedback.ReadAndLoad().get(0) < 0) || (EstadisticaFeedback.ReadAndLoad().get(0) > 5)) {
+			if ((EstadisticaFeedback.ReadAndLoad().get(1) < 0) || (EstadisticaFeedback.ReadAndLoad().get(1) > 5)) {
 				fail("Tiene que ser una puntuacion entre 0 y 5");
 			}
 
-			double porcentajeSi = EstadisticaFeedback.ReadAndLoad().get(1);
-			double porcentajeNo = EstadisticaFeedback.ReadAndLoad().get(2);
+			double porcentajeSi = EstadisticaFeedback.ReadAndLoad().get(2);
+			double porcentajeNo = EstadisticaFeedback.ReadAndLoad().get(3);
 			assertEquals(porcentajeSi + porcentajeNo, 100, 0.01);
 
-			if ((EstadisticaFeedback.ReadAndLoad().get(3) < 0)
-					|| ((EstadisticaFeedback.ReadAndLoad().get(3) % 1) != 0)) {
+			if ((EstadisticaFeedback.ReadAndLoad().get(4) < 0)
+					|| ((EstadisticaFeedback.ReadAndLoad().get(4) % 1) != 0)) {
 				fail("No puede ser menor que 0, y tiene que ser un numero entero");
 			}
 		} catch (RWException e) {

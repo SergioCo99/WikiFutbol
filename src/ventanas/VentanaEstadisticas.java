@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import feedback.RWException;
+import javax.swing.JLabel;
 
 /**
  * Ventana para la visualizacion de las estadisticas de la aplicaion
@@ -45,16 +46,16 @@ public class VentanaEstadisticas extends JFrame {
 			for (int i = 0; i < feedback.EstadisticaFeedback.ReadAndLoad().size(); i++) {
 				// primeras 2 filas (0 y 1)
 				if (i == 0) {
-					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i)) + " /5";
+					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i+1)) + " /5";
 					// fila n� 2
 				} else if ((i >= 1) && (i <= 2)) {
-					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i)) + " %";
+					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i+1)) + " %";
 				} else if (i == 3) {
 					// fila n� 3
-					data[i][1] = String.format("%.0f", feedback.EstadisticaFeedback.ReadAndLoad().get(i));
+					data[i][1] = String.format("%.0f", feedback.EstadisticaFeedback.ReadAndLoad().get(i+1));
 				} else {
 					// por ahora las demas
-					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i));
+					data[i][1] = String.format("%.2f", feedback.EstadisticaFeedback.ReadAndLoad().get(i+1));
 				}
 				// Las filas, a mano (?)
 				data[0][0] = "Valoracion sobre 5:";
@@ -96,7 +97,7 @@ public class VentanaEstadisticas extends JFrame {
 
 		// es un poco feo
 		try {
-			int nuevaValoracion = (int) Math.round(feedback.EstadisticaFeedback.ReadAndLoad().get(0) * 10);
+			int nuevaValoracion = (int) Math.round(feedback.EstadisticaFeedback.ReadAndLoad().get(1) * 10);
 			valoracion = new JProgressBar(0, 50);
 			valoracion.setToolTipText("");
 			valoracion.setStringPainted(true);
@@ -105,6 +106,11 @@ public class VentanaEstadisticas extends JFrame {
 			valoracion.setForeground(Color.yellow);
 			valoracion.setString(Integer.toString(nuevaValoracion));
 			getContentPane().add(valoracion);
+			
+			JLabel lblNewLabel = new JLabel("Esto igual lo mejoramos/quitamos???");
+			lblNewLabel.setForeground(Color.RED);
+			lblNewLabel.setBounds(110, 310, 390, 52);
+			getContentPane().add(lblNewLabel);
 		} catch (RWException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();

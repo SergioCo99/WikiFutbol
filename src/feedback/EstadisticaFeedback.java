@@ -6,7 +6,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 
 /**
@@ -45,7 +46,7 @@ public class EstadisticaFeedback {
 	 * @param c c
 	 * @return Devuelve el array con los resultado de las recomendaciones
 	 */
-	public static ArrayList<Double> siNo(double a, double b, double c) {
+	public static Map<Integer, Double> siNo(double a, double b, double c) {
 		if (c == 0) {
 			throw new ArithmeticException("No puedes dividir por cero");
 		}
@@ -57,10 +58,10 @@ public class EstadisticaFeedback {
 		ans2 = ans2 * 100;
 		// System.out.println("No: " + String.format("%.2f", ans2) + " %.");
 
-		ArrayList<Double> arr = new ArrayList<>();
-		arr.add(0, ans1);
-		arr.add(1, ans2);
-		return arr;
+		Map<Integer, Double> map = new HashMap<Integer, Double>();
+		map.put(0, ans1);
+		map.put(1, ans2);
+		return map;
 	}
 
 	/**
@@ -73,7 +74,7 @@ public class EstadisticaFeedback {
 	 *         o no
 	 * @throws RWException En caso de error
 	 */
-	public static ArrayList<Double> ReadAndLoad() throws RWException {
+	public static Map<Integer, Double> ReadAndLoad() throws RWException {
 		File f1 = new File("FeedBackLog.log"); // Creation of File Descriptor for input file
 		String[] words = null; // Intialize the word Array
 
@@ -138,17 +139,16 @@ public class EstadisticaFeedback {
 		}
 
 		// Aqui empieza la segunda parte :)
-		ArrayList<Double> arr = new ArrayList<>();
+		Map<Integer, Double> map = new HashMap<Integer, Double>();
 
 		for (int i = 0; i < siNo(countSi, countNo, countSN).size(); i++) {
-			// filas 1 y 2
-			arr.add(i, siNo(countSi, countNo, countSN).get(i));
+			// filas 2 y 3 (i+2 y i+3 -> 0+2 y 1+3)
+			map.put(i + 2, siNo(countSi, countNo, countSN).get(i));
 		}
-		arr.add(0, mediaPuntuacion(countNum, mediaNum)); // fila 0
-		arr.add(3, mediaNum); // fila 3
+		map.put(1, mediaPuntuacion(countNum, mediaNum)); // fila 1
+		map.put(4, mediaNum); // fila 4
 
-		// System.out.println(arr);
-		return arr;
+		return map;
 	}
 
 	// este main es para pruebas, habria que quitarlo
