@@ -17,6 +17,9 @@ En el repositorio hay adjunto un archivo .sql con el que se pueden importar las 
 
 Para conectarse a la base de datos, hay que copiar y pegar lo siguiente, y escribir en un fichero llamado jdbc.properties el controlador, la URL, el usuario y la contraseña adecuados, ademas de la posibilidad de añadir las tablas que quieren excluirse.
 ```
+/WikiFutbol/jdbc.properties
+```
+```
 DB.CONTROLADOR=com.mysql.cj.jdbc.Driver
 DB.URL=
 DB.USUARIO=
