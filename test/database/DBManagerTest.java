@@ -13,7 +13,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -565,10 +571,11 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testToft_y_testToftNombres() throws DBManagerException, SQLException {
-		List<Integer> toft = new ArrayList<Integer>();
+		Map<Integer, Integer> toft = new HashMap<Integer, Integer>();
 		toft = DBManager.toft();
 
-		for (Integer jugador : toft) {
+		for (Iterator<Entry<Integer, Integer>> iterator = toft.entrySet().iterator(); iterator.hasNext();) {
+			Entry<Integer, Integer> jugador = iterator.next();
 			assertNotNull(jugador);
 			assertNotEquals(null, jugador);
 			assertNotEquals("", jugador);
@@ -576,8 +583,10 @@ public class DBManagerTest {
 		if (toft.size() != 11) {
 			fail("Tienen que ser 11, por 11 jugadores");
 		}
-		for (var i = 0; i < toft.size(); i++) {
-			if (toft.indexOf(toft.get(i)) != toft.lastIndexOf(toft.get(i))) {
+
+		Collection<Integer> list = toft.values();
+		for (Iterator<Integer> itr = list.iterator(); itr.hasNext();) {
+			if (Collections.frequency(list, itr.next()) > 1) {
 				fail("No puede haber dos ids iguales, tienen que ser 11 diferentes");
 			}
 		}
@@ -596,7 +605,7 @@ public class DBManagerTest {
 			rs = preparedstmt.executeQuery();
 			rs.next();
 
-			int expected = toft.get(contador - 1);
+			int expected = toft.get(contador);
 			int actual = rs.getInt("id_jugador");
 			assertEquals(expected, actual);
 

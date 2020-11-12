@@ -9,7 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 
@@ -775,24 +777,24 @@ public class DBManager {
 	 *         centrocampistas, los tres defensas y el portero mas votado.
 	 * @throws DBManagerException En caso de fallo
 	 */
-	public static List<Integer> toft() throws DBManagerException {
+	public static Map<Integer, Integer> toft() throws DBManagerException {
 		connect();
 		try {
 			stmt = conn.createStatement();
-			// ademas de meter los datos en el array, ejecuta el metodo getMasVotados()
-			List<Integer> arr = new ArrayList<Integer>();
-			arr.add(getMasVotados("Delantero", 1, 1));
-			arr.add(getMasVotados("Delantero", 2, 2));
-			arr.add(getMasVotados("Delantero", 3, 3));
-			arr.add(getMasVotados("Centrocampista", 1, 4));
-			arr.add(getMasVotados("Centrocampista", 2, 5));
-			arr.add(getMasVotados("Centrocampista", 3, 6));
-			arr.add(getMasVotados("Defensa", 1, 7));
-			arr.add(getMasVotados("Defensa", 2, 8));
-			arr.add(getMasVotados("Defensa", 3, 9));
-			arr.add(getMasVotados("Defensa", 4, 10));
-			arr.add(getMasVotados("Portero", 1, 11));
-			return arr;
+			// ademas de meter los datos en el map, ejecuta el metodo getMasVotados()
+			Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+			map.put(1, getMasVotados("Delantero", 1, 1));
+			map.put(2, getMasVotados("Delantero", 2, 2));
+			map.put(3, getMasVotados("Delantero", 3, 3));
+			map.put(4, getMasVotados("Centrocampista", 1, 4));
+			map.put(5, getMasVotados("Centrocampista", 2, 5));
+			map.put(6, getMasVotados("Centrocampista", 3, 6));
+			map.put(7, getMasVotados("Defensa", 1, 7));
+			map.put(8, getMasVotados("Defensa", 2, 8));
+			map.put(9, getMasVotados("Defensa", 3, 9));
+			map.put(10, getMasVotados("Defensa", 4, 10));
+			map.put(11, getMasVotados("Portero", 1, 11));
+			return map;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error setTOFT DBManager", e);
