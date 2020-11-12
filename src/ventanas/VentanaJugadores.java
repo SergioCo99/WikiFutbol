@@ -48,10 +48,7 @@ public class VentanaJugadores extends JFrame {
 	private JTextField txtField;
 	private static VentanaJugadores frame;
 
-	private ButtonGroup filtro;
-	private JRadioButton rdbtnNombreJugador;
-	private JRadioButton rdbtnDorsalJugador;
-	private JRadioButton rdbtnPosicionJugador;
+
 	private ArrayList<String> arrayResultado = new ArrayList<String>();
 
 	public VentanaJugadores(List<String> arrayJugadores, Club club, Usuario u) throws DBManagerException {
@@ -83,38 +80,6 @@ public class VentanaJugadores extends JFrame {
 		labelWikiFutbol.setBounds(80, 20, 385, 29);
 		navBarPanel.add(labelWikiFutbol);
 
-		final JLabelGraficoAjustado lupa = new JLabelGraficoAjustado("resources/lupa.png", 20, 20);
-		lupa.setLocation(1005, 25);
-		/*
-		 * lupa.addMouseListener(new MouseAdapter() {
-		 *
-		 * @Override public void mouseClicked(MouseEvent e) {
-		 *
-		 * jugadorBuscado = txtField.getText().toLowerCase(); arrayResultado.clear();
-		 *
-		 * if (jugadorBuscado.isEmpty()) { for (Jugador a : arrayJugadores) {
-		 * arrayResultado.add(a); } IListaJugadores.cargarLista(bookPanel,
-		 * arrayResultado); } else { if (rdbtnNombreJugador.isSelected() == true) { for
-		 * (int i = 0; i < arrayJugadores.size(); i++) { if
-		 * (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getNombre().
-		 * toLowerCase())) { arrayResultado.add(arrayJugadores.get(i)); } }
-		 * IListaJugadores.cargarLista(bookPanel, arrayResultado); } else if
-		 * (rdbtnDorsalJugador.isSelected() == true) { for (int i = 0; i <
-		 * arrayJugadores.size(); i++) { if
-		 * (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getDorsal())) {
-		 * arrayResultado.add(arrayJugadores.get(i)); } }
-		 * IListaJugadores.cargarLista(bookPanel, arrayResultado); } else if
-		 * (rdbtnPosicionJugador.isSelected() == true) { for (int i = 0; i <
-		 * arrayJugadores.size(); i++) { if
-		 * (jugadorBuscado.toLowerCase().equals(arrayJugadores.get(i).getPosicion())) {
-		 * arrayResultado.add(arrayJugadores.get(i)); } }
-		 * IListaJugadores.cargarLista(bookPanel, arrayResultado); }
-		 *
-		 * if (arrayResultado.isEmpty()) { JOptionPane.showMessageDialog(frame,
-		 * "No se han encontrado jugadores."); } } } });
-		 */
-
-		navBarPanel.add(lupa);
 
 		final JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(1040, 20, 140, 30);
@@ -151,11 +116,6 @@ public class VentanaJugadores extends JFrame {
 		atrasPanel.add(atrasIMG);
 		navBarPanel.add(atrasPanel);
 
-		txtField = new JTextField();
-		txtField.setBounds(480, 20, 500, 30);
-		navBarPanel.add(txtField);
-		txtField.setColumns(10);
-
 		for (String e : arrayJugadores) {
 			arrayResultado.add(e);
 		}
@@ -168,47 +128,17 @@ public class VentanaJugadores extends JFrame {
 		scroll.setBounds(197, 85, 800, 550);
 		add(scroll);
 
-		// Filtros
-		JLabel lblFiltro = new JLabel("Busqueda por:");
-		lblFiltro.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblFiltro.setBounds(1015, 81, 169, 24);
-		add(lblFiltro);
-
-		filtro = new ButtonGroup();
-
-		rdbtnNombreJugador = new JRadioButton("Nombre");
-		rdbtnNombreJugador.setFont(new Font("Tahoma", Font.BOLD, 13));
-		rdbtnNombreJugador.setBounds(1045, 117, 109, 23);
-		rdbtnNombreJugador.setContentAreaFilled(false);
-		rdbtnNombreJugador.setSelected(true);
-		add(rdbtnNombreJugador);
-
-		rdbtnDorsalJugador = new JRadioButton("Dorsal");
-		rdbtnDorsalJugador.setFont(new Font("Tahoma", Font.BOLD, 13));
-		rdbtnDorsalJugador.setBounds(1045, 141, 109, 23);
-		rdbtnDorsalJugador.setContentAreaFilled(false);
-		add(rdbtnDorsalJugador);
-
-		rdbtnPosicionJugador = new JRadioButton("Posicion");
-		rdbtnPosicionJugador.setFont(new Font("Tahoma", Font.BOLD, 13));
-		rdbtnPosicionJugador.setBounds(1045, 165, 109, 23);
-		rdbtnPosicionJugador.setContentAreaFilled(false);
-		add(rdbtnPosicionJugador);
-
-		filtro.add(rdbtnNombreJugador);
-		filtro.add(rdbtnDorsalJugador);
-		filtro.add(rdbtnPosicionJugador);
 
 		JLabel verJugador = new JLabel("Ver jugador:");
 		verJugador.setFont(new Font("Tahoma", Font.BOLD, 14));
-		verJugador.setBounds(1015, 400, 180, 30);
+		verJugador.setBounds(1015, 300, 180, 30);
 		verJugador.setForeground(new Color(0, 0, 0));
 		verJugador.setFocusable(false);
 		add(verJugador);
 
 		JButton botonVerJugador = new JButton("Entrar");
 		botonVerJugador.setFont(new Font("Tahoma", Font.BOLD, 14));
-		botonVerJugador.setBounds(1005, 440, 170, 30);
+		botonVerJugador.setBounds(1005, 340, 170, 30);
 		botonVerJugador.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		botonVerJugador.setContentAreaFilled(false);
 		botonVerJugador.setForeground(new Color(0, 0, 0));

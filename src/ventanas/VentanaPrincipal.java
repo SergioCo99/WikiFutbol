@@ -490,17 +490,8 @@ public class VentanaPrincipal extends JFrame {
 		lblDatos.setBounds(50, 117, 110, 20);
 		add(lblDatos);
 
-		JLabel lblVer = new JLabel("  Ver");
-		lblVer.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblVer.setBounds(70, 345, 50, 25);
-		lblVer.setFocusable(false);
-		lblVer.setOpaque(false);
-		lblVer.setBorder(new LineBorder(new Color(1, 0, 0), 3, true));
-		lblVer.setFocusable(false);
-		add(lblVer);
-
 		JLabel grande = new JLabel("");
-		grande.setBounds(5, 100, 190, 300);
+		grande.setBounds(5, 100, 190, 275);
 		grande.setFocusable(false);
 		grande.setOpaque(false);
 		grande.setBorder(new LineBorder(new Color(1, 0, 0), 3, true));
