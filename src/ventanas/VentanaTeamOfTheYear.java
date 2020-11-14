@@ -4,12 +4,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.util.logging.Level;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
 /**
@@ -24,7 +22,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 	JLabel lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9, lbl10, lbl11;
 	JLabelGraficoAjustado campo;
 
-	public VentanaTeamOfTheYear() {
+	public VentanaTeamOfTheYear(String[] array) {
 
 		this.setTitle("VentanaTeamOfTheYear");
 		this.setSize(500, 765);
@@ -37,16 +35,14 @@ public class VentanaTeamOfTheYear extends JFrame {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation((dim.width / 2) - (this.getSize().width / 2), (dim.height / 2) - (this.getSize().height / 2));
 
-		String[] array = null;
-		try {
-			array = new String[database.DBManager.toft().size()];
-			for (int i = 0; i < array.length; i++) {
-				array[i] = database.DBManager.toftNombres().get(i);
-			}
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
+		/*
+		 * String[] array = null; try { array = new
+		 * String[database.DBManager.toft().size()]; for (int i = 0; i < array.length;
+		 * i++) { array[i] = database.DBManager.toftNombres().get(i); } } catch
+		 * (DBManagerException e) {
+		 * mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+		 * e.printStackTrace(); }
+		 */
 
 		// EI
 		lbl1 = new JLabel();
@@ -169,7 +165,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		VentanaTeamOfTheYear VTOFT = new VentanaTeamOfTheYear();
-		VTOFT.setVisible(true);
+		// VentanaTeamOfTheYear VTOFT = new VentanaTeamOfTheYear();
+		// VTOFT.setVisible(true);
 	}
 }
