@@ -37,6 +37,7 @@ public class Hilos {
 
 	public static void method4() {
 		Thread thread4 = new Thread() {
+			@Override
 			public void run() {
 				for (int i = 0; i < 15; i++) {
 					try {
@@ -55,6 +56,7 @@ public class Hilos {
 		method4();
 
 		Thread thread1 = new Thread() {
+			@Override
 			public void run() {
 				method1();
 			}
@@ -62,6 +64,7 @@ public class Hilos {
 		thread1.start();
 
 		Thread thread2 = new Thread() {
+			@Override
 			public void run() {
 				try {
 					thread1.join();
@@ -74,6 +77,7 @@ public class Hilos {
 		thread2.start();
 
 		Thread thread3 = new Thread() {
+			@Override
 			public void run() {
 
 				method3();

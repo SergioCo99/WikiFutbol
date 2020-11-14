@@ -2314,7 +2314,7 @@ public class DBManager {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param tabla
 	 * @return
 	 * @throws DBManagerException

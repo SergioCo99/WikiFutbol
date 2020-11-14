@@ -60,19 +60,21 @@ public class CiudadTest {
 		c.setGentilicio("bilbaino");
 		assertEquals("bilbaino", c.getGentilicio());
 	}
+
 	@Test
 	public void testProvincia() {
 
 		c.setProvincia("Vizcaya");
 		assertEquals("Vizcaya", c.getProvincia());
 	}
+
 	@Test
 	public void testPais() {
 
 		c.setPais("Espa�a");
 		assertEquals("Espa�a", c.getPais());
 	}
-	
+
 	/**
 	 * Comprueba el método toString() de la clase Ciudad
 	 */
@@ -88,6 +90,8 @@ public class CiudadTest {
 		c.setComAutonoma("País Vasco");
 		System.out.println(c.toString());
 
-		assertEquals("Ciudad [id=1, nombre=Bilbao, pais=Espa�a, poblacion=5, gentilicio=bilbaino, provincia=Vizcaya, comAutonoma=País Vasco]", c.toString());
+		assertEquals(
+				"Ciudad [id=1, nombre=Bilbao, pais=Espa�a, poblacion=5, gentilicio=bilbaino, provincia=Vizcaya, comAutonoma=País Vasco]",
+				c.toString());
 	}
 }

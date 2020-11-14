@@ -43,7 +43,6 @@ public class VentanaJugadores extends JFrame {
 
 	private static VentanaJugadores frame;
 
-
 	private ArrayList<String> arrayResultado = new ArrayList<String>();
 
 	public VentanaJugadores(List<String> arrayJugadores, Club club, Usuario u) throws DBManagerException {
@@ -74,7 +73,6 @@ public class VentanaJugadores extends JFrame {
 		labelWikiFutbol.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
 		labelWikiFutbol.setBounds(80, 20, 385, 29);
 		navBarPanel.add(labelWikiFutbol);
-
 
 		final JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(1040, 20, 140, 30);
@@ -122,7 +120,6 @@ public class VentanaJugadores extends JFrame {
 		scroll.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		scroll.setBounds(197, 85, 800, 550);
 		add(scroll);
-
 
 		JLabel verJugador = new JLabel("Ver jugador:");
 		verJugador.setFont(new Font("Tahoma", Font.BOLD, 14));

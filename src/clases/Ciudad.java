@@ -15,14 +15,14 @@ public class Ciudad {
 	String gentilicio;
 	String provincia;
 	String comAutonoma;
-	
+
 	/**
-	 * @param id ID de la ciudad
-	 * @param nombre Nombre de la ciudad
-	 * @param pais Pais de la ciudad
-	 * @param poblacion Poblacion de la ciudad
-	 * @param gentilicio Gentilicio de los ciudadanos
-	 * @param provincia Provincia de la ciudad
+	 * @param id          ID de la ciudad
+	 * @param nombre      Nombre de la ciudad
+	 * @param pais        Pais de la ciudad
+	 * @param poblacion   Poblacion de la ciudad
+	 * @param gentilicio  Gentilicio de los ciudadanos
+	 * @param provincia   Provincia de la ciudad
 	 * @param comAutonoma Comunidad Autonoma de la ciudad
 	 */
 	public Ciudad(int id, String nombre, String pais, int poblacion, String gentilicio, String provincia,
@@ -98,8 +98,5 @@ public class Ciudad {
 		return "Ciudad [id=" + id + ", nombre=" + nombre + ", pais=" + pais + ", poblacion=" + poblacion
 				+ ", gentilicio=" + gentilicio + ", provincia=" + provincia + ", comAutonoma=" + comAutonoma + "]";
 	}
-	
-
-	
 
 }
