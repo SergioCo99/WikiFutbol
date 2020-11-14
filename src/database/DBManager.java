@@ -335,15 +335,11 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error verTablas DBManager", e);
-		} finally {
-			try {
-				stmt.close();
-				rs.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
-			}
-			disconnect();
-		}
+		} /*
+			 * finally { try { stmt.close(); rs.close(); } catch (SQLException e) {
+			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
+			 * disconnect(); }
+			 */
 	}
 
 	/**
@@ -375,15 +371,11 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error todosLosCorreos DBManager", e);
-		} finally {
-			try {
-				stmt.close();
-				rs.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
-			}
-			disconnect();
-		}
+		} /*
+			 * finally { try { stmt.close(); rs.close(); } catch (SQLException e) {
+			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
+			 * disconnect(); }
+			 */
 	}
 
 	/**
@@ -716,13 +708,10 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error contarTOFT DBManager", e);
-		} finally {
-			try {
-				rs.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
-			}
-		}
+		} /*
+			 * finally { try { rs.close(); } catch (SQLException e) {
+			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); } }
+			 */
 	}
 
 	/**
@@ -757,13 +746,10 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getMasVotados DBManager", e);
-		} finally {
-			try {
-				rs.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
-			}
-		}
+		} /*
+			 * finally { try { rs.close(); } catch (SQLException e) {
+			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); } }
+			 */
 	}
 
 	/**
@@ -794,14 +780,11 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error setTOFT DBManager", e);
-		} finally {
-			try {
-				stmt.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
-			}
-			disconnect();
-		}
+		} /*
+			 * finally { try { stmt.close(); } catch (SQLException e) {
+			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
+			 * disconnect(); }
+			 */
 	}
 
 	/**
@@ -826,7 +809,7 @@ public class DBManager {
 			return arr;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
-			throw new DBManagerException("Error todosLosCorreos DBManager", e);
+			throw new DBManagerException("Error toftNombres DBManager", e);
 		} finally {
 			try {
 				stmt.close();
@@ -899,15 +882,11 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getClubes DBManager", e);
-		} finally {
-			try {
-				stmt.close();
-				rs.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
-			}
-			disconnect();
-		}
+		} /*
+			 * finally { try { stmt.close(); rs.close(); } catch (SQLException e) {
+			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
+			 * disconnect(); }
+			 */
 	}
 
 	// Metodos entrenador
