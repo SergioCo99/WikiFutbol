@@ -60,6 +60,12 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public static String[] prepararToft() {
+		try {
+			hiloInit_4.join();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		hiloToft = new Thread() {
 			@Override
 			public void run() {
@@ -79,6 +85,12 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public static List<String> prepararTodosLosCorreos() {
+		try {
+			hiloInit_3.join();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		hiloCorreos = new Thread() {
 			@Override
 			public void run() {
@@ -95,6 +107,12 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public static List<String> prepararVentanaDescargarDatos() {
+		try {
+			hiloInit_2.join();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		hiloTablas = new Thread() {
 			@Override
 			public void run() {
@@ -111,6 +129,12 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public static void prepararVentanaVotar() {
+		try {
+			hiloInit.join();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		hiloDelantero = new Thread() {
 			@Override
 			public void run() {
@@ -263,6 +287,7 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void run() {
 				try {
+					hiloInit.join();
 					hiloInit_2.join();
 					System.out.println("2j");
 					prepararVentanaDescargarDatos();
@@ -278,9 +303,11 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void run() {
 				try {
+					hiloInit.join();
+					hiloInit_2.join();
 					hiloInit_3.join();
 					System.out.println("3j");
-					prepararVentanaDescargarDatos();
+					prepararTodosLosCorreos();
 				} catch (Exception e) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 					e.printStackTrace();
@@ -290,6 +317,9 @@ public class VentanaPrincipal extends JFrame {
 		hiloInit_4.start();
 
 		try {
+			hiloInit.join();
+			hiloInit_2.join();
+			hiloInit_3.join();
 			hiloInit_4.join();
 			System.out.println("4j");
 			prepararToft();
@@ -351,7 +381,7 @@ public class VentanaPrincipal extends JFrame {
 
 		menuAdmin.setVisible(false);
 
-		if (privilegiosAdmin(utils.PropertiesMetodos.getProp1()) == true) {
+		if (privilegiosAdmin(utils.PropertiesMetodos.getProp1())) {
 			menuAdmin.setVisible(true);
 		} else {
 			menuAdmin.setVisible(false);
@@ -544,16 +574,15 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setCursor(new Cursor(Cursor.WAIT_CURSOR));
-				try {
-					// actualiza el numero de votos de cada jugador
-					database.DBManager.actualizarVotos();
-					// actualiza el teamoftheyear
-					database.DBManager.toft();
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-				}
-
+				// try {
+				// actualiza el numero de votos de cada jugador
+				// database.DBManager.actualizarVotos();
+				// actualiza el teamoftheyear
+				// database.DBManager.toft();
+				// } catch (DBManagerException e1) {
+				// mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				// e1.printStackTrace();
+				// }
 				try {
 					hiloInit_4.join();
 					VentanaTeamOfTheYear VTOFT = new VentanaTeamOfTheYear(equipoDelAno);
@@ -562,7 +591,6 @@ public class VentanaPrincipal extends JFrame {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
-
 				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 		});

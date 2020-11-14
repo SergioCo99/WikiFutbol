@@ -41,7 +41,7 @@ public class VentanaFeedback extends JFrame {
 	int maxChars = 500;
 	JProgressBar progressBar;
 	JLabel lblChars;
-	Thread update;
+	Thread hiloLetras;
 
 	public VentanaFeedback() {
 
@@ -148,7 +148,7 @@ public class VentanaFeedback extends JFrame {
 		lblChars.setBounds(98, 311, 90, 14);
 		add(lblChars);
 
-		update = new Thread() {
+		hiloLetras = new Thread() {
 			@Override
 			public void run() {
 				while (texto.isEnabled()) {
@@ -164,7 +164,7 @@ public class VentanaFeedback extends JFrame {
 				}
 			}
 		};
-		update.start();
+		hiloLetras.start();
 
 		botonSiguiente.addActionListener(new ActionListener() {
 
@@ -198,32 +198,30 @@ public class VentanaFeedback extends JFrame {
 
 		botonAtras.addActionListener(new ActionListener() {
 
-			// @SuppressWarnings("deprecation")
+			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				// update.stop();
-				try {
-					update.join();
-				} catch (InterruptedException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-				}
+				hiloLetras.stop();
+				/*
+				 * try { hiloLetras.join(); } catch (InterruptedException e1) {
+				 * mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				 * e1.printStackTrace(); }
+				 */
 			}
 		});
 
 		this.addWindowListener(new WindowAdapter() {
 
-			// @SuppressWarnings("deprecation")
+			@SuppressWarnings("deprecation")
 			@Override
 			public void windowClosing(WindowEvent e) {
-				// update.stop();
-				try {
-					update.join();
-				} catch (InterruptedException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-				}
+				hiloLetras.stop();
+				/*
+				 * try { hiloLetras.join(); } catch (InterruptedException e1) {
+				 * mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				 * e1.printStackTrace(); }
+				 */
 			}
 		});
 
