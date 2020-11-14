@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -20,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import database.DBManager;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
@@ -44,7 +46,7 @@ public class VentanaMandarCorreo extends JFrame {
 
 	JLabelGraficoAjustado adjuntar;
 
-	public VentanaMandarCorreo() {
+	public VentanaMandarCorreo(List<String> listaCorreos) {
 
 		this.setTitle("VentanaMandarCorreo");
 		this.setSize(600, 400);
@@ -57,16 +59,11 @@ public class VentanaMandarCorreo extends JFrame {
 		lblDestinagario = new JLabel("Destinatario: ");
 		lblDestinagario.setBounds(10, 30, 120, 30);
 
-		try {
-			String[] array = new String[database.DBManager.todosLosCorreos().size()];
-			for (int i = 0; i < array.length; i++) {
-				array[i] = database.DBManager.todosLosCorreos().get(i);
-			}
-			jcb = new JComboBox<String>(array);
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
+		String[] array = new String[listaCorreos.size()];
+		for (int i = 0; i < array.length; i++) {
+			array[i] = listaCorreos.get(i);
 		}
+		jcb = new JComboBox<String>(array);
 		utils.JComboBoxAutoCompletion.enable(jcb);
 		jcb.setBounds(300, 30, 200, 30);
 
@@ -241,7 +238,14 @@ public class VentanaMandarCorreo extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		VentanaMandarCorreo VMC = new VentanaMandarCorreo();
-		VMC.setVisible(true);
+		VentanaMandarCorreo VMC;
+		try {
+			VMC = new VentanaMandarCorreo(DBManager.todosLosCorreos());
+			VMC.setVisible(true);
+		} catch (DBManagerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }

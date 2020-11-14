@@ -166,14 +166,6 @@ public class VentanaFeedback extends JFrame {
 		};
 		update.start();
 
-		update = new Thread() {
-			@Override
-			public void run() {
-				int x; // quitar este hilo
-			}
-		};
-		update.start();
-
 		botonSiguiente.addActionListener(new ActionListener() {
 
 			@Override
@@ -206,20 +198,32 @@ public class VentanaFeedback extends JFrame {
 
 		botonAtras.addActionListener(new ActionListener() {
 
-			@SuppressWarnings("deprecation")
+			// @SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				update.stop();
+				// update.stop();
+				try {
+					update.join();
+				} catch (InterruptedException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+					e1.printStackTrace();
+				}
 			}
 		});
 
 		this.addWindowListener(new WindowAdapter() {
 
-			@SuppressWarnings("deprecation")
+			// @SuppressWarnings("deprecation")
 			@Override
 			public void windowClosing(WindowEvent e) {
-				update.stop();
+				// update.stop();
+				try {
+					update.join();
+				} catch (InterruptedException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+					e1.printStackTrace();
+				}
 			}
 		});
 

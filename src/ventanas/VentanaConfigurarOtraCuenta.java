@@ -3,6 +3,7 @@ package ventanas;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.logging.Level;
 
 import javax.swing.ButtonGroup;
@@ -13,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
+import database.DBManager;
 import database.DBManagerException;
 
 /**
@@ -32,7 +34,7 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 	JComboBox<String> jcbCorreos;
 	JLabel lblOpciones;
 
-	public VentanaConfigurarOtraCuenta() {
+	public VentanaConfigurarOtraCuenta(List<String> listaCorreos) {
 
 		this.setTitle("VentanaConfigurarOtraCuenta");
 		this.setSize(600, 400);
@@ -61,16 +63,11 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 		lblCorreo.setText("Introduce correo:");
 		lblCorreo.setBounds(10, 150, 250, 40);
 
-		try {
-			String[] array = new String[database.DBManager.todosLosCorreos().size()];
-			for (int i = 0; i < array.length; i++) {
-				array[i] = database.DBManager.todosLosCorreos().get(i);
-			}
-			jcbCorreos = new JComboBox<String>(array);
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
+		String[] array = new String[listaCorreos.size()];
+		for (int i = 0; i < array.length; i++) {
+			array[i] = listaCorreos.get(i);
 		}
+		jcbCorreos = new JComboBox<String>(array);
 		utils.JComboBoxAutoCompletion.enable(jcbCorreos);
 		jcbCorreos.setBounds(201, 150, 250, 40);
 
@@ -122,7 +119,14 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		VentanaConfigurarOtraCuenta VCOT = new VentanaConfigurarOtraCuenta();
-		VCOT.setVisible(true);
+		VentanaConfigurarOtraCuenta VCOT;
+		try {
+			VCOT = new VentanaConfigurarOtraCuenta(DBManager.todosLosCorreos());
+			VCOT.setVisible(true);
+		} catch (DBManagerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }

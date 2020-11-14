@@ -59,6 +59,22 @@ public class VentanaPrincipal extends JFrame {
 		return false;
 	}
 
+	public static List<String> prepararTodosLosCorreos() {
+		hiloCorreos = new Thread() {
+			@Override
+			public void run() {
+				try {
+					listaCorreos = DBManager.todosLosCorreos();
+				} catch (DBManagerException e) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e.printStackTrace();
+				}
+			}
+		};
+		hiloCorreos.start();
+		return listaCorreos;
+	}
+
 	public static List<String> prepararVentanaDescargarDatos() {
 		hiloTablas = new Thread() {
 			@Override
@@ -66,7 +82,7 @@ public class VentanaPrincipal extends JFrame {
 				try {
 					tablas = DBManager.verTablas();
 				} catch (DBManagerException e) {
-					// TODO Auto-generated catch block
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 					e.printStackTrace();
 				}
 			}
@@ -178,7 +194,7 @@ public class VentanaPrincipal extends JFrame {
 	JLabel lblAnyo;
 	JLabel lblEstadio;
 
-	static Thread hiloInit, hiloInit_2;
+	static Thread hiloInit, hiloInit_2, hiloInit_3;
 
 	static String[] arrayDelantero, arrayCentrocampista, arrayDefensa, arrayPortero;
 	static Thread hiloDelantero, hiloCentrocampista, hiloDefensa, hiloPortero;
@@ -186,15 +202,19 @@ public class VentanaPrincipal extends JFrame {
 	static List<String> tablas;
 	static Thread hiloTablas;
 
+	static List<String> listaCorreos;
+	static Thread hiloCorreos;
+
 	public VentanaPrincipal(Usuario u) throws DBManagerException {
 		hiloInit = new Thread() {
 			@Override
 			public void run() {
 				try {
-					arrayEquipos = DBManager.getClubes();usuario = u;
+					arrayEquipos = DBManager.getClubes();
+					usuario = u;
 					init();
 				} catch (DBManagerException e) {
-					// TODO Auto-generated catch block
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 					e.printStackTrace();
 				}
 			}
@@ -208,18 +228,32 @@ public class VentanaPrincipal extends JFrame {
 					hiloInit.join();
 					prepararVentanaVotar();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 					e.printStackTrace();
 				}
 			}
 		};
 		hiloInit_2.start();
 
+		hiloInit_3 = new Thread() {
+			@Override
+			public void run() {
+				try {
+					hiloInit_2.join();
+					prepararVentanaDescargarDatos();
+				} catch (Exception e) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e.printStackTrace();
+				}
+			}
+		};
+		hiloInit_3.start();
+
 		try {
-			hiloInit_2.join();
-			prepararVentanaDescargarDatos();
+			hiloInit_3.join();
+			prepararTodosLosCorreos();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 	}
@@ -350,7 +384,7 @@ public class VentanaPrincipal extends JFrame {
 					VentanaDescargar VD = new VentanaDescargar(tablas);
 					VD.setVisible(true);
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 					e1.printStackTrace();
 				}
 			}
@@ -380,8 +414,14 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaConfigurarOtraCuenta VA1 = new VentanaConfigurarOtraCuenta();
-				VA1.setVisible(true);
+				try {
+					hiloCorreos.join();
+					VentanaConfigurarOtraCuenta VA1 = new VentanaConfigurarOtraCuenta(listaCorreos);
+					VA1.setVisible(true);
+				} catch (Exception e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e1.printStackTrace();
+				}
 			}
 		});
 
@@ -398,8 +438,14 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaMandarCorreo VMC = new VentanaMandarCorreo();
-				VMC.setVisible(true);
+				try {
+					hiloCorreos.join();
+					VentanaMandarCorreo VMC = new VentanaMandarCorreo(listaCorreos);
+					VMC.setVisible(true);
+				} catch (InterruptedException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e1.printStackTrace();
+				}
 			}
 		});
 
