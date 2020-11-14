@@ -1,4 +1,4 @@
-package pruebasYEjemplos;
+package ventanas;
 
 import java.awt.Insets;
 import java.awt.Toolkit;
@@ -27,7 +27,7 @@ import database.DBManagerException;
  * @author sergiolopez
  *
  */
-public class VCDPruebas extends JFrame {
+public class VCD_2 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	JButton btnCambiarDato, buscarTabla, btnGuardar, btnInsertarFila, btnEliminarFila;
@@ -79,7 +79,7 @@ public class VCDPruebas extends JFrame {
 		}
 	}
 
-	public VCDPruebas() {
+	public VCD_2() {
 
 		this.setTitle("VentanaCambiarDatos");
 		this.setSize(600, 400);
@@ -318,7 +318,7 @@ public class VCDPruebas extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		VCDPruebas VCDP = new VCDPruebas();
+		VCD_2 VCDP = new VCD_2();
 		VCDP.setVisible(true);
 	}
 }

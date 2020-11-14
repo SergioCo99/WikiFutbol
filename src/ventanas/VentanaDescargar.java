@@ -139,7 +139,7 @@ public class VentanaDescargar extends JFrame {
 			VD = new VentanaDescargar(database.DBManager.verTablas());
 			VD.setVisible(true);
 		} catch (DBManagerException e) {
-			// TODO Auto-generated catch block
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 

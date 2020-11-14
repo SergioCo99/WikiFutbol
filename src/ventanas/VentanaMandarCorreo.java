@@ -243,7 +243,7 @@ public class VentanaMandarCorreo extends JFrame {
 			VMC = new VentanaMandarCorreo(DBManager.todosLosCorreos());
 			VMC.setVisible(true);
 		} catch (DBManagerException e) {
-			// TODO Auto-generated catch block
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 

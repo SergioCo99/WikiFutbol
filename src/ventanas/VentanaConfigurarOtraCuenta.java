@@ -124,7 +124,7 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 			VCOT = new VentanaConfigurarOtraCuenta(DBManager.todosLosCorreos());
 			VCOT.setVisible(true);
 		} catch (DBManagerException e) {
-			// TODO Auto-generated catch block
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 
