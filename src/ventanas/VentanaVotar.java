@@ -27,7 +27,10 @@ public class VentanaVotar extends JFrame {
 	JComboBox<String> jcbDelantero, jcbCentrocampista, jcbDefensa, jcbPortero;
 	JLabel lblDelantero, lblCentrocampista, lblDefensa, lblPortero;
 
-	public VentanaVotar() {
+	Thread votacion, update;
+
+	public VentanaVotar(String[] arrayDelantero, String[] arrayCentrocampista, String[] arrayDefensa,
+			String[] arrayPortero) {
 
 		this.setTitle("VentanaVotar");
 		this.setSize(600, 400);
@@ -54,59 +57,22 @@ public class VentanaVotar extends JFrame {
 		lblPortero.setBounds(10, 200, 200, 30);
 
 		// Delanteros
-		try {
-			String[] arrayDelantero = new String[database.DBManager.getJugadoresPorPosicion("Delantero").size()];
-			for (int i = 0; i < arrayDelantero.length; i++) {
-				arrayDelantero[i] = database.DBManager.getJugadoresPorPosicion("Delantero").get(i);
-			}
-			jcbDelantero = new JComboBox<String>(arrayDelantero);
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
+		jcbDelantero = new JComboBox<String>(arrayDelantero);
 		utils.JComboBoxAutoCompletion.enable(jcbDelantero);
 		jcbDelantero.setBounds(300, 50, 200, 30);
 
 		// Centrocampistas
-		try {
-			String[] arrayCentrocampista = new String[database.DBManager.getJugadoresPorPosicion("Centrocampista")
-					.size()];
-			for (int i = 0; i < arrayCentrocampista.length; i++) {
-				arrayCentrocampista[i] = database.DBManager.getJugadoresPorPosicion("Centrocampista").get(i);
-			}
-			jcbCentrocampista = new JComboBox<String>(arrayCentrocampista);
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
+		jcbCentrocampista = new JComboBox<String>(arrayCentrocampista);
 		utils.JComboBoxAutoCompletion.enable(jcbCentrocampista);
 		jcbCentrocampista.setBounds(300, 100, 200, 30);
 
 		// Defensas
-		try {
-			String[] arrayDefensa = new String[database.DBManager.getJugadoresPorPosicion("Defensa").size()];
-			for (int i = 0; i < arrayDefensa.length; i++) {
-				arrayDefensa[i] = database.DBManager.getJugadoresPorPosicion("Defensa").get(i);
-			}
-			jcbDefensa = new JComboBox<String>(arrayDefensa);
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
+		jcbDefensa = new JComboBox<String>(arrayDefensa);
 		utils.JComboBoxAutoCompletion.enable(jcbDefensa);
 		jcbDefensa.setBounds(300, 150, 200, 30);
 
 		// Porteros
-		try {
-			String[] arrayPortero = new String[database.DBManager.getJugadoresPorPosicion("Portero").size()];
-			for (int i = 0; i < arrayPortero.length; i++) {
-				arrayPortero[i] = database.DBManager.getJugadoresPorPosicion("Portero").get(i);
-			}
-			jcbPortero = new JComboBox<String>(arrayPortero);
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
+		jcbPortero = new JComboBox<String>(arrayPortero);
 		utils.JComboBoxAutoCompletion.enable(jcbPortero);
 		jcbPortero.setBounds(300, 200, 200, 30);
 
@@ -129,33 +95,52 @@ public class VentanaVotar extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setCursor(new Cursor(Cursor.WAIT_CURSOR));
-				try {
-					// id del usuario que vota,lo obtenemos mediante account.properties
-					int id = database.DBManager.getIdUsuario(utils.PropertiesMetodos.getProp1());
-					// id del delantero votado,lo obtenemos mediante su nombre
-					String j1 = jcbDelantero.getSelectedItem().toString();
-					int idj1 = database.DBManager.getIdJugador(j1);
-					// id del centrocampista votado,lo obtenemos mediante su nombre
-					String j2 = jcbCentrocampista.getSelectedItem().toString();
-					int idj2 = database.DBManager.getIdJugador(j2);
-					// id del defensa votado,lo obtenemos mediante su nombre
-					String j3 = jcbDefensa.getSelectedItem().toString();
-					int idj3 = database.DBManager.getIdJugador(j3);
-					// id del portero votado,lo obtenemos mediante su nombre
-					String j4 = jcbPortero.getSelectedItem().toString();
-					int idj4 = database.DBManager.getIdJugador(j4);
-					// metodo para votar
-					database.DBManager.votar(id, idj1, idj2, idj3, idj4);
-					// actualiza el numero de votos de cada jugador
-					database.DBManager.actualizarVotos();
-					// actualiza el teamoftheyear
-					database.DBManager.toft();
+				votacion = new Thread() {
+					@Override
+					public void run() {
+						try {
+							// id del usuario que vota,lo obtenemos mediante account.properties
+							int id = database.DBManager.getIdUsuario(utils.PropertiesMetodos.getProp1());
+							// id del delantero votado,lo obtenemos mediante su nombre
+							String j1 = jcbDelantero.getSelectedItem().toString();
+							int idj1 = database.DBManager.getIdJugador(j1);
+							// id del centrocampista votado,lo obtenemos mediante su nombre
+							String j2 = jcbCentrocampista.getSelectedItem().toString();
+							int idj2 = database.DBManager.getIdJugador(j2);
+							// id del defensa votado,lo obtenemos mediante su nombre
+							String j3 = jcbDefensa.getSelectedItem().toString();
+							int idj3 = database.DBManager.getIdJugador(j3);
+							// id del portero votado,lo obtenemos mediante su nombre
+							String j4 = jcbPortero.getSelectedItem().toString();
+							int idj4 = database.DBManager.getIdJugador(j4);
+							// metodo para votar
+							database.DBManager.votar(id, idj1, idj2, idj3, idj4);
+						} catch (DBManagerException e) {
+							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+							e.printStackTrace();
+						}
+					}
+				};
+				votacion.start();
 
-					dispose();
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-				}
+				update = new Thread() {
+					@Override
+					public void run() {
+						try {
+							votacion.join();
+							// actualiza el numero de votos de cada jugador
+							database.DBManager.actualizarVotos();
+							// actualiza el teamoftheyear
+							database.DBManager.toft();
+						} catch (DBManagerException | InterruptedException e) {
+							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+							e.printStackTrace();
+						}
+					}
+				};
+				update.start();
+
+				dispose();
 				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 		});
@@ -164,7 +149,7 @@ public class VentanaVotar extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		VentanaVotar VV = new VentanaVotar();
-		VV.setVisible(true);
+		// VentanaVotar VV = new VentanaVotar();
+		// VV.setVisible(true);
 	}
 }

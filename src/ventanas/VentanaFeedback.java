@@ -166,6 +166,14 @@ public class VentanaFeedback extends JFrame {
 		};
 		update.start();
 
+		update = new Thread() {
+			@Override
+			public void run() {
+				int x; // quitar este hilo
+			}
+		};
+		update.start();
+
 		botonSiguiente.addActionListener(new ActionListener() {
 
 			@Override

@@ -40,7 +40,7 @@ public class VentanaDescargar extends JFrame {
 
 	JLabel lblOpciones;
 
-	public VentanaDescargar() {
+	public VentanaDescargar(/* String[] tablas */) {
 
 		this.setTitle("VentanaDescargar");
 		this.setSize(600, 400);

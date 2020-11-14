@@ -59,6 +59,74 @@ public class VentanaPrincipal extends JFrame {
 		return false;
 	}
 
+	public static void prepararVentanaVotar() {
+		hiloDelantero = new Thread() {
+			@Override
+			public void run() {
+				try {
+					arrayDelantero = new String[database.DBManager.getJugadoresPorPosicion("Delantero").size()];
+					for (int i = 0; i < arrayDelantero.length; i++) {
+						arrayDelantero[i] = database.DBManager.getJugadoresPorPosicion("Delantero").get(i);
+					}
+				} catch (DBManagerException e) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e.printStackTrace();
+				}
+
+			}
+		};
+		hiloCentrocampista = new Thread() {
+			@Override
+			public void run() {
+				try {
+					arrayCentrocampista = new String[database.DBManager.getJugadoresPorPosicion("Centrocampista")
+							.size()];
+					for (int i = 0; i < arrayCentrocampista.length; i++) {
+						arrayCentrocampista[i] = database.DBManager.getJugadoresPorPosicion("Centrocampista").get(i);
+					}
+				} catch (DBManagerException e) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e.printStackTrace();
+				}
+
+			}
+		};
+		hiloDefensa = new Thread() {
+			@Override
+			public void run() {
+				try {
+					arrayDefensa = new String[database.DBManager.getJugadoresPorPosicion("Defensa").size()];
+					for (int i = 0; i < arrayDefensa.length; i++) {
+						arrayDefensa[i] = database.DBManager.getJugadoresPorPosicion("Defensa").get(i);
+					}
+				} catch (DBManagerException e) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e.printStackTrace();
+				}
+
+			}
+		};
+		hiloPortero = new Thread() {
+			@Override
+			public void run() {
+				try {
+					arrayPortero = new String[database.DBManager.getJugadoresPorPosicion("Portero").size()];
+					for (int i = 0; i < arrayPortero.length; i++) {
+						arrayPortero[i] = database.DBManager.getJugadoresPorPosicion("Portero").get(i);
+					}
+				} catch (DBManagerException e) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e.printStackTrace();
+				}
+
+			}
+		};
+		hiloDelantero.start();
+		hiloCentrocampista.start();
+		hiloDefensa.start();
+		hiloPortero.start();
+	}
+
 	private static final long serialVersionUID = 1L;
 	JMenuBar menuBar;
 	JMenu menu;
@@ -93,6 +161,9 @@ public class VentanaPrincipal extends JFrame {
 	JLabel lblCiudad;
 	JLabel lblAnyo;
 	JLabel lblEstadio;
+
+	static String[] arrayDelantero, arrayCentrocampista, arrayDefensa, arrayPortero;
+	static Thread hiloDelantero, hiloCentrocampista, hiloDefensa, hiloPortero;
 
 	public VentanaPrincipal(Usuario u) throws DBManagerException {
 		arrayEquipos = DBManager.getClubes();
@@ -295,8 +366,28 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaVotar VV = new VentanaVotar();
-				VV.setVisible(true);
+				setCursor(new Cursor(Cursor.WAIT_CURSOR));
+				prepararVentanaVotar();
+
+				Thread hiloVentana = new Thread() {
+					@Override
+					public void run() {
+						try {
+							hiloDelantero.join();
+							hiloCentrocampista.join();
+							hiloDefensa.join();
+							hiloPortero.join();
+							VentanaVotar VV = new VentanaVotar(arrayDelantero, arrayCentrocampista, arrayDefensa,
+									arrayPortero);
+							VV.setVisible(true);
+						} catch (InterruptedException e) {
+							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+							e.printStackTrace();
+						}
+					}
+				};
+				hiloVentana.start();
+				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 		});
 

@@ -456,15 +456,11 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getJugadoresPorPosicion DBManager", e);
-		} finally {
-			try {
-				preparedstmt.close();
-				rs.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
-			}
-			disconnect();
-		}
+		} /*
+			 * finally { try { preparedstmt.close(); rs.close(); } catch (SQLException e) {
+			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
+			 * disconnect(); }
+			 */
 	}
 
 	/**
@@ -860,7 +856,8 @@ public class DBManager {
 			rs = stmt.executeQuery(
 					"select id_ciudad, nombre_ciudad, nombre_pais, poblacion, gentilicio, provincia, comAutonoma from ciudad, pais where pais_ciudad = id_pais");
 			while (rs.next()) {
-				Ciudad ciudad = new Ciudad(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7));
+				Ciudad ciudad = new Ciudad(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
+						rs.getString(5), rs.getString(6), rs.getString(7));
 				array.add(ciudad);
 			}
 			return array;
@@ -2326,7 +2323,7 @@ public class DBManager {
 		connect();
 		ResultSet rs = null;
 		try {
-			
+
 			String sql = "select id_pais, nombre_pais from pais, ciudad where pais_ciudad=id_pais and nombre_ciudad = ?";
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setString(1, ciudad);
@@ -2347,7 +2344,6 @@ public class DBManager {
 			disconnect();
 		}
 	}
-	
 
 	public static String nombreCiudad(String Ciudad, String BD) throws DBManagerException {
 		connect();
@@ -2375,7 +2371,7 @@ public class DBManager {
 			disconnect();
 		}
 	}
-	
+
 	public static String paisCiudad(String Ciudad, String BD) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -2402,7 +2398,7 @@ public class DBManager {
 			disconnect();
 		}
 	}
-	
+
 	public static String provinciaCiudad(String Ciudad, String BD) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -2429,7 +2425,7 @@ public class DBManager {
 			disconnect();
 		}
 	}
-	
+
 	public static String comAutonomaCiudad(String Ciudad, String BD) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -2456,7 +2452,7 @@ public class DBManager {
 			disconnect();
 		}
 	}
-	
+
 	public static String poblacionCiudad(String Ciudad, String BD) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
