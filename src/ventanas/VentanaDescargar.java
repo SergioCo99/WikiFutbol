@@ -3,6 +3,7 @@ package ventanas;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import database.AdvancedDb2CsvExporter;
+import database.DBManagerException;
 
 /**
  * Ventana lo cual permite descargar los datos deseados
@@ -40,7 +42,7 @@ public class VentanaDescargar extends JFrame {
 
 	JLabel lblOpciones;
 
-	public VentanaDescargar(/* String[] tablas */) {
+	public VentanaDescargar(List<String> tablas) {
 
 		this.setTitle("VentanaDescargar");
 		this.setSize(600, 400);
@@ -79,13 +81,13 @@ public class VentanaDescargar extends JFrame {
 			tablasProhibidas = prop.getProperty("DB.TABLASEXCLUIDAS").split(",");
 
 			listModel = new DefaultListModel<Object>();
-			for (int i = 0; i < database.DBManager.verTablas().size(); i++) {
-				String tabla = database.DBManager.verTablas().get(i);
+			for (int i = 0; i < tablas.size(); i++) {
+				String tabla = tablas.get(i);
 				listModel.add(i, tabla);
 			}
 			for (int j = 0; j < tablasProhibidas.length; j++) {
-				for (int i = 0; i < database.DBManager.verTablas().size(); i++) {
-					String tabla = database.DBManager.verTablas().get(i);
+				for (int i = 0; i < tablas.size(); i++) {
+					String tabla = tablas.get(i);
 					if (tablasProhibidas[j].equals(tabla)) {
 						// listModel.remove(i);
 						listModel.removeElement(tabla);
@@ -132,7 +134,14 @@ public class VentanaDescargar extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
-		VentanaDescargar VD = new VentanaDescargar();
-		VD.setVisible(true);
+		VentanaDescargar VD;
+		try {
+			VD = new VentanaDescargar(database.DBManager.verTablas());
+			VD.setVisible(true);
+		} catch (DBManagerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }

@@ -59,6 +59,22 @@ public class VentanaPrincipal extends JFrame {
 		return false;
 	}
 
+	public static List<String> prepararVentanaDescargarDatos() {
+		hiloTablas = new Thread() {
+			@Override
+			public void run() {
+				try {
+					tablas = DBManager.verTablas();
+				} catch (DBManagerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		};
+		hiloTablas.start();
+		return tablas;
+	}
+
 	public static void prepararVentanaVotar() {
 		hiloDelantero = new Thread() {
 			@Override
@@ -162,13 +178,50 @@ public class VentanaPrincipal extends JFrame {
 	JLabel lblAnyo;
 	JLabel lblEstadio;
 
+	static Thread hiloInit, hiloInit_2;
+
 	static String[] arrayDelantero, arrayCentrocampista, arrayDefensa, arrayPortero;
 	static Thread hiloDelantero, hiloCentrocampista, hiloDefensa, hiloPortero;
 
+	static List<String> tablas;
+	static Thread hiloTablas;
+
 	public VentanaPrincipal(Usuario u) throws DBManagerException {
-		arrayEquipos = DBManager.getClubes();
-		usuario = u;
-		init();
+		hiloInit = new Thread() {
+			@Override
+			public void run() {
+				try {
+					arrayEquipos = DBManager.getClubes();usuario = u;
+					init();
+				} catch (DBManagerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		};
+		hiloInit.start();
+
+		hiloInit_2 = new Thread() {
+			@Override
+			public void run() {
+				try {
+					hiloInit.join();
+					prepararVentanaVotar();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		};
+		hiloInit_2.start();
+
+		try {
+			hiloInit_2.join();
+			prepararVentanaDescargarDatos();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void init() {
@@ -292,8 +345,14 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaDescargar VD = new VentanaDescargar();
-				VD.setVisible(true);
+				try {
+					hiloTablas.join();
+					VentanaDescargar VD = new VentanaDescargar(tablas);
+					VD.setVisible(true);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 
@@ -366,8 +425,8 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setCursor(new Cursor(Cursor.WAIT_CURSOR));
-				prepararVentanaVotar();
+
+				// prepararVentanaVotar();
 
 				Thread hiloVentana = new Thread() {
 					@Override
@@ -377,9 +436,11 @@ public class VentanaPrincipal extends JFrame {
 							hiloCentrocampista.join();
 							hiloDefensa.join();
 							hiloPortero.join();
+							setCursor(new Cursor(Cursor.WAIT_CURSOR));
 							VentanaVotar VV = new VentanaVotar(arrayDelantero, arrayCentrocampista, arrayDefensa,
 									arrayPortero);
 							VV.setVisible(true);
+							setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 						} catch (InterruptedException e) {
 							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 							e.printStackTrace();
@@ -387,7 +448,7 @@ public class VentanaPrincipal extends JFrame {
 					}
 				};
 				hiloVentana.start();
-				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+
 			}
 		});
 
