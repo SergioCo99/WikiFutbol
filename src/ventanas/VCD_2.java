@@ -1,5 +1,6 @@
 package ventanas;
 
+import java.awt.Color;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -126,6 +127,7 @@ public class VCD_2 extends JFrame {
 		lblInfo = new JLabel();
 		lblInfo.setText("Selecciona la celda que quieres cambiar, introduce su nuevo valor aqui y clicka "
 				+ btnCambiarDato.getText() + ": ");
+		lblInfo.setForeground(Color.red);
 		lblInfo.setBounds(10, 185, 560, 30);
 
 		try {

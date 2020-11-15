@@ -2488,15 +2488,7 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		System.out.println("--------------------------------------------");
-		int size = database.DBManager.toftNombres().size();
-		System.out.println("size: " + size);
-		// equipoDelAno = new String[database.DBManager.toft().size()];
-		for (int i = 0; i < size; i++) {
-			System.out.println(database.DBManager.toftNombres().get(i));
-			// equipoDelAno.add(database.DBManager.toftNombres().get(i));
-			System.out.println(database.DBManager.toftNombres().get(i));
-			System.out.println("-----");
-		}
+		connect();
+		data("ciudad");
 	}
 }

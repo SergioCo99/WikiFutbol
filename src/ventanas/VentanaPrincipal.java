@@ -59,72 +59,6 @@ public class VentanaPrincipal extends JFrame {
 		return false;
 	}
 
-	public static List<String> prepararToft() {
-		try {
-			hiloInit_4.join();
-		} catch (InterruptedException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
-		hiloToft = new Thread() {
-			@Override
-			public void run() {
-				try {
-					equipoDelAno = DBManager.toftNombres();
-				} catch (DBManagerException e) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-					e.printStackTrace();
-				}
-			}
-		};
-		hiloToft.start();
-		return equipoDelAno;
-	}
-
-	public static List<String> prepararTodosLosCorreos() {
-		try {
-			hiloInit_3.join();
-		} catch (InterruptedException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
-		hiloCorreos = new Thread() {
-			@Override
-			public void run() {
-				try {
-					listaCorreos = DBManager.todosLosCorreos();
-				} catch (DBManagerException e) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-					e.printStackTrace();
-				}
-			}
-		};
-		hiloCorreos.start();
-		return listaCorreos;
-	}
-
-	public static List<String> prepararVentanaDescargarDatos() {
-		try {
-			hiloInit_2.join();
-		} catch (InterruptedException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
-		hiloTablas = new Thread() {
-			@Override
-			public void run() {
-				try {
-					tablas = DBManager.verTablas();
-				} catch (DBManagerException e) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-					e.printStackTrace();
-				}
-			}
-		};
-		hiloTablas.start();
-		return tablas;
-	}
-
 	public static void prepararVentanaVotar() {
 		try {
 			hiloInit.join();
@@ -184,6 +118,72 @@ public class VentanaPrincipal extends JFrame {
 		hiloDefensa.start();
 		hiloPortero.start();
 	}
+	
+	public static List<String> prepararVentanaDescargarDatos() {
+		try {
+			hiloInit_2.join();
+		} catch (InterruptedException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
+		}
+		hiloTablas = new Thread() {
+			@Override
+			public void run() {
+				try {
+					tablas = DBManager.verTablas();
+				} catch (DBManagerException e) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e.printStackTrace();
+				}
+			}
+		};
+		hiloTablas.start();
+		return tablas;
+	}
+
+	public static List<String> prepararTodosLosCorreos() {
+		try {
+			hiloInit_3.join();
+		} catch (InterruptedException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
+		}
+		hiloCorreos = new Thread() {
+			@Override
+			public void run() {
+				try {
+					listaCorreos = DBManager.todosLosCorreos();
+				} catch (DBManagerException e) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e.printStackTrace();
+				}
+			}
+		};
+		hiloCorreos.start();
+		return listaCorreos;
+	}
+	
+	public static List<String> prepararToft() {
+		try {
+			hiloInit_4.join();
+		} catch (InterruptedException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
+		}
+		hiloToft = new Thread() {
+			@Override
+			public void run() {
+				try {
+					equipoDelAno = DBManager.toftNombres();
+				} catch (DBManagerException e) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e.printStackTrace();
+				}
+			}
+		};
+		hiloToft.start();
+		return equipoDelAno;
+	}	
 
 	private static final long serialVersionUID = 1L;
 	JMenuBar menuBar;
@@ -239,7 +239,6 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void run() {
 				try {
-					System.out.println("_j");
 					arrayEquipos = DBManager.getClubes();
 					usuario = u;
 					init();
@@ -256,7 +255,6 @@ public class VentanaPrincipal extends JFrame {
 			public void run() {
 				try {
 					hiloInit.join();
-					System.out.println("j");
 					prepararVentanaVotar();
 				} catch (Exception e) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
@@ -272,7 +270,6 @@ public class VentanaPrincipal extends JFrame {
 				try {
 					hiloInit.join();
 					hiloInit_2.join();
-					System.out.println("2j");
 					prepararVentanaDescargarDatos();
 				} catch (Exception e) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
@@ -289,7 +286,6 @@ public class VentanaPrincipal extends JFrame {
 					hiloInit.join();
 					hiloInit_2.join();
 					hiloInit_3.join();
-					System.out.println("3j");
 					prepararTodosLosCorreos();
 				} catch (Exception e) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
@@ -304,7 +300,6 @@ public class VentanaPrincipal extends JFrame {
 			hiloInit_2.join();
 			hiloInit_3.join();
 			hiloInit_4.join();
-			System.out.println("4j");
 			prepararToft();
 		} catch (InterruptedException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
