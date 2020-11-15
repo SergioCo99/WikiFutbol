@@ -4,6 +4,7 @@ import java.awt.Cursor;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -29,8 +30,8 @@ public class VentanaVotar extends JFrame {
 
 	Thread votacion, update;
 
-	public VentanaVotar(String[] arrayDelantero, String[] arrayCentrocampista, String[] arrayDefensa,
-			String[] arrayPortero) {
+	public VentanaVotar(List<String> arrayDelantero, List<String> arrayCentrocampista, List<String> arrayDefensa,
+			List<String> arrayPortero) {
 
 		this.setTitle("VentanaVotar");
 		this.setSize(600, 400);
@@ -57,22 +58,22 @@ public class VentanaVotar extends JFrame {
 		lblPortero.setBounds(10, 200, 200, 30);
 
 		// Delanteros
-		jcbDelantero = new JComboBox<String>(arrayDelantero);
+		jcbDelantero = new JComboBox<String>(arrayDelantero.toArray(new String[arrayDelantero.size()]));
 		utils.JComboBoxAutoCompletion.enable(jcbDelantero);
 		jcbDelantero.setBounds(300, 50, 200, 30);
 
 		// Centrocampistas
-		jcbCentrocampista = new JComboBox<String>(arrayCentrocampista);
+		jcbCentrocampista = new JComboBox<String>(arrayCentrocampista.toArray(new String[arrayCentrocampista.size()]));
 		utils.JComboBoxAutoCompletion.enable(jcbCentrocampista);
 		jcbCentrocampista.setBounds(300, 100, 200, 30);
 
 		// Defensas
-		jcbDefensa = new JComboBox<String>(arrayDefensa);
+		jcbDefensa = new JComboBox<String>(arrayDefensa.toArray(new String[arrayDefensa.size()]));
 		utils.JComboBoxAutoCompletion.enable(jcbDefensa);
 		jcbDefensa.setBounds(300, 150, 200, 30);
 
 		// Porteros
-		jcbPortero = new JComboBox<String>(arrayPortero);
+		jcbPortero = new JComboBox<String>(arrayPortero.toArray(new String[arrayPortero.size()]));
 		utils.JComboBoxAutoCompletion.enable(jcbPortero);
 		jcbPortero.setBounds(300, 200, 200, 30);
 

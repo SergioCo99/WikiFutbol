@@ -127,7 +127,8 @@ public class PropertiesMetodosTest {
 			assertEquals("com.mysql.cj.jdbc.Driver", CONTROLADOR);
 
 			line = reader.readLine();
-			assertEquals("jdbc:mysql://wikifutboldb.cdzgkizlagy4.eu-west-3.rds.amazonaws.com:3306/wikifutbolschema",
+			assertEquals(
+					"jdbc:mysql://wikifutboldatabase.cdzgkizlagy4.eu-west-3.rds.amazonaws.com:3306/wikifutbolschema",
 					URL);
 
 			line = reader.readLine();
@@ -135,7 +136,7 @@ public class PropertiesMetodosTest {
 			assertEquals("root", USUARIO);
 
 			line = reader.readLine();
-			assertEquals("adminadmin", CONTRASENA);
+			assertEquals("hackersaquino", CONTRASENA);
 
 			line = reader.readLine();
 			assertEquals(

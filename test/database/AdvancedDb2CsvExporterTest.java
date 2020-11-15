@@ -84,7 +84,7 @@ public class AdvancedDb2CsvExporterTest {
 
 					String fileName = table + "_ExportFromClasses_" + dateTimeInfo + ".csv";
 					File file = new File(System.getProperty("user.home") + "/Downloads/" + fileName);
-					assertTrue(file.exists());
+					assertTrue("Puede ser por el nombre del fichero!", file.exists());
 
 					Scanner myReader = new Scanner(file);
 					int lineas = 0;

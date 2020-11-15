@@ -89,6 +89,14 @@ public class MainWikiFutbol {
 		crearFicheroLogger();
 		crearFicherosProperties();
 
+		// actualiza el teamoftheyear
+		try {
+			database.DBManager.toft();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
+		}
+
 		VentanaLogin VL = new VentanaLogin();
 		VL.setVisible(true);
 

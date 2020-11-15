@@ -810,15 +810,11 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error toftNombres DBManager", e);
-		} finally {
-			try {
-				stmt.close();
-				rs.close();
-			} catch (SQLException e) {
-				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
-			}
-			disconnect();
-		}
+		} /*
+			 * finally { try { stmt.close(); rs.close(); } catch (SQLException e) {
+			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
+			 * disconnect(); }
+			 */
 	}
 	// HASTA AQUI CREAR TEAM OF THE YEAR
 
@@ -2492,6 +2488,15 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		System.out.println(verTablas());
+		System.out.println("--------------------------------------------");
+		int size = database.DBManager.toftNombres().size();
+		System.out.println("size: " + size);
+		// equipoDelAno = new String[database.DBManager.toft().size()];
+		for (int i = 0; i < size; i++) {
+			System.out.println(database.DBManager.toftNombres().get(i));
+			// equipoDelAno.add(database.DBManager.toftNombres().get(i));
+			System.out.println(database.DBManager.toftNombres().get(i));
+			System.out.println("-----");
+		}
 	}
 }
