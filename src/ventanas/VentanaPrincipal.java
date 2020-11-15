@@ -118,7 +118,7 @@ public class VentanaPrincipal extends JFrame {
 		hiloDefensa.start();
 		hiloPortero.start();
 	}
-	
+
 	public static List<String> prepararVentanaDescargarDatos() {
 		try {
 			hiloInit_2.join();
@@ -162,7 +162,7 @@ public class VentanaPrincipal extends JFrame {
 		hiloCorreos.start();
 		return listaCorreos;
 	}
-	
+
 	public static List<String> prepararToft() {
 		try {
 			hiloInit_4.join();
@@ -183,7 +183,7 @@ public class VentanaPrincipal extends JFrame {
 		};
 		hiloToft.start();
 		return equipoDelAno;
-	}	
+	}
 
 	private static final long serialVersionUID = 1L;
 	JMenuBar menuBar;

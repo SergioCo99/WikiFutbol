@@ -160,9 +160,10 @@ public class VCD_2 extends JFrame {
 		// tabla
 		tabla = jcbTablas.getSelectedItem().toString(); // !!!
 		try {
-			//for (int i = 1; i < (database.DBManager.verColumnas(tabla).size() + 1); i++) {
-				objects = database.DBManager.verColumnas(tabla).toArray();
-			//}
+			// for (int i = 1; i < (database.DBManager.verColumnas(tabla).size() + 1); i++)
+			// {
+			objects = database.DBManager.verColumnas(tabla).toArray();
+			// }
 			data = database.DBManager.data(tabla);
 		} catch (DBManagerException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
