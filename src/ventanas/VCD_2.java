@@ -263,7 +263,9 @@ public class VCD_2 extends JFrame {
 					nrows = idMasBajo - 1;
 
 					if (tabla.equals("ciudad")) {
-						DBManager.nuevaCiudad(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2));
+						DBManager.nuevaCiudad(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
+								jt.getValueAt(nrows, 6));
 					} else if (tabla.equals("club")) {
 						DBManager.nuevoClub(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
 								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),

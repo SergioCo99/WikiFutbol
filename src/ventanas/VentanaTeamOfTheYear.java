@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,7 +23,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 	JLabel lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9, lbl10, lbl11;
 	JLabelGraficoAjustado campo;
 
-	public VentanaTeamOfTheYear(String[] array) {
+	public VentanaTeamOfTheYear(List<String> array) {
 
 		this.setTitle("VentanaTeamOfTheYear");
 		this.setSize(500, 765);
@@ -48,7 +49,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 		lbl1 = new JLabel();
 		lbl1.setHorizontalAlignment(JLabel.CENTER);
 		lbl1.setVerticalAlignment(JLabel.CENTER);
-		lbl1.setText(array[0].toUpperCase());
+		lbl1.setText(array.get(0).toUpperCase());
 		lbl1.setForeground(Color.white);
 		lbl1.setBounds(50, 190, 200, 20);
 		lbl1.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -57,7 +58,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 		lbl2 = new JLabel();
 		lbl2.setHorizontalAlignment(JLabel.CENTER);
 		lbl2.setVerticalAlignment(JLabel.CENTER);
-		lbl2.setText(array[1].toUpperCase());
+		lbl2.setText(array.get(1).toUpperCase());
 		lbl2.setForeground(Color.white);
 		lbl2.setBounds(150, 109, 200, 20);
 		lbl2.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -66,7 +67,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 		lbl3 = new JLabel();
 		lbl3.setHorizontalAlignment(JLabel.CENTER);
 		lbl3.setVerticalAlignment(JLabel.CENTER);
-		lbl3.setText(array[2].toUpperCase());
+		lbl3.setText(array.get(2).toUpperCase());
 		lbl3.setForeground(Color.white);
 		lbl3.setBounds(260, 190, 200, 20);
 		lbl3.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -75,7 +76,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 		lbl4 = new JLabel();
 		lbl4.setHorizontalAlignment(JLabel.CENTER);
 		lbl4.setVerticalAlignment(JLabel.CENTER);
-		lbl4.setText(array[3].toUpperCase());
+		lbl4.setText(array.get(3).toUpperCase());
 		lbl4.setForeground(Color.white);
 		lbl4.setBounds(50, 428, 200, 20);
 		lbl4.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -84,7 +85,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 		lbl5 = new JLabel();
 		lbl5.setHorizontalAlignment(JLabel.CENTER);
 		lbl5.setVerticalAlignment(JLabel.CENTER);
-		lbl5.setText(array[4].toUpperCase());
+		lbl5.setText(array.get(4).toUpperCase());
 		lbl5.setForeground(Color.white);
 		lbl5.setBounds(150, 291, 200, 20);
 		lbl5.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -93,7 +94,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 		lbl6 = new JLabel();
 		lbl6.setHorizontalAlignment(JLabel.CENTER);
 		lbl6.setVerticalAlignment(JLabel.CENTER);
-		lbl6.setText(array[5].toUpperCase());
+		lbl6.setText(array.get(5).toUpperCase());
 		lbl6.setForeground(Color.white);
 		lbl6.setBounds(260, 428, 200, 20);
 		lbl6.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -102,7 +103,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 		lbl7 = new JLabel();
 		lbl7.setHorizontalAlignment(JLabel.CENTER);
 		lbl7.setVerticalAlignment(JLabel.CENTER);
-		lbl7.setText(array[6].toUpperCase());
+		lbl7.setText(array.get(6).toUpperCase());
 		lbl7.setForeground(Color.white);
 		lbl7.setBounds(10, 500, 200, 20);
 		lbl7.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -111,7 +112,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 		lbl8 = new JLabel();
 		lbl8.setHorizontalAlignment(JLabel.CENTER);
 		lbl8.setVerticalAlignment(JLabel.CENTER);
-		lbl8.setText(array[7].toUpperCase());
+		lbl8.setText(array.get(7).toUpperCase());
 		lbl8.setForeground(Color.white);
 		lbl8.setBounds(50, 563, 200, 20);
 		lbl8.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -120,7 +121,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 		lbl9 = new JLabel();
 		lbl9.setHorizontalAlignment(JLabel.CENTER);
 		lbl9.setVerticalAlignment(JLabel.CENTER);
-		lbl9.setText(array[8].toUpperCase());
+		lbl9.setText(array.get(8).toUpperCase());
 		lbl9.setForeground(Color.white);
 		lbl9.setBounds(260, 563, 200, 20);
 		lbl9.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -129,7 +130,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 		lbl10 = new JLabel();
 		lbl10.setHorizontalAlignment(JLabel.CENTER);
 		lbl10.setVerticalAlignment(JLabel.CENTER);
-		lbl10.setText(array[9].toUpperCase());
+		lbl10.setText(array.get(9).toUpperCase());
 		lbl10.setForeground(Color.white);
 		lbl10.setBounds(286, 500, 200, 20);
 		lbl10.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -138,7 +139,7 @@ public class VentanaTeamOfTheYear extends JFrame {
 		lbl11 = new JLabel();
 		lbl11.setHorizontalAlignment(JLabel.CENTER);
 		lbl11.setVerticalAlignment(JLabel.CENTER);
-		lbl11.setText(array[10].toUpperCase());
+		lbl11.setText(array.get(10).toUpperCase());
 		lbl11.setForeground(Color.white);
 		lbl11.setBounds(150, 651, 200, 20);
 		lbl11.setFont(new Font("Arial", Font.PLAIN, 20));

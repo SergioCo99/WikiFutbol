@@ -9,6 +9,8 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import database.DBManager;
+import database.DBManagerException;
 import ventanas.VentanaLogin;
 
 /**
@@ -89,12 +91,18 @@ public class MainWikiFutbol {
 
 		VentanaLogin VL = new VentanaLogin();
 		VL.setVisible(true);
-		
+
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-		    public void run() {
-		        System.out.println("JVM shutting down, closing Unirest");
-		        //Unirest.shutdown();
-		    }
+			@Override
+			public void run() {
+				System.out.println("JVM shutting down, closing Unirest");
+				try {
+					DBManager.disconnect();
+				} catch (DBManagerException e) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e.printStackTrace();
+				}
+			}
 		}));
 	}
 

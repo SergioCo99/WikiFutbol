@@ -59,7 +59,7 @@ public class VentanaPrincipal extends JFrame {
 		return false;
 	}
 
-	public static String[] prepararToft() {
+	public static List<String> prepararToft() {
 		try {
 			hiloInit_4.join();
 		} catch (InterruptedException e1) {
@@ -70,9 +70,10 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void run() {
 				try {
-					equipoDelAno = new String[database.DBManager.toft().size()];
-					for (int i = 0; i < equipoDelAno.length; i++) {
-						equipoDelAno[i] = database.DBManager.toftNombres().get(i);
+					int size = database.DBManager.toft().size();
+					// equipoDelAno = new String[database.DBManager.toft().size()];
+					for (int i = 0; i < size; i++) {
+						equipoDelAno.set(i, database.DBManager.toftNombres().get(i));
 					}
 				} catch (DBManagerException e) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
@@ -248,7 +249,7 @@ public class VentanaPrincipal extends JFrame {
 	static List<String> listaCorreos;
 	static Thread hiloCorreos;
 
-	static String[] equipoDelAno;
+	static List<String> equipoDelAno;
 	static Thread hiloToft;
 
 	public VentanaPrincipal(Usuario u) throws DBManagerException {

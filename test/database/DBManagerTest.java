@@ -957,6 +957,10 @@ public class DBManagerTest {
 		actualCiudad.add(0, "id_ciudad");
 		actualCiudad.add(1, "nombre_ciudad");
 		actualCiudad.add(2, "pais_ciudad");
+		actualCiudad.add(3, "poblacion_ciudad");
+		actualCiudad.add(4, "gentilicio_ciudad");
+		actualCiudad.add(5, "provincia_ciudad");
+		actualCiudad.add(6, "comAutonoma_ciudad");
 
 		tabla = "ciudad";
 		assertEquals(DBManager.verColumnas(tabla), actualCiudad);
@@ -1178,7 +1182,7 @@ public class DBManagerTest {
 			int idMasBajo = DBManager.idMasBajoSinUsar(tabla);
 			int filas = DBManager.numeroDeFilasEnUnaTabla(tabla);
 			if (tabla.equals("ciudad")) {
-				DBManager.nuevaCiudad(idMasBajo, "ciudad", 1);
+				DBManager.nuevaCiudad(idMasBajo, "ciudad", 1, 10000, "ciudadano", "provincia", "C A");
 				assertEquals(filas + 1, DBManager.numeroDeFilasEnUnaTabla(tabla));
 				DBManager.borrar(tabla, idMasBajo);
 				assertEquals(filas, DBManager.numeroDeFilasEnUnaTabla(tabla));

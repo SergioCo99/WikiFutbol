@@ -837,7 +837,7 @@ public class DBManager {
 			stmt = conn.createStatement();
 			List<Ciudad> array = new ArrayList<Ciudad>();
 			rs = stmt.executeQuery(
-					"select id_ciudad, nombre_ciudad, nombre_pais, poblacion, gentilicio, provincia, comAutonoma from ciudad, pais where pais_ciudad = id_pais");
+					"select id_ciudad, nombre_ciudad, nombre_pais, poblacion_ciudad, gentilicio_ciudad, provincia_ciudad, comAutonoma_ciudad from ciudad, pais where pais_ciudad = id_pais");
 			while (rs.next()) {
 				Ciudad ciudad = new Ciudad(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
 						rs.getString(5), rs.getString(6), rs.getString(7));
@@ -1854,15 +1854,19 @@ public class DBManager {
 	 * @param pais_ciudad
 	 * @throws DBManagerException
 	 */
-	public static void nuevaCiudad(Object id_ciudad, Object nombre_ciudad, Object pais_ciudad)
-			throws DBManagerException {
+	public static void nuevaCiudad(Object id_ciudad, Object nombre_ciudad, Object pais_ciudad, Object poblacion_ciudad,
+			Object gentilicio_ciudad, Object provincia_ciudad, Object comAutonoma_ciudad) throws DBManagerException {
 		connect();
 		try {
-			String sql = "insert into ciudad values(?,?,?)";
+			String sql = "insert into ciudad values(?,?,?,?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setObject(1, id_ciudad);
 			preparedstmt.setObject(2, nombre_ciudad);
 			preparedstmt.setObject(3, pais_ciudad);
+			preparedstmt.setObject(4, poblacion_ciudad);
+			preparedstmt.setObject(5, gentilicio_ciudad);
+			preparedstmt.setObject(6, provincia_ciudad);
+			preparedstmt.setObject(7, comAutonoma_ciudad);
 			preparedstmt.executeUpdate();
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
