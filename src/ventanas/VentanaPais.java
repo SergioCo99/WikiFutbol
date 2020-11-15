@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -28,20 +27,20 @@ import utils.JLabelGraficoAjustado;
  * @author sergiolopez
  *
  */
-public class VentanaCiudad extends JFrame {
+public class VentanaPais extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	static VentanaCiudad frame;
 
-	public VentanaCiudad(String ciudad, Club club, Usuario u) throws DBManagerException {
-		String nombreCiudad = null;
+	public VentanaPais(String pais, Club club, Usuario u) throws DBManagerException {
+		String nombrePais = null;
 		try {
-			nombreCiudad = DBManager.nombreCiudad(ciudad, "wikifutbolschema");
+			nombrePais = DBManager.nombrePais(pais, "wikifutbolschema");
 		} catch (DBManagerException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-		this.setTitle(nombreCiudad);
+		this.setTitle(nombrePais);
 		this.setSize(1200, 700);
 		this.setLayout(null);
 		this.setResizable(false);
@@ -93,10 +92,10 @@ public class VentanaCiudad extends JFrame {
 		atrasPanel.add(atrasIMG);
 		navBarPanel.add(atrasPanel);
 
-		JLabel lblCiudad = new JLabel(nombreCiudad);
-		lblCiudad.setBounds(80, 20, 300, 29);
-		lblCiudad.setFont(new Font("Tahoma", Font.BOLD, 24));
-		navBarPanel.add(lblCiudad);
+		JLabel lblPais = new JLabel(nombrePais);
+		lblPais.setBounds(80, 20, 300, 29);
+		lblPais.setFont(new Font("Tahoma", Font.BOLD, 24));
+		navBarPanel.add(lblPais);
 
 		JLabelGraficoAjustado iconoWikiFutbol = new JLabelGraficoAjustado("resources/logo1.png", 60, 50);
 		iconoWikiFutbol.setLocation(10, 13);
@@ -110,154 +109,92 @@ public class VentanaCiudad extends JFrame {
 		add(bookPanel);
 
 		// Cabecera
-		final JLabel cabecera = new JLabel("Informaci\u00f3n sobre " + nombreCiudad + ":");
+		final JLabel cabecera = new JLabel("Informaci\u00f3n sobre " + nombrePais + ":");
 		cabecera.setBounds(200, 11, 500, 50);
 		Font fuente2 = new Font("Tahoma", 3, 20);
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));
 		cabecera.setForeground(Color.BLACK);
 		bookPanel.add(cabecera);
-
-		// NombreCiudad
+	
+		// NombrePais
 		final JLabel labelNombre = new JLabel("Nombre: ");
-		labelNombre.setBounds(20, 110, 150, 50);
+		labelNombre.setBounds(20, 175, 150, 50);
 		labelNombre.setFont(fuente2);
 		labelNombre.setForeground(Color.BLACK);
 		bookPanel.add(labelNombre);
 
-		// ResultadoNombreCiudad
-		final JLabel resultadoNombre = new JLabel(nombreCiudad);
-		resultadoNombre.setBounds(120, 110, 400, 50);
+		// ResultadoNombrePais
+		final JLabel resultadoNombre = new JLabel(nombrePais);
+		resultadoNombre.setBounds(120, 175, 400, 50);
 		resultadoNombre.setFont(fuente2);
 		resultadoNombre.setForeground(Color.BLACK);
 		bookPanel.add(resultadoNombre);
-
-		// NombreProvincia
-		final JLabel labelProvincia = new JLabel("Provincia: ");
-		labelProvincia.setBounds(20, 175, 150, 50);
-		labelProvincia.setFont(fuente2);
-		labelProvincia.setForeground(Color.BLACK);
-		bookPanel.add(labelProvincia);
-
-		// ResultadoProvincia
-		String nombreProvincia = null;
-		try {
-			nombreProvincia = DBManager.provinciaCiudad(ciudad, "wikifutbolschema");
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
-
-		final JLabel resultadoProvincia = new JLabel(nombreProvincia);
-		resultadoProvincia.setBounds(135, 175, 400, 50);
-		resultadoProvincia.setFont(fuente2);
-		resultadoProvincia.setForeground(Color.BLACK);
-		bookPanel.add(resultadoProvincia);
-
-		// NombreComAutonoma
-		final JLabel labelComAutonoma = new JLabel("Com. Autónoma: ");
-		labelComAutonoma.setBounds(20, 240, 200, 50);
-		labelComAutonoma.setFont(fuente2);
-		labelComAutonoma.setForeground(Color.BLACK);
-		bookPanel.add(labelComAutonoma);
-
-		// ResultadoComAutonoma
-		String nombreComAutonoma = null;
-		try {
-			nombreComAutonoma = DBManager.comAutonomaCiudad(ciudad, "wikifutbolschema");
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
-
-		final JLabel resultadoComAutonoma = new JLabel(nombreComAutonoma);
-		resultadoComAutonoma.setBounds(200, 240, 400, 50);
-		resultadoComAutonoma.setFont(fuente2);
-		resultadoComAutonoma.setForeground(Color.BLACK);
-		bookPanel.add(resultadoComAutonoma);
-
-		// NombrePais
-		final JLabel labelPais = new JLabel("Pais: ");
-		labelPais.setBounds(20, 305, 150, 50);
-		labelPais.setFont(fuente2);
-		labelPais.setForeground(Color.BLACK);
-		bookPanel.add(labelPais);
-
-		// ResultadoPais
-		String nombrePais = null;
-		try {
-			nombrePais = DBManager.paisCiudad(ciudad, "wikifutbolschema");
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
-
-		final JButton botonPais = new JButton(nombrePais);
-		botonPais.setBounds(85, 305, 200, 50);
-		botonPais.setFont(fuente2);
-		botonPais.setForeground(Color.BLACK);
-		botonPais.setContentAreaFilled(false);
-		botonPais.setFocusable(false);
-		bookPanel.add(botonPais);
-		String nomPais = nombrePais;
-		botonPais.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					VentanaPais ve = new VentanaPais(nomPais, club, u);
-					ve.setVisible(true);
-					dispose();
-				} catch (Exception e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					JOptionPane.showMessageDialog(frame, "Esta ciudad no existe");
-				}
-
-			}
-		});
 		
-		// Poblacion
-		final JLabel labelPoblacion = new JLabel("Población: ");
-		labelPoblacion.setBounds(20, 370, 150, 50);
-		labelPoblacion.setFont(fuente2);
-		labelPoblacion.setForeground(Color.BLACK);
-		bookPanel.add(labelPoblacion);
+		// NombreCapital
+		final JLabel labelCapital = new JLabel("Capital: ");
+		labelCapital.setBounds(20, 240, 150, 50);
+		labelCapital.setFont(fuente2);
+		labelCapital.setForeground(Color.BLACK);
+		bookPanel.add(labelCapital);
 
-		// ResultadoPoblacion
-		String poblacion = null;
+		// ResultadoCapital
+		String nombreCapital = null;
 		try {
-			poblacion = DBManager.poblacionCiudad(ciudad, "wikifutbolschema");
+			nombreCapital = DBManager.capitalPais(pais, "wikifutbolschema");
 		} catch (DBManagerException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-
-		final JLabel resultadoPoblacion = new JLabel(poblacion + " habitantes");
-		resultadoPoblacion.setBounds(135, 370, 400, 50);
-		resultadoPoblacion.setFont(fuente2);
-		resultadoPoblacion.setForeground(Color.BLACK);
-		bookPanel.add(resultadoPoblacion);
+		final JLabel resultadoCapital = new JLabel(nombreCapital);
+		resultadoCapital.setBounds(135, 240, 400, 50);
+		resultadoCapital.setFont(fuente2);
+		resultadoCapital.setForeground(Color.BLACK);
+		bookPanel.add(resultadoCapital);
 
 		// Gentilicio
 		final JLabel labelGentilicio = new JLabel("Gentilicio: ");
-		labelGentilicio.setBounds(400, 370, 150, 50);
+		labelGentilicio.setBounds(400, 305, 200, 50);
 		labelGentilicio.setFont(fuente2);
 		labelGentilicio.setForeground(Color.BLACK);
 		bookPanel.add(labelGentilicio);
 
-		// ResultadoPoblacion
+		// ResultadoGentilicio
 		String gentilicio = null;
 		try {
-			gentilicio = DBManager.gentilicioCiudad(ciudad, "wikifutbolschema");
+			gentilicio = DBManager.gentilicioPais(pais, "wikifutbolschema");
 		} catch (DBManagerException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
 
 		final JLabel resultadoGentilicio = new JLabel(gentilicio);
-		resultadoGentilicio.setBounds(520, 370, 400, 50);
+		resultadoGentilicio.setBounds(520, 305, 400, 50);
 		resultadoGentilicio.setFont(fuente2);
 		resultadoGentilicio.setForeground(Color.BLACK);
 		bookPanel.add(resultadoGentilicio);
+				
+		// Idioma
+		final JLabel labelIdioma = new JLabel("Idioma: ");
+		labelIdioma.setBounds(20, 305, 150, 50);
+		labelIdioma.setFont(fuente2);
+		labelIdioma.setForeground(Color.BLACK);
+		bookPanel.add(labelIdioma);
 
+		// ResultadoIdioma
+		String idioma = null;
+		try {
+			idioma = DBManager.idiomaPais(pais, "wikifutbolschema");
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
+		}
+
+		final JLabel resultadoIdioma = new JLabel(idioma);
+		resultadoIdioma.setBounds(135, 305, 400, 50);
+		resultadoIdioma.setFont(fuente2);
+		resultadoIdioma.setForeground(Color.BLACK);
+		bookPanel.add(resultadoIdioma);
+		
 		// Imagen logo
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);
