@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.Arrays;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -51,9 +52,10 @@ public class VCD_2 extends JFrame {
 	public void refrescarJTable() {
 		tabla = jcbTablas.getSelectedItem().toString(); // !!!
 		try {
-			for (int i = 1; i < (database.DBManager.verColumnas(tabla).size() + 1); i++) {
-				objects = database.DBManager.verColumnas(tabla).toArray();
-			}
+			// for (int i = 1; i < (database.DBManager.verColumnas(tabla).size() + 1); i++)
+			// {
+			objects = database.DBManager.verColumnas(tabla).toArray();
+			// }
 			data = database.DBManager.data(tabla);
 		} catch (DBManagerException e1) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
@@ -131,10 +133,11 @@ public class VCD_2 extends JFrame {
 		lblInfo.setBounds(10, 185, 560, 30);
 
 		try {
-			String[] array = new String[database.DBManager.verTablas().size()];
-			for (int i = 0; i < array.length; i++) {
-				array[i] = database.DBManager.verTablas().get(i);
-			}
+			Object[] ObjectArray = database.DBManager.verTablas().toArray();
+			String[] array = Arrays.copyOf(ObjectArray, ObjectArray.length, String[].class);
+			// for (int i = 0; i < array.length; i++) {
+			// array[i] = database.DBManager.verTablas().get(i);
+			// }
 			jcbTablas = new JComboBox<String>(array);
 		} catch (DBManagerException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
@@ -157,9 +160,9 @@ public class VCD_2 extends JFrame {
 		// tabla
 		tabla = jcbTablas.getSelectedItem().toString(); // !!!
 		try {
-			for (int i = 1; i < (database.DBManager.verColumnas(tabla).size() + 1); i++) {
+			//for (int i = 1; i < (database.DBManager.verColumnas(tabla).size() + 1); i++) {
 				objects = database.DBManager.verColumnas(tabla).toArray();
-			}
+			//}
 			data = database.DBManager.data(tabla);
 		} catch (DBManagerException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
