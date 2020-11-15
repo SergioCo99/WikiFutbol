@@ -2383,12 +2383,12 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String provinciaCiudad = "";
-			String sql = "select provincia from ciudad where nombre_ciudad = ?";
+			String sql = "select provincia_ciudad from ciudad where nombre_ciudad = ?";
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setString(1, Ciudad);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
-				provinciaCiudad = rs.getString("provincia");
+				provinciaCiudad = rs.getString("provincia_ciudad");
 			}
 			return provinciaCiudad;
 		} catch (SQLException e) {
@@ -2410,12 +2410,12 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String comAutonomaCiudad = "";
-			String sql = "select comAutonoma from ciudad where nombre_ciudad = ?";
+			String sql = "select comAutonoma_ciudad from ciudad where nombre_ciudad = ?";
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setString(1, Ciudad);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
-				comAutonomaCiudad = rs.getString("comAutonoma");
+				comAutonomaCiudad = rs.getString("comAutonoma_ciudad");
 			}
 			return comAutonomaCiudad;
 		} catch (SQLException e) {
@@ -2437,12 +2437,12 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String poblacionCiudad = "";
-			String sql = "select poblacion from ciudad where nombre_ciudad = ?";
+			String sql = "select poblacion_ciudad from ciudad where nombre_ciudad = ?";
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setString(1, Ciudad);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
-				poblacionCiudad = rs.getString("poblacion");
+				poblacionCiudad = rs.getString("poblacion_ciudad");
 			}
 			return poblacionCiudad;
 		} catch (SQLException e) {
@@ -2464,12 +2464,12 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String gentilicioCiudad = "";
-			String sql = "select gentilicio from ciudad where nombre_ciudad = ?";
+			String sql = "select gentilicio_ciudad from ciudad where nombre_ciudad = ?";
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setString(1, Ciudad);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
-				gentilicioCiudad = rs.getString("gentilicio");
+				gentilicioCiudad = rs.getString("gentilicio_ciudad");
 			}
 			return gentilicioCiudad;
 		} catch (SQLException e) {
