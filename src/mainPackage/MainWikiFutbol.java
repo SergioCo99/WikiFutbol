@@ -110,6 +110,7 @@ public class MainWikiFutbol {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 					e.printStackTrace();
 				}
+				System.exit(0); // preguntar
 			}
 		}));
 	}

@@ -15,7 +15,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -50,7 +49,6 @@ import clases.UsuarioVotacion;
  *
  */
 public class DBManagerTest {
-
 	static DBManager db = new DBManager();
 	static Usuario u = new Usuario(1, "nombre usuario", "contrasena", "correo", 0, "1970-01-01");
 	static Entrenador e = new Entrenador(1, "Gaizka Garitano", "1975-07-09", "Athletic Club", "Bilbao", "4-3-3",
@@ -179,6 +177,12 @@ public class DBManagerTest {
 		if ((nuevoValor_admin_usuario != 1) && (nuevoValor_admin_usuario != 0)) {
 			fail("Tiene que ser 0 o 1");
 		}
+		// Mejor asi que el if de arriba ?
+		if ((nuevoValor_admin_usuario == 1) || (nuevoValor_admin_usuario == 0)) {
+			assertTrue(true);
+		} else if ((nuevoValor_admin_usuario != 1) || (nuevoValor_admin_usuario != 0)) {
+			assertTrue("Tiene que ser 0 o 1", false);
+		}
 
 		DBManager.cambiarAdmin(correo_usuario, nuevoValor_admin_usuario);
 
@@ -289,10 +293,9 @@ public class DBManagerTest {
 		nombre_posicion.add("Portero");
 
 		for (String posicion : nombre_posicion) {
-			List<String> jugadoresPorPosicion = new ArrayList<String>();
-			jugadoresPorPosicion = DBManager.getJugadoresPorPosicion(posicion);
-			for (String jugadorPorPosicion : jugadoresPorPosicion) {
-				Assert.assertNotNull(jugadorPorPosicion);
+			List<String> jugadoresPorPosicion = DBManager.getJugadoresPorPosicion(posicion);
+			for (String jugador : jugadoresPorPosicion) {
+				Assert.assertNotNull(jugador);
 			}
 		}
 	}
@@ -571,8 +574,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testToft_y_testToftNombres() throws DBManagerException, SQLException {
-		Map<Integer, Integer> toft = new HashMap<Integer, Integer>();
-		toft = DBManager.toft();
+		Map<Integer, Integer> toft = DBManager.toft();
 
 		for (Iterator<Entry<Integer, Integer>> iterator = toft.entrySet().iterator(); iterator.hasNext();) {
 			Entry<Integer, Integer> jugador = iterator.next();
@@ -583,16 +585,28 @@ public class DBManagerTest {
 		if (toft.size() != 11) {
 			fail("Tienen que ser 11, por 11 jugadores");
 		}
+		// Mejor asi que el if de arriba ?
+		if ((toft.size() == 11)) {
+			assertTrue(true);
+		} else if ((toft.size() != 11)) {
+			assertTrue("Tienen que ser 11, por 11 jugadores", false);
+		}
 
 		Collection<Integer> list = toft.values();
 		for (Iterator<Integer> itr = list.iterator(); itr.hasNext();) {
-			if (Collections.frequency(list, itr.next()) > 1) {
-				fail("No puede haber dos ids iguales, tienen que ser 11 diferentes");
+			/*
+			 * if (Collections.frequency(list, itr.next()) > 1) {
+			 * fail("No puede haber dos ids iguales, tienen que ser 11 diferentes"); }
+			 */
+			// Mejor asi que el if de arriba ?
+			if (Collections.frequency(list, itr.next()) == 1) {
+				assertTrue(true);
+			} else if (Collections.frequency(list, itr.next()) > 1) {
+				assertTrue("No puede haber dos ids iguales, tienen que ser 11 diferentes", false);
 			}
 		}
 
-		List<String> toftNombre = new ArrayList<String>();
-		toftNombre = DBManager.toftNombres();
+		List<String> toftNombre = DBManager.toftNombres();
 
 		Connection conn = DBManager.connect();
 		ResultSet rs = null;
@@ -618,7 +632,11 @@ public class DBManagerTest {
 			} else if (contador == 11) {
 				assertEquals("Portero", rs.getString("posicion_jugador"));
 			} else {
-				fail("Tienen que ser 3 delanteros, 3 centrocampistas, 4 defensas, 1 portero, y ademas en ese orden");
+				// fail("Tienen que ser 3 delanteros, 3 centrocampistas, 4 defensas, 1 portero,
+				// y ademas en ese orden");
+				assertTrue(
+						"Tienen que ser 3 delanteros, 3 centrocampistas, 4 defensas, 1 portero, y ademas en ese orden",
+						false);
 			}
 			contador++;
 		}
@@ -640,8 +658,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetCiudades() throws DBManagerException {
-		List<Ciudad> ciudades = new ArrayList<Ciudad>();
-		ciudades = DBManager.getCiudades();
+		List<Ciudad> ciudades = DBManager.getCiudades();
 		for (Ciudad ciudad : ciudades) {
 			Assert.assertNotNull(ciudad);
 		}
@@ -655,8 +672,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetClubes() throws DBManagerException {
-		List<Club> clubes = new ArrayList<Club>();
-		clubes = DBManager.getClubes();
+		List<Club> clubes = DBManager.getClubes();
 		for (Club club : clubes) {
 			Assert.assertNotNull(club);
 		}
@@ -670,8 +686,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetEntrenadores() throws DBManagerException {
-		List<Entrenador> entrenadores = new ArrayList<Entrenador>();
-		entrenadores = DBManager.getEntrenadores();
+		List<Entrenador> entrenadores = DBManager.getEntrenadores();
 		for (Entrenador entrenador : entrenadores) {
 			Assert.assertNotNull(entrenador);
 		}
@@ -748,8 +763,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetEstadios() throws DBManagerException {
-		List<Estadio> estadios = new ArrayList<Estadio>();
-		estadios = DBManager.getEstadios();
+		List<Estadio> estadios = DBManager.getEstadios();
 		for (Estadio estadio : estadios) {
 			Assert.assertNotNull(estadio);
 		}
@@ -805,8 +819,7 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetFeedbacks() throws DBManagerException {
-		List<Feedback> feedbacks = new ArrayList<Feedback>();
-		feedbacks = DBManager.getFeedbacks();
+		List<Feedback> feedbacks = DBManager.getFeedbacks();
 		for (Feedback feedback : feedbacks) {
 			Assert.assertNotNull(feedback);
 		}
@@ -820,12 +833,10 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetJugadores() throws DBManagerException {
-		List<Jugador> jugadores = new ArrayList<Jugador>();
-		jugadores = DBManager.getJugadores();
+		List<Jugador> jugadores = DBManager.getJugadores();
 		for (Jugador jugador : jugadores) {
 			Assert.assertNotNull(jugador);
 		}
-
 	}
 
 	/**
@@ -1068,8 +1079,7 @@ public class DBManagerTest {
 	@Test
 	public void testData() throws DBManagerException {
 		for (String tabla : DBManager.verTablas()) {
-			Object[][] o = DBManager.data(tabla);
-			assertNotNull(o);
+			assertNotNull(DBManager.data(tabla));
 		}
 	}
 
