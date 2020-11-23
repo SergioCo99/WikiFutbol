@@ -1446,7 +1446,7 @@ public class DBManager {
 			List<Pais> array = new ArrayList<Pais>();
 			rs = stmt.executeQuery("select id_pais, nombre_pais from pais");
 			while (rs.next()) {
-				Pais pais = new Pais(rs.getInt(1), rs.getString(2));
+				Pais pais = new Pais(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 				array.add(pais);
 			}
 			return array;
@@ -2308,7 +2308,7 @@ public class DBManager {
 			preparedstmt.setString(1, ciudad);
 			rs = preparedstmt.executeQuery();
 			rs.next();
-			Pais pais = new Pais(rs.getInt(1), rs.getString(2));
+			Pais pais = new Pais(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 			return pais;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -2383,12 +2383,12 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String provinciaCiudad = "";
-			String sql = "select provincia from ciudad where nombre_ciudad = ?";
+			String sql = "select provincia_ciudad from ciudad where nombre_ciudad = ?";
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setString(1, Ciudad);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
-				provinciaCiudad = rs.getString("provincia");
+				provinciaCiudad = rs.getString("provincia_ciudad");
 			}
 			return provinciaCiudad;
 		} catch (SQLException e) {
@@ -2410,12 +2410,12 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String comAutonomaCiudad = "";
-			String sql = "select comAutonoma from ciudad where nombre_ciudad = ?";
+			String sql = "select comAutonoma_ciudad from ciudad where nombre_ciudad = ?";
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setString(1, Ciudad);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
-				comAutonomaCiudad = rs.getString("comAutonoma");
+				comAutonomaCiudad = rs.getString("comAutonoma_ciudad");
 			}
 			return comAutonomaCiudad;
 		} catch (SQLException e) {
@@ -2437,12 +2437,12 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String poblacionCiudad = "";
-			String sql = "select poblacion from ciudad where nombre_ciudad = ?";
+			String sql = "select poblacion_ciudad from ciudad where nombre_ciudad = ?";
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setString(1, Ciudad);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
-				poblacionCiudad = rs.getString("poblacion");
+				poblacionCiudad = rs.getString("poblacion_ciudad");
 			}
 			return poblacionCiudad;
 		} catch (SQLException e) {
@@ -2464,12 +2464,12 @@ public class DBManager {
 		ResultSet rs = null;
 		try {
 			String gentilicioCiudad = "";
-			String sql = "select gentilicio from ciudad where nombre_ciudad = ?";
+			String sql = "select gentilicio_ciudad from ciudad where nombre_ciudad = ?";
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setString(1, Ciudad);
 			rs = preparedstmt.executeQuery();
 			while (rs.next()) {
-				gentilicioCiudad = rs.getString("gentilicio");
+				gentilicioCiudad = rs.getString("gentilicio_ciudad");
 			}
 			return gentilicioCiudad;
 		} catch (SQLException e) {
@@ -2486,6 +2486,115 @@ public class DBManager {
 		}
 	}
 
+
+	public static String nombrePais(String Pais, String BD) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			String nombre = "";
+			String sql = "SELECT nombre_pais FROM pais WHERE nombre_pais = ?";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Pais);
+			rs = preparedstmt.executeQuery();
+			while (rs.next()) {
+				nombre = rs.getString("nombre_pais");
+			}
+			return nombre;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error nombrePais DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+	
+	public static String capitalPais(String Pais, String BD) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			String capitalPais = "";
+			String sql = "select capital_pais from pais where nombre_pais = ?";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Pais);
+			rs = preparedstmt.executeQuery();
+			while (rs.next()) {
+				capitalPais = rs.getString("capital_pais");
+			}
+			return capitalPais;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error capitalPais DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+	
+	public static String gentilicioPais(String Pais, String BD) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			String gentilicioPais = "";
+			String sql = "select gentilicio_pais from pais where nombre_pais = ?";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Pais);
+			rs = preparedstmt.executeQuery();
+			while (rs.next()) {
+				gentilicioPais = rs.getString("gentilicio_pais");
+			}
+			return gentilicioPais;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error gentilicioPais DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+	
+	public static String idiomaPais(String Pais, String BD) throws DBManagerException {
+		connect();
+		ResultSet rs = null;
+		try {
+			String idiomaPais = "";
+			String sql = "select idioma_pais from pais where nombre_pais = ?";
+			preparedstmt = conn.prepareStatement(sql);
+			preparedstmt.setString(1, Pais);
+			rs = preparedstmt.executeQuery();
+			while (rs.next()) {
+				idiomaPais = rs.getString("idioma_pais");
+			}
+			return idiomaPais;
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error idiomaPais DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			disconnect();
+		}
+	}
+	
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
 		connect();
