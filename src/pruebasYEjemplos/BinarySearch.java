@@ -1,35 +1,46 @@
 package pruebasYEjemplos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BinarySearch {
 
 	/**
-	 * Busqueda binaria de un array de String YA ORDENADO (aA-zZ) alfabeticamente
+	 * Busqueda binaria de un list de String YA ORDENADO (aA-zZ) alfabeticamente
 	 *
-	 * @param arr     array
-	 * @param left    primera casilla, normalmente 0
-	 * @param right   ultima casilla, normalmente arr.length -1
-	 * @param palabra palabra que se quiere buscar
+	 * @param list
+	 * @param left
+	 * @param right
+	 * @param palabra
 	 * @return
 	 */
-	public static int binarySearch(String arr[], int left, int right, String palabra) {
-		if ((right >= left) && (left < (arr.length - 1))) {
+	public static int binarySearch(List<String> list, int left, int right, String palabra) {
+		if ((right >= left) && (left < (list.size() - 1))) {
 			int mid = left + ((right - left) / 2);
-			int res = palabra.compareTo(arr[mid]);
+			int res = palabra.compareTo(list.get(mid));
 			if (res == 0) {
 				return mid;
 			}
 			if (res > 0) {
-				return binarySearch(arr, left, mid - 1, palabra);
+				return binarySearch(list, mid + 1, right, palabra);
 			}
-			return binarySearch(arr, mid + 1, right, palabra);
+			return binarySearch(list, left, mid - 1, palabra);
 		}
 		return -1;
 	}
 
 	public static void main(String args[]) {
-		String arr[] = { "z", "A", "C", "Z", "B", "X", "N", "E" };
-		String s2[] = { "", "A", "B", "C", "D" };
-		int result = binarySearch(s2, 0, s2.length - 1, "A");
+		List<String> l = new ArrayList<String>();
+		l.add("A");
+		l.add("C");
+		l.add("B");
+		l.add("X");
+		l.add("N");
+		l.add("E");
+		System.out.println(l);
+		utils.MetodosRecursivos.ordenarListStringRecursivo(l, l.size());
+		System.out.println(l);
+		int result = binarySearch(l, 0, l.size() - 1, "E");
 		if (result == -1) {
 			System.out.println("Element not present");
 		} else {

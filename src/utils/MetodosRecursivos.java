@@ -4,6 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Metodos:
+ *
+ * ordenarArrayStringRecursivo(String array[], int arrayLength) /////
+ * ordenarListStringRecursivo(List<String> list, int listSize) /////
+ * binarySearchArrayStringRecursivo(String arr[], int left, int right, String
+ * palabra) ///// binarySearchListStringRecursivo(List<String> list, int left,
+ * int right, String palabra)
+ */
 public class MetodosRecursivos {
 
 	/**
@@ -50,6 +59,54 @@ public class MetodosRecursivos {
 			}
 		}
 		ordenarListStringRecursivo(list, listSize - 1);
+	}
+
+	/**
+	 * Busqueda binaria de un array de String YA ORDENADO (aA-zZ) alfabeticamente
+	 *
+	 * @param arr     array
+	 * @param left    primera casilla, normalmente 0
+	 * @param right   ultima casilla, normalmente arr.length -1
+	 * @param palabra palabra que se quiere buscar
+	 * @return
+	 */
+	public static int binarySearchArrayStringRecursivo(String arr[], int left, int right, String palabra) {
+		if ((right >= left) && (left < (arr.length - 1))) {
+			int mid = left + ((right - left) / 2);
+			int res = palabra.compareTo(arr[mid]);
+			if (res == 0) {
+				return mid;
+			}
+			if (res > 0) {
+				return binarySearchArrayStringRecursivo(arr, mid + 1, right, palabra);
+			}
+			return binarySearchArrayStringRecursivo(arr, left, mid - 1, palabra);
+		}
+		return -1;
+	}
+
+	/**
+	 * Busqueda binaria de un list de String YA ORDENADO (aA-zZ) alfabeticamente
+	 *
+	 * @param list    List<String> x
+	 * @param left    primera casilla, normalmente 0
+	 * @param right   ultima casilla, normalmente arr.length -1
+	 * @param palabra palabra que se quiere buscar
+	 * @return
+	 */
+	public static int binarySearchListStringRecursivo(List<String> list, int left, int right, String palabra) {
+		if ((right >= left) && (left < (list.size() - 1))) {
+			int mid = left + ((right - left) / 2);
+			int res = palabra.compareTo(list.get(mid));
+			if (res == 0) {
+				return mid;
+			}
+			if (res > 0) {
+				return binarySearchListStringRecursivo(list, mid + 1, right, palabra);
+			}
+			return binarySearchListStringRecursivo(list, left, mid - 1, palabra);
+		}
+		return -1;
 	}
 
 	// este main es para pruebas, habria que quitarlo
