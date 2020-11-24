@@ -1,6 +1,7 @@
 package ventanas;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -50,24 +51,31 @@ public class VentanaFeedback extends JFrame {
 		setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
 		estrella1 = new JRadioButton("1*");
 		estrella1.setActionCommand("1");
 		estrella1.setBounds(100, 50, 90, 50);
+		estrella1.setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
 		estrella2 = new JRadioButton("2 *");
 		estrella2.setActionCommand("2");
 		estrella2.setBounds(227, 50, 90, 50);
+		estrella2.setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
 		estrella3 = new JRadioButton("3* ");
 		estrella3.setActionCommand("3");
 		estrella3.setBounds(335, 50, 90, 50);
+		estrella3.setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
 		estrella4 = new JRadioButton("4 *");
 		estrella4.setActionCommand("4");
 		estrella4.setBounds(452, 50, 90, 50);
+		estrella4.setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
 		estrella5 = new JRadioButton("5* ");
 		estrella5.setActionCommand("5");
 		estrella5.setBounds(570, 50, 90, 50);
+		estrella5.setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
+
 
 		bgEstrellas = new ButtonGroup();
 		bgEstrellas.add(estrella1);
@@ -79,12 +87,16 @@ public class VentanaFeedback extends JFrame {
 		bSi = new JRadioButton("Si");
 		bSi.setActionCommand("si");
 		bSi.setBounds(335, 100, 90, 50);
+		bSi.setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
 		bNo = new JRadioButton("No");
 		bNo.setActionCommand("no");
 		bNo.setBounds(452, 100, 90, 50);
+		bNo.setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
+
 
 		lblRecomendacion = new JLabel();
 		lblRecomendacion.setText("¿Lo recomendarias?: ");
+		lblRecomendacion.setFont(new Font("Sans Serif Bold", Font.BOLD, 14));
 		lblRecomendacion.setBounds(175, 100, 200, 50);
 
 		bgRecomendacion = new ButtonGroup();
@@ -101,16 +113,19 @@ public class VentanaFeedback extends JFrame {
 
 		lblValoracion = new JLabel();
 		lblValoracion.setText("Valoracion:");
-		lblValoracion.setBounds(10, 10, 100, 20);
+		lblValoracion.setFont(new Font("Sans Serif Bold", Font.BOLD, 15));
+		lblValoracion.setBounds(315, 25, 100, 20);
 
 		lblComentario = new JLabel();
 		lblComentario.setText("Comentario:");
+		lblComentario.setFont(new Font("Sans Serif Bold", Font.BOLD, 15));
 		lblComentario.setBounds(10, 130, 100, 20);
 
 		texto = new JTextArea();
 		texto.setFocusable(true);
 		texto.setLineWrap(true);
 		texto.setWrapStyleWord(true);
+		texto.setBackground(Color.getHSBColor(0.56f, 0.2f, 0.9f));
 		texto.setMargin(new Insets(10, 10, 10, 10));
 		texto.setCaretPosition(0);
 		texto.setText("");
