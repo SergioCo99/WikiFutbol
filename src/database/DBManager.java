@@ -1,14 +1,13 @@
 package database;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -361,12 +360,15 @@ public class DBManager {
 			}
 			// tambien se podria ordenar en la consulta sql, usando "order by correo_usuario
 			// desc"
-			Collections.sort(arr, new Comparator<String>() {
-				@Override
-				public int compare(String s1, String s2) {
-					return s1.compareToIgnoreCase(s2);
-				}
-			});
+			/*
+			 * Collections.sort(arr, new Comparator<String>() {
+			 * 
+			 * @Override public int compare(String s1, String s2) { return
+			 * s1.compareToIgnoreCase(s2); } });
+			 */
+
+			// He sustituido Collections.sort por un metodo de ordenacion recursivo
+			utils.MetodosRecursivos.ordenarListStringRecursivo(arr, arr.size());
 			return arr;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -438,12 +440,15 @@ public class DBManager {
 			while (rs.next()) {
 				arr.add(rs.getString("nombre_jugador"));
 			}
-			Collections.sort(arr, new Comparator<String>() {
-				@Override
-				public int compare(String s1, String s2) {
-					return s1.compareToIgnoreCase(s2);
-				}
-			});
+			/*
+			 * Collections.sort(arr, new Comparator<String>() {
+			 * 
+			 * @Override public int compare(String s1, String s2) { return
+			 * s1.compareToIgnoreCase(s2); } });
+			 */
+
+			// He sustituido Collections.sort por un metodo de ordenacion recursivo
+			utils.MetodosRecursivos.ordenarListStringRecursivo(arr, arr.size());
 			return arr;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -1781,12 +1786,15 @@ public class DBManager {
 			while (rs.next()) {
 				arr.add(rs.getString("nombre_jugador"));
 			}
-			Collections.sort(arr, new Comparator<String>() {
-				@Override
-				public int compare(String s1, String s2) {
-					return s1.compareToIgnoreCase(s2);
-				}
-			});
+			/*
+			 * Collections.sort(arr, new Comparator<String>() {
+			 * 
+			 * @Override public int compare(String s1, String s2) { return
+			 * s1.compareToIgnoreCase(s2); } });
+			 */
+
+			// He sustituido Collections.sort por un metodo de ordenacion recursivo
+			utils.MetodosRecursivos.ordenarListStringRecursivo(arr, arr.size());
 			return arr;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -2486,7 +2494,6 @@ public class DBManager {
 		}
 	}
 
-
 	public static String nombrePais(String Pais, String BD) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -2513,7 +2520,7 @@ public class DBManager {
 			disconnect();
 		}
 	}
-	
+
 	public static String capitalPais(String Pais, String BD) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -2540,7 +2547,7 @@ public class DBManager {
 			disconnect();
 		}
 	}
-	
+
 	public static String gentilicioPais(String Pais, String BD) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -2567,7 +2574,7 @@ public class DBManager {
 			disconnect();
 		}
 	}
-	
+
 	public static String idiomaPais(String Pais, String BD) throws DBManagerException {
 		connect();
 		ResultSet rs = null;
@@ -2594,10 +2601,9 @@ public class DBManager {
 			disconnect();
 		}
 	}
-	
+
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		connect();
-		data("ciudad");
+		
 	}
 }

@@ -1,17 +1,42 @@
 package pruebasYEjemplos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Recursividad {
 
-	public static int p(int n) {
-		if (n == 0) {
-			return n;
+	static int binarySearch(String[] arr, String x) {
+		int l = 0, r = arr.length - 1;
+		while (l <= r) {
+			int m = l + (r - l) / 2;
+
+			int res = x.compareTo(arr[m]);
+
+			// Check if x is present at mid
+			if (res == 0)
+				return m;
+
+			// If x greater, ignore left half
+			if (res > 0)
+				l = m + 1;
+
+			// If x is smaller, ignore right half
+			else
+				r = m - 1;
 		}
 
-		return n = n + p(n - 1);
+		return -1;
 	}
 
 	public static void main(String[] args) {
-		System.out.println(p(5));
+		String[] arr = { "contribute", "geeks", "ide", "practice" };
+		String x = "ide";
+		int result = binarySearch(arr, x);
+
+		if (result == -1)
+			System.out.println("Element not present");
+		else
+			System.out.println("Element found at " + "index " + result);
 	}
 
 }
