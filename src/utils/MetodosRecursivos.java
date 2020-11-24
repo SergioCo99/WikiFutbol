@@ -8,14 +8,15 @@ public class MetodosRecursivos {
 
 	/**
 	 * Metodo recursivo que ordena alfabeticamente (aA-zZ) un array de String
-	 * 
+	 *
 	 * @param array
 	 * @param arrayLength
 	 */
 	public static void ordenarArrayStringRecursivo(String array[], int arrayLength) {
 		// Base case
-		if (arrayLength == 1)
+		if (arrayLength == 1) {
 			return;
+		}
 
 		for (int i = 0; i < (array.length - 1); i++) {
 			if (array[i].compareToIgnoreCase(array[i + 1]) > 0) {
@@ -30,14 +31,15 @@ public class MetodosRecursivos {
 
 	/**
 	 * Metodo recursivo que ordena alfabeticamente (aA-zZ) un List de String
-	 * 
+	 *
 	 * @param list
 	 * @param listSize
 	 */
 	public static void ordenarListStringRecursivo(List<String> list, int listSize) {
 		// Base case
-		if (listSize == 1)
+		if (listSize == 1) {
 			return;
+		}
 
 		for (int i = 0; i < (list.size() - 1); i++) {
 			if (list.get(i).compareToIgnoreCase(list.get(i + 1)) > 0) {

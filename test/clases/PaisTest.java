@@ -42,27 +42,28 @@ public class PaisTest {
 		p.setNombre("Espa�a");
 		assertEquals("Espa�a", p.getNombre());
 	}
-	
+
 	@Test
 	public void testCapital() {
 
 		p.setCapital("Madrid");
 		assertEquals("Madrid", p.getCapital());
 	}
-	
+
 	@Test
 	public void testGentilicio() {
 
 		p.setGentilicio("español");
 		assertEquals("español", p.getGentilicio());
 	}
-	
+
 	@Test
 	public void testIdioma() {
 
 		p.setCapital("castellano");
 		assertEquals("castellano", p.getIdioma());
 	}
+
 	/**
 	 * Comprueba el método toString() de la clase Pais
 	 */
@@ -74,7 +75,7 @@ public class PaisTest {
 		p.setCapital("Madrid");
 		p.setGentilicio("español");
 		p.setIdioma("castellano");
-		
+
 		System.out.println(p.toString());
 
 		assertEquals("Pais [id=1, nombre=Espa�a, capital=Madrid, gentilicio=español, idioma=castellano]", p.toString());

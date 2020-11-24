@@ -115,7 +115,7 @@ public class VentanaPais extends JFrame {
 		cabecera.setFont(new Font("Tahoma", Font.BOLD, 20));
 		cabecera.setForeground(Color.BLACK);
 		bookPanel.add(cabecera);
-	
+
 		// NombrePais
 		final JLabel labelNombre = new JLabel("Nombre: ");
 		labelNombre.setBounds(20, 175, 150, 50);
@@ -129,7 +129,7 @@ public class VentanaPais extends JFrame {
 		resultadoNombre.setFont(fuente2);
 		resultadoNombre.setForeground(Color.BLACK);
 		bookPanel.add(resultadoNombre);
-		
+
 		// NombreCapital
 		final JLabel labelCapital = new JLabel("Capital: ");
 		labelCapital.setBounds(20, 240, 150, 50);
@@ -172,7 +172,7 @@ public class VentanaPais extends JFrame {
 		resultadoGentilicio.setFont(fuente2);
 		resultadoGentilicio.setForeground(Color.BLACK);
 		bookPanel.add(resultadoGentilicio);
-				
+
 		// Idioma
 		final JLabel labelIdioma = new JLabel("Idioma: ");
 		labelIdioma.setBounds(20, 305, 150, 50);
@@ -194,7 +194,7 @@ public class VentanaPais extends JFrame {
 		resultadoIdioma.setFont(fuente2);
 		resultadoIdioma.setForeground(Color.BLACK);
 		bookPanel.add(resultadoIdioma);
-		
+
 		// Imagen logo
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
 		fotoEquipo.setLocation(600, 50);

@@ -1,7 +1,6 @@
 package database;
 
 import java.sql.Connection;
-
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -362,7 +361,7 @@ public class DBManager {
 			// desc"
 			/*
 			 * Collections.sort(arr, new Comparator<String>() {
-			 * 
+			 *
 			 * @Override public int compare(String s1, String s2) { return
 			 * s1.compareToIgnoreCase(s2); } });
 			 */
@@ -442,7 +441,7 @@ public class DBManager {
 			}
 			/*
 			 * Collections.sort(arr, new Comparator<String>() {
-			 * 
+			 *
 			 * @Override public int compare(String s1, String s2) { return
 			 * s1.compareToIgnoreCase(s2); } });
 			 */
@@ -1788,7 +1787,7 @@ public class DBManager {
 			}
 			/*
 			 * Collections.sort(arr, new Comparator<String>() {
-			 * 
+			 *
 			 * @Override public int compare(String s1, String s2) { return
 			 * s1.compareToIgnoreCase(s2); } });
 			 */
@@ -2604,6 +2603,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		
+
 	}
 }

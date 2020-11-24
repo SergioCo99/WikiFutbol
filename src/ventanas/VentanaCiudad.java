@@ -213,7 +213,7 @@ public class VentanaCiudad extends JFrame {
 
 			}
 		});
-		
+
 		// Poblacion
 		final JLabel labelPoblacion = new JLabel("Población: ");
 		labelPoblacion.setBounds(20, 370, 150, 50);
