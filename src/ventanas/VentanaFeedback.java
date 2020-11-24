@@ -51,7 +51,7 @@ public class VentanaFeedback extends JFrame {
 		setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-        this.getContentPane().setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
+		this.getContentPane().setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
@@ -76,7 +76,6 @@ public class VentanaFeedback extends JFrame {
 		estrella5.setBounds(570, 50, 90, 50);
 		estrella5.setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
 
-
 		bgEstrellas = new ButtonGroup();
 		bgEstrellas.add(estrella1);
 		bgEstrellas.add(estrella2);
@@ -92,7 +91,6 @@ public class VentanaFeedback extends JFrame {
 		bNo.setActionCommand("no");
 		bNo.setBounds(452, 100, 90, 50);
 		bNo.setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
-
 
 		lblRecomendacion = new JLabel();
 		lblRecomendacion.setText("¿Lo recomendarias?: ");

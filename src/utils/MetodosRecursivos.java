@@ -71,6 +71,7 @@ public class MetodosRecursivos {
 	 * @return
 	 */
 	public static int binarySearchArrayStringRecursivo(String arr[], int left, int right, String palabra) {
+		// EXISTE
 		if ((right >= left) && (left < (arr.length - 1))) {
 			int mid = left + ((right - left) / 2);
 			int res = palabra.compareTo(arr[mid]);
@@ -79,9 +80,11 @@ public class MetodosRecursivos {
 			}
 			if (res > 0) {
 				return binarySearchArrayStringRecursivo(arr, mid + 1, right, palabra);
+			} else {
+				return binarySearchArrayStringRecursivo(arr, left, mid - 1, palabra);
 			}
-			return binarySearchArrayStringRecursivo(arr, left, mid - 1, palabra);
 		}
+		// NO EXISTE
 		return -1;
 	}
 
@@ -90,11 +93,12 @@ public class MetodosRecursivos {
 	 *
 	 * @param list    List<String> x
 	 * @param left    primera casilla, normalmente 0
-	 * @param right   ultima casilla, normalmente arr.length -1
+	 * @param right   ultima casilla, normalmente list.size -1
 	 * @param palabra palabra que se quiere buscar
 	 * @return
 	 */
 	public static int binarySearchListStringRecursivo(List<String> list, int left, int right, String palabra) {
+		// EXISTE
 		if ((right >= left) && (left < (list.size() - 1))) {
 			int mid = left + ((right - left) / 2);
 			int res = palabra.compareTo(list.get(mid));
@@ -103,14 +107,23 @@ public class MetodosRecursivos {
 			}
 			if (res > 0) {
 				return binarySearchListStringRecursivo(list, mid + 1, right, palabra);
+			} else {
+				return binarySearchListStringRecursivo(list, left, mid - 1, palabra);
 			}
-			return binarySearchListStringRecursivo(list, left, mid - 1, palabra);
 		}
+		// NO EXISTE
 		return -1;
 	}
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
+		String s[] = { "z", "A", "C", "Z", "B", "X", "N", "E" };
+		System.out.println(Arrays.toString(s));
+		ordenarArrayStringRecursivo(s, s.length);
+		System.out.println(Arrays.toString(s));
+		int n = binarySearchArrayStringRecursivo(s, 0, s.length, "C");
+		System.out.println(n);
+
 		List<String> l = new ArrayList<String>();
 		l.add("A");
 		l.add("C");
@@ -121,11 +134,7 @@ public class MetodosRecursivos {
 		System.out.println(l);
 		ordenarListStringRecursivo(l, l.size());
 		System.out.println(l);
-
-		String s[] = { "z", "A", "C", "Z", "B", "X", "N", "E" };
-		System.out.println(Arrays.toString(s));
-		ordenarArrayStringRecursivo(s, s.length);
-		System.out.println(Arrays.toString(s));
-
+		int n2 = binarySearchListStringRecursivo(l, 0, l.size(), "E");
+		System.out.println(n2);
 	}
 }
