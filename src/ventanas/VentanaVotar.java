@@ -1,6 +1,8 @@
 package ventanas;
 
+import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,49 +40,63 @@ public class VentanaVotar extends JFrame {
 		this.setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
+		JLabel lblVotaciones = new JLabel("Votaciones");
+		lblVotaciones.setFont(new Font("Sans Serif Bold", Font.BOLD, 17));
+		lblVotaciones.setBounds(240, 20, 100, 30);
+		
 		lblDelantero = new JLabel();
 		lblDelantero.setText("Mejor delantero: ");
-		lblDelantero.setBounds(10, 50, 200, 30);
+		lblDelantero.setFont(new Font("Sans Serif Bold", Font.BOLD, 15));
+		lblDelantero.setBounds(90, 100, 200, 30);
 
 		lblCentrocampista = new JLabel();
 		lblCentrocampista.setText("Mejor centrocampista: ");
-		lblCentrocampista.setBounds(10, 100, 200, 30);
+		lblCentrocampista.setFont(new Font("Sans Serif Bold", Font.BOLD, 15));
+		lblCentrocampista.setBounds(90, 150, 200, 30);
 
 		lblDefensa = new JLabel();
 		lblDefensa.setText("Mejor defensa: ");
-		lblDefensa.setBounds(10, 150, 200, 30);
+		lblDefensa.setFont(new Font("Sans Serif Bold", Font.BOLD, 15));
+		lblDefensa.setBounds(90, 200, 200, 30);
 
 		lblPortero = new JLabel();
 		lblPortero.setText("Mejor portero: ");
-		lblPortero.setBounds(10, 200, 200, 30);
+		lblPortero.setFont(new Font("Sans Serif Bold", Font.BOLD, 15));
+		lblPortero.setBounds(90, 250, 200, 30);
 
 		// Delanteros
 		jcbDelantero = new JComboBox<String>(arrayDelantero.toArray(new String[arrayDelantero.size()]));
 		utils.JComboBoxAutoCompletion.enable(jcbDelantero);
-		jcbDelantero.setBounds(300, 50, 200, 30);
+		jcbDelantero.setBounds(300, 100, 200, 30);
+		jcbDelantero.setBackground(Color.getHSBColor(0.56f, 0.2f, 0.9f));
 
 		// Centrocampistas
 		jcbCentrocampista = new JComboBox<String>(arrayCentrocampista.toArray(new String[arrayCentrocampista.size()]));
 		utils.JComboBoxAutoCompletion.enable(jcbCentrocampista);
-		jcbCentrocampista.setBounds(300, 100, 200, 30);
-
+		jcbCentrocampista.setBounds(300, 150, 200, 30);
+		jcbCentrocampista.setBackground(Color.getHSBColor(0.56f, 0.2f, 0.9f));
+		
 		// Defensas
 		jcbDefensa = new JComboBox<String>(arrayDefensa.toArray(new String[arrayDefensa.size()]));
 		utils.JComboBoxAutoCompletion.enable(jcbDefensa);
-		jcbDefensa.setBounds(300, 150, 200, 30);
+		jcbDefensa.setBounds(300, 200, 200, 30);
+		jcbDefensa.setBackground(Color.getHSBColor(0.56f, 0.2f, 0.9f));
 
 		// Porteros
 		jcbPortero = new JComboBox<String>(arrayPortero.toArray(new String[arrayPortero.size()]));
 		utils.JComboBoxAutoCompletion.enable(jcbPortero);
-		jcbPortero.setBounds(300, 200, 200, 30);
+		jcbPortero.setBounds(300, 250, 200, 30);
+		jcbPortero.setBackground(Color.getHSBColor(0.56f, 0.2f, 0.9f));
 
 		btnVotar = new JButton();
 		btnVotar.setText("Votar");
 		btnVotar.setBounds(240, 325, 120, 30);
 
+		add(lblVotaciones);
 		add(lblDelantero);
 		add(lblCentrocampista);
 		add(lblDefensa);
