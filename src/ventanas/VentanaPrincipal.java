@@ -477,8 +477,10 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaCambiarDatos VCD = new VentanaCambiarDatos();
-				VCD.setVisible(true);
+				// VentanaCambiarDatos VCD = new VentanaCambiarDatos();
+				// VCD.setVisible(true);
+				VCD_2 VCDP = new VCD_2();
+				VCDP.setVisible(true);
 			}
 		});
 
