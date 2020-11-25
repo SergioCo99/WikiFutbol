@@ -1,7 +1,7 @@
 package feedback;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,9 +39,7 @@ public class EstadisticaFeedbackTest {
 		double a = 4;
 		double b = 2;
 
-		if (b == 0) {
-			fail("No puedes dividir por cero");
-		}
+		assertTrue(b != 0);
 
 		double expected = EstadisticaFeedback.mediaPuntuacion(4, 2);
 		double actual = a / b;
@@ -59,11 +57,8 @@ public class EstadisticaFeedbackTest {
 		double b = 4;
 		double c = 10;
 
-		if (c == 0) {
-			fail("No puedes dividir por cero");
-		} else if ((a + b) != c) {
-			fail("Deberia que dar la suma");
-		}
+		assertTrue(c != 0);
+		assertTrue((a + b) == c);
 
 		double ans1 = (a / c) * 100;
 		double ans2 = (b / c) * 100;
@@ -87,18 +82,16 @@ public class EstadisticaFeedbackTest {
 		try {
 			assertEquals(EstadisticaFeedback.ReadAndLoad().size(), 4);
 
-			if ((EstadisticaFeedback.ReadAndLoad().get(1) < 0) || (EstadisticaFeedback.ReadAndLoad().get(1) > 5)) {
-				fail("Tiene que ser una puntuacion entre 0 y 5");
-			}
+			assertTrue(
+					(EstadisticaFeedback.ReadAndLoad().get(1) > 0) && (EstadisticaFeedback.ReadAndLoad().get(1) < 5));
 
 			double porcentajeSi = EstadisticaFeedback.ReadAndLoad().get(2);
 			double porcentajeNo = EstadisticaFeedback.ReadAndLoad().get(3);
 			assertEquals(porcentajeSi + porcentajeNo, 100, 0.01);
 
-			if ((EstadisticaFeedback.ReadAndLoad().get(4) < 0)
-					|| ((EstadisticaFeedback.ReadAndLoad().get(4) % 1) != 0)) {
-				fail("No puede ser menor que 0, y tiene que ser un numero entero");
-			}
+			assertTrue((EstadisticaFeedback.ReadAndLoad().get(4) > 0)
+					&& ((EstadisticaFeedback.ReadAndLoad().get(4) % 1) == 0));
+
 		} catch (RWException e) {
 			e.printStackTrace();
 		}

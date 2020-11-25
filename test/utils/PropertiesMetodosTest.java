@@ -1,7 +1,7 @@
 package utils;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -65,20 +65,15 @@ public class PropertiesMetodosTest {
 				for (int i = 0; i <= 3; i++) {
 					String data = myReader.nextLine();
 					if (i == 2) {
-						if (!data.equals("correo=" + mail)) {
-							fail("No concuerda el correo");
-						}
+						assertTrue(data.equals("correo=" + mail));
 					} else if (i == 3) {
-						if (!data.equals("contrasena=" + password)) {
-							fail("No concuerda la contrasena");
-						}
+						assertTrue(data.equals("contrasena=" + password));
 					}
 				}
 			}
 			myReader.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			fail("FileNotFoundException");
 		}
 	}
 

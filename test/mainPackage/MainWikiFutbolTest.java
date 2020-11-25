@@ -1,7 +1,6 @@
 package mainPackage;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.io.File;
 
@@ -39,11 +38,7 @@ public class MainWikiFutbolTest {
 		MainWikiFutbol.crearFicheroLog();
 
 		File f = new File("FeedbackLog.log");
-		if (f.exists()) {
-			assertTrue(true);
-		} else if (!f.exists()) {
-			fail();
-		}
+		assertTrue(f.exists());
 	}
 
 	/**
@@ -63,22 +58,14 @@ public class MainWikiFutbolTest {
 			assertTrue(true);
 		} else if (!f1.exists()) {
 			MainWikiFutbol.crearFicheroLogger();
-			if (f1.exists()) {
-				assertTrue(true);
-			} else if (!f1.exists()) {
-				fail("Fichero BDLogger.log no existe");
-			}
+			assertTrue(f1.exists());
 		}
 
 		if (f2.exists()) {
 			assertTrue(true);
 		} else if (!f2.exists()) {
 			MainWikiFutbol.crearFicheroLogger();
-			if (f2.exists()) {
-				assertTrue(true);
-			} else if (!f2.exists()) {
-				fail("Fichero GeneralLogger.log no existe");
-			}
+			assertTrue(f2.exists());
 		}
 	}
 
@@ -96,17 +83,9 @@ public class MainWikiFutbolTest {
 		File f1 = new File("account.properties");
 		File f2 = new File("jdbc.properties");
 
-		if (f1.exists()) {
-			assertTrue(true);
-		} else if (!f1.exists()) {
-			fail("Fichero account.properties no existe");
-		}
+		assertTrue(f1.exists());
 
-		if (f2.exists()) {
-			assertTrue(true);
-		} else if (!f2.exists()) {
-			fail("Fichero jdbc.properties no existe");
-		}
+		assertTrue(f2.exists());
 	}
 
 }

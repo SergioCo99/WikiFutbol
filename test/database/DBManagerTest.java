@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -175,15 +174,7 @@ public class DBManagerTest {
 		assertEquals(rs.getInt("admin_usuario"), u.getAdmin());
 		assertEquals(rs.getInt("admin_usuario"), 0);
 
-		if ((nuevoValor_admin_usuario != 1) && (nuevoValor_admin_usuario != 0)) {
-			fail("Tiene que ser 0 o 1");
-		}
-		// Mejor asi que el if de arriba ?
-		if ((nuevoValor_admin_usuario == 1) || (nuevoValor_admin_usuario == 0)) {
-			assertTrue(true);
-		} else if ((nuevoValor_admin_usuario != 1) || (nuevoValor_admin_usuario != 0)) {
-			assertTrue("Tiene que ser 0 o 1", false);
-		}
+		assertTrue((nuevoValor_admin_usuario == 1) || (nuevoValor_admin_usuario == 0));
 
 		DBManager.cambiarAdmin(correo_usuario, nuevoValor_admin_usuario);
 
@@ -583,28 +574,12 @@ public class DBManagerTest {
 			assertNotEquals(null, jugador);
 			assertNotEquals("", jugador);
 		}
-		if (toft.size() != 11) {
-			fail("Tienen que ser 11, por 11 jugadores");
-		}
-		// Mejor asi que el if de arriba ?
-		if ((toft.size() == 11)) {
-			assertTrue(true);
-		} else if ((toft.size() != 11)) {
-			assertTrue("Tienen que ser 11, por 11 jugadores", false);
-		}
+
+		assertTrue(toft.size() == 11);
 
 		Collection<Integer> list = toft.values();
 		for (Iterator<Integer> itr = list.iterator(); itr.hasNext();) {
-			/*
-			 * if (Collections.frequency(list, itr.next()) > 1) {
-			 * fail("No puede haber dos ids iguales, tienen que ser 11 diferentes"); }
-			 */
-			// Mejor asi que el if de arriba ?
-			if (Collections.frequency(list, itr.next()) == 1) {
-				assertTrue(true);
-			} else if (Collections.frequency(list, itr.next()) > 1) {
-				assertTrue("No puede haber dos ids iguales, tienen que ser 11 diferentes", false);
-			}
+			assertTrue(Collections.frequency(list, itr.next()) == 1);
 		}
 
 		List<String> toftNombre = DBManager.toftNombres();
@@ -632,13 +607,10 @@ public class DBManagerTest {
 				assertEquals("Defensa", rs.getString("posicion_jugador"));
 			} else if (contador == 11) {
 				assertEquals("Portero", rs.getString("posicion_jugador"));
-			} else {
-				// fail("Tienen que ser 3 delanteros, 3 centrocampistas, 4 defensas, 1 portero,
-				// y ademas en ese orden");
-				assertTrue(
-						"Tienen que ser 3 delanteros, 3 centrocampistas, 4 defensas, 1 portero, y ademas en ese orden",
-						false);
 			}
+			assertTrue((contador == 1) || (contador == 2) || (contador == 3) || (contador == 4) || (contador == 5)
+					|| (contador == 6) || (contador == 7) || (contador == 8) || (contador == 9) || (contador == 10)
+					|| (contador == 11));
 			contador++;
 		}
 	}
