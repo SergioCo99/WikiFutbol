@@ -90,13 +90,7 @@ public class MainWikiFutbol {
 		crearFicherosProperties();
 		try {
 			DBManager.connect();
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
-
-		// actualiza el teamoftheyear
-		try {
+			// actualiza el teamoftheyear
 			database.DBManager.toft();
 		} catch (DBManagerException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
@@ -116,7 +110,6 @@ public class MainWikiFutbol {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 					e.printStackTrace();
 				}
-				System.exit(0); // preguntar
 			}
 		}));
 	}
