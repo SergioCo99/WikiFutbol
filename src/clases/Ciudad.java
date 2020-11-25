@@ -8,13 +8,13 @@ package clases;
  */
 public class Ciudad {
 
-	int id;
-	String nombre;
-	String pais;
-	int poblacion;
-	String gentilicio;
-	String provincia;
-	String comAutonoma;
+	private int id;
+	private String nombre;
+	private String pais;
+	private int poblacion;
+	private String gentilicio;
+	private String provincia;
+	private String comAutonoma;
 
 	/**
 	 * @param id          ID de la ciudad

@@ -8,11 +8,11 @@ package clases;
  */
 public class EmpleadoDeClub {
 
-	int id;
-	String nombre;
-	String fechaNac; /* YYYY-MM-dd , por ejemplo "1990-06-25" */
-	String club;
-	String ciudad;
+	public int id;
+	public String nombre;
+	public String fechaNac; /* YYYY-MM-dd , por ejemplo "1990-06-25" */
+	public String club;
+	public String ciudad;
 
 	/**
 	 * Crea un empleado del club con sus respectivos atributos

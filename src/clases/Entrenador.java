@@ -18,8 +18,8 @@ public class Entrenador extends EmpleadoDeClub {
 		Defensiva, Equilibrada, Atacante
 	}
 
-	String formacion;
-	Mentalidad mentalidad;
+	private String formacion;
+	private Mentalidad mentalidad;
 
 	/**
 	 * Crea un entrenador con sus respectivos atributos

@@ -18,11 +18,11 @@ public class Feedback {
 		si, no
 	}
 
-	int id;
-	String usuario; // Nos referimos al correo, que es unico e identificara mejor al usuario
-	int valoracion;
-	Recomendacion recomendacion;
-	String opinion;
+	private int id;
+	private String usuario; // Nos referimos al correo, que es unico e identificara mejor al usuario
+	private int valoracion;
+	private Recomendacion recomendacion;
+	private String opinion;
 
 	/**
 	 * Crea un feedback con su respectivos atributos

@@ -19,12 +19,12 @@ public class TeamOfTheYear_view {
 		Delantero, Centrocampista, Defensa, Portero
 	}
 
-	int id_teamoftheyear;
-	int id_jugador;
-	String nombre_jugador;
-	Posicion posicion_jugador;
-	int voto_jugador;
-	int goles_jugador;
+	private int id_teamoftheyear;
+	private int id_jugador;
+	private String nombre_jugador;
+	private Posicion posicion_jugador;
+	private int voto_jugador;
+	private int goles_jugador;
 
 	/**
 	 * Crea un equipo del año con los distintos atributos que lo forman

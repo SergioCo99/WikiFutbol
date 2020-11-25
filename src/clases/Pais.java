@@ -8,11 +8,11 @@ package clases;
  */
 public class Pais {
 
-	int id;
-	String nombre;
-	String capital;
-	String gentilicio;
-	String idioma;
+	private int id;
+	private String nombre;
+	private String capital;
+	private String gentilicio;
+	private String idioma;
 
 	/**
 	 * @param id         ID del pais

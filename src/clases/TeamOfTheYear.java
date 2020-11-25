@@ -8,8 +8,8 @@ package clases;
  */
 public class TeamOfTheYear {
 
-	int id;
-	String jugador;
+	private int id;
+	private String jugador;
 
 	/**
 	 * Constructor del equipo del año

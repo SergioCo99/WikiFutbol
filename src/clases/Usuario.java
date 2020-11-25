@@ -8,12 +8,12 @@ package clases;
  */
 public class Usuario {
 
-	int id;
-	String nombre;
-	String contrasena;
-	String correo;
-	int admin;
-	String fechaNac; /* YYYY-MM-dd , por ejemplo "1990-06-25" */
+	private int id;
+	private String nombre;
+	private String contrasena;
+	private String correo;
+	private int admin;
+	private String fechaNac; /* YYYY-MM-dd , por ejemplo "1990-06-25" */
 
 	/**
 	 * Crea un usuario con sus respectivos atributos

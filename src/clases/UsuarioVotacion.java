@@ -8,12 +8,12 @@ package clases;
  */
 public class UsuarioVotacion {
 
-	int id;
-	String usuario; // Nos referimos al correo, que es unico e identificara mejor al usuario
-	String delantero;
-	String centrocampista;
-	String defensa;
-	String portero;
+	private int id;
+	private String usuario; // Nos referimos al correo, que es unico e identificara mejor al usuario
+	private String delantero;
+	private String centrocampista;
+	private String defensa;
+	private String portero;
 
 	/**
 	 * Constructor para la votación de los usuarios

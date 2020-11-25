@@ -8,11 +8,11 @@ package clases;
  */
 public class Estadio {
 
-	int id;
-	String nombre;
-	int aforo;
-	int anyoCreacion;
-	String ciudad;
+	private int id;
+	private String nombre;
+	private int aforo;
+	private int anyoCreacion;
+	private String ciudad;
 
 	/**
 	 * Crea un estadio con sus respectivos atributos

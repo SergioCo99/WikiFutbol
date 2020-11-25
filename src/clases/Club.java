@@ -8,13 +8,13 @@ package clases;
  */
 public class Club {
 
-	int id;
-	String nombre;
-	String ciudad;
-	String estadio;
-	int anyoCreacion;
-	String palmares;
-	String entrenador;
+	private int id;
+	private String nombre;
+	private String ciudad;
+	private String estadio;
+	private int anyoCreacion;
+	private String palmares;
+	private String entrenador;
 
 	/**
 	 * Crea un club con sus diferentes paramentros

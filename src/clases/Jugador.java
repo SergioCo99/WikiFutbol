@@ -28,15 +28,15 @@ public class Jugador extends EmpleadoDeClub {
 		Delantero, Centrocampista, Defensa, Portero
 	}
 
-	Posicion posicion;
-	int dorsal;
-	int goles;
-	int altura;
-	int peso;
-	PieFav piefav;
-	int valoracion; // es distinta valoracion a la de Feedback, NO es enum
-	String descripcion;
-	int voto;
+	private Posicion posicion;
+	private int dorsal;
+	private int goles;
+	private int altura;
+	private int peso;
+	private PieFav piefav;
+	private int valoracion; // es distinta valoracion a la de Feedback, NO es enum
+	private String descripcion;
+	private int voto;
 
 	/**
 	 * Crea un jugador con sus respectivos atributos
