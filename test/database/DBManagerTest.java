@@ -522,7 +522,7 @@ public class DBManagerTest {
 
 		DBManager.actualizarVotos();
 
-		//DBManager.disconnect();
+		// DBManager.disconnect();
 	}
 
 	/*
