@@ -88,6 +88,12 @@ public class MainWikiFutbol {
 		crearFicheroLog();
 		crearFicheroLogger();
 		crearFicherosProperties();
+		try {
+			DBManager.connect();
+		} catch (DBManagerException e) {
+			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+			e.printStackTrace();
+		}
 
 		// actualiza el teamoftheyear
 		try {

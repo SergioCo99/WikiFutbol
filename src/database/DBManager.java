@@ -38,8 +38,8 @@ import clases.UsuarioVotacion;
 public class DBManager {
 
 	private static Connection conn;
-	private static Statement stmt = null;
-	private static PreparedStatement preparedstmt = null;
+	// private static Statement stmt = null;
+	// private static PreparedStatement preparedstmt = null;
 
 	/**
 	 * Metodo para conectar con la BD
@@ -59,7 +59,7 @@ public class DBManager {
 			System.out.println("CONEXION");
 		} catch (Exception e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
-			throw new DBManagerException("Error connect DBManager", e);
+			throw new DBManagerException("Error //connect DBManager", e);
 		}
 		return conn;
 	}
@@ -88,8 +88,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static boolean existeCorreo(String correo_usuario) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "select correo_usuario from usuario where correo_usuario= ? ";
 			preparedstmt = conn.prepareStatement(sql);
@@ -113,7 +114,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 		return false;
 	}
@@ -129,7 +130,8 @@ public class DBManager {
 	 */
 	public static void registrarUsuario(String nombre_usuario, String correo_usuario, String contrasena_usuario,
 			String fechaNac_usuario) throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "insert into usuario(nombre_usuario, correo_usuario, contrasena_usuario, fechaNac_usuario) values(?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql);
@@ -147,7 +149,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -160,8 +162,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static boolean login(String correo_usuario, String contrasena_usuario) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "select * from usuario where correo_usuario = ? and contrasena_usuario = ?";
 			preparedstmt = conn.prepareStatement(sql);
@@ -185,7 +188,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -197,8 +200,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static boolean esAdmin(String correo_usuario) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "select admin_usuario from usuario where correo_usuario = ?";
 			preparedstmt = conn.prepareStatement(sql);
@@ -222,7 +226,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -235,7 +239,8 @@ public class DBManager {
 	 */
 	public static void cambiarAdmin(String correo_usuario, int admin_usuario) throws DBManagerException {
 		if ((admin_usuario == 1) || (admin_usuario == 0)) {
-			connect();
+			// connect();
+			PreparedStatement preparedstmt = null;
 			try {
 				String sql = "update usuario set admin_usuario = ? where correo_usuario = ?";
 				preparedstmt = conn.prepareStatement(sql);
@@ -251,7 +256,7 @@ public class DBManager {
 				} catch (SQLException e) {
 					mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 				}
-				disconnect();
+				// disconnect();
 			}
 		}
 	}
@@ -263,7 +268,8 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static void eliminarUsuario(String correo_usuario) throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "delete from usuario where correo_usuario = ?;";
 			preparedstmt = conn.prepareStatement(sql);
@@ -278,7 +284,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -290,7 +296,8 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static void cambiarContrasena(String correo_usuario, String contrasena_usuario) throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "update usuario set contrasena_usuario = ? where correo_usuario = ?";
 			preparedstmt = conn.prepareStatement(sql);
@@ -306,7 +313,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -317,8 +324,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static List<String> verTablas() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			String sql1 = "use wikifutbolschema;";
@@ -333,11 +341,15 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error verTablas DBManager", e);
-		} /*
-			 * finally { try { stmt.close(); rs.close(); } catch (SQLException e) {
-			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
-			 * disconnect(); }
-			 */
+		} finally {
+			try {
+				stmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+		}
+		// disconnect(); }
 	}
 
 	/**
@@ -347,8 +359,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static List<String> todosLosCorreos() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			String sql = "select correo_usuario from usuario";
@@ -372,11 +385,15 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error todosLosCorreos DBManager", e);
-		} /*
-			 * finally { try { stmt.close(); rs.close(); } catch (SQLException e) {
-			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
-			 * disconnect(); }
-			 */
+		} finally {
+			try {
+				stmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+		}
+		// disconnect(); }
 	}
 
 	/**
@@ -390,8 +407,10 @@ public class DBManager {
 	 */
 	public static void registrarFeedback(String correo_usuario, String valoracion_feedback,
 			String recomendacion_feedback, String opinion_feedback) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
+		PreparedStatement preparedstmt2 = null;
 		try {
 			String sql1 = "select id_usuario from usuario where correo_usuario = ?";
 			preparedstmt = conn.prepareStatement(sql1);
@@ -400,23 +419,24 @@ public class DBManager {
 			rs.next();
 			int id = rs.getInt("id_usuario");
 			String sql2 = "insert into feedback(usuario_feedback, valoracion_feedback, recomendacion_feedback, opinion_feedback) values(?,?,?,?)";
-			preparedstmt = conn.prepareStatement(sql2);
-			preparedstmt.setInt(1, id);
-			preparedstmt.setString(2, valoracion_feedback);
-			preparedstmt.setString(3, recomendacion_feedback);
-			preparedstmt.setString(4, opinion_feedback);
-			preparedstmt.executeUpdate();
+			preparedstmt2 = conn.prepareStatement(sql2);
+			preparedstmt2.setInt(1, id);
+			preparedstmt2.setString(2, valoracion_feedback);
+			preparedstmt2.setString(3, recomendacion_feedback);
+			preparedstmt2.setString(4, opinion_feedback);
+			preparedstmt2.executeUpdate();
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error registrarFeedback DBManager", e);
 		} finally {
 			try {
 				preparedstmt.close();
+				preparedstmt2.close();
 				rs.close();
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -428,8 +448,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static List<String> getJugadoresPorPosicion(String posicion_jugador) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "select nombre_jugador from jugador where posicion_jugador = ?";
 			preparedstmt = conn.prepareStatement(sql);
@@ -452,11 +473,15 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getJugadoresPorPosicion DBManager", e);
-		} /*
-			 * finally { try { preparedstmt.close(); rs.close(); } catch (SQLException e) {
-			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
-			 * disconnect(); }
-			 */
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+		}
+		// disconnect(); }
 	}
 
 	/**
@@ -467,8 +492,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static int getIdUsuario(String correo_usuario) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "select id_usuario from usuario where correo_usuario = ?";
 			preparedstmt = conn.prepareStatement(sql);
@@ -487,7 +513,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -499,8 +525,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
 	 */
 	public static int getIdJugador(String nombre_jugador) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "select id_jugador from jugador where nombre_jugador = ?";
 			preparedstmt = conn.prepareStatement(sql);
@@ -519,7 +546,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -537,8 +564,10 @@ public class DBManager {
 	public static void votar(int usuario_usuarioVotacion, int delanteroVotado_usuarioVotacion,
 			int centrocampistaVotado_usuarioVotacion, int defensaVotado_usuarioVotacion,
 			int porteroVotado_usuarioVotacion) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
+		PreparedStatement preparedstmt2 = null;
 		try {
 			String sql1 = "select count(usuario_usuarioVotacion) from usuariovotacion where usuario_usuarioVotacion = ?";
 			preparedstmt = conn.prepareStatement(sql1);
@@ -549,24 +578,24 @@ public class DBManager {
 				String sql2 = "insert into usuariovotacion(usuario_usuarioVotacion, delanteroVotado_usuarioVotacion, "
 						+ "centrocampistaVotado_usuarioVotacion, defensaVotado_usuarioVotacion, porteroVotado_usuarioVotacion)"
 						+ " values(?,?,?,?,?)";
-				preparedstmt = conn.prepareStatement(sql2);
-				preparedstmt.setInt(1, usuario_usuarioVotacion);
-				preparedstmt.setInt(2, delanteroVotado_usuarioVotacion);
-				preparedstmt.setInt(3, centrocampistaVotado_usuarioVotacion);
-				preparedstmt.setInt(4, defensaVotado_usuarioVotacion);
-				preparedstmt.setInt(5, porteroVotado_usuarioVotacion);
-				preparedstmt.executeUpdate();
+				preparedstmt2 = conn.prepareStatement(sql2);
+				preparedstmt2.setInt(1, usuario_usuarioVotacion);
+				preparedstmt2.setInt(2, delanteroVotado_usuarioVotacion);
+				preparedstmt2.setInt(3, centrocampistaVotado_usuarioVotacion);
+				preparedstmt2.setInt(4, defensaVotado_usuarioVotacion);
+				preparedstmt2.setInt(5, porteroVotado_usuarioVotacion);
+				preparedstmt2.executeUpdate();
 			} else if (rs.getInt("count(usuario_usuarioVotacion)") != 0) {
 				String sql2 = "update usuariovotacion set delanteroVotado_usuarioVotacion = ?, "
 						+ "centrocampistaVotado_usuarioVotacion = ?, " + "defensaVotado_usuarioVotacion = ?, "
 						+ "porteroVotado_usuarioVotacion = ? " + "where usuario_usuarioVotacion = ?";
-				preparedstmt = conn.prepareStatement(sql2);
-				preparedstmt.setInt(1, delanteroVotado_usuarioVotacion);
-				preparedstmt.setInt(2, centrocampistaVotado_usuarioVotacion);
-				preparedstmt.setInt(3, defensaVotado_usuarioVotacion);
-				preparedstmt.setInt(4, porteroVotado_usuarioVotacion);
-				preparedstmt.setInt(5, usuario_usuarioVotacion);
-				preparedstmt.executeUpdate();
+				preparedstmt2 = conn.prepareStatement(sql2);
+				preparedstmt2.setInt(1, delanteroVotado_usuarioVotacion);
+				preparedstmt2.setInt(2, centrocampistaVotado_usuarioVotacion);
+				preparedstmt2.setInt(3, defensaVotado_usuarioVotacion);
+				preparedstmt2.setInt(4, porteroVotado_usuarioVotacion);
+				preparedstmt2.setInt(5, usuario_usuarioVotacion);
+				preparedstmt2.executeUpdate();
 			}
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -574,11 +603,12 @@ public class DBManager {
 		} finally {
 			try {
 				preparedstmt.close();
+				preparedstmt2.close();
 				rs.close();
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -590,7 +620,9 @@ public class DBManager {
 	 */
 	private static int contarJugadores() throws DBManagerException {
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
+			stmt = conn.createStatement();
 			String sql = "select count(id_jugador) from jugador";
 			rs = stmt.executeQuery(sql);
 			rs.next();
@@ -619,7 +651,9 @@ public class DBManager {
 	 */
 	private static int contarVotosPorJugador(int i, String jugadorVotado_usuarioVotacion) throws DBManagerException {
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
+			stmt = conn.createStatement();
 			String sql = "select count(" + jugadorVotado_usuarioVotacion + ") from usuariovotacion where "
 					+ jugadorVotado_usuarioVotacion + " = " + i;
 			rs = stmt.executeQuery(sql);
@@ -646,7 +680,8 @@ public class DBManager {
 	 */
 	public static void actualizarVotos() throws DBManagerException {
 		System.out.println("Inicio actualizarVotos, puede tardar un rato...");
-		connect();
+		// connect();
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			// Actualiza los votos de los delanteros
@@ -686,7 +721,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 			System.out.println("Fin de actualizarVotos.");
 		}
 	}
@@ -702,6 +737,7 @@ public class DBManager {
 	 */
 	private static int countTOFT(int n) throws DBManagerException {
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			String sql = "select count(id_TeamOfTheYear) from teamoftheyear where id_TeamOfTheYear = '" + n + "';";
@@ -712,10 +748,13 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error contarTOFT DBManager", e);
-		} /*
-			 * finally { try { rs.close(); } catch (SQLException e) {
-			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); } }
-			 */
+		} finally {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+		}
 	}
 
 	/**
@@ -729,31 +768,38 @@ public class DBManager {
 	 */
 	private static int getMasVotados(String posicion, int limit, int i) throws DBManagerException {
 		ResultSet rs = null;
+		Statement stmt1 = null;
+		Statement stmt2 = null;
 		try {
 			int id = 0;
+			stmt1 = conn.createStatement();
+			stmt2 = conn.createStatement();
 			String sql1 = "select * from jugador where posicion_jugador = '" + posicion
 					+ "' order by voto_jugador desc, goles_jugador desc limit " + limit;
-			rs = stmt.executeQuery(sql1);
+			rs = stmt1.executeQuery(sql1);
 			while (rs.next()) {
 				id = rs.getInt("id_jugador");
 
 				if (countTOFT(i) == 0) {
 					String sql2 = "insert into teamoftheyear values(" + i + ", " + id + ")";
-					stmt.executeUpdate(sql2);
+					stmt2.executeUpdate(sql2);
 				} else if (countTOFT(i) == 1) {
 					String sql2 = "update teamoftheyear set jugador_teamoftheyear = " + id
 							+ " where id_teamoftheyear = " + i + "";
-					stmt.executeUpdate(sql2);
+					stmt2.executeUpdate(sql2);
 				}
 			}
 			return id;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getMasVotados DBManager", e);
-		} /*
-			 * finally { try { rs.close(); } catch (SQLException e) {
-			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); } }
-			 */
+		} finally {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+		}
 	}
 
 	/**
@@ -764,7 +810,8 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo
 	 */
 	public static Map<Integer, Integer> toft() throws DBManagerException {
-		connect();
+		// connect();
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			// ademas de meter los datos en el map, ejecuta el metodo getMasVotados()
@@ -784,11 +831,14 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error setTOFT DBManager", e);
-		} /*
-			 * finally { try { stmt.close(); } catch (SQLException e) {
-			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
-			 * disconnect(); }
-			 */
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			// disconnect(); }
+		}
 	}
 
 	/**
@@ -799,8 +849,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static List<String> toftNombres() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			String sql = "select jugador_TeamOfTheYear, nombre_jugador from jugador, "
@@ -814,11 +865,15 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error toftNombres DBManager", e);
-		} /*
-			 * finally { try { stmt.close(); rs.close(); } catch (SQLException e) {
-			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
-			 * disconnect(); }
-			 */
+		} finally {
+			try {
+				stmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			// disconnect(); }
+		}
 	}
 	// HASTA AQUI CREAR TEAM OF THE YEAR
 
@@ -831,8 +886,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static List<Ciudad> getCiudades() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			List<Ciudad> array = new ArrayList<Ciudad>();
@@ -854,7 +910,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -866,8 +922,9 @@ public class DBManager {
 	 *                            de acceso a la BD
 	 */
 	public static List<Club> getClubes() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			List<Club> array = new ArrayList<Club>();
@@ -882,11 +939,15 @@ public class DBManager {
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error getClubes DBManager", e);
-		} /*
-			 * finally { try { stmt.close(); rs.close(); } catch (SQLException e) {
-			 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
-			 * disconnect(); }
-			 */
+		} finally {
+			try {
+				stmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			// disconnect(); }
+		}
 	}
 
 	// Metodos entrenador
@@ -898,8 +959,9 @@ public class DBManager {
 	 *                            de acceso a la BD
 	 */
 	public static List<Entrenador> getEntrenadores() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			List<Entrenador> array = new ArrayList<Entrenador>();
@@ -921,7 +983,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -936,8 +998,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static String nombreEntrenador(String Entrenador, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String nombre = "";
 			String sql = "SELECT nombre_entrenador FROM entrenador WHERE nombre_entrenador = ?";
@@ -958,7 +1021,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -972,8 +1035,9 @@ public class DBManager {
 	 *                            de acceso a la BD
 	 */
 	public static String fechaNacimiento(String Entrenador, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String fechaNacimiento = "";
 			String sql = "SELECT fechaNac_entrenador FROM entrenador WHERE nombre_entrenador = ?";
@@ -994,7 +1058,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1008,8 +1072,9 @@ public class DBManager {
 	 *                            de acceso a la BD
 	 */
 	public static String clubEntrenador(String Entrenador, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String clubEntrenador = "";
 			String sql = "select nombre_club from club, entrenador where entrenador_club = id_entrenador and nombre_entrenador = ?";
@@ -1030,7 +1095,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1044,8 +1109,9 @@ public class DBManager {
 	 *                            de acceso a la BD
 	 */
 	public static String ciudadEntrenador(String Entrenador, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String ciudadEntrenador = "";
 			String sql = "select nombre_ciudad from ciudad, entrenador where id_ciudad = ciudad_entrenador and nombre_entrenador = ?";
@@ -1066,7 +1132,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1080,8 +1146,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static String formacionEntrenador(String Entrenador, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String formacionEntrenador = "";
 			String sql = "SELECT formacion_entrenador FROM entrenador WHERE nombre_entrenador = ?";
@@ -1102,7 +1169,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1117,8 +1184,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static String mentalidadEntrenador(String Entrenador, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String mentalidadEntrenador = "";
 			String sql = "SELECT mentalidad_entrenador FROM entrenador WHERE nombre_entrenador = ?";
@@ -1139,7 +1207,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1151,10 +1219,11 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static List<Estadio> getEstadios() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
-			connect();
+			// connect();
 			stmt = conn.createStatement();
 			List<Estadio> array = new ArrayList<Estadio>();
 			rs = stmt.executeQuery(
@@ -1175,7 +1244,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1190,8 +1259,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static String nombreEstadio(String Estadio, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String nombre = "";
 			String sql = "SELECT nombre_estadio FROM estadio WHERE nombre_estadio = ?";
@@ -1212,7 +1282,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1226,8 +1296,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static int aforoEstadio(String Estadio, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			int aforo = 0;
 			String sql = "SELECT aforo_estadio FROM estadio WHERE nombre_estadio = ?";
@@ -1248,7 +1319,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1262,8 +1333,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static int anyoEstadio(String Estadio, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			int anyo = 0;
 			String sql = "SELECT anoCreacion_estadio FROM estadio WHERE nombre_estadio = ?";
@@ -1284,7 +1356,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1298,8 +1370,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo
 	 */
 	public static String ciudadEstadio(String Estadio, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String ciudadEstadio = "";
 			String sql = "select nombre_ciudad from ciudad, estadio where id_ciudad = ciudad_estadio and nombre_estadio = ?";
@@ -1320,7 +1393,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1332,8 +1405,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static List<Feedback> getFeedbacks() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			List<Feedback> array = new ArrayList<Feedback>();
@@ -1355,7 +1429,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1367,8 +1441,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static List<Jugador> getJugadores() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			List<Jugador> array = new ArrayList<Jugador>();
@@ -1392,7 +1467,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1405,8 +1480,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static Jugador getJugadorBd(String nombre_jugador) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "select id_jugador, nombre_jugador, fechaNac_jugador, nombre_club, nombre_ciudad, posicion_jugador,"
 					+ " dorsal_jugador, goles_jugador, altura_jugador, peso_jugador, pieFav_jugador, valoracion_jugador,"
@@ -1431,7 +1507,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1443,8 +1519,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static List<Pais> getPaises() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			List<Pais> array = new ArrayList<Pais>();
@@ -1465,7 +1542,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1477,8 +1554,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static List<TeamOfTheYear_view> getTeamOfTheYear_view() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			List<TeamOfTheYear_view> array = new ArrayList<TeamOfTheYear_view>();
@@ -1499,7 +1577,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1511,8 +1589,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static List<TeamOfTheYear> getTeamOfTheYear() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			List<TeamOfTheYear> array = new ArrayList<TeamOfTheYear>();
@@ -1533,7 +1612,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1545,8 +1624,9 @@ public class DBManager {
 	 *                            la base de datos
 	 */
 	public static List<Usuario> getUsuarios() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			List<Usuario> array = new ArrayList<Usuario>();
@@ -1568,7 +1648,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1579,8 +1659,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo
 	 */
 	public static List<UsuarioVotacion> getUsuarioVotaciones() throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			List<UsuarioVotacion> array = new ArrayList<UsuarioVotacion>();
@@ -1606,7 +1687,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 	// HASTA AQUI getClasesBasicas
@@ -1620,8 +1701,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo
 	 */
 	public static List<String> verColumnas(String tabla) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			String sql1 = "select column_name from INFORMATION_SCHEMA.columns where table_name = '" + tabla
@@ -1643,7 +1725,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			// disconnect();
+			// //disconnect();
 		}
 	}
 
@@ -1656,19 +1738,22 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo En caso de fallo
 	 */
 	public static Object[][] data(String tabla) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs1 = null;
 		ResultSet rs2 = null;
+		Statement stmt1 = null;
+		Statement stmt2 = null;
 		try {
-			stmt = conn.createStatement();
+			stmt1 = conn.createStatement();
+			stmt2 = conn.createStatement();
 			// sacar datos
 			String sql1 = "select * from " + tabla + ";";
-			rs1 = stmt.executeQuery(sql1);
+			rs1 = stmt1.executeQuery(sql1);
 			// numero de columnas
 			int ncolumns = verColumnas(tabla).size();
 			// numero de filas
 			String sql2 = "select count(*) from " + tabla + ";";
-			rs2 = stmt.executeQuery(sql2);
+			rs2 = stmt2.executeQuery(sql2);
 			rs2.next();
 			int nrows = rs2.getInt("count(*)");
 			// meter datos en array 2D
@@ -1698,13 +1783,14 @@ public class DBManager {
 			throw new DBManagerException("Error data DBManager", e);
 		} finally {
 			try {
-				stmt.close();
+				stmt1.close();
+				stmt2.close();
 				rs1.close();
 				rs2.close();
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1717,7 +1803,8 @@ public class DBManager {
 	 */
 	// ???
 	public static void cambiarDatos(String consulta) throws DBManagerException {
-		connect();
+		// connect();
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			String sql = consulta;
@@ -1731,7 +1818,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	} // ???
 
@@ -1747,7 +1834,8 @@ public class DBManager {
 	 */
 	public static void cambiarDatosDesdeJTable(String tabla, String columna, Object valor, int id)
 			throws DBManagerException {
-		connect();
+		// connect();
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			String sql = "update " + tabla + " set " + columna + "='" + valor + "' where id_" + tabla + " = " + id;
@@ -1761,7 +1849,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1775,8 +1863,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo
 	 */
 	public static List<String> getJugadoresPorEquipo(String nombre_club) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "select nombre_jugador from jugador, club where club_jugador = id_club and nombre_club = ? order by id_jugador";
 			preparedstmt = conn.prepareStatement(sql);
@@ -1806,7 +1895,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1818,8 +1907,9 @@ public class DBManager {
 	 * @throws DBManagerException En caso de fallo
 	 */
 	public static int numeroDeFilasEnUnaTabla(String tabla) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			int id = 0;
@@ -1845,7 +1935,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1860,7 +1950,8 @@ public class DBManager {
 	 */
 	public static void nuevaCiudad(Object id_ciudad, Object nombre_ciudad, Object pais_ciudad, Object poblacion_ciudad,
 			Object gentilicio_ciudad, Object provincia_ciudad, Object comAutonoma_ciudad) throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "insert into ciudad values(?,?,?,?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql);
@@ -1881,7 +1972,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1900,7 +1991,8 @@ public class DBManager {
 	 */
 	public static void nuevoClub(Object id_club, Object nombre_club, Object ciudad_club, Object estadio_club,
 			Object anoCreacion_club, Object palmares_club, Object entrenador_club) throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "insert into club values(?,?,?,?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql);
@@ -1921,7 +2013,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1941,7 +2033,8 @@ public class DBManager {
 	public static void nuevoEntrenador(Object id_entrenador, Object nombre_entrenador, Object fechaNac_entrenador,
 			Object club_entrenador, Object ciudad_entrenador, Object formacion_entrenador, Object mentalidad_entrenador)
 			throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "insert into entrenador values(?,?,?,?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql);
@@ -1962,7 +2055,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -1979,7 +2072,8 @@ public class DBManager {
 	 */
 	public static void nuevoEstadio(Object id_estadio, Object nombre_estadio, Object aforo_estadio,
 			Object anoCreacion_estadio, Object ciudad_estadio) throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "insert into estadio values(?,?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql);
@@ -1998,7 +2092,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -2015,7 +2109,8 @@ public class DBManager {
 	 */
 	public static void nuevoFeedback(Object id_feedback, Object usuario_feedback, Object valoracion_feedback,
 			Object recomendacion_feedback, Object opinion_feedback) throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "insert into feedback values(?,?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql);
@@ -2034,7 +2129,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -2062,7 +2157,8 @@ public class DBManager {
 			Object club_jugador, Object ciudad_jugador, Object posicion_jugador, Object dorsal_jugador,
 			Object goles_jugador, Object altura_jugador, Object peso_jugador, Object pieFav_jugador,
 			Object valoracion_jugador, Object descripcion_jugador, Object voto_jugador) throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "insert into jugador values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql);
@@ -2090,7 +2186,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -2104,7 +2200,8 @@ public class DBManager {
 	 */
 	public static void nuevoPais(Object id_pais, Object nombre_pais, Object capital_pais, Object gentilicio_pais,
 			Object idioma_pais) throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "insert into pais values(?,?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql);
@@ -2123,7 +2220,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -2139,7 +2236,7 @@ public class DBManager {
 	 * public static void nuevoTeamofTheYear(Object id_teamoftheyear, Object
 	 * jugador_teamoftheyear) throws DBManagerException {
 	 *
-	 * connect();
+	 * //connect();
 	 *
 	 * try {
 	 *
@@ -2160,7 +2257,7 @@ public class DBManager {
 	 * } finally { try { preparedstmt.close(); } catch (SQLException e) {
 	 *
 	 * mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString()); }
-	 * disconnect(); } }
+	 * //disconnect(); } }
 	 */
 
 	/**
@@ -2177,7 +2274,8 @@ public class DBManager {
 	 */
 	public static void nuevoUsuario(Object id_usuario, Object nombre_usuario, Object correo_usuario,
 			Object contrasena_usuario, Object admin_usuario, Object fechaNac_usuario) throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "insert into usuario values(?,?,?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql);
@@ -2197,7 +2295,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -2216,7 +2314,8 @@ public class DBManager {
 	public static void nuevoUsuarioVotacion(Object id_usuarioVotacion, Object usuario_usuarioVotacion,
 			Object delanteroVotado_usuarioVotacion, Object centrocampistaVotado_usuarioVotacion,
 			Object defensaVotado_usuarioVotacion, Object porteroVotado_usuarioVotacion) throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "insert into usuariovotacion values(?,?,?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql);
@@ -2236,7 +2335,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -2249,7 +2348,8 @@ public class DBManager {
 	 * @throws DBManagerException
 	 */
 	public static void borrar(String tabla, Object id) throws DBManagerException {
-		connect();
+		// connect();
+		PreparedStatement preparedstmt = null;
 		try {
 			String sql = "delete from " + tabla + " where id_" + tabla + " = " + id;
 			preparedstmt = conn.prepareStatement(sql);
@@ -2263,7 +2363,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -2275,8 +2375,9 @@ public class DBManager {
 	 * @throws DBManagerException
 	 */
 	public static int idMasBajoSinUsar(String tabla) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
 			String sql = "SELECT MIN(t1.id_" + tabla + " + 1) AS nextID FROM " + tabla + " t1 LEFT JOIN " + tabla
@@ -2300,7 +2401,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
@@ -2311,10 +2412,10 @@ public class DBManager {
 	 * @throws DBManagerException
 	 */
 	public static Pais getPaisPorCiudad(String ciudad) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
-
 			String sql = "select id_pais, nombre_pais from pais, ciudad where pais_ciudad=id_pais and nombre_ciudad = ?";
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setString(1, ciudad);
@@ -2332,13 +2433,14 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
 	public static String nombreCiudad(String Ciudad, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String nombre = "";
 			String sql = "SELECT nombre_ciudad FROM ciudad WHERE nombre_ciudad = ?";
@@ -2359,13 +2461,14 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
 	public static String paisCiudad(String Ciudad, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String paisCiudad = "";
 			String sql = "select nombre_pais from pais, ciudad where id_pais = pais_ciudad and nombre_ciudad = ?";
@@ -2386,13 +2489,14 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
 	public static String provinciaCiudad(String Ciudad, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String provinciaCiudad = "";
 			String sql = "select provincia_ciudad from ciudad where nombre_ciudad = ?";
@@ -2413,13 +2517,14 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
 	public static String comAutonomaCiudad(String Ciudad, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String comAutonomaCiudad = "";
 			String sql = "select comAutonoma_ciudad from ciudad where nombre_ciudad = ?";
@@ -2440,13 +2545,14 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
 	public static String poblacionCiudad(String Ciudad, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String poblacionCiudad = "";
 			String sql = "select poblacion_ciudad from ciudad where nombre_ciudad = ?";
@@ -2467,13 +2573,14 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
 	public static String gentilicioCiudad(String Ciudad, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String gentilicioCiudad = "";
 			String sql = "select gentilicio_ciudad from ciudad where nombre_ciudad = ?";
@@ -2494,13 +2601,14 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
 	public static String nombrePais(String Pais, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String nombre = "";
 			String sql = "SELECT nombre_pais FROM pais WHERE nombre_pais = ?";
@@ -2521,13 +2629,14 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
 	public static String capitalPais(String Pais, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String capitalPais = "";
 			String sql = "select capital_pais from pais where nombre_pais = ?";
@@ -2548,13 +2657,14 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
 	public static String gentilicioPais(String Pais, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String gentilicioPais = "";
 			String sql = "select gentilicio_pais from pais where nombre_pais = ?";
@@ -2575,13 +2685,14 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
 	public static String idiomaPais(String Pais, String BD) throws DBManagerException {
-		connect();
+		// connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		try {
 			String idiomaPais = "";
 			String sql = "select idioma_pais from pais where nombre_pais = ?";
@@ -2602,12 +2713,14 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			disconnect();
+			// disconnect();
 		}
 	}
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
+		connect();
 		System.out.println(getPaises());
+		disconnect();
 	}
 }

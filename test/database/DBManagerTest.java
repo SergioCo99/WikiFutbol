@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -90,7 +91,7 @@ public class DBManagerTest {
 	 *
 	 * @throws DBManagerException En caso de fallo
 	 */
-	@BeforeClass
+	@AfterClass
 	public static void testDisconnect() throws DBManagerException {
 		DBManager.disconnect();
 	}
@@ -521,7 +522,7 @@ public class DBManagerTest {
 
 		DBManager.actualizarVotos();
 
-		DBManager.disconnect();
+		//DBManager.disconnect();
 	}
 
 	/*
