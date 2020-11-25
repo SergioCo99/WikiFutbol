@@ -137,7 +137,8 @@ public class VentanaRegistro extends JFrame {
 								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 								e1.printStackTrace();
 							}
-							utils.PropertiesMetodos.setProp(txtCorreo.getText(), txtPassword.getPassword().toString()); //String.valueOf(txtPassword.getPassword()); // CORREGIRLO
+							utils.PropertiesMetodos.setProp(txtCorreo.getText(),
+									String.valueOf(txtPassword.getPassword()));
 
 							dispose();
 							VentanaPrincipal VP = null;
