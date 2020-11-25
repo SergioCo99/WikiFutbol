@@ -1448,7 +1448,8 @@ public class DBManager {
 		try {
 			stmt = conn.createStatement();
 			List<Pais> array = new ArrayList<Pais>();
-			rs = stmt.executeQuery("select id_pais, nombre_pais from pais");
+			rs = stmt
+					.executeQuery("select id_pais, nombre_pais , capital_pais, gentilicio_pais, idioma_pais from pais");
 			while (rs.next()) {
 				Pais pais = new Pais(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 				array.add(pais);
@@ -2101,13 +2102,17 @@ public class DBManager {
 	 * @param nombre_pais
 	 * @throws DBManagerException
 	 */
-	public static void nuevoPais(Object id_pais, Object nombre_pais) throws DBManagerException {
+	public static void nuevoPais(Object id_pais, Object nombre_pais, Object capital_pais, Object gentilicio_pais,
+			Object idioma_pais) throws DBManagerException {
 		connect();
 		try {
-			String sql = "insert into pais values(?,?)";
+			String sql = "insert into pais values(?,?,?,?,?)";
 			preparedstmt = conn.prepareStatement(sql);
 			preparedstmt.setObject(1, id_pais);
 			preparedstmt.setObject(2, nombre_pais);
+			preparedstmt.setObject(3, capital_pais);
+			preparedstmt.setObject(4, gentilicio_pais);
+			preparedstmt.setObject(5, idioma_pais);
 			preparedstmt.executeUpdate();
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -2603,6 +2608,6 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-
+		System.out.println(getPaises());
 	}
 }

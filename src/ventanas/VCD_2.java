@@ -268,40 +268,47 @@ public class VCD_2 extends JFrame {
 					idMasBajo = DBManager.idMasBajoSinUsar(tabla);
 					nrows = idMasBajo - 1;
 
-					if (tabla.equals("ciudad")) {
-						DBManager.nuevaCiudad(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
-								jt.getValueAt(nrows, 6));
-					} else if (tabla.equals("club")) {
-						DBManager.nuevoClub(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
-								jt.getValueAt(nrows, 6));
-					} else if (tabla.equals("entrenador")) {
-						DBManager.nuevoEntrenador(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
-								jt.getValueAt(nrows, 6));
-					} else if (tabla.equals("estadio")) {
-						DBManager.nuevoEstadio(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4));
-					} else if (tabla.equals("feedback")) {
-						DBManager.nuevoFeedback(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4));
-					} else if (tabla.equals("jugador")) {
-						DBManager.nuevoJugador(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
-								jt.getValueAt(nrows, 6), jt.getValueAt(nrows, 7), jt.getValueAt(nrows, 8),
-								jt.getValueAt(nrows, 9), jt.getValueAt(nrows, 10), jt.getValueAt(nrows, 11),
-								jt.getValueAt(nrows, 12), jt.getValueAt(nrows, 13));
-					} else if (tabla.equals("pais")) {
-						DBManager.nuevoPais(idMasBajo, jt.getValueAt(nrows, 1));
-					} else if (tabla.equals("usuario")) {
-						DBManager.nuevoUsuario(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5));
-					} else if (tabla.equals("usuariovotacion")) {
-						DBManager.nuevoUsuarioVotacion(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5));
+					if (jt.getCellEditor() != null) { // No hay celdas vacias (NULL)
+
+						if (tabla.equals("ciudad")) {
+							DBManager.nuevaCiudad(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+									jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
+									jt.getValueAt(nrows, 6));
+						} else if (tabla.equals("club")) {
+							DBManager.nuevoClub(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+									jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
+									jt.getValueAt(nrows, 6));
+						} else if (tabla.equals("entrenador")) {
+							DBManager.nuevoEntrenador(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+									jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
+									jt.getValueAt(nrows, 6));
+						} else if (tabla.equals("estadio")) {
+							DBManager.nuevoEstadio(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+									jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4));
+						} else if (tabla.equals("feedback")) {
+							DBManager.nuevoFeedback(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+									jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4));
+						} else if (tabla.equals("jugador")) {
+							DBManager.nuevoJugador(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+									jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
+									jt.getValueAt(nrows, 6), jt.getValueAt(nrows, 7), jt.getValueAt(nrows, 8),
+									jt.getValueAt(nrows, 9), jt.getValueAt(nrows, 10), jt.getValueAt(nrows, 11),
+									jt.getValueAt(nrows, 12), jt.getValueAt(nrows, 13));
+						} else if (tabla.equals("pais")) {
+							DBManager.nuevoPais(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+									jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4));
+						} else if (tabla.equals("usuario")) {
+							DBManager.nuevoUsuario(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+									jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5));
+						} else if (tabla.equals("usuariovotacion")) {
+							DBManager.nuevoUsuarioVotacion(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+									jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5));
+						} else {
+							JOptionPane.showMessageDialog(null, "Esta tabla no se deberia cambiar.", "Error",
+									JOptionPane.ERROR_MESSAGE);
+						}
 					} else {
-						JOptionPane.showMessageDialog(null, "Esta tabla no se deberia cambiar.", "Error",
+						JOptionPane.showMessageDialog(null, "No puede haber ninguna celda vacia.", "Error",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (DBManagerException e1) {

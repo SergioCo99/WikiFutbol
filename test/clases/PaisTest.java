@@ -20,7 +20,7 @@ public class PaisTest {
 	 */
 	@Before
 	public void setUp() {
-		p = new Pais(1, "Espa�a", "Madrid", "español", "castellano");
+		p = new Pais(1, "España", "Madrid", "español", "castellano");
 	}
 
 	/**
@@ -39,8 +39,8 @@ public class PaisTest {
 	@Test
 	public void testNombre() {
 
-		p.setNombre("Espa�a");
-		assertEquals("Espa�a", p.getNombre());
+		p.setNombre("España");
+		assertEquals("España", p.getNombre());
 	}
 
 	@Test
@@ -71,13 +71,13 @@ public class PaisTest {
 	public void metodoToString() {
 
 		p.setId(1);
-		p.setNombre("Espa�a");
+		p.setNombre("España");
 		p.setCapital("Madrid");
 		p.setGentilicio("español");
 		p.setIdioma("castellano");
 
 		System.out.println(p.toString());
 
-		assertEquals("Pais [id=1, nombre=Espa�a, capital=Madrid, gentilicio=español, idioma=castellano]", p.toString());
+		assertEquals("Pais [id=1, nombre=España, capital=Madrid, gentilicio=español, idioma=castellano]", p.toString());
 	}
 }

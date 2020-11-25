@@ -40,14 +40,14 @@ public class VentanaVotar extends JFrame {
 		this.setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-        this.getContentPane().setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
+		this.getContentPane().setBackground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
 		JLabel lblVotaciones = new JLabel("Votaciones");
 		lblVotaciones.setFont(new Font("Sans Serif Bold", Font.BOLD, 17));
 		lblVotaciones.setBounds(240, 20, 100, 30);
-		
+
 		lblDelantero = new JLabel();
 		lblDelantero.setText("Mejor delantero: ");
 		lblDelantero.setFont(new Font("Sans Serif Bold", Font.BOLD, 15));
@@ -79,7 +79,7 @@ public class VentanaVotar extends JFrame {
 		utils.JComboBoxAutoCompletion.enable(jcbCentrocampista);
 		jcbCentrocampista.setBounds(300, 150, 200, 30);
 		jcbCentrocampista.setBackground(Color.getHSBColor(0.56f, 0.2f, 0.9f));
-		
+
 		// Defensas
 		jcbDefensa = new JComboBox<String>(arrayDefensa.toArray(new String[arrayDefensa.size()]));
 		utils.JComboBoxAutoCompletion.enable(jcbDefensa);

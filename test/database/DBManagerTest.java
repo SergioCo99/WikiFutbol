@@ -950,6 +950,9 @@ public class DBManagerTest {
 		ArrayList<String> actualPais = new ArrayList<String>();
 		actualPais.add(0, "id_pais");
 		actualPais.add(1, "nombre_pais");
+		actualPais.add(2, "capital_pais");
+		actualPais.add(3, "gentilicio_pais");
+		actualPais.add(4, "idioma_pais");
 
 		String tabla = "pais";
 		assertEquals(DBManager.verColumnas(tabla), actualPais);
@@ -1223,7 +1226,7 @@ public class DBManagerTest {
 				DBManager.borrar(tabla, idMasBajo);
 				assertEquals(filas, DBManager.numeroDeFilasEnUnaTabla(tabla));
 			} else if (tabla.equals("pais")) {
-				DBManager.nuevoPais(idMasBajo, "pais");
+				DBManager.nuevoPais(idMasBajo, "pais", "capital", "ciudadano", "idioma");
 				assertEquals(filas + 1, DBManager.numeroDeFilasEnUnaTabla(tabla));
 				DBManager.borrar(tabla, idMasBajo);
 				assertEquals(filas, DBManager.numeroDeFilasEnUnaTabla(tabla));
