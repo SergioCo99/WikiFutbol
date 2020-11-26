@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -71,9 +72,10 @@ public class VentanaJugador extends JFrame {
 		btnAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaEquipo v1 = null;
+				VentanaJugadores v1 = null;
 				try {
-					v1 = new VentanaEquipo(club, u);
+					List<String> arrayJugadores = null;
+					v1 = new VentanaJugadores(arrayJugadores, club, u);
 				} catch (DBManagerException e1) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
