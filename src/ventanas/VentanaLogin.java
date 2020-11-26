@@ -1,5 +1,6 @@
 package ventanas;
 
+import java.awt.Color;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -50,37 +51,46 @@ public class VentanaLogin extends JFrame {
 		this.setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+		this.getContentPane().setBackground(Color.getHSBColor(1.42f, 0.68f, 0.9f));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
+		// Label introducir correo
 		lblCorreo = new JLabel();
 		lblCorreo.setText("Introduce tu correo:");
 		lblCorreo.setBounds(25, 100, 300, 20);
 
+		// Label introducir contraseña
 		lblPass = new JLabel();
 		lblPass.setText("Introduce la contraseña:");
 		lblPass.setBounds(25, 140, 300, 20);
 
+		// Introducir correo
 		txtCorreo = new JTextField();
 		txtCorreo.setBounds(175, 100, 200, 20);
 		txtCorreo.setText(utils.PropertiesMetodos.getProp1());
 
+		// Introducir contraseña
 		txtPassword = new JPasswordField();
 		txtPassword.setBounds(175, 140, 200, 20);
 		// txtPassword.setEchoChar('•');
 		txtPassword.setText(utils.PropertiesMetodos.getProp2());
 
+		// Aceptar para entrar a la aplicacion
 		btnAceptar = new JButton();
 		btnAceptar.setText("Aceptar");
 		btnAceptar.setBounds(320, 250, 120, 30);
 
+		// Ir a la ventana de registro
 		btnRegistrar = new JButton();
 		btnRegistrar.setText("Registrarse");
 		btnRegistrar.setBounds(140, 250, 120, 30);
 
+		// Opcion de ver la contraseña del JPasswordField
 		checkContrasena = new JCheckBox();
 		checkContrasena.setText("Ver contrasena");
 		checkContrasena.setBounds(175, 170, 130, 20);
+		checkContrasena.setBackground(Color.getHSBColor(1.42f, 0.68f, 0.9f));
 
 		add(txtCorreo);
 		add(txtPassword);

@@ -1,9 +1,12 @@
 package ventanas;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -33,8 +36,16 @@ public class VentanaEstadisticas extends JFrame {
 		getContentPane().setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+		this.getContentPane().setBackground(Color.getHSBColor(0.56f, 0.2f, 0.9f));
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
+
+		// JLabel superior titulo
+		JLabel lblTitulo = new JLabel();
+		lblTitulo.setText("Estadisticas");
+		lblTitulo.setFont(new Font("Sans Serif Bold", Font.BOLD, 17));
+		lblTitulo.setBounds(250, 40, 100, 20);
+		getContentPane().add(lblTitulo);
 
 		// tabla
 		try {
@@ -87,7 +98,7 @@ public class VentanaEstadisticas extends JFrame {
 		table.setDefaultRenderer(Object.class, centerRenderer);
 
 		sp = new JScrollPane(table);
-		sp.setBounds(100, 100, 400, 100);
+		sp.setBounds(100, 85, 400, 100);
 		getContentPane().add(sp);
 		// hasta aqui tabla
 

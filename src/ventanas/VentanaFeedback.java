@@ -54,6 +54,7 @@ public class VentanaFeedback extends JFrame {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
+		// Valores de 1 a 5 para realizar la Valoracion
 		estrella1 = new JRadioButton("1*");
 		estrella1.setActionCommand("1");
 		estrella1.setBounds(100, 50, 90, 50);
@@ -82,6 +83,7 @@ public class VentanaFeedback extends JFrame {
 		bgEstrellas.add(estrella4);
 		bgEstrellas.add(estrella5);
 
+		// Valores Si o No para saber si lo recomendarian
 		bSi = new JRadioButton("Si");
 		bSi.setActionCommand("si");
 		bSi.setBounds(335, 100, 90, 50);
@@ -118,6 +120,7 @@ public class VentanaFeedback extends JFrame {
 		lblComentario.setFont(new Font("Sans Serif Bold", Font.BOLD, 15));
 		lblComentario.setBounds(10, 130, 100, 20);
 
+		// Text Area donde el usuario escribe su comentario. Máx 500 caracteres
 		texto = new JTextArea();
 		texto.setFocusable(true);
 		texto.setLineWrap(true);
@@ -150,6 +153,7 @@ public class VentanaFeedback extends JFrame {
 		add(lblError);
 		add(lblRecomendacion);
 
+		// Progress Bar que refleja el numero de caracteres en el comentario
 		progressBar = new JProgressBar();
 		progressBar.setBounds(20, 311, 66, 14);
 		add(progressBar);
@@ -178,6 +182,7 @@ public class VentanaFeedback extends JFrame {
 		};
 		hiloLetras.start();
 
+		// Botón para enviar opinion
 		botonSiguiente.addActionListener(new ActionListener() {
 
 			@Override
