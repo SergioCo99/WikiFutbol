@@ -1,6 +1,7 @@
 package ventanas;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 
@@ -37,9 +38,17 @@ public class VentanaEstadisticas extends JFrame {
 		getContentPane().setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+		this.getContentPane().setBackground(Color.getHSBColor(0.56f, 0.2f, 0.9f));
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
+		// JLabel superior titulo
+		JLabel lblTitulo = new JLabel();
+		lblTitulo.setText("Estadisticas");
+		lblTitulo.setFont(new Font("Sans Serif Bold", Font.BOLD, 17));
+		lblTitulo.setBounds(250, 40, 100, 20);
+		getContentPane().add(lblTitulo);
+		
 		// tabla
 		try {
 			data = new Object[feedback.EstadisticaFeedback.ReadAndLoad().size()][2];
@@ -73,7 +82,7 @@ public class VentanaEstadisticas extends JFrame {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
 		}
-
+		
 		table = new JTable(data, columns) { // tabla usando las columnas y la data
 
 			private static final long serialVersionUID = 1L;
@@ -91,11 +100,18 @@ public class VentanaEstadisticas extends JFrame {
 		table.setDefaultRenderer(Object.class, centerRenderer);
 
 		sp = new JScrollPane(table);
-		sp.setBounds(100, 100, 400, 100);
+		sp.setBounds(100, 85, 400, 100);
 		getContentPane().add(sp);
 		// hasta aqui tabla
 
-		// es un poco feo
+		// Titulo para JProgressBar
+		JLabel lblProgress = new JLabel();
+		lblProgress.setText("Valoracion sobre 50: ");
+		lblProgress.setFont(new Font("Sans Serif Bold", Font.BOLD, 17));
+		lblProgress.setBounds(230, 200, 400, 50);
+		getContentPane().add(lblProgress);
+		
+		// JProgressBar con las valoraciones
 		try {
 			int nuevaValoracion = (int) Math.round(feedback.EstadisticaFeedback.ReadAndLoad().get(1) * 10);
 			valoracion = new JProgressBar(0, 50);
@@ -103,14 +119,10 @@ public class VentanaEstadisticas extends JFrame {
 			valoracion.setStringPainted(true);
 			valoracion.setBounds(100, 250, 400, 50);
 			valoracion.setValue(nuevaValoracion);
-			valoracion.setForeground(Color.yellow);
+			valoracion.setForeground(Color.getHSBColor(0.56f, 0.4f, 0.85f));
 			valoracion.setString(Integer.toString(nuevaValoracion));
 			getContentPane().add(valoracion);
 
-			JLabel lblNewLabel = new JLabel("Esto igual lo mejoramos/quitamos???");
-			lblNewLabel.setForeground(Color.RED);
-			lblNewLabel.setBounds(110, 310, 390, 52);
-			getContentPane().add(lblNewLabel);
 		} catch (RWException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 			e.printStackTrace();
