@@ -988,7 +988,7 @@ public class DBManager {
 			stmt = conn.createStatement();
 			List<Club> array = new ArrayList<Club>();
 			rs = stmt.executeQuery(
-					"select id_club, nombre_club, nombre_ciudad, nombre_estadio, anoCreacion_club, palmares_club, nombre_entrenador from club, ciudad, estadio, entrenador where ciudad_club = id_ciudad and estadio_club = id_estadio and entrenador_club = id_entrenador ");
+					"select id_club, nombre_club, nombre_ciudad, nombre_estadio, anoCreacion_club, palmares_club, nombre_entrenador from club, ciudad, estadio, entrenador where ciudad_club = id_ciudad and estadio_club = id_estadio and entrenador_club = id_entrenador order by nombre_club");
 			while (rs.next()) {
 				Club club = new Club(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
 						rs.getString(6), rs.getString(7));

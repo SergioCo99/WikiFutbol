@@ -2,6 +2,7 @@ package interfaces;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultListCellRenderer;
@@ -26,10 +27,17 @@ public interface IListaJugadores {
 	 */
 	public static void cargarLista(JList<String> bookPanel, List<String> arrayJugador) {
 
-		DefaultListModel<String> modelo = new DefaultListModel<String>();
-		for (String j : arrayJugador) {
-			modelo.addElement(j);
+		List<String> list = new ArrayList<String>();
+		for (String s : arrayJugador) {
+			list.add(s);
 		}
+		utils.MetodosRecursivos.mergeSortList(list);
+
+		DefaultListModel<String> modelo = new DefaultListModel<String>();
+		for (String s : list) {
+			modelo.addElement(s);
+		}
+
 		bookPanel.setModel(modelo);
 		bookPanel.updateUI();
 		DefaultListCellRenderer renderer = (DefaultListCellRenderer) bookPanel.getCellRenderer();
