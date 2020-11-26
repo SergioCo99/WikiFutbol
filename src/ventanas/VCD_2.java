@@ -1,6 +1,5 @@
 package ventanas;
 
-import java.awt.Color;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -127,16 +126,18 @@ public class VCD_2 extends JFrame {
 		lblValor.setBounds(10, 155, 560, 30);
 
 		lblInfo = new JLabel();
-		lblInfo.setText("* Para insertar nueva fila clicka '" + btnInsertarFila.getText() + "', añade valores y clicka '"
-				+ btnGuardar.getText() + "'.");
+		lblInfo.setText("* Para insertar nueva fila clicka '" + btnInsertarFila.getText()
+				+ "', añade valores y clicka '" + btnGuardar.getText() + "'.");
 		lblInfo.setBounds(10, 185, 560, 30);
 
 		lblInfo2 = new JLabel();
-		lblInfo2.setText("* Para borrar una fila clicka una celda de la fila, y luego '" + btnEliminarFila.getText() + "'.");
+		lblInfo2.setText(
+				"* Para borrar una fila clicka una celda de la fila, y luego '" + btnEliminarFila.getText() + "'.");
 		lblInfo2.setBounds(10, 205, 560, 30);
 
 		lblInfo3 = new JLabel();
-		lblInfo3.setText("* Para cambiar un dato clicka en la celda y edita el valor, luego clicka '" + btnCambiarDato.getText() + "'.");
+		lblInfo3.setText("* Para cambiar un dato clicka en la celda y edita el valor, luego clicka '"
+				+ btnCambiarDato.getText() + "'.");
 		lblInfo3.setBounds(10, 225, 560, 30);
 
 		try {
