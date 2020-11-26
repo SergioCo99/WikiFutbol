@@ -561,6 +561,12 @@ public class VentanaPrincipal extends JFrame {
 				// }
 				try {
 					hiloInit_4.join();
+					try {
+						equipoDelAno = DBManager.toftNombres();
+					} catch (DBManagerException e1) {
+						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+						e1.printStackTrace();
+					}
 					VentanaTeamOfTheYear VTOFT = new VentanaTeamOfTheYear(equipoDelAno);
 					VTOFT.setVisible(true);
 				} catch (InterruptedException e1) {
