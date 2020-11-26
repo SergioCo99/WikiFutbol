@@ -151,9 +151,4 @@ public class EstadisticaFeedback {
 		return map;
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) throws RWException {
-		EstadisticaFeedback.ReadAndLoad();
-	}
-
 }

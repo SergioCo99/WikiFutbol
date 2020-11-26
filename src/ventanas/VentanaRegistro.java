@@ -198,9 +198,4 @@ public class VentanaRegistro extends JFrame {
 
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) {
-		VentanaRegistro VR = new VentanaRegistro();
-		VR.setVisible(true);
-	}
 }

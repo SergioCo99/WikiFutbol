@@ -164,9 +164,4 @@ public class VentanaTeamOfTheYear extends JFrame {
 		// -----
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) {
-		// VentanaTeamOfTheYear VTOFT = new VentanaTeamOfTheYear();
-		// VTOFT.setVisible(true);
-	}
 }

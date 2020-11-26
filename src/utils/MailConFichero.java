@@ -119,8 +119,4 @@ public class MailConFichero {
 		}
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) {
-		SendMailConFichero("eneko.perez23@gmail.com", "Asunto? m2.java", "Texto?  m2.java", utils.FileChooser.Choose());
-	}
 }

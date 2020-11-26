@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
-import database.DBManager;
 import database.DBManagerException;
 
 /**
@@ -117,16 +116,4 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) {
-		VentanaConfigurarOtraCuenta VCOT;
-		try {
-			VCOT = new VentanaConfigurarOtraCuenta(DBManager.todosLosCorreos());
-			VCOT.setVisible(true);
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
-
-	}
 }

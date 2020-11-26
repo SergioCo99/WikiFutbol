@@ -102,28 +102,6 @@ public class VentanaEstadisticas extends JFrame {
 		getContentPane().add(sp);
 		// hasta aqui tabla
 
-		// es un poco feo
-		/*
-		 * try { int nuevaValoracion = (int)
-		 * Math.round(feedback.EstadisticaFeedback.ReadAndLoad().get(1) * 10);
-		 * valoracion = new JProgressBar(0, 50); valoracion.setToolTipText("");
-		 * valoracion.setStringPainted(true); valoracion.setBounds(100, 250, 400, 50);
-		 * valoracion.setValue(nuevaValoracion); valoracion.setForeground(Color.yellow);
-		 * valoracion.setString(Integer.toString(nuevaValoracion));
-		 * getContentPane().add(valoracion);
-		 *
-		 * JLabel lblNewLabel = new JLabel("Esto igual lo mejoramos/quitamos???");
-		 * lblNewLabel.setForeground(Color.RED); lblNewLabel.setBounds(110, 310, 390,
-		 * 52); getContentPane().add(lblNewLabel); } catch (RWException e) {
-		 * mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-		 * e.printStackTrace(); }
-		 */
-
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) {
-		VentanaEstadisticas VE = new VentanaEstadisticas();
-		VE.setVisible(true);
-	}
 }

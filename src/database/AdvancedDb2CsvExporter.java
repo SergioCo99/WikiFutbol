@@ -191,9 +191,4 @@ public class AdvancedDb2CsvExporter {
 		}
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) throws Exception {
-		// asi en otra clase
-		database.AdvancedDb2CsvExporter.export("pais");
-	}
 }

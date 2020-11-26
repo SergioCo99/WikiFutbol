@@ -94,8 +94,4 @@ public class MailSinFichero {
 
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) {
-		MailSinFichero.SendMail("eneko.perez@opendeusto.es", "Asunto? Mail.java", "Texto?  Mail.java");
-	}
 }

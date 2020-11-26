@@ -306,14 +306,4 @@ public class VentanaEquipo extends JFrame {
 		});
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) throws DBManagerException {
-		// para entrar siempre modo admin desde esta clase
-
-		Usuario u = new Usuario(1, "", "", "", 1, "");
-		Club e = new Club(0, "", "", "", 3, "", "");
-		VentanaEquipo v = new VentanaEquipo(e, u);
-		v.setVisible(true);
-
-	}
 }

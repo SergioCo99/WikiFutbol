@@ -219,9 +219,4 @@ public class VentanaLogin extends JFrame {
 
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) {
-		VentanaLogin VL = new VentanaLogin();
-		VL.setVisible(true);
-	}
 }

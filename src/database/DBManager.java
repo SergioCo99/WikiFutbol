@@ -2777,11 +2777,4 @@ public class DBManager {
 		}
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) throws DBManagerException {
-		connect();
-		System.out.println(existeCorreo("eneko.perez23@gmail.com"));
-		System.out.println(existeCorreo2("eneko.perez23@gmail.com"));
-		disconnect();
-	}
 }

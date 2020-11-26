@@ -1,7 +1,6 @@
 package utils;
 
 import java.awt.AlphaComposite;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -15,7 +14,6 @@ import java.util.logging.Level;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
@@ -212,45 +210,6 @@ public class JLabelGraficoAjustado extends JLabel {
 			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacidadLogo));
 
 			g2.drawImage(imagenLogoWiki, iniX, iniY, ancho, alto, null);
-		}
-	}
-
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) {
-		JFrame wikiFutbol = new JFrame("WikiLogo en JLabelGraficoAjustado");
-		wikiFutbol.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		JLabelGraficoAjustado label = new JLabelGraficoAjustado("resources/logo1.png", 100, 100);
-		// En caso de: x<=0. Ajusta el ancho del logo.
-		// En caso de: y<=0. Ajusta el alto del logo.
-		wikiFutbol.setSize(1200, 700);
-		// wikiFutbol.setLayout(null);
-		wikiFutbol.setResizable(false);
-		wikiFutbol.setLocationRelativeTo(null);
-		wikiFutbol.add(label, BorderLayout.CENTER);
-		wikiFutbol.setVisible(true);
-
-		try {
-			Thread.sleep(3000);
-		} catch (Exception e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-		}
-
-		for (int rotacion = 0; rotacion <= 250; rotacion++) {
-			label.setRotacionLogo((rotacion * Math.PI) / 100);
-			try {
-				Thread.sleep(10); // Espera entre rotacion y rotacion
-			} catch (Exception e) {
-				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			}
-		}
-
-		for (int opacidad = -100; opacidad <= 100; opacidad++) {
-			label.setOpacidadLogo(Math.abs(opacidad * 0.01f));
-			try {
-				Thread.sleep(10); // Espera entre rotacion y rotacion
-			} catch (Exception e) {
-				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			}
 		}
 	}
 

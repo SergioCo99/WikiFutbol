@@ -162,12 +162,4 @@ public class VentanaJugadores extends JFrame {
 
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) throws DBManagerException {
-		// para entrar siempre modo admin desde esta clase
-		utils.PropertiesMetodos.setProp("a", "a");
-
-		// VentanaJugadores VP = new VentanaJugadores(usuario);
-		// VP.setVisible(true);
-	}
 }

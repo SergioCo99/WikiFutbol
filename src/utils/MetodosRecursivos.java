@@ -1,7 +1,6 @@
 package utils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -223,25 +222,4 @@ public class MetodosRecursivos {
 		}
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) {
-		String s[] = { "z", "A", "C", "Z", "B", "X", "N", "E" };
-		List<String> l = new ArrayList<String>();
-		l.add("A");
-		l.add("C");
-		l.add("B");
-		l.add("X");
-		l.add("N");
-		l.add("E");
-
-		System.out.println(binarySearchListStringRecursivo(l, 0, l.size() - 1, "C"));
-
-		System.out.println("s:" + Arrays.toString(s));
-		mergeSortArray(s);
-		System.out.println("s:" + Arrays.toString(s));
-
-		System.out.println("l:" + l);
-		mergeSortList(l);
-		System.out.println("l:" + l);
-	}
 }

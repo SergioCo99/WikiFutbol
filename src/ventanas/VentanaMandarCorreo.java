@@ -21,7 +21,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import database.DBManager;
 import database.DBManagerException;
 import utils.JLabelGraficoAjustado;
 
@@ -236,16 +235,4 @@ public class VentanaMandarCorreo extends JFrame {
 
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) {
-		VentanaMandarCorreo VMC;
-		try {
-			VMC = new VentanaMandarCorreo(DBManager.todosLosCorreos());
-			VMC.setVisible(true);
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
-
-	}
 }

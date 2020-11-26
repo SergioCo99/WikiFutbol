@@ -18,7 +18,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import database.AdvancedDb2CsvExporter;
-import database.DBManagerException;
 
 /**
  * Ventana lo cual permite descargar los datos deseados
@@ -129,16 +128,4 @@ public class VentanaDescargar extends JFrame {
 
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) {
-		VentanaDescargar VD;
-		try {
-			VD = new VentanaDescargar(database.DBManager.verTablas());
-			VD.setVisible(true);
-		} catch (DBManagerException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
-
-	}
 }

@@ -476,7 +476,7 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// VentanaCambiarDatos VCD = new VentanaCambiarDatos();
 				// VCD.setVisible(true);
-				VCD_2 VCDP = new VCD_2();
+				VentanaCambiarDatos_2 VCDP = new VentanaCambiarDatos_2();
 				VCDP.setVisible(true);
 			}
 		});
@@ -832,13 +832,4 @@ public class VentanaPrincipal extends JFrame {
 
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) throws DBManagerException {
-		DBManager.connect();
-		// para entrar siempre modo admin desde esta clase
-		utils.PropertiesMetodos.setProp("a@gmail.com", "a");
-
-		VentanaPrincipal VP = new VentanaPrincipal(usuario);
-		VP.setVisible(true);
-	}
 }

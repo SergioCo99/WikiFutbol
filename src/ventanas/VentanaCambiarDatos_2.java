@@ -28,7 +28,7 @@ import database.DBManagerException;
  * @author sergiolopez
  *
  */
-public class VCD_2 extends JFrame {
+public class VentanaCambiarDatos_2 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JButton btnCambiarDato, buscarTabla, btnGuardar, btnInsertarFila, btnEliminarFila;
@@ -81,7 +81,7 @@ public class VCD_2 extends JFrame {
 		}
 	}
 
-	public VCD_2() {
+	public VentanaCambiarDatos_2() {
 
 		this.setTitle("VentanaCambiarDatos");
 		this.setSize(600, 400);
@@ -341,10 +341,4 @@ public class VCD_2 extends JFrame {
 
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) throws DBManagerException {
-		DBManager.connect();
-		VCD_2 VCDP = new VCD_2();
-		VCDP.setVisible(true);
-	}
 }

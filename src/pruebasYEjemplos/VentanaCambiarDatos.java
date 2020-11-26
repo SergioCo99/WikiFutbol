@@ -1,4 +1,4 @@
-package ventanas;
+package pruebasYEjemplos;
 
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;

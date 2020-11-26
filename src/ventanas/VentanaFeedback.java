@@ -244,9 +244,4 @@ public class VentanaFeedback extends JFrame {
 
 	}
 
-	// este main es para pruebas, habria que quitarlo
-	public static void main(String[] args) {
-		VentanaFeedback VO = new VentanaFeedback();
-		VO.setVisible(true);
-	}
 }
