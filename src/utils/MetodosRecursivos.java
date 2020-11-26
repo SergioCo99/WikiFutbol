@@ -115,15 +115,111 @@ public class MetodosRecursivos {
 		return -1;
 	}
 
+	/**
+	 * Metodo recursivo que ordena alfabeticamente (aA-zZ) un array de String
+	 *
+	 * @param names
+	 * @param left
+	 * @param right
+	 */
+	public static void mergeArray(String[] names, String[] left, String[] right) {
+		int a = 0;
+		int b = 0;
+		for (int i = 0; i < names.length; i++) {
+			if ((b >= right.length) || ((a < left.length) && (left[a].compareToIgnoreCase(right[b]) < 0))) {
+				names[i] = left[a];
+				a++;
+			} else {
+				names[i] = right[b];
+				b++;
+			}
+		}
+	}
+
+	/**
+	 * Metodo recursivo que ordena alfabeticamente (aA-zZ) un array de String
+	 *
+	 * @param names
+	 */
+	public static void mergeSortArray(String[] names) {
+		if (names.length >= 2) {
+			String[] left = new String[names.length / 2];
+			String[] right = new String[names.length - (names.length / 2)];
+
+			for (int i = 0; i < left.length; i++) {
+				left[i] = names[i];
+			}
+
+			for (int i = 0; i < right.length; i++) {
+				right[i] = names[i + (names.length / 2)];
+			}
+
+			mergeSortArray(left);
+			mergeSortArray(right);
+			mergeArray(names, left, right);
+		}
+	}
+
+	/**
+	 * Metodo recursivo que ordena alfabeticamente (aA-zZ) un array de String
+	 *
+	 * @param names
+	 * @param left
+	 * @param right
+	 */
+	public static void mergeList(List<String> names, List<String> left, List<String> right) {
+		int a = 0;
+		int b = 0;
+		for (int i = 0; i < names.size(); i++) {
+			if ((b >= right.size()) || ((a < left.size()) && (left.get(a).compareToIgnoreCase(right.get(b)) < 0))) {
+				names.set(i, left.get(a));
+				// names[i] = left[a];
+				a++;
+			} else {
+				names.set(i, right.get(b));
+				// names[i] = right[b];
+				b++;
+			}
+		}
+	}
+
+	/**
+	 * Metodo recursivo que ordena alfabeticamente (aA-zZ) un array de String
+	 *
+	 * @param names
+	 */
+	public static void mergeSortList(List<String> names) {
+		if (names.size() >= 2) {
+			List<String> left = new ArrayList<String>();
+			for (int i = 0; i < (names.size() / 2); i++) {
+				left.add(i, null);
+			}
+			List<String> right = new ArrayList<String>(names.size() - (names.size() / 2));
+			for (int i = 0; i < (names.size() - (names.size() / 2)); i++) {
+				right.add(i, null);
+			}
+			// String[] left = new String[names.size() / 2];
+			// String[] right = new String[names.size() - names.size() / 2];
+
+			for (int i = 0; i < left.size(); i++) {
+				left.set(i, names.get(i));
+				// left[i] = names[i];
+			}
+
+			for (int i = 0; i < right.size(); i++) {
+				right.set(i, names.get(i + (names.size() / 2)));
+				// right[i] = names[i + names.length / 2];
+			}
+
+			mergeSortList(left);
+			mergeSortList(right);
+			mergeList(names, left, right);
+		}
+	}
+
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) {
 		String s[] = { "z", "A", "C", "Z", "B", "X", "N", "E" };
-		System.out.println(Arrays.toString(s));
-		ordenarArrayStringRecursivo(s, s.length);
-		System.out.println(Arrays.toString(s));
-		int n = binarySearchArrayStringRecursivo(s, 0, s.length, "C");
-		System.out.println(n);
-
 		List<String> l = new ArrayList<String>();
 		l.add("A");
 		l.add("C");
@@ -131,10 +227,13 @@ public class MetodosRecursivos {
 		l.add("X");
 		l.add("N");
 		l.add("E");
-		System.out.println(l);
-		ordenarListStringRecursivo(l, l.size());
-		System.out.println(l);
-		int n2 = binarySearchListStringRecursivo(l, 0, l.size(), "E");
-		System.out.println(n2);
+
+		System.out.println("s:" + Arrays.toString(s));
+		mergeSortArray(s);
+		System.out.println("s:" + Arrays.toString(s));
+
+		System.out.println("l:" + l);
+		mergeSortList(l);
+		System.out.println("l:" + l);
 	}
 }

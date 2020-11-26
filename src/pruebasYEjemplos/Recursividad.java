@@ -1,57 +1,55 @@
 package pruebasYEjemplos;
 
-import java.util.Random;
-
 public class Recursividad {
-
-	/**
-	 * Ordena recursivamente (mergesort) un array de enteros
-	 *
-	 * @param nums Array de enteros a ordenar
-	 * @param ini  Posición inicial de la ordenación
-	 * @param fin  Posición final de la ordenación (inclusive)
-	 */
-	public static void mergeSort(int[] nums, int ini, int fin) {
-		// TODO
-		// Si el array es de tamaño 1, nada que ordenar (caso base)
-		// Si no, caso recursivo:
-		// - Buscar el punto medio
-		// - Ordenar primera mitad
-		// - Ordenar segunda mitad
-		// - Mezclar ambas mitades (iterativo)
-	}
-
-	// Algoritmo de mezcla (no recursivo)
-	// Mezcla en nums las mitades ya ordenadas (ini1 a fin1) con (fin1+1 a fin2)
-	private static void mezclaMergeSort(int[] nums, int ini1, int fin1, int fin2) {
-		int ini2 = fin1 + 1; // Inicio segunda mitad
-		int[] destino = new int[(((fin1 - ini1) + fin2) - ini2) + 2];
-		// TODO
-		// 1. Recorrer a la vez la mitad ini1 a fin1
-		// Y la mitad ini2 a fin2
-		// Comparar ambos elementos
-		// El menor llevarlo a destino, y avanzar en esa mitad
-		// Y seguir hasta que acabemos con las dos mitades y llevemos todos a destino
-		// 2. Copiar destino a nums[ini1] a nums[fin2]
-	}
-
 	public static void main(String[] args) {
-		// Test de ordenación por mezcla (array de enteros)
-		Random r = new Random();
-		int CUANTOS_NUMS_ALEATORIOS = 8;
-		int[] nums = new int[CUANTOS_NUMS_ALEATORIOS];
-		for (int i = 0; i < CUANTOS_NUMS_ALEATORIOS; i++) {
-			nums[i] = r.nextInt(1000000); // Entero entre 0 y 1000000
+		String[] ClassOne = { "Kring", "Panda", "Soliel", "Darryl", "Chan", "Matang", "Jollibee.", "Inasal" };
+		String[] ClassTwo = { "Minnie", "Kitty", "Madonna", "Miley", "Zoom-zoom", "Cristine", "Bubbles", "Ara", "Rose",
+				"Maria" };
+		String[] names = new String[ClassOne.length + ClassTwo.length];
+
+		mergeSort(ClassOne);
+		mergeSort(ClassTwo);
+
+		merge(names, ClassOne, ClassTwo);
+
+		mergeSort(names);
+		// Arrays.sort(names);
+
+		for (String ClassThree : names) {
+			System.out.println(ClassThree);
 		}
-		System.out.println("Array sin ordenar:");
-		for (int i = 0; i < CUANTOS_NUMS_ALEATORIOS; i++) {
-			System.out.print(nums[i] + "  ");
+	}
+
+	public static void mergeSort(String[] names) {
+		if (names.length >= 2) {
+			String[] left = new String[names.length / 2];
+			String[] right = new String[names.length - (names.length / 2)];
+
+			for (int i = 0; i < left.length; i++) {
+				left[i] = names[i];
+			}
+
+			for (int i = 0; i < right.length; i++) {
+				right[i] = names[i + (names.length / 2)];
+			}
+
+			mergeSort(left);
+			mergeSort(right);
+			merge(names, left, right);
 		}
-		mergeSort(nums, 0, CUANTOS_NUMS_ALEATORIOS - 1);
-		System.out.println();
-		System.out.println("Array ya ordenado:");
-		for (int i = 0; i < CUANTOS_NUMS_ALEATORIOS; i++) {
-			System.out.print(nums[i] + "  ");
+	}
+
+	public static void merge(String[] names, String[] left, String[] right) {
+		int a = 0;
+		int b = 0;
+		for (int i = 0; i < names.length; i++) {
+			if ((b >= right.length) || ((a < left.length) && (left[a].compareToIgnoreCase(right[b]) < 0))) {
+				names[i] = left[a];
+				a++;
+			} else {
+				names[i] = right[b];
+				b++;
+			}
 		}
 	}
 
