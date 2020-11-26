@@ -24,10 +24,8 @@ import org.junit.Test;
  */
 public class PropertiesMetodosTest {
 
-	static PropertiesMetodos pm = new PropertiesMetodos();
-
-	String mail = "abc@gmail.com";
-	String password = "passw";
+	private String mail = "abc@gmail.com";
+	private String password = "passw";
 
 	/**
 	 * Crea un nuevo PropertiesMetodos
@@ -36,7 +34,7 @@ public class PropertiesMetodosTest {
 	 */
 	@BeforeClass
 	public static void setUp() throws Exception {
-		pm = new PropertiesMetodos();
+		new PropertiesMetodos();
 	}
 
 	/**

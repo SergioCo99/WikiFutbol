@@ -32,7 +32,7 @@ public class VentanaEstadisticas extends JFrame {
 	public VentanaEstadisticas() {
 
 		this.setTitle("VentanaEstadisticas");
-		this.setSize(600, 400);
+		this.setSize(600, 300);
 		getContentPane().setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);

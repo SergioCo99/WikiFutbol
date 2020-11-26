@@ -612,12 +612,32 @@ public class VentanaPrincipal extends JFrame {
 				equipoBuscado = txtField.getText().toLowerCase();
 				arrayResultado.clear();
 
+				ArrayList<String> equipoNombre = new ArrayList<String>();
+				ArrayList<String> equipoEstadio = new ArrayList<String>();
+				ArrayList<String> equipoEntrenador = new ArrayList<String>();
+				ArrayList<String> equipoPalmares = new ArrayList<String>();
+
+				for (Club a : arrayEquipos) {
+					equipoNombre.add(a.getNombre().toLowerCase());
+					equipoEstadio.add(a.getEstadio().toLowerCase());
+					equipoEntrenador.add(a.getEntrenador().toLowerCase());
+					equipoPalmares.add(a.getPalmares().toLowerCase());
+				}
+
 				if (equipoBuscado.isEmpty()) {
 					for (Club a : arrayEquipos) {
 						arrayResultado.add(a);
 					}
 					IListaEquipos.cargarLista(bookPanel, arrayResultado);
-				} else {
+
+				} else if ((utils.MetodosRecursivos.binarySearchListStringRecursivo(equipoNombre, 0,
+						equipoNombre.size(), equipoBuscado) != -1)
+						|| (utils.MetodosRecursivos.binarySearchListStringRecursivo(equipoEstadio, 0,
+								equipoEstadio.size(), equipoBuscado) != -1)
+						|| (utils.MetodosRecursivos.binarySearchListStringRecursivo(equipoEntrenador, 0,
+								equipoEntrenador.size(), equipoBuscado) != -1)
+						|| (utils.MetodosRecursivos.binarySearchListStringRecursivo(equipoPalmares, 0,
+								equipoPalmares.size(), equipoBuscado) != -1)) {
 					if (rdbtnNombreEquipo.isSelected() == true) {
 						for (int i = 0; i < arrayEquipos.size(); i++) {
 							if (equipoBuscado.toLowerCase().equals(arrayEquipos.get(i).getNombre().toLowerCase())) {
@@ -647,10 +667,18 @@ public class VentanaPrincipal extends JFrame {
 						}
 						IListaEquipos.cargarLista(bookPanel, arrayResultado);
 					}
-
 					if (arrayResultado.isEmpty()) {
-						JOptionPane.showMessageDialog(frame, "No se han encontrado resultados.");
+						JOptionPane.showMessageDialog(frame, "No se han encontrado resultados, revisa el campo.");
 					}
+				} else if ((utils.MetodosRecursivos.binarySearchListStringRecursivo(equipoNombre, 0,
+						equipoNombre.size(), equipoBuscado) == -1)
+						&& (utils.MetodosRecursivos.binarySearchListStringRecursivo(equipoEstadio, 0,
+								equipoEstadio.size(), equipoBuscado) == -1)
+						&& (utils.MetodosRecursivos.binarySearchListStringRecursivo(equipoEntrenador, 0,
+								equipoEntrenador.size(), equipoBuscado) == -1)
+						&& (utils.MetodosRecursivos.binarySearchListStringRecursivo(equipoPalmares, 0,
+								equipoPalmares.size(), equipoBuscado) == -1)) {
+					JOptionPane.showMessageDialog(frame, "No coincide ningun dato con el introducido.");
 				}
 			}
 		});
@@ -674,7 +702,6 @@ public class VentanaPrincipal extends JFrame {
 		add(scroll);
 
 		// Filtros
-
 		JLabel lblFiltro = new JLabel("Busqueda por:");
 		lblFiltro.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblFiltro.setBounds(1015, 81, 169, 24);
@@ -807,6 +834,7 @@ public class VentanaPrincipal extends JFrame {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
+		DBManager.connect();
 		// para entrar siempre modo admin desde esta clase
 		utils.PropertiesMetodos.setProp("a@gmail.com", "a");
 

@@ -128,7 +128,7 @@ public class MetodosRecursivos {
 	 * @param left
 	 * @param right
 	 */
-	public static void mergeArray(String[] names, String[] left, String[] right) {
+	private static void mergeArray(String[] names, String[] left, String[] right) {
 		int a = 0;
 		int b = 0;
 		for (int i = 0; i < names.length; i++) {
@@ -173,7 +173,7 @@ public class MetodosRecursivos {
 	 * @param left
 	 * @param right
 	 */
-	public static void mergeList(List<String> names, List<String> left, List<String> right) {
+	private static void mergeList(List<String> names, List<String> left, List<String> right) {
 		int a = 0;
 		int b = 0;
 		for (int i = 0; i < names.size(); i++) {

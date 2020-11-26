@@ -89,6 +89,7 @@ public class MainWikiFutbol {
 		crearFicheroLogger();
 		crearFicherosProperties();
 		try {
+			// conexion
 			DBManager.connect();
 			// actualiza el teamoftheyear
 			database.DBManager.toft();
@@ -105,6 +106,7 @@ public class MainWikiFutbol {
 			public void run() {
 				System.out.println("JVM shutting down, closing Unirest");
 				try {
+					// desconexion
 					DBManager.disconnect();
 				} catch (DBManagerException e) {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
