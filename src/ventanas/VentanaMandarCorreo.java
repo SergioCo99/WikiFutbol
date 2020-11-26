@@ -34,17 +34,17 @@ import utils.JLabelGraficoAjustado;
 public class VentanaMandarCorreo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btnEnviar, btnBorrarArchivo;
-	JComboBox<String> jcb;
-	JCheckBox todos;
-	JLabel lblDestinagario, lblAsunto, lblArchivo;
-	JTextField txtAsunto;
-	JTextArea texto;
-	JScrollPane scroll;
+	private JButton btnEnviar, btnBorrarArchivo;
+	private JComboBox<String> jcb;
+	private JCheckBox todos;
+	private JLabel lblDestinagario, lblAsunto, lblArchivo;
+	private JTextField txtAsunto;
+	private JTextArea texto;
+	private JScrollPane scroll;
 
-	String path = "", nombreDeArchivo = "";
+	private String path = "", nombreDeArchivo = "";
 
-	JLabelGraficoAjustado adjuntar;
+	private JLabelGraficoAjustado adjuntar;
 
 	public VentanaMandarCorreo(List<String> listaCorreos) {
 

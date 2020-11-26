@@ -11,7 +11,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -30,17 +29,15 @@ import database.DBManagerException;
 public class VentanaDescargar extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btnDescargar;
-	JList<Object> listaTablas;
-	DefaultListModel<Object> listModel;
-	JComboBox<String> tablas;
+	private JButton btnDescargar;
+	private JList<Object> listaTablas;
+	private DefaultListModel<Object> listModel;
+	private JCheckBox cbBaseDeDatos, cbClases;
+	private ButtonGroup bg1;
 
-	JCheckBox cbBaseDeDatos, cbClases;
-	ButtonGroup bg1;
+	private JScrollPane scroll;
 
-	JScrollPane scroll;
-
-	JLabel lblOpciones;
+	private JLabel lblOpciones;
 
 	public VentanaDescargar(List<String> tablas) {
 

@@ -26,11 +26,11 @@ import database.DBManagerException;
 public class VentanaVotar extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btnVotar;
-	JComboBox<String> jcbDelantero, jcbCentrocampista, jcbDefensa, jcbPortero;
-	JLabel lblDelantero, lblCentrocampista, lblDefensa, lblPortero;
+	private JButton btnVotar;
+	private JComboBox<String> jcbDelantero, jcbCentrocampista, jcbDefensa, jcbPortero;
+	private JLabel lblDelantero, lblCentrocampista, lblDefensa, lblPortero;
 
-	Thread votacion, update;
+	private Thread votacion, update;
 
 	public VentanaVotar(List<String> arrayDelantero, List<String> arrayCentrocampista, List<String> arrayDefensa,
 			List<String> arrayPortero) {

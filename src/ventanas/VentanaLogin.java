@@ -35,13 +35,13 @@ public class VentanaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private Usuario usuario;
-	JLabel lblCorreo, lblPass;
-	JButton btnAceptar, btnRegistrar;
-	JTextField txtCorreo;
-	JPasswordField txtPassword;
-	JCheckBox checkContrasena;
-	boolean bUsuario, bPassword;
-	JLabelGraficoAjustado campo;
+	private JLabel lblCorreo, lblPass;
+	private JButton btnAceptar, btnRegistrar;
+	private JTextField txtCorreo;
+	private JPasswordField txtPassword;
+	private JCheckBox checkContrasena;
+	private boolean bUsuario, bPassword;
+	private JLabelGraficoAjustado campo;
 
 	public VentanaLogin() {
 

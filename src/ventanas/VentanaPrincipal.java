@@ -186,15 +186,15 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	private static final long serialVersionUID = 1L;
-	JMenuBar menuBar;
-	JMenu menu;
-	JMenuItem miAjustes, miCerrarSesion, miRecordarContrasena, miDescargaDatos, miEliminarCuenta;
-	JMenu menuAdmin;
-	JMenuItem miConfigurarOtraCuenta, miCambiarDatos, miMandarCorreo;
-	JMenu menuOpinion;
-	JMenuItem miFeedback, miEstadisticas;
-	JMenu menuTeamOfTheYear;
-	JMenuItem miVotar, miVerEquipo;
+	private JMenuBar menuBar;
+	private JMenu menu;
+	private JMenuItem miAjustes, miCerrarSesion, miRecordarContrasena, miDescargaDatos, miEliminarCuenta;
+	private JMenu menuAdmin;
+	private JMenuItem miConfigurarOtraCuenta, miCambiarDatos, miMandarCorreo;
+	private JMenu menuOpinion;
+	private JMenuItem miFeedback, miEstadisticas;
+	private JMenu menuTeamOfTheYear;
+	private JMenuItem miVotar, miVerEquipo;
 
 	private List<Club> arrayEquipos = new ArrayList<Club>();
 	private JList<String> bookPanel = new JList<String>();
@@ -213,26 +213,23 @@ public class VentanaPrincipal extends JFrame {
 	private ArrayList<Club> arrayResultado = new ArrayList<Club>();
 
 	// Datos rapidos
-	String ciudad;
-	String anyoCreacion;
-	String estadio;
-	JLabel lblCiudad;
-	JLabel lblAnyo;
-	JLabel lblEstadio;
+	private String ciudad;
+	private String anyoCreacion;
+	private String estadio;
 
-	static Thread hiloInit, hiloInit_2, hiloInit_3, hiloInit_4;
+	private static Thread hiloInit, hiloInit_2, hiloInit_3, hiloInit_4;
 
-	static List<String> arrayDelantero, arrayCentrocampista, arrayDefensa, arrayPortero;
-	static Thread hiloDelantero, hiloCentrocampista, hiloDefensa, hiloPortero;
+	private static List<String> arrayDelantero, arrayCentrocampista, arrayDefensa, arrayPortero;
+	private static Thread hiloDelantero, hiloCentrocampista, hiloDefensa, hiloPortero;
 
-	static List<String> tablas;
-	static Thread hiloTablas;
+	private static List<String> tablas;
+	private static Thread hiloTablas;
 
-	static List<String> listaCorreos;
-	static Thread hiloCorreos;
+	private static List<String> listaCorreos;
+	private static Thread hiloCorreos;
 
-	static List<String> equipoDelAno;
-	static Thread hiloToft;
+	private static List<String> equipoDelAno;
+	private static Thread hiloToft;
 
 	public VentanaPrincipal(Usuario u) throws DBManagerException {
 		hiloInit = new Thread() {

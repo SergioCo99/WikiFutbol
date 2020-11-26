@@ -29,18 +29,17 @@ import database.DBManagerException;
 public class VentanaCambiarDatos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btnCambiarDato, buscarTabla, btnQuery;
-	JTextArea textArea1;
+	private JButton btnCambiarDato, buscarTabla, btnQuery;
+	private JTextArea textArea1;
 
-	JComboBox<String> jcbTablas;
+	private JComboBox<String> jcbTablas;
 
-	JTable jt;
-	DefaultTableModel model; // no se si lo usamos, me gustaria usarlo
-	Object data[][] = null;
-	Object[] objects = null;
-	JScrollPane sp;
+	private JTable jt;
+	private Object data[][] = null;
+	private Object[] objects = null;
+	private JScrollPane sp;
 
-	JLabel lblInfo, lblValor;
+	private JLabel lblInfo, lblValor;
 
 	public VentanaCambiarDatos() {
 

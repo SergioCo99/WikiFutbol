@@ -18,7 +18,7 @@ import java.util.logging.Level;
  */
 public class EstadisticaFeedback {
 
-	static double ans;
+	private static double ans;
 
 	/**
 	 * Este metodo sirve para realizar una puntuacion media de los feedbacks que

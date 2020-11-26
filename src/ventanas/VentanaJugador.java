@@ -1,7 +1,6 @@
 package ventanas;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -32,8 +31,7 @@ import utils.JLabelGraficoAjustado;
 public class VentanaJugador extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	String nombreJugador;
-	static Component frame;
+	private String nombreJugador;
 
 	public VentanaJugador(String jugador, Club club, Usuario u) throws DBManagerException {
 		init(jugador, club, u);

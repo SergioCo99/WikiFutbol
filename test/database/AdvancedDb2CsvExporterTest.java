@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,10 +21,8 @@ import org.junit.Test;
  */
 public class AdvancedDb2CsvExporterTest {
 
-	static AdvancedDb2CsvExporter exporter = new AdvancedDb2CsvExporter();
-
-	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
-	String dateTimeInfo = dateFormat.format(new Date());
+	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
+	private String dateTimeInfo = dateFormat.format(new Date());
 
 	/**
 	 * Crea una nuevo AdvancedDb2CsvExporter
@@ -32,7 +31,18 @@ public class AdvancedDb2CsvExporterTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		exporter = new AdvancedDb2CsvExporter();
+		new AdvancedDb2CsvExporter();
+		DBManager.connect();
+	}
+
+	/**
+	 * Desconecta BD
+	 *
+	 * @throws Exception
+	 */
+	@After
+	public void disconnect() throws Exception {
+		DBManager.disconnect();
 	}
 
 	/**

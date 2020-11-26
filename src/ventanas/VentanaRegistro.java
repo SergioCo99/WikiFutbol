@@ -34,12 +34,12 @@ public class VentanaRegistro extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private Usuario usuario;
 	private final SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
-	JLabel lblUser, lblPass, lblPassRep, lblDate, lblCorreo;
-	JButton btnRegistrar;
-	JTextField txtUsuario, txtCorreo;
-	JPasswordField txtPassword, txtPasswordRep;
-	JCalendar calendar;
-	JCheckBox checkContrasena;
+	private JLabel lblUser, lblPass, lblPassRep, lblDate, lblCorreo;
+	private JButton btnRegistrar;
+	private JTextField txtUsuario, txtCorreo;
+	private JPasswordField txtPassword, txtPasswordRep;
+	private JCalendar calendar;
+	private JCheckBox checkContrasena;
 
 	public VentanaRegistro() {
 

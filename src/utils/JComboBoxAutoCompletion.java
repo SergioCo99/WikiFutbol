@@ -33,18 +33,18 @@ import javax.swing.text.PlainDocument;
 public class JComboBoxAutoCompletion extends PlainDocument {
 
 	private static final long serialVersionUID = 1L;
-	JComboBox<?> comboBox;
-	ComboBoxModel<?> model;
-	JTextComponent editor;
+	private JComboBox<?> comboBox;
+	private ComboBoxModel<?> model;
+	private JTextComponent editor;
 	// flag to indicate if setSelectedItem has been called
 	// subsequent calls to remove/insertString should be ignored
-	boolean selecting = false;
-	boolean hidePopupOnFocusLoss;
-	boolean hitBackspace = false;
-	boolean hitBackspaceOnSelection;
+	private boolean selecting = false;
+	private boolean hidePopupOnFocusLoss;
+	private boolean hitBackspace = false;
+	private boolean hitBackspaceOnSelection;
 
-	KeyListener editorKeyListener;
-	FocusListener editorFocusListener;
+	private KeyListener editorKeyListener;
+	private FocusListener editorFocusListener;
 
 	public JComboBoxAutoCompletion(final JComboBox<?> comboBox) {
 		this.comboBox = comboBox;

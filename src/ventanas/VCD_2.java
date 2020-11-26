@@ -32,22 +32,22 @@ import database.DBManagerException;
 public class VCD_2 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btnCambiarDato, buscarTabla, btnGuardar, btnInsertarFila, btnEliminarFila;
-	JTextArea textArea1;
+	private JButton btnCambiarDato, buscarTabla, btnGuardar, btnInsertarFila, btnEliminarFila;
+	private JTextArea textArea1;
 
-	JComboBox<String> jcbTablas;
+	private JComboBox<String> jcbTablas;
 
-	JTable jt;
-	DefaultTableModel model;
-	Object data[][] = null;
-	Object[] objects = null;
-	JScrollPane sp, scroll;
+	private JTable jt;
+	private DefaultTableModel model;
+	private Object data[][] = null;
+	private Object[] objects = null;
+	private JScrollPane sp, scroll;
 
-	JLabel lblInfo, lblValor;
+	private JLabel lblInfo, lblValor;
 
-	String tabla;
-	int nrows;
-	int idMasBajo;
+	private String tabla;
+	private int nrows;
+	private int idMasBajo;
 
 	public void refrescarJTable() {
 		tabla = jcbTablas.getSelectedItem().toString(); // !!!

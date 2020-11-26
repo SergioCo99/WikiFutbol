@@ -49,22 +49,21 @@ import clases.UsuarioVotacion;
  *
  */
 public class DBManagerTest {
-	static DBManager db = new DBManager();
-	static Usuario u = new Usuario(1, "nombre usuario", "contrasena", "correo", 0, "1970-01-01");
-	static Entrenador e = new Entrenador(1, "Gaizka Garitano", "1975-07-09", "Athletic Club", "Bilbao", "4-3-3",
+	private static Usuario u = new Usuario(1, "nombre usuario", "contrasena", "correo", 0, "1970-01-01");
+	private static Entrenador e = new Entrenador(1, "Gaizka Garitano", "1975-07-09", "Athletic Club", "Bilbao", "4-3-3",
 			Mentalidad.Equilibrada);
-	static Estadio es = new Estadio(1, "San Mames", 53289, 2013, "Bilbao");
-	static Feedback f = new Feedback(1, u.getCorreo(), 5, Recomendacion.si, "opinion");
-	static Jugador j = new Jugador(1, "Alex Berenguer", "1993-10-01", "Athletic Club", "Bilbao", Posicion.Delantero, 8,
-			0, 182, 81, PieFav.Diestro, 84, "Jugador con desborde", 1);
+	private static Estadio es = new Estadio(1, "San Mames", 53289, 2013, "Bilbao");
+	private static Feedback f = new Feedback(1, u.getCorreo(), 5, Recomendacion.si, "opinion");
+	private static Jugador j = new Jugador(1, "Alex Berenguer", "1993-10-01", "Athletic Club", "Bilbao",
+			Posicion.Delantero, 8, 0, 182, 81, PieFav.Diestro, 84, "Jugador con desborde", 1);
 
-	// private static Connection conn;
-	private static Statement stmt = null;
-	private static PreparedStatement preparedstmt = null;
+	private static Connection conn;
+	// private static Statement stmt = null;
+	// private static PreparedStatement preparedstmt = null;
 
 	@BeforeClass
 	public static void setUp() throws Exception {
-		db = new DBManager();
+		new DBManager();
 		u = new Usuario(u.getId(), u.getNombre(), u.getContrasena(), u.getCorreo(), u.getAdmin(), u.getFechaNac());
 		e = new Entrenador(e.getId(), e.getNombre(), e.getFechaNac(), e.getClub(), e.getCiudad(), e.getFormacion(),
 				e.getMentalidad());
@@ -82,7 +81,8 @@ public class DBManagerTest {
 	 */
 	@BeforeClass
 	public static void testConnect() throws DBManagerException {
-		DBManager.connect();
+		// DBManager.connect();
+		conn = DBManager.connect();
 	}
 
 	/**
@@ -163,8 +163,9 @@ public class DBManagerTest {
 		String correo_usuario = u.getCorreo();
 		int nuevoValor_admin_usuario = 1;
 
-		Connection conn = DBManager.connect();
+		// Connection conn = DBManager.connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 
 		String sql = "select admin_usuario from usuario where correo_usuario = ?";
 		preparedstmt = conn.prepareStatement(sql);
@@ -394,8 +395,10 @@ public class DBManagerTest {
 		int voto_portero = 0;
 		int voto_portero2 = 0;
 
-		Connection conn = DBManager.connect();
+		// Connection conn = DBManager.connect();
 		ResultSet rs = null;
+		Statement stmt = null;
+		PreparedStatement preparedstmt = null;
 
 		DBManager.actualizarVotos();
 
@@ -449,7 +452,7 @@ public class DBManagerTest {
 			}
 		}
 
-		DBManager.connect();
+		// DBManager.connect();
 		String sql01 = "select * from usuariovotacion where usuario_usuarioVotacion = " + usuario_usuarioVotacion;
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql01);
@@ -460,7 +463,7 @@ public class DBManagerTest {
 		assertEquals(rs.getInt("defensaVotado_usuarioVotacion"), defensaVotado_usuarioVotacion);
 		assertEquals(rs.getInt("porteroVotado_usuarioVotacion"), porteroVotado_usuarioVotacion1);
 
-		DBManager.connect();
+		// DBManager.connect();
 		String sql2 = "select count(usuario_usuarioVotacion) from usuariovotacion where usuario_usuarioVotacion = ?";
 		preparedstmt = conn.prepareStatement(sql2);
 		preparedstmt.setInt(1, usuario_usuarioVotacion);
@@ -492,7 +495,7 @@ public class DBManagerTest {
 			}
 		}
 
-		DBManager.connect();
+		// DBManager.connect();
 		String sql02 = "select * from usuariovotacion where usuario_usuarioVotacion = " + usuario_usuarioVotacion;
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql02);
@@ -503,7 +506,7 @@ public class DBManagerTest {
 		assertEquals(rs.getInt("defensaVotado_usuarioVotacion"), defensaVotado_usuarioVotacion);
 		assertEquals(rs.getInt("porteroVotado_usuarioVotacion"), porteroVotado_usuarioVotacion2);
 
-		DBManager.connect();
+		// DBManager.connect();
 		String sql3 = "select count(usuario_usuarioVotacion) from usuariovotacion where usuario_usuarioVotacion = ?";
 		preparedstmt = conn.prepareStatement(sql3);
 		preparedstmt.setInt(1, usuario_usuarioVotacion);
@@ -512,8 +515,6 @@ public class DBManagerTest {
 		assertEquals(1, rs.getInt("count(usuario_usuarioVotacion)"));
 
 		DBManager.actualizarVotos();
-
-		// DBManager.disconnect();
 	}
 
 	/*
@@ -584,8 +585,9 @@ public class DBManagerTest {
 
 		List<String> toftNombre = DBManager.toftNombres();
 
-		Connection conn = DBManager.connect();
+		// Connection conn = DBManager.connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 
 		int contador = 1;
 		for (String jugador : toftNombre) {
@@ -1068,8 +1070,9 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testCambiarDatos() throws DBManagerException, SQLException {
-		Connection conn = DBManager.connect();
+		// Connection conn = DBManager.connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 
 		String sql1 = "select nombre_usuario from usuario where correo_usuario = ?";
 		preparedstmt = conn.prepareStatement(sql1);
@@ -1100,9 +1103,9 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testCambiarDatosDesdeJTable() throws DBManagerException, SQLException {
-
-		Connection conn = DBManager.connect();
+		// Connection conn = DBManager.connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 
 		String sql1 = "select nombre_usuario from usuario where correo_usuario = 'a@gmail.com'";
 		preparedstmt = conn.prepareStatement(sql1);
@@ -1225,8 +1228,9 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void TestIdMasBajoSinUsar() throws DBManagerException, SQLException {
-		Connection conn = DBManager.connect();
+		// Connection conn = DBManager.connect();
 		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
 		ArrayList<Integer> ids = new ArrayList<Integer>();
 		String sql1;
 		int id;

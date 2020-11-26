@@ -1,12 +1,9 @@
 package ventanas;
 
-import java.awt.Color;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -23,12 +20,11 @@ import feedback.RWException;
 public class VentanaEstadisticas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JTable table;
-	JScrollPane sp;
-	JProgressBar valoracion;
+	private JTable table;
+	private JScrollPane sp;
 
-	String[] columns = { "Code", "Info" }; // ?????
-	Object[][] data = null;
+	private String[] columns = { "Code", "Info" }; // ?????
+	private Object[][] data = null;
 
 	public VentanaEstadisticas() {
 
@@ -96,25 +92,21 @@ public class VentanaEstadisticas extends JFrame {
 		// hasta aqui tabla
 
 		// es un poco feo
-		try {
-			int nuevaValoracion = (int) Math.round(feedback.EstadisticaFeedback.ReadAndLoad().get(1) * 10);
-			valoracion = new JProgressBar(0, 50);
-			valoracion.setToolTipText("");
-			valoracion.setStringPainted(true);
-			valoracion.setBounds(100, 250, 400, 50);
-			valoracion.setValue(nuevaValoracion);
-			valoracion.setForeground(Color.yellow);
-			valoracion.setString(Integer.toString(nuevaValoracion));
-			getContentPane().add(valoracion);
-
-			JLabel lblNewLabel = new JLabel("Esto igual lo mejoramos/quitamos???");
-			lblNewLabel.setForeground(Color.RED);
-			lblNewLabel.setBounds(110, 310, 390, 52);
-			getContentPane().add(lblNewLabel);
-		} catch (RWException e) {
-			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-			e.printStackTrace();
-		}
+		/*
+		 * try { int nuevaValoracion = (int)
+		 * Math.round(feedback.EstadisticaFeedback.ReadAndLoad().get(1) * 10);
+		 * valoracion = new JProgressBar(0, 50); valoracion.setToolTipText("");
+		 * valoracion.setStringPainted(true); valoracion.setBounds(100, 250, 400, 50);
+		 * valoracion.setValue(nuevaValoracion); valoracion.setForeground(Color.yellow);
+		 * valoracion.setString(Integer.toString(nuevaValoracion));
+		 * getContentPane().add(valoracion);
+		 *
+		 * JLabel lblNewLabel = new JLabel("Esto igual lo mejoramos/quitamos???");
+		 * lblNewLabel.setForeground(Color.RED); lblNewLabel.setBounds(110, 310, 390,
+		 * 52); getContentPane().add(lblNewLabel); } catch (RWException e) {
+		 * mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+		 * e.printStackTrace(); }
+		 */
 
 	}
 

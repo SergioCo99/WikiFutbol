@@ -409,13 +409,13 @@ public class DBManager {
 			String recomendacion_feedback, String opinion_feedback) throws DBManagerException {
 		// connect();
 		ResultSet rs = null;
-		PreparedStatement preparedstmt = null;
+		PreparedStatement preparedstmt1 = null;
 		PreparedStatement preparedstmt2 = null;
 		try {
 			String sql1 = "select id_usuario from usuario where correo_usuario = ?";
-			preparedstmt = conn.prepareStatement(sql1);
-			preparedstmt.setString(1, correo_usuario);
-			rs = preparedstmt.executeQuery();
+			preparedstmt1 = conn.prepareStatement(sql1);
+			preparedstmt1.setString(1, correo_usuario);
+			rs = preparedstmt1.executeQuery();
 			rs.next();
 			int id = rs.getInt("id_usuario");
 			String sql2 = "insert into feedback(usuario_feedback, valoracion_feedback, recomendacion_feedback, opinion_feedback) values(?,?,?,?)";
@@ -430,7 +430,7 @@ public class DBManager {
 			throw new DBManagerException("Error registrarFeedback DBManager", e);
 		} finally {
 			try {
-				preparedstmt.close();
+				preparedstmt1.close();
 				preparedstmt2.close();
 				rs.close();
 			} catch (SQLException e) {
@@ -566,13 +566,13 @@ public class DBManager {
 			int porteroVotado_usuarioVotacion) throws DBManagerException {
 		// connect();
 		ResultSet rs = null;
-		PreparedStatement preparedstmt = null;
+		PreparedStatement preparedstmt1 = null;
 		PreparedStatement preparedstmt2 = null;
 		try {
 			String sql1 = "select count(usuario_usuarioVotacion) from usuariovotacion where usuario_usuarioVotacion = ?";
-			preparedstmt = conn.prepareStatement(sql1);
-			preparedstmt.setInt(1, usuario_usuarioVotacion);
-			rs = preparedstmt.executeQuery();
+			preparedstmt1 = conn.prepareStatement(sql1);
+			preparedstmt1.setInt(1, usuario_usuarioVotacion);
+			rs = preparedstmt1.executeQuery();
 			rs.next();
 			if (rs.getInt("count(usuario_usuarioVotacion)") == 0) {
 				String sql2 = "insert into usuariovotacion(usuario_usuarioVotacion, delanteroVotado_usuarioVotacion, "
@@ -602,7 +602,7 @@ public class DBManager {
 			throw new DBManagerException("Error votar DBManager", e);
 		} finally {
 			try {
-				preparedstmt.close();
+				preparedstmt1.close();
 				preparedstmt2.close();
 				rs.close();
 			} catch (SQLException e) {
@@ -633,6 +633,7 @@ public class DBManager {
 			throw new DBManagerException("Error contarJugadores DBManager", e);
 		} finally {
 			try {
+				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
@@ -665,6 +666,7 @@ public class DBManager {
 			throw new DBManagerException("Error contarVotosPorJugador DBManager", e);
 		} finally {
 			try {
+				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
@@ -681,43 +683,52 @@ public class DBManager {
 	public static void actualizarVotos() throws DBManagerException {
 		System.out.println("Inicio actualizarVotos, puede tardar un rato...");
 		// connect();
-		Statement stmt = null;
+		Statement stmt1 = null;
+		Statement stmt2 = null;
+		Statement stmt3 = null;
+		Statement stmt4 = null;
 		try {
-			stmt = conn.createStatement();
+			stmt1 = conn.createStatement();
+			stmt2 = conn.createStatement();
+			stmt3 = conn.createStatement();
+			stmt4 = conn.createStatement();
 			// Actualiza los votos de los delanteros
 			for (int i = 1; i < (contarJugadores() + 1); i++) {
 				String sql = "update jugador set voto_jugador = '"
 						+ contarVotosPorJugador(i, "delanteroVotado_usuarioVotacion") + "' where id_jugador = '" + i
 						+ "' and posicion_jugador = 'Delantero';";
-				stmt.executeUpdate(sql);
+				stmt1.executeUpdate(sql);
 			}
 			// Actualiza los votos de los centrocampistas
 			for (int i = 1; i < (contarJugadores() + 1); i++) {
 				String sql = "update jugador set voto_jugador = '"
 						+ contarVotosPorJugador(i, "centrocampistaVotado_usuarioVotacion") + "' where id_jugador = '"
 						+ i + "' and posicion_jugador = 'Centrocampista';";
-				stmt.executeUpdate(sql);
+				stmt2.executeUpdate(sql);
 			}
 			// Actualiza los votos de los defensas
 			for (int i = 1; i < (contarJugadores() + 1); i++) {
 				String sql = "update jugador set voto_jugador = '"
 						+ contarVotosPorJugador(i, "defensaVotado_usuarioVotacion") + "' where id_jugador = '" + i
 						+ "' and posicion_jugador = 'Defensa';";
-				stmt.executeUpdate(sql);
+				stmt3.executeUpdate(sql);
 			}
 			// Actualiza los votos de los porteros
 			for (int i = 1; i < (contarJugadores() + 1); i++) {
 				String sql = "update jugador set voto_jugador = '"
 						+ contarVotosPorJugador(i, "PorteroVotado_usuarioVotacion") + "' where id_jugador = '" + i
 						+ "' and posicion_jugador = 'Portero';";
-				stmt.executeUpdate(sql);
+				stmt4.executeUpdate(sql);
 			}
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
 			throw new DBManagerException("Error actualizarVotos DBManager", e);
 		} finally {
 			try {
-				stmt.close();
+				stmt1.close();
+				stmt2.close();
+				stmt3.close();
+				stmt4.close();
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
@@ -750,6 +761,7 @@ public class DBManager {
 			throw new DBManagerException("Error contarTOFT DBManager", e);
 		} finally {
 			try {
+				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
@@ -795,6 +807,8 @@ public class DBManager {
 			throw new DBManagerException("Error getMasVotados DBManager", e);
 		} finally {
 			try {
+				stmt1.close();
+				stmt2.close();
 				rs.close();
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
@@ -872,7 +886,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
 			}
-			// disconnect(); }
+			// disconnect();
 		}
 	}
 	// HASTA AQUI CREAR TEAM OF THE YEAR
@@ -1720,7 +1734,7 @@ public class DBManager {
 			throw new DBManagerException("Error verColumnas DBManager", e);
 		} finally {
 			try {
-				// stmt.close();
+				stmt.close();
 				rs.close();
 			} catch (SQLException e) {
 				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
@@ -2719,7 +2733,7 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		connect();
+		// connect();
 		System.out.println(getPaises());
 		disconnect();
 	}

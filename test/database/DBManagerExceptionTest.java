@@ -1,6 +1,5 @@
 package database;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 
 import org.junit.Before;
@@ -14,8 +13,7 @@ import org.junit.Test;
  */
 public class DBManagerExceptionTest {
 
-	DBManagerException dbme = new DBManagerException("Mensaje");
-	Connection conn;
+	private DBManagerException dbme = new DBManagerException("Mensaje");
 
 	/**
 	 * Crea un nuevo DBManagerException
@@ -43,7 +41,7 @@ public class DBManagerExceptionTest {
 			String CONTRASENA = "MAL";
 
 			Class.forName(CONTROLADOR);
-			conn = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
+			DriverManager.getConnection(URL, USUARIO, CONTRASENA);
 		} catch (Exception e) {
 			throw new DBManagerException("Mensaje y causa", e);
 		}
@@ -55,7 +53,7 @@ public class DBManagerExceptionTest {
 			String CONTRASENA = "MAL";
 
 			Class.forName(CONTROLADOR);
-			conn = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
+			DriverManager.getConnection(URL, USUARIO, CONTRASENA);
 		} catch (Exception e) {
 			throw new DBManagerException("Solo mensaje");
 		}

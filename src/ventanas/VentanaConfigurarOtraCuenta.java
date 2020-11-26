@@ -27,12 +27,12 @@ import database.DBManagerException;
 public class VentanaConfigurarOtraCuenta extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JButton btnEjecutar;
-	JRadioButton cbHacerAdmin, cbQuitarAdmin, cbBorrarCuenta;
-	ButtonGroup bg1;
-	JLabel lblCorreo;
-	JComboBox<String> jcbCorreos;
-	JLabel lblOpciones;
+	private JButton btnEjecutar;
+	private JRadioButton cbHacerAdmin, cbQuitarAdmin, cbBorrarCuenta;
+	private ButtonGroup bg1;
+	private JLabel lblCorreo;
+	private JComboBox<String> jcbCorreos;
+	private JLabel lblOpciones;
 
 	public VentanaConfigurarOtraCuenta(List<String> listaCorreos) {
 

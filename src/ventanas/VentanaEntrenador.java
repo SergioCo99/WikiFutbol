@@ -30,7 +30,6 @@ import utils.JLabelGraficoAjustado;
 public class VentanaEntrenador extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	static VentanaEquipo frame;
 
 	public VentanaEntrenador(String entrenador, Club club, Usuario u) throws DBManagerException {
 		String nombreEntrenador = null;

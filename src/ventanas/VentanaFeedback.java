@@ -32,17 +32,16 @@ import database.DBManagerException;
 public class VentanaFeedback extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JRadioButton estrella1, estrella2, estrella3, estrella4, estrella5, bSi, bNo;
-	JButton botonSiguiente, botonAtras;
-	ButtonGroup bgEstrellas, bgRecomendacion;
-	JTextArea texto;
-	JLabel lblComentario, lblValoracion, lblError, lblRecomendacion;
-	JScrollPane scroll;
-	int charCount = 0;
-	int maxChars = 500;
-	JProgressBar progressBar;
-	JLabel lblChars;
-	Thread hiloLetras;
+	private JRadioButton estrella1, estrella2, estrella3, estrella4, estrella5, bSi, bNo;
+	private JButton botonSiguiente, botonAtras;
+	private ButtonGroup bgEstrellas, bgRecomendacion;
+	private JTextArea texto;
+	private JLabel lblComentario, lblValoracion, lblError, lblRecomendacion;
+	private JScrollPane scroll;
+	private int maxChars = 500;
+	private JProgressBar progressBar;
+	private JLabel lblChars;
+	private Thread hiloLetras;
 
 	public VentanaFeedback() {
 

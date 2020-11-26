@@ -20,8 +20,8 @@ import utils.JLabelGraficoAjustado;
 public class VentanaTeamOfTheYear extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JLabel lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9, lbl10, lbl11;
-	JLabelGraficoAjustado campo;
+	private JLabel lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9, lbl10, lbl11;
+	private JLabelGraficoAjustado campo;
 
 	public VentanaTeamOfTheYear(List<String> array) {
 

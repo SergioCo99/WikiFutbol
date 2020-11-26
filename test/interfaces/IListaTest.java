@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.JList;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import clases.Club;
@@ -26,6 +27,16 @@ public class IListaTest {
 	private List<String> arrayJugador = new ArrayList<String>();
 	private JList<String> listaClub = new JList<String>();
 	private JList<String> listaJugador = new JList<String>();
+
+	/**
+	 * Conectar al servidor
+	 *
+	 * @throws DBManagerException En caso de fallo
+	 */
+	@BeforeClass
+	public static void testConnect() throws DBManagerException {
+		DBManager.connect();
+	}
 
 	/**
 	 * Realiza un "get" para recibir todos los clubes de la base de datos

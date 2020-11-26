@@ -38,7 +38,7 @@ public class VentanaJugadores extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	// Para el listado de equipos
-	String nombreEquipo;
+	private String nombreEquipo;
 	private JList<String> bookPanel = new JList<String>();
 
 	private static VentanaJugadores frame;
