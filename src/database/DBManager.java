@@ -120,6 +120,49 @@ public class DBManager {
 	}
 
 	/**
+	 * Metodo para comprobar si un correo ya esta en la BD o no USANDO UN METODO
+	 * RECURSIVO
+	 *
+	 * @param correo_usuario Correo a comprobar su existencia
+	 * @return Devuelve true en caso de existir el correo y false en caso de no
+	 *         existir
+	 * @throws DBManagerException En caso de fallo En caso de existir algun problema
+	 */
+	public static boolean existeCorreo2(String correo_usuario) throws DBManagerException {
+		// connect();
+		ResultSet rs = null;
+		PreparedStatement preparedstmt = null;
+		List<String> arr = new ArrayList<String>();
+		try {
+			String sql = "select correo_usuario from usuario";
+			preparedstmt = conn.prepareStatement(sql);
+			rs = preparedstmt.executeQuery();
+			while (rs.next()) {
+				arr.add(rs.getString("correo_usuario"));
+			}
+			int resultado = utils.MetodosRecursivos.binarySearchListStringRecursivo(arr, 0, arr.size() - 1,
+					correo_usuario);
+			if (resultado == -1) {
+				return false;
+			} else {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
+			throw new DBManagerException("Error existeCorreo DBManager", e);
+		} finally {
+			try {
+				preparedstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				mainPackage.MainWikiFutbol.loggerBD.log(Level.INFO, e.toString());
+			}
+			// disconnect();
+		}
+	}
+
+	/**
 	 * Metodo para registrar un usuario en la base de datos
 	 *
 	 * @param nombre_usuario     Nombre con el que el usuario se quiere registrar
@@ -380,7 +423,8 @@ public class DBManager {
 			 */
 
 			// He sustituido Collections.sort por un metodo de ordenacion recursivo
-			utils.MetodosRecursivos.ordenarListStringRecursivo(arr, arr.size());
+			// utils.MetodosRecursivos.ordenarListStringRecursivo(arr, arr.size());
+			utils.MetodosRecursivos.mergeSortList(arr);
 			return arr;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -468,7 +512,8 @@ public class DBManager {
 			 */
 
 			// He sustituido Collections.sort por un metodo de ordenacion recursivo
-			utils.MetodosRecursivos.ordenarListStringRecursivo(arr, arr.size());
+			// utils.MetodosRecursivos.ordenarListStringRecursivo(arr, arr.size());
+			utils.MetodosRecursivos.mergeSortList(arr);
 			return arr;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -1897,7 +1942,8 @@ public class DBManager {
 			 */
 
 			// He sustituido Collections.sort por un metodo de ordenacion recursivo
-			utils.MetodosRecursivos.ordenarListStringRecursivo(arr, arr.size());
+			// utils.MetodosRecursivos.ordenarListStringRecursivo(arr, arr.size());
+			utils.MetodosRecursivos.mergeSortList(arr);
 			return arr;
 		} catch (SQLException e) {
 			mainPackage.MainWikiFutbol.loggerBD.log(Level.WARNING, e.toString());
@@ -2733,8 +2779,9 @@ public class DBManager {
 
 	// este main es para pruebas, habria que quitarlo
 	public static void main(String[] args) throws DBManagerException {
-		// connect();
-		System.out.println(getPaises());
+		connect();
+		System.out.println(existeCorreo("eneko.perez23@gmail.com"));
+		System.out.println(existeCorreo2("eneko.perez23@gmail.com"));
 		disconnect();
 	}
 }

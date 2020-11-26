@@ -71,6 +71,9 @@ public class MetodosRecursivos {
 	 * @return
 	 */
 	public static int binarySearchArrayStringRecursivo(String arr[], int left, int right, String palabra) {
+		// tiene que estar ordenado alfabeticamente
+		mergeSortArray(arr);
+
 		// EXISTE
 		if ((right >= left) && (left < (arr.length - 1))) {
 			int mid = left + ((right - left) / 2);
@@ -98,6 +101,9 @@ public class MetodosRecursivos {
 	 * @return
 	 */
 	public static int binarySearchListStringRecursivo(List<String> list, int left, int right, String palabra) {
+		// tiene que estar ordenado alfabeticamente
+		mergeSortList(list);
+
 		// EXISTE
 		if ((right >= left) && (left < (list.size() - 1))) {
 			int mid = left + ((right - left) / 2);
@@ -227,6 +233,8 @@ public class MetodosRecursivos {
 		l.add("X");
 		l.add("N");
 		l.add("E");
+
+		System.out.println(binarySearchListStringRecursivo(l, 0, l.size() - 1, "C"));
 
 		System.out.println("s:" + Arrays.toString(s));
 		mergeSortArray(s);
