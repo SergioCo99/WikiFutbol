@@ -43,7 +43,7 @@ public class VCD_2 extends JFrame {
 	private Object[] objects = null;
 	private JScrollPane sp, scroll;
 
-	private JLabel lblInfo, lblValor;
+	private JLabel lblInfo, lblInfo2, lblInfo3, lblValor;
 
 	private String tabla;
 	private int nrows;
@@ -97,7 +97,7 @@ public class VCD_2 extends JFrame {
 		btnCambiarDato.setBounds(300, 260, 140, 30);
 
 		buscarTabla = new JButton();
-		buscarTabla.setText("Buscar tabla");
+		buscarTabla.setText("Actualizar tabla");
 		buscarTabla.setBounds(10, 300, 140, 30);
 
 		btnGuardar = new JButton();
@@ -127,10 +127,17 @@ public class VCD_2 extends JFrame {
 		lblValor.setBounds(10, 155, 560, 30);
 
 		lblInfo = new JLabel();
-		lblInfo.setText("Selecciona la celda que quieres cambiar, introduce su nuevo valor aqui y clicka "
-				+ btnCambiarDato.getText() + ": ");
-		lblInfo.setForeground(Color.red);
+		lblInfo.setText("* Para insertar nueva fila clicka '" + btnInsertarFila.getText() + "', añade valores y clicka '"
+				+ btnGuardar.getText() + "'.");
 		lblInfo.setBounds(10, 185, 560, 30);
+
+		lblInfo2 = new JLabel();
+		lblInfo2.setText("* Para borrar una fila clicka una celda de la fila, y luego '" + btnEliminarFila.getText() + "'.");
+		lblInfo2.setBounds(10, 205, 560, 30);
+
+		lblInfo3 = new JLabel();
+		lblInfo3.setText("* Para cambiar un dato clicka en la celda y edita el valor, luego clicka '" + btnCambiarDato.getText() + "'.");
+		lblInfo3.setBounds(10, 225, 560, 30);
 
 		try {
 			Object[] ObjectArray = database.DBManager.verTablas().toArray();
@@ -153,6 +160,8 @@ public class VCD_2 extends JFrame {
 		getContentPane().add(btnInsertarFila);
 		getContentPane().add(btnEliminarFila);
 		getContentPane().add(lblInfo);
+		getContentPane().add(lblInfo2);
+		getContentPane().add(lblInfo3);
 		getContentPane().add(lblValor);
 		getContentPane().add(scroll);
 		getContentPane().add(jcbTablas);
