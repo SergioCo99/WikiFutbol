@@ -154,7 +154,8 @@ public class VentanaRegistro extends JFrame {
 						if (Arrays.equals(txtPassword.getPassword(), txtPasswordRep.getPassword())) {
 							try {
 								database.DBManager.registrarUsuario(txtUsuario.getText(), txtCorreo.getText(),
-										txtPassword.getPassword().toString(), formatter.format(calendar.getDate()));
+										String.valueOf(txtPassword.getPassword()),
+										formatter.format(calendar.getDate()));
 							} catch (DBManagerException e1) {
 								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 								e1.printStackTrace();
