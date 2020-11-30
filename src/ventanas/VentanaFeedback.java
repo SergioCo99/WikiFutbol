@@ -215,11 +215,12 @@ public class VentanaFeedback extends JFrame {
 
 		botonAtras.addActionListener(new ActionListener() {
 
-			@SuppressWarnings("deprecation")
+			// @SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				hiloLetras.stop();
+				hiloLetras.interrupt();
+				// hiloLetras.stop();
 				/*
 				 * try { hiloLetras.join(); } catch (InterruptedException e1) {
 				 * mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
@@ -230,10 +231,11 @@ public class VentanaFeedback extends JFrame {
 
 		this.addWindowListener(new WindowAdapter() {
 
-			@SuppressWarnings("deprecation")
+			// @SuppressWarnings("deprecation")
 			@Override
 			public void windowClosing(WindowEvent e) {
-				hiloLetras.stop();
+				hiloLetras.interrupt();
+				// hiloLetras.stop();
 				/*
 				 * try { hiloLetras.join(); } catch (InterruptedException e1) {
 				 * mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());

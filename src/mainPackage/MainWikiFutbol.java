@@ -9,6 +9,8 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.SwingUtilities;
+
 import database.DBManager;
 import database.DBManagerException;
 import ventanas.VentanaLogin;
@@ -88,6 +90,7 @@ public class MainWikiFutbol {
 		crearFicheroLog();
 		crearFicheroLogger();
 		crearFicherosProperties();
+
 		try {
 			// conexion
 			DBManager.connect();
@@ -98,8 +101,13 @@ public class MainWikiFutbol {
 			e.printStackTrace();
 		}
 
-		VentanaLogin VL = new VentanaLogin();
-		VL.setVisible(true);
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				VentanaLogin VL = new VentanaLogin();
+				VL.setVisible(true);
+			}
+		});
 
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 			@Override
