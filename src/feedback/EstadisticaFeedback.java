@@ -138,7 +138,7 @@ public class EstadisticaFeedback {
 			throw new RWException("Error de input/output", e);
 		}
 
-		// Aqui empieza la segunda parte :)
+		// Aqui empieza la segunda parte
 		Map<Integer, Double> map = new HashMap<Integer, Double>();
 
 		for (int i = 0; i < siNo(countSi, countNo, countSN).size(); i++) {

@@ -26,7 +26,7 @@ public class VentanaEstadisticas extends JFrame {
 	private JTable table;
 	private JScrollPane sp;
 
-	private String[] columns = { "Code", "Info" }; // ?????
+	private String[] columns = { "Code", "Info" };
 	private Object[][] data = null;
 
 	public VentanaEstadisticas() {
@@ -68,12 +68,12 @@ public class VentanaEstadisticas extends JFrame {
 				data[0][0] = "Valoracion sobre 5:";
 				data[1][0] = "Recomendarias? Si:";
 				data[2][0] = "Recomendarias? No:";
-				data[3][0] = "Numero de feedbacks:"; // se escribe asi en plural???
+				data[3][0] = "Numero de feedbacks:";
 			}
 			for (int z = 0; z < data.length; z++) {
 				for (int y = 0; y < columns.length; y++) {
 					// Imprime las estadisticas en la consola
-					System.out.println(data[z][y]);
+					// System.out.println(data[z][y]);
 				}
 			}
 		} catch (RWException e) {
