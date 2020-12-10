@@ -1,15 +1,11 @@
 package utils;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.logging.Level;
 
 import javax.swing.ComboBoxEditor;
@@ -49,23 +45,17 @@ public class JComboBoxAutoCompletion extends PlainDocument {
 	public JComboBoxAutoCompletion(final JComboBox<?> comboBox) {
 		this.comboBox = comboBox;
 		model = comboBox.getModel();
-		comboBox.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (!selecting) {
-					highlightCompletedText(0);
-				}
+		comboBox.addActionListener(e -> {
+			if (!selecting) {
+				highlightCompletedText(0);
 			}
 		});
-		comboBox.addPropertyChangeListener(new PropertyChangeListener() {
-			@Override
-			public void propertyChange(PropertyChangeEvent e) {
-				if (e.getPropertyName().equals("editor")) {
-					configureEditor((ComboBoxEditor) e.getNewValue());
-				}
-				if (e.getPropertyName().equals("model")) {
-					model = (ComboBoxModel<?>) e.getNewValue();
-				}
+		comboBox.addPropertyChangeListener(e -> {
+			if (e.getPropertyName().equals("editor")) {
+				configureEditor((ComboBoxEditor) e.getNewValue());
+			}
+			if (e.getPropertyName().equals("model")) {
+				model = (ComboBoxModel<?>) e.getNewValue();
 			}
 		});
 		editorKeyListener = new KeyAdapter() {

@@ -3,8 +3,6 @@ package ventanas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -85,19 +83,16 @@ public class VentanaJugadores extends JFrame {
 		navBarPanel.add(btnAtras);
 		btnAtras.setFocusable(false);
 
-		btnAtras.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaEquipo v1 = null;
-				try {
-					v1 = new VentanaEquipo(club, u);
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-				}
-				v1.setVisible(true);
-				dispose();
+		btnAtras.addActionListener(e -> {
+			VentanaEquipo v1 = null;
+			try {
+				v1 = new VentanaEquipo(club, u);
+			} catch (DBManagerException e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				e1.printStackTrace();
 			}
+			v1.setVisible(true);
+			dispose();
 		});
 
 		final JPanel atrasPanel = new JPanel();
@@ -137,18 +132,14 @@ public class VentanaJugadores extends JFrame {
 		botonVerJugador.setFocusable(false);
 		add(botonVerJugador);
 
-		botonVerJugador.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), club,
-							usuario);
-					ve.setVisible(true);
-					dispose();
-				} catch (Exception e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					JOptionPane.showMessageDialog(frame, "Seleccione un jugador");
-				}
+		botonVerJugador.addActionListener(e -> {
+			try {
+				VentanaJugador ve = new VentanaJugador(arrayResultado.get(bookPanel.getSelectedIndex()), club, usuario);
+				ve.setVisible(true);
+				dispose();
+			} catch (Exception e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				JOptionPane.showMessageDialog(frame, "Seleccione un jugador");
 			}
 		});
 

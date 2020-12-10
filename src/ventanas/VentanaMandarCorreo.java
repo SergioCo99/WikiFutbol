@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Insets;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -127,108 +125,91 @@ public class VentanaMandarCorreo extends JFrame {
 			}
 		});
 
-		btnBorrarArchivo.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				lblArchivo.setText("Archivo: Ninguno.");
-				path = "";
-			}
+		btnBorrarArchivo.addActionListener(e -> {
+			lblArchivo.setText("Archivo: Ninguno.");
+			path = "";
 		});
 
-		todos.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (todos.isSelected() == true) {
-					jcb.setSelectedIndex(0);
-				}
+		todos.addActionListener(e -> {
+			if (todos.isSelected() == true) {
+				jcb.setSelectedIndex(0);
 			}
 		});
 
 		// action listener para mandar correo SIN archivo
-		btnEnviar.addActionListener(new ActionListener() {
+		btnEnviar.addActionListener(e -> {
+			String destinatario = null;
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String destinatario = null;
-
-				if (path.equals("")) {
-					if (todos.isSelected() == true) {
-						destinatario = "Todos";
-					} else if (todos.isSelected() == false) {
-						destinatario = jcb.getSelectedItem().toString();
-					}
-
-					if (!txtAsunto.getText().equals("") && !texto.getText().equals("")) {
-						int result = JOptionPane.showConfirmDialog(null,
-								"Quieres mandar este correo a: " + destinatario + " ?", "Confirmar envio",
-								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-						if (result == JOptionPane.YES_OPTION) {
-							try {
-								if (todos.isSelected() == true) {
-									for (int i = 0; i < database.DBManager.todosLosCorreos().size(); i++) {
-										setCursor(new Cursor(Cursor.WAIT_CURSOR)); // * !!!!!
-										utils.MailSinFichero.SendMail(database.DBManager.todosLosCorreos().get(i),
-												txtAsunto.getText(), texto.getText());
-									}
-								} else if (todos.isSelected() == false) {
-									utils.MailSinFichero.SendMail(jcb.getSelectedItem().toString(), txtAsunto.getText(),
-											texto.getText());
-								}
-							} catch (DBManagerException e1) {
-								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-								e1.printStackTrace();
-							}
-						}
-					} else {
-						JOptionPane.showMessageDialog(null, "Rellena todo correctamente.", "Mandar correo",
-								JOptionPane.WARNING_MESSAGE);
-					}
+			if (path.equals("")) {
+				if (todos.isSelected() == true) {
+					destinatario = "Todos";
+				} else if (todos.isSelected() == false) {
+					destinatario = jcb.getSelectedItem().toString();
 				}
-				setCursor(new Cursor(Cursor.DEFAULT_CURSOR)); // * !!!!!
+
+				if (!txtAsunto.getText().equals("") && !texto.getText().equals("")) {
+					int result = JOptionPane.showConfirmDialog(null,
+							"Quieres mandar este correo a: " + destinatario + " ?", "Confirmar envio",
+							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+					if (result == JOptionPane.YES_OPTION) {
+						try {
+							if (todos.isSelected() == true) {
+								for (int i = 0; i < database.DBManager.todosLosCorreos().size(); i++) {
+									setCursor(new Cursor(Cursor.WAIT_CURSOR)); // * !!!!!
+									utils.MailSinFichero.SendMail(database.DBManager.todosLosCorreos().get(i),
+											txtAsunto.getText(), texto.getText());
+								}
+							} else if (todos.isSelected() == false) {
+								utils.MailSinFichero.SendMail(jcb.getSelectedItem().toString(), txtAsunto.getText(),
+										texto.getText());
+							}
+						} catch (DBManagerException e1) {
+							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+							e1.printStackTrace();
+						}
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Rellena todo correctamente.", "Mandar correo",
+							JOptionPane.WARNING_MESSAGE);
+				}
 			}
+			setCursor(new Cursor(Cursor.DEFAULT_CURSOR)); // * !!!!!
 		});
 
 		// action listener para mandar correo CON archivo
-		btnEnviar.addActionListener(new ActionListener() {
+		btnEnviar.addActionListener(e -> {
+			String destinatario = null;
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String destinatario = null;
+			if (!path.equals("")) {
+				if (todos.isSelected() == true) {
+					destinatario = "Todos";
+				} else if (todos.isSelected() == false) {
+					destinatario = jcb.getSelectedItem().toString();
+				}
 
-				if (!path.equals("")) {
-					if (todos.isSelected() == true) {
-						destinatario = "Todos";
-					} else if (todos.isSelected() == false) {
-						destinatario = jcb.getSelectedItem().toString();
-					}
-
-					if (!txtAsunto.getText().equals("") && !texto.getText().equals("")) {
-						int result = JOptionPane.showConfirmDialog(null,
-								"Quieres mandar este correo a: " + destinatario + " ?", "Confirmar envio",
-								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-						if (result == JOptionPane.YES_OPTION) {
-							try {
-								if (todos.isSelected() == true) {
-									for (int i = 0; i < database.DBManager.todosLosCorreos().size(); i++) {
-										utils.MailConFichero.SendMailConFichero(
-												database.DBManager.todosLosCorreos().get(i), txtAsunto.getText(),
-												texto.getText(), path);
-									}
-								} else if (todos.isSelected() == false) {
-									utils.MailConFichero.SendMailConFichero(jcb.getSelectedItem().toString(),
+				if (!txtAsunto.getText().equals("") && !texto.getText().equals("")) {
+					int result = JOptionPane.showConfirmDialog(null,
+							"Quieres mandar este correo a: " + destinatario + " ?", "Confirmar envio",
+							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+					if (result == JOptionPane.YES_OPTION) {
+						try {
+							if (todos.isSelected() == true) {
+								for (int i = 0; i < database.DBManager.todosLosCorreos().size(); i++) {
+									utils.MailConFichero.SendMailConFichero(database.DBManager.todosLosCorreos().get(i),
 											txtAsunto.getText(), texto.getText(), path);
 								}
-							} catch (DBManagerException e1) {
-								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-								e1.printStackTrace();
+							} else if (todos.isSelected() == false) {
+								utils.MailConFichero.SendMailConFichero(jcb.getSelectedItem().toString(),
+										txtAsunto.getText(), texto.getText(), path);
 							}
+						} catch (DBManagerException e1) {
+							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+							e1.printStackTrace();
 						}
-					} else {
-						JOptionPane.showMessageDialog(null, "Rellena todo correctamente.", "Mandar correo",
-								JOptionPane.WARNING_MESSAGE);
 					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Rellena todo correctamente.", "Mandar correo",
+							JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});

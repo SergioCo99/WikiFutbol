@@ -3,8 +3,6 @@ package ventanas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.logging.Level;
@@ -69,19 +67,16 @@ public class VentanaCiudad extends JFrame {
 		navBarPanel.add(btnAtras);
 		btnAtras.setFocusable(false);
 
-		btnAtras.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaEquipo v1 = null;
-				try {
-					v1 = new VentanaEquipo(club, u);
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-				}
-				v1.setVisible(true);
-				dispose();
+		btnAtras.addActionListener(e -> {
+			VentanaEquipo v1 = null;
+			try {
+				v1 = new VentanaEquipo(club, u);
+			} catch (DBManagerException e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				e1.printStackTrace();
 			}
+			v1.setVisible(true);
+			dispose();
 		});
 
 		final JPanel atrasPanel = new JPanel();
@@ -199,19 +194,16 @@ public class VentanaCiudad extends JFrame {
 		botonPais.setFocusable(false);
 		bookPanel.add(botonPais);
 		String nomPais = nombrePais;
-		botonPais.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					VentanaPais ve = new VentanaPais(nomPais, club, u);
-					ve.setVisible(true);
-					dispose();
-				} catch (Exception e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					JOptionPane.showMessageDialog(frame, "Esta ciudad no existe");
-				}
-
+		botonPais.addActionListener(e -> {
+			try {
+				VentanaPais ve = new VentanaPais(nomPais, club, u);
+				ve.setVisible(true);
+				dispose();
+			} catch (Exception e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				JOptionPane.showMessageDialog(frame, "Esta ciudad no existe");
 			}
+
 		});
 
 		// Poblacion

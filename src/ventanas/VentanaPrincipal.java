@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -361,35 +359,27 @@ public class VentanaPrincipal extends JFrame {
 			menuAdmin.setVisible(false);
 		}
 
-		miAjustes.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				String contrasenaActual = JOptionPane.showInputDialog(null, "Introduce tu contraseña actual",
-						"Cambiar contraseña", JOptionPane.WARNING_MESSAGE);
-				if (/* !contrasenaActual.equals(null) */ contrasenaActual != null) {
-					if (contrasenaActual.equals(utils.PropertiesMetodos.getProp2())) {
-						String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contraseña",
-								"Cambiar contraseña", JOptionPane.WARNING_MESSAGE);
-						if ((nuevaContrasena != null) && !nuevaContrasena.equals("")) {
-							try {
-								database.DBManager.cambiarContrasena(utils.PropertiesMetodos.getProp1(),
-										nuevaContrasena);
-							} catch (DBManagerException e) {
-								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-								e.printStackTrace();
-							}
-							JOptionPane.showMessageDialog(null, "Actualizacion exitosa, reiniciando. . .", "Alerta",
-									JOptionPane.INFORMATION_MESSAGE);
-							// reinicio
-							utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
-							dispose();
-							VentanaLogin VL = new VentanaLogin();
-							VL.setVisible(true);
-						} else {
-							JOptionPane.showMessageDialog(null, "Esa contraseña no es valida / operacion cancelada.",
-									"Error", JOptionPane.ERROR_MESSAGE);
+		miAjustes.addActionListener(arg0 -> {
+			String contrasenaActual = JOptionPane.showInputDialog(null, "Introduce tu contraseña actual",
+					"Cambiar contraseña", JOptionPane.WARNING_MESSAGE);
+			if (/* !contrasenaActual.equals(null) */ contrasenaActual != null) {
+				if (contrasenaActual.equals(utils.PropertiesMetodos.getProp2())) {
+					String nuevaContrasena = JOptionPane.showInputDialog(null, "Introduce tu nueva contraseña",
+							"Cambiar contraseña", JOptionPane.WARNING_MESSAGE);
+					if ((nuevaContrasena != null) && !nuevaContrasena.equals("")) {
+						try {
+							database.DBManager.cambiarContrasena(utils.PropertiesMetodos.getProp1(), nuevaContrasena);
+						} catch (DBManagerException e) {
+							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+							e.printStackTrace();
 						}
+						JOptionPane.showMessageDialog(null, "Actualizacion exitosa, reiniciando. . .", "Alerta",
+								JOptionPane.INFORMATION_MESSAGE);
+						// reinicio
+						utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
+						dispose();
+						VentanaLogin VL = new VentanaLogin();
+						VL.setVisible(true);
 					} else {
 						JOptionPane.showMessageDialog(null, "Esa contraseña no es valida / operacion cancelada.",
 								"Error", JOptionPane.ERROR_MESSAGE);
@@ -398,183 +388,139 @@ public class VentanaPrincipal extends JFrame {
 					JOptionPane.showMessageDialog(null, "Esa contraseña no es valida / operacion cancelada.", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
+			} else {
+				JOptionPane.showMessageDialog(null, "Esa contraseña no es valida / operacion cancelada.", "Error",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		});
 
-		miCerrarSesion.addActionListener(new ActionListener() {
+		miCerrarSesion.addActionListener(arg0 -> {
+			utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
+			dispose();
+			VentanaLogin VL = new VentanaLogin();
+			VL.setVisible(true);
+		});
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
+		miRecordarContrasena.addActionListener(arg0 -> dispose());
+
+		miDescargaDatos.addActionListener(e -> {
+			try {
+				hiloTablas.join();
+				VentanaDescargar VD = new VentanaDescargar(tablas);
+				VD.setVisible(true);
+			} catch (Exception e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+				e1.printStackTrace();
+			}
+		});
+
+		miEliminarCuenta.addActionListener(arg0 -> {
+			int result = JOptionPane.showConfirmDialog(null, "Estas segur@? Es irreversible.", "Eliminar cuenta",
+					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+			if (result == JOptionPane.YES_OPTION) {
+				try {
+					database.DBManager.eliminarUsuario(utils.PropertiesMetodos.getProp1());
+				} catch (DBManagerException e) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+					e.printStackTrace();
+				}
 				utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
 				dispose();
-				VentanaLogin VL = new VentanaLogin();
-				VL.setVisible(true);
 			}
 		});
 
-		miRecordarContrasena.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				dispose();
+		miConfigurarOtraCuenta.addActionListener(e -> {
+			try {
+				hiloCorreos.join();
+				VentanaConfigurarOtraCuenta VA1 = new VentanaConfigurarOtraCuenta(listaCorreos);
+				VA1.setVisible(true);
+			} catch (Exception e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+				e1.printStackTrace();
 			}
 		});
 
-		miDescargaDatos.addActionListener(new ActionListener() {
+		miCambiarDatos.addActionListener(e -> {
+			// VentanaCambiarDatos VCD = new VentanaCambiarDatos();
+			// VCD.setVisible(true);
+			VentanaCambiarDatos_2 VCDP = new VentanaCambiarDatos_2();
+			VCDP.setVisible(true);
+		});
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					hiloTablas.join();
-					VentanaDescargar VD = new VentanaDescargar(tablas);
-					VD.setVisible(true);
-				} catch (Exception e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-					e1.printStackTrace();
-				}
+		miMandarCorreo.addActionListener(e -> {
+			try {
+				hiloCorreos.join();
+				VentanaMandarCorreo VMC = new VentanaMandarCorreo(listaCorreos);
+				VMC.setVisible(true);
+			} catch (InterruptedException e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+				e1.printStackTrace();
 			}
 		});
 
-		miEliminarCuenta.addActionListener(new ActionListener() {
+		miFeedback.addActionListener(arg0 -> {
+			VentanaFeedback VF = new VentanaFeedback();
+			VF.setVisible(true);
+		});
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				int result = JOptionPane.showConfirmDialog(null, "Estas segur@? Es irreversible.", "Eliminar cuenta",
-						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-				if (result == JOptionPane.YES_OPTION) {
+		miEstadisticas.addActionListener(arg0 -> {
+			VentanaEstadisticas VE = new VentanaEstadisticas();
+			VE.setVisible(true);
+		});
+
+		miVotar.addActionListener(e -> {
+
+			// prepararVentanaVotar();
+
+			Thread hiloVentana = new Thread() {
+				@Override
+				public void run() {
 					try {
-						database.DBManager.eliminarUsuario(utils.PropertiesMetodos.getProp1());
-					} catch (DBManagerException e) {
+						hiloDelantero.join();
+						hiloCentrocampista.join();
+						hiloDefensa.join();
+						hiloPortero.join();
+						setCursor(new Cursor(Cursor.WAIT_CURSOR));
+						VentanaVotar VV = new VentanaVotar(arrayDelantero, arrayCentrocampista, arrayDefensa,
+								arrayPortero);
+						VV.setVisible(true);
+						setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+					} catch (InterruptedException e) {
 						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
 						e.printStackTrace();
 					}
-					utils.PropertiesMetodos.setProp("ejemplo@gmail.com", "12345");
-					dispose();
 				}
-			}
+			};
+			hiloVentana.start();
 
 		});
 
-		miConfigurarOtraCuenta.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
+		miVerEquipo.addActionListener(e -> {
+			setCursor(new Cursor(Cursor.WAIT_CURSOR));
+			// try {
+			// actualiza el numero de votos de cada jugador
+			// database.DBManager.actualizarVotos();
+			// actualiza el teamoftheyear
+			// database.DBManager.toft();
+			// } catch (DBManagerException e1) {
+			// mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+			// e1.printStackTrace();
+			// }
+			try {
+				hiloInit_4.join();
 				try {
-					hiloCorreos.join();
-					VentanaConfigurarOtraCuenta VA1 = new VentanaConfigurarOtraCuenta(listaCorreos);
-					VA1.setVisible(true);
-				} catch (Exception e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-					e1.printStackTrace();
+					equipoDelAno = DBManager.toftNombres();
+				} catch (DBManagerException e11) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e11.toString());
+					e11.printStackTrace();
 				}
+				VentanaTeamOfTheYear VTOFT = new VentanaTeamOfTheYear(equipoDelAno);
+				VTOFT.setVisible(true);
+			} catch (InterruptedException e12) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e12.toString());
+				e12.printStackTrace();
 			}
-		});
-
-		miCambiarDatos.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// VentanaCambiarDatos VCD = new VentanaCambiarDatos();
-				// VCD.setVisible(true);
-				VentanaCambiarDatos_2 VCDP = new VentanaCambiarDatos_2();
-				VCDP.setVisible(true);
-			}
-		});
-
-		miMandarCorreo.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					hiloCorreos.join();
-					VentanaMandarCorreo VMC = new VentanaMandarCorreo(listaCorreos);
-					VMC.setVisible(true);
-				} catch (InterruptedException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-					e1.printStackTrace();
-				}
-			}
-		});
-
-		miFeedback.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				VentanaFeedback VF = new VentanaFeedback();
-				VF.setVisible(true);
-			}
-		});
-
-		miEstadisticas.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				VentanaEstadisticas VE = new VentanaEstadisticas();
-				VE.setVisible(true);
-			}
-		});
-
-		miVotar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				// prepararVentanaVotar();
-
-				Thread hiloVentana = new Thread() {
-					@Override
-					public void run() {
-						try {
-							hiloDelantero.join();
-							hiloCentrocampista.join();
-							hiloDefensa.join();
-							hiloPortero.join();
-							setCursor(new Cursor(Cursor.WAIT_CURSOR));
-							VentanaVotar VV = new VentanaVotar(arrayDelantero, arrayCentrocampista, arrayDefensa,
-									arrayPortero);
-							VV.setVisible(true);
-							setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-						} catch (InterruptedException e) {
-							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-							e.printStackTrace();
-						}
-					}
-				};
-				hiloVentana.start();
-
-			}
-		});
-
-		miVerEquipo.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setCursor(new Cursor(Cursor.WAIT_CURSOR));
-				// try {
-				// actualiza el numero de votos de cada jugador
-				// database.DBManager.actualizarVotos();
-				// actualiza el teamoftheyear
-				// database.DBManager.toft();
-				// } catch (DBManagerException e1) {
-				// mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-				// e1.printStackTrace();
-				// }
-				try {
-					hiloInit_4.join();
-					try {
-						equipoDelAno = DBManager.toftNombres();
-					} catch (DBManagerException e1) {
-						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-						e1.printStackTrace();
-					}
-					VentanaTeamOfTheYear VTOFT = new VentanaTeamOfTheYear(equipoDelAno);
-					VTOFT.setVisible(true);
-				} catch (InterruptedException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-				}
-				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-			}
+			setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		});
 
 		this.addWindowListener(new WindowAdapter() {
@@ -755,17 +701,14 @@ public class VentanaPrincipal extends JFrame {
 		botonVerEquipo.setFocusable(false);
 		add(botonVerEquipo);
 
-		botonVerEquipo.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					VentanaEquipo ve = new VentanaEquipo(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
-					ve.setVisible(true);
-					dispose();
-				} catch (Exception e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					JOptionPane.showMessageDialog(frame, "Seleccione un equipo");
-				}
+		botonVerEquipo.addActionListener(e -> {
+			try {
+				VentanaEquipo ve = new VentanaEquipo(arrayResultado.get(bookPanel.getSelectedIndex()), usuario);
+				ve.setVisible(true);
+				dispose();
+			} catch (Exception e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				JOptionPane.showMessageDialog(frame, "Seleccione un equipo");
 			}
 		});
 

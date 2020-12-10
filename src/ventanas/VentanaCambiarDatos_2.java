@@ -2,8 +2,6 @@ package ventanas;
 
 import java.awt.Insets;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.util.Arrays;
@@ -200,42 +198,32 @@ public class VentanaCambiarDatos_2 extends JFrame {
 		sp.setBounds(10, 10, 560, 150);
 		getContentPane().add(sp);
 
-		buscarTabla.addActionListener(new ActionListener() {
+		buscarTabla.addActionListener(e -> refrescarJTable());
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				refrescarJTable();
-			}
-		});
+		btnCambiarDato.addActionListener(e -> {
+			if (// !textArea1.getText().equals(null) &&
+				// !textArea1.getText().equals("") &&
+			(jt.getSelectionModel().isSelectionEmpty() == false)) {
+				try {
+					tabla = jcbTablas.getSelectedItem().toString();
+					String columna = jt.getColumnName(jt.getSelectedColumn());
 
-		btnCambiarDato.addActionListener(new ActionListener() {
+					Object valor = jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
+					// Object valor = textArea1.getText();
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (// !textArea1.getText().equals(null) &&
-					// !textArea1.getText().equals("") &&
-				(jt.getSelectionModel().isSelectionEmpty() == false)) {
-					try {
-						tabla = jcbTablas.getSelectedItem().toString();
-						String columna = jt.getColumnName(jt.getSelectedColumn());
+					int id = Integer.parseInt((String) jt.getValueAt(jt.getSelectedRow(), 0));
+					database.DBManager.cambiarDatosDesdeJTable(tabla, columna, valor, id);
 
-						Object valor = jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
-						// Object valor = textArea1.getText();
-
-						int id = Integer.parseInt((String) jt.getValueAt(jt.getSelectedRow(), 0));
-						database.DBManager.cambiarDatosDesdeJTable(tabla, columna, valor, id);
-
-						JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Informacion",
-								JOptionPane.INFORMATION_MESSAGE);
-					} catch (DBManagerException e1) {
-						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-						JOptionPane.showMessageDialog(null, "No se acepta el valor introducido.", "Alert",
-								JOptionPane.WARNING_MESSAGE);
-					}
-				} else {
+					JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Informacion",
+							JOptionPane.INFORMATION_MESSAGE);
+				} catch (DBManagerException e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					JOptionPane.showMessageDialog(null, "No se acepta el valor introducido.", "Alert",
 							JOptionPane.WARNING_MESSAGE);
 				}
+			} else {
+				JOptionPane.showMessageDialog(null, "No se acepta el valor introducido.", "Alert",
+						JOptionPane.WARNING_MESSAGE);
 			}
 		});
 
@@ -250,88 +238,74 @@ public class VentanaCambiarDatos_2 extends JFrame {
 			}
 		});
 
-		btnInsertarFila.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					refrescarJTable();
-					tabla = jcbTablas.getSelectedItem().toString();
-					idMasBajo = DBManager.idMasBajoSinUsar(tabla);
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-				}
-
-				model = new DefaultTableModel(data, objects);
-				model.addRow(new Object[] { idMasBajo });
-				jt.setModel(model);
+		btnInsertarFila.addActionListener(e -> {
+			try {
+				refrescarJTable();
+				tabla = jcbTablas.getSelectedItem().toString();
+				idMasBajo = DBManager.idMasBajoSinUsar(tabla);
+			} catch (DBManagerException e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				e1.printStackTrace();
 			}
+
+			model = new DefaultTableModel(data, objects);
+			model.addRow(new Object[] { idMasBajo });
+			jt.setModel(model);
 		});
 
-		btnGuardar.addActionListener(new ActionListener() {
+		btnGuardar.addActionListener(e -> {
+			try {
+				tabla = jcbTablas.getSelectedItem().toString();
+				idMasBajo = DBManager.idMasBajoSinUsar(tabla);
+				nrows = idMasBajo - 1;
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					tabla = jcbTablas.getSelectedItem().toString();
-					idMasBajo = DBManager.idMasBajoSinUsar(tabla);
-					nrows = idMasBajo - 1;
-
-					if (tabla.equals("ciudad")) {
-						DBManager.nuevaCiudad(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
-								jt.getValueAt(nrows, 6));
-					} else if (tabla.equals("club")) {
-						DBManager.nuevoClub(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
-								jt.getValueAt(nrows, 6));
-					} else if (tabla.equals("entrenador")) {
-						DBManager.nuevoEntrenador(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
-								jt.getValueAt(nrows, 6));
-					} else if (tabla.equals("estadio")) {
-						DBManager.nuevoEstadio(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4));
-					} else if (tabla.equals("feedback")) {
-						DBManager.nuevoFeedback(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4));
-					} else if (tabla.equals("jugador")) {
-						DBManager.nuevoJugador(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
-								jt.getValueAt(nrows, 6), jt.getValueAt(nrows, 7), jt.getValueAt(nrows, 8),
-								jt.getValueAt(nrows, 9), jt.getValueAt(nrows, 10), jt.getValueAt(nrows, 11),
-								jt.getValueAt(nrows, 12), jt.getValueAt(nrows, 13));
-					} else if (tabla.equals("pais")) {
-						DBManager.nuevoPais(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4));
-					} else if (tabla.equals("usuario")) {
-						DBManager.nuevoUsuario(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5));
-					} else if (tabla.equals("usuariovotacion")) {
-						DBManager.nuevoUsuarioVotacion(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
-								jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5));
-					} else {
-						JOptionPane.showMessageDialog(null, "Esta tabla no se deberia cambiar.", "Error",
-								JOptionPane.ERROR_MESSAGE);
-					}
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "No puede haber ninguna celda vacia.", "Error",
+				if (tabla.equals("ciudad")) {
+					DBManager.nuevaCiudad(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+							jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
+							jt.getValueAt(nrows, 6));
+				} else if (tabla.equals("club")) {
+					DBManager.nuevoClub(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+							jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
+							jt.getValueAt(nrows, 6));
+				} else if (tabla.equals("entrenador")) {
+					DBManager.nuevoEntrenador(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+							jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
+							jt.getValueAt(nrows, 6));
+				} else if (tabla.equals("estadio")) {
+					DBManager.nuevoEstadio(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+							jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4));
+				} else if (tabla.equals("feedback")) {
+					DBManager.nuevoFeedback(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+							jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4));
+				} else if (tabla.equals("jugador")) {
+					DBManager.nuevoJugador(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+							jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5),
+							jt.getValueAt(nrows, 6), jt.getValueAt(nrows, 7), jt.getValueAt(nrows, 8),
+							jt.getValueAt(nrows, 9), jt.getValueAt(nrows, 10), jt.getValueAt(nrows, 11),
+							jt.getValueAt(nrows, 12), jt.getValueAt(nrows, 13));
+				} else if (tabla.equals("pais")) {
+					DBManager.nuevoPais(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+							jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4));
+				} else if (tabla.equals("usuario")) {
+					DBManager.nuevoUsuario(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+							jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5));
+				} else if (tabla.equals("usuariovotacion")) {
+					DBManager.nuevoUsuarioVotacion(idMasBajo, jt.getValueAt(nrows, 1), jt.getValueAt(nrows, 2),
+							jt.getValueAt(nrows, 3), jt.getValueAt(nrows, 4), jt.getValueAt(nrows, 5));
+				} else {
+					JOptionPane.showMessageDialog(null, "Esta tabla no se deberia cambiar.", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
-				refrescarJTable();
+			} catch (DBManagerException e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "No puede haber ninguna celda vacia.", "Error",
+						JOptionPane.ERROR_MESSAGE);
 			}
+			refrescarJTable();
 		});
 
-		btnEliminarFila.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				eliminar();
-			}
-		});
+		btnEliminarFila.addActionListener(e -> eliminar());
 
 	}
 

@@ -3,8 +3,6 @@ package ventanas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
@@ -69,21 +67,18 @@ public class VentanaJugador extends JFrame {
 		navBarPanel.add(btnAtras);
 		btnAtras.setFocusable(false);
 
-		btnAtras.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaJugadores v1 = null;
-				try {
-					List<String> arrayJugadores = null;
-					v1 = new VentanaJugadores(arrayJugadores, club, u);
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-				}
-				v1.setVisible(true);
-				dispose();
-
+		btnAtras.addActionListener(e -> {
+			VentanaJugadores v1 = null;
+			try {
+				List<String> arrayJugadores = null;
+				v1 = new VentanaJugadores(arrayJugadores, club, u);
+			} catch (DBManagerException e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				e1.printStackTrace();
 			}
+			v1.setVisible(true);
+			dispose();
+
 		});
 
 		final JPanel atrasPanel = new JPanel();

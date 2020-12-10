@@ -3,8 +3,6 @@ package ventanas;
 import java.awt.Color;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -165,48 +163,36 @@ public class VentanaLogin extends JFrame {
 		});
 		// =====
 
-		checkContrasena.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (checkContrasena.isSelected() == true) {
-					txtPassword.setEchoChar((char) 0);
-				} else {
-					txtPassword.setEchoChar('•');
-				}
+		checkContrasena.addActionListener(e -> {
+			if (checkContrasena.isSelected() == true) {
+				txtPassword.setEchoChar((char) 0);
+			} else {
+				txtPassword.setEchoChar('•');
 			}
 		});
 
-		btnRegistrar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaRegistro VR = new VentanaRegistro();
-				VR.setVisible(true);
-				dispose();
-			}
+		btnRegistrar.addActionListener(e -> {
+			VentanaRegistro VR = new VentanaRegistro();
+			VR.setVisible(true);
+			dispose();
 		});
 
-		btnAceptar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String passw = new String(txtPassword.getPassword());
-				try {
-					if (database.DBManager.login(txtCorreo.getText(), passw) == true) {
-						utils.PropertiesMetodos.setProp(txtCorreo.getText(), passw);
-						VentanaPrincipal VP = new VentanaPrincipal(usuario);
-						VP.setVisible(true);
-						dispose();
-					}
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos.", "Alert",
-							JOptionPane.WARNING_MESSAGE);
+		btnAceptar.addActionListener(e -> {
+			String passw = new String(txtPassword.getPassword());
+			try {
+				if (database.DBManager.login(txtCorreo.getText(), passw) == true) {
+					utils.PropertiesMetodos.setProp(txtCorreo.getText(), passw);
+					VentanaPrincipal VP = new VentanaPrincipal(usuario);
+					VP.setVisible(true);
+					dispose();
 				}
-
+			} catch (DBManagerException e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos.", "Alert",
+						JOptionPane.WARNING_MESSAGE);
 			}
+
 		});
 
 		this.addWindowListener(new WindowAdapter() {

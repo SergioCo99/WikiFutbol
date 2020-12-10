@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -107,59 +105,55 @@ public class VentanaVotar extends JFrame {
 		add(jcbPortero);
 		add(btnVotar);
 
-		btnVotar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setCursor(new Cursor(Cursor.WAIT_CURSOR));
-				votacion = new Thread() {
-					@Override
-					public void run() {
-						try {
-							// id del usuario que vota,lo obtenemos mediante account.properties
-							int id = database.DBManager.getIdUsuario(utils.PropertiesMetodos.getProp1());
-							// id del delantero votado,lo obtenemos mediante su nombre
-							String j1 = jcbDelantero.getSelectedItem().toString();
-							int idj1 = database.DBManager.getIdJugador(j1);
-							// id del centrocampista votado,lo obtenemos mediante su nombre
-							String j2 = jcbCentrocampista.getSelectedItem().toString();
-							int idj2 = database.DBManager.getIdJugador(j2);
-							// id del defensa votado,lo obtenemos mediante su nombre
-							String j3 = jcbDefensa.getSelectedItem().toString();
-							int idj3 = database.DBManager.getIdJugador(j3);
-							// id del portero votado,lo obtenemos mediante su nombre
-							String j4 = jcbPortero.getSelectedItem().toString();
-							int idj4 = database.DBManager.getIdJugador(j4);
-							// metodo para votar
-							database.DBManager.votar(id, idj1, idj2, idj3, idj4);
-						} catch (DBManagerException e) {
-							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-							e.printStackTrace();
-						}
+		btnVotar.addActionListener(e -> {
+			setCursor(new Cursor(Cursor.WAIT_CURSOR));
+			votacion = new Thread() {
+				@Override
+				public void run() {
+					try {
+						// id del usuario que vota,lo obtenemos mediante account.properties
+						int id = database.DBManager.getIdUsuario(utils.PropertiesMetodos.getProp1());
+						// id del delantero votado,lo obtenemos mediante su nombre
+						String j1 = jcbDelantero.getSelectedItem().toString();
+						int idj1 = database.DBManager.getIdJugador(j1);
+						// id del centrocampista votado,lo obtenemos mediante su nombre
+						String j2 = jcbCentrocampista.getSelectedItem().toString();
+						int idj2 = database.DBManager.getIdJugador(j2);
+						// id del defensa votado,lo obtenemos mediante su nombre
+						String j3 = jcbDefensa.getSelectedItem().toString();
+						int idj3 = database.DBManager.getIdJugador(j3);
+						// id del portero votado,lo obtenemos mediante su nombre
+						String j4 = jcbPortero.getSelectedItem().toString();
+						int idj4 = database.DBManager.getIdJugador(j4);
+						// metodo para votar
+						database.DBManager.votar(id, idj1, idj2, idj3, idj4);
+					} catch (DBManagerException e) {
+						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+						e.printStackTrace();
 					}
-				};
-				votacion.start();
+				}
+			};
+			votacion.start();
 
-				update = new Thread() {
-					@Override
-					public void run() {
-						try {
-							votacion.join();
-							// actualiza el numero de votos de cada jugador
-							database.DBManager.actualizarVotos();
-							// actualiza el teamoftheyear
-							database.DBManager.toft();
-						} catch (DBManagerException | InterruptedException e) {
-							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-							e.printStackTrace();
-						}
+			update = new Thread() {
+				@Override
+				public void run() {
+					try {
+						votacion.join();
+						// actualiza el numero de votos de cada jugador
+						database.DBManager.actualizarVotos();
+						// actualiza el teamoftheyear
+						database.DBManager.toft();
+					} catch (DBManagerException | InterruptedException e) {
+						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+						e.printStackTrace();
 					}
-				};
-				update.start();
+				}
+			};
+			update.start();
 
-				dispose();
-				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-			}
+			dispose();
+			setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		});
 
 	}

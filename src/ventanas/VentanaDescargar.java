@@ -1,8 +1,6 @@
 package ventanas;
 
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -103,26 +101,21 @@ public class VentanaDescargar extends JFrame {
 		getContentPane().add(cbBaseDeDatos);
 		getContentPane().add(cbClases);
 
-		btnDescargar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if ((listaTablas.isSelectionEmpty() == false) && (bg1.getSelection() != null)) {
-					try {
-						if (cbBaseDeDatos.isSelected()) {
-							AdvancedDb2CsvExporter.export(listaTablas.getSelectedValue().toString());
-						} else if (cbClases.isSelected()) {
-							AdvancedDb2CsvExporter.classesExport(listaTablas.getSelectedValue().toString());
-						}
-						JOptionPane.showMessageDialog(null, "Se ha descargado correctamente.");
-					} catch (Exception e1) {
-						mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-						e1.printStackTrace();
+		btnDescargar.addActionListener(e -> {
+			if ((listaTablas.isSelectionEmpty() == false) && (bg1.getSelection() != null)) {
+				try {
+					if (cbBaseDeDatos.isSelected()) {
+						AdvancedDb2CsvExporter.export(listaTablas.getSelectedValue().toString());
+					} else if (cbClases.isSelected()) {
+						AdvancedDb2CsvExporter.classesExport(listaTablas.getSelectedValue().toString());
 					}
-				} else {
-					JOptionPane.showMessageDialog(null, "No se ha descargado nada.", "Alert",
-							JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Se ha descargado correctamente.");
+				} catch (Exception e1) {
+					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+					e1.printStackTrace();
 				}
+			} else {
+				JOptionPane.showMessageDialog(null, "No se ha descargado nada.", "Alert", JOptionPane.WARNING_MESSAGE);
 			}
 		});
 

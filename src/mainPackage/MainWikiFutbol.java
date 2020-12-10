@@ -101,25 +101,19 @@ public class MainWikiFutbol {
 			e.printStackTrace();
 		}
 
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				VentanaLogin VL = new VentanaLogin();
-				VL.setVisible(true);
-			}
+		SwingUtilities.invokeLater(() -> {
+			VentanaLogin VL = new VentanaLogin();
+			VL.setVisible(true);
 		});
 
-		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("JVM shutting down, closing Unirest");
-				try {
-					// desconexion
-					DBManager.disconnect();
-				} catch (DBManagerException e) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-					e.printStackTrace();
-				}
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+			System.out.println("JVM shutting down, closing Unirest");
+			try {
+				// desconexion
+				DBManager.disconnect();
+			} catch (DBManagerException e) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
+				e.printStackTrace();
 			}
 		}));
 	}

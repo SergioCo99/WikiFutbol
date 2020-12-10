@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -71,19 +69,16 @@ public class VentanaEquipo extends JFrame {
 		navBarPanel.add(btnAtras);
 		btnAtras.setFocusable(false);
 
-		btnAtras.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal v1 = null;
-				try {
-					v1 = new VentanaPrincipal(u);
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-				}
-				v1.setVisible(true);
-				dispose();
+		btnAtras.addActionListener(e -> {
+			VentanaPrincipal v1 = null;
+			try {
+				v1 = new VentanaPrincipal(u);
+			} catch (DBManagerException e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				e1.printStackTrace();
 			}
+			v1.setVisible(true);
+			dispose();
 		});
 
 		final JPanel atrasPanel = new JPanel();
@@ -152,20 +147,17 @@ public class VentanaEquipo extends JFrame {
 		botonCiudad.setFocusable(false);
 		bookPanel.add(botonCiudad);
 
-		botonCiudad.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					System.out.println(nombreCiudad);
-					VentanaCiudad ve = new VentanaCiudad(nombreCiudad, club, u);
-					ve.setVisible(true);
-					dispose();
-				} catch (Exception e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					JOptionPane.showMessageDialog(frame, "Esta ciudad no existe");
-				}
-
+		botonCiudad.addActionListener(e -> {
+			try {
+				System.out.println(nombreCiudad);
+				VentanaCiudad ve = new VentanaCiudad(nombreCiudad, club, u);
+				ve.setVisible(true);
+				dispose();
+			} catch (Exception e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				JOptionPane.showMessageDialog(frame, "Esta ciudad no existe");
 			}
+
 		});
 		// EstadioEquipo
 		final JLabel labelEstadio = new JLabel("Estadio: ");
@@ -184,20 +176,17 @@ public class VentanaEquipo extends JFrame {
 		botonEquipo.setFocusable(false);
 		bookPanel.add(botonEquipo);
 
-		botonEquipo.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					System.out.println(estadioEquipo);
-					VentanaEstadio ve = new VentanaEstadio(estadioEquipo, club, u);
-					ve.setVisible(true);
-					dispose();
-				} catch (Exception e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					JOptionPane.showMessageDialog(frame, "Este estadio no existe");
-				}
-
+		botonEquipo.addActionListener(e -> {
+			try {
+				System.out.println(estadioEquipo);
+				VentanaEstadio ve = new VentanaEstadio(estadioEquipo, club, u);
+				ve.setVisible(true);
+				dispose();
+			} catch (Exception e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				JOptionPane.showMessageDialog(frame, "Este estadio no existe");
 			}
+
 		});
 
 		// AnyoCreacion
@@ -249,20 +238,17 @@ public class VentanaEquipo extends JFrame {
 		botonEntrenador.setFocusable(false);
 		bookPanel.add(botonEntrenador);
 
-		botonEntrenador.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					System.out.println(nombreEntrenador);
-					VentanaEntrenador ve = new VentanaEntrenador(nombreEntrenador, club, u);
-					ve.setVisible(true);
-					dispose();
-				} catch (Exception e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					JOptionPane.showMessageDialog(frame, "Este entrenador no existe");
-				}
-
+		botonEntrenador.addActionListener(e -> {
+			try {
+				System.out.println(nombreEntrenador);
+				VentanaEntrenador ve = new VentanaEntrenador(nombreEntrenador, club, u);
+				ve.setVisible(true);
+				dispose();
+			} catch (Exception e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				JOptionPane.showMessageDialog(frame, "Este entrenador no existe");
 			}
+
 		});
 
 		JLabelGraficoAjustado fotoEquipo = new JLabelGraficoAjustado("resources/logo1.png", 170, 175);
@@ -281,19 +267,16 @@ public class VentanaEquipo extends JFrame {
 		bookPanel.add(btnPlantilla);
 		btnPlantilla.setFocusable(false);
 
-		btnPlantilla.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					List<String> arrayJugadores = new ArrayList<String>();
-					arrayJugadores = DBManager.getJugadoresPorEquipo(nombreEquipo);
-					VentanaJugadores ve = new VentanaJugadores(arrayJugadores, club, u);
-					ve.setVisible(true);
-					dispose();
-				} catch (Exception e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					JOptionPane.showMessageDialog(frame, "Este entrenador no existe");
-				}
+		btnPlantilla.addActionListener(e -> {
+			try {
+				List<String> arrayJugadores = new ArrayList<String>();
+				arrayJugadores = DBManager.getJugadoresPorEquipo(nombreEquipo);
+				VentanaJugadores ve = new VentanaJugadores(arrayJugadores, club, u);
+				ve.setVisible(true);
+				dispose();
+			} catch (Exception e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				JOptionPane.showMessageDialog(frame, "Este entrenador no existe");
 			}
 		});
 

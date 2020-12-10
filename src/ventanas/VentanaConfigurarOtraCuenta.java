@@ -1,8 +1,6 @@
 package ventanas;
 
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -81,36 +79,32 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 		lblOpciones.setBounds(106, 10, 120, 13);
 		getContentPane().add(lblOpciones);
 
-		btnEjecutar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					if ((cbHacerAdmin.isSelected() == true)
-							&& ((cbQuitarAdmin.isSelected() == false) & (cbBorrarCuenta.isSelected() == false))) {
-						database.DBManager.cambiarAdmin(jcbCorreos.getSelectedItem().toString(), 1);
-						JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Configurar otra cuenta",
-								JOptionPane.INFORMATION_MESSAGE);
-					} else if ((cbHacerAdmin.isSelected() == false)
-							&& ((cbQuitarAdmin.isSelected() == true) & (cbBorrarCuenta.isSelected() == false))) {
-						database.DBManager.cambiarAdmin(jcbCorreos.getSelectedItem().toString(), 0);
-						JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Configurar otra cuenta",
-								JOptionPane.INFORMATION_MESSAGE);
-					} else if ((cbHacerAdmin.isSelected() == false)
-							&& ((cbQuitarAdmin.isSelected() == false) & (cbBorrarCuenta.isSelected() == true))) {
-						database.DBManager.eliminarUsuario(jcbCorreos.getSelectedItem().toString());
-						JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Configurar otra cuenta",
-								JOptionPane.INFORMATION_MESSAGE);
-					} else {
-						JOptionPane.showMessageDialog(null, "Selecciona una opcion.", "Configurar otra cuenta",
-								JOptionPane.ERROR_MESSAGE);
-					}
-				} catch (DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Error inesperado.", "Configurar otra cuenta",
+		btnEjecutar.addActionListener(e -> {
+			try {
+				if ((cbHacerAdmin.isSelected() == true)
+						&& ((cbQuitarAdmin.isSelected() == false) & (cbBorrarCuenta.isSelected() == false))) {
+					database.DBManager.cambiarAdmin(jcbCorreos.getSelectedItem().toString(), 1);
+					JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Configurar otra cuenta",
+							JOptionPane.INFORMATION_MESSAGE);
+				} else if ((cbHacerAdmin.isSelected() == false)
+						&& ((cbQuitarAdmin.isSelected() == true) & (cbBorrarCuenta.isSelected() == false))) {
+					database.DBManager.cambiarAdmin(jcbCorreos.getSelectedItem().toString(), 0);
+					JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Configurar otra cuenta",
+							JOptionPane.INFORMATION_MESSAGE);
+				} else if ((cbHacerAdmin.isSelected() == false)
+						&& ((cbQuitarAdmin.isSelected() == false) & (cbBorrarCuenta.isSelected() == true))) {
+					database.DBManager.eliminarUsuario(jcbCorreos.getSelectedItem().toString());
+					JOptionPane.showMessageDialog(null, "Cambio realizado con exito.", "Configurar otra cuenta",
+							JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "Selecciona una opcion.", "Configurar otra cuenta",
 							JOptionPane.ERROR_MESSAGE);
 				}
+			} catch (DBManagerException e1) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
+				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Error inesperado.", "Configurar otra cuenta",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		});
 

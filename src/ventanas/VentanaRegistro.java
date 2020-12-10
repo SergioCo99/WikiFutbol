@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -134,66 +132,55 @@ public class VentanaRegistro extends JFrame {
 		getContentPane().add(calendar);
 		getContentPane().add(checkContrasena);
 
-		btnRegistrar.addActionListener(new ActionListener() {
+		btnRegistrar.addActionListener(e -> {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				try {
-					if (txtUsuario.getText().equals("") || txtPassword.getPassword().toString().equals("")
-							|| txtPasswordRep.getPassword().toString().equals("") || txtCorreo.getText().equals("")
-							|| txtUsuario.getText().equals(null) || txtPassword.getPassword().equals(null)
-							|| txtPasswordRep.getPassword().equals(null) || txtCorreo.getText().equals(null)
-							|| !txtUsuario.getText()
-									.matches("^(?=.{1,45}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$")
-							|| !txtCorreo.getText().matches(
-									"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
-							|| (database.DBManager.existeCorreo2(txtCorreo.getText()) == true)) {
-						JOptionPane.showMessageDialog(null, "Rellena todos los campos adecuadamente.");
-					} else {
-						if (Arrays.equals(txtPassword.getPassword(), txtPasswordRep.getPassword())) {
-							try {
-								database.DBManager.registrarUsuario(txtUsuario.getText(), txtCorreo.getText(),
-										String.valueOf(txtPassword.getPassword()),
-										formatter.format(calendar.getDate()));
-							} catch (DBManagerException e1) {
-								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-								e1.printStackTrace();
-							}
-							utils.PropertiesMetodos.setProp(txtCorreo.getText(),
-									String.valueOf(txtPassword.getPassword()));
-
-							dispose();
-							VentanaPrincipal VP = null;
-							try {
-								VP = new VentanaPrincipal(usuario);
-							} catch (DBManagerException e1) {
-								mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-								e1.printStackTrace();
-							}
-							VP.setVisible(true);
-						} else {
-							JOptionPane.showMessageDialog(null, "Las contrasenas no coinciden");
+			try {
+				if (txtUsuario.getText().equals("") || txtPassword.getPassword().toString().equals("")
+						|| txtPasswordRep.getPassword().toString().equals("") || txtCorreo.getText().equals("")
+						|| txtUsuario.getText().equals(null) || txtPassword.getPassword().equals(null)
+						|| txtPasswordRep.getPassword().equals(null) || txtCorreo.getText().equals(null)
+						|| !txtUsuario.getText().matches("^(?=.{1,45}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$")
+						|| !txtCorreo.getText().matches(
+								"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+						|| (database.DBManager.existeCorreo2(txtCorreo.getText()) == true)) {
+					JOptionPane.showMessageDialog(null, "Rellena todos los campos adecuadamente.");
+				} else {
+					if (Arrays.equals(txtPassword.getPassword(), txtPasswordRep.getPassword())) {
+						try {
+							database.DBManager.registrarUsuario(txtUsuario.getText(), txtCorreo.getText(),
+									String.valueOf(txtPassword.getPassword()), formatter.format(calendar.getDate()));
+						} catch (DBManagerException e11) {
+							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e11.toString());
+							e11.printStackTrace();
 						}
+						utils.PropertiesMetodos.setProp(txtCorreo.getText(), String.valueOf(txtPassword.getPassword()));
+
+						dispose();
+						VentanaPrincipal VP = null;
+						try {
+							VP = new VentanaPrincipal(usuario);
+						} catch (DBManagerException e12) {
+							mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e12.toString());
+							e12.printStackTrace();
+						}
+						VP.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Las contrasenas no coinciden");
 					}
-				} catch (HeadlessException | DBManagerException e1) {
-					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-					e1.printStackTrace();
 				}
+			} catch (HeadlessException | DBManagerException e13) {
+				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e13.toString());
+				e13.printStackTrace();
 			}
 		});
 
-		checkContrasena.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (checkContrasena.isSelected() == true) {
-					txtPassword.setEchoChar((char) 0);
-					txtPasswordRep.setEchoChar((char) 0);
-				} else {
-					txtPassword.setEchoChar('•');
-					txtPasswordRep.setEchoChar('•');
-				}
+		checkContrasena.addActionListener(e -> {
+			if (checkContrasena.isSelected() == true) {
+				txtPassword.setEchoChar((char) 0);
+				txtPasswordRep.setEchoChar((char) 0);
+			} else {
+				txtPassword.setEchoChar('•');
+				txtPasswordRep.setEchoChar('•');
 			}
 		});
 
