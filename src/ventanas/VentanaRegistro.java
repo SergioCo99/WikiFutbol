@@ -35,7 +35,7 @@ public class VentanaRegistro extends JFrame {
 	private Usuario usuario;
 	private final SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
 	private JLabel lblUser, lblPass, lblPassRep, lblDate, lblCorreo;
-	private JButton btnRegistrar;
+	private JButton btnRegistrar, btnLogin;
 	private JTextField txtUsuario, txtCorreo;
 	private JPasswordField txtPassword, txtPasswordRep;
 	private JCalendar calendar;
@@ -62,50 +62,55 @@ public class VentanaRegistro extends JFrame {
 		// label añadir usuario
 		lblUser = new JLabel();
 		lblUser.setText("Introduce el nombre de usuario:");
-		lblUser.setBounds(100, 50, 300, 20);
+		lblUser.setBounds(80, 50, 300, 20);
 
 		// label añadir correo usuario
 		lblCorreo = new JLabel();
 		lblCorreo.setText("Introduce tu correo:");
-		lblCorreo.setBounds(100, 70, 300, 20);
+		lblCorreo.setBounds(80, 70, 300, 20);
 
 		// label añadir password
 		lblPass = new JLabel();
 		lblPass.setText("Introduce la contrase\u00f1a:");
-		lblPass.setBounds(100, 90, 300, 20);
+		lblPass.setBounds(80, 90, 300, 20);
 
 		// label repetir password
 		lblPassRep = new JLabel("Repetir contrase\u00f1a:");
-		lblPassRep.setBounds(100, 110, 300, 20);
+		lblPassRep.setBounds(80, 110, 300, 20);
 
 		// label añadir fech.nacimiento
 		lblDate = new JLabel();
 		lblDate.setText("Introduce tu fecha de nacimiento:");
-		lblDate.setBounds(100, 130, 300, 20);
+		lblDate.setBounds(80, 130, 300, 20);
 
 		// añadir usuario
 		txtUsuario = new JTextField();
-		txtUsuario.setBounds(300, 50, 200, 20);
+		txtUsuario.setBounds(300, 50, 230, 20);
 
 		// añadir correo usuario
 		txtCorreo = new JTextField();
-		txtCorreo.setBounds(300, 70, 200, 20);
+		txtCorreo.setBounds(300, 70, 230, 20);
 
 		// añadir password
 		txtPassword = new JPasswordField();
-		txtPassword.setBounds(300, 90, 200, 20);
+		txtPassword.setBounds(300, 90, 230, 20);
 
 		// repetir password
 		txtPasswordRep = new JPasswordField();
-		txtPasswordRep.setBounds(300, 110, 200, 20);
+		txtPasswordRep.setBounds(300, 110, 230, 20);
 
 		// registro
 		btnRegistrar = new JButton();
 		btnRegistrar.setText("Registrarse");
-		btnRegistrar.setBounds(240, 250, 120, 30);
+		btnRegistrar.setBounds(240, 300, 120, 30);
+		
+		btnLogin = new JButton();
+		btnLogin.setText("Ya tengo cuenta");
+		btnLogin.setLayout(null);
+		btnLogin.setBounds(220, 330, 160, 30);
 
 		calendar = new JCalendar();
-		calendar.setBounds(300, 130, 200, 100);
+		calendar.setBounds(300, 130, 230, 150);
 		try {
 			calendar.setSelectableDateRange(formatter.parse("1900-01-01") /* YYYY-MM-dd */, new Date());
 		} catch (ParseException e) {
@@ -129,6 +134,7 @@ public class VentanaRegistro extends JFrame {
 		getContentPane().add(lblDate);
 		getContentPane().add(lblCorreo);
 		getContentPane().add(btnRegistrar);
+		getContentPane().add(btnLogin);
 		getContentPane().add(calendar);
 		getContentPane().add(checkContrasena);
 
@@ -172,6 +178,15 @@ public class VentanaRegistro extends JFrame {
 				mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e13.toString());
 				e13.printStackTrace();
 			}
+		});
+		
+		btnLogin.addActionListener(e->{
+			
+			VentanaLogin v1 = null;
+			v1 = new VentanaLogin();
+			v1.setVisible(true);
+			dispose();
+			
 		});
 
 		checkContrasena.addActionListener(e -> {
