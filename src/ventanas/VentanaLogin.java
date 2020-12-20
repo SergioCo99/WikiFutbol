@@ -114,7 +114,7 @@ public class VentanaLogin extends JFrame {
 			}
 		});
 
-		// innecesario, por comodidad
+		// ""innecesario"", por comodidad
 		txtCorreo.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, Collections.emptySet());
 		txtCorreo.addKeyListener(new KeyAdapter() {
 
@@ -167,7 +167,7 @@ public class VentanaLogin extends JFrame {
 			if (checkContrasena.isSelected() == true) {
 				txtPassword.setEchoChar((char) 0);
 			} else {
-			txtPassword.setEchoChar('•');
+				txtPassword.setEchoChar('•');
 			}
 		});
 

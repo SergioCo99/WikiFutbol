@@ -198,7 +198,7 @@ public class VentanaFeedback extends JFrame {
 					mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
 					e1.printStackTrace();
 				}
-				dispose(); // si??? se cierra???
+				dispose();
 				JOptionPane.showMessageDialog(null, "Mandado correctamente.", "Dar Feedback",
 						JOptionPane.INFORMATION_MESSAGE);
 			} else if (bgEstrellas.isSelected(null) || bgRecomendacion.isSelected(null) || texto.getText().equals("")
@@ -210,26 +210,13 @@ public class VentanaFeedback extends JFrame {
 		botonAtras.addActionListener(e -> {
 			dispose();
 			hiloLetras.interrupt();
-			// hiloLetras.stop();
-			/*
-			 * try { hiloLetras.join(); } catch (InterruptedException e1) {
-			 * mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-			 * e1.printStackTrace(); }
-			 */
 		});
 
 		this.addWindowListener(new WindowAdapter() {
 
-			// @SuppressWarnings("deprecation")
 			@Override
 			public void windowClosing(WindowEvent e) {
 				hiloLetras.interrupt();
-				// hiloLetras.stop();
-				/*
-				 * try { hiloLetras.join(); } catch (InterruptedException e1) {
-				 * mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-				 * e1.printStackTrace(); }
-				 */
 			}
 		});
 

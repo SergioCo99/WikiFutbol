@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Metodos:
+ * Clase que contiene todos los metodos recursivos que se utilizan
  *
- * ordenarArrayStringRecursivo(String array[], int arrayLength) /////
- * ordenarListStringRecursivo(List list, int listSize) /////
- * binarySearchArrayStringRecursivo(String arr[], int left, int right, String
- * palabra) ///// binarySearchListStringRecursivo(List list, int left,
- * int right, String palabra)
+ * @author Eneko
+ *
  */
 public class MetodosRecursivos {
 

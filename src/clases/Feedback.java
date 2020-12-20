@@ -19,7 +19,10 @@ public class Feedback {
 	}
 
 	private int id;
-	private String usuario; // Nos referimos al correo, que es unico e identificara mejor al usuario
+	/**
+	 * Nos referimos al correo, que es unico e identificara mejor al usuario
+	 */
+	private String usuario;
 	private int valoracion;
 	private Recomendacion recomendacion;
 	private String opinion;

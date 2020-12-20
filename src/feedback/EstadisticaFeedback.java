@@ -33,8 +33,7 @@ public class EstadisticaFeedback {
 			throw new ArithmeticException("No puedes dividir por cero");
 		}
 		ans = a / b;
-		// System.out.println("Media de puntuacion: " + String.format("%.2f", ans) +
-		// "/5,00");
+
 		return ans;
 	}
 
@@ -52,11 +51,9 @@ public class EstadisticaFeedback {
 		}
 		double ans1 = a / c;
 		ans1 = ans1 * 100;
-		// System.out.println("Si: " + String.format("%.2f", ans1) + " %.");
 
 		double ans2 = b / c;
 		ans2 = ans2 * 100;
-		// System.out.println("No: " + String.format("%.2f", ans2) + " %.");
 
 		Map<Integer, Double> map = new HashMap<Integer, Double>();
 		map.put(0, ans1);

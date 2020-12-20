@@ -9,7 +9,10 @@ package clases;
 public class UsuarioVotacion {
 
 	private int id;
-	private String usuario; // Nos referimos al correo, que es unico e identificara mejor al usuario
+	/**
+	 * Nos referimos al correo, que es unico e identificara mejor al usuario
+	 */
+	private String usuario;
 	private String delantero;
 	private String centrocampista;
 	private String defensa;

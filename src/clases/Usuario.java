@@ -13,7 +13,10 @@ public class Usuario {
 	private String contrasena;
 	private String correo;
 	private int admin;
-	private String fechaNac; /* YYYY-MM-dd , por ejemplo "1990-06-25" */
+	/**
+	 * YYYY-MM-dd , por ejemplo "1990-06-25"
+	 */
+	private String fechaNac;
 
 	/**
 	 * Crea un usuario con sus respectivos atributos

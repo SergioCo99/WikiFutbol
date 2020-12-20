@@ -441,8 +441,6 @@ public class VentanaPrincipal extends JFrame {
 		});
 
 		miCambiarDatos.addActionListener(e -> {
-			// VentanaCambiarDatos VCD = new VentanaCambiarDatos();
-			// VCD.setVisible(true);
 			VentanaCambiarDatos_2 VCDP = new VentanaCambiarDatos_2();
 			VCDP.setVisible(true);
 		});
@@ -469,9 +467,6 @@ public class VentanaPrincipal extends JFrame {
 		});
 
 		miVotar.addActionListener(e -> {
-
-			// prepararVentanaVotar();
-
 			Thread hiloVentana = new Thread() {
 				@Override
 				public void run() {
@@ -497,15 +492,6 @@ public class VentanaPrincipal extends JFrame {
 
 		miVerEquipo.addActionListener(e -> {
 			setCursor(new Cursor(Cursor.WAIT_CURSOR));
-			// try {
-			// actualiza el numero de votos de cada jugador
-			// database.DBManager.actualizarVotos();
-			// actualiza el teamoftheyear
-			// database.DBManager.toft();
-			// } catch (DBManagerException e1) {
-			// mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
-			// e1.printStackTrace();
-			// }
 			try {
 				hiloInit_4.join();
 				try {

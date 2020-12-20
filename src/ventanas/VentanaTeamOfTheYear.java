@@ -36,15 +36,6 @@ public class VentanaTeamOfTheYear extends JFrame {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation((dim.width / 2) - (this.getSize().width / 2), (dim.height / 2) - (this.getSize().height / 2));
 
-		/*
-		 * String[] array = null; try { array = new
-		 * String[database.DBManager.toft().size()]; for (int i = 0; i < array.length;
-		 * i++) { array[i] = database.DBManager.toftNombres().get(i); } } catch
-		 * (DBManagerException e) {
-		 * mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
-		 * e.printStackTrace(); }
-		 */
-
 		// EI
 		lbl1 = new JLabel();
 		lbl1.setHorizontalAlignment(JLabel.CENTER);

@@ -71,7 +71,6 @@ public class VentanaDescargar extends JFrame {
 			Properties prop = utils.PropertiesMetodos.loadPropertiesFile();
 
 			String[] tablasProhibidas = null; // no dejamos descargar estas tablas por seguridad
-			// tablasProhibidas = { "usuario" }; // se escirben en el jdbc.properties
 			tablasProhibidas = prop.getProperty("DB.TABLASEXCLUIDAS").split(",");
 
 			listModel = new DefaultListModel<Object>();
@@ -83,7 +82,6 @@ public class VentanaDescargar extends JFrame {
 				for (int i = 0; i < tablas.size(); i++) {
 					String tabla = tablas.get(i);
 					if (tablasProhibidas[j].equals(tabla)) {
-						// listModel.remove(i);
 						listModel.removeElement(tabla);
 					}
 				}

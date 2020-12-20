@@ -1,8 +1,8 @@
 package clases;
 
-// es una clase basica de una VIEW, NO DE UNA TABLA!!! SOLO SE VE, NO SE ACTUALIZA!!! SOLO GETTERS!!!
 /**
- * Esta clase hace referencia al equipo del anyo
+ * Esta clase hace referencia al equipo del anyo \\\ es una clase basica de una
+ * VIEW, NO DE UNA TABLA!!! SOLO SE VE, NO SE ACTUALIZA!!! SOLO GETTERS!!!
  *
  * @author sergiolopez
  *

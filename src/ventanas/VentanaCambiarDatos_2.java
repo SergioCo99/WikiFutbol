@@ -49,10 +49,7 @@ public class VentanaCambiarDatos_2 extends JFrame {
 	public void refrescarJTable() {
 		tabla = jcbTablas.getSelectedItem().toString(); // !!!
 		try {
-			// for (int i = 1; i < (database.DBManager.verColumnas(tabla).size() + 1); i++)
-			// {
 			objects = database.DBManager.verColumnas(tabla).toArray();
-			// }
 			data = database.DBManager.data(tabla);
 		} catch (DBManagerException e1) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e1.toString());
@@ -141,9 +138,6 @@ public class VentanaCambiarDatos_2 extends JFrame {
 		try {
 			Object[] ObjectArray = database.DBManager.verTablas().toArray();
 			String[] array = Arrays.copyOf(ObjectArray, ObjectArray.length, String[].class);
-			// for (int i = 0; i < array.length; i++) {
-			// array[i] = database.DBManager.verTablas().get(i);
-			// }
 			jcbTablas = new JComboBox<String>(array);
 		} catch (DBManagerException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
@@ -168,10 +162,7 @@ public class VentanaCambiarDatos_2 extends JFrame {
 		// tabla
 		tabla = jcbTablas.getSelectedItem().toString(); // !!!
 		try {
-			// for (int i = 1; i < (database.DBManager.verColumnas(tabla).size() + 1); i++)
-			// {
 			objects = database.DBManager.verColumnas(tabla).toArray();
-			// }
 			data = database.DBManager.data(tabla);
 		} catch (DBManagerException e) {
 			mainPackage.MainWikiFutbol.loggerGeneral.log(Level.INFO, e.toString());
@@ -201,15 +192,12 @@ public class VentanaCambiarDatos_2 extends JFrame {
 		buscarTabla.addActionListener(e -> refrescarJTable());
 
 		btnCambiarDato.addActionListener(e -> {
-			if (// !textArea1.getText().equals(null) &&
-				// !textArea1.getText().equals("") &&
-			(jt.getSelectionModel().isSelectionEmpty() == false)) {
+			if ((jt.getSelectionModel().isSelectionEmpty() == false)) {
 				try {
 					tabla = jcbTablas.getSelectedItem().toString();
 					String columna = jt.getColumnName(jt.getSelectedColumn());
 
 					Object valor = jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
-					// Object valor = textArea1.getText();
 
 					int id = Integer.parseInt((String) jt.getValueAt(jt.getSelectedRow(), 0));
 					database.DBManager.cambiarDatosDesdeJTable(tabla, columna, valor, id);

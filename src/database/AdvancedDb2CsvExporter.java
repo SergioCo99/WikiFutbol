@@ -145,6 +145,7 @@ public class AdvancedDb2CsvExporter {
 
 	/**
 	 * Este metodo sirve para exportar en un archivo csv tablas de la base de datos
+	 * EN MODO DE CLASES BASICAS
 	 *
 	 * @param table Nombre de la tabla a exportar
 	 * @throws DBManagerException En caso de error

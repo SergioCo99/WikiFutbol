@@ -10,7 +10,10 @@ public class EmpleadoDeClub {
 
 	public int id;
 	public String nombre;
-	public String fechaNac; /* YYYY-MM-dd , por ejemplo "1990-06-25" */
+	/**
+	 * YYYY-MM-dd , por ejemplo "1990-06-25"
+	 */
+	public String fechaNac;
 	public String club;
 	public String ciudad;
 
