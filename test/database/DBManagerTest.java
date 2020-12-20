@@ -58,8 +58,6 @@ public class DBManagerTest {
 			Posicion.Delantero, 8, 0, 182, 81, PieFav.Diestro, 84, "Jugador con desborde", 1);
 
 	private static Connection conn;
-	// private static Statement stmt = null;
-	// private static PreparedStatement preparedstmt = null;
 
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -81,7 +79,6 @@ public class DBManagerTest {
 	 */
 	@BeforeClass
 	public static void testConnect() throws DBManagerException {
-		// DBManager.connect();
 		conn = DBManager.connect();
 	}
 
@@ -163,7 +160,6 @@ public class DBManagerTest {
 		String correo_usuario = u.getCorreo();
 		int nuevoValor_admin_usuario = 1;
 
-		// Connection conn = DBManager.connect();
 		ResultSet rs = null;
 		PreparedStatement preparedstmt = null;
 
@@ -301,11 +297,11 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testGetIdUsuario() throws DBManagerException {
-		String correo_usuario = "lopez@gmail.com";
+		String correo_usuario = "a@gmail.com";
 		int idUsuario;
 		idUsuario = DBManager.getIdUsuario(correo_usuario);
 		Assert.assertNotNull(idUsuario);
-		assertEquals(3, idUsuario);
+		assertEquals(1, idUsuario);
 	}
 
 	/**
@@ -395,7 +391,6 @@ public class DBManagerTest {
 		int voto_portero = 0;
 		int voto_portero2 = 0;
 
-		// Connection conn = DBManager.connect();
 		ResultSet rs = null;
 		Statement stmt = null;
 		PreparedStatement preparedstmt = null;
@@ -452,7 +447,6 @@ public class DBManagerTest {
 			}
 		}
 
-		// DBManager.connect();
 		String sql01 = "select * from usuariovotacion where usuario_usuarioVotacion = " + usuario_usuarioVotacion;
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql01);
@@ -463,7 +457,6 @@ public class DBManagerTest {
 		assertEquals(rs.getInt("defensaVotado_usuarioVotacion"), defensaVotado_usuarioVotacion);
 		assertEquals(rs.getInt("porteroVotado_usuarioVotacion"), porteroVotado_usuarioVotacion1);
 
-		// DBManager.connect();
 		String sql2 = "select count(usuario_usuarioVotacion) from usuariovotacion where usuario_usuarioVotacion = ?";
 		preparedstmt = conn.prepareStatement(sql2);
 		preparedstmt.setInt(1, usuario_usuarioVotacion);
@@ -495,7 +488,6 @@ public class DBManagerTest {
 			}
 		}
 
-		// DBManager.connect();
 		String sql02 = "select * from usuariovotacion where usuario_usuarioVotacion = " + usuario_usuarioVotacion;
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql02);
@@ -506,7 +498,6 @@ public class DBManagerTest {
 		assertEquals(rs.getInt("defensaVotado_usuarioVotacion"), defensaVotado_usuarioVotacion);
 		assertEquals(rs.getInt("porteroVotado_usuarioVotacion"), porteroVotado_usuarioVotacion2);
 
-		// DBManager.connect();
 		String sql3 = "select count(usuario_usuarioVotacion) from usuariovotacion where usuario_usuarioVotacion = ?";
 		preparedstmt = conn.prepareStatement(sql3);
 		preparedstmt.setInt(1, usuario_usuarioVotacion);
@@ -516,46 +507,6 @@ public class DBManagerTest {
 
 		DBManager.actualizarVotos();
 	}
-
-	/*
-	 * @Test public void testContarJugadores() throws DBManagerException {
-	 *
-	 * // private
-	 *
-	 * }
-	 */
-
-	/*
-	 * @Test public void testContarVotosPorJugador() throws DBManagerException {
-	 *
-	 * // private
-	 *
-	 * }
-	 */
-
-	/*
-	 * @Test public void testActualizarVotos() throws DBManagerException {
-	 *
-	 * // Arriba, con testVotar
-	 *
-	 * }
-	 */
-
-	/*
-	 * @Test public void testCountToft() throws DBManagerException {
-	 *
-	 * // private
-	 *
-	 * }
-	 */
-
-	/*
-	 * @Test public void testGetMasVotados() throws DBManagerException {
-	 *
-	 * // private
-	 *
-	 * }
-	 */
 
 	/**
 	 * Devuelve un arraylist con 11 ids de los jugadores mas votados
@@ -585,7 +536,6 @@ public class DBManagerTest {
 
 		List<String> toftNombre = DBManager.toftNombres();
 
-		// Connection conn = DBManager.connect();
 		ResultSet rs = null;
 		PreparedStatement preparedstmt = null;
 
@@ -616,14 +566,6 @@ public class DBManagerTest {
 			contador++;
 		}
 	}
-
-	/*
-	 * @Test public void testToftNombres() throws DBManagerException, SQLException {
-	 *
-	 * // Arriba, con testToft
-	 *
-	 * }
-	 */
 
 	/**
 	 * Comprueba el correcto funcionamiento del metodo que nos devuelve todas las
@@ -1070,7 +1012,6 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testCambiarDatos() throws DBManagerException, SQLException {
-		// Connection conn = DBManager.connect();
 		ResultSet rs = null;
 		PreparedStatement preparedstmt = null;
 
@@ -1103,7 +1044,6 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void testCambiarDatosDesdeJTable() throws DBManagerException, SQLException {
-		// Connection conn = DBManager.connect();
 		ResultSet rs = null;
 		PreparedStatement preparedstmt = null;
 
@@ -1228,7 +1168,6 @@ public class DBManagerTest {
 	 */
 	@Test
 	public void TestIdMasBajoSinUsar() throws DBManagerException, SQLException {
-		// Connection conn = DBManager.connect();
 		ResultSet rs = null;
 		PreparedStatement preparedstmt = null;
 		ArrayList<Integer> ids = new ArrayList<Integer>();

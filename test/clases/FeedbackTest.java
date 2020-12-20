@@ -22,7 +22,7 @@ public class FeedbackTest {
 	 */
 	@Before
 	public void setUp() {
-		f = new Feedback(1, "a", /* Valoracion.CINCO */ 5, Recomendacion.si, "Correcto");
+		f = new Feedback(1, "a", 5, Recomendacion.si, "Correcto");
 	}
 
 	/**
@@ -50,8 +50,8 @@ public class FeedbackTest {
 	 */
 	@Test
 	public void testValoracion() {
-		f.setValoracion(/* Valoracion.CINCO */ 5);
-		assertEquals(/* Valoracion.CINCO */ 5, f.getValoracion());
+		f.setValoracion(5);
+		assertEquals(5, f.getValoracion());
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class FeedbackTest {
 
 		f.setId(1);
 		f.setUsuario("a");
-		f.setValoracion(/* Valoracion.CINCO */ 5);
+		f.setValoracion(5);
 		f.setRecomendacion(Recomendacion.si);
 		f.setOpinion("Correcto");
 
