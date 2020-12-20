@@ -2465,11 +2465,12 @@ public class DBManager {
 		}
 	}
 
+	
 	/**
-	 *
-	 * @param tabla
-	 * @return
-	 * @throws DBManagerException
+	 * Devuelve el nombre del pais dependiendo de la ciudad
+	 * @param ciudad Nombre de la ciudad
+	 * @return return return
+	 * @throws DBManagerException exception
 	 */
 	public static Pais getPaisPorCiudad(String ciudad) throws DBManagerException {
 		// connect();
@@ -2497,6 +2498,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Nos devuelve el nombre de la ciudad
+	 * @param Ciudad La ciudad
+	 * @param BD La base de datos
+	 * @return return
+	 * @throws DBManagerException exception
+	 */
 	public static String nombreCiudad(String Ciudad, String BD) throws DBManagerException {
 		// connect();
 		ResultSet rs = null;
@@ -2525,6 +2533,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Nos devuelve el nombre del pais
+	 * @param Ciudad Ciudad de la que queremos saber el pais
+	 * @param BD La base de datos
+	 * @return return
+	 * @throws DBManagerException exception
+	 */
 	public static String paisCiudad(String Ciudad, String BD) throws DBManagerException {
 		// connect();
 		ResultSet rs = null;
@@ -2553,6 +2568,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Devuelve la provincia a la que pertenece una ciudad
+	 * @param Ciudad El nombre de la ciudad
+	 * @param BD La base de datos
+	 * @return return
+	 * @throws DBManagerException exception
+	 */
 	public static String provinciaCiudad(String Ciudad, String BD) throws DBManagerException {
 		// connect();
 		ResultSet rs = null;
@@ -2581,6 +2603,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Devuelve la comAutonoma a la que pertenece una ciudad
+	 * @param Ciudad Nombre de la ciudad
+	 * @param BD La base de datos
+	 * @return return
+	 * @throws DBManagerException exception
+	 */
 	public static String comAutonomaCiudad(String Ciudad, String BD) throws DBManagerException {
 		// connect();
 		ResultSet rs = null;
@@ -2609,6 +2638,13 @@ public class DBManager {
 		}
 	}
 
+	/** 
+	 * Devuelve la poblacion de una ciudad
+	 * @param Ciudad Nombre de la ciudad
+	 * @param BD La base de datos
+	 * @return return
+	 * @throws DBManagerException exception
+	 */
 	public static String poblacionCiudad(String Ciudad, String BD) throws DBManagerException {
 		// connect();
 		ResultSet rs = null;
@@ -2637,6 +2673,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Devuelve el gentilicio de la ciudad
+	 * @param Ciudad Nombre de la ciudad
+	 * @param BD La base de datos
+	 * @return return
+	 * @throws DBManagerException exception
+	 */
 	public static String gentilicioCiudad(String Ciudad, String BD) throws DBManagerException {
 		// connect();
 		ResultSet rs = null;
@@ -2665,6 +2708,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Devuelve el nombre del pais
+	 * @param Pais El pais
+	 * @param BD La base de datos
+	 * @return return
+	 * @throws DBManagerException exception
+	 */
 	public static String nombrePais(String Pais, String BD) throws DBManagerException {
 		// connect();
 		ResultSet rs = null;
@@ -2693,6 +2743,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Devuelve la capital del Pais
+	 * @param Pais Nombre del Pais
+	 * @param BD La base de datos
+	 * @return return
+	 * @throws DBManagerException exception
+	 */
 	public static String capitalPais(String Pais, String BD) throws DBManagerException {
 		// connect();
 		ResultSet rs = null;
@@ -2721,6 +2778,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Devuelve el gentilicio del Pais
+	 * @param Pais Nombre del pais
+	 * @param BD La base de datos
+	 * @return return
+	 * @throws DBManagerException exception
+	 */
 	public static String gentilicioPais(String Pais, String BD) throws DBManagerException {
 		// connect();
 		ResultSet rs = null;
@@ -2749,6 +2813,13 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Devuelve el idioma del pais
+	 * @param Pais Nombre del pais
+	 * @param BD Nombre de la base de datos
+	 * @return return
+	 * @throws DBManagerException exception
+	 */
 	public static String idiomaPais(String Pais, String BD) throws DBManagerException {
 		// connect();
 		ResultSet rs = null;

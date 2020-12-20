@@ -7,9 +7,9 @@ import java.util.List;
  * Metodos:
  *
  * ordenarArrayStringRecursivo(String array[], int arrayLength) /////
- * ordenarListStringRecursivo(List<String> list, int listSize) /////
+ * ordenarListStringRecursivo(List list, int listSize) /////
  * binarySearchArrayStringRecursivo(String arr[], int left, int right, String
- * palabra) ///// binarySearchListStringRecursivo(List<String> list, int left,
+ * palabra) ///// binarySearchListStringRecursivo(List list, int left,
  * int right, String palabra)
  */
 public class MetodosRecursivos {
@@ -93,7 +93,7 @@ public class MetodosRecursivos {
 	/**
 	 * Busqueda binaria de un list de String YA ORDENADO (aA-zZ) alfabeticamente
 	 *
-	 * @param list    List<String> x
+	 * @param list    List x
 	 * @param left    primera casilla, normalmente 0
 	 * @param right   ultima casilla, normalmente list.size -1
 	 * @param palabra palabra que se quiere buscar
