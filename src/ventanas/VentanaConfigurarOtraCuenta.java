@@ -1,5 +1,7 @@
 package ventanas;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.util.List;
 import java.util.logging.Level;
@@ -27,7 +29,7 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 	private JButton btnEjecutar;
 	private JRadioButton cbHacerAdmin, cbQuitarAdmin, cbBorrarCuenta;
 	private ButtonGroup bg1;
-	private JLabel lblCorreo;
+	private JLabel lblCorreo, lblTitulo;
 	private JComboBox<String> jcbCorreos;
 	private JLabel lblOpciones;
 
@@ -37,17 +39,24 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 		this.setSize(600, 400);
 		getContentPane().setLayout(null);
 		this.setResizable(false);
+		this.getContentPane().setBackground(Color.getHSBColor(0.56f, 0.2f, 0.9f));
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
+		
+		lblTitulo = new JLabel();
+		lblTitulo.setText("Configurar cuentas");
+		lblTitulo.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		lblTitulo.setBounds(210, 40, 250, 50);
+		
 		bg1 = new ButtonGroup();
 		cbHacerAdmin = new JRadioButton("Hacer admin");
-		cbHacerAdmin.setBounds(116, 29, 100, 20);
+		cbHacerAdmin.setBounds(116, 180, 150, 20);
 		cbQuitarAdmin = new JRadioButton("Quitar admin");
-		cbQuitarAdmin.setBounds(116, 51, 100, 20);
+		cbQuitarAdmin.setBounds(116, 202, 150, 20);
 		cbBorrarCuenta = new JRadioButton("Borrar cuenta DEFINITIVAMENTE");
-		cbBorrarCuenta.setBounds(116, 73, 250, 20);
+		cbBorrarCuenta.setBounds(116, 224, 250, 20);
 		bg1.add(cbHacerAdmin);
 		bg1.add(cbQuitarAdmin);
 		bg1.add(cbBorrarCuenta);
@@ -58,7 +67,7 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 
 		lblCorreo = new JLabel();
 		lblCorreo.setText("Introduce correo:");
-		lblCorreo.setBounds(10, 150, 250, 40);
+		lblCorreo.setBounds(70, 100, 250, 40);
 
 		String[] array = new String[listaCorreos.size()];
 		for (int i = 0; i < array.length; i++) {
@@ -66,17 +75,18 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 		}
 		jcbCorreos = new JComboBox<String>(array);
 		utils.JComboBoxAutoCompletion.enable(jcbCorreos);
-		jcbCorreos.setBounds(201, 150, 250, 40);
+		jcbCorreos.setBounds(201, 100, 250, 40);
 
 		getContentPane().add(btnEjecutar);
 		getContentPane().add(cbHacerAdmin);
 		getContentPane().add(cbQuitarAdmin);
 		getContentPane().add(cbBorrarCuenta);
 		getContentPane().add(lblCorreo);
+		getContentPane().add(lblTitulo);
 		getContentPane().add(jcbCorreos);
 
 		lblOpciones = new JLabel("Opciones: ");
-		lblOpciones.setBounds(106, 10, 120, 13);
+		lblOpciones.setBounds(70, 160, 120, 13);
 		getContentPane().add(lblOpciones);
 
 		btnEjecutar.addActionListener(e -> {

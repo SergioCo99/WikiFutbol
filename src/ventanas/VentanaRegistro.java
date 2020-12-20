@@ -106,7 +106,6 @@ public class VentanaRegistro extends JFrame {
 		
 		btnLogin = new JButton();
 		btnLogin.setText("Ya tengo cuenta");
-		btnLogin.setLayout(null);
 		btnLogin.setBounds(220, 330, 160, 30);
 
 		calendar = new JCalendar();

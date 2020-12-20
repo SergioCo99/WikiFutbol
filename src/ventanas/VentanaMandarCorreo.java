@@ -2,6 +2,7 @@ package ventanas;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
@@ -34,7 +35,7 @@ public class VentanaMandarCorreo extends JFrame {
 	private JButton btnEnviar, btnBorrarArchivo;
 	private JComboBox<String> jcb;
 	private JCheckBox todos;
-	private JLabel lblDestinagario, lblAsunto, lblArchivo;
+	private JLabel lblDestinagario, lblAsunto, lblArchivo, lblTitulo;
 	private JTextField txtAsunto;
 	private JTextArea texto;
 	private JScrollPane scroll;
@@ -48,13 +49,19 @@ public class VentanaMandarCorreo extends JFrame {
 		this.setTitle("VentanaMandarCorreo");
 		this.setSize(600, 400);
 		getContentPane().setLayout(null);
+		this.getContentPane().setBackground(Color.getHSBColor(0.56f, 0.2f, 0.9f));
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
-		lblDestinagario = new JLabel("Destinatario: ");
-		lblDestinagario.setBounds(10, 30, 120, 30);
+		lblTitulo = new JLabel();
+		lblTitulo.setText("Enviar correo");
+		lblTitulo.setBounds(230, 15, 150, 30);
+		lblTitulo.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		
+		lblDestinagario = new JLabel("Para: ");
+		lblDestinagario.setBounds(10, 50, 120, 30);
 
 		String[] array = new String[listaCorreos.size()];
 		for (int i = 0; i < array.length; i++) {
@@ -62,11 +69,11 @@ public class VentanaMandarCorreo extends JFrame {
 		}
 		jcb = new JComboBox<String>(array);
 		utils.JComboBoxAutoCompletion.enable(jcb);
-		jcb.setBounds(300, 30, 200, 30);
+		jcb.setBounds(300, 50, 200, 30);
 
 		todos = new JCheckBox();
 		todos.setText("Todos");
-		todos.setBounds(150, 30, 120, 30);
+		todos.setBounds(150, 50, 120, 30);
 
 		btnEnviar = new JButton();
 		btnEnviar.setText("Enviar");
@@ -105,6 +112,7 @@ public class VentanaMandarCorreo extends JFrame {
 		getContentPane().add(txtAsunto);
 		getContentPane().add(lblAsunto);
 		getContentPane().add(lblArchivo);
+		getContentPane().add(lblTitulo);
 		getContentPane().add(todos);
 		getContentPane().add(scroll);
 		getContentPane().add(adjuntar);
