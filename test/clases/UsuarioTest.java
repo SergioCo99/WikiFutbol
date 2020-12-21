@@ -69,7 +69,7 @@ public class UsuarioTest {
 	@Test
 	public void testAdmin() {
 		u.setAdmin(1);
-		;
+
 		assertEquals(1, u.getAdmin());
 	}
 
