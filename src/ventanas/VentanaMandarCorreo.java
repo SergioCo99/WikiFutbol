@@ -59,7 +59,7 @@ public class VentanaMandarCorreo extends JFrame {
 		lblTitulo.setText("Enviar correo");
 		lblTitulo.setBounds(230, 15, 150, 30);
 		lblTitulo.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		
+
 		lblDestinagario = new JLabel("Para: ");
 		lblDestinagario.setBounds(10, 50, 120, 30);
 

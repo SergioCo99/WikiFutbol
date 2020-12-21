@@ -103,7 +103,7 @@ public class VentanaRegistro extends JFrame {
 		btnRegistrar = new JButton();
 		btnRegistrar.setText("Registrarse");
 		btnRegistrar.setBounds(240, 300, 120, 30);
-		
+
 		btnLogin = new JButton();
 		btnLogin.setText("Ya tengo cuenta");
 		btnLogin.setBounds(220, 330, 160, 30);
@@ -138,7 +138,6 @@ public class VentanaRegistro extends JFrame {
 		getContentPane().add(checkContrasena);
 
 		btnRegistrar.addActionListener(e -> {
-
 			try {
 				if (txtUsuario.getText().equals("") || txtPassword.getPassword().toString().equals("")
 						|| txtPasswordRep.getPassword().toString().equals("") || txtCorreo.getText().equals("")
@@ -178,14 +177,12 @@ public class VentanaRegistro extends JFrame {
 				e13.printStackTrace();
 			}
 		});
-		
-		btnLogin.addActionListener(e->{
-			
+
+		btnLogin.addActionListener(e -> {
 			VentanaLogin v1 = null;
 			v1 = new VentanaLogin();
 			v1.setVisible(true);
 			dispose();
-			
 		});
 
 		checkContrasena.addActionListener(e -> {

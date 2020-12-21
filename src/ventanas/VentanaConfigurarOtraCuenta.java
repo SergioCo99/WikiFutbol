@@ -44,12 +44,11 @@ public class VentanaConfigurarOtraCuenta extends JFrame {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/wf.png"));
 
-		
 		lblTitulo = new JLabel();
 		lblTitulo.setText("Configurar cuentas");
 		lblTitulo.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		lblTitulo.setBounds(210, 40, 250, 50);
-		
+
 		bg1 = new ButtonGroup();
 		cbHacerAdmin = new JRadioButton("Hacer admin");
 		cbHacerAdmin.setBounds(116, 180, 150, 20);
